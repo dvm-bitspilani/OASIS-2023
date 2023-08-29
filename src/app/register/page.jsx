@@ -1,7 +1,9 @@
 "use client" 
 
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect , useReducer} from "react";
 import styles from "./tourism.module.css";
+
+
 
 async function getStateAndCityData() {
   const res = await fetch(
@@ -15,21 +17,37 @@ async function getStateAndCityData() {
   return res.json();
 }
 
+function filterObjectsByName(objectsArray, searchName) {
+  return objectsArray.filter(object => object.name === searchName);
+}
+
+const formReducerFn = (state, action) => {
+  
+  return state;
+};
+
+const formDataTemplate = [];
+
+
 export default function Page(props) {
+
+  const [formData, formDispatchFn] = useReducer(formReducerFn , formDataTemplate)
 
   const [states, setStates] = useState([]);
   const [cities, setCities] = useState([]);
-  const [selectedState, setSelectedState] = useState(null);
+  const [selectedState, setSelectedState] = useState({
+  "value": "Andaman and Nicobar Islands",
+  "label": "Andaman and Nicobar Islands"
+});
 
   
   useEffect(() => {
     getStateAndCityData()
       .then((data) => {
         if (data) {
-          console.log(data)
           const keys = Object.values(data[101]["states"]);
-          console.log(keys);
           setStates(keys.map((key) => ({ value: key["name"], label: key["name"] })));
+          setCities(filterObjectsByName(data[101]["states"],selectedState["value"])[0]["cities"].map((key)=>({value: key["name"], label: key["name"]})))
         }
       })
       .catch((error) => {
@@ -38,6 +56,7 @@ export default function Page(props) {
   }, []);
 
   console.log(states);
+  console.log(cities);
 
   return (
     <>
