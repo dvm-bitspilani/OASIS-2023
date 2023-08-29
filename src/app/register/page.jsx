@@ -1,10 +1,110 @@
 "use client" 
 
-import React, { useState, useEffect , useReducer} from "react";
+import React, { useState, useEffect , useReducer , useRef} from "react";
+import Image from "next/image";
 import Select from 'react-select';
+import Creatable from "react-select/creatable";
+import Radio from '../../components/radioButton.jsx';
 import styles from "./page.module.css";
+import skull from "../../../public/static/images/skull.svg";
 
+const noCollegesMessages=()=>"Wait for Colleges to load";
+const noStatesMessages=()=>"Wait for States to load";
+const noCitiesMessage=()=>"Select a State First";
 
+const customStyles = {
+  control: (provided, state) => ({
+    ...provided,
+    minHeight: '2rem',
+    height: '2rem',
+    backgroundColor: 'transparent',
+    border:'none',
+    borderBottom: state.isFocused ? '2px solid white' : '2px solid white',
+    '&:hover': {
+      borderColor: 'white',
+    },
+    cursor: 'text',
+    outline: 'none',
+    boxShadow: 'none',
+    borderRadius: '0px',
+  }),
+  indicatorSeparator: () => { },
+  valueContainer: (provided) => ({
+    ...provided,
+    height: '1.8rem',
+    paddingLeft: 0,
+  }),
+  indicatorsContainer: (provided) => ({
+    ...provided,
+    height: '1.8rem',
+  }),
+  singleValue: (provided) => ({
+    ...provided,
+    color: '#eee',
+    fontFamily: 'NightmarePills',
+    fontSize: '1.5rem',
+    fontWeight: 700,
+  }),
+  option: (provided, state) => ({
+    ...provided,
+    color: state.isSelected ? '#fff' : '#111',
+    backgroundColor: state.isSelected ? '#7CC6DB' : 'transparent',
+    fontFamily: 'NightmarePills',
+    fontSize: '1.5rem',
+    fontWeight: 500,
+    zIndex: 1002,
+    '&:hover': {
+      backgroundColor: '#7CC6DB',
+      color: '#fff'
+    },
+  }),
+  menu: (provided) => ({
+    ...provided,
+    zIndex: 1002,
+    '&::-webkit-scrollbar': {
+      width: '1px',
+    },
+    '&::-webkit-scrollbar-thumb': {
+      backgroundColor: '#000',
+    },
+  }),
+  dropdownIndicator: (provided, state) => ({
+    ...provided,
+    color: 'white',
+    cursor: 'pointer',
+    padding: '5px',
+  }),
+  placeholder: (provided) => ({
+    ...provided,
+    fontFamily: 'NightmarePills',
+    fontSize: '1.5rem',
+    opacity:'1',
+    color:'#FFFFFF'
+  }),
+  container: (provided) => ({
+    ...provided,
+    overflow: 'visible',
+  }),
+  input: (provided) => ({
+    ...provided,
+    color: '#eee',
+    fontFamily: 'NightmarePills',
+    fontSize: '1.5rem',
+    fontWeight: 700,
+    zIndex: 1002,
+    margin: '0',
+    paddingTop: '0',
+    paddngBottom: '0',
+    marginLeft: '2px',
+  }),
+  noOptionsMessage: (provided) => ({
+    ...provided,
+    color: '#000',
+    fontFamily: 'NightmarePills',
+    fontSize: '1.5rem',
+    paddingLeft: '1rem',
+  }),
+};
 
 async function getStateAndCityData() {
   const res = await fetch(
@@ -23,12 +123,65 @@ function filterObjectsByName(objectsArray, searchName) {
 }
 
 const formReducerFn = (state, action) => {
+  if(action.type === 'nameChange'){
+    return{
+      ...state,
+      name:action.value.target.value,
+    }
+  }
+  if(action.type === 'emailChange'){
+    return{
+      ...state,
+      email_id:action.value.target.value,
+    }
+  }
+  if(action.type === 'phoneChange'){
+    return{
+      ...state,
+      phone:action.value,
+    }
+  }
   if(action.type === 'stateChange'){
-
     return {
       ...state,
       state:action.value.value,
     } 
+  }
+  if(action.type === 'cityChange'){
+    return{
+      ...state,
+      city:action.value.value,
+    }
+  }
+  if(action.type === 'collegeChange'){
+    return {
+      ...state,
+      college_id:action.value.value,
+    }
+  }
+  if(action.type === 'yearChange'){
+    return {
+      ...state, 
+      year: action.value.value,
+    }
+  }
+  if(action.type === 'genderChange'){
+    return{
+      ...state,
+      gender: action.value.target.id,
+    }
+  }
+  if(action.type === 'choreoChange'){
+    return{
+      ...state,
+      choreographer: action.value.target.value,
+    }
+  }
+  if(action.type === 'headChange'){
+    return{
+      ...state,
+      head_of_society: action.value.target.value,
+    }
   }
   
   return state;
@@ -48,6 +201,25 @@ const formDataTemplate = {
   "college_id":"",
 };
 
+const tempColleges=[
+  {value:'1' , label: 'Bits Pilani'},
+  {value:'2' , label: 'Bits Goa'},
+  {value:'3' , label: 'Bits Dubai'},
+  {value:'4' , label: 'Bits Hyderabad'},
+  {value:'5' , label: 'Bits Mesra'},
+  {value:'6' , label: 'Bits Pilani'},
+  {value:'7' , label: 'Bits Pilani'},
+  {value:'8' , label: 'Bits Pilani'},
+  {value:'9' , label: 'Bits Pilani'},
+]
+const year=[
+  {value:"1",label:"1"},
+  {value:"2",label:"2"},
+  {value:"3",label:"3"},
+  {value:"4",label:"4"},
+  {value:"5",label:"5"},
+]
+
 
 export default function Page(props) {
 
@@ -61,11 +233,47 @@ export default function Page(props) {
     "label": ""
   });
 
+
+  function handleNameChange (inp){
+    formDispatchFn({type:'nameChange', value:inp})
+  }
+  function handleEmailChange(inp){
+    formDispatchFn({type:'emailChange', value:inp})
+  }
+  function handlePhoneChange(inp){
+    formDispatchFn({type:'phoneChange',value:inp.target.value.replace(/\D/g, '')})
+  }
   function handleStateChange (inp){
     setSelectedState(inp);
     formDispatchFn({type:'stateChange' , value: inp})
   }
+  function handleCityChange (inp){
+    formDispatchFn({type:'cityChange' , value:inp})
+  }
+  function handleCollegeChange(inp){
+    formDispatchFn({type:'collegeChange',value:inp})
+  }
+  function handleYearChange (inp){
+    formDispatchFn({type:'yearChange', value:inp})
+  }
+  function handleGenderChange(inp){
+    formDispatchFn({type:'genderChange', value: inp})
+  }
+  function handleChoreoChange(inp){
+    formDispatchFn({type:'choreoChange', value:inp})
+  }
+  function handleHeadChange(inp){
+    formDispatchFn({type: 'headChange', value: inp})
+  }
 
+
+  function handleScroll (inp){
+    const formContainer = document.querySelector(`.${styles.formContainer}`);
+    const maxScrollTopValue = formContainer.scrollTopMax;
+    const percentage = (formContainer.scrollTop / maxScrollTopValue )*100;
+    const skull = document.querySelector(`#skull`);
+    skull.style.top = `${percentage}%`;
+  }
 
   useEffect(() => {
     getStateAndCityData()
@@ -91,12 +299,71 @@ export default function Page(props) {
   console.log(cities);
   console.log(formData);
   console.log(selectedState);
+  
 
   return (
     <>
       <div className={styles.regPage}>
+        <h2>REGISTRATIONS</h2>
+        <button>BACK TO HOME</button>
+        <div className={styles.regForm}>
+          <div className={styles.scrollBarContainer}>
+            <div className={styles.scrollBar}></div> 
+            <Image id="skull" src={skull} alt="" />
+          </div>
+          <div className={styles.formContainer} onScroll={handleScroll} >
+            <div className={styles.form}>
+              <label htmlFor="name">NAME</label>
+              <input type="text" placeholder="NAME" id="name" onChange={(inp)=>handleNameChange(inp)} />
 
+              <label htmlFor="email_id">EMAIL-ID</label>
+              <input type="text" placeholder="EMAIL-ID" id="email_id" onChange={(inp)=>handleEmailChange(inp)} />
+
+              <label htmlFor="phone">PHONE NUMBER</label>
+              <input type="text" placeholder="PHONE NUMBER" id="phone" maxLength="10" onChange={(inp)=>handlePhoneChange(inp)} value={formData.phone} />
+
+              <label>GENDER</label>
+              <div className={styles.radioBtns}>
+                <Radio id="M" value="M" name="gender" text="Male" onChange={handleGenderChange} />
+                <Radio id="F" value="F" name="gender" text="Female" onChange={handleGenderChange} />
+                <Radio id="O" value="O" name="gender" text="Other" onChange={handleGenderChange} />
+              </div>
+
+              <label htmlFor="college">COLLEGE</label>
+              <Select options={tempColleges} id="college" noOptionsMessage={noCollegesMessages} styles={customStyles} placeholder="COLLEGE" onChange={handleCollegeChange} />
+
+              <label htmlFor="state">STATE</label>
+              <Select options={states} id="state" noOptionsMessage={noStatesMessages} styles={customStyles} placeholder="STATE" onChange={handleStateChange} />
+
+              <label htmlFor="city">CITY</label>
+              <Creatable options={cities} id="city" noOptionsMessage={noCitiesMessage} onChange={handleCityChange} placeholder="CITY" styles={customStyles} />
+
+              <label htmlFor="year">YEAR OF STUDY</label>
+              <Select options={year} id="year" styles={customStyles} placeholder="YEAR" onChange={handleYearChange} />
+
+              <label>ARE YOU A CHOREOGRAPHER/MENTOR?</label>
+              <div className={styles.radioBtns}>
+                <Radio id="YES_Choreo" value="YES" name="choreographer" text="YES" onChange={handleChoreoChange} />
+                <Radio id="NO_Choreo" value="NO" name="choreographer" text="NO" onChange={handleChoreoChange} />
+              </div>
+
+              <label>ARE YOU THE HEAD OF A SOCIETY?</label>
+              <div className={styles.radioBtns}>
+
+                <Radio id="YES_Society" value="YES" name="head_of_society" text="YES" onChange={handleHeadChange} />
+
+                <Radio id="NO_Society" value="NO" name="head_of_society" text="NO" onChange={handleHeadChange} />
+              </div>
+
+            </div>
+          </div>
+        </div>
+        <div className={styles.regBtnContainer}>
+
+        </div>
       </div>
     </>
   );
 }
+
+

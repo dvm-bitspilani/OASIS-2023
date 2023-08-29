@@ -1,7 +1,116 @@
 .regPage{
   width: 100vw;
-  min-height: 100vh;
+  height: 100vh;
   background: url(../../../public/static/images/RegisterBG.svg);
   background-position: center center;
   background-size: contain;
+  overflow: hidden;
+}
+.regPage h2{
+  color: #5DB3F1;
+  font-family: "NightmarePills";
+  font-size: 4.5rem;
+  font-weight: 500;
+  padding:1% 0 0 2%;
+  height:calc(10vh - 0.5rem);
+}
+.regPage button{
+  outline: none;
+  background: transparent;
+  border: 2px solid #5DB3F1;
+  position: fixed;
+  top: 1.5rem;
+  right: 1rem;
+  color: #5DB3F1;
+  font-family: "NightmarePills";
+  font-size: 1.5rem;
+  line-height:100%;
+  transition: scale 0.2s ease-in-out;
+}
+.regPage button:hover{
+  scale:1.05;
+  cursor: pointer;/*temporarily*/
+}
+.regForm{
+  height:70vh;
+  width: 60vw;
+  padding:2%;
+  display: flex;
+}
+.scrollBarContainer{
+  height: 88%;
+  width: 10%;
+  margin: 6% 0;
+  display: flex;
+  justify-content: center;
+  position: relative;
+}
+.scrollBarContainer img{
+  position: absolute;
+}
+.scrollBar{
+  background:#7BBEF0;
+  width:4px;
+  stroke-width: 7px;
+  stroke: #5992BD;
+  filter: drop-shadow(0px 0px 15px rgba(123, 190, 240, 0.91));
+  border-radius:5px;
+}
+.formContainer{
+  height: 100%;
+  width: 90%;
+  overflow:scroll;
+  -ms-overflow-style:none;
+  scrollbar-width:none;
+  padding: 2% 0;
+}
+.formContainer::-webkit-scrollbar{
+  display: none;
+}
+.form{
+  display: flex;
+  flex-direction:column;
+}
+.regBtnContainer{
+  height:20vh;
+}
+#radio-label{
+  color:#FFFFFF !important;
+  font-size:1.5rem;
+}
+.form label{
+  color: #5DB3F1;
+  font-family: "NightmarePills";
+  font-size: 2rem;
+  margin-top:2rem;
+}
+.form input{
+  outline:none;
+  background:transparent;
+  border:none;
+  border-bottom:2px solid white;
+  height: 2rem;
+  color: #FFFFFF;
+  font-family: 'NightmarePills';
+  font-size: 1.5rem;
+}
+.form input::-webkit-input-placeholder { 
+  color: #FFFFFF;
+  font-family: 'NightmarePills';
+  font-size: 1.5rem;
+  opacity:1;
+}
+
+.form input:-ms-input-placeholder {
+  color: #FFFFFF;
+  font-family: 'NightmarePills';
+  font-size: 1.5rem;
+  opacity:1;
+}
+
+.form input::placeholder {
+  color: #FFFFFF;
+  font-family: 'NightmarePills';
+  font-size: 1.5rem;
+  opacity:1;
 }
