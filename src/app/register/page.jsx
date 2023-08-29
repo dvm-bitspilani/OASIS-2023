@@ -2,7 +2,7 @@
 
 import React, { useState, useEffect , useReducer} from "react";
 import Select from 'react-select';
-import styles from "./tourism.module.css";
+import styles from "./page.module.css";
 
 
 
@@ -94,9 +94,9 @@ export default function Page(props) {
 
   return (
     <>
-      <button onClick = {()=> handleStateChange({value: 'Delhi',label:'Delhi'})}>
-        Change temp
-      </button> 
+      <div className={styles.regPage}>
+
+      </div>
     </>
   );
 }
