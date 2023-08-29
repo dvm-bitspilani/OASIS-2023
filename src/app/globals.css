@@ -1,0 +1,8 @@
+@font-face {
+  font-family: 'NightmarePills';
+  src: url(../../public/static/fonts/NIGHTMARE PILLS - DEMO.ttf) format('truetype');
+}
+*{
+  margin: 0;
+  padding: 0;
+}
