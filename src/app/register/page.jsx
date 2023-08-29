@@ -1,6 +1,7 @@
 "use client" 
 
 import React, { useState, useEffect , useReducer} from "react";
+import Select from 'react-select';
 import styles from "./tourism.module.css";
 
 
@@ -26,14 +27,26 @@ const formReducerFn = (state, action) => {
 
     return {
       ...state,
-      selectedState:action.value
+      state:action.value.value,
     } 
   }
   
   return state;
 };
 
-const formDataTemplate = [];
+const formDataTemplate = {
+  "email_id":"",
+  "events":[],
+  "phone":"",
+  "year":"",
+  "choreographer":"",
+  "head_of_study":"",
+  "name":"",
+  "gender":"",
+  "city":"",
+  "state":"",
+  "college_id":"",
+};
 
 
 export default function Page(props) {
@@ -44,8 +57,8 @@ export default function Page(props) {
   const [states, setStates] = useState([]);
   const [cities, setCities] = useState([]);
   const [selectedState, setSelectedState] = useState({
-    "value": "Andaman and Nicobar Islands",
-    "label": "Andaman and Nicobar Islands"
+    "value": "",
+    "label": ""
   });
 
   function handleStateChange (inp){
@@ -68,16 +81,20 @@ export default function Page(props) {
     if (fetchedData) {
       const keys = Object.values(fetchedData[101]["states"]);
       setStates(keys.map((key) => ({ value: key["name"], label: key["name"] })));
-      setCities(filterObjectsByName(fetchedData[101]["states"],selectedState["value"])[0]["cities"].map((key)=>({value: key["name"], label: key["name"]})))
+      if(filterObjectsByName(fetchedData[101]["states"], selectedState["value"])&& filterObjectsByName(fetchedData[101]["states"],selectedState["value"])[0]){
+        setCities(filterObjectsByName(fetchedData[101]["states"],selectedState["value"])[0]["cities"].map((key)=>({value: key["name"], label: key["name"]})))
+      }
     }
   }, [fetchedData , selectedState])  
 
   console.log(states);
   console.log(cities);
+  console.log(formData);
+  console.log(selectedState);
 
   return (
     <>
-      <button onClick = {()=> handleStateChange({value: 'Delhi'})}>
+      <button onClick = {()=> handleStateChange({value: 'Delhi',label:'Delhi'})}>
         Change temp
       </button> 
     </>
