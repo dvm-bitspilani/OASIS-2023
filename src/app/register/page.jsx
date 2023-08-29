@@ -22,6 +22,13 @@ function filterObjectsByName(objectsArray, searchName) {
 }
 
 const formReducerFn = (state, action) => {
+  if(action.type === 'stateChange'){
+
+    return {
+      ...state,
+      selectedState:action.value
+    } 
+  }
   
   return state;
 };
@@ -33,34 +40,46 @@ export default function Page(props) {
 
   const [formData, formDispatchFn] = useReducer(formReducerFn , formDataTemplate)
 
+  const [fetchedData , setFetchedData] = useState(null)
   const [states, setStates] = useState([]);
   const [cities, setCities] = useState([]);
   const [selectedState, setSelectedState] = useState({
-  "value": "Andaman and Nicobar Islands",
-  "label": "Andaman and Nicobar Islands"
-});
+    "value": "Andaman and Nicobar Islands",
+    "label": "Andaman and Nicobar Islands"
+  });
 
-  
+  function handleStateChange (inp){
+    setSelectedState(inp);
+    formDispatchFn({type:'stateChange' , value: inp})
+  }
+
+
   useEffect(() => {
     getStateAndCityData()
       .then((data) => {
-        if (data) {
-          const keys = Object.values(data[101]["states"]);
-          setStates(keys.map((key) => ({ value: key["name"], label: key["name"] })));
-          setCities(filterObjectsByName(data[101]["states"],selectedState["value"])[0]["cities"].map((key)=>({value: key["name"], label: key["name"]})))
-        }
+        setFetchedData(data);
       })
       .catch((error) => {
         console.error(error);
       });
   }, []);
 
+  useEffect(() => {
+    if (fetchedData) {
+      const keys = Object.values(fetchedData[101]["states"]);
+      setStates(keys.map((key) => ({ value: key["name"], label: key["name"] })));
+      setCities(filterObjectsByName(fetchedData[101]["states"],selectedState["value"])[0]["cities"].map((key)=>({value: key["name"], label: key["name"]})))
+    }
+  }, [fetchedData , selectedState])  
+
   console.log(states);
   console.log(cities);
 
   return (
     <>
-      {/* Your JSX content */}
+      <button onClick = {()=> handleStateChange({value: 'Delhi'})}>
+        Change temp
+      </button> 
     </>
   );
 }
