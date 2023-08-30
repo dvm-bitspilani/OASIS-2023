@@ -1,0 +1,84 @@
+.radio-label {
+  color: #303030;
+  font-size: 14px;
+  font-weight: 400;
+  margin-right: 7px;
+  -webkit-tap-highlight-color: transparent;
+}
+#radio-label {
+  margin-top: 0;
+  margin-bottom: 0;
+  overflow: hidden;
+  color:#FFFFFF ;
+  font-size:1.5rem;
+}
+
+.radio-input {
+  margin: 0;
+  visibility: hidden;
+}
+
+.radio-input:checked + span {
+  border: 2px solid #fff;
+}
+
+.radio-input:checked + span:after {
+  opacity: 1;
+}
+
+.custom-radio {
+  left: -8px;
+  width: 1.2rem;
+  height: 1.2rem;
+  border: 2px solid #fff;
+  border-radius: 50%;
+  display: inline-block;
+  position: relative;
+}
+
+.custom-radio::after {
+  content: "";
+  width: 0.6rem;
+  height: 0.6rem;
+  background: #fff;
+  position: absolute;
+  border-radius: 50%;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  opacity: 0;
+  transition: opacity 0.4s;
+}
+.genderLabel {
+  margin-bottom: 1rem;
+}
+@media (max-width: 1200px) {
+  .custom-radio {
+    width: 1.5rem;
+    height: 1.5rem;
+    top: 4px;
+    left: -10px;
+  }
+  .custom-radio::after {
+    height: 1rem;
+    width: 1rem;
+  }
+}
+@media (max-width: 500px) {
+  #radio-label {
+    font-size: 1rem;
+  }
+  .custom-radio::after {
+    height: .5rem;
+    width: .5rem;
+  }
+  #reg-logo {
+    margin-left: -1rem;
+  }
+  .custom-radio {
+    width: 1rem;
+    height: 1rem;
+    top: 1px;
+    left: -10px;
+  }
+}
