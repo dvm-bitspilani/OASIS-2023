@@ -1,6 +1,10 @@
 @font-face {
   font-family: 'NightmarePills';
-  src: url(../../public/static/fonts/NIGHTMARE PILLS - DEMO.ttf) format('truetype');
+  src: url('../../public/static/fonts/NIGHTMARE PILLS - DEMO.ttf') format('truetype');
+}
+@font-face {
+  font-family: 'MetalMania';
+  src: url('../../public/static/fonts/MetalMania-Regular.ttf') format('truetype');
 }
 *{
   margin: 0;
