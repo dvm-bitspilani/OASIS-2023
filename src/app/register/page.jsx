@@ -1,6 +1,7 @@
 "use client" 
 
 import React, { useState, useEffect , useReducer , useRef} from "react";
+import { useRouter } from 'next/navigation'
 import { motion } from "framer-motion"
 import Image from "next/image";
 import Select from 'react-select';
@@ -10,6 +11,8 @@ import styles from "./page.module.css";
 import skull from "../../../public/static/images/skull.svg";
 import book from "../../../public/static/images/regBook.svg";
 import register from "../../../public/static/images/registerBtn.svg";
+import regLogo from "../../../public/static/images/OasisLogo.png";
+import cross from "../../../public/static/images/cross.svg";
 
 const noCollegesMessages=()=>"Wait for Colleges to load";
 const noStatesMessages=()=>"Wait for States to load";
@@ -68,10 +71,21 @@ const customStyles = {
     paddingTop:'0px',
     paddingBottom: '0px',
     '&::-webkit-scrollbar': {
-      width: '1px',
+      display: 'none',
     },
     '&::-webkit-scrollbar-thumb': {
-      backgroundColor: '#000',
+      display:'none',
+    },
+  }),
+  menuList: (provided) =>({
+    ...provided,
+    paddingTop: '0',
+    paddingBottom:'0',
+    '&::-webkit-scrollbar': {
+      display: 'none',
+    },
+    '&::-webkit-scrollbar-thumb': {
+      display:'none',
     },
   }),
   dropdownIndicator: (provided, state) => ({
@@ -162,14 +176,14 @@ async function getStateAndCityData() {
   return res.json();
 }
 async function getCollegeData(){
-  const res = await fetch("https://bits-oasis.org/2023/main/registrations/get_college")
+  const res = await fetch("https://test.bits-oasis.org/2023/main/registrations/get_college")
   if(!res.ok){
-    throw new Error("Failed to fetch college");
+    throw new Error("Failed to fetch collyearege");
   }
   return res.json();
 }
 async function getEventsData (){
-  const res = await fetch("https://bits-oasis.org/2023/main/registrations/events");
+  const res = await fetch("https://test.bits-oasis.org/2023/main/registrations/events");
   if(!res.ok){
     throw new Error("Failed to get Events");
   }
@@ -243,8 +257,9 @@ const formReducerFn = (state, action) => {
   }
   if(action.type === 'eventChange'){
     const eventsArray = action.value;
+    console.log(eventsArray);
     const eventsName = eventsArray.map(item=>{
-      return item.label;
+      return item.value;
     })
     return{
       ...state,
@@ -261,7 +276,7 @@ const formDataTemplate = {
   "phone":"",
   "year":"",
   "choreographer":"",
-  "head_of_study":"",
+  "head_of_society":"",
   "name":"",
   "gender":"",
   "city":"",
@@ -275,26 +290,103 @@ const year=[
   {value:"4",label:"4"},
   {value:"5",label:"5"},
 ]
-const events=[
-  {value:"1",label:"event1"},
-  {value:"2",label:"event2"},
-  {value:"3",label:"event3"},
-  {value:"4",label:"event4"},
-  {value:"5",label:"event5"},
-]
 
 export default function Page(props) {
 
   const [formData, formDispatchFn] = useReducer(formReducerFn , formDataTemplate)
-
+  const router = useRouter();
+  const [isLoading , setIsLoading]=useState(true);
+  const [loaderLoaded,setLoaderLoaded] = useState(false);
   const [fetchedData , setFetchedData] = useState(null)
   const [colleges , setColleges] = useState([]);
+  const [events , setEvents] = useState([]);
   const [states, setStates] = useState([]);
   const [cities, setCities] = useState([]);
   const [selectedState, setSelectedState] = useState({
     "value": "",
     "label": ""
   });
+
+  useEffect(() => {
+    const assets = document.querySelectorAll('#regLogoImage');
+    let assetsLoaded = 0;
+
+    const handleAssetLoad = () => {
+      assetsLoaded++;
+      if (assetsLoaded === assets.length) {
+        setTimeout(() => {
+          setLoaderLoaded(true);
+        }, 1000);
+      }
+    };
+
+    assets.forEach((asset) => {
+      if (
+        asset.complete ||
+        asset.readyState === 4 ||
+        asset.tagName === "LINK"
+      ) {
+        handleAssetLoad();
+      } else {
+        asset.addEventListener("load", handleAssetLoad);
+        asset.addEventListener("error", handleAssetLoad);
+      }
+    });
+
+    const cleanup = () => {
+      assets.forEach((asset) => {
+        asset.removeEventListener("load", handleAssetLoad);
+        asset.removeEventListener("error", handleAssetLoad);
+      });
+    };
+
+    return cleanup;
+
+  }, [])
+  useEffect(() => {
+    if(loaderLoaded){
+    const assets = document.querySelectorAll(
+      "img",
+      "font",
+      "style",
+      "iframe"
+    );
+
+    let assetsLoaded = 0;
+
+    const handleAssetLoad = () => {
+      assetsLoaded++;
+      if (assetsLoaded === assets.length) {
+        setTimeout(() => {
+          setIsLoading(false);
+        }, 2000);
+      }
+    };
+
+    assets.forEach((asset) => {
+      if (
+        asset.complete ||
+        asset.readyState === 4 ||
+        asset.tagName === "LINK"
+      ) {
+        handleAssetLoad();
+      } else {
+        asset.addEventListener("load", handleAssetLoad);
+        asset.addEventListener("error", handleAssetLoad);
+      }
+    });
+
+    const cleanup = () => {
+      assets.forEach((asset) => {
+        asset.removeEventListener("load", handleAssetLoad);
+        asset.removeEventListener("error", handleAssetLoad);
+      });
+    };
+
+    return cleanup;
+    }
+  }, [loaderLoaded]);
+
 
   const handleRegisterations =async()=>{
     if (
@@ -324,6 +416,19 @@ export default function Page(props) {
     }
 
     async function uploadData (data){
+      if(data.choreographer === "NO"){
+        data.choreographer = 0;
+      }
+      if(data.choreographer === "YES"){
+        data.choreographer = 1;
+      }
+      if(data.head_of_society === "NO"){
+        data.head_of_society = 0;
+      }
+      if(data.head_of_society === "YES"){
+        data.head_of_society = 1;
+      }
+      console.log(data);
       const options = {
         method: "POST",
         headers: {
@@ -332,15 +437,16 @@ export default function Page(props) {
         body: JSON.stringify(data),
       };
 
-      const res = await fetch("" , options);
+      const res = await fetch("https://test.bits-oasis.org/2023/main/registrations/Register/" , options);
       if(!res.ok){
         throw new Error("Failed to register");
       }
       return res.json();
     }
 
-    const response = uploadData(formData);
+    const response = await uploadData(formData);
     console.log(response);
+    alert(response["message"]);
   };
 
   function handleNameChange (inp){
@@ -387,6 +493,7 @@ export default function Page(props) {
     skull.style.top = `${percentage}%`;
   }
 
+
   useEffect(() => {
     getStateAndCityData()
       .then((data) => {
@@ -406,7 +513,7 @@ export default function Page(props) {
       });
     getEventsData()
       .then((data) => {
-        console.log(data);
+        setEvents(data["data"][0]["events"].map((item)=>{return {value: item.id , label:item.name}}));
       })
       .catch((error) => {
         console.log(error);
@@ -423,21 +530,22 @@ export default function Page(props) {
     }
   }, [fetchedData , selectedState])  
 
-  console.log(formData);
-  
 
   return (
     <>
+      {isLoading && <div className={styles.regLoader}><Image id="regLogoImage" src={regLogo} alt="OASIS" width="auto" height="2rem" /></div>}
       <div className={styles.regPage}>
         <h2>REGISTRATIONS</h2>
-        <button>BACK TO HOME</button>
+        {typeof window !== "undefined" && window.innerWidth<700 && <Image onClick={()=>router.back()} src={cross} alt="close" className={styles.close} />}
+        {typeof window !== "undefined" && window.innerWidth>700 &&
+        <button onClick={() => router.back()}>BACK TO HOME</button>}
         <div className={styles.regForm}>
           <div className={styles.scrollBarContainer}>
             <div className={styles.scrollBar}></div> 
             <Image id="skull" src={skull} alt="" />
           </div>
           <div className={styles.formContainer} onScroll={handleScroll} >
-            <div className={styles.form}>
+            <div className={styles.form} onScroll={handleScroll}>
               <label htmlFor="name" style={{marginTop:0}}>NAME</label>
               <input type="text" placeholder="NAME" id="name" onChange={(inp)=>handleNameChange(inp)} />
 
@@ -454,19 +562,19 @@ export default function Page(props) {
                 <Radio id="O" value="O" name="gender" text="Other" onChange={handleGenderChange} />
               </div>
 
-              <label htmlFor="college">COLLEGE</label>
+              <label>COLLEGE</label>
               <Select options={colleges} id="college" noOptionsMessage={noCollegesMessages} styles={customStylesArray[0]} placeholder="COLLEGE" onChange={handleCollegeChange} />
 
-              <label htmlFor="state">STATE</label>
+              <label>STATE</label>
               <Select options={states} id="state" noOptionsMessage={noStatesMessages} styles={customStylesArray[1]} placeholder="STATE" onChange={handleStateChange} />
 
-              <label htmlFor="city">CITY</label>
+              <label>CITY</label>
               <Creatable options={cities} id="city" noOptionsMessage={noCitiesMessage} onChange={handleCityChange} placeholder="CITY" styles={customStylesArray[2]} />
 
-              <label htmlFor="year">YEAR OF STUDY</label>
+              <label>YEAR OF STUDY</label>
               <Select options={year} id="year" styles={customStylesArray[3]} placeholder="YEAR" onChange={handleYearChange} />
 
-              <label htmlFor="events">EVENTS</label>
+              <label>EVENTS</label>
               <Select options={events} id="events" styles={customStylesArray[4]} placeholder="EVENTS" onChange={handleEventChange} isMulti />
 
               <label>ARE YOU A CHOREOGRAPHER/MENTOR?</label>
@@ -485,15 +593,15 @@ export default function Page(props) {
             </div>
           </div>
         </div>
-          <div className={styles.imgContainer}>
+          {typeof window !== "undefined" && window.innerWidth > 1000 && <div className={styles.imgContainer} >
             <motion.div 
               initial= {{opacity:0 , transform: "scale(1) translateX(0) translateY(0) rotate(0deg)"}}
-              animate= {{opacity:1 ,transform:"scale(1.1) translateX(-8rem) translateY(5rem) rotate(-10deg)"}}
-              transition={{ ease: "easeOut", duration: 1 }}
+              animate= {{opacity: isLoading? 0:1 ,transform:isLoading? "scale(1) translateX(0) translateY(0) rotate(0)" :"scale(1.1) translateX(-8rem) translateY(5rem) rotate(-10deg)"}}
+              transition={{ ease: "easeOut", duration: 2 }}
             >
               <Image src ={book} alt="" />
             </motion.div>   
-          </div>
+          </div>}
         <div className={styles.regBtnContainer}>
           <Image src={register} onClick={handleRegisterations} alt="" />
         </div>

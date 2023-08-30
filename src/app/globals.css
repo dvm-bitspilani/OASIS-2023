@@ -6,6 +6,11 @@
   font-family: 'MetalMania';
   src: url('../../public/static/fonts/MetalMania-Regular.ttf') format('truetype');
 }
+
+@font-face {
+  font-family: 'Montserrat';
+  src: url(../../public/static/fonts/Montserrat.ttf) format('truetype');
+}
 *{
   margin: 0;
   padding: 0;
@@ -19,3 +24,9 @@ input:-webkit-autofill:active {
   -webkit-text-fill-color: white !important;
   transition: background-color 999999s ease-in-out 0s;
 }
+
+body{
+  margin: 0;
+  padding: 0;
+}
+
