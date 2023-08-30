@@ -12,6 +12,7 @@ import skull from "../../../public/static/images/skull.svg";
 import book from "../../../public/static/images/regBook.svg";
 import register from "../../../public/static/images/registerBtn.svg";
 import regLogo from "../../../public/static/images/OasisLogo.png";
+import cross from "../../../public/static/images/cross.svg";
 
 const noCollegesMessages=()=>"Wait for Colleges to load";
 const noStatesMessages=()=>"Wait for States to load";
@@ -535,7 +536,9 @@ export default function Page(props) {
       {isLoading && <div className={styles.regLoader}><Image id="regLogoImage" src={regLogo} alt="OASIS" width="auto" height="2rem" /></div>}
       <div className={styles.regPage}>
         <h2>REGISTRATIONS</h2>
-        <button onClick={() => router.back()}>BACK TO HOME</button>
+        {typeof window !== undefined && window.innerWidth<700 && <Image onClick={()=>router.back()} src={cross} alt="close" className={styles.close} />}
+        {typeof window !== undefined && window.innerWidth>700 &&
+        <button onClick={() => router.back()}>BACK TO HOME</button>}
         <div className={styles.regForm}>
           <div className={styles.scrollBarContainer}>
             <div className={styles.scrollBar}></div> 
@@ -590,7 +593,7 @@ export default function Page(props) {
             </div>
           </div>
         </div>
-          <div className={styles.imgContainer}>
+          {typeof window !== undefined && window.innerWidth > 1000 && <div className={styles.imgContainer} >
             <motion.div 
               initial= {{opacity:0 , transform: "scale(1) translateX(0) translateY(0) rotate(0deg)"}}
               animate= {{opacity: isLoading? 0:1 ,transform:isLoading? "scale(1) translateX(0) translateY(0) rotate(0)" :"scale(1.1) translateX(-8rem) translateY(5rem) rotate(-10deg)"}}
@@ -598,7 +601,7 @@ export default function Page(props) {
             >
               <Image src ={book} alt="" />
             </motion.div>   
-          </div>
+          </div>}
         <div className={styles.regBtnContainer}>
           <Image src={register} onClick={handleRegisterations} alt="" />
         </div>
