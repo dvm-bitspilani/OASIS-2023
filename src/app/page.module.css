@@ -31,9 +31,15 @@
 .textLogoWrapper{
     position: relative;
     top: 10vh;
+    margin-top: 2rem;
     animation: glow 1s ease-in-out infinite alternate;
     -webkit-animation: glow 1s ease-in-out infinite alternate;
     -moz-animation: glow 1s ease-in-out infinite alternate;
+    height: 100%;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+  
 }
 .LandingBookImg{
     animation-name: floating;
@@ -71,20 +77,20 @@
   .leftElements{
     position: relative;
     animation-name: floating;
-    animation-duration: 3s;
+    animation-duration: 2.5s;
     animation-iteration-count: infinite;
     animation-timing-function: ease-in-out;
-    animation-delay: 0.5s;
+    /* animation-delay: 0.5s; */
   }
   .landingPgLeftGrp{
     position: absolute;
-    left: -170px;
+    left: -120px;
     bottom: 170px;
   }
   .rightElements{
     position: relative;
     animation-name: floating;
-    animation-duration: 3s;
+    animation-duration: 2s;
     animation-iteration-count: infinite;
     animation-timing-function: ease-in-out;
     animation-delay: 1s;
@@ -97,3 +103,101 @@
   .navbar{
     align-self: baseline;
   }
+  .textLogoImg{
+   width: 400px;
+    }
+    @media screen and (max-width: 560px) {
+        .textLogoImg{
+            scale: 0.75;
+             }
+      }
+    @media screen and (max-width: 400px) {
+        .textLogoImg{
+            scale: 0.5;
+             }
+      }
+    @media screen and (max-width: 1250px) {
+        .LandingBookImg{
+            scale: 0.75;
+        }
+        .landingPgLeftGrp{
+            scale: 0.75;
+            /* bottom: 0; */
+            left: -10px;
+        }
+        .landingPgRightGrp{
+            scale: 0.75;
+            left: -270px;
+        }
+      }
+    @media screen and (max-width: 900px) {
+        .LandingBookImg{
+            scale: 0.6;
+        }
+        .landingPgLeftGrp{
+            scale: 0.6;
+            bottom: 150px;
+            left: 60px;
+        }
+        .landingPgRightGrp{
+            scale: 0.6;
+            left: -330px;
+            bottom: 150px;
+        }
+
+      }
+    @media screen and (max-width: 750px) {
+        .LandingBookImg{
+            scale: 0.5;
+        }
+        .landingPgLeftGrp{
+            scale: 0.5;
+            bottom: 130px;
+            left: 100px;
+        }
+        .landingPgRightGrp{
+            scale: 0.5;
+            left: -390px;
+            bottom: 140px;
+        }
+
+      }
+    @media screen and (max-width: 600px) {
+        .LandingBookImg{
+            scale: 0.4;
+        }
+        .landingPgLeftGrp{
+            scale: 0.5;
+            bottom: 140px;
+            left: 130px;
+        }
+        .landingPgRightGrp{
+            scale: 0.5;
+            left: -410px;
+            bottom: 150px;
+        }
+
+      }
+    @media screen and (max-width: 550px) {
+        .LandingBookImg{
+            scale: 0.5;
+        }
+        .landingPgLeftGrp{
+            scale: 0.2;
+            bottom: 140px;
+            left: 130px;
+            display: none;
+        }
+        .landingPgRightGrp{
+            scale: 0.5;
+            left: -410px;
+            bottom: 150px;
+            display: none;
+        }
+
+      }
+    @media screen and (max-width: 400px) {
+        .LandingBookImg{
+            scale: 0.35;
+        }
+      }

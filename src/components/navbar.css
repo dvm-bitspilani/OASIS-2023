@@ -1,0 +1,9 @@
+.navWrapper{
+    position: fixed;
+    top: 0;
+    background: transparent;
+}
+.navLogo{
+    margin-left: 2rem;
+    margin-top: 2rem;
+}

@@ -6,6 +6,11 @@ import React from "react";
 import { HamContext } from "@/context/HamContextProvider";
 import { useState, useEffect } from "react";
 import Link from "next/link";
+import textLogo from "../../public/static/images/OasisLogo.png"
+import Navbar from "@/components/Navbar";
+import landingPgBookImg from "../../public/static/images/LandingPageBook.png"
+import rightElements from "../../public/static/images/landingPgRightElements.png"
+import leftElements from "../../public/static/images/landingPgLeftElements.png"
 export default function Home() {
   // const { isHamOpen, setIsHamOpen } = React.useContext(HamContext);
   const [textLogoWidth, setTextLogoWidth] = useState(0);
@@ -27,13 +32,13 @@ export default function Home() {
   }, []);
   return (
     <main>
+      <Navbar/>
      <div className={styles.pageWrapper}>
       <div className={styles.midSection}>
       <div className={styles.textLogoWrapper}>
         <Image 
-        src="/static/images/OasisLogo.png"
-        width={textLogoWidth}
-        height={textLogoHeight}
+        src={textLogo}
+        // layout="fill"
         className = {styles.textLogoImg}
         alt="Text Oasis Logo"/>
       </div>
@@ -100,23 +105,23 @@ export default function Home() {
         id= "LandingPgGrp10"
         alt="Element"/> */}
         <Image 
-        src="/static/images/landingPgLeftElements.png"
-        width={300}
-        height={300}
+        src={leftElements}
+        // width={300}
+        // height={300}
         className={styles.landingPgLeftGrp}
         alt="Element"/>
         </div>
       <Image 
-        src="/static/images/LandingPageBook.png"
-        width={LandingBookWidth}
-        height={LandingBookHeight}
+        src={landingPgBookImg}
+        // width={LandingBookWidth}
+        // height={LandingBookHeight}
         className = {styles.LandingBookImg}
         alt="Book Image"/>
          <div className={styles.rightElements}>
          <Image 
-        src="/static/images/landingPgRightElements.png"
-        width={300}
-        height={300}
+        src={rightElements}
+        // width={300}
+        // height={300}
         className={styles.landingPgRightGrp}
         alt="Element"/>
         {/* <Image 
