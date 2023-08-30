@@ -7,12 +7,14 @@ import { HamContext } from "@/context/HamContextProvider";
 
 export default function Home() {
   // const { isHamOpen, setIsHamOpen } = React.useContext(HamContext);
-  const textLogoWidth = Math.floor(window.innerWidth * 0.3);
-  const textLogoHeight = Math.floor(window.innerHeight * 0.2); 
-  const LandingBookWidth = Math.floor(window.innerWidth * 0.5);
-  const LandingBookHeight = Math.floor(window.innerHeight * 0.5); 
-  const RegisterBtnWidth = Math.floor(window.innerWidth * 0.5);
-  const RegisterBtnHeight = Math.floor(window.innerHeight * 0.5); 
+  if (typeof window !== 'undefined') {
+    textLogoWidth = Math.floor(window.innerWidth * 0.3);
+    textLogoHeight = Math.floor(window.innerHeight * 0.2);
+    LandingBookWidth = Math.floor(window.innerWidth * 0.5);
+    LandingBookHeight = Math.floor(window.innerHeight * 0.5);
+    RegisterBtnWidth = Math.floor(window.innerWidth * 0.5);
+    RegisterBtnHeight = Math.floor(window.innerHeight * 0.5);
+  }
   return (
     <main>
      <div className={styles.pageWrapper}>
