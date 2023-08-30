@@ -114,21 +114,21 @@ const customStylesArray = [
     ...customStyles,
     menu: provided => ({
       ...provided,
-      zIndex: 10,
+      zIndex: 10000,
     }),
   },
   {
     ...customStyles,
     menu: provided => ({
       ...provided,
-      zIndex: 9,
+      zIndex: 9999,
     }),
   },
   {
     ...customStyles,
     menu: provided => ({
       ...provided,
-      zIndex: 8, 
+      zIndex: 9998, 
     }),
   },
 
@@ -136,14 +136,14 @@ const customStylesArray = [
     ...customStyles,
     menu: provided => ({
       ...provided,
-      zIndex: 7, 
+      zIndex: 9997, 
     }),
   },
   {
     ...customStyles,
     menu: provided => ({
       ...provided,
-      zIndex: 6, 
+      zIndex: 9996, 
     }),
   },
 ];
@@ -418,16 +418,16 @@ export default function Page(props) {
               <Select options={tempColleges} id="college" noOptionsMessage={noCollegesMessages} styles={customStylesArray[0]} placeholder="COLLEGE" onChange={handleCollegeChange} />
 
               <label htmlFor="state">STATE</label>
-              <Select options={states} id="state" noOptionsMessage={noStatesMessages} styles={customStyles} placeholder="STATE" onChange={handleStateChange} />
+              <Select options={states} id="state" noOptionsMessage={noStatesMessages} styles={customStylesArray[1]} placeholder="STATE" onChange={handleStateChange} />
 
               <label htmlFor="city">CITY</label>
-              <Creatable options={cities} id="city" noOptionsMessage={noCitiesMessage} onChange={handleCityChange} placeholder="CITY" styles={customStyles} />
+              <Creatable options={cities} id="city" noOptionsMessage={noCitiesMessage} onChange={handleCityChange} placeholder="CITY" styles={customStylesArray[2]} />
 
               <label htmlFor="year">YEAR OF STUDY</label>
-              <Select options={year} id="year" styles={customStyles} placeholder="YEAR" onChange={handleYearChange} />
+              <Select options={year} id="year" styles={customStylesArray[3]} placeholder="YEAR" onChange={handleYearChange} />
 
               <label htmlFor="events">EVENTS</label>
-              <Select options={events} id="events" styles={customStyles} placeholder="EVENTS" onChange={handleEventChange} isMulti />
+              <Select options={events} id="events" styles={customStylesArray[4]} placeholder="EVENTS" onChange={handleEventChange} isMulti />
 
               <label>ARE YOU A CHOREOGRAPHER/MENTOR?</label>
               <div className={styles.radioBtns}>
