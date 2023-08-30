@@ -201,3 +201,22 @@
             scale: 0.35;
         }
       }
+      .loaderContainer{
+        height: 100vh;
+        width: 100vw;
+        background-color: black;
+        background-image: url("../../public/static/images/LibraryBgImage.avif");
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: cover;
+        opacity: 1;
+        transition: opacity 0.5s ease;
+      }
+      
+      .loaded {
+        opacity: 0; 
+        transition: opacity 0.5s ease; 
+      }

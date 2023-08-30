@@ -19,22 +19,52 @@ export default function Home() {
   const [LandingBookHeight, setLandingBookHeight] = useState(0);
   const [RegisterBtnWidth, setRegisterBtnWidth] = useState(200);
   const [RegisterBtnHeight, setRegisterBtnHeight] = useState(75);
-
+  const [isLoading, setIsLoading] = useState(true);
+  const [showLoader, setShowLoader] = useState(true);
   useEffect(() => {
     if (typeof window !== 'undefined') {
-      setTextLogoWidth(Math.floor(window.innerWidth * 0.3));
-      setTextLogoHeight(Math.floor(window.innerHeight * 0.2));
-      setLandingBookWidth(Math.floor(window.innerWidth * 0.5));
-      setLandingBookHeight(Math.floor(window.innerHeight * 0.5));
-      setRegisterBtnWidth(Math.min(200, Math.floor(window.innerWidth * 0.5)));
-      setRegisterBtnHeight(75);
+      setIsLoading(true);
+      setShowLoader(true);
+      setTimeout(() => {
+        setTextLogoWidth(Math.floor(window.innerWidth * 0.3));
+        setTextLogoHeight(Math.floor(window.innerHeight * 0.2));
+        setLandingBookWidth(Math.floor(window.innerWidth * 0.5));
+        setLandingBookHeight(Math.floor(window.innerHeight * 0.5));
+        setRegisterBtnWidth(Math.min(200, Math.floor(window.innerWidth * 0.5)));
+        setRegisterBtnHeight(75);
+
+        // Set the loading state to false after the images are loaded
+        setIsLoading(false);
+        setTimeout(() => {
+          setShowLoader(false); // Hide the loader after 1 second
+        }, 1000);
+      }, 1000); // Adjust the delay based on your actual image loading time
+    
+      // setTextLogoWidth(Math.floor(window.innerWidth * 0.3));
+      // setTextLogoHeight(Math.floor(window.innerHeight * 0.2));
+      // setLandingBookWidth(Math.floor(window.innerWidth * 0.5));
+      // setLandingBookHeight(Math.floor(window.innerHeight * 0.5));
+      // setRegisterBtnWidth(Math.min(200, Math.floor(window.innerWidth * 0.5)));
+      // setRegisterBtnHeight(75);
     }
   }, []);
   return (
     <main>
-      <Navbar/>
-     <div className={styles.pageWrapper}>
-      <div className={styles.midSection}>
+      {isLoading ? (
+        <div className={styles.loaderContainer}>
+        <Image src={textLogo}/>
+      </div>
+      ) : 
+      (
+        <>
+          <Navbar/>
+        <div className={styles.pageWrapper}>
+{/* <div className={styles.midSection}> */}
+<div
+          className={`${styles.midSection} ${
+            showLoader ? styles.loaderContainer : ""
+          } ${isLoading ? "loaded" : ""}`}
+        >
       <div className={styles.textLogoWrapper}>
         <Image 
         src={textLogo}
@@ -220,7 +250,10 @@ export default function Home() {
       <span>28TH - 31ST OCTOBER</span>
       </div>
       </div>
-     </div>
+
+           </div>
+           </>
+      )}
     </main>
   );
 }
