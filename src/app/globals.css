@@ -17,7 +17,6 @@
   box-sizing: border-box;
   user-select:none;
 }
-<<<<<<< Updated upstream
 input:-webkit-autofill,
 input:-webkit-autofill:hover,
 input:-webkit-autofill:focus,
@@ -25,11 +24,9 @@ input:-webkit-autofill:active {
   -webkit-text-fill-color: white !important;
   transition: background-color 999999s ease-in-out 0s;
 }
-=======
 
 body{
   margin: 0;
   padding: 0;
 }
 
->>>>>>> Stashed changes

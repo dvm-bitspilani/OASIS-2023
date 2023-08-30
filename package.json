@@ -11,13 +11,10 @@
   "dependencies": {
     "eslint": "8.47.0",
     "eslint-config-next": "13.4.19",
-<<<<<<< Updated upstream
     "framer-motion": "^10.16.1",
     "next": "^13.4.19",
-=======
     "gsap": "^3.12.2",
     "next": "13.4.19",
->>>>>>> Stashed changes
     "react": "18.2.0",
     "react-dom": "18.2.0",
     "react-select": "^5.7.4"
