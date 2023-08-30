@@ -536,8 +536,8 @@ export default function Page(props) {
       {isLoading && <div className={styles.regLoader}><Image id="regLogoImage" src={regLogo} alt="OASIS" width="auto" height="2rem" /></div>}
       <div className={styles.regPage}>
         <h2>REGISTRATIONS</h2>
-        {typeof window !== undefined && window.innerWidth<700 && <Image onClick={()=>router.back()} src={cross} alt="close" className={styles.close} />}
-        {typeof window !== undefined && window.innerWidth>700 &&
+        {typeof window !== "undefined" && window.innerWidth<700 && <Image onClick={()=>router.back()} src={cross} alt="close" className={styles.close} />}
+        {typeof window !== "undefined" && window.innerWidth>700 &&
         <button onClick={() => router.back()}>BACK TO HOME</button>}
         <div className={styles.regForm}>
           <div className={styles.scrollBarContainer}>
@@ -593,7 +593,7 @@ export default function Page(props) {
             </div>
           </div>
         </div>
-          {typeof window !== undefined && window.innerWidth > 1000 && <div className={styles.imgContainer} >
+          {typeof window !== "undefined" && window.innerWidth > 1000 && <div className={styles.imgContainer} >
             <motion.div 
               initial= {{opacity:0 , transform: "scale(1) translateX(0) translateY(0) rotate(0deg)"}}
               animate= {{opacity: isLoading? 0:1 ,transform:isLoading? "scale(1) translateX(0) translateY(0) rotate(0)" :"scale(1.1) translateX(-8rem) translateY(5rem) rotate(-10deg)"}}
