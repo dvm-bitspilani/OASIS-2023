@@ -5,6 +5,7 @@ import Image from 'next/image'
 import React from "react";
 import { HamContext } from "@/context/HamContextProvider";
 import { useState, useEffect } from "react";
+import Link from "next/link";
 export default function Home() {
   // const { isHamOpen, setIsHamOpen } = React.useContext(HamContext);
   const [textLogoWidth, setTextLogoWidth] = useState(0);
@@ -37,21 +38,179 @@ export default function Home() {
         alt="Text Oasis Logo"/>
       </div>
       <div className={styles.bookImgWrapper}>
+        <div className={styles.leftElements}>
+        {/* <Image 
+        src="/static/images/Group1.png"
+        width={100}
+        height={100}
+        id= "LandingPgGrp1"
+        alt="Element"/>
+        <Image 
+        src="/static/images/Group2.png"
+        width={100}
+        height={100}
+        id= "LandingPgGrp2"
+        alt="Element"/>
+        <Image 
+        src="/static/images/Group3.png"
+        width={100}
+        height={100}
+        id= "LandingPgGrp3"
+        alt="Element"/>
+        <Image 
+        src="/static/images/Group4.png"
+        width={100}
+        height={100}
+        id= "LandingPgGrp4"
+        alt="Element"/>
+        <Image 
+        src="/static/images/Group5.png"
+        width={100}
+        height={100}
+        id= "LandingPgGrp5"
+        alt="Element"/>
+        <Image 
+        src="/static/images/Group6.png"
+        width={100}
+        height={100}
+        id= "LandingPgGrp6"
+        alt="Element"/>
+        <Image 
+        src="/static/images/Group7.png"
+        width={100}
+        height={100}
+        id= "LandingPgGrp7"
+        alt="Element"/>
+        <Image 
+        src="/static/images/Group8.png"
+        width={100}
+        height={100}
+        id= "LandingPgGrp8"
+        alt="Element"/>
+        <Image 
+        src="/static/images/Group9.png"
+        width={100}
+        height={100}
+        id= "LandingPgGrp9"
+        alt="Element"/>
+        <Image 
+        src="/static/images/Group10.png"
+        width={100}
+        height={100}
+        id= "LandingPgGrp10"
+        alt="Element"/> */}
+        <Image 
+        src="/static/images/landingPgLeftElements.png"
+        width={300}
+        height={300}
+        className={styles.landingPgLeftGrp}
+        alt="Element"/>
+        </div>
       <Image 
         src="/static/images/LandingPageBook.png"
         width={LandingBookWidth}
         height={LandingBookHeight}
         className = {styles.LandingBookImg}
         alt="Book Image"/>
+         <div className={styles.rightElements}>
+         <Image 
+        src="/static/images/landingPgRightElements.png"
+        width={300}
+        height={300}
+        className={styles.landingPgRightGrp}
+        alt="Element"/>
+        {/* <Image 
+        src="/static/images/Group1.png"
+        width={100}
+        height={100}
+        id= "LandingPgGrp1"
+        alt="Element"/>
+        <Image 
+        src="/static/images/Group2.png"
+        width={100}
+        height={100}
+        id= "LandingPgGrp2"
+        alt="Element"/>
+        <Image 
+        src="/static/images/Group3.png"
+        width={100}
+        height={100}
+        id= "LandingPgGrp3"
+        alt="Element"/>
+        <Image 
+        src="/static/images/Group4.png"
+        width={100}
+        height={100}
+        id= "LandingPgGrp4"
+        alt="Element"/>
+        <Image 
+        src="/static/images/Group5.png"
+        width={100}
+        height={100}
+        id= "LandingPgGrp5"
+        alt="Element"/>
+        <Image 
+        src="/static/images/Group6.png"
+        width={100}
+        height={100}
+        id= "LandingPgGrp6"
+        alt="Element"/>
+        <Image 
+        src="/static/images/Group7.png"
+        width={100}
+        height={100}
+        id= "LandingPgGrp7"
+        alt="Element"/>
+        <Image 
+        src="/static/images/Group8.png"
+        width={100}
+        height={100}
+        id= "LandingPgGrp8"
+        alt="Element"/>
+        <Image 
+        src="/static/images/Group9.png"
+        width={100}
+        height={100}
+        id= "LandingPgGrp9"
+        alt="Element"/>
+        <Image 
+        src="/static/images/Group10.png"
+        width={100}
+        height={100}
+        id= "LandingPgGrp10"
+        alt="Element"/> */}
+        </div>
       </div>
-      <div className={styles.registerBtnWrapper}>
+      {/* <div className={styles.registerBtnWrapper}>
       <Image 
         src="/static/images/RegisterButton.png"
         width={200}
         height={75}
         className = {styles.RegisterBtnImg}
         alt="Register Button"/>
-      </div>
+        <Link href="/register"> 
+              <a>
+                <Image 
+                  src="/static/images/RegisterButton.png"
+                  width={RegisterBtnWidth}
+                  height={RegisterBtnHeight}
+                  className={styles.RegisterBtnImg}
+                  alt="Register Button"
+                />
+              </a>
+            </Link> 
+      </div> */}
+      <Link href="/register" legacyBehavior>
+            <a className={styles.registerBtnWrapper}> 
+              <Image 
+                src="/static/images/RegisterButton.png"
+                width={RegisterBtnWidth}
+                height={RegisterBtnHeight}
+                className={styles.RegisterBtnImg}
+                alt="Register Button"
+              />
+            </a>
+          </Link>
       <div className={styles.landingPageDate}>
       <span>28TH - 31ST OCTOBER</span>
       </div>
