@@ -1,0 +1,45 @@
+.pageWrapper{
+    height: 100vh;
+    width: 100vw;
+    background: url(../../public/static/images/LibraryBgImage.png);
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    display: flex;
+    align-items: center;
+}
+.midSection{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100vw;
+}
+.registerBtnWrapper:hover{
+    cursor: pointer;
+    scale: 1.1;
+}
+.landingPageDate > span{
+    color: #7ABDF0;
+    font-family: 'MetalMania';
+    font-weight: 300;
+    font-size: 1.5rem;
+}
+.textLogoWrapper{
+    position: relative;
+    top: 10vh;
+    animation: glow 1s ease-in-out infinite alternate;
+    -webkit-animation: glow 1s ease-in-out infinite alternate;
+    -moz-animation: glow 1s ease-in-out infinite alternate;
+}
+.bookImgWrapper{
+    animation-name: floating;
+    animation-duration: 3s;
+    animation-iteration-count: infinite;
+    animation-timing-function: ease-in-out;
+}
+@keyframes floating {
+    0% { transform: translate(0,  0px); }
+    50%  { transform: translate(0, 15px); }
+    100%   { transform: translate(0, -0px); }   
+}
