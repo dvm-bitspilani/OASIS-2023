@@ -50,20 +50,23 @@ const customStyles = {
   }),
   option: (provided, state) => ({
     ...provided,
-    color: state.isSelected ? '#fff' : '#111',
-    backgroundColor: state.isSelected ? '#7CC6DB' : 'transparent',
+    color: state.isSelected ? '#fff' : '#fff',
+    backgroundColor: state.isSelected ? '#7CC6DB' : '#222',
     fontFamily: 'NightmarePills',
     fontSize: '1.5rem',
     fontWeight: 500,
     zIndex: 1002,
     '&:hover': {
       backgroundColor: '#7CC6DB',
-      color: '#fff'
+      color: '#121212'
     },
   }),
   menu: (provided) => ({
     ...provided,
     zIndex: 1002,
+    backgroundColor: '#222222',
+    paddingTop:'0px',
+    paddingBottom: '0px',
     '&::-webkit-scrollbar': {
       width: '1px',
     },
@@ -156,6 +159,20 @@ async function getStateAndCityData() {
     throw new Error("Failed to fetch State and City data");
   }
 
+  return res.json();
+}
+async function getCollegeData(){
+  const res = await fetch("https://bits-oasis.org/2023/main/registrations/get_college")
+  if(!res.ok){
+    throw new Error("Failed to fetch college");
+  }
+  return res.json();
+}
+async function getEventsData (){
+  const res = await fetch("https://bits-oasis.org/2023/main/registrations/events");
+  if(!res.ok){
+    throw new Error("Failed to get Events");
+  }
   return res.json();
 }
 
@@ -251,18 +268,6 @@ const formDataTemplate = {
   "state":"",
   "college_id":"",
 };
-
-const tempColleges=[
-  {value:'1' , label: 'Bits Pilani'},
-  {value:'2' , label: 'Bits Goa'},
-  {value:'3' , label: 'Bits Dubai'},
-  {value:'4' , label: 'Bits Hyderabad'},
-  {value:'5' , label: 'Bits Mesra'},
-  {value:'6' , label: 'Bits Pilani'},
-  {value:'7' , label: 'Bits Pilani'},
-  {value:'8' , label: 'Bits Pilani'},
-  {value:'9' , label: 'Bits Pilani'},
-]
 const year=[
   {value:"1",label:"1"},
   {value:"2",label:"2"},
@@ -283,6 +288,7 @@ export default function Page(props) {
   const [formData, formDispatchFn] = useReducer(formReducerFn , formDataTemplate)
 
   const [fetchedData , setFetchedData] = useState(null)
+  const [colleges , setColleges] = useState([]);
   const [states, setStates] = useState([]);
   const [cities, setCities] = useState([]);
   const [selectedState, setSelectedState] = useState({
@@ -290,7 +296,7 @@ export default function Page(props) {
     "label": ""
   });
 
-  const handleRegisterations =()=>{
+  const handleRegisterations =async()=>{
     if (
       formData.name.trim() === "" ||
       formData.email_id.trim() === "" ||
@@ -317,6 +323,24 @@ export default function Page(props) {
       return;
     }
 
+    async function uploadData (data){
+      const options = {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(data),
+      };
+
+      const res = await fetch("" , options);
+      if(!res.ok){
+        throw new Error("Failed to register");
+      }
+      return res.json();
+    }
+
+    const response = uploadData(formData);
+    console.log(response);
   };
 
   function handleNameChange (inp){
@@ -371,6 +395,22 @@ export default function Page(props) {
       .catch((error) => {
         console.error(error);
       });
+    getCollegeData()
+      .then((data)=> {
+        setColleges(data["data"].map((item) => {
+          return {value: item.id , label: item.name}
+        }));
+      })
+      .catch((error)=> {
+        console.log(error);
+      });
+    getEventsData()
+      .then((data) => {
+        console.log(data);
+      })
+      .catch((error) => {
+        console.log(error);
+      })
   }, []);
 
   useEffect(() => {
@@ -398,7 +438,7 @@ export default function Page(props) {
           </div>
           <div className={styles.formContainer} onScroll={handleScroll} >
             <div className={styles.form}>
-              <label htmlFor="name">NAME</label>
+              <label htmlFor="name" style={{marginTop:0}}>NAME</label>
               <input type="text" placeholder="NAME" id="name" onChange={(inp)=>handleNameChange(inp)} />
 
               <label htmlFor="email_id">EMAIL-ID</label>
@@ -415,7 +455,7 @@ export default function Page(props) {
               </div>
 
               <label htmlFor="college">COLLEGE</label>
-              <Select options={tempColleges} id="college" noOptionsMessage={noCollegesMessages} styles={customStylesArray[0]} placeholder="COLLEGE" onChange={handleCollegeChange} />
+              <Select options={colleges} id="college" noOptionsMessage={noCollegesMessages} styles={customStylesArray[0]} placeholder="COLLEGE" onChange={handleCollegeChange} />
 
               <label htmlFor="state">STATE</label>
               <Select options={states} id="state" noOptionsMessage={noStatesMessages} styles={customStylesArray[1]} placeholder="STATE" onChange={handleStateChange} />
