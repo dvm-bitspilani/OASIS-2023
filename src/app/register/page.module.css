@@ -73,6 +73,15 @@
 }
 .regBtnContainer{
   height:20vh;
+  padding-left: 1%;
+}
+.regBtnContainer img{
+  height: 5rem;
+  transition: scale 0.25s ease-in-out;
+}
+.regBtnContainer img:hover{
+  scale: 1.05;
+  cursor: pointer;
 }
 #radio-label{
   color:#FFFFFF !important;
@@ -113,4 +122,14 @@
   font-family: 'NightmarePills';
   font-size: 1.5rem;
   opacity:1;
+}
+.imgContainer{
+  width: 40vw;
+  position: fixed;
+  right: 0;
+  top: 10vh;
+  height: 70vh;
+}
+.imgContainer div , .imgContainer img{
+  height: inherit;
 }

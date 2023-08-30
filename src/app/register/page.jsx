@@ -1,12 +1,15 @@
 "use client" 
 
 import React, { useState, useEffect , useReducer , useRef} from "react";
+import { motion } from "framer-motion"
 import Image from "next/image";
 import Select from 'react-select';
 import Creatable from "react-select/creatable";
 import Radio from '../../components/radioButton.jsx';
 import styles from "./page.module.css";
 import skull from "../../../public/static/images/skull.svg";
+import book from "../../../public/static/images/regBook.svg";
+import register from "../../../public/static/images/registerBtn.svg";
 
 const noCollegesMessages=()=>"Wait for Colleges to load";
 const noStatesMessages=()=>"Wait for States to load";
@@ -106,6 +109,44 @@ const customStyles = {
   }),
 };
 
+const customStylesArray = [
+  {
+    ...customStyles,
+    menu: provided => ({
+      ...provided,
+      zIndex: 10,
+    }),
+  },
+  {
+    ...customStyles,
+    menu: provided => ({
+      ...provided,
+      zIndex: 9,
+    }),
+  },
+  {
+    ...customStyles,
+    menu: provided => ({
+      ...provided,
+      zIndex: 8, 
+    }),
+  },
+
+  {
+    ...customStyles,
+    menu: provided => ({
+      ...provided,
+      zIndex: 7, 
+    }),
+  },
+  {
+    ...customStyles,
+    menu: provided => ({
+      ...provided,
+      zIndex: 6, 
+    }),
+  },
+];
 async function getStateAndCityData() {
   const res = await fetch(
     "https://raw.githubusercontent.com/dr5hn/countries-states-cities-database/master/countries%2Bstates%2Bcities.json"
@@ -183,6 +224,16 @@ const formReducerFn = (state, action) => {
       head_of_society: action.value.target.value,
     }
   }
+  if(action.type === 'eventChange'){
+    const eventsArray = action.value;
+    const eventsName = eventsArray.map(item=>{
+      return item.label;
+    })
+    return{
+      ...state,
+      events:eventsName,
+    }
+  }
   
   return state;
 };
@@ -219,7 +270,13 @@ const year=[
   {value:"4",label:"4"},
   {value:"5",label:"5"},
 ]
-
+const events=[
+  {value:"1",label:"event1"},
+  {value:"2",label:"event2"},
+  {value:"3",label:"event3"},
+  {value:"4",label:"event4"},
+  {value:"5",label:"event5"},
+]
 
 export default function Page(props) {
 
@@ -233,6 +290,34 @@ export default function Page(props) {
     "label": ""
   });
 
+  const handleRegisterations =()=>{
+    if (
+      formData.name.trim() === "" ||
+      formData.email_id.trim() === "" ||
+      formData.phone.trim() === "" ||
+      formData.gender === "" ||
+      formData.college_id === "" ||
+      formData.state === "" ||
+      formData.city === "" ||
+      formData.year === "" ||
+      formData.choreographer === "" ||
+      formData.head_of_society === ""
+    ) {
+      alert("Please fill in all the fields.");
+      return;
+    }
+
+    if (!/^\d{10}$/.test(formData.phone)) {
+      alert("Phone number should be 10 digits.");
+      return;
+    }
+
+    if (!/\S+@\S+\.\S+/.test(formData.email_id)) {
+      alert("Please provide a valid email address.");
+      return;
+    }
+
+  };
 
   function handleNameChange (inp){
     formDispatchFn({type:'nameChange', value:inp})
@@ -265,6 +350,9 @@ export default function Page(props) {
   function handleHeadChange(inp){
     formDispatchFn({type: 'headChange', value: inp})
   }
+  function handleEventChange(inp){
+    formDispatchFn({type: 'eventChange',value:inp}) 
+  }
 
 
   function handleScroll (inp){
@@ -295,10 +383,7 @@ export default function Page(props) {
     }
   }, [fetchedData , selectedState])  
 
-  console.log(states);
-  console.log(cities);
   console.log(formData);
-  console.log(selectedState);
   
 
   return (
@@ -330,7 +415,7 @@ export default function Page(props) {
               </div>
 
               <label htmlFor="college">COLLEGE</label>
-              <Select options={tempColleges} id="college" noOptionsMessage={noCollegesMessages} styles={customStyles} placeholder="COLLEGE" onChange={handleCollegeChange} />
+              <Select options={tempColleges} id="college" noOptionsMessage={noCollegesMessages} styles={customStylesArray[0]} placeholder="COLLEGE" onChange={handleCollegeChange} />
 
               <label htmlFor="state">STATE</label>
               <Select options={states} id="state" noOptionsMessage={noStatesMessages} styles={customStyles} placeholder="STATE" onChange={handleStateChange} />
@@ -340,6 +425,9 @@ export default function Page(props) {
 
               <label htmlFor="year">YEAR OF STUDY</label>
               <Select options={year} id="year" styles={customStyles} placeholder="YEAR" onChange={handleYearChange} />
+
+              <label htmlFor="events">EVENTS</label>
+              <Select options={events} id="events" styles={customStyles} placeholder="EVENTS" onChange={handleEventChange} isMulti />
 
               <label>ARE YOU A CHOREOGRAPHER/MENTOR?</label>
               <div className={styles.radioBtns}>
@@ -354,12 +442,20 @@ export default function Page(props) {
 
                 <Radio id="NO_Society" value="NO" name="head_of_society" text="NO" onChange={handleHeadChange} />
               </div>
-
             </div>
           </div>
         </div>
+          <div className={styles.imgContainer}>
+            <motion.div 
+              initial= {{opacity:0 , transform: "scale(1) translateX(0) translateY(0) rotate(0deg)"}}
+              animate= {{opacity:1 ,transform:"scale(1.1) translateX(-8rem) translateY(5rem) rotate(-10deg)"}}
+              transition={{ ease: "easeOut", duration: 1 }}
+            >
+              <Image src ={book} alt="" />
+            </motion.div>   
+          </div>
         <div className={styles.regBtnContainer}>
-
+          <Image src={register} onClick={handleRegisterations} alt="" />
         </div>
       </div>
     </>
