@@ -11,6 +11,7 @@ import styles from "./page.module.css";
 import skull from "../../../public/static/images/skull.svg";
 import book from "../../../public/static/images/regBook.svg";
 import register from "../../../public/static/images/registerBtn.svg";
+import regLogo from "../../../public/static/images/OasisLogo.png";
 
 const noCollegesMessages=()=>"Wait for Colleges to load";
 const noStatesMessages=()=>"Wait for States to load";
@@ -292,7 +293,9 @@ const year=[
 export default function Page(props) {
 
   const [formData, formDispatchFn] = useReducer(formReducerFn , formDataTemplate)
- const router = useRouter()
+  const router = useRouter();
+  const [isLoading , setIsLoading]=useState(true);
+  const [loaderLoaded,setLoaderLoaded] = useState(false);
   const [fetchedData , setFetchedData] = useState(null)
   const [colleges , setColleges] = useState([]);
   const [events , setEvents] = useState([]);
@@ -302,6 +305,87 @@ export default function Page(props) {
     "value": "",
     "label": ""
   });
+
+  useEffect(() => {
+    const assets = document.querySelectorAll('#regLogoImage');
+    let assetsLoaded = 0;
+
+    const handleAssetLoad = () => {
+      assetsLoaded++;
+      if (assetsLoaded === assets.length) {
+        setTimeout(() => {
+          setLoaderLoaded(true);
+        }, 1000);
+      }
+    };
+
+    assets.forEach((asset) => {
+      if (
+        asset.complete ||
+        asset.readyState === 4 ||
+        asset.tagName === "LINK"
+      ) {
+        handleAssetLoad();
+      } else {
+        asset.addEventListener("load", handleAssetLoad);
+        asset.addEventListener("error", handleAssetLoad);
+      }
+    });
+
+    const cleanup = () => {
+      assets.forEach((asset) => {
+        asset.removeEventListener("load", handleAssetLoad);
+        asset.removeEventListener("error", handleAssetLoad);
+      });
+    };
+
+    return cleanup;
+
+  }, [])
+  useEffect(() => {
+    if(loaderLoaded){
+    const assets = document.querySelectorAll(
+      "img",
+      "font",
+      "style",
+      "iframe"
+    );
+
+    let assetsLoaded = 0;
+
+    const handleAssetLoad = () => {
+      assetsLoaded++;
+      if (assetsLoaded === assets.length) {
+        setTimeout(() => {
+          setIsLoading(false);
+        }, 2000);
+      }
+    };
+
+    assets.forEach((asset) => {
+      if (
+        asset.complete ||
+        asset.readyState === 4 ||
+        asset.tagName === "LINK"
+      ) {
+        handleAssetLoad();
+      } else {
+        asset.addEventListener("load", handleAssetLoad);
+        asset.addEventListener("error", handleAssetLoad);
+      }
+    });
+
+    const cleanup = () => {
+      assets.forEach((asset) => {
+        asset.removeEventListener("load", handleAssetLoad);
+        asset.removeEventListener("error", handleAssetLoad);
+      });
+    };
+
+    return cleanup;
+    }
+  }, [loaderLoaded]);
+
 
   const handleRegisterations =async()=>{
     if (
@@ -445,11 +529,10 @@ export default function Page(props) {
     }
   }, [fetchedData , selectedState])  
 
-  console.log(formData);
-  
 
   return (
     <>
+      {isLoading && <div className={styles.regLoader}><Image id="regLogoImage" src={regLogo} alt="OASIS" width="auto" height="2rem" /></div>}
       <div className={styles.regPage}>
         <h2>REGISTRATIONS</h2>
         <button onClick={() => router.back()}>BACK TO HOME</button>
@@ -510,8 +593,8 @@ export default function Page(props) {
           <div className={styles.imgContainer}>
             <motion.div 
               initial= {{opacity:0 , transform: "scale(1) translateX(0) translateY(0) rotate(0deg)"}}
-              animate= {{opacity:1 ,transform:"scale(1.1) translateX(-8rem) translateY(5rem) rotate(-10deg)"}}
-              transition={{ ease: "easeOut", duration: 1 }}
+              animate= {{opacity: isLoading? 0:1 ,transform:isLoading? "scale(1) translateX(0) translateY(0) rotate(0)" :"scale(1.1) translateX(-8rem) translateY(5rem) rotate(-10deg)"}}
+              transition={{ ease: "easeOut", duration: 2 }}
             >
               <Image src ={book} alt="" />
             </motion.div>   
