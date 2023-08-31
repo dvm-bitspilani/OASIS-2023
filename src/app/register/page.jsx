@@ -9,7 +9,7 @@ import Creatable from "react-select/creatable";
 import Radio from '../../components/radioButton.jsx';
 import styles from "./page.module.css";
 import skull from "../../../public/static/images/skull.svg";
-import book from "../../../public/static/images/regBook.svg";
+import book from "../../../public/static/images/regBookOptimised.png";
 import register from "../../../public/static/images/registerBtn.svg";
 import regLogo from "../../../public/static/images/OasisLogo.png";
 import cross from "../../../public/static/images/cross.svg";
@@ -596,10 +596,10 @@ export default function Page(props) {
           {typeof window !== "undefined" && window.innerWidth > 1000 && <div className={styles.imgContainer} >
             <motion.div 
               initial= {{opacity:0 , transform: "scale(1) translateX(0) translateY(0) rotate(0deg)"}}
-              animate= {{opacity: isLoading? 0:1 ,transform:isLoading? "scale(1) translateX(0) translateY(0) rotate(0)" :"scale(1.1) translateX(-8rem) translateY(5rem) rotate(-10deg)"}}
+              animate= {{opacity: isLoading? 0:1 ,transform:isLoading? "scale(1) translateX(0) translateY(0) rotate(0)" :"scaleX(.9) translateX(-8rem) translateY(5rem) rotate(-10deg)"}}
               transition={{ ease: "easeOut", duration: 2 }}
             >
-              <Image src ={book} alt="" />
+              <Image src ={book} alt="" style={{transform: 'scaleX(.8)'}}/>
             </motion.div>   
           </div>}
         <div className={styles.regBtnContainer}>

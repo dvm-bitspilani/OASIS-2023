@@ -4,7 +4,7 @@
   background: url(../../../public/static/images/RegisterBG.svg);
   background-position: center center;
   background-size: cover;
-  backround-repeat: no-repeat;
+  background-repeat: no-repeat;
   overflow: hidden;
 }
 .regPage h2{
