@@ -43,7 +43,7 @@ export default function Home() {
     }}>
       {isLoading ? (
         <div className={styles.loaderContainer}>
-        <Image src={textLogo}/>
+        <Image src={textLogo} alt="OASIS" style={{transform: "scale(.5)"}}/>
       </div>
       ) : 
       (
@@ -60,7 +60,7 @@ export default function Home() {
         src={textLogo}
         // layout="fill"
         className = {styles.textLogoImg}
-        alt="Text Oasis Logo"/>
+        alt="OASIS"/>
       </div>
       <div className={styles.bookImgWrapper}>
         <div className={styles.leftElements}>
@@ -72,7 +72,7 @@ export default function Home() {
       <Image 
         src={landingPgBookImg}
         className = {styles.LandingBookImg}
-        alt="Book Image"/>
+        alt="Book"/>
          <div className={styles.rightElements}>
          <Image 
         src={rightElements}
@@ -88,7 +88,7 @@ export default function Home() {
                 width={RegisterBtnWidth}
                 height={RegisterBtnHeight}
                 className={styles.RegisterBtnImg}
-                alt="Register Button"
+                alt="Register"
               />
             </a>
           </Link>
