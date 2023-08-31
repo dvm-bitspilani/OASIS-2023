@@ -82,16 +82,14 @@ export default function Home() {
         </div>
       </div>
       <Link href="/register" legacyBehavior>
-            <a className={styles.registerBtnWrapper}> 
-              <Image 
-                src="/static/images/RegisterButton.png"
-                width={RegisterBtnWidth}
-                height={RegisterBtnHeight}
-                className={styles.RegisterBtnImg}
-                alt="Register"
-              />
-            </a>
-          </Link>
+        <Image 
+          src="/static/images/RegisterButton.png"
+          width={RegisterBtnWidth}
+          height={RegisterBtnHeight}
+          className={styles.RegisterBtnImg}
+          alt="Register"
+        />
+      </Link>
       <div className={styles.landingPageDate}>
       <span>28TH - 31ST OCTOBER</span>
       </div>

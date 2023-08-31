@@ -1,5 +1,6 @@
 "use client" 
 
+import Layout from "../layout.jsx";
 import React, { useState, useEffect , useReducer , useRef} from "react";
 import { useRouter } from 'next/navigation'
 import { motion } from "framer-motion"
@@ -486,6 +487,7 @@ export default function Page(props) {
 
 
   function handleScroll (inp){
+    console.log(1);
     const formContainer = document.querySelector(`.${styles.formContainer}`);
     const maxScrollTopValue = formContainer.scrollTopMax;
     const percentage = (formContainer.scrollTop / maxScrollTopValue )*100;
@@ -528,7 +530,16 @@ export default function Page(props) {
         setCities(filterObjectsByName(fetchedData[101]["states"],selectedState["value"])[0]["cities"].map((key)=>({value: key["name"], label: key["name"]})))
       }
     }
-  }, [fetchedData , selectedState])  
+  }, [fetchedData , selectedState])
+
+  useEffect(() => {
+    const formContainer = document.getElementById("formContainer");
+    formContainer.addEventListener("scroll" , handleScroll);
+
+    return () => {
+      formContainer.removeEventListener("scroll" , handleScroll)
+    }
+  }, [])
 
 
   return (
@@ -544,7 +555,7 @@ export default function Page(props) {
             <div className={styles.scrollBar}></div> 
             <Image id="skull" src={skull} alt="" />
           </div>
-          <div className={styles.formContainer} onScroll={handleScroll} >
+          <div className={styles.formContainer} id="formContainer" >
             <div className={styles.form} onScroll={handleScroll}>
               <label htmlFor="name" style={{marginTop:0}}>NAME</label>
               <input type="text" placeholder="NAME" id="name" onChange={(inp)=>handleNameChange(inp)} />
@@ -577,7 +588,7 @@ export default function Page(props) {
               <label>EVENTS</label>
               <Select options={events} id="events" styles={customStylesArray[4]} placeholder="EVENTS" onChange={handleEventChange} isMulti />
 
-              <label>ARE YOU A CHOREOGRAPHER/MENTOR?</label>
+              <label>ARE YOU A CHOREOGRAPHER / MENTOR?</label>
               <div className={styles.radioBtns}>
                 <Radio id="YES_Choreo" value="YES" name="choreographer" text="YES" onChange={handleChoreoChange} />
                 <Radio id="NO_Choreo" value="NO" name="choreographer" text="NO" onChange={handleChoreoChange} />
