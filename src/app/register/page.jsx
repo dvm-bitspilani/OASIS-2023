@@ -14,6 +14,8 @@ import book from "../../../public/static/images/regBookOptimised.png";
 import register from "../../../public/static/images/registerBtn.svg";
 import regLogo from "../../../public/static/images/OasisLogo.png";
 import cross from "../../../public/static/images/cross.svg";
+import { useWindowSize } from "rooks";
+
 
 const noCollegesMessages=()=>"Wait for Colleges to load";
 const noStatesMessages=()=>"Wait for States to load";
@@ -294,6 +296,8 @@ const year=[
 
 export default function Page(props) {
 
+  const { innerWidth, innerHeight} = useWindowSize();
+
   const [formData, formDispatchFn] = useReducer(formReducerFn , formDataTemplate)
   const router = useRouter();
   const [isLoading , setIsLoading]=useState(true);
@@ -307,9 +311,12 @@ export default function Page(props) {
     "value": "",
     "label": ""
   });
+  const skullRef = useRef(null);
+  const formContainerRef = useRef(null);
+  const regLoaderRef = useRef(null);
 
   useEffect(() => {
-    const assets = document.querySelectorAll('#regLogoImage');
+    const assets = [regLoaderRef.current];
     let assetsLoaded = 0;
 
     const handleAssetLoad = () => {
@@ -487,12 +494,10 @@ export default function Page(props) {
 
 
   function handleScroll (inp){
-    console.log(1);
-    const formContainer = document.querySelector(`.${styles.formContainer}`);
-    const maxScrollTopValue = formContainer.scrollTopMax;
-    const percentage = (formContainer.scrollTop / maxScrollTopValue )*100;
-    const skull = document.querySelector(`#skull`);
-    skull.style.top = `${percentage}%`;
+    const maxScrollTopValue = formContainerRef.current.scrollTopMax;
+    console.log(skullRef.current);
+    const percentage = (formContainerRef.current.scrollTop / maxScrollTopValue )*100;
+    skullRef.current.style.top = `${percentage}%`;
   }
 
 
@@ -533,29 +538,30 @@ export default function Page(props) {
   }, [fetchedData , selectedState])
 
   useEffect(() => {
-    const formContainer = document.getElementById("formContainer");
-    formContainer.addEventListener("scroll" , handleScroll);
+    formContainerRef.current.addEventListener("wheel" , handleScroll);
 
     return () => {
-      formContainer.removeEventListener("scroll" , handleScroll)
+      formContainerRef.current.removeEventListener("wheel" , handleScroll)
     }
   }, [])
 
 
+
+
   return (
     <>
-      {isLoading && <div className={styles.regLoader}><Image id="regLogoImage" src={regLogo} alt="OASIS" width="auto" height="2rem" /></div>}
+      {isLoading && <div className={styles.regLoader}><Image ref={regLoaderRef} id="regLogoImage" src={regLogo} alt="OASIS" width="auto" height="2rem" /></div>}
       <div className={styles.regPage}>
         <h2>REGISTRATIONS</h2>
-        {typeof window !== "undefined" && window.innerWidth<700 && <Image onClick={()=>router.back()} src={cross} alt="close" className={styles.close} />}
-        {typeof window !== "undefined" && window.innerWidth>700 &&
+        {innerWidth<700 && <Image onClick={()=>router.back()} src={cross} alt="close" className={styles.close} />}
+        {innerWidth>700 &&
         <button onClick={() => router.back()}>BACK TO HOME</button>}
         <div className={styles.regForm}>
           <div className={styles.scrollBarContainer}>
             <div className={styles.scrollBar}></div> 
-            <Image id="skull" src={skull} alt="" />
+            <Image id="skull" src={skull} alt="" ref={skullRef} />
           </div>
-          <div className={styles.formContainer} id="formContainer" >
+          <div className={styles.formContainer} id="formContainer" ref={formContainerRef} >
             <div className={styles.form} onScroll={handleScroll}>
               <label htmlFor="name" style={{marginTop:0}}>NAME</label>
               <input type="text" placeholder="NAME" id="name" onChange={(inp)=>handleNameChange(inp)} />
@@ -604,7 +610,7 @@ export default function Page(props) {
             </div>
           </div>
         </div>
-          {typeof window !== "undefined" && window.innerWidth > 1000 && <div className={styles.imgContainer} >
+          {innerWidth > 1000 && <div className={styles.imgContainer} >
             <motion.div 
               initial= {{opacity:0 , transform: "scale(1) translateX(0) translateY(0) rotate(0deg)"}}
               animate= {{opacity: isLoading? 0:1 ,transform:isLoading? "scale(1) translateX(0) translateY(0) rotate(0)" :"scaleX(.9) translateX(-8rem) translateY(5rem) rotate(-10deg)"}}
