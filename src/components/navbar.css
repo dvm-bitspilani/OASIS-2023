@@ -2,6 +2,7 @@
     position: fixed;
     top: 0;
     background: transparent;
+    position: absolute;
 }
 .navLogo{
     margin-left: 2rem;

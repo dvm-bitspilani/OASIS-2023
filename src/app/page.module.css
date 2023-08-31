@@ -1,5 +1,6 @@
 .pageWrapper{
-    height: 100vh;
+    min-height: 100vh;
+    height: auto;
     width: 100vw;
     background: url(../../public/static/images/LibraryBgImage.avif);
     background-position: center;

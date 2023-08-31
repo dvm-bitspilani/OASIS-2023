@@ -31,14 +31,16 @@ export default function Home() {
         setRegisterBtnWidth(Math.min(200, Math.floor(window.innerWidth * 0.5)));
         setRegisterBtnHeight(75);
         setIsLoading(false);
-        setTimeout(() => {
+        // setTimeout(() => {
           setShowLoader(false);
-        }, 1000);
-      }, 1000);
+        // }, 1000);
+      }, 2900);
     }
   }, []);
   return (
-    <main>
+    <main style={{
+      "position" : "relative"
+    }}>
       {isLoading ? (
         <div className={styles.loaderContainer}>
         <Image src={textLogo}/>
