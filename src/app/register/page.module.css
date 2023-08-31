@@ -48,6 +48,9 @@
 }
 .scrollBarContainer img{
   position: absolute;
+  transform: translateY(-50%);
+  /* width: 40px;
+  aspect-ratio: 1/1; */
 }
 .scrollBar{
   background:#7BBEF0;
@@ -158,6 +161,7 @@ align-items:center;
   top: 1rem;
   left:1rem;    
 }
+
 @media (max-width: 1000px){
   .regForm{
     width: 90vw;
