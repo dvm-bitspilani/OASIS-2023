@@ -176,14 +176,14 @@ async function getStateAndCityData() {
   return res.json();
 }
 async function getCollegeData(){
-  const res = await fetch("https://test.bits-oasis.org/2023/main/registrations/get_college")
+  const res = await fetch("https://bits-oasis.org/2023/main/registrations/get_college")
   if(!res.ok){
     throw new Error("Failed to fetch collyearege");
   }
   return res.json();
 }
 async function getEventsData (){
-  const res = await fetch("https://test.bits-oasis.org/2023/main/registrations/events");
+  const res = await fetch("https://bits-oasis.org/2023/main/registrations/events");
   if(!res.ok){
     throw new Error("Failed to get Events");
   }
@@ -437,7 +437,7 @@ export default function Page(props) {
         body: JSON.stringify(data),
       };
 
-      const res = await fetch("https://test.bits-oasis.org/2023/main/registrations/Register/" , options);
+      const res = await fetch("https://bits-oasis.org/2023/main/registrations/Register/" , options);
       if(!res.ok){
         throw new Error("Failed to register");
       }
