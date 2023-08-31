@@ -24,7 +24,10 @@ input:-webkit-autofill:active {
   -webkit-text-fill-color: white !important;
   transition: background-color 999999s ease-in-out 0s;
 }
-
+html{
+  overscroll-behavior: none;
+  overflow: hidden;
+}
 html,body{
   margin: 0;
   padding: 0;
