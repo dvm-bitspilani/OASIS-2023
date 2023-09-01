@@ -11,55 +11,118 @@ import { useContext } from "react";
 import Image from 'next/image'
 import { useEffect } from 'react';
 import { gsap } from 'gsap';
-import { MotionPathPlugin } from 'gsap/MotionPathPlugin';
+import { MotionPathPlugin } from 'gsap/all';
+// import { DrawSVGPlugin } from "gsap/DrawSVGPlugin";
 import { CustomEase } from "gsap/all";
+import { delay } from "framer-motion";
 gsap.registerPlugin(MotionPathPlugin);
+// gsap.registerPlugin(DrawSVGPlugin)
 
 export default function Hamburger() {
     const { isHamOpen, setIsHamOpen } = useContext(HamContext);
 
     useEffect(() => {
         const element = document.querySelector('#glow');
-    
-        if (isHamOpen) {
-        
+        const path = document.querySelector('#path')
+        const svg = document.querySelector('#path-svg')
+        const one = document.querySelectorAll('.one')
+        const two = document.querySelectorAll('.two')
+        const three = document.querySelectorAll('.three')
+        const four = document.querySelectorAll('.four')
+        const five = document.querySelectorAll('.five')
 
-          const timeline = gsap.timeline({
-            onComplete: () => {
-              gsap.to(element, {
+        var duration = 1
+        var delay = 0.7
+
+        if (isHamOpen) {
+
+
+            gsap.set(element, {
                 opacity: 0,
-                duration: 0.2,
-                onComplete: () => {
+            })
+
+            gsap.set(one, {
+                opacity: 0,
+            })
+
+            gsap.set(two, {
+                opacity: 0,
+            })
+
+            gsap.set(three, {
+                opacity: 0,
+            })
+
+            gsap.set(four, {
+                opacity: 0,
+            })
+
+            gsap.set(five, {
+                opacity: 0
+            })
+
+            gsap.to(one, {
+                opacity: 1,
+                duration: duration,
+                delay: delay
+            })
+            gsap.to(two, {
+                opacity: 1,
+                duration: duration,
+                delay: delay + 0.1,
+            })
+            gsap.to(three, {
+                opacity: 1,
+                duration: duration,
+                delay: delay + 0.25,
+            })
+            gsap.to(four, {
+                opacity: 1,
+                duration: duration,
+                delay: delay + 0.45,
+            })
+
+            gsap.to(five, {
+                opacity: 1,
+                duration: duration,
+                delay: delay + 0.7
+            })
+
+            gsap.to(element, {
+                opacity: 1,
+                delay: 0,
+                duration: 1,
+            })
+
+            gsap.to(element, {
+                opacity: 0,
+                delay: 1.3,
+                duration: 1,
+            })
+
+            gsap.to(element, {
+                duration: 1.5,
+                repeat: 0,
+                delay: 0,
+                ease: CustomEase.create(
+                    'custom',
+                    'M0,0 C0.065,0 0.332,-0.042 0.514,0.184 0.611,0.305 0.634,0.686 0.708,0.874 0.757,1.001 0.98,0.997 0.989,0.999 0.993,0.999 0.996,1 1,1 '
+                ),
+                motionPath: {
+                    path: path,
+                    align: path,
+                    alignOrigin: [0.5, 0.5],
+                    start: 1,
+                    end: 0,
                 },
-              });
-            },
-          });
-    
-          timeline.to(element, {
-            opacity: 1,
-            duration: 0.5,
-          }).to(element, {
-            duration: 1.5,
-            repeat: 0,
-            delay: 0.1,
-            ease: CustomEase.create(
-              'custom',
-              'M0,0 C0.065,0 0.332,-0.042 0.514,0.184 0.611,0.305 0.634,0.686 0.708,0.874 0.757,1.001 0.98,0.997 0.989,0.999 0.993,0.999 0.996,1 1,1 '
-            ),
-            motionPath: {
-              path: '#path',
-              align: '#path',
-              alignOrigin: [0.5, 0.5],
-              start: 1,
-              end: 0,
-            },
-          });
+            })
+            
         } else {
-          gsap.killTweensOf(element);
-          element.style.opacity = 0;
+            gsap.killTweensOf(element);
+            element.style.opacity = 0;
         }
-      }, [isHamOpen]);
-    
+    }, [isHamOpen]);
+
 
     return (
         <>
@@ -76,42 +139,43 @@ export default function Hamburger() {
                 </div>
                 <div className={styles.outerpath}>
                     {/* <Image src={path} id="path"></Image> */}
-                    <svg viewBox="0 0 1044 816" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <svg id="path-svg" viewBox="0 0 1044 816" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        {/* <path id="base" opacity="0.7" d="M888 417.5C888 622.398 721.898 788.5 517 788.5C312.102 788.5 146 622.398 146 417.5C146 212.602 312.102 46.5 517 46.5C738 46.5 778.5 193 857.5 141.5C936.5 90 1029.5 29 1029.5 29" stroke="#F0F0F0" strokeWidth="0.75" strokeDasharray="5 5" /> */}
                         <path id="path" opacity="0.7" d="M888 417.5C888 622.398 721.898 788.5 517 788.5C312.102 788.5 146 622.398 146 417.5C146 212.602 312.102 46.5 517 46.5C738 46.5 778.5 193 857.5 141.5C936.5 90 1029.5 29 1029.5 29" stroke="#F0F0F0" strokeWidth="0.75" strokeDasharray="5 5" />
                     </svg>
                 </div>
                 <div className={styles.circle}>
-                    <div className={styles.item}>
-                        <div className={`${styles.number} ${styles.one}`}>1</div>
+                    <div className={`${styles.item} one`}>
+                        <div className={`${styles.number} ${styles.one}`} >1</div>
                     </div>
-                    <div className={styles.item}>
-                        <div className={`${styles.number} ${styles.two}`}>2</div>
+                    <div className={`${styles.item} two`}>
+                        <div className={`${styles.number} ${styles.two}`} >2</div>
                     </div>
-                    <div className={styles.item}>
-                        <div className={`${styles.number} ${styles.three}`}>3</div>
+                    <div className={`${styles.item} three`}>
+                        <div className={`${styles.number} ${styles.three}`} >3</div>
                     </div>
-                    <div className={styles.item}>
-                        <div className={`${styles.number} ${styles.four}`}>4</div>
+                    <div className={`${styles.item} four`}>
+                        <div className={`${styles.number} ${styles.four}`} >4</div>
                     </div>
-                    <div className={styles.item}>
-                        <div className={`${styles.number} ${styles.five}`}>5</div>
+                    <div className={`${styles.item} five`}>
+                        <div className={`${styles.number} ${styles.five}`} >5</div>
                     </div>
                 </div>
 
                 <div className={styles.circle2}>
-                    <div className={styles.tag}>
+                    <div className={`${styles.tag} one`}>
                         <div>SPONSORS</div>
                     </div>
-                    <div className={styles.tag}>
+                    <div className={`${styles.tag} two`}>
                         <div>ECLIPSE</div>
                     </div>
-                    <div className={styles.tag}>
+                    <div className={`${styles.tag} three`}>
                         <div>WALLMAG</div>
                     </div>
-                    <div className={styles.tag}>
+                    <div className={`${styles.tag} four`}>
                         <div>MEDIA PARTNERS</div>
                     </div>
-                    <div className={styles.tag}>
+                    <div className={`${styles.tag} five`}>
                         <div>DEVELOPERS</div>
                     </div>
                 </div>
