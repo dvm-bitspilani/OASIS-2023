@@ -10,15 +10,97 @@
     align-items: center;
     overflow-x: hidden;
 }
+.hamSection{
+  position: absolute;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+.hamBtn{  
+  margin: 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+}
+.hamBG{
+  position: absolute;
+  top: 4rem;
+  right: 5rem;
+  background: #000;
+  border-radius: 50%;
+  height: 90px;
+  width: 90px;
+}
+@media(max-width: 800px){
+  .hamBG{
+    height: 80px;
+    width: 80px;
+  }
+}
+.hamIcon {
+  position: absolute;
+  right: 5.4rem;
+  height: 4.75rem;
+  width: 2rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 1.5rem 0;
+  position: relative;
+  z-index: 100000;
+  cursor: pointer;
+}
+
+.hamIcon1 {
+  height: 3.5px;
+  width: 50%;
+  border-radius: 5px;
+  background-color: #7BBEF0;
+  filter: drop-shadow(0px 0px 10.649142265319824px #5DB3F1);
+  display: inline-block;
+  transform-origin: bottom;
+  transition: .4s cubic-bezier(0.68, -0.6, 0.32, 1.6);
+}
+
+.hamIcon2 {
+  height: 3.5px;
+  width: 100%;
+  border-radius: 5px;
+  background-color: #7BBEF0;
+  filter: drop-shadow(0px 0px 10.649142265319824px #5DB3F1);
+  display: inline-block;
+  transform-origin: top;
+  transition: .4s cubic-bezier(0.68, -0.6, 0.32, 1.6);
+}
+
+.hamIcon3 {
+  height: 3.5px;
+  width: 75%;
+  border-radius: 5px;
+  background-color: #7BBEF0;
+  filter: drop-shadow(0px 0px 10.649142265319824px #5DB3F1);
+  display: inline-block;
+  transform-origin: center left;
+  transition: .4s cubic-bezier(0.68, -0.6, 0.32, 1.6);
+  transform-origin: bottom;
+}
+
 .midSection{
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     width: 100vw;
+    /* position: relative;
+    z-index: 2; */
 }
 .registerBtnWrapper{
     transition: scale 0.2s ease-in-out;
+    position: relative;
+    z-index: 3;
+    height: fit-content;
+    display: inline-block;
 }
 .registerBtnWrapper:hover{
     cursor: pointer;
@@ -29,6 +111,8 @@
     font-family: 'MetalMania';
     font-weight: 300;
     font-size: 1.5rem;
+    position: relative;
+    z-index: 3;
 }
 .textLogoWrapper{
     position: relative;
