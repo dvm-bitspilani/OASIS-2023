@@ -98,7 +98,9 @@
 .registerBtnWrapper{
     transition: scale 0.2s ease-in-out;
     position: relative;
-    z-index: 2;
+    z-index: 3;
+    height: fit-content;
+    display: inline-block;
 }
 .registerBtnWrapper:hover{
     cursor: pointer;
@@ -110,7 +112,7 @@
     font-weight: 300;
     font-size: 1.5rem;
     position: relative;
-    z-index: 2;
+    z-index: 3;
 }
 .textLogoWrapper{
     position: relative;
