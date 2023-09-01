@@ -14,7 +14,7 @@ import HamImage from "../../public/static/images/hamIcon.png";
 import landingPgBookImg from "../../public/static/images/LandingPageBook.png";
 import rightElements from "../../public/static/images/landingPgRightElements.png";
 import leftElements from "../../public/static/images/landingPgLeftElements.png";
-import { motion } from "framer-motion";
+import { AnimatePresence, motion } from "framer-motion";
 import { useWindowSize } from "rooks";
 
 export default function Home() {
@@ -74,7 +74,7 @@ export default function Home() {
     }
   }, [isHamOpen]);
 
-  const { innerWidth, innerHeight} = useWindowSize();
+  const { innerWidth, innerHeight } = useWindowSize();
 
   return (
     <main
@@ -95,39 +95,49 @@ export default function Home() {
           <Navbar />
           <div
             className={styles.hamSection}
-            style={isHamOpen ? { height: "100%" } : { height: "auto" }}
+            style={isHamOpen ? { zIndex: 10 } : { zIndex: 1 }}
           >
             <div className={styles.hamBtn}>
-              <Image src={HamImage} alt="Menu" />
-              <div id="ham-menu" className={styles.hamIcon} onClick={openHam}>
-                <span id="hamIcon1" className={styles.hamIcon1}></span>
-                <span id="hamIcon2" className={styles.hamIcon2}></span>
-                <span id="hamIcon3" className={styles.hamIcon3}></span>
-              </div>
+              <AnimatePresence>
+                <Image src={HamImage} alt="Menu" />
+                <div id="ham-menu" className={styles.hamIcon} onClick={openHam}>
+                  <span id="hamIcon1" className={styles.hamIcon1}></span>
+                  <span id="hamIcon2" className={styles.hamIcon2}></span>
+                  <span id="hamIcon3" className={styles.hamIcon3}></span>
+                </div>
+                {isHamOpen ? (
+                  <motion.div
+                    key="hamBG"
+                    className={styles.hamBG}
+                    style={{
+                      height: `${innerHeight / 10}px`,
+                      width: `${innerHeight / 10}px`,
+                    }}
+                    initial={{ scale: 0 }}
+                    animate={{ scale: 50 }}
+                    exit={{ scale: 0 }}
+                    transition={{ duration: 1 }}
+                  ></motion.div>
+                ) : (
+                  ""
+                )}
+              </AnimatePresence>
+            </div>
+            <AnimatePresence>
               {isHamOpen ? (
                 <motion.div
-                  className={styles.hamBG}
-                  style={{height: `${innerHeight/10}px`, width: `${innerHeight/10}px`}}
-                  initial={{ scale: 0 }}
-                  animate={{ scale: 50 }}
-                  exit={{ scale: 0 }}
-                  transition={{ duration: 1 }}
-                ></motion.div>
+                  key="hamMenu"
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  exit={{ opacity: 0 }}
+                  transition={{ delay: 0.25, duration: 0.5 }}
+                >
+                  <Hamburger />
+                </motion.div>
               ) : (
                 ""
               )}
-            </div>
-            {isHamOpen ? (
-              <motion.div
-              initial={{opacity: 0}}
-              animate= {{opacity: 1}}
-              transition={{delay: .25, duration: 1}}
-              >
-                <Hamburger />
-              </motion.div>
-            ) : (
-              ""
-            )}
+            </AnimatePresence>
           </div>
           <div className={styles.pageWrapper}>
             <div
@@ -164,20 +174,34 @@ export default function Home() {
                   />
                 </div>
               </div>
-              <Link href="/register" legacyBehavior>
-                <a className={styles.registerBtnWrapper}>
-                  <Image
-                    src="/static/images/RegisterButton.png"
-                    width={RegisterBtnWidth}
-                    height={RegisterBtnHeight}
-                    className={styles.RegisterBtnImg}
-                    alt="Register"
-                  />
-                </a>
-              </Link>
-              <div className={styles.landingPageDate}>
-                <span>28TH - 31ST OCTOBER</span>
-              </div>
+              <AnimatePresence>
+                {isHamOpen ? (
+                  ""
+                ) : (
+                  <motion.div
+                    key="register"
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1 }}
+                    exit={{ opacity: 0 }}
+                    transition={{duration: 1}}
+                  >
+                    <Link href="/register" legacyBehavior>
+                      <a className={styles.registerBtnWrapper}>
+                        <Image
+                          src="/static/images/RegisterButton.png"
+                          width={RegisterBtnWidth}
+                          height={RegisterBtnHeight}
+                          className={styles.RegisterBtnImg}
+                          alt="Register"
+                        />
+                      </a>
+                    </Link>
+                    <div className={styles.landingPageDate}>
+                      <span>28TH - 31ST OCTOBER</span>
+                    </div>
+                  </motion.div>
+                )}
+              </AnimatePresence>
             </div>
           </div>
         </>
