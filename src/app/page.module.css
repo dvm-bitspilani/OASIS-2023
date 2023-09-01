@@ -44,6 +44,9 @@
   
 }
 .LandingBookImg{
+  width: 80% !important;
+  object-fit: contain;
+
     animation-name: floating;
     animation-duration: 3s;
     animation-iteration-count: infinite;
@@ -52,7 +55,7 @@
 @keyframes floating {
     0% { transform: translate(0,  0px); }
     50%  { transform: translate(0, 15px); }
-    100%   { transform: translate(0, -0px); }   
+    100%   { transform: translate(0, 0px); }   
 }
 
 .landingPageDate span {
@@ -74,33 +77,65 @@
     transform: scaleX(1); 
   }
   .bookImgWrapper{
+    position: relative;
+
+    width: max(80%, 650px);
+
     display: flex;
+    justify-content: center;
+    align-items: center;
   }
   .leftElements{
-    position: relative;
-    animation-name: floating;
+    z-index: 1;
+    position: absolute;
+    left: 0;
+    width: 50%;
+    height: 100%;
+    
+    /* animation-name: floating;
     animation-duration: 2.5s;
     animation-iteration-count: infinite;
-    animation-timing-function: ease-in-out;
+    animation-timing-function: ease-in-out; */
     /* animation-delay: 0.5s; */
   }
+
+  .leftSymbol, .rightSymbol{
+    position: absolute;
+    width: 100px;
+    height: 100px;
+
+    /* transform: scale(1.4); */
+    /* right: 25%;
+    top: 50%; */
+  }
+
   .landingPgLeftGrp{
     position: absolute;
-    left: -120px;
-    bottom: 170px;
+    /* left: -120px;
+    bottom: 170px; */
+    top: 0;
   }
   .rightElements{
-    position: relative;
-    animation-name: floating;
+    position: absolute;
+    left: 50%;
+    width: 50%;
+    height: 100%;
+
+    /* animation-name: floating;
     animation-duration: 2s;
     animation-iteration-count: infinite;
     animation-timing-function: ease-in-out;
-    animation-delay: 1s;
+    animation-delay: 1s; */
+
+    /* display: flex;
+    justify-content: end;
+    align-items: center; */
   }
   .landingPgRightGrp{
     position: absolute;
-    left: -140px;
-    bottom: 170px;
+    /* left: -140px;
+    bottom: 170px; */
+    top: 0;
   }
   .navbar{
     align-self: baseline;
@@ -119,88 +154,70 @@
              }
       }
     @media screen and (max-width: 1250px) {
-        .LandingBookImg{
-            scale: 0.75;
-        }
-        .landingPgLeftGrp{
-            scale: 0.75;
-            /* bottom: 0; */
-            left: -10px;
-        }
-        .landingPgRightGrp{
-            scale: 0.75;
-            left: -270px;
+        .leftSymbol, .rightSymbol{
+            width: 80px;
+            height: 80px;
         }
       }
     @media screen and (max-width: 900px) {
         .LandingBookImg{
-            scale: 0.6;
+            /* scale: 0.6; */
         }
         .landingPgLeftGrp{
             scale: 0.6;
-            bottom: 150px;
-            left: 60px;
+            /* bottom: 150px;
+            left: 60px; */
         }
         .landingPgRightGrp{
             scale: 0.6;
-            left: -330px;
-            bottom: 150px;
+            /* left: -330px;
+            bottom: 150px; */
         }
 
       }
     @media screen and (max-width: 750px) {
         .LandingBookImg{
-            scale: 0.5;
+            /* scale: 0.5; */
         }
         .landingPgLeftGrp{
             scale: 0.5;
-            bottom: 130px;
-            left: 100px;
+            /* bottom: 130px;
+            left: 100px; */
         }
         .landingPgRightGrp{
             scale: 0.5;
-            left: -390px;
-            bottom: 140px;
+            /* left: -390px;
+            bottom: 140px; */
         }
 
       }
     @media screen and (max-width: 600px) {
-        .LandingBookImg{
+        /* .LandingBookImg{
             scale: 0.4;
-        }
+        } */
         .landingPgLeftGrp{
             scale: 0.5;
-            bottom: 140px;
-            left: 130px;
+            /* bottom: 140px;
+            left: 130px; */
         }
         .landingPgRightGrp{
             scale: 0.5;
-            left: -410px;
-            bottom: 150px;
+            /* left: -410px;
+            bottom: 150px; */
         }
 
       }
     @media screen and (max-width: 550px) {
-        .LandingBookImg{
-            scale: 0.5;
-        }
-        .landingPgLeftGrp{
-            scale: 0.2;
-            bottom: 140px;
-            left: 130px;
-            display: none;
-        }
-        .landingPgRightGrp{
-            scale: 0.5;
-            left: -410px;
-            bottom: 150px;
-            display: none;
-        }
 
+      .leftSymbol, .rightSymbol{
+        /* display: none; */
+        width: 50px;
+        height: 50px;
+      }
       }
     @media screen and (max-width: 400px) {
         .LandingBookImg{
-            scale: 0.35;
+            scale: 0.6;
         }
       }
       .loaderContainer{
