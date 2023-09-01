@@ -30,15 +30,41 @@ export default function Hamburger() {
         const three = document.querySelectorAll('.three')
         const four = document.querySelectorAll('.four')
         const five = document.querySelectorAll('.five')
+        const inside = document.querySelectorAll('.ham-inside')
 
         var duration = 1
         var delay = 0.7
 
         if (isHamOpen) {
-
-
             gsap.set(element, {
                 opacity: 0,
+            })
+
+            gsap.set(svg, {
+                opacity: 0
+            })
+
+            gsap.to(svg, {
+                opacity: 1,
+                duration: 1,
+                delay: 0.5
+            })
+
+            gsap.set(inside, {
+                opacity: 0
+            })
+
+            gsap.to(inside, {
+                opacity: 1,
+                duration: 1,
+                delay: 0.5
+            })
+            gsap.to(inside[1], {
+                rotation:360,
+                duration: 2.5,
+                ease: "power4.out",
+                // repeat: 1,
+                // transformOrigin: [0.5, 0.5],
             })
 
             gsap.set(one, {
@@ -131,10 +157,10 @@ export default function Hamburger() {
                 <div className={styles.glowbox}>
                     <Image src={glow} id="glow" alt=""></Image>
                 </div>
-                <div className={styles.innercircle}>
+                <div className={`${styles.innercircle} ham-inside`}>
                     <Image src={innercircle} alt=""></Image>
                 </div>
-                <div className={styles.logo}>
+                <div className={`${styles.logo} ham-inside`}>
                     <Image id="logo" src={logo} alt=""></Image>
                 </div>
                 <div className={styles.outerpath}>
