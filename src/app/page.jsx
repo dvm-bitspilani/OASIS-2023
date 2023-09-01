@@ -7,7 +7,7 @@ import { useState, useEffect, useRef, useLayoutEffect } from "react";
 import { useContext } from "react";
 import { HamContext } from "@/context/HamContextProvider";
 import Link from "next/link";
-// import textLogo from "../../public/static/images/OasisLogo.png";
+import textLogo from "../../public/static/images/OasisLogo.png";
 import Navbar from "@/components/Navbar";
 import Hamburger from "@/components/hamburger";
 import HamImage from "../../public/static/images/hamIcon.svg";
@@ -520,11 +520,13 @@ export default function Home() {
               </div>
               <div className={styles.bookImgWrapper}>
                 <div className={styles.leftElements}>
-                  <Image
+                  {/* <Image
                     src={leftElements}
                     className={styles.landingPgLeftGrp}
                     alt="Element"
-                  />
+                  /> */}
+                  {randomSetImageLeft1}
+                  {randomSetImageLeft2}
                 </div>
                 <Image
                   src={landingPgBookImg}
@@ -532,11 +534,13 @@ export default function Home() {
                   alt="Book"
                 />
                 <div className={styles.rightElements}>
-                  <Image
+                  {/* <Image
                     src={rightElements}
                     className={styles.landingPgRightGrp}
                     alt="Element"
-                  />
+                  /> */}
+                  {randomSetImageRight1}
+                  {randomSetImageRight2}
                 </div>
               </div>
               <AnimatePresence>
