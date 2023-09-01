@@ -10,7 +10,7 @@ import Link from "next/link";
 import textLogo from "../../public/static/images/OasisLogo.png";
 import Navbar from "@/components/Navbar";
 import Hamburger from "@/components/hamburger";
-import HamImage from "../../public/static/images/hamIcon.png";
+import HamImage from "../../public/static/images/hamIcon.svg";
 import landingPgBookImg from "../../public/static/images/LandingPageBook.png";
 import rightElements from "../../public/static/images/landingPgRightElements.png";
 import leftElements from "../../public/static/images/landingPgLeftElements.png";
