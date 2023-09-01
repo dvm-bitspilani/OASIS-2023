@@ -3,10 +3,10 @@
 import React from "react";
 import styles from "./hamburger.module.css"
 import { HamContext } from "@/context/HamContextProvider";
-import path from "../../../public/static/images/path.svg"
-import innercircle from "../../../public/static/images/innercircle.png"
-import logo from "../../../public/static/images/oasis-logo-ham.png"
-import glow from "../../../public/static/images/glow.png"
+import path from "../../public/static/images/path.svg"
+import innercircle from "../../public/static/images/innercircle.png"
+import logo from "../../public/static/images/oasis-logo-ham.png"
+import glow from "../../public/static/images/glow.png"
 import { useContext } from "react";
 import Image from 'next/image'
 import { useEffect } from 'react';

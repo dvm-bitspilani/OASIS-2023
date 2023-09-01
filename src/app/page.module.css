@@ -10,6 +10,81 @@
     align-items: center;
     overflow-x: hidden;
 }
+.hamSection{
+  position: absolute;
+  left: 0;
+  width: 100%;
+  z-index: 2;
+}
+.hamBtn{  
+  margin: 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+}
+.hamBG{
+  position: absolute;
+  top: 0;
+  background: #000;
+  border-radius: 50%;
+  height: 100%;
+  width: 100%;
+}
+.hamIcon {
+  position: absolute;
+  right: 4.75rem;
+  height: 4.75rem;
+  width: 2rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 1.5rem 0;
+  position: relative;
+  z-index: 100000;
+  cursor: pointer;
+}
+.hamBG{
+  content: '';
+  background: #000;
+  border-radius: 50%;
+  height: 100vh;
+  width: 100vh;
+}
+
+.hamIcon1 {
+  height: 3.5px;
+  width: 50%;
+  border-radius: 5px;
+  background-color: #7BBEF0;
+  filter: drop-shadow(0px 0px 10.649142265319824px #5DB3F1);
+  display: inline-block;
+  transform-origin: bottom;
+  transition: .4s cubic-bezier(0.68, -0.6, 0.32, 1.6);
+}
+
+.hamIcon2 {
+  height: 3.5px;
+  width: 100%;
+  border-radius: 5px;
+  background-color: #7BBEF0;
+  filter: drop-shadow(0px 0px 10.649142265319824px #5DB3F1);
+  display: inline-block;
+  transform-origin: top;
+  transition: .4s cubic-bezier(0.68, -0.6, 0.32, 1.6);
+}
+
+.hamIcon3 {
+  height: 3.5px;
+  width: 75%;
+  border-radius: 5px;
+  background-color: #7BBEF0;
+  filter: drop-shadow(0px 0px 10.649142265319824px #5DB3F1);
+  display: inline-block;
+  transform-origin: center left;
+  transition: .4s cubic-bezier(0.68, -0.6, 0.32, 1.6);
+  transform-origin: bottom;
+}
+
 .midSection{
     display: flex;
     flex-direction: column;
