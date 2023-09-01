@@ -464,7 +464,7 @@ export default function Home() {
           >
             <div className={styles.hamBtn}>
               <AnimatePresence>
-                <Image src={HamImage} alt="Menu" />
+                <Image src={HamImage} alt="Menu" style={{scale: .8}}/>
                 <div id="ham-menu" className={styles.hamIcon} onClick={openHam}>
                   <span id="hamIcon1" className={styles.hamIcon1}></span>
                   <span id="hamIcon2" className={styles.hamIcon2}></span>
