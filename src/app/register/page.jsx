@@ -277,7 +277,7 @@ export default function Page(props) {
 
       return cleanup;
     }
-  }, [loaderLoaded]);
+  }, [loaderLoaded , colleges , events]);
 
   const handleRegisterations = async () => {
     if (
