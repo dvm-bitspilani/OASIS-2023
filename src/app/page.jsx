@@ -541,7 +541,6 @@ export default function Home() {
             ref={regLoaderRef}
           />
         </div>}
-          <Navbar />
           <div
             className={styles.hamSection}
             style={isHamOpen ? { zIndex: 10 } : { zIndex: 2 }}
