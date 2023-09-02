@@ -10,7 +10,6 @@ import Link from "next/link";
 import textLogo from "../../public/static/images/OasisLogo.png";
 import Navbar from "@/components/Navbar";
 import Hamburger from "@/components/hamburger";
-import HamImage from "../../public/static/images/hamIcon.svg";
 import landingPgBookImg from "../../public/static/images/LandingPageBook.png";
 import rightElements from "../../public/static/images/landingPgRightElements.png";
 import leftElements from "../../public/static/images/landingPgLeftElements.png";
@@ -31,8 +30,8 @@ export default function Home() {
   const [isLoading, setIsLoading] = useState(true);
   const [showLoader, setShowLoader] = useState(true);
 
-  const numberOfRandom = 10 ;
-  const randomGenerationConfig = [32, -10, 30, 40]
+  const numberOfRandom = 10;
+  const randomGenerationConfig = [32, -10, 30, 40];
 
   const [randomLeft1, setrandomLeft1] = useState(
     generateRandomStatesArray(numberOfRandom, ...randomGenerationConfig)
@@ -157,7 +156,12 @@ export default function Home() {
           onComplete: () => {
             if (key === randomLeft1.length - 1) {
               console.log("Animation 1 complete");
-              setrandomLeft1(generateRandomStatesArray(numberOfRandom, ...randomGenerationConfig));
+              setrandomLeft1(
+                generateRandomStatesArray(
+                  numberOfRandom,
+                  ...randomGenerationConfig
+                )
+              );
             }
           },
         });
@@ -228,7 +232,12 @@ export default function Home() {
             if (key === randomLeft2.length - 1) {
               setDelayGiven(true);
               console.log("Animation 2 complete");
-              setrandomLeft2(generateRandomStatesArray(numberOfRandom, ...randomGenerationConfig));
+              setrandomLeft2(
+                generateRandomStatesArray(
+                  numberOfRandom,
+                  ...randomGenerationConfig
+                )
+              );
             }
           },
         });
@@ -293,7 +302,12 @@ export default function Home() {
           onComplete: () => {
             if (key === randomRight1.length - 1) {
               console.log("Animation 1 Right complete");
-              setRandomRight1(generateRandomStatesArray(numberOfRandom, ...randomGenerationConfig));
+              setRandomRight1(
+                generateRandomStatesArray(
+                  numberOfRandom,
+                  ...randomGenerationConfig
+                )
+              );
             }
           },
         });
@@ -360,7 +374,12 @@ export default function Home() {
             if (key === randomRight2.length - 1) {
               setDelayGiven(true);
               console.log("Animation 2 Right complete");
-              setRandomRight2(generateRandomStatesArray(numberOfRandom, ...randomGenerationConfig));
+              setRandomRight2(
+                generateRandomStatesArray(
+                  numberOfRandom,
+                  ...randomGenerationConfig
+                )
+              );
             }
           },
         });
@@ -423,7 +442,7 @@ export default function Home() {
     if (isHamOpen && !isLoading) {
       topBar1.style.transform = "rotatez(45deg) translate(6px,0px)";
       topBar2.style.transform = "rotatez(-45deg) translate(1px,0px)";
-      topBar3.style.transform = "translate(16px,-8.5px) rotatez(47deg)";
+      topBar3.style.transform = "translate(15px,-6.5px) rotatez(47deg)";
       topBar3.style.width = "50%";
       topBar3.style.borderRadius = "0px 5px 5px 0px";
     } else if (!isHamOpen && !isLoading) {
@@ -456,19 +475,26 @@ export default function Home() {
         </div>
       ) : (
         <>
-          <Navbar />
           <div
             className={styles.hamSection}
             style={isHamOpen ? { zIndex: 10 } : { zIndex: 1 }}
           >
             <div className={styles.hamBtn}>
+              <Navbar />
               <AnimatePresence>
-                <Image src={HamImage} alt="Menu" style={{ scale: 0.8 }} />
-                <div id="ham-menu" className={styles.hamIcon} onClick={openHam}>
-                  <span id="hamIcon1" className={styles.hamIcon1}></span>
-                  <span id="hamIcon2" className={styles.hamIcon2}></span>
-                  <span id="hamIcon3" className={styles.hamIcon3}></span>
+                <div className={styles.hamAsset}>
+                  <Image src="/static/images/hamIcon.svg" width={103} height={103} alt="Menu" />
+                  <div
+                    id="ham-menu"
+                    className={styles.hamIcon}
+                    onClick={openHam}
+                  >
+                    <span id="hamIcon1" className={styles.hamIcon1}></span>
+                    <span id="hamIcon2" className={styles.hamIcon2}></span>
+                    <span id="hamIcon3" className={styles.hamIcon3}></span>
+                  </div>
                 </div>
+
                 {isHamOpen ? (
                   <motion.div
                     key="hamBG"
@@ -616,7 +642,9 @@ export function generateRandomStatesArray(
   const randomArray = [];
   for (let i = 0; i < number; i++) {
     // randomArray.push(getRandomStats(32, -10, 30, 40));
-    randomArray.push(getRandomStats(startingYPoint, endingYPoint, startingYRange, endingYRange));
+    randomArray.push(
+      getRandomStats(startingYPoint, endingYPoint, startingYRange, endingYRange)
+    );
   }
   return randomArray;
 }
