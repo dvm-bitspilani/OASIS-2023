@@ -464,8 +464,8 @@ export default function Page(props) {
     formContainerRef.current.addEventListener("scroll", handleScroll);
 
     return () => {
-      // formContainerRef.current.removeEventListener("scroll", handleScroll);
-    };
+      // formContainerRef.current.removeEventListener("scroll" , handleScroll)
+    }
   }, []);
 
   const handleSkullMouseDown = (e) => {
