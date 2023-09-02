@@ -1,9 +1,9 @@
 "use client";
 
 import statesData from "./states.json";
-import React, { useState, useEffect , useReducer , useRef} from "react";
-import { useRouter } from 'next/navigation'
-import { motion } from "framer-motion"
+import React, { useState, useEffect, useReducer, useRef } from "react";
+import { useRouter } from "next/navigation";
+import { motion } from "framer-motion";
 import Image from "next/image";
 import Select from "react-select";
 import Creatable from "react-select/creatable";
@@ -17,50 +17,51 @@ import cross from "../../../public/static/images/cross.svg";
 import { useWindowSize } from "rooks";
 import CustomStyles from "./CustomStyles";
 
-
-const noCitiesMessage=()=>"Select a State First";
+const noCitiesMessage = () => "Select a State First";
 
 const customStylesArray = [
   {
     ...CustomStyles(),
-    menu: provided => ({
+    menu: (provided) => ({
       ...provided,
       zIndex: 10000,
     }),
   },
   {
     ...CustomStyles(),
-    menu: provided => ({
+    menu: (provided) => ({
       ...provided,
       zIndex: 9999,
     }),
   },
   {
     ...CustomStyles(),
-    menu: provided => ({
+    menu: (provided) => ({
       ...provided,
       zIndex: 9998,
     }),
   },
   {
     ...CustomStyles(),
-    menu: provided => ({
+    menu: (provided) => ({
       ...provided,
       zIndex: 9997,
     }),
   },
   {
     ...CustomStyles(),
-    menu: provided => ({
+    menu: (provided) => ({
       ...provided,
       zIndex: 9996,
     }),
   },
 ];
 
-async function getCollegeData(){
-  const res = await fetch("https://test.bits-oasis.org/2023/main/registrations/get_college")
-  if(!res.ok){
+async function getCollegeData() {
+  const res = await fetch(
+    "https://test.bits-oasis.org/2023/main/registrations/get_college"
+  );
+  if (!res.ok) {
     throw new Error("Failed to fetch college");
   }
   return res.json();
@@ -245,15 +246,16 @@ export default function Page(props) {
 
       let assetsLoaded = 0;
 
-    const handleAssetLoad = () => {
-      assetsLoaded++;
-      if (assetsLoaded === assets.length) {
-        if(colleges.length>0 && events.length>0){
-        setTimeout(() => {
-          setIsLoading(false);
-        }, 2000);}
-      }
-    };
+      const handleAssetLoad = () => {
+        assetsLoaded++;
+        if (assetsLoaded === assets.length) {
+          if (colleges.length > 0 && events.length > 0) {
+            setTimeout(() => {
+              setIsLoading(false);
+            }, 2000);
+          }
+        }
+      };
 
       assets.forEach((asset) => {
         if (
@@ -277,7 +279,7 @@ export default function Page(props) {
 
       return cleanup;
     }
-  }, [loaderLoaded]);
+  }, [loaderLoaded , colleges , events]);
 
   const handleRegisterations = async () => {
     if (
@@ -343,16 +345,19 @@ export default function Page(props) {
     alert(response["message"]);
   };
 
-  function handlePhoneChange(inp){
-    formDispatchFn({type:'phoneChange',value:inp.target.value.replace(/\D/g, '')})
+  function handlePhoneChange(inp) {
+    formDispatchFn({
+      type: "phoneChange",
+      value: inp.target.value.replace(/\D/g, ""),
+    });
   }
-  function handleNameChange (inp){
-    formDispatchFn({type:'nameChange', value:inp})
+  function handleNameChange(inp) {
+    formDispatchFn({ type: "nameChange", value: inp });
   }
   function handleEmailChange(inp) {
     formDispatchFn({ type: "emailChange", value: inp });
   }
-  function handleStateChange (inp){
+  function handleStateChange(inp) {
     setSelectedState(inp);
     formDispatchFn({ type: "stateChange", value: inp });
   }
@@ -408,12 +413,14 @@ export default function Page(props) {
         console.error(error);
       });
     getCollegeData()
-      .then((data)=> {
-        setColleges(data["data"].map((item) => {
-          return {value: item.id , label: item.name}
-        }));
+      .then((data) => {
+        setColleges(
+          data["data"].map((item) => {
+            return { value: item.id, label: item.name };
+          })
+        );
       })
-      .catch((error)=> {
+      .catch((error) => {
         console.log(error);
       });
     getEventsData()
@@ -426,15 +433,24 @@ export default function Page(props) {
       })
       .catch((error) => {
         console.log(error);
-      })
+      });
   }, [statesData]);
 
   useEffect(() => {
     if (fetchedData) {
       const keys = Object.values(fetchedData);
-      setStates(keys.map((key) => ({ value: key["name"], label: key["name"] })));
-      if(filterObjectsByName(fetchedData, selectedState["value"])&& filterObjectsByName(fetchedData,selectedState["value"])[0]){
-        setCities(filterObjectsByName(fetchedData,selectedState["value"])[0]["cities"].map((key)=>({value: key["name"], label: key["name"]})))
+      setStates(
+        keys.map((key) => ({ value: key["name"], label: key["name"] }))
+      );
+      if (
+        filterObjectsByName(fetchedData, selectedState["value"]) &&
+        filterObjectsByName(fetchedData, selectedState["value"])[0]
+      ) {
+        setCities(
+          filterObjectsByName(fetchedData, selectedState["value"])[0][
+            "cities"
+          ].map((key) => ({ value: key["name"], label: key["name"] }))
+        );
       }
     }
   }, [fetchedData, selectedState]);
@@ -476,6 +492,20 @@ export default function Page(props) {
     document.removeEventListener("mouseup", handleSkullDragEnd);
   };
 
+  const handleTrackSnap = (e) => {
+    const formContainerElem = formContainerRef.current;
+    const scrollBarContainer = document.querySelector(
+      `.${styles.scrollBarContainer}`
+    );
+    const percentage =
+      ((e.clientY - scrollBarContainer.offsetTop) /
+        scrollBarContainer.clientHeight) *
+      100;
+    const maxScrollTopValue =
+      formContainerElem.scrollHeight - formContainerElem.clientHeight;
+    formContainerElem.scrollTop = (percentage / 100) * maxScrollTopValue;
+  };
+
   return (
     <>
       {isLoading && (
@@ -504,7 +534,7 @@ export default function Page(props) {
           <button onClick={() => router.back()}>BACK TO HOME</button>
         )}
         <div className={styles.regForm}>
-          <div className={styles.scrollBarContainer}>
+          <div className={styles.scrollBarContainer} onClick={handleTrackSnap}>
             <div className={styles.scrollBar}></div>
             <Image
               onMouseDown={handleSkullMouseDown}
@@ -574,10 +604,22 @@ export default function Page(props) {
               </div>
 
               <label>COLLEGE</label>
-              <Select options={colleges} id="college" styles={customStylesArray[0]} placeholder="COLLEGE" onChange={handleCollegeChange} />
+              <Select
+                options={colleges}
+                id="college"
+                styles={customStylesArray[0]}
+                placeholder="COLLEGE"
+                onChange={handleCollegeChange}
+              />
 
               <label>STATE</label>
-              <Select options={states} id="state" styles={customStylesArray[1]} placeholder="STATE" onChange={handleStateChange} />
+              <Select
+                options={states}
+                id="state"
+                styles={customStylesArray[1]}
+                placeholder="STATE"
+                onChange={handleStateChange}
+              />
 
               <label>CITY</label>
               <Creatable
@@ -662,9 +704,15 @@ export default function Page(props) {
               }}
               transition={{ ease: "easeOut", duration: 2 }}
             >
-              <Image src ={book} alt="" onLoad={(e)=> console.log(e)} style={{transform: 'scaleX(.8)'}}/>
-            </motion.div>   
-          </div>)}
+              <Image
+                src={book}
+                alt=""
+                onLoad={(e) => console.log(e)}
+                style={{ transform: "scaleX(.8)" }}
+              />
+            </motion.div>
+          </div>
+        )}
         <div className={styles.regBtnContainer}>
           <Image src={register} onClick={handleRegisterations} alt="" />
         </div>
