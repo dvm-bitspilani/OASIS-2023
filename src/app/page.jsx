@@ -14,7 +14,7 @@ import HamImage from "../../public/static/images/hamIcon.svg";
 import landingPgBookImg from "../../public/static/images/LandingPageBook.png";;
 import rightElements from "../../public/static/images/landingPgRightElements.png";;
 import leftElements from "../../public/static/images/landingPgLeftElements.png";
-
+// import MyVideoLoader from "@/components/VideoLoader";
 import { gsap } from "gsap";
 ;
 import { AnimatePresence, motion } from "framer-motion";
@@ -111,25 +111,89 @@ export default function Home() {
       />
     );
   });
+  const [allAssetsLoaded, setAllAssetsLoaded] = useState(false);
+  // useEffect(() => {
+  //   if (typeof window !== "undefined") {
+  //     setIsLoading(true);
+  //     setShowLoader(true);
+  //     const assets = [textLogo, landingPgBookImg, rightElements, leftElements];
+  //     const loadAssets = () => {
+  //       const assetPromises = assets.map((asset) => {
+  //         return new Promise((resolve) => {
+  //           const img = new Image();
+  //           img.onload = resolve;
+  //           img.src = asset;
+  //         });
+  //       });
+
+  //       Promise.all(assetPromises).then(() => {
+  //         // All assets are loaded
+  //         setIsLoading(false);
+  //         setAllAssetsLoaded(true);
+  //         setShowLoader(false);
+  //       });
+  //     };
+
+  //     // Listen for when all assets are loaded
+  //     window.addEventListener("load", loadAssets);
+
+  //     // setTimeout(() => {
+  //       setTextLogoWidth(Math.floor(window.innerWidth * 0.3));
+  //       setTextLogoHeight(Math.floor(window.innerHeight * 0.2));
+  //       setLandingBookWidth(Math.floor(window.innerWidth * 0.5));
+  //       setLandingBookHeight(Math.floor(window.innerHeight * 0.5));
+  //       setRegisterBtnWidth(Math.min(200, Math.floor(window.innerWidth * 0.5)));
+  //       setRegisterBtnHeight(75);
+  //       // setIsLoading(false);
+  //       // setTimeout(() => {
+  //       // setShowLoader(false);
+  //       // }, 1000);
+  //     // }, 2900);
+  //   }
+  // }, []);
 
   useEffect(() => {
     if (typeof window !== "undefined") {
+      console.log('first')
       setIsLoading(true);
       setShowLoader(true);
-      setTimeout(() => {
-        setTextLogoWidth(Math.floor(window.innerWidth * 0.3));
-        setTextLogoHeight(Math.floor(window.innerHeight * 0.2));
-        setLandingBookWidth(Math.floor(window.innerWidth * 0.5));
-        setLandingBookHeight(Math.floor(window.innerHeight * 0.5));
-        setRegisterBtnWidth(Math.min(200, Math.floor(window.innerWidth * 0.5)));
-        setRegisterBtnHeight(75);
+  
+      // const assets = [textLogo, landingPgBookImg, rightElements, leftElements];
+      // const assetPromises = assets.map((asset) => {
+      //   return new Promise((resolve) => {
+      //     Image.onload = resolve;
+      //     Image.src = asset;
+      //     console.log('second')
+      //   });
+      // });
+  
+      // Promise.all(assetPromises).then(() => {
+      //   // All assets are loaded
+      //   setAllAssetsLoaded(true);
+      //   setShowLoader(false);
+      //   setIsLoading(false);
+      //   console.log('third')
+      //   console.log(showLoader)
+      // });
+  
+      setTextLogoWidth(Math.floor(window.innerWidth * 0.3));
+      setTextLogoHeight(Math.floor(window.innerHeight * 0.2));
+      setLandingBookWidth(Math.floor(window.innerWidth * 0.5));
+      setLandingBookHeight(Math.floor(window.innerHeight * 0.5));
+      setRegisterBtnWidth(Math.min(200, Math.floor(window.innerWidth * 0.5)));
+      setRegisterBtnHeight(75);
+      const loaderTimeout = setTimeout(() => {
         setIsLoading(false);
-        // setTimeout(() => {
         setShowLoader(false);
-        // }, 1000);
-      }, 2900);
+      }, 3000); // Adjust the timeout duration as needed
+  
+      return () => {
+        // Clear the timeout if the component unmounts
+        clearTimeout(loaderTimeout);
+      };
     }
   }, []);
+  
 
   const [delayGiven, setDelayGiven] = useState(false);
 
@@ -447,13 +511,16 @@ export default function Home() {
     >
       {isLoading ? (
         <div className={styles.loaderContainer}>
-          <Image
-            src="/static/images/OasisLogo.png"
-            alt="OASIS"
-            style={{ transform: "scale(.5)" }}
-            width={519}
-            height={185}
-          />
+          {/* <MyVideoLoader/> */}
+          <video
+          src={require('../../public/static/images/landingLoaderVideo.mp4')} // Update with the correct path
+          autoPlay
+          muted
+          loop
+          playsInline
+          preload="auto"
+          width="100%"
+        />
         </div>
       ) : (
         <>
@@ -506,7 +573,8 @@ export default function Home() {
           </div>
           <div className={styles.pageWrapper}>
             <div
-              className={`${styles.midSection} ${
+              className={`${styles.midSection} 
+              ${
                 showLoader ? styles.loaderContainer : ""
               } ${isLoading ? "loaded" : ""}`}
             >
@@ -553,6 +621,10 @@ export default function Home() {
                     animate={{ opacity: 1 }}
                     exit={{ opacity: 0 }}
                     transition={{duration: 1}}
+                    style = {{
+                      position: "absolute",
+                      bottom: "40px"
+                    }}
                   >
                     <Link href="/register" legacyBehavior>
                       <a className={styles.registerBtnWrapper}>
