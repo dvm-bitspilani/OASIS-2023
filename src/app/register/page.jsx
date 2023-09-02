@@ -616,7 +616,7 @@ export default function Page(props) {
               animate= {{opacity: isLoading? 0:1 ,transform:isLoading? "scale(1) translateX(0) translateY(0) rotate(0)" :"scaleX(.9) translateX(-8rem) translateY(5rem) rotate(-10deg)"}}
               transition={{ ease: "easeOut", duration: 2 }}
             >
-              <Image src ={book} alt="" style={{transform: 'scaleX(.8)'}}/>
+              <Image src ={book} alt="" onLoad={(e)=> console.log(e)} style={{transform: 'scaleX(.8)'}}/>
             </motion.div>   
           </div>}
         <div className={styles.regBtnContainer}>
