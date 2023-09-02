@@ -17,6 +17,8 @@ import cross from "../../../public/static/images/cross.svg";
 import { useWindowSize } from "rooks";
 import CustomStyles from "./CustomStyles";
 
+import { generateRandomStatesArray } from "../page";
+
 const noCitiesMessage = () => "Select a State First";
 
 const customStylesArray = [
@@ -178,6 +180,9 @@ const year = [
 ];
 
 export default function Page(props) {
+
+  console.log(generateRandomStatesArray(5, 12, 12 , 14, 14))
+
   const { innerWidth, innerHeight } = useWindowSize();
 
   const [formData, formDispatchFn] = useReducer(
