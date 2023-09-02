@@ -243,6 +243,11 @@
   .textLogoImg {
     scale: 0.75;
   }
+
+  .hamBtn img{
+    scale: 0.8;
+  }
+
 }
 @media screen and (max-width: 400px) {
   .textLogoImg {
