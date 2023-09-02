@@ -9,6 +9,7 @@ import Select from "react-select";
 import Creatable from "react-select/creatable";
 import Radio from "../../components/radioButton.jsx";
 import styles from "./page.module.css";
+import indexStyles from "../page.module.css";
 import skull from "../../../public/static/images/skull.svg";
 import book from "../../../public/static/images/regBookOptimised.png";
 import register from "../../../public/static/images/registerBtn.svg";
@@ -180,8 +181,10 @@ const year = [
 ];
 
 export default function Page(props) {
+  console.log(generateRandomStatesArray(5, 12, 12, 14, 14));
 
-  console.log(generateRandomStatesArray(5, 12, 12 , 14, 14))
+  const numberOfRandom = 10;
+  const randomGenerationConfig = [32, -10, 30, 40];
 
   const { innerWidth, innerHeight } = useWindowSize();
 
@@ -284,7 +287,7 @@ export default function Page(props) {
 
       return cleanup;
     }
-  }, [loaderLoaded , colleges , events]);
+  }, [loaderLoaded, colleges, events]);
 
   const handleRegisterations = async () => {
     if (
@@ -465,7 +468,7 @@ export default function Page(props) {
 
     return () => {
       // formContainerRef.current.removeEventListener("scroll" , handleScroll)
-    }
+    };
   }, []);
 
   const handleSkullMouseDown = (e) => {
@@ -695,23 +698,31 @@ export default function Page(props) {
           </div>
         </div>
         {innerWidth > 1000 && (
-          <div className={styles.imgContainer}>
-            <motion.div
-              initial={{
-                opacity: 0,
-                transform: "scale(1) translateX(0) translateY(0) rotate(0deg)",
-              }}
-              animate={{
-                opacity: isLoading ? 0 : 1,
-                transform: isLoading
-                  ? "scale(1) translateX(0) translateY(0) rotate(0)"
-                  : "scaleX(.9) translateX(-8rem) translateY(5rem) rotate(-10deg)",
-              }}
-              transition={{ ease: "easeOut", duration: 2 }}
-            >
-              <Image src ={book} alt="" style={{transform: 'scaleX(.8)'}}/>
-            </motion.div>   
-          </div>)}
+          <motion.div
+            className={styles.imgContainer}
+            initial={{
+              opacity: 0,
+              transform: "scale(1) translateX(0) translateY(0) rotate(0deg)",
+            }}
+            animate={{
+              opacity: isLoading ? 0 : 1,
+              transform: isLoading
+                ? "scale(1) translateX(0) translateY(0) rotate(0)"
+                : "scaleX(.9) translateX(-8rem) translateY(5rem) rotate(-10deg)",
+            }}
+            transition={{ ease: "easeOut", duration: 2 }}
+          >
+            {/* <Image
+              className={indexStyles.leftSymbol}
+              src="/static/images/Group1.png"
+              alt=""
+              width={80}
+              height={80}
+              draggable={false}
+            /> */}
+            <Image src={book} alt="" style={{ transform: "scaleX(.8)" }} />
+          </motion.div>
+        )}
         <div className={styles.regBtnContainer}>
           <Image src={register} onClick={handleRegisterations} alt="" />
         </div>

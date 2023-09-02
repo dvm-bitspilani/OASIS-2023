@@ -29,6 +29,21 @@
   display: flex;
   position: relative;
 }
+
+.hamAsset:hover >img {
+  animation: rotation360 10s linear infinite forwards;
+}
+
+/* Adding hover effect as animation - infinite rotate 360 deg */
+@keyframes rotation360 {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
 .hamBG {
   position: absolute;
   top: 4rem;
