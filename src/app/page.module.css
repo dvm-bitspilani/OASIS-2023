@@ -134,7 +134,7 @@
   
 }
 .LandingBookImg{
-  width: 80% !important;
+  width: 80%;
   object-fit: contain;
 
     animation-name: floating;
@@ -299,6 +299,14 @@
       }
     @media screen and (max-width: 550px) {
 
+      .bookImgWrapper{
+        width: 100%;  
+      }
+
+      .LandingBookImg{
+        width: 100%;
+      }
+
       .leftSymbol, .rightSymbol{
         /* display: none; */
         width: 50px;
@@ -306,9 +314,7 @@
       }
       }
     @media screen and (max-width: 400px) {
-        .LandingBookImg{
-            scale: 0.6;
-        }
+
       }
       .loaderContainer{
         position:fixed;
