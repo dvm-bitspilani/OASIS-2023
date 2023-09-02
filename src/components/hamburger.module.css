@@ -1,0 +1,309 @@
+.page {
+    --in-circle-size: 20rem;
+    --logo-size: 8rem;
+    --out-circle-size: 47rem;
+    --glow-size: 7rem;
+    --circle-size: 43rem;
+    --item-size: 3.5rem;
+    --tag-size: 2rem;
+    --tag-distance: 30rem;
+
+
+
+    --item-distance: calc(var(--circle-size) / 2);
+    --item-fontsize: calc(var(--item-size)*0.5);
+    --circle2-size: var(--out-circle-size);
+}
+
+.background {
+    width: 100%;
+    height: 100%;
+    background-image: url("../../public/static/images/hamBG.png");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    overflow: hidden;
+}
+
+.page {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100vh;
+    width: 100vw;
+    overflow: hidden;
+}
+
+.innercircle {
+    border-radius: 25rem;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    filter: drop-shadow(0px 0px 25px #ffffff);
+}
+
+.innercircle img {
+    width: var(--in-circle-size);
+    height: var(--in-circle-size);
+    border-radius: var(--in-circle-size);
+    filter: drop-shadow(0px 0px 25px #ffffff);
+}
+
+.logo {
+    position: absolute;
+    top: 49%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 2;
+}
+
+.logo img {
+    height: var(--logo-size);
+    width: var(--logo-size);
+}
+
+.outerpath {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-49.5%, -52%);
+    height: var(--out-circle-size);
+}
+
+.outerpath svg {
+    height: var(--out-circle-size);
+    filter: drop-shadow(0px 0px 25px #ffffff);
+
+}
+
+.glowbox {
+    height: 0;
+    width: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.glowbox img {
+    height: var(--glow-size);
+    filter: blur(calc(var(--glow-size)*0.1));
+}
+
+.circle {
+    width: var(--circle-size);
+    height: var(--circle-size);
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: white;
+    z-index: 2;
+}
+
+.item {
+    /* position: absolute; */
+    background-color: transparent;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+    font-size: var(--item-fontsize);
+    border: solid white 0.75px;
+    font-family: 'Montserrat';
+    z-index: 2;
+    cursor: pointer;
+}
+
+.number {
+    top: 50%;
+    left: -50%;
+    position: absolute;
+}
+
+.number:hover {
+    color: black;
+    transition: all 0.5s;
+}
+
+.number:hover>.txt {
+    scale: 1.1;
+    color: white;
+    transition: all 0.5s;
+    text-shadow: rgba(255, 255, 255, 0.568) 0px 0px 46px;
+
+}
+
+.number:hover>.txt2 {
+    scale: 1.1;
+    color: white;
+    transition: all 0.5s;
+    text-shadow: rgba(255, 255, 255, 0.568) 0px 0px 46px;
+
+}
+
+.number:hover>.numbox>.num {
+    scale: 1.1;
+    background-color: white;
+    outline: solid white 1px;
+    outline-offset: 8px;
+    transition: all 0.5s;
+}
+
+.num {
+    position: absolute;
+    top: 0;
+    left: 0;
+    transform: translate(-50%, -50%);
+    width: 3rem;
+    height: 3rem;
+    border: solid white 0.5px;
+    border-radius: 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.txt {
+    position: absolute;
+    left: 0;
+    top: 0;
+    transform: translate(3rem, -50%);
+    font-family: 'Montserrat';
+    color: #858585;
+    text-align: right;
+    font-weight: 700;
+    font-size: 2rem;
+    width: 100%;
+    white-space: nowrap;
+}
+
+.txt2 {
+    position: absolute;
+    right: 0;
+    top: 0;
+    transform: translate(-3rem, -50%);
+    font-family: 'Montserrat';
+    color: #858585;
+    text-align: right;
+    font-weight: 700;
+    font-size: 2rem;
+
+}
+
+.item:nth-child(5) {
+    transform: rotate(0deg) translate(var(--item-distance));
+}
+
+.item:nth-child(4) {
+    transform: rotate(72deg) translate(var(--item-distance));
+}
+
+.item:nth-child(4)>* {
+    transform: rotate(-72deg);
+}
+
+.item:nth-child(3) {
+    transform: rotate(150deg) translate(var(--item-distance));
+}
+
+.item:nth-child(3)>* {
+    transform: rotate(-150deg);
+}
+
+.item:nth-child(2) {
+    transform: rotate(210deg) translate(var(--item-distance));
+}
+
+.item:nth-child(2)>* {
+    transform: rotate(-210deg);
+}
+
+.item:nth-child(1) {
+    transform: rotate(288deg) translate(var(--item-distance));
+}
+
+.item:nth-child(1)>* {
+    transform: rotate(-288deg);
+}
+
+/* .circle2 {
+    width: var(--circle2-size);
+    height: var(--circle2-size);
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: white;
+    z-index: 0;
+}
+
+.tag {
+    position: absolute;
+    background-color: transparent;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: 'Montserrat';
+    color: #858585;
+    text-align: right;
+    font-size: var(--tag-size);
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+    opacity: 0.5;
+    cursor: pointer;
+    border: solid red;
+}
+
+.text{
+    border: solid green;
+}
+
+.tag:nth-child(5) {
+    transform: rotate(0deg) translate(calc(var(--tag-distance)*1.05));
+}
+
+.tag:nth-child(4) {
+    transform: rotate(48deg) translate(calc(var(--tag-distance)*0.93));
+}
+
+.tag:nth-child(4)>* {
+    transform: rotate(-48deg);
+}
+
+.tag:nth-child(3) {
+    transform: rotate(158deg) translate(var(--tag-distance));
+}
+
+.tag:nth-child(3)>* {
+    transform: rotate(-158deg);
+}
+
+.tag:nth-child(2) {
+    transform: rotate(202.5deg) translate(calc(var(--tag-distance)*0.96));
+}
+
+.tag:nth-child(2)>* {
+    transform: rotate(-202.5deg);
+}
+
+.tag:nth-child(1) {
+    transform: rotate(305.5deg) translate(calc(var(--tag-distance)*0.86));
+}
+
+.tag:nth-child(1)>* {
+    transform: rotate(-305.5deg);
+} */
+
+/* .glowbox, .innercircle, .ham-logo, .outerpath, .circle, .circle2{
+    scale: 0.7;
+}  */

@@ -494,10 +494,14 @@ export default function Page(props) {
 
 
   function handleScroll (inp){
-    const maxScrollTopValue = formContainerRef.current.scrollTopMax;
-    console.log(skullRef.current);
-    const percentage = (formContainerRef.current.scrollTop / maxScrollTopValue )*100;
-    skullRef.current.style.top = `${percentage}%`;
+    // const maxScrollTopValue = formContainerRef.current.scrollTopMax;
+    const maxScrollTopValue = formContainerRef.current.scrollHeight - formContainerRef.current.clientHeight;
+    // const percentage = (formContainerRef.current.scrollTop / maxScrollTopValue )*100;
+    const percentage = (formContainerRef.current.scrollTop / maxScrollTopValue)*100;
+    percentage > 100 ? skullRef.current.style.top = "100%" : skullRef.current.style.top = `${percentage}%`;
+    // console.log(percentage);
+    // skullRef.current.style.top = `${percentage}%`;
+    // skullElem.style.top = `${percentage}%`;
   }
 
 
@@ -538,11 +542,11 @@ export default function Page(props) {
   }, [fetchedData , selectedState])
 
   useEffect(() => {
-    formContainerRef.current.addEventListener("wheel" , handleScroll);
+    formContainerRef.current.addEventListener("scroll" , handleScroll);
 
-    return () => {
-      formContainerRef.current.removeEventListener("wheel" , handleScroll)
-    }
+    // return () => {
+    //   formContainerRef.current.removeEventListener("scroll" , handleScroll)
+    // }
   }, [])
 
 
@@ -559,7 +563,7 @@ export default function Page(props) {
         <div className={styles.regForm}>
           <div className={styles.scrollBarContainer}>
             <div className={styles.scrollBar}></div> 
-            <Image id="skull" src={skull} alt="" ref={skullRef} />
+            <Image id="skull" src={skull} alt="skull" ref={skullRef} />
           </div>
           <div className={styles.formContainer} id="formContainer" ref={formContainerRef} >
             <div className={styles.form} onScroll={handleScroll}>
