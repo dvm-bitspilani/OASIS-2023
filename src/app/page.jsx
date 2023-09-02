@@ -10,13 +10,11 @@ import Link from "next/link";
 import textLogo from "../../public/static/images/OasisLogo.png";
 import Navbar from "@/components/Navbar";
 import Hamburger from "@/components/hamburger";
-import HamImage from "../../public/static/images/hamIcon.svg";
-import landingPgBookImg from "../../public/static/images/LandingPageBook.png";;
-import rightElements from "../../public/static/images/landingPgRightElements.png";;
+import landingPgBookImg from "../../public/static/images/LandingPageBook.png";
+import rightElements from "../../public/static/images/landingPgRightElements.png";
 import leftElements from "../../public/static/images/landingPgLeftElements.png";
 
 import { gsap } from "gsap";
-;
 import { AnimatePresence, motion } from "framer-motion";
 import { useWindowSize } from "rooks";
 
@@ -32,22 +30,23 @@ export default function Home() {
   const [isLoading, setIsLoading] = useState(true);
   const [showLoader, setShowLoader] = useState(true);
 
-  const [numberOfRandom, setNumberOfRandom] = useState(6);
+  const numberOfRandom = 10;
+  const randomGenerationConfig = [32, -10, 30, 40];
 
   const [randomLeft1, setrandomLeft1] = useState(
-    generateRandomStatesArray(numberOfRandom)
+    generateRandomStatesArray(numberOfRandom, ...randomGenerationConfig)
   );
 
   const [randomLeft2, setrandomLeft2] = useState(
-    generateRandomStatesArray(numberOfRandom)
+    generateRandomStatesArray(numberOfRandom, ...randomGenerationConfig)
   );
 
   const [randomRight1, setRandomRight1] = useState(
-    generateRandomStatesArray(numberOfRandom)
+    generateRandomStatesArray(numberOfRandom, ...randomGenerationConfig)
   );
 
   const [randomRight2, setRandomRight2] = useState(
-    generateRandomStatesArray(numberOfRandom)
+    generateRandomStatesArray(numberOfRandom, ...randomGenerationConfig)
   );
 
   const scope = useRef(null);
@@ -147,7 +146,13 @@ export default function Home() {
         const tl = gsap.timeline({
           onComplete: () => {
             if (key === randomLeft1.length - 1) {
-              setrandomLeft1(generateRandomStatesArray(numberOfRandom));
+              console.log("Animation 1 complete");
+              setrandomLeft1(
+                generateRandomStatesArray(
+                  numberOfRandom,
+                  ...randomGenerationConfig
+                )
+              );
             }
           },
         });
@@ -157,7 +162,7 @@ export default function Home() {
           top: `${(item.endingY + item.startingY) / 2}%`,
           // scale: 1,
           // opacity: 1,
-          delay: `${key * 1}`,
+          delay: `${Math.floor(key / 1.2) * 1}`,
           duration: 2.5,
           ease: "none",
         });
@@ -215,7 +220,13 @@ export default function Home() {
           onComplete: () => {
             if (key === randomLeft2.length - 1) {
               setDelayGiven(true);
-              setrandomLeft2(generateRandomStatesArray(numberOfRandom));
+              console.log("Animation 2 complete");
+              setrandomLeft2(
+                generateRandomStatesArray(
+                  numberOfRandom,
+                  ...randomGenerationConfig
+                )
+              );
             }
           },
         });
@@ -225,7 +236,7 @@ export default function Home() {
           top: `${(item.endingY + item.startingY) / 2}%`,
           // scale: 1,
           // opacity: 1,
-          delay: `${key * 1}`,
+          delay: `${Math.floor(key / 1.2) * 1}`,
           duration: 2.5,
           ease: "none",
         });
@@ -251,7 +262,7 @@ export default function Home() {
             rotate: -80,
             scale: 1,
             duration: 5,
-            ease: "power2.in",
+            ease: "none",
           },
           "-=5"
         );
@@ -260,8 +271,8 @@ export default function Home() {
 
     return () => {
       ctx.revert();
-    }; 
-  }}, [isLoading, randomLeft2, delayGiven,numberOfRandom]);
+    }; // cleanup
+  }}, [isLoading, randomLeft2, delayGiven, numberOfRandom]);
 
   useLayoutEffect(() => {
     if(!isLoading){
@@ -277,7 +288,13 @@ export default function Home() {
         const tl = gsap.timeline({
           onComplete: () => {
             if (key === randomRight1.length - 1) {
-              setRandomRight1(generateRandomStatesArray(numberOfRandom));
+              console.log("Animation 1 Right complete");
+              setRandomRight1(
+                generateRandomStatesArray(
+                  numberOfRandom,
+                  ...randomGenerationConfig
+                )
+              );
             }
           },
         });
@@ -287,7 +304,7 @@ export default function Home() {
           top: `${(item.endingY + item.startingY) / 2}%`,
           // scale: 1,
           // opacity: 1,
-          delay: `${key * 1}`,
+          delay: `${Math.floor(key / 1.2) * 1}`,
           duration: 2.5,
           ease: "none",
         });
@@ -341,7 +358,13 @@ export default function Home() {
           onComplete: () => {
             if (key === randomRight2.length - 1) {
               setDelayGiven(true);
-              setRandomRight2(generateRandomStatesArray(numberOfRandom));
+              console.log("Animation 2 Right complete");
+              setRandomRight2(
+                generateRandomStatesArray(
+                  numberOfRandom,
+                  ...randomGenerationConfig
+                )
+              );
             }
           },
         });
@@ -351,7 +374,7 @@ export default function Home() {
           top: `${(item.endingY + item.startingY) / 2}%`,
           // scale: 1,
           // opacity: 1,
-          delay: `${key * 1}`,
+          delay: `${Math.floor(key / 1.2) * 1}`,
           duration: 2.5,
           ease: "none",
         });
@@ -377,7 +400,7 @@ export default function Home() {
             rotate: 80,
             scale: 1,
             duration: 5,
-            ease: "power2.in",
+            ease: "none",
           },
           "-=5"
         );
@@ -388,7 +411,6 @@ export default function Home() {
       ctx.revert();
     }; // cleanup
   }}, [isLoading, randomRight2, delayGiven, numberOfRandom]);
-
 
   const openHam = () => {
     if (isHamOpen) {
@@ -405,7 +427,7 @@ export default function Home() {
     if (isHamOpen && !isLoading) {
       topBar1.style.transform = "rotatez(45deg) translate(6px,0px)";
       topBar2.style.transform = "rotatez(-45deg) translate(1px,0px)";
-      topBar3.style.transform = "translate(16px,-8.5px) rotatez(47deg)";
+      topBar3.style.transform = "translate(15px,-6.5px) rotatez(47deg)";
       topBar3.style.width = "50%";
       topBar3.style.borderRadius = "0px 5px 5px 0px";
     } else if (!isHamOpen && !isLoading) {
@@ -525,13 +547,21 @@ export default function Home() {
             style={isHamOpen ? { zIndex: 10 } : { zIndex: 2 }}
           >
             <div className={styles.hamBtn}>
+              <Navbar />
               <AnimatePresence>
-                <Image src={HamImage} alt="Menu" style={{scale: .8}}/>
-                <div id="ham-menu" className={styles.hamIcon} onClick={openHam}>
-                  <span id="hamIcon1" className={styles.hamIcon1}></span>
-                  <span id="hamIcon2" className={styles.hamIcon2}></span>
-                  <span id="hamIcon3" className={styles.hamIcon3}></span>
+                <div className={styles.hamAsset}>
+                  <Image src="/static/images/hamIcon.svg" width={103} height={103} alt="Menu" />
+                  <div
+                    id="ham-menu"
+                    className={styles.hamIcon}
+                    onClick={openHam}
+                  >
+                    <span id="hamIcon1" className={styles.hamIcon1}></span>
+                    <span id="hamIcon2" className={styles.hamIcon2}></span>
+                    <span id="hamIcon3" className={styles.hamIcon3}></span>
+                  </div>
                 </div>
+
                 {isHamOpen ? (
                   <motion.div
                     key="hamBG"
@@ -614,7 +644,7 @@ export default function Home() {
                     initial={{ opacity: 0 }}
                     animate={{ opacity: 1 }}
                     exit={{ opacity: 0 }}
-                    transition={{duration: 1}}
+                    transition={{ duration: 1 }}
                   >
                     <Link href="/register" legacyBehavior>
                       <a className={styles.registerBtnWrapper}>
@@ -640,14 +670,21 @@ export default function Home() {
   );
 }
 
-export function getRandomStats() {
+export function getRandomStats(
+  startingYPoint,
+  endingYPoint,
+  startingYRange,
+  endingYRange
+) {
   const random = {};
   random.int = Math.floor(Math.random() * 10 + 1);
   random.file = `/static/images/Group${random.int}.png`;
 
   // x - right, y - top
   // get a random number from 35 to 45
-  random.startingY = Math.floor(Math.random() * 30 + 32);
+  random.startingY = Math.floor(
+    Math.random() * startingYRange + startingYPoint
+  );
   random.startingX = 25;
 
   // test
@@ -655,16 +692,25 @@ export function getRandomStats() {
   // const randomY = randomYArr[Math.floor(Math.random() * 2)];
 
   // get a random number between 6 and 36
-  random.endingY = Math.floor(Math.random() * 40 + (-10));
+  random.endingY = Math.floor(Math.random() * endingYRange + endingYPoint);
   random.endingX = 86;
   random.delay = Math.floor(Math.random() * 4);
   return random;
 }
 
-export function generateRandomStatesArray(number) {
+export function generateRandomStatesArray(
+  number,
+  startingYPoint,
+  endingYPoint,
+  startingYRange,
+  endingYRange
+) {
   const randomArray = [];
   for (let i = 0; i < number; i++) {
-    randomArray.push(getRandomStats());
+    // randomArray.push(getRandomStats(32, -10, 30, 40));
+    randomArray.push(
+      getRandomStats(startingYPoint, endingYPoint, startingYRange, endingYRange)
+    );
   }
   return randomArray;
 }

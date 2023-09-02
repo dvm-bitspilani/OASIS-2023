@@ -20,10 +20,14 @@
   overflow: hidden;
 }
 .hamBtn{  
-  margin: 2rem;
   display: flex;
   align-items: center;
-  justify-content: flex-end;
+  justify-content: space-between;
+  padding: 1rem 2rem;
+}
+.hamAsset{
+  display: flex;
+  position: relative;
 }
 .hamBG{
   position: absolute;
@@ -41,17 +45,17 @@
   }
 }
 .hamIcon {
+  height: 4.5rem;
   position: absolute;
-  right: 5.4rem;
-  height: 4.75rem;
+  top: 1rem;
+  left: 2.45rem;
   width: 2rem;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   padding: 1.5rem 0;
-  position: relative;
-  z-index: 100000;
   cursor: pointer;
+  z-index: 1000;
 }
 
 .hamIcon1 {
