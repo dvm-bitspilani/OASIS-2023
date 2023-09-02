@@ -114,7 +114,6 @@ export default function Home() {
 
   useEffect(() => {
     if (typeof window !== "undefined") {
-      setIsLoading(true);
       setShowLoader(true);
       setTimeout(() => {
         setTextLogoWidth(Math.floor(window.innerWidth * 0.3));
@@ -123,7 +122,6 @@ export default function Home() {
         setLandingBookHeight(Math.floor(window.innerHeight * 0.5));
         setRegisterBtnWidth(Math.min(200, Math.floor(window.innerWidth * 0.5)));
         setRegisterBtnHeight(75);
-        setIsLoading(false);
         // setTimeout(() => {
         setShowLoader(false);
         // }, 1000);
@@ -134,14 +132,10 @@ export default function Home() {
   const [delayGiven, setDelayGiven] = useState(false);
 
   useLayoutEffect(() => {
-    // create our context. This function is invoked immediately and all GSAP animations and ScrollTriggers created during the execution of this function get recorded so we can revert() them later (cleanup)
+    // create our context. This function is invoked immediately and all GSAP animations and ScrollTriggers created during the execution of this function get recorded so we can revert() them later (cleanup)\
+    if(!isLoading){
     let ctx = gsap.context(() => {
       randomLeft1.forEach((item, key) => {
-        // console.log(
-        //   item.startingX,
-        //   item.endingX,
-        //   item.startingX + item.endingX / 2
-        // );
 
         gsap.set(`#left_1_${key}`, {
           right: `${item.startingX}%`,
@@ -151,12 +145,8 @@ export default function Home() {
         });
 
         const tl = gsap.timeline({
-          onStart: () => {
-            console.log("Animation 1 started");
-          },
           onComplete: () => {
             if (key === randomLeft1.length - 1) {
-              console.log("Animation 1 complete");
               setrandomLeft1(generateRandomStatesArray(numberOfRandom));
             }
           },
@@ -203,10 +193,11 @@ export default function Home() {
     return () => {
       ctx.revert();
     }; // cleanup
-  }, [isLoading, randomLeft1, numberOfRandom]);
+  }}, [isLoading, randomLeft1, numberOfRandom]);
 
   useLayoutEffect(() => {
     // create our context. This function is invoked immediately and all GSAP animations and ScrollTriggers created during the execution of this function get recorded so we can revert() them later (cleanup)
+    if(!isLoading){
     let ctx = gsap.context(() => {
       randomLeft2.forEach((item, key) => {
         gsap.set(`#left_2_${key}`, {
@@ -221,13 +212,9 @@ export default function Home() {
         const tl = gsap.timeline({
           delay: delayGiven ? 0.1 : 5,
           // delay: 1.5,
-          onStart: () => {
-            console.log("Animation 2 started");
-          },
           onComplete: () => {
             if (key === randomLeft2.length - 1) {
               setDelayGiven(true);
-              console.log("Animation 2 complete");
               setrandomLeft2(generateRandomStatesArray(numberOfRandom));
             }
           },
@@ -273,10 +260,11 @@ export default function Home() {
 
     return () => {
       ctx.revert();
-    }; // cleanup
-  }, [isLoading, randomLeft2, delayGiven,numberOfRandom]);
+    }; 
+  }}, [isLoading, randomLeft2, delayGiven,numberOfRandom]);
 
   useLayoutEffect(() => {
+    if(!isLoading){
     let ctx = gsap.context(() => {
       randomRight1.forEach((item, key) => {
         gsap.set(`#right_1_${key}`, {
@@ -287,12 +275,8 @@ export default function Home() {
         });
 
         const tl = gsap.timeline({
-          onStart: () => {
-            console.log("Animation 1 Right started");
-          },
           onComplete: () => {
             if (key === randomRight1.length - 1) {
-              console.log("Animation 1 Right complete");
               setRandomRight1(generateRandomStatesArray(numberOfRandom));
             }
           },
@@ -339,9 +323,10 @@ export default function Home() {
     return () => {
       ctx.revert();
     }; // cleanup
-  }, [isLoading, randomRight1, numberOfRandom]);
+  }}, [isLoading, randomRight1, numberOfRandom]);
 
   useLayoutEffect(() => {
+    if(!isLoading){
     let ctx = gsap.context(() => {
       randomRight2.forEach((item, key) => {
         gsap.set(`#right_2_${key}`, {
@@ -353,13 +338,9 @@ export default function Home() {
 
         const tl = gsap.timeline({
           delay: delayGiven ? 0.1 : 5,
-          onStart: () => {
-            console.log("Animation 2 Right started");
-          },
           onComplete: () => {
             if (key === randomRight2.length - 1) {
               setDelayGiven(true);
-              console.log("Animation 2 Right complete");
               setRandomRight2(generateRandomStatesArray(numberOfRandom));
             }
           },
@@ -406,7 +387,7 @@ export default function Home() {
     return () => {
       ctx.revert();
     }; // cleanup
-  }, [isLoading, randomRight2, delayGiven, numberOfRandom]);
+  }}, [isLoading, randomRight2, delayGiven, numberOfRandom]);
 
 
   const openHam = () => {
@@ -438,29 +419,110 @@ export default function Home() {
 
   const { innerWidth, innerHeight } = useWindowSize();
 
+  const regLoaderRef = useRef(null);
+  const [loaderLoaded, setLoaderLoaded] = useState(false);
+  useEffect(() => {
+    const assets = [regLoaderRef.current];
+    let assetsLoaded = 0;
+
+    const handleAssetLoad = () => {
+      assetsLoaded++;
+      if (assetsLoaded === assets.length) {
+        setTimeout(() => {
+          setLoaderLoaded(true);
+        }, 1000);
+      }
+    };
+
+    assets.forEach((asset) => {
+      if (
+        asset.complete ||
+        asset.readyState === 4 ||
+        asset.tagName === "LINK"
+      ) {
+        handleAssetLoad();
+      } else {
+        asset.addEventListener("load", handleAssetLoad);
+        asset.addEventListener("error", handleAssetLoad);
+      }
+    });
+
+    const cleanup = () => {
+      assets.forEach((asset) => {
+        asset.removeEventListener("load", handleAssetLoad);
+        asset.removeEventListener("error", handleAssetLoad);
+      });
+    };
+
+    return cleanup;
+  }, []);
+  useEffect(() => {
+    if (loaderLoaded) {
+      const assets = document.querySelectorAll(
+        "img",
+        "font",
+        "style",
+        "iframe"
+      );
+
+      let assetsLoaded = 0;
+
+      const handleAssetLoad = () => {
+        assetsLoaded++;
+        if (assetsLoaded === assets.length) {
+            setTimeout(() => {
+              setIsLoading(false);
+            }, 2000);
+        }
+      };
+
+      assets.forEach((asset) => {
+        if (
+          asset.complete ||
+          asset.readyState === 4 ||
+          asset.tagName === "LINK"
+        ) {
+          handleAssetLoad();
+        } else {
+          asset.addEventListener("load", handleAssetLoad);
+          asset.addEventListener("error", handleAssetLoad);
+        }
+      });
+
+      const cleanup = () => {
+        assets.forEach((asset) => {
+          asset.removeEventListener("load", handleAssetLoad);
+          asset.removeEventListener("error", handleAssetLoad);
+        });
+      };
+
+      return cleanup;
+    }
+  }, [loaderLoaded ]);
+
   return (
     <main
+      key="mainLandingPage"
       style={{
         position: "relative",
       }}
       ref={scope}
     >
-      {isLoading ? (
-        <div className={styles.loaderContainer}>
+        <>
+       {isLoading && <div className={styles.loaderContainer}>
           <Image
             src="/static/images/OasisLogo.png"
             alt="OASIS"
             style={{ transform: "scale(.5)" }}
             width={519}
             height={185}
+            ref={regLoaderRef}
           />
-        </div>
-      ) : (
-        <>
+        </div>}
           <Navbar />
           <div
             className={styles.hamSection}
-            style={isHamOpen ? { zIndex: 10 } : { zIndex: 1 }}
+            style={isHamOpen ? { zIndex: 10 } : { zIndex: 2 }}
           >
             <div className={styles.hamBtn}>
               <AnimatePresence>
@@ -484,7 +546,7 @@ export default function Home() {
                     transition={{ duration: 1 }}
                   ></motion.div>
                 ) : (
-                  ""
+                  <div style={{display: 'none'}}></div>
                 )}
               </AnimatePresence>
             </div>
@@ -500,7 +562,7 @@ export default function Home() {
                   <Hamburger />
                 </motion.div>
               ) : (
-                ""
+                <div style={{display: 'none'}}></div>
               )}
             </AnimatePresence>
           </div>
@@ -545,7 +607,7 @@ export default function Home() {
               </div>
               <AnimatePresence>
                 {isHamOpen ? (
-                  ""
+                   <div style={{display: 'none'}}></div>
                 ) : (
                   <motion.div
                     key="register"
@@ -574,7 +636,6 @@ export default function Home() {
             </div>
           </div>
         </>
-      )}
     </main>
   );
 }
