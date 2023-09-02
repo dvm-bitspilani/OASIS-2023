@@ -443,7 +443,7 @@ export default function Page(props) {
     formContainerRef.current.addEventListener("scroll", handleScroll);
 
     return () => {
-      formContainerRef.current.removeEventListener("scroll", handleScroll);
+      // formContainerRef.current.removeEventListener("scroll", handleScroll);
     };
   }, []);
 
@@ -664,7 +664,7 @@ export default function Page(props) {
             >
               <Image src ={book} alt="" onLoad={(e)=> console.log(e)} style={{transform: 'scaleX(.8)'}}/>
             </motion.div>   
-          </div>}
+          </div>)}
         <div className={styles.regBtnContainer}>
           <Image src={register} onClick={handleRegisterations} alt="" />
         </div>
