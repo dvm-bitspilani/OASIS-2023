@@ -192,7 +192,7 @@ export default function Home() {
           {
             scale: 1,
             rotate: 80,
-            duration: 3,
+            duration: 5,
             ease: "none",
           },
           "-=5"
@@ -263,7 +263,7 @@ export default function Home() {
           {
             rotate: -80,
             scale: 1,
-            duration: 3,
+            duration: 5,
             ease: "power2.in",
           },
           "-=5"
@@ -328,7 +328,7 @@ export default function Home() {
           {
             scale: 1,
             rotate: -80,
-            duration: 3,
+            duration: 5,
             ease: "none",
           },
           "-=5"
@@ -395,7 +395,7 @@ export default function Home() {
           {
             rotate: 80,
             scale: 1,
-            duration: 3,
+            duration: 5,
             ease: "power2.in",
           },
           "-=5"
@@ -594,7 +594,7 @@ export function getRandomStats() {
   // const randomY = randomYArr[Math.floor(Math.random() * 2)];
 
   // get a random number between 6 and 36
-  random.endingY = Math.floor(Math.random() * 40 + -10);
+  random.endingY = Math.floor(Math.random() * 40 + (-10));
   random.endingX = 86;
   random.delay = Math.floor(Math.random() * 4);
   return random;
