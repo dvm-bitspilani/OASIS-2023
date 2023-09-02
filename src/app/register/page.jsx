@@ -1,6 +1,6 @@
 "use client" 
 
-import Layout from "../layout.jsx";
+import statesData from "./states.json";
 import React, { useState, useEffect , useReducer , useRef} from "react";
 import { useRouter } from 'next/navigation'
 import { motion } from "framer-motion"
@@ -17,7 +17,6 @@ import cross from "../../../public/static/images/cross.svg";
 import { useWindowSize } from "rooks";
 
 
-const noCollegesMessages=()=>"Wait for Colleges to load";
 const noStatesMessages=()=>"Wait for States to load";
 const noCitiesMessage=()=>"Select a State First";
 
@@ -122,10 +121,13 @@ const customStyles = {
   }),
   noOptionsMessage: (provided) => ({
     ...provided,
-    color: '#000',
+    color: '#fff',
     fontFamily: 'NightmarePills',
     fontSize: '1.5rem',
     paddingLeft: '1rem',
+    backgroundColor: '#222222',
+    paddingTop:'0px',
+    paddingBottom: '0px',
   }),
 };
 
@@ -167,21 +169,11 @@ const customStylesArray = [
     }),
   },
 ];
-async function getStateAndCityData() {
-  const res = await fetch(
-    "https://raw.githubusercontent.com/dr5hn/countries-states-cities-database/master/countries%2Bstates%2Bcities.json"
-  );
 
-  if (!res.ok) {
-    throw new Error("Failed to fetch State and City data");
-  }
-
-  return res.json();
-}
 async function getCollegeData(){
   const res = await fetch("https://test.bits-oasis.org/2023/main/registrations/get_college")
   if(!res.ok){
-    throw new Error("Failed to fetch collyearege");
+    throw new Error("Failed to fetch college");
   }
   return res.json();
 }
@@ -365,9 +357,10 @@ export default function Page(props) {
     const handleAssetLoad = () => {
       assetsLoaded++;
       if (assetsLoaded === assets.length) {
+        if(colleges.length>0 && events.length>0){
         setTimeout(() => {
           setIsLoading(false);
-        }, 2000);
+        }, 2000);}
       }
     };
 
@@ -506,13 +499,7 @@ export default function Page(props) {
 
 
   useEffect(() => {
-    getStateAndCityData()
-      .then((data) => {
-        setFetchedData(data);
-      })
-      .catch((error) => {
-        console.error(error);
-      });
+    setFetchedData(statesData)
     getCollegeData()
       .then((data)=> {
         setColleges(data["data"].map((item) => {
@@ -529,14 +516,14 @@ export default function Page(props) {
       .catch((error) => {
         console.log(error);
       })
-  }, []);
+  }, [statesData]);
 
   useEffect(() => {
     if (fetchedData) {
-      const keys = Object.values(fetchedData[101]["states"]);
+      const keys = Object.values(fetchedData);
       setStates(keys.map((key) => ({ value: key["name"], label: key["name"] })));
-      if(filterObjectsByName(fetchedData[101]["states"], selectedState["value"])&& filterObjectsByName(fetchedData[101]["states"],selectedState["value"])[0]){
-        setCities(filterObjectsByName(fetchedData[101]["states"],selectedState["value"])[0]["cities"].map((key)=>({value: key["name"], label: key["name"]})))
+      if(filterObjectsByName(fetchedData, selectedState["value"])&& filterObjectsByName(fetchedData,selectedState["value"])[0]){
+        setCities(filterObjectsByName(fetchedData,selectedState["value"])[0]["cities"].map((key)=>({value: key["name"], label: key["name"]})))
       }
     }
   }, [fetchedData , selectedState])
@@ -584,7 +571,7 @@ export default function Page(props) {
               </div>
 
               <label>COLLEGE</label>
-              <Select options={colleges} id="college" noOptionsMessage={noCollegesMessages} styles={customStylesArray[0]} placeholder="COLLEGE" onChange={handleCollegeChange} />
+              <Select options={colleges} id="college" styles={customStylesArray[0]} placeholder="COLLEGE" onChange={handleCollegeChange} />
 
               <label>STATE</label>
               <Select options={states} id="state" noOptionsMessage={noStatesMessages} styles={customStylesArray[1]} placeholder="STATE" onChange={handleStateChange} />
