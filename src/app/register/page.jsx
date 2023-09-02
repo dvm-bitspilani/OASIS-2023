@@ -1,9 +1,9 @@
 "use client";
 
-import Layout from "../layout.jsx";
-import React, { useState, useEffect, useReducer, useRef } from "react";
-import { useRouter } from "next/navigation";
-import { motion } from "framer-motion";
+import statesData from "./states.json";
+import React, { useState, useEffect , useReducer , useRef} from "react";
+import { useRouter } from 'next/navigation'
+import { motion } from "framer-motion"
 import Image from "next/image";
 import Select from "react-select";
 import Creatable from "react-select/creatable";
@@ -15,174 +15,53 @@ import register from "../../../public/static/images/registerBtn.svg";
 import regLogo from "../../../public/static/images/OasisLogo.png";
 import cross from "../../../public/static/images/cross.svg";
 import { useWindowSize } from "rooks";
+import CustomStyles from "./CustomStyles";
 
-const noCollegesMessages = () => "Wait for Colleges to load";
-const noStatesMessages = () => "Wait for States to load";
-const noCitiesMessage = () => "Select a State First";
 
-const customStyles = {
-  control: (provided, state) => ({
-    ...provided,
-    minHeight: "2rem",
-    height: "2rem",
-    backgroundColor: "transparent",
-    border: "none",
-    borderBottom: state.isFocused ? "2px solid white" : "2px solid white",
-    "&:hover": {
-      borderColor: "white",
-    },
-    cursor: "text",
-    outline: "none",
-    boxShadow: "none",
-    borderRadius: "0px",
-  }),
-  indicatorSeparator: () => {},
-  valueContainer: (provided) => ({
-    ...provided,
-    height: "1.8rem",
-    paddingLeft: 0,
-  }),
-  indicatorsContainer: (provided) => ({
-    ...provided,
-    height: "1.8rem",
-  }),
-  singleValue: (provided) => ({
-    ...provided,
-    color: "#eee",
-    fontFamily: "NightmarePills",
-    fontSize: "1.5rem",
-    fontWeight: 700,
-  }),
-  option: (provided, state) => ({
-    ...provided,
-    color: state.isSelected ? "#fff" : "#fff",
-    backgroundColor: state.isSelected ? "#7CC6DB" : "#222",
-    fontFamily: "NightmarePills",
-    fontSize: "1.5rem",
-    fontWeight: 500,
-    zIndex: 1002,
-    "&:hover": {
-      backgroundColor: "#7CC6DB",
-      color: "#121212",
-    },
-  }),
-  menu: (provided) => ({
-    ...provided,
-    zIndex: 1002,
-    backgroundColor: "#222222",
-    paddingTop: "0px",
-    paddingBottom: "0px",
-    "&::-webkit-scrollbar": {
-      display: "none",
-    },
-    "&::-webkit-scrollbar-thumb": {
-      display: "none",
-    },
-  }),
-  menuList: (provided) => ({
-    ...provided,
-    paddingTop: "0",
-    paddingBottom: "0",
-    "&::-webkit-scrollbar": {
-      display: "none",
-    },
-    "&::-webkit-scrollbar-thumb": {
-      display: "none",
-    },
-  }),
-  dropdownIndicator: (provided, state) => ({
-    ...provided,
-    color: "white",
-    cursor: "pointer",
-    padding: "5px",
-  }),
-  placeholder: (provided) => ({
-    ...provided,
-    fontFamily: "NightmarePills",
-    fontSize: "1.5rem",
-    opacity: "1",
-    color: "#FFFFFF",
-  }),
-  container: (provided) => ({
-    ...provided,
-    overflow: "visible",
-  }),
-  input: (provided) => ({
-    ...provided,
-    color: "#eee",
-    fontFamily: "NightmarePills",
-    fontSize: "1.5rem",
-    fontWeight: 700,
-    zIndex: 1002,
-    margin: "0",
-    paddingTop: "0",
-    paddngBottom: "0",
-    marginLeft: "2px",
-  }),
-  noOptionsMessage: (provided) => ({
-    ...provided,
-    color: "#000",
-    fontFamily: "NightmarePills",
-    fontSize: "1.5rem",
-    paddingLeft: "1rem",
-  }),
-};
+const noCitiesMessage=()=>"Select a State First";
 
 const customStylesArray = [
   {
-    ...customStyles,
-    menu: (provided) => ({
+    ...CustomStyles(),
+    menu: provided => ({
       ...provided,
       zIndex: 10000,
     }),
   },
   {
-    ...customStyles,
-    menu: (provided) => ({
+    ...CustomStyles(),
+    menu: provided => ({
       ...provided,
       zIndex: 9999,
     }),
   },
   {
-    ...customStyles,
-    menu: (provided) => ({
+    ...CustomStyles(),
+    menu: provided => ({
       ...provided,
       zIndex: 9998,
     }),
   },
-
   {
-    ...customStyles,
-    menu: (provided) => ({
+    ...CustomStyles(),
+    menu: provided => ({
       ...provided,
       zIndex: 9997,
     }),
   },
   {
-    ...customStyles,
-    menu: (provided) => ({
+    ...CustomStyles(),
+    menu: provided => ({
       ...provided,
       zIndex: 9996,
     }),
   },
 ];
-async function getStateAndCityData() {
-  const res = await fetch(
-    "https://raw.githubusercontent.com/dr5hn/countries-states-cities-database/master/countries%2Bstates%2Bcities.json"
-  );
 
-  if (!res.ok) {
-    throw new Error("Failed to fetch State and City data");
-  }
-
-  return res.json();
-}
-async function getCollegeData() {
-  const res = await fetch(
-    "https://test.bits-oasis.org/2023/main/registrations/get_college"
-  );
-  if (!res.ok) {
-    throw new Error("Failed to fetch collyearege");
+async function getCollegeData(){
+  const res = await fetch("https://test.bits-oasis.org/2023/main/registrations/get_college")
+  if(!res.ok){
+    throw new Error("Failed to fetch college");
   }
   return res.json();
 }
@@ -366,14 +245,15 @@ export default function Page(props) {
 
       let assetsLoaded = 0;
 
-      const handleAssetLoad = () => {
-        assetsLoaded++;
-        if (assetsLoaded === assets.length) {
-          setTimeout(() => {
-            setIsLoading(false);
-          }, 2000);
-        }
-      };
+    const handleAssetLoad = () => {
+      assetsLoaded++;
+      if (assetsLoaded === assets.length) {
+        if(colleges.length>0 && events.length>0){
+        setTimeout(() => {
+          setIsLoading(false);
+        }, 2000);}
+      }
+    };
 
       assets.forEach((asset) => {
         if (
@@ -463,19 +343,16 @@ export default function Page(props) {
     alert(response["message"]);
   };
 
-  function handleNameChange(inp) {
-    formDispatchFn({ type: "nameChange", value: inp });
+  function handlePhoneChange(inp){
+    formDispatchFn({type:'phoneChange',value:inp.target.value.replace(/\D/g, '')})
+  }
+  function handleNameChange (inp){
+    formDispatchFn({type:'nameChange', value:inp})
   }
   function handleEmailChange(inp) {
     formDispatchFn({ type: "emailChange", value: inp });
   }
-  function handlePhoneChange(inp) {
-    formDispatchFn({
-      type: "phoneChange",
-      value: inp.target.value.replace(/\D/g, ""),
-    });
-  }
-  function handleStateChange(inp) {
+  function handleStateChange (inp){
     setSelectedState(inp);
     formDispatchFn({ type: "stateChange", value: inp });
   }
@@ -518,13 +395,7 @@ export default function Page(props) {
   }
 
   useEffect(() => {
-    getStateAndCityData()
-      .then((data) => {
-        setFetchedData(data);
-      })
-      .catch((error) => {
-        console.error(error);
-      });
+    setFetchedData(statesData);
     getCollegeData()
       .then((data) => {
         setColleges(
@@ -534,6 +405,15 @@ export default function Page(props) {
         );
       })
       .catch((error) => {
+        console.error(error);
+      });
+    getCollegeData()
+      .then((data)=> {
+        setColleges(data["data"].map((item) => {
+          return {value: item.id , label: item.name}
+        }));
+      })
+      .catch((error)=> {
         console.log(error);
       });
     getEventsData()
@@ -546,34 +426,15 @@ export default function Page(props) {
       })
       .catch((error) => {
         console.log(error);
-      });
-  }, []);
+      })
+  }, [statesData]);
 
   useEffect(() => {
     if (fetchedData) {
-      const keys = Object.values(fetchedData[101]["states"]);
-      setStates(
-        keys.map((key) => ({ value: key["name"], label: key["name"] }))
-      );
-      if (
-        filterObjectsByName(
-          fetchedData[101]["states"],
-          selectedState["value"]
-        ) &&
-        filterObjectsByName(
-          fetchedData[101]["states"],
-          selectedState["value"]
-        )[0]
-      ) {
-        setCities(
-          filterObjectsByName(
-            fetchedData[101]["states"],
-            selectedState["value"]
-          )[0]["cities"].map((key) => ({
-            value: key["name"],
-            label: key["name"],
-          }))
-        );
+      const keys = Object.values(fetchedData);
+      setStates(keys.map((key) => ({ value: key["name"], label: key["name"] })));
+      if(filterObjectsByName(fetchedData, selectedState["value"])&& filterObjectsByName(fetchedData,selectedState["value"])[0]){
+        setCities(filterObjectsByName(fetchedData,selectedState["value"])[0]["cities"].map((key)=>({value: key["name"], label: key["name"]})))
       }
     }
   }, [fetchedData, selectedState]);
@@ -713,24 +574,10 @@ export default function Page(props) {
               </div>
 
               <label>COLLEGE</label>
-              <Select
-                options={colleges}
-                id="college"
-                noOptionsMessage={noCollegesMessages}
-                styles={customStylesArray[0]}
-                placeholder="COLLEGE"
-                onChange={handleCollegeChange}
-              />
+              <Select options={colleges} id="college" styles={customStylesArray[0]} placeholder="COLLEGE" onChange={handleCollegeChange} />
 
               <label>STATE</label>
-              <Select
-                options={states}
-                id="state"
-                noOptionsMessage={noStatesMessages}
-                styles={customStylesArray[1]}
-                placeholder="STATE"
-                onChange={handleStateChange}
-              />
+              <Select options={states} id="state" styles={customStylesArray[1]} placeholder="STATE" onChange={handleStateChange} />
 
               <label>CITY</label>
               <Creatable
@@ -815,10 +662,9 @@ export default function Page(props) {
               }}
               transition={{ ease: "easeOut", duration: 2 }}
             >
-              <Image src={book} alt="" style={{ transform: "scaleX(.8)" }} />
-            </motion.div>
-          </div>
-        )}
+              <Image src ={book} alt="" onLoad={(e)=> console.log(e)} style={{transform: 'scaleX(.8)'}}/>
+            </motion.div>   
+          </div>}
         <div className={styles.regBtnContainer}>
           <Image src={register} onClick={handleRegisterations} alt="" />
         </div>
