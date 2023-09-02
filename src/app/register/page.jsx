@@ -662,7 +662,7 @@ export default function Page(props) {
               }}
               transition={{ ease: "easeOut", duration: 2 }}
             >
-              <Image src ={book} alt="" onLoad={(e)=> console.log(e)} style={{transform: 'scaleX(.8)'}}/>
+              <Image src ={book} alt="" style={{transform: 'scaleX(.8)'}}/>
             </motion.div>   
           </div>)}
         <div className={styles.regBtnContainer}>
