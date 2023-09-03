@@ -1,7 +1,14 @@
 "use client";
 
 import statesData from "./states.json";
-import React, { useState, useEffect, useReducer, useRef } from "react";
+import React, {
+  useState,
+  useEffect,
+  useReducer,
+  useRef,
+  useLayoutEffect,
+  useMemo,
+} from "react";
 import { useRouter } from "next/navigation";
 import { motion } from "framer-motion";
 import Image from "next/image";
@@ -17,6 +24,8 @@ import regLogo from "../../../public/static/images/OasisLogo.png";
 import cross from "../../../public/static/images/cross.svg";
 import { useWindowSize } from "rooks";
 import CustomStyles from "./CustomStyles";
+
+import { gsap } from "gsap";
 
 import { generateRandomStatesArray } from "../page";
 
@@ -181,10 +190,404 @@ const year = [
 ];
 
 export default function Page(props) {
-  console.log(generateRandomStatesArray(5, 12, 12, 14, 14));
+  // console.log(generateRandomStatesArray(5, 12, 12, 14, 14, 10, 10, 10, 10));
 
-  const numberOfRandom = 10;
-  const randomGenerationConfig = [32, -10, 30, 40];
+  const numberOfRandom = 6;
+  // [startingYPoint, endingYPoint,startingYRange,endingYRange,startingXPoint,endingXPoint,startingXRange,endingXRange]
+  const randomGenerationTopLeftConfig = useMemo(() => [0, 0, 67, 67, 0, 67, 0, 0], []);
+  const randomGenerationBottomLeftConfig = useMemo(() => [0, 0, 67, 67, 67, 0, 0, 0], []);
+
+  const [isLoading, setIsLoading] = useState(true);
+  const scope = useRef(null);
+
+  const [randomStatesTopLeft1, setRandomStatesTopLeft1] = useState(
+    generateRandomStatesArray(numberOfRandom, ...randomGenerationTopLeftConfig)
+  );
+
+  const [randomStatesTopLeft2, setRandomStatesTopLeft2] = useState(
+    generateRandomStatesArray(numberOfRandom, ...randomGenerationTopLeftConfig)
+  );
+
+  const [randomStatesBottomLeft1, setRandomStatesBottomLeft1] = useState(
+    generateRandomStatesArray(numberOfRandom, ...randomGenerationBottomLeftConfig)
+  );
+
+  const [randomStatesBottomLeft2, setRandomStatesBottomLeft2] = useState(
+    generateRandomStatesArray(numberOfRandom, ...randomGenerationBottomLeftConfig)
+  );
+
+
+  const randomSetImagesTopLeft1 = randomStatesTopLeft1.map((item, index) => {
+    return (
+      <Image
+        key={index}
+        id={`top_left_1_${index}`}
+        className={indexStyles.leftSymbol}
+        src={item.file}
+        alt=""
+        width={80}
+        height={80}
+        draggable={false}
+      />
+    );
+  });
+
+  const randomSetImagesTopLeft2 = randomStatesTopLeft2.map((item, index) => {
+    return (
+      <Image
+        key={index}
+        id={`top_left_2_${index}`}
+        className={indexStyles.leftSymbol}
+        src={item.file}
+        alt=""
+        width={80}
+        height={80}
+        draggable={false}
+      />
+    );
+  });
+
+  const randomSetImagesBottomLeft1 = randomStatesBottomLeft1.map((item, index) => {
+    return (
+      <Image
+        key={index}
+        id={`bottom_left_1_${index}`}
+        className={indexStyles.leftSymbol}
+        src={item.file}
+        alt=""
+        width={80}
+        height={80}
+        draggable={false}
+      />
+    );
+  });
+
+  const randomSetImagesBottomLeft2 = randomStatesBottomLeft2.map((item, index) => {
+    return (
+      <Image
+        key={index}
+        id={`bottom_left_2_${index}`}
+        className={indexStyles.leftSymbol}
+        src={item.file}
+        alt=""
+        width={80}
+        height={80}
+        draggable={false}
+      />
+    );
+  });
+
+  const [isDelayed, setIsDelayed] = useState(false);
+
+  useLayoutEffect(() => {
+    // console.log("Animation 1");
+    if (!isLoading) {
+      let ctx = gsap.context(() => {
+        randomStatesTopLeft1.forEach((item, key) => {
+          gsap.set(`#top_left_1_${key}`, {
+            right: `${item.startingX}%`,
+            top: `${item.startingY}%`,
+            opacity: 0,
+            scale: 0.3,
+          });
+
+          const tl = gsap.timeline({
+            onComplete: () => {
+              if (key === randomStatesTopLeft1.length - 1) {
+                // console.log("Animation 1 complete");
+                setRandomStatesTopLeft1(
+                  generateRandomStatesArray(
+                    numberOfRandom,
+                    ...randomGenerationTopLeftConfig
+                  )
+                );
+              }
+            },
+          });
+
+          tl.to(`#top_left_1_${key}`, {
+            right: `${(item.endingX + item.startingX) / 2}%`,
+            top: `${(item.endingY + item.startingY) / 2}%`,
+            // scale: 1,
+            // opacity: 1,
+            delay: `${key * 1.4}`,
+            duration: 2.5,
+            ease: "none",
+          });
+          tl.to(
+            `#top_left_1_${key}`,
+            {
+              opacity: 1,
+              duration: 2.5,
+              ease: "power2.in",
+            },
+            "-=2.5"
+          );
+          tl.to(`#top_left_1_${key}`, {
+            right: `${item.endingX}%`,
+            top: `${item.endingY}%`,
+            opacity: 0,
+            duration: 2.5,
+            ease: "none",
+          });
+          tl.to(
+            `#top_left_1_${key}`,
+            {
+              scale: 1,
+              rotate: 80,
+              duration: 5,
+              ease: "none",
+            },
+            "-=5"
+          );
+        });
+      }, scope); // <- IMPORTANT! Scopes selector text
+
+      return () => {
+        ctx.revert();
+      }; // cleanup
+    }
+  }, [
+    isLoading,
+    // randomSetImagesTopLeft1,
+    numberOfRandom,
+    randomGenerationTopLeftConfig,
+    randomStatesTopLeft1,
+  ]);
+
+  useLayoutEffect(() => {
+    // console.log("Animation 2");
+    if (!isLoading) {
+      let ctx = gsap.context(() => {
+        randomStatesTopLeft2.forEach((item, key) => {
+          gsap.set(`#top_left_2_${key}`, {
+            right: `${item.startingX}%`,
+            top: `${item.startingY}%`,
+            opacity: 0,
+            scale: 0.3,
+          });
+
+          const tl = gsap.timeline({
+            delay: isDelayed ? 0 : 7,
+            onComplete: () => {
+              if (key === randomStatesTopLeft2.length - 1) {
+                // console.log("Animation 2 complete");
+                setRandomStatesTopLeft2(
+                  generateRandomStatesArray(
+                    numberOfRandom,
+                    ...randomGenerationTopLeftConfig
+                  )
+                );
+              }
+            },
+          });
+
+          tl.to(`#top_left_2_${key}`, {
+            right: `${(item.endingX + item.startingX) / 2}%`,
+            top: `${(item.endingY + item.startingY) / 2}%`,
+            // scale: 1,
+            // opacity: 1,
+            delay: `${key * 1.4}`,
+            duration: 2.5,
+            ease: "none",
+          });
+          tl.to(
+            `#top_left_2_${key}`,
+            {
+              opacity: 1,
+              duration: 2.5,
+              ease: "power2.in",
+            },
+            "-=2.5"
+          );
+          tl.to(`#top_left_2_${key}`, {
+            right: `${item.endingX}%`,
+            top: `${item.endingY}%`,
+            opacity: 0,
+            duration: 2.5,
+            ease: "none",
+          });
+          tl.to(
+            `#top_left_2_${key}`,
+            {
+              scale: 1,
+              rotate: 80,
+              duration: 5,
+              ease: "none",
+            },
+            "-=5"
+          );
+        });
+      }, scope); // <- IMPORTANT! Scopes selector text
+
+      return () => {
+        ctx.revert();
+      }; // cleanup
+    }
+  }, [
+    isLoading,
+    // randomSetImagesTopLeft2,
+    numberOfRandom,
+    randomGenerationTopLeftConfig,
+    randomStatesTopLeft2,
+    isDelayed,
+  ]);
+
+  useLayoutEffect(() => {
+    // console.log("Animation 3");
+    if (!isLoading) {
+      let ctx = gsap.context(() => {
+        randomStatesBottomLeft1.forEach((item, key) => {
+          gsap.set(`#bottom_left_1_${key}`, {
+            right: `${item.startingX}%`,
+            top: `${item.startingY}%`,
+            opacity: 0,
+            scale: 0.3,
+          });
+
+          const tl = gsap.timeline({
+            onComplete: () => {
+              if (key === randomStatesBottomLeft1.length - 1) {
+                // console.log("Animation 3 complete");
+                setRandomStatesBottomLeft1(
+                  generateRandomStatesArray(
+                    numberOfRandom,
+                    ...randomGenerationBottomLeftConfig
+                  )
+                );
+              }
+            },
+          });
+
+          tl.to(`#bottom_left_1_${key}`, {
+            right: `${(item.endingX + item.startingX) / 2}%`,
+            top: `${(item.endingY + item.startingY) / 2}%`,
+            // scale: 1,
+            // opacity: 1,
+            delay: `${key * 1.4}`,
+            duration: 2.5,
+            ease: "none",
+          });
+          tl.to(
+            `#bottom_left_1_${key}`,
+            {
+              opacity: 1,
+              duration: 2.5,
+              ease: "power2.in",
+            },
+            "-=2.5"
+          );
+          tl.to(`#bottom_left_1_${key}`, {
+            right: `${item.endingX}%`,
+            top: `${item.endingY}%`,
+            opacity: 0,
+            duration: 2.5,
+            ease: "none",
+          });
+          tl.to(
+            `#bottom_left_1_${key}`,
+            {
+              scale: 1,
+              rotate: 80,
+              duration: 5,
+              ease: "none",
+            },
+            "-=5"
+          );
+        });
+      }, scope); // <- IMPORTANT! Scopes selector text
+
+      return () => {
+        ctx.revert();
+      }; // cleanup
+    }
+  }, [
+    isLoading,
+    // randomSetImagesBottomLeft1,
+    numberOfRandom,
+    randomGenerationBottomLeftConfig,
+    randomStatesBottomLeft1,
+  ]);
+
+  useLayoutEffect(() => {
+    // console.log("Animation 4");
+    if (!isLoading) {
+      let ctx = gsap.context(() => {
+        randomStatesBottomLeft2.forEach((item, key) => {
+          gsap.set(`#bottom_left_2_${key}`, {
+            right: `${item.startingX}%`,
+            top: `${item.startingY}%`,
+            opacity: 0,
+            scale: 0.3,
+          });
+
+          const tl = gsap.timeline({
+            delay: isDelayed ? 0 : 7,
+            onComplete: () => {
+              if (key === randomStatesBottomLeft2.length - 1) {
+                // console.log("Animation 4 complete");
+                setIsDelayed(true);
+                setRandomStatesBottomLeft2(
+                  generateRandomStatesArray(
+                    numberOfRandom,
+                    ...randomGenerationBottomLeftConfig
+                  )
+                );
+              }
+            },
+          });
+
+          tl.to(`#bottom_left_2_${key}`, {
+            right: `${(item.endingX + item.startingX) / 2}%`,
+            top: `${(item.endingY + item.startingY) / 2}%`,
+            // scale: 1,
+            // opacity: 1,
+            delay: `${key * 1.4}`,
+            duration: 2.5,
+            ease: "none",
+          });
+          tl.to(
+            `#bottom_left_2_${key}`,
+            {
+              opacity: 1,
+              duration: 2.5,
+              ease: "power2.in",
+            },
+            "-=2.5"
+          );
+          tl.to(`#bottom_left_2_${key}`, {
+            right: `${item.endingX}%`,
+            top: `${item.endingY}%`,
+            opacity: 0,
+            duration: 2.5,
+            ease: "none",
+          });
+          tl.to(
+            `#bottom_left_2_${key}`,
+            {
+              scale: 1,
+              rotate: 80,
+              duration: 5,
+              ease: "none",
+            },
+            "-=5"
+          );
+        });
+      }, scope); // <- IMPORTANT! Scopes selector text
+
+      return () => {
+        ctx.revert();
+      }; // cleanup
+    }
+  }, [
+    isLoading,
+    // randomSetImagesBottomLeft2,
+    numberOfRandom,
+    randomGenerationBottomLeftConfig,
+    randomStatesBottomLeft2,
+    isDelayed,
+  ]);
+
 
   const { innerWidth, innerHeight } = useWindowSize();
 
@@ -193,7 +596,6 @@ export default function Page(props) {
     formDataTemplate
   );
   const router = useRouter();
-  const [isLoading, setIsLoading] = useState(true);
   const [loaderLoaded, setLoaderLoaded] = useState(false);
   const [fetchedData, setFetchedData] = useState(null);
   const [colleges, setColleges] = useState([]);
@@ -528,7 +930,7 @@ export default function Page(props) {
           />
         </div>
       )}
-      <div className={styles.regPage}>
+      <div className={styles.regPage} ref={scope}>
         <h2>REGISTRATIONS</h2>
         {innerWidth < 700 && (
           <Image
@@ -712,14 +1114,16 @@ export default function Page(props) {
             }}
             transition={{ ease: "easeOut", duration: 2 }}
           >
-            {/* <Image
-              className={indexStyles.leftSymbol}
-              src="/static/images/Group1.png"
-              alt=""
-              width={80}
-              height={80}
-              draggable={false}
-            /> */}
+            <div className={styles.topLeftRandomDiv}>
+              {randomSetImagesTopLeft1}
+              {randomSetImagesTopLeft2}
+            </div>
+
+            <div className={styles.bottomLeftRandomDiv}>
+              {randomSetImagesBottomLeft1}
+              {randomSetImagesBottomLeft2}
+            </div>
+
             <Image src={book} alt="" style={{ transform: "scaleX(.8)" }} />
           </motion.div>
         )}

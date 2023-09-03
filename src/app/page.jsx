@@ -31,7 +31,7 @@ export default function Home() {
   const [showLoader, setShowLoader] = useState(true);
 
   const numberOfRandom = 10;
-  const randomGenerationConfig = [32, -10, 30, 40];
+  const randomGenerationConfig = [32, -10, 30, 40, 25, 86, 0, 0];
 
   const [randomLeft1, setrandomLeft1] = useState(
     generateRandomStatesArray(numberOfRandom, ...randomGenerationConfig)
@@ -153,10 +153,10 @@ export default function Home() {
 
   useEffect(() => {
     if (typeof window !== "undefined") {
-      console.log('first')
+      console.log("first");
       setIsLoading(true);
       setShowLoader(true);
-  
+
       // const assets = [textLogo, landingPgBookImg, rightElements, leftElements];
       // const assetPromises = assets.map((asset) => {
       //   return new Promise((resolve) => {
@@ -165,7 +165,7 @@ export default function Home() {
       //     console.log('second')
       //   });
       // });
-  
+
       // Promise.all(assetPromises).then(() => {
       //   // All assets are loaded
       //   setAllAssetsLoaded(true);
@@ -174,7 +174,7 @@ export default function Home() {
       //   console.log('third')
       //   console.log(showLoader)
       // });
-  
+
       setTextLogoWidth(Math.floor(window.innerWidth * 0.3));
       setTextLogoHeight(Math.floor(window.innerHeight * 0.2));
       setLandingBookWidth(Math.floor(window.innerWidth * 0.5));
@@ -185,299 +185,300 @@ export default function Home() {
         setIsLoading(false);
         setShowLoader(false);
       }, 3000); // Adjust the timeout duration as needed
-  
+
       return () => {
         // Clear the timeout if the component unmounts
         clearTimeout(loaderTimeout);
       };
     }
   }, []);
-  
 
   const [delayGiven, setDelayGiven] = useState(false);
 
   useLayoutEffect(() => {
     // create our context. This function is invoked immediately and all GSAP animations and ScrollTriggers created during the execution of this function get recorded so we can revert() them later (cleanup)\
-    if(!isLoading){
-    let ctx = gsap.context(() => {
-      randomLeft1.forEach((item, key) => {
+    if (!isLoading) {
+      let ctx = gsap.context(() => {
+        randomLeft1.forEach((item, key) => {
+          gsap.set(`#left_1_${key}`, {
+            right: `${item.startingX}%`,
+            top: `${item.startingY}%`,
+            opacity: 0,
+            scale: 0.3,
+          });
 
-        gsap.set(`#left_1_${key}`, {
-          right: `${item.startingX}%`,
-          top: `${item.startingY}%`,
-          opacity: 0,
-          scale: 0.3,
-        });
+          const tl = gsap.timeline({
+            onComplete: () => {
+              if (key === randomLeft1.length - 1) {
+                console.log("Animation 1 complete");
+                setrandomLeft1(
+                  generateRandomStatesArray(
+                    numberOfRandom,
+                    ...randomGenerationConfig
+                  )
+                );
+              }
+            },
+          });
 
-        const tl = gsap.timeline({
-          onComplete: () => {
-            if (key === randomLeft1.length - 1) {
-              console.log("Animation 1 complete");
-              setrandomLeft1(
-                generateRandomStatesArray(
-                  numberOfRandom,
-                  ...randomGenerationConfig
-                )
-              );
-            }
-          },
-        });
-
-        tl.to(`#left_1_${key}`, {
-          right: `${(item.endingX + item.startingX) / 2}%`,
-          top: `${(item.endingY + item.startingY) / 2}%`,
-          // scale: 1,
-          // opacity: 1,
-          delay: `${Math.floor(key / 1.2) * 1}`,
-          duration: 2.5,
-          ease: "none",
-        });
-        tl.to(
-          `#left_1_${key}`,
-          {
-            opacity: 1,
+          tl.to(`#left_1_${key}`, {
+            right: `${(item.endingX + item.startingX) / 2}%`,
+            top: `${(item.endingY + item.startingY) / 2}%`,
+            // scale: 1,
+            // opacity: 1,
+            delay: `${Math.floor(key / 1.2) * 1}`,
             duration: 2.5,
-            ease: "power2.in",
-          },
-          "-=2.5"
-        );
-        tl.to(`#left_1_${key}`, {
-          right: `${item.endingX}%`,
-          top: `${item.endingY}%`,
-          opacity: 0,
-          duration: 2.5,
-          ease: "none",
-        });
-        tl.to(
-          `#left_1_${key}`,
-          {
-            scale: 1,
-            rotate: 80,
-            duration: 5,
             ease: "none",
-          },
-          "-=5"
-        );
-      });
-    }, scope); // <- IMPORTANT! Scopes selector text
+          });
+          tl.to(
+            `#left_1_${key}`,
+            {
+              opacity: 1,
+              duration: 2.5,
+              ease: "power2.in",
+            },
+            "-=2.5"
+          );
+          tl.to(`#left_1_${key}`, {
+            right: `${item.endingX}%`,
+            top: `${item.endingY}%`,
+            opacity: 0,
+            duration: 2.5,
+            ease: "none",
+          });
+          tl.to(
+            `#left_1_${key}`,
+            {
+              scale: 1,
+              rotate: 80,
+              duration: 5,
+              ease: "none",
+            },
+            "-=5"
+          );
+        });
+      }, scope); // <- IMPORTANT! Scopes selector text
 
-    return () => {
-      ctx.revert();
-    }; // cleanup
-  }}, [isLoading, randomLeft1, numberOfRandom]);
+      return () => {
+        ctx.revert();
+      }; // cleanup
+    }
+  }, [isLoading, randomLeft1, numberOfRandom]);
 
   useLayoutEffect(() => {
     // create our context. This function is invoked immediately and all GSAP animations and ScrollTriggers created during the execution of this function get recorded so we can revert() them later (cleanup)
-    if(!isLoading){
-    let ctx = gsap.context(() => {
-      randomLeft2.forEach((item, key) => {
-        gsap.set(`#left_2_${key}`, {
-          right: `${item.startingX}%`,
-          top: `${item.startingY}%`,
-          opacity: 0,
-          scale: 0.3,
-        });
+    if (!isLoading) {
+      let ctx = gsap.context(() => {
+        randomLeft2.forEach((item, key) => {
+          gsap.set(`#left_2_${key}`, {
+            right: `${item.startingX}%`,
+            top: `${item.startingY}%`,
+            opacity: 0,
+            scale: 0.3,
+          });
 
-        // const randomDelay = Math.random() * 2;
+          // const randomDelay = Math.random() * 2;
 
-        const tl = gsap.timeline({
-          delay: delayGiven ? 0.1 : 5,
-          // delay: 1.5,
-          onComplete: () => {
-            if (key === randomLeft2.length - 1) {
-              setDelayGiven(true);
-              console.log("Animation 2 complete");
-              setrandomLeft2(
-                generateRandomStatesArray(
-                  numberOfRandom,
-                  ...randomGenerationConfig
-                )
-              );
-            }
-          },
-        });
+          const tl = gsap.timeline({
+            delay: delayGiven ? 0.1 : 5,
+            // delay: 1.5,
+            onComplete: () => {
+              if (key === randomLeft2.length - 1) {
+                setDelayGiven(true);
+                console.log("Animation 2 complete");
+                setrandomLeft2(
+                  generateRandomStatesArray(
+                    numberOfRandom,
+                    ...randomGenerationConfig
+                  )
+                );
+              }
+            },
+          });
 
-        tl.to(`#left_2_${key}`, {
-          right: `${(item.endingX + item.startingX) / 2}%`,
-          top: `${(item.endingY + item.startingY) / 2}%`,
-          // scale: 1,
-          // opacity: 1,
-          delay: `${Math.floor(key / 1.2) * 1}`,
-          duration: 2.5,
-          ease: "none",
-        });
-        tl.to(
-          `#left_2_${key}`,
-          {
-            opacity: 1,
+          tl.to(`#left_2_${key}`, {
+            right: `${(item.endingX + item.startingX) / 2}%`,
+            top: `${(item.endingY + item.startingY) / 2}%`,
+            // scale: 1,
+            // opacity: 1,
+            delay: `${Math.floor(key / 1.2) * 1}`,
             duration: 2.5,
-            ease: "power2.in",
-          },
-          "-=2.5"
-        );
-        tl.to(`#left_2_${key}`, {
-          right: `${item.endingX}%`,
-          top: `${item.endingY}%`,
-          opacity: 0,
-          duration: 2.5,
-          ease: "none",
-        });
-        tl.to(
-          `#left_2_${key}`,
-          {
-            rotate: -80,
-            scale: 1,
-            duration: 5,
             ease: "none",
-          },
-          "-=5"
-        );
-      });
-    }, scope); // <- IMPORTANT! Scopes selector text
+          });
+          tl.to(
+            `#left_2_${key}`,
+            {
+              opacity: 1,
+              duration: 2.5,
+              ease: "power2.in",
+            },
+            "-=2.5"
+          );
+          tl.to(`#left_2_${key}`, {
+            right: `${item.endingX}%`,
+            top: `${item.endingY}%`,
+            opacity: 0,
+            duration: 2.5,
+            ease: "none",
+          });
+          tl.to(
+            `#left_2_${key}`,
+            {
+              rotate: -80,
+              scale: 1,
+              duration: 5,
+              ease: "none",
+            },
+            "-=5"
+          );
+        });
+      }, scope); // <- IMPORTANT! Scopes selector text
 
-    return () => {
-      ctx.revert();
-    }; // cleanup
-  }}, [isLoading, randomLeft2, delayGiven, numberOfRandom]);
+      return () => {
+        ctx.revert();
+      }; // cleanup
+    }
+  }, [isLoading, randomLeft2, delayGiven, numberOfRandom]);
 
   useLayoutEffect(() => {
-    if(!isLoading){
-    let ctx = gsap.context(() => {
-      randomRight1.forEach((item, key) => {
-        gsap.set(`#right_1_${key}`, {
-          left: `${item.startingX}%`,
-          top: `${item.startingY}%`,
-          opacity: 0,
-          scale: 0.3,
-        });
+    if (!isLoading) {
+      let ctx = gsap.context(() => {
+        randomRight1.forEach((item, key) => {
+          gsap.set(`#right_1_${key}`, {
+            left: `${item.startingX}%`,
+            top: `${item.startingY}%`,
+            opacity: 0,
+            scale: 0.3,
+          });
 
-        const tl = gsap.timeline({
-          onComplete: () => {
-            if (key === randomRight1.length - 1) {
-              console.log("Animation 1 Right complete");
-              setRandomRight1(
-                generateRandomStatesArray(
-                  numberOfRandom,
-                  ...randomGenerationConfig
-                )
-              );
-            }
-          },
-        });
+          const tl = gsap.timeline({
+            onComplete: () => {
+              if (key === randomRight1.length - 1) {
+                console.log("Animation 1 Right complete");
+                setRandomRight1(
+                  generateRandomStatesArray(
+                    numberOfRandom,
+                    ...randomGenerationConfig
+                  )
+                );
+              }
+            },
+          });
 
-        tl.to(`#right_1_${key}`, {
-          left: `${(item.endingX + item.startingX) / 2}%`,
-          top: `${(item.endingY + item.startingY) / 2}%`,
-          // scale: 1,
-          // opacity: 1,
-          delay: `${Math.floor(key / 1.2) * 1}`,
-          duration: 2.5,
-          ease: "none",
-        });
-        tl.to(
-          `#right_1_${key}`,
-          {
-            opacity: 1,
+          tl.to(`#right_1_${key}`, {
+            left: `${(item.endingX + item.startingX) / 2}%`,
+            top: `${(item.endingY + item.startingY) / 2}%`,
+            // scale: 1,
+            // opacity: 1,
+            delay: `${Math.floor(key / 1.2) * 1}`,
             duration: 2.5,
-            ease: "power2.in",
-          },
-          "-=2.5"
-        );
-        tl.to(`#right_1_${key}`, {
-          left: `${item.endingX}%`,
-          top: `${item.endingY}%`,
-          opacity: 0,
-          duration: 2.5,
-          ease: "none",
-        });
-        tl.to(
-          `#right_1_${key}`,
-          {
-            scale: 1,
-            rotate: -80,
-            duration: 5,
             ease: "none",
-          },
-          "-=5"
-        );
-      });
-    }, scope); // <- IMPORTANT! Scopes selector text
+          });
+          tl.to(
+            `#right_1_${key}`,
+            {
+              opacity: 1,
+              duration: 2.5,
+              ease: "power2.in",
+            },
+            "-=2.5"
+          );
+          tl.to(`#right_1_${key}`, {
+            left: `${item.endingX}%`,
+            top: `${item.endingY}%`,
+            opacity: 0,
+            duration: 2.5,
+            ease: "none",
+          });
+          tl.to(
+            `#right_1_${key}`,
+            {
+              scale: 1,
+              rotate: -80,
+              duration: 5,
+              ease: "none",
+            },
+            "-=5"
+          );
+        });
+      }, scope); // <- IMPORTANT! Scopes selector text
 
-    return () => {
-      ctx.revert();
-    }; // cleanup
-  }}, [isLoading, randomRight1, numberOfRandom]);
+      return () => {
+        ctx.revert();
+      }; // cleanup
+    }
+  }, [isLoading, randomRight1, numberOfRandom]);
 
   useLayoutEffect(() => {
-    if(!isLoading){
-    let ctx = gsap.context(() => {
-      randomRight2.forEach((item, key) => {
-        gsap.set(`#right_2_${key}`, {
-          left: `${item.startingX}%`,
-          top: `${item.startingY}%`,
-          opacity: 0,
-          scale: 0.3,
-        });
+    if (!isLoading) {
+      let ctx = gsap.context(() => {
+        randomRight2.forEach((item, key) => {
+          gsap.set(`#right_2_${key}`, {
+            left: `${item.startingX}%`,
+            top: `${item.startingY}%`,
+            opacity: 0,
+            scale: 0.3,
+          });
 
-        const tl = gsap.timeline({
-          delay: delayGiven ? 0.1 : 5,
-          onComplete: () => {
-            if (key === randomRight2.length - 1) {
-              setDelayGiven(true);
-              console.log("Animation 2 Right complete");
-              setRandomRight2(
-                generateRandomStatesArray(
-                  numberOfRandom,
-                  ...randomGenerationConfig
-                )
-              );
-            }
-          },
-        });
+          const tl = gsap.timeline({
+            delay: delayGiven ? 0.1 : 5,
+            onComplete: () => {
+              if (key === randomRight2.length - 1) {
+                setDelayGiven(true);
+                console.log("Animation 2 Right complete");
+                setRandomRight2(
+                  generateRandomStatesArray(
+                    numberOfRandom,
+                    ...randomGenerationConfig
+                  )
+                );
+              }
+            },
+          });
 
-        tl.to(`#right_2_${key}`, {
-          left: `${(item.endingX + item.startingX) / 2}%`,
-          top: `${(item.endingY + item.startingY) / 2}%`,
-          // scale: 1,
-          // opacity: 1,
-          delay: `${Math.floor(key / 1.2) * 1}`,
-          duration: 2.5,
-          ease: "none",
-        });
-        tl.to(
-          `#right_2_${key}`,
-          {
-            opacity: 1,
+          tl.to(`#right_2_${key}`, {
+            left: `${(item.endingX + item.startingX) / 2}%`,
+            top: `${(item.endingY + item.startingY) / 2}%`,
+            // scale: 1,
+            // opacity: 1,
+            delay: `${Math.floor(key / 1.2) * 1}`,
             duration: 2.5,
-            ease: "power2.in",
-          },
-          "-=2.5"
-        );
-        tl.to(`#right_2_${key}`, {
-          left: `${item.endingX}%`,
-          top: `${item.endingY}%`,
-          opacity: 0,
-          duration: 2.5,
-          ease: "none",
-        });
-        tl.to(
-          `#right_2_${key}`,
-          {
-            rotate: 80,
-            scale: 1,
-            duration: 5,
             ease: "none",
-          },
-          "-=5"
-        );
-      });
-    }, scope); // <- IMPORTANT! Scopes selector text
+          });
+          tl.to(
+            `#right_2_${key}`,
+            {
+              opacity: 1,
+              duration: 2.5,
+              ease: "power2.in",
+            },
+            "-=2.5"
+          );
+          tl.to(`#right_2_${key}`, {
+            left: `${item.endingX}%`,
+            top: `${item.endingY}%`,
+            opacity: 0,
+            duration: 2.5,
+            ease: "none",
+          });
+          tl.to(
+            `#right_2_${key}`,
+            {
+              rotate: 80,
+              scale: 1,
+              duration: 5,
+              ease: "none",
+            },
+            "-=5"
+          );
+        });
+      }, scope); // <- IMPORTANT! Scopes selector text
 
-    return () => {
-      ctx.revert();
-    }; // cleanup
-  }}, [isLoading, randomRight2, delayGiven, numberOfRandom]);
-
+      return () => {
+        ctx.revert();
+      }; // cleanup
+    }
+  }, [isLoading, randomRight2, delayGiven, numberOfRandom]);
 
   const openHam = () => {
     if (isHamOpen) {
@@ -524,17 +525,17 @@ export default function Home() {
     };
 
     assets.forEach((asset) => {
-      if (asset && (
-        asset.complete ||
-        asset.readyState === 4 ||
-        asset.tagName === "LINK")
+      if (
+        asset &&
+        (asset.complete || asset.readyState === 4 || asset.tagName === "LINK")
       ) {
         handleAssetLoad();
       } else {
-        if(asset){
-        asset.addEventListener("load", handleAssetLoad);
-        asset.addEventListener("error", handleAssetLoad);
-      }}
+        if (asset) {
+          asset.addEventListener("load", handleAssetLoad);
+          asset.addEventListener("error", handleAssetLoad);
+        }
+      }
     });
 
     const cleanup = () => {
@@ -560,9 +561,9 @@ export default function Home() {
       const handleAssetLoad = () => {
         assetsLoaded++;
         if (assetsLoaded === assets.length) {
-            setTimeout(() => {
-              setIsLoading(false);
-            }, 2000);
+          setTimeout(() => {
+            setIsLoading(false);
+          }, 2000);
         }
       };
 
@@ -588,10 +589,9 @@ export default function Home() {
 
       return cleanup;
     }
-  }, [loaderLoaded ]);
+  }, [loaderLoaded]);
 
   return (
-    
     <main
       key="mainLandingPage"
       style={{
@@ -603,14 +603,14 @@ export default function Home() {
         <div className={styles.loaderContainer}>
           {/* <MyVideoLoader/> */}
           <video
-          src={require('../../public/static/images/landingLoaderVideo.mp4')} // Update with the correct path
-          autoPlay
-          muted
-          loop
-          playsInline
-          preload="auto"
-          width="100%"
-        />
+            src={require("../../public/static/images/landingLoaderVideo.mp4")} // Update with the correct path
+            autoPlay
+            muted
+            loop
+            playsInline
+            preload="auto"
+            width="100%"
+          />
         </div>
       ) : (
         <>
@@ -623,7 +623,12 @@ export default function Home() {
               <Navbar />
               <AnimatePresence>
                 <div className={styles.hamAsset}>
-                  <Image src="/static/images/hamIcon.svg" width={103} height={103} alt="Menu" />
+                  <Image
+                    src="/static/images/hamIcon.svg"
+                    width={103}
+                    height={103}
+                    alt="Menu"
+                  />
                   <div
                     id="ham-menu"
                     className={styles.hamIcon}
@@ -649,7 +654,7 @@ export default function Home() {
                     transition={{ duration: 1 }}
                   ></motion.div>
                 ) : (
-                  <div style={{display: 'none'}}></div>
+                  <div style={{ display: "none" }}></div>
                 )}
               </AnimatePresence>
             </div>
@@ -665,16 +670,16 @@ export default function Home() {
                   <Hamburger />
                 </motion.div>
               ) : (
-                <div style={{display: 'none'}}></div>
+                <div style={{ display: "none" }}></div>
               )}
             </AnimatePresence>
           </div>
           <div className={styles.pageWrapper}>
             <div
               className={`${styles.midSection} 
-              ${
-                showLoader ? styles.loaderContainer : ""
-              } ${isLoading ? "loaded" : ""}`}
+              ${showLoader ? styles.loaderContainer : ""} ${
+                isLoading ? "loaded" : ""
+              }`}
             >
               <div className={styles.textLogoWrapper}>
                 <Image
@@ -711,17 +716,17 @@ export default function Home() {
               </div>
               <AnimatePresence>
                 {isHamOpen ? (
-                   <div style={{display: 'none'}}></div>
+                  <div style={{ display: "none" }}></div>
                 ) : (
                   <motion.div
                     key="register"
                     initial={{ opacity: 0 }}
                     animate={{ opacity: 1 }}
                     exit={{ opacity: 0 }}
-                    transition={{duration: 1}}
-                    style = {{
+                    transition={{ duration: 1 }}
+                    style={{
                       position: "absolute",
-                      bottom: "40px"
+                      bottom: "40px",
                     }}
                   >
                     <Link href="/register" legacyBehavior>
@@ -745,17 +750,19 @@ export default function Home() {
           </div>
         </>
       )}
-    </main>)
-}   
-  
-                  
-                  
+    </main>
+  );
+}
 
 export function getRandomStats(
   startingYPoint,
   endingYPoint,
   startingYRange,
-  endingYRange
+  endingYRange,
+  startingXPoint,
+  endingXPoint,
+  startingXRange,
+  endingXRange
 ) {
   const random = {};
   random.int = Math.floor(Math.random() * 10 + 1);
@@ -766,7 +773,9 @@ export function getRandomStats(
   random.startingY = Math.floor(
     Math.random() * startingYRange + startingYPoint
   );
-  random.startingX = 25;
+  random.startingX = Math.floor(
+    Math.random() * startingXRange + startingXPoint
+  );
 
   // test
   // const randomYArr = [6, 21, 36];
@@ -774,8 +783,8 @@ export function getRandomStats(
 
   // get a random number between 6 and 36
   random.endingY = Math.floor(Math.random() * endingYRange + endingYPoint);
-  random.endingX = 86;
-  random.delay = Math.floor(Math.random() * 4);
+  random.endingX = Math.floor(Math.random() * endingXRange + endingXPoint);
+  // random.delay = Math.floor(Math.random() * 4);
   return random;
 }
 
@@ -784,13 +793,26 @@ export function generateRandomStatesArray(
   startingYPoint,
   endingYPoint,
   startingYRange,
-  endingYRange
+  endingYRange,
+  startingXPoint,
+  endingXPoint,
+  startingXRange,
+  endingXRange
 ) {
   const randomArray = [];
   for (let i = 0; i < number; i++) {
-    // randomArray.push(getRandomStats(32, -10, 30, 40));
+    // randomArray.push(getRandomStats(32, -10, 30, 40, 25, 86, 0 , 0));
     randomArray.push(
-      getRandomStats(startingYPoint, endingYPoint, startingYRange, endingYRange)
+      getRandomStats(
+        startingYPoint,
+        endingYPoint,
+        startingYRange,
+        endingYRange,
+        startingXPoint,
+        endingXPoint,
+        startingXRange,
+        endingXRange
+      )
     );
   }
   return randomArray;
@@ -864,4 +886,3 @@ export function randomAnimation(direction, random, setRandom, delay, id) {
     ctx.revert();
   }; // cleanup
 }
-
