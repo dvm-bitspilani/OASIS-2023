@@ -30,15 +30,41 @@ export default function Hamburger() {
         const three = document.querySelectorAll('.three')
         const four = document.querySelectorAll('.four')
         const five = document.querySelectorAll('.five')
+        const inside = document.querySelectorAll('.ham-inside')
 
         var duration = 1
         var delay = 0.7
 
         if (isHamOpen) {
-
-
             gsap.set(element, {
                 opacity: 0,
+            })
+
+            gsap.set(svg, {
+                opacity: 0
+            })
+
+            gsap.to(svg, {
+                opacity: 1,
+                duration: 1,
+                delay: 0.5
+            })
+
+            gsap.set(inside, {
+                opacity: 0
+            })
+
+            gsap.to(inside, {
+                opacity: 1,
+                duration: 1,
+                delay: 0.5
+            })
+            gsap.to(inside[1], {
+                rotation: 360,
+                duration: 2.5,
+                ease: "power4.out",
+                // repeat: 1,
+                // transformOrigin: [0.5, 0.5],
             })
 
             gsap.set(one, {
@@ -116,7 +142,7 @@ export default function Hamburger() {
                     end: 0,
                 },
             })
-            
+
         } else {
             gsap.killTweensOf(element);
             element.style.opacity = 0;
@@ -127,58 +153,76 @@ export default function Hamburger() {
     return (
         <>
             <div className={styles.page}>
-                <div className={styles.background}>this is hamburger</div>
-                <div className={styles.glowbox}>
-                    <Image src={glow} id="glow" alt=""></Image>
-                </div>
-                <div className={styles.innercircle}>
-                    <Image src={innercircle} alt=""></Image>
-                </div>
-                <div className={styles.logo}>
-                    <Image id="logo" src={logo} alt=""></Image>
-                </div>
-                <div className={styles.outerpath}>
-                    {/* <Image src={path} id="path"></Image> */}
-                    <svg id="path-svg" viewBox="0 0 1044 816" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        {/* <path id="base" opacity="0.7" d="M888 417.5C888 622.398 721.898 788.5 517 788.5C312.102 788.5 146 622.398 146 417.5C146 212.602 312.102 46.5 517 46.5C738 46.5 778.5 193 857.5 141.5C936.5 90 1029.5 29 1029.5 29" stroke="#F0F0F0" strokeWidth="0.75" strokeDasharray="5 5" /> */}
-                        <path id="path" opacity="0.7" d="M888 417.5C888 622.398 721.898 788.5 517 788.5C312.102 788.5 146 622.398 146 417.5C146 212.602 312.102 46.5 517 46.5C738 46.5 778.5 193 857.5 141.5C936.5 90 1029.5 29 1029.5 29" stroke="#F0F0F0" strokeWidth="0.75" strokeDasharray="5 5" />
-                    </svg>
-                </div>
-                <div className={styles.circle}>
-                    <div className={`${styles.item} one`}>
-                        <div className={`${styles.number} ${styles.one}`} >1</div>
+                {/* <div className={styles.container}> */}
+                <div className={styles.background}>
+                    <div className={styles.glowbox}>
+                        <Image src={glow} id="glow" alt=""></Image>
                     </div>
-                    <div className={`${styles.item} two`}>
-                        <div className={`${styles.number} ${styles.two}`} >2</div>
+                    <div className={`${styles.innercircle} ham-inside`}>
+                        <Image src={innercircle} alt=""></Image>
                     </div>
-                    <div className={`${styles.item} three`}>
-                        <div className={`${styles.number} ${styles.three}`} >3</div>
+                    <div className={`${styles.logo} ham-inside`}>
+                        <Image id="logo" src={logo} alt=""></Image>
                     </div>
-                    <div className={`${styles.item} four`}>
-                        <div className={`${styles.number} ${styles.four}`} >4</div>
+                    <div className={styles.outerpath}>
+                        {/* <Image src={path} id="path"></Image> */}
+                        <svg id="path-svg" viewBox="0 0 1044 816" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            {/* <path id="base" opacity="0.7" d="M888 417.5C888 622.398 721.898 788.5 517 788.5C312.102 788.5 146 622.398 146 417.5C146 212.602 312.102 46.5 517 46.5C738 46.5 778.5 193 857.5 141.5C936.5 90 1029.5 29 1029.5 29" stroke="#F0F0F0" strokeWidth="0.75" strokeDasharray="5 5" /> */}
+                            <path id="path" opacity="0.7" d="M888 417.5C888 622.398 721.898 788.5 517 788.5C312.102 788.5 146 622.398 146 417.5C146 212.602 312.102 46.5 517 46.5C738 46.5 778.5 193 857.5 141.5C936.5 90 1029.5 29 1029.5 29" stroke="#F0F0F0" strokeWidth="0.75" strokeDasharray="5 5" />
+                        </svg>
                     </div>
-                    <div className={`${styles.item} five`}>
-                        <div className={`${styles.number} ${styles.five}`} >5</div>
+                    <div className={styles.circle}>
+                        <div className={`${styles.item} one`}>
+                            <div className={`${styles.number} ${styles.one}`} >
+                                <span className={styles.numbox}><div className={styles.num}>1</div></span>
+                                <span className={styles.txt}>SPONSORS</span>
+                            </div>
+                        </div>
+                        <div className={`${styles.item} two`}>
+                            <div className={`${styles.number} ${styles.two}`} >
+                                <span className={styles.numbox}><div className={styles.num}>2</div></span>
+                                <span className={styles.txt2}>ECLIPSE</span>
+                            </div>
+                        </div>
+                        <div className={`${styles.item} three`}>
+                            <div className={`${styles.number} ${styles.three}`} >
+                            <span className={styles.numbox}><div className={styles.num}>3</div></span>
+                                <span className={styles.txt2}>WALLMAG</span>
+                            </div>
+                        </div>
+                        <div className={`${styles.item} four`}>
+                            <div className={`${styles.number} ${styles.four}`} >
+                                <span className={styles.numbox}><div className={styles.num}>4</div></span>
+                                <span className={styles.txt}>MEDIA PARTNERS</span>
+                            </div>
+                        </div>
+                        <div className={`${styles.item} five`}>
+                            <div className={`${styles.number} ${styles.five}`} >
+                            <span className={styles.numbox}><div className={styles.num}>5</div></span>
+                            <span className={styles.txt}>DEVELOPERS</span>
+                            </div>
+                        </div>
                     </div>
-                </div>
 
-                <div className={styles.circle2}>
+                    {/* <div className={styles.circle2}>
                     <div className={`${styles.tag} one`}>
-                        <div>SPONSORS</div>
+                        <div className={styles.text}>SPONSORS</div>
                     </div>
                     <div className={`${styles.tag} two`}>
-                        <div>ECLIPSE</div>
+                        <div className={styles.text} >ECLIPSE</div>
                     </div>
                     <div className={`${styles.tag} three`}>
-                        <div>WALLMAG</div>
+                        <div className={styles.text} >WALLMAG</div>
                     </div>
                     <div className={`${styles.tag} four`}>
-                        <div>MEDIA PARTNERS</div>
+                        <div className={styles.text} >MEDIA PARTNERS</div>
                     </div>
                     <div className={`${styles.tag} five`}>
-                        <div>DEVELOPERS</div>
+                        <div className={styles.text} >DEVELOPERS</div>
                     </div>
+                </div> */}
                 </div>
+                {/* </div> */}
             </div>
         </>
     )

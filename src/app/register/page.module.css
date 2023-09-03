@@ -26,11 +26,13 @@
   font-family: "NightmarePills";
   font-size: 1.5rem;
   line-height:100%;
-  transition: scale 0.2s ease-in-out;
+  transition: all 0.2s ease;
 }
 .regPage button:hover{
-  scale:1.05;
+  scale:1.0;
   cursor: pointer;/*temporarily*/
+  filter: brightness(100);
+  transition: all 0.2s ease;
 }
 .regForm{
   height:70vh;
@@ -60,6 +62,14 @@
   filter: drop-shadow(0px 0px 15px rgba(123, 190, 240, 0.91));
   border-radius:5px;
 }
+.scrollBarContainer img:hover{
+  cursor: grab;
+}
+
+.scrollBarContainer img:hover{
+  cursor: grab;
+}
+
 .formContainer{
   height: 100%;
   width: 90%;
