@@ -361,3 +361,34 @@ height: 100vh;
   opacity: 0;
   transition: opacity 0.5s ease;
 }
+
+.registerBtnContainer{
+  transform: translateY(-40%);
+}
+
+@media screen and (max-height: 750px) {
+  /* .bookImgWrapper {
+    width: 100%;
+  }
+
+  .LandingBookImg {
+    width: 100%;
+  }
+
+  .leftSymbol,
+  .rightSymbol {
+    width: 50px;
+    height: 50px;
+  } */
+  .textLogoWrapper{
+    scale: 0.75;
+    transform: translateY(70%);
+  }
+  .bookImgWrapper{
+    scale: 0.75;
+transform: translateY(6%);
+  }
+  .registerBtnContainer{
+transform: translateY(-85%);
+  }
+}

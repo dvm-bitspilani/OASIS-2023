@@ -663,10 +663,11 @@ export default function Home() {
                     animate={{ opacity: 1 }}
                     exit={{ opacity: 0 }}
                     transition={{ duration: 1 }}
-                    style={{
-                      position: "absolute",
-                      bottom: "40px",
-                    }}
+                    // style={{
+                    //   position: "absolute",
+                    //   bottom: "40px",
+                    // }}
+                    className = {styles.registerBtnContainer}
                   >
                     <Link href="/register" legacyBehavior>
                       <a className={styles.registerBtnWrapper}>
