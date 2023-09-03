@@ -541,14 +541,15 @@ export default function Home() {
         <div className={styles.loaderContainer}>
           {/* <MyVideoLoader/> */}
           <video
-            src={require("../../public/static/images/landingLoaderVideo.mp4")} // Update with the correct path
             autoPlay
             muted
             loop
             playsInline
             preload="auto"
             width="100%"
-          />
+          >
+            <source src={require("../../public/static/images/landingLoaderVideo.mp4")} type="video/mp4" />
+          </video>
         </div>
       ) : (
         <>
