@@ -1,0 +1,38 @@
+.navWrapper {
+  display: flex;
+  gap: 3rem;
+}
+.navItem {
+  color: #9ed4fb;
+  text-align: center;
+  font-family: Montserrat;
+  font-size: 1.25rem;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 100%; /* 20px */
+  text-decoration: none;
+}
+.navItem:hover {
+  cursor: pointer;
+}
+@media(max-width: 1310px){
+    .navWrapper{
+        gap: 2rem;
+    }
+    .navItem{
+        font-size: 1.15rem;
+    }
+}
+@media(max-height: 720px){
+    .navWrapper{
+        gap: 1rem;
+    }
+    .navItem{
+        font-size: 1rem;
+    }
+}
+@media (min-width: 1200px) {
+    .navWrapper{
+        display: none;
+    }
+}
