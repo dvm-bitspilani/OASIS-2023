@@ -968,7 +968,7 @@ export default function Page(props) {
               </label>
               <input
                 type="text"
-                placeholder="NAME"
+                placeholder="Enter your name"
                 id="name"
                 onChange={(inp) => handleNameChange(inp)}
               />
@@ -976,7 +976,7 @@ export default function Page(props) {
               <label htmlFor="email_id">EMAIL-ID</label>
               <input
                 type="text"
-                placeholder="email@gmail.com"
+                placeholder="Enter your email id"
                 id="email_id"
                 onChange={(inp) => handleEmailChange(inp)}
               />
@@ -984,7 +984,7 @@ export default function Page(props) {
               <label htmlFor="phone">PHONE NUMBER</label>
               <input
                 type="text"
-                placeholder="9999999999"
+                placeholder="Enter your phone number"
                 id="phone"
                 maxLength="10"
                 onChange={(inp) => handlePhoneChange(inp)}
@@ -1021,7 +1021,7 @@ export default function Page(props) {
                 options={colleges}
                 id="college"
                 styles={customStylesArray[0]}
-                placeholder="COLLEGE"
+                placeholder="Choose your college"
                 onChange={handleCollegeChange}
               />
 
@@ -1030,7 +1030,7 @@ export default function Page(props) {
                 options={states}
                 id="state"
                 styles={customStylesArray[1]}
-                placeholder="STATE"
+                placeholder="Choose your state"
                 onChange={handleStateChange}
               />
 
@@ -1040,7 +1040,7 @@ export default function Page(props) {
                 id="city"
                 noOptionsMessage={noCitiesMessage}
                 onChange={handleCityChange}
-                placeholder="CITY"
+                placeholder="Choose your city"
                 styles={customStylesArray[2]}
               />
 
@@ -1049,7 +1049,7 @@ export default function Page(props) {
                 options={year}
                 id="year"
                 styles={customStylesArray[3]}
-                placeholder="YEAR"
+                placeholder="Choose your year of study"
                 onChange={handleYearChange}
               />
 
@@ -1058,7 +1058,7 @@ export default function Page(props) {
                 options={events}
                 id="events"
                 styles={customStylesArray[4]}
-                placeholder="EVENTS"
+                placeholder="Select all the events you want to register for"
                 onChange={handleEventChange}
                 isMulti
               />
