@@ -31,3 +31,8 @@
         font-size: 1rem;
     }
 }
+@media (min-width: 1200px) {
+    .navWrapper{
+        display: none;
+    }
+}
