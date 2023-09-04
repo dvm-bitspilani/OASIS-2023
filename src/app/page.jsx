@@ -32,7 +32,7 @@ export default function Home() {
   const [showLoader, setShowLoader] = useState(true);
 
   const numberOfRandom = 10;
-  const randomGenerationConfig = [32, -10, 30, 40];
+  const randomGenerationConfig = [32, -10, 30, 40, 25, 86, 0, 0];
 
   const [randomLeft1, setrandomLeft1] = useState(
     generateRandomStatesArray(numberOfRandom, ...randomGenerationConfig)
@@ -785,7 +785,11 @@ export function getRandomStats(
   startingYPoint,
   endingYPoint,
   startingYRange,
-  endingYRange
+  endingYRange,
+  startingXPoint,
+  endingXPoint,
+  startingXRange,
+  endingXRange
 ) {
   const random = {};
   random.int = Math.floor(Math.random() * 10 + 1);
@@ -796,7 +800,9 @@ export function getRandomStats(
   random.startingY = Math.floor(
     Math.random() * startingYRange + startingYPoint
   );
-  random.startingX = 25;
+  random.startingX = Math.floor(
+    Math.random() * startingXRange + startingXPoint
+  );
 
   // test
   // const randomYArr = [6, 21, 36];
@@ -804,8 +810,8 @@ export function getRandomStats(
 
   // get a random number between 6 and 36
   random.endingY = Math.floor(Math.random() * endingYRange + endingYPoint);
-  random.endingX = 86;
-  random.delay = Math.floor(Math.random() * 4);
+  random.endingX = Math.floor(Math.random() * endingXRange + endingXPoint);
+  // random.delay = Math.floor(Math.random() * 4);
   return random;
 }
 
@@ -814,13 +820,26 @@ export function generateRandomStatesArray(
   startingYPoint,
   endingYPoint,
   startingYRange,
-  endingYRange
+  endingYRange,
+  startingXPoint,
+  endingXPoint,
+  startingXRange,
+  endingXRange
 ) {
   const randomArray = [];
   for (let i = 0; i < number; i++) {
     // randomArray.push(getRandomStats(32, -10, 30, 40));
     randomArray.push(
-      getRandomStats(startingYPoint, endingYPoint, startingYRange, endingYRange)
+      getRandomStats(
+        startingYPoint,
+        endingYPoint,
+        startingYRange,
+        endingYRange,
+        startingXPoint,
+        endingXPoint,
+        startingXRange,
+        endingXRange
+      )
     );
   }
   return randomArray;

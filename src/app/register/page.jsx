@@ -308,7 +308,7 @@ export default function Page(props) {
           tl.to(`#top_left_1_${key}`, {
             right: `${(item.endingX + item.startingX) / 2}%`,
             top: `${(item.endingY + item.startingY) / 2}%`,
-            // scale: 1,
+            // scale: 0.8,
             // opacity: 1,
             delay: `${key * 1.4}`,
             duration: 2.5,
@@ -333,7 +333,7 @@ export default function Page(props) {
           tl.to(
             `#top_left_1_${key}`,
             {
-              scale: 1,
+              scale: 0.8,
               rotate: 80,
               duration: 5,
               ease: "none",
@@ -385,7 +385,7 @@ export default function Page(props) {
           tl.to(`#top_left_2_${key}`, {
             right: `${(item.endingX + item.startingX) / 2}%`,
             top: `${(item.endingY + item.startingY) / 2}%`,
-            // scale: 1,
+            // scale: 0.8,
             // opacity: 1,
             delay: `${key * 1.4}`,
             duration: 2.5,
@@ -410,7 +410,7 @@ export default function Page(props) {
           tl.to(
             `#top_left_2_${key}`,
             {
-              scale: 1,
+              scale: 0.8,
               rotate: 80,
               duration: 5,
               ease: "none",
@@ -462,7 +462,7 @@ export default function Page(props) {
           tl.to(`#bottom_left_1_${key}`, {
             right: `${(item.endingX + item.startingX) / 2}%`,
             top: `${(item.endingY + item.startingY) / 2}%`,
-            // scale: 1,
+            // scale: 0.8,
             // opacity: 1,
             delay: `${key * 1.4}`,
             duration: 2.5,
@@ -487,7 +487,7 @@ export default function Page(props) {
           tl.to(
             `#bottom_left_1_${key}`,
             {
-              scale: 1,
+              scale: 0.8,
               rotate: 80,
               duration: 5,
               ease: "none",
@@ -540,7 +540,7 @@ export default function Page(props) {
           tl.to(`#bottom_left_2_${key}`, {
             right: `${(item.endingX + item.startingX) / 2}%`,
             top: `${(item.endingY + item.startingY) / 2}%`,
-            // scale: 1,
+            // scale: 0.8,
             // opacity: 1,
             delay: `${key * 1.4}`,
             duration: 2.5,
@@ -565,7 +565,7 @@ export default function Page(props) {
           tl.to(
             `#bottom_left_2_${key}`,
             {
-              scale: 1,
+              scale: 0.8,
               rotate: 80,
               duration: 5,
               ease: "none",
