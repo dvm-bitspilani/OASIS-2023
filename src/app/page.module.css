@@ -35,7 +35,9 @@
   display: flex;
   position: relative;
 }
-
+.hamAsset img{
+  scale: 1.2;
+}
 .hamAsset:hover > img {
   animation: rotation360 10s linear infinite forwards;
 }
@@ -52,8 +54,8 @@
 
 .hamBG {
   position: absolute;
-  top: 4rem;
-  right: 5rem;
+  top: 2rem;
+  right: 2rem;
   background: #000;
   border-radius: 50%;
   height: 90px;
@@ -77,6 +79,11 @@
   padding: 1.5rem 0;
   cursor: pointer;
   z-index: 1000;
+}
+@media (max-width: 500px) {
+  .hamIcon{
+    scale: .75;
+  }
 }
 
 .hamIcon1 {

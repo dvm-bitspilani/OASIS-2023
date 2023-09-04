@@ -23,3 +23,11 @@
         font-size: 1.15rem;
     }
 }
+@media(max-height: 720px){
+    .navWrapper{
+        gap: 1rem;
+    }
+    .navItem{
+        font-size: 1rem;
+    }
+}

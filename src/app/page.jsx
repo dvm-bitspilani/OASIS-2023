@@ -7,6 +7,7 @@ import { useState, useEffect, useRef, useLayoutEffect } from "react";
 import { useContext } from "react";
 import { HamContext } from "@/context/HamContextProvider";
 import Link from "next/link";
+import { Metadata } from "next";
 import textLogo from "../../public/static/images/OasisLogo.png";
 import Navbar from "@/components/Navbar";
 import Hamburger from "@/components/hamburger";
@@ -892,4 +893,11 @@ export function randomAnimation(direction, random, setRandom, delay, id) {
   return () => {
     ctx.revert();
   }; // cleanup
+}
+
+export const metadata = {
+  title: "OASIS '23 | Home",
+  description: "The official website for OASIS 2023.",
+  colorScheme: "dark",
+  icon: "/static/images/navLogo.png",
 }
