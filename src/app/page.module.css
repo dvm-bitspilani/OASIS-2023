@@ -1,5 +1,5 @@
 .pageWrapper {
-height: 100vh;
+  height: 100vh;
   width: 100vw;
   background: url(../../public/static/images/LibraryBgImage.avif);
   background-position: center;
@@ -10,6 +10,13 @@ height: 100vh;
   overflow-x: hidden;
   position: relative;
   z-index: 1;
+}
+.navSection {
+  position: absolute;
+  left: 4rem;
+  transform-origin: left top;
+  transform: rotate(-90deg) translateX(-55%);
+  z-index: 2;
 }
 .hamSection {
   position: absolute;
@@ -29,7 +36,7 @@ height: 100vh;
   position: relative;
 }
 
-.hamAsset:hover >img {
+.hamAsset:hover > img {
   animation: rotation360 10s linear infinite forwards;
 }
 
@@ -134,17 +141,16 @@ height: 100vh;
   position: relative;
   z-index: 3;
 }
-.textLogoWrapper{
-    position: relative;
-    top: 10vh;
-    animation: glow 1s ease-in-out infinite alternate;
-    -webkit-animation: glow 1s ease-in-out infinite alternate;
-    -moz-animation: glow 1s ease-in-out infinite alternate;
-    height: 100%;
-    width: 100%;
-    display: flex;
-    justify-content: center;
-  
+.textLogoWrapper {
+  position: relative;
+  top: 10vh;
+  animation: glow 1s ease-in-out infinite alternate;
+  -webkit-animation: glow 1s ease-in-out infinite alternate;
+  -moz-animation: glow 1s ease-in-out infinite alternate;
+  height: 100%;
+  width: 100%;
+  display: flex;
+  justify-content: center;
 }
 .LandingBookImg {
   width: 80%;
@@ -168,27 +174,12 @@ height: 100vh;
 }
 
 .landingPageDate span {
-    position: relative;
-  }
-  .landingPageDate span::before {
-    content: "";
-    position: absolute;
-    width: 100%;
-    height: 1px;
-    background-color: currentColor;
-    bottom: -2px;
-    left: 0;
-    transform: scaleX(0);
-    transform-origin: left;
-    transition: transform 0.5s;
-  }
-  .landingPageDate span:hover::before {
-    transform: scaleX(1); 
-  }
-  .bookImgWrapper{
-    position: relative;
-    transform: translateY(-10%);
-    width: max(80%, 650px);
+  position: relative;
+}
+.bookImgWrapper {
+  position: relative;
+  transform: translateY(-10%);
+  width: max(80%, 650px);
 
   display: flex;
   justify-content: center;
@@ -258,10 +249,9 @@ height: 100vh;
     scale: 0.75;
   }
 
-  .hamBtn img{
+  .hamBtn img {
     scale: 0.8;
   }
-
 }
 @media screen and (max-width: 400px) {
   .textLogoImg {
@@ -276,9 +266,6 @@ height: 100vh;
   }
 }
 @media screen and (max-width: 900px) {
-  .LandingBookImg {
-    /* scale: 0.6; */
-  }
   .landingPgLeftGrp {
     scale: 0.6;
     /* bottom: 150px;
@@ -291,9 +278,6 @@ height: 100vh;
   }
 }
 @media screen and (max-width: 750px) {
-  .LandingBookImg {
-    /* scale: 0.5; */
-  }
   .landingPgLeftGrp {
     scale: 0.5;
     /* bottom: 130px;
@@ -362,7 +346,7 @@ height: 100vh;
   transition: opacity 0.5s ease;
 }
 
-.registerBtnContainer{
+.registerBtnContainer {
   transform: translateY(-40%);
 }
 
@@ -380,15 +364,15 @@ height: 100vh;
     width: 50px;
     height: 50px;
   } */
-  .textLogoWrapper{
+  .textLogoWrapper {
     scale: 0.75;
     transform: translateY(70%);
   }
-  .bookImgWrapper{
+  .bookImgWrapper {
     scale: 0.75;
-transform: translateY(6%);
+    transform: translateY(6%);
   }
-  .registerBtnContainer{
-transform: translateY(-85%);
+  .registerBtnContainer {
+    transform: translateY(-85%);
   }
 }

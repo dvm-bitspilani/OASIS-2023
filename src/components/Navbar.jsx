@@ -1,17 +1,25 @@
 import React from "react";
-import "./navbar.css";
-import Image from "next/image";
+import * as nav from "../components/navbar.module.css";
+import Link from "next/link";
 const Navbar = () => {
   return (
     <>
-      <div className="navLogo">
-        <Image
-          src="/static/images/navLogo.png"
-          width={80}
-          height={80}
-          className="navLogoImg"
-          alt="Text Oasis Logo"
-        />
+      <div className={nav.navWrapper}>
+        <Link href="/register" legacyBehavior>
+          <a className={nav.navItem}>SPONSORS</a>
+        </Link>
+        <Link href="/register" legacyBehavior>
+          <a className={nav.navItem}>CONTACT</a>
+        </Link>
+        <Link href="/register" legacyBehavior>
+          <a className={nav.navItem}>EVENTS</a>
+        </Link>
+        <Link href="/register" legacyBehavior>
+          <a className={nav.navItem}>ABOUT US</a>
+        </Link>
+        <Link href="/register" legacyBehavior>
+          <a className={nav.navItem}>HOME</a>
+        </Link>
       </div>
     </>
   );
