@@ -1,224 +1,385 @@
-.pageWrapper{
-    min-height: 100vh;
-    height: auto;
-    width: 100vw;
-    background: url(../../public/static/images/LibraryBgImage.avif);
-    background-position: center;
-    background-size: cover;
-    background-repeat: no-repeat;
-    display: flex;
-    align-items: center;
-    overflow-x: hidden;
+.pageWrapper {
+  height: 100vh;
+  width: 100vw;
+  background: url(../../public/static/images/LibraryBgImage.avif);
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  display: flex;
+  align-items: center;
+  overflow-x: hidden;
+  position: relative;
+  z-index: 1;
 }
-.midSection{
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    width: 100vw;
+.navSection {
+  position: absolute;
+  left: 4rem;
+  transform-origin: left top;
+  transform: rotate(-90deg) translateX(-55%);
+  z-index: 2;
 }
-.registerBtnWrapper{
-    transition: scale 0.2s ease-in-out;
+.hamSection {
+  position: absolute;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
 }
-.registerBtnWrapper:hover{
-    cursor: pointer;
-    scale: 1.1;
+.hamBtn {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1rem 2rem;
 }
-.landingPageDate > span{
-    color: #7ABDF0;
-    font-family: 'MetalMania';
-    font-weight: 300;
-    font-size: 1.5rem;
+.hamAsset {
+  display: flex;
+  position: relative;
 }
-.textLogoWrapper{
-    position: relative;
-    top: 10vh;
-    margin-top: 2rem;
-    animation: glow 1s ease-in-out infinite alternate;
-    -webkit-animation: glow 1s ease-in-out infinite alternate;
-    -moz-animation: glow 1s ease-in-out infinite alternate;
-    height: 100%;
-    width: 100%;
-    display: flex;
-    justify-content: center;
-  
+.hamAsset img{
+  scale: 1.2;
 }
-.LandingBookImg{
-    animation-name: floating;
-    animation-duration: 3s;
-    animation-iteration-count: infinite;
-    animation-timing-function: ease-in-out;
+.hamAsset:hover > img {
+  animation: rotation360 10s linear infinite forwards;
+}
+
+/* Adding hover effect as animation - infinite rotate 360 deg */
+@keyframes rotation360 {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+.hamBG {
+  position: absolute;
+  top: 2rem;
+  right: 2rem;
+  background: #000;
+  border-radius: 50%;
+  height: 90px;
+  width: 90px;
+}
+@media (max-width: 800px) {
+  .hamBG {
+    height: 80px;
+    width: 80px;
+  }
+}
+.hamIcon {
+  height: 4.5rem;
+  position: absolute;
+  top: 1rem;
+  left: 2.45rem;
+  width: 2rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 1.5rem 0;
+  cursor: pointer;
+  z-index: 1000;
+}
+@media (max-width: 500px) {
+  .hamIcon{
+    scale: .75;
+  }
+}
+
+.hamIcon1 {
+  height: 3.5px;
+  width: 50%;
+  border-radius: 5px;
+  background-color: #7bbef0;
+  filter: drop-shadow(0px 0px 10.649142265319824px #5db3f1);
+  display: inline-block;
+  transform-origin: bottom;
+  transition: 0.4s cubic-bezier(0.68, -0.6, 0.32, 1.6);
+}
+
+.hamIcon2 {
+  height: 3.5px;
+  width: 100%;
+  border-radius: 5px;
+  background-color: #7bbef0;
+  filter: drop-shadow(0px 0px 10.649142265319824px #5db3f1);
+  display: inline-block;
+  transform-origin: top;
+  transition: 0.4s cubic-bezier(0.68, -0.6, 0.32, 1.6);
+}
+
+.hamIcon3 {
+  height: 3.5px;
+  width: 75%;
+  border-radius: 5px;
+  background-color: #7bbef0;
+  filter: drop-shadow(0px 0px 10.649142265319824px #5db3f1);
+  display: inline-block;
+  transform-origin: center left;
+  transition: 0.4s cubic-bezier(0.68, -0.6, 0.32, 1.6);
+  transform-origin: bottom;
+}
+
+.midSection {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100vw;
+  /* position: relative;
+    z-index: 2; */
+}
+.registerBtnWrapper {
+  transition: scale 0.2s ease-in-out;
+  position: relative;
+  z-index: 3;
+  height: fit-content;
+  display: inline-block;
+}
+.registerBtnWrapper:hover {
+  cursor: pointer;
+  scale: 1.1;
+}
+.landingPageDate > span {
+  color: #7abdf0;
+  font-family: "MetalMania";
+  font-weight: 300;
+  font-size: 1.5rem;
+  position: relative;
+  z-index: 3;
+}
+.textLogoWrapper {
+  position: relative;
+  top: 10vh;
+  animation: glow 1s ease-in-out infinite alternate;
+  -webkit-animation: glow 1s ease-in-out infinite alternate;
+  -moz-animation: glow 1s ease-in-out infinite alternate;
+  height: 100%;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+.LandingBookImg {
+  width: 80%;
+  object-fit: contain;
+
+  animation-name: floating;
+  animation-duration: 3s;
+  animation-iteration-count: infinite;
+  animation-timing-function: ease-in-out;
 }
 @keyframes floating {
-    0% { transform: translate(0,  0px); }
-    50%  { transform: translate(0, 15px); }
-    100%   { transform: translate(0, -0px); }   
+  0% {
+    transform: translate(0, 0px);
+  }
+  50% {
+    transform: translate(0, 15px);
+  }
+  100% {
+    transform: translate(0, 0px);
+  }
 }
 
 .landingPageDate span {
-    position: relative;
-  }
-  .landingPageDate span::before {
-    content: "";
-    position: absolute;
-    width: 100%;
-    height: 1px;
-    background-color: currentColor;
-    bottom: -2px;
-    left: 0;
-    transform: scaleX(0);
-    transform-origin: left;
-    transition: transform 0.5s;
-  }
-  .landingPageDate span:hover::before {
-    transform: scaleX(1); 
-  }
-  .bookImgWrapper{
-    display: flex;
-  }
-  .leftElements{
-    position: relative;
-    animation-name: floating;
+  position: relative;
+}
+.bookImgWrapper {
+  position: relative;
+  transform: translateY(-10%);
+  width: max(80%, 650px);
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.leftElements {
+  z-index: 1;
+  position: absolute;
+  left: 0;
+  width: 50%;
+  height: 100%;
+
+  /* animation-name: floating;
     animation-duration: 2.5s;
     animation-iteration-count: infinite;
-    animation-timing-function: ease-in-out;
-    /* animation-delay: 0.5s; */
-  }
-  .landingPgLeftGrp{
-    position: absolute;
-    left: -120px;
-    bottom: 170px;
-  }
-  .rightElements{
-    position: relative;
-    animation-name: floating;
+    animation-timing-function: ease-in-out; */
+  /* animation-delay: 0.5s; */
+}
+
+.leftSymbol,
+.rightSymbol {
+  position: absolute;
+  width: 100px;
+  height: 100px;
+
+  /* transform: scale(1.4); */
+  /* right: 25%;
+    top: 50%; */
+}
+
+.landingPgLeftGrp {
+  position: absolute;
+  /* left: -120px;
+    bottom: 170px; */
+  top: 0;
+}
+.rightElements {
+  position: absolute;
+  left: 50%;
+  width: 50%;
+  height: 100%;
+
+  /* animation-name: floating;
     animation-duration: 2s;
     animation-iteration-count: infinite;
     animation-timing-function: ease-in-out;
-    animation-delay: 1s;
-  }
-  .landingPgRightGrp{
-    position: absolute;
-    left: -140px;
-    bottom: 170px;
-  }
-  .navbar{
-    align-self: baseline;
-  }
-  /* .textLogoImg{
+    animation-delay: 1s; */
+
+  /* display: flex;
+    justify-content: end;
+    align-items: center; */
+}
+.landingPgRightGrp {
+  position: absolute;
+  /* left: -140px;
+    bottom: 170px; */
+  top: 0;
+}
+.navbar {
+  align-self: baseline;
+}
+/* .textLogoImg{
    width: 400px;
     } */
-    @media screen and (max-width: 560px) {
-        .textLogoImg{
-            scale: 0.75;
-             }
-      }
-    @media screen and (max-width: 400px) {
-        .textLogoImg{
-            scale: 0.5;
-             }
-      }
-    @media screen and (max-width: 1250px) {
-        .LandingBookImg{
-            scale: 0.75;
-        }
-        .landingPgLeftGrp{
-            scale: 0.75;
-            /* bottom: 0; */
-            left: -10px;
-        }
-        .landingPgRightGrp{
-            scale: 0.75;
-            left: -270px;
-        }
-      }
-    @media screen and (max-width: 900px) {
-        .LandingBookImg{
-            scale: 0.6;
-        }
-        .landingPgLeftGrp{
-            scale: 0.6;
-            bottom: 150px;
-            left: 60px;
-        }
-        .landingPgRightGrp{
-            scale: 0.6;
-            left: -330px;
-            bottom: 150px;
-        }
+@media screen and (max-width: 560px) {
+  .textLogoImg {
+    scale: 0.75;
+  }
 
-      }
-    @media screen and (max-width: 750px) {
-        .LandingBookImg{
-            scale: 0.5;
-        }
-        .landingPgLeftGrp{
-            scale: 0.5;
-            bottom: 130px;
-            left: 100px;
-        }
-        .landingPgRightGrp{
-            scale: 0.5;
-            left: -390px;
-            bottom: 140px;
-        }
-
-      }
-    @media screen and (max-width: 600px) {
-        .LandingBookImg{
+  .hamBtn img {
+    scale: 0.8;
+  }
+}
+@media screen and (max-width: 400px) {
+  .textLogoImg {
+    scale: 0.5;
+  }
+}
+@media screen and (max-width: 1250px) {
+  .leftSymbol,
+  .rightSymbol {
+    width: 80px;
+    height: 80px;
+  }
+}
+@media screen and (max-width: 900px) {
+  .landingPgLeftGrp {
+    scale: 0.6;
+    /* bottom: 150px;
+            left: 60px; */
+  }
+  .landingPgRightGrp {
+    scale: 0.6;
+    /* left: -330px;
+            bottom: 150px; */
+  }
+}
+@media screen and (max-width: 750px) {
+  .landingPgLeftGrp {
+    scale: 0.5;
+    /* bottom: 130px;
+            left: 100px; */
+  }
+  .landingPgRightGrp {
+    scale: 0.5;
+    /* left: -390px;
+            bottom: 140px; */
+  }
+}
+@media screen and (max-width: 600px) {
+  /* .LandingBookImg{
             scale: 0.4;
-        }
-        .landingPgLeftGrp{
-            scale: 0.5;
-            bottom: 140px;
-            left: 130px;
-        }
-        .landingPgRightGrp{
-            scale: 0.5;
-            left: -410px;
-            bottom: 150px;
-        }
+        } */
+  .landingPgLeftGrp {
+    scale: 0.5;
+    /* bottom: 140px;
+            left: 130px; */
+  }
+  .landingPgRightGrp {
+    scale: 0.5;
+    /* left: -410px;
+            bottom: 150px; */
+  }
+}
+@media screen and (max-width: 550px) {
+  .bookImgWrapper {
+    width: 100%;
+  }
 
-      }
-    @media screen and (max-width: 550px) {
-        .LandingBookImg{
-            scale: 0.5;
-        }
-        .landingPgLeftGrp{
-            scale: 0.2;
-            bottom: 140px;
-            left: 130px;
-            display: none;
-        }
-        .landingPgRightGrp{
-            scale: 0.5;
-            left: -410px;
-            bottom: 150px;
-            display: none;
-        }
+  .LandingBookImg {
+    width: 100%;
+  }
 
-      }
-    @media screen and (max-width: 400px) {
-        .LandingBookImg{
-            scale: 0.35;
-        }
-      }
-      .loaderContainer{
-        height: 100vh;
-        width: 100vw;
-        background-color: black;
-        /* background-image: url("../../public/static/images/LibraryBgImage.avif"); */
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        /* background-position: center; */
-        /* background-repeat: no-repeat; */
-        /* background-size: cover; */
-        opacity: 1;
-        /* transition: opacity 0.5s ease; */
-      }
-      
-      .loaded {
-        opacity: 0; 
-        transition: opacity 0.5s ease; 
-      }
+  .leftSymbol,
+  .rightSymbol {
+    /* display: none; */
+    width: 50px;
+    height: 50px;
+  }
+}
+@media screen and (max-width: 400px) {
+}
+.loaderContainer {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 9999;
+  height: 100vh;
+  width: 100vw;
+  background-color: black;
+  /* background-image: url("../../public/static/images/LibraryBgImage.avif"); */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  /* background-position: center; */
+  /* background-repeat: no-repeat; */
+  /* background-size: cover; */
+  opacity: 1;
+  /* transition: opacity 0.5s ease; */
+}
+
+.loaded {
+  opacity: 0;
+  transition: opacity 0.5s ease;
+}
+
+.registerBtnContainer {
+  transform: translateY(-40%);
+}
+
+@media screen and (max-height: 750px) {
+  /* .bookImgWrapper {
+    width: 100%;
+  }
+
+  .LandingBookImg {
+    width: 100%;
+  }
+
+  .leftSymbol,
+  .rightSymbol {
+    width: 50px;
+    height: 50px;
+  } */
+  .textLogoWrapper {
+    scale: 0.75;
+    transform: translateY(70%);
+  }
+  .bookImgWrapper {
+    scale: 0.75;
+    transform: translateY(6%);
+  }
+  .registerBtnContainer {
+    transform: translateY(-85%);
+  }
+}
