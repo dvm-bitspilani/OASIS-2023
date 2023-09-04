@@ -121,21 +121,21 @@
   font-size: 1.5rem;
 }
 .form input::-webkit-input-placeholder {
-  color: #ffffff;
+  color: rgba(255, 255, 255, 0.6);
   font-family: "NightmarePills";
   font-size: 1.5rem;
   opacity: 1;
 }
 
 .form input:-ms-input-placeholder {
-  color: #ffffff;
+  color: rgba(255, 255, 255, 0.6);
   font-family: "NightmarePills";
   font-size: 1.5rem;
   opacity: 1;
 }
 
 .form input::placeholder {
-  color: #ffffff;
+  color: rgba(255, 255, 255, 0.6);
   font-family: "NightmarePills";
   font-size: 1.5rem;
   opacity: 1;

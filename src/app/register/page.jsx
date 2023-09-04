@@ -281,7 +281,7 @@ export default function Page(props) {
 
   useLayoutEffect(() => {
     // console.log("Animation 1");
-    if (!isLoading) {
+    if (!isLoading && innerWidth > 1000) {
       let ctx = gsap.context(() => {
         randomStatesTopLeft1.forEach((item, key) => {
           gsap.set(`#top_left_1_${key}`, {
@@ -357,7 +357,7 @@ export default function Page(props) {
 
   useLayoutEffect(() => {
     // console.log("Animation 2");
-    if (!isLoading) {
+    if (!isLoading && innerWidth > 1000) {
       let ctx = gsap.context(() => {
         randomStatesTopLeft2.forEach((item, key) => {
           gsap.set(`#top_left_2_${key}`, {
@@ -839,7 +839,10 @@ export default function Page(props) {
           data["data"][0]["events"].map((item) => {
             return { value: item.id, label: item.name };
           })
-        );
+          );
+          console.log(data["data"][0]["events"].map((item) => {
+            return { value: item.id, label: item.name };
+          }))
       })
       .catch((error) => {
         console.log(error);
@@ -951,7 +954,7 @@ export default function Page(props) {
               id="skull"
               src={skull}
               alt="skull"
-              ref={skullRef}
+              ref={skullRef}v
             />
           </div>
           <div
@@ -973,7 +976,7 @@ export default function Page(props) {
               <label htmlFor="email_id">EMAIL-ID</label>
               <input
                 type="text"
-                placeholder="EMAIL-ID"
+                placeholder="email@gmail.com"
                 id="email_id"
                 onChange={(inp) => handleEmailChange(inp)}
               />
@@ -981,7 +984,7 @@ export default function Page(props) {
               <label htmlFor="phone">PHONE NUMBER</label>
               <input
                 type="text"
-                placeholder="PHONE NUMBER"
+                placeholder="9999999999"
                 id="phone"
                 maxLength="10"
                 onChange={(inp) => handlePhoneChange(inp)}
