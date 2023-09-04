@@ -80,7 +80,7 @@ export default function CustomStyles() {
       fontFamily: "NightmarePills",
       fontSize: "1.5rem",
       opacity: "1",
-      color: "#FFFFFF",
+      color: "rgba(255, 255, 255, 0.6)",
     }),
     container: (provided) => ({
       ...provided,
@@ -88,7 +88,7 @@ export default function CustomStyles() {
     }),
     input: (provided) => ({
       ...provided,
-      color: "#eee",
+      color: "#fff",
       fontFamily: "NightmarePills",
       fontSize: "1.5rem",
       fontWeight: 700,
@@ -107,6 +107,38 @@ export default function CustomStyles() {
       backgroundColor: "#222222",
       paddingTop: "0px",
       paddingBottom: "0px",
+    }),
+    multiValue: (provided) => ({
+      ...provided,
+      color: '#fff',
+      fontFamily: 'Montserrat',
+      fontSize: '1.2rem',
+      fontWeight: 700,
+      backgroundColor: 'rgba(255, 255, 255, 0.7)',
+      paddingLeft: '.25rem',
+      alignItems: 'center',
+    }),
+    multiValueGeneric: (provided) => ({
+      ...provided,
+      color: '#ffffff !important',
+    }),
+    multiValueRemove: (provided) => ({
+      ...provided,
+      color: 'black',
+      padding: '0',
+      paddingLeft: '0',
+      paddingRIght: '0',
+      width:'14px',
+      height:'14px',
+      cursor: 'pointer',
+    }),
+    clearIndicator: (provided) => ({
+      ...provided,
+      color: '#fff',
+      cursor: 'pointer',
+      '&:hover': {
+        color: '#ffd700'
+      }
     }),
   };
 }

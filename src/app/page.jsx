@@ -685,7 +685,7 @@ export default function Home() {
                 )}
               </AnimatePresence>
             </div>
-            <div className={styles["navSection"]}>
+            {/* <div className={styles["navSection"]}>
               <AnimatePresence>
                 {isHamOpen ? (
                   <div style={{ display: "none" }}></div>
@@ -701,7 +701,7 @@ export default function Home() {
                   </motion.div>
                 )}
               </AnimatePresence>
-            </div>
+            </div> */}
             <div
               className={`${styles.midSection} 
               ${showLoader ? styles.loaderContainer : ""} ${
@@ -768,7 +768,7 @@ export default function Home() {
                       </a>
                     </Link>
                     <div className={styles.landingPageDate}>
-                      <span>28TH - 31ST OCTOBER</span>
+                      <span>27TH - 31ST OCTOBER</span>
                     </div>
                   </motion.div>
                 )}
