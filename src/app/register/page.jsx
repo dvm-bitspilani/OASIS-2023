@@ -971,14 +971,18 @@ export default function Page(props) {
                 placeholder="Enter your name"
                 id="name"
                 onChange={(inp) => handleNameChange(inp)}
+                onFocus={(e)=> e.target.placeholder = ""}
+                onBlur={(e)=> e.target.placeholder = "Enter your name"}
               />
 
               <label htmlFor="email_id">EMAIL-ID</label>
               <input
                 type="text"
-                placeholder="Enter your email id"
+                placeholder="Enter your Email ID"
                 id="email_id"
                 onChange={(inp) => handleEmailChange(inp)}
+                onFocus={(e)=> e.target.placeholder = ""}
+                onBlur={(e)=> e.target.placeholder = "Enter your Email ID"}
               />
 
               <label htmlFor="phone">PHONE NUMBER</label>
@@ -989,6 +993,8 @@ export default function Page(props) {
                 maxLength="10"
                 onChange={(inp) => handlePhoneChange(inp)}
                 value={formData.phone}
+                onFocus={(e)=> e.target.placeholder = ""}
+                onBlur={(e)=> e.target.placeholder = "Enter your phone number"}
               />
 
               <label>GENDER</label>
@@ -1023,6 +1029,8 @@ export default function Page(props) {
                 styles={customStylesArray[0]}
                 placeholder="Choose your college"
                 onChange={handleCollegeChange}
+                // onFocus={(e)=> e.target.placeholder = ""}
+                // onBlur={(e)=> e.target.placeholder = "Choose your college"}
               />
 
               <label>STATE</label>
@@ -1032,6 +1040,8 @@ export default function Page(props) {
                 styles={customStylesArray[1]}
                 placeholder="Choose your state"
                 onChange={handleStateChange}
+                // onFocus={(e)=> e.target.placeholder = ""}
+                // onBlur={(e)=> e.target.placeholder = "Choose your state"}
               />
 
               <label>CITY</label>
@@ -1051,6 +1061,8 @@ export default function Page(props) {
                 styles={customStylesArray[3]}
                 placeholder="Choose your year of study"
                 onChange={handleYearChange}
+                // onFocus={(e)=> e.target.placeholder = ""}
+                // onBlur={(e)=> e.target.placeholder = "Choose your year of study"}
               />
 
               <label>EVENTS</label>
@@ -1061,6 +1073,8 @@ export default function Page(props) {
                 placeholder="Select all the events you want to register for"
                 onChange={handleEventChange}
                 isMulti
+                // onFocus={(e)=> e.target.placeholder = ""}
+                // onBlur={(e)=> e.target.placeholder = "Select all the events you want to register for"}
               />
 
               <label>ARE YOU A CHOREOGRAPHER / MENTOR?</label>
