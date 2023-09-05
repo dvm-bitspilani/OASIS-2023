@@ -142,17 +142,17 @@ const formReducerFn = (state, action) => {
     };
   }
   if (action.type === "choreoChange") {
-    const newValue = state.choreographer === "NO" ? "YES" : "NO";
+    // const newValue = state.choreographer === "NO" ? "YES" : "NO";
     return {
       ...state,
-      choreographer: newValue,
+      choreographer: action.value.target.value,
     };
   }
   if (action.type === "headChange") {
-    const newValue = state.head_of_society === "NO" ? "YES" : "NO";
+    // const newValue = state.head_of_society === "NO" ? "YES" : "NO";
     return {
       ...state,
-      head_of_society: newValue,
+      head_of_society: action.value.target.value,
     };
   }
   if (action.type === "eventChange") {
@@ -175,8 +175,8 @@ const formDataTemplate = {
   events: [],
   phone: "",
   year: "",
-  choreographer: "NO",
-  head_of_society: "NO",
+  choreographer: "",
+  head_of_society: "",
   name: "",
   gender: "",
   city: "",
@@ -1108,15 +1108,15 @@ export default function Page(props) {
                   name="choreographer"
                   text="YES"
                   onChange={handleChoreoChange}
-                  checked={formData.choreographer === "YES"? true : false}
+                  // checked={formData.choreographer === "YES"? true : false}
                 />
-                {/* <Radio
+                <Radio
                   id="NO_Choreo"
                   value="NO"
                   name="choreographer"
                   text="NO"
                   onChange={handleChoreoChange}
-                /> */}
+                />
               </div>
 
               <label>ARE YOU THE HEAD OF A SOCIETY?</label>
@@ -1130,13 +1130,13 @@ export default function Page(props) {
                   checked={formData.head_of_society === "YES"? true : false}
                 />
 
-                {/* <Radio
+                <Radio
                   id="NO_Society"
                   value="NO"
                   name="head_of_society"
                   text="NO"
                   onChange={handleHeadChange}
-                /> */}
+                />
               </div>
             </div>
           </div>
