@@ -401,9 +401,6 @@
    .bookImgWrapper{
     scale: .8;
    }
-   .hamAsset{
-    scale: .8;
-   }
 }
 @media (max-height: 675px) and (min-width: 900px) {
   .pageWrapper{
