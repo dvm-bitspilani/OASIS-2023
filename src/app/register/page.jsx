@@ -716,9 +716,9 @@ export default function Page(props) {
       formData.college_id === "" ||
       formData.state === "" ||
       formData.city === "" ||
-      formData.year === "" ||
-      formData.choreographer === "" ||
-      formData.head_of_society === ""
+      formData.year === "" 
+      // formData.choreographer === "" ||
+      // formData.head_of_society === ""
     ) {
       alert("Please fill in all the fields.");
       return;
