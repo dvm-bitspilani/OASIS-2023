@@ -747,7 +747,7 @@ export default function Page(props) {
       if (data.head_of_society === "YES") {
         data.head_of_society = 1;
       }
-      console.log(data);
+      // console.log(data);
       const options = {
         method: "POST",
         headers: {
@@ -767,7 +767,7 @@ export default function Page(props) {
     }
 
     const response = await uploadData(formData);
-    console.log(response);
+    // console.log(response);
     alert(response["message"]);
   };
 
@@ -847,7 +847,7 @@ export default function Page(props) {
         );
       })
       .catch((error) => {
-        console.log(error);
+        // console.log(error);
       });
     getEventsData()
       .then((data) => {
@@ -855,15 +855,13 @@ export default function Page(props) {
           data["data"][0]["events"].map((item) => {
             return { value: item.id, label: item.name };
           })
-        );
-        // console.log(
-        //   data["data"][0]["events"].map((item) => {
-        //     return { value: item.id, label: item.name };
-        //   })
-        // );
+          );
+          // console.log(data["data"][0]["events"].map((item) => {
+          //   return { value: item.id, label: item.name };
+          // }))
       })
       .catch((error) => {
-        console.log(error);
+        // console.log(error);
       });
   }, [statesData]);
 
