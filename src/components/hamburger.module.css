@@ -8,14 +8,14 @@
     --tag-size: 2rem;
     --tag-distance: 30rem; */
 
-    --in-circle-size: 17rem;
-    --logo-size: 5rem;
-    --out-circle-size: 35rem;
-    --glow-size: 5rem;
-    --circle-size: 32.5rem;
+    --in-circle-size: 28rem;
+    --logo-size: 10rem;
+    --out-circle-size: 42rem;
+    --glow-size: 2rem;
+    --circle-size: 32rem;
     --num-size: 2.5rem;
-    --font-size: 1.5rem;
-    --outline-offset: 8px;
+    --font-size: 1.7rem;
+    --outline-offset: 5px;
 
     --item-distance: calc(var(--circle-size) / 2);
     --item-fontsize: calc(var(--item-size)*0.5);
@@ -63,12 +63,26 @@
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    z-index: 2;
+    z-index: 10;
 }
 
 .logo img {
     height: var(--logo-size);
     width: var(--logo-size);
+    cursor: pointer;
+    transition: filter 1s ease-in-out, transform 2s ease-in-out;
+    -webkit-filter: drop-shadow(0px 0px 5px rgba(99, 99, 99, 0.5));
+    filter: drop-shadow(0px 0px 5px rgba(99, 99, 99, 0.5));
+}
+
+.logo img:hover {
+    transform: rotate(360deg);
+    -webkit-filter: drop-shadow(0px 0px 5px rgba(255, 255, 255, 0.9));
+    filter: drop-shadow(0px 0px 5px rgba(255, 255, 255, 0.9));
+}
+
+.logo img:hover > .item{
+    transform: rotate(10deg);
 }
 
 .outerpath {
@@ -94,8 +108,8 @@
 }
 
 .glowbox img {
-    height: var(--glow-size);
-    filter: blur(calc(var(--glow-size)*0.1));
+    height: 4rem;
+    width: 4rem;
 }
 
 .circle {
@@ -130,17 +144,20 @@
     top: 50%;
     left: -50%;
     position: absolute;
+    border: solid red;
+    /* width: 5rem; */
+    border: solid var(--font-size) transparent;
+    border-inline: solid 3rem transparent;
+    transition: all 0.5s;
 }
 
 .number:hover {
     color: black;
-    transition: all 0.5s;
 }
 
 .number:hover>.txt {
     scale: 1.1;
     color: white;
-    transition: all 0.5s;
     text-shadow: rgba(255, 255, 255, 0.568) 0px 0px 46px;
 
 }
@@ -148,7 +165,6 @@
 .number:hover>.txt2 {
     scale: 1.1;
     color: white;
-    transition: all 0.5s;
     text-shadow: rgba(255, 255, 255, 0.568) 0px 0px 46px;
 
 }
@@ -158,6 +174,9 @@
     background-color: white;
     outline: solid white 1px;
     outline-offset: var(--outline-offset);
+}
+
+.numbox {
     transition: all 0.5s;
 }
 
@@ -174,13 +193,17 @@
     display: flex;
     align-items: center;
     justify-content: center;
+    transition: all 0.5s;
+    outline-offset: 0;
+    outline: solid transparent 1px;
+
 }
 
 .txt {
     position: absolute;
     left: 0;
     top: 0;
-    transform: translate(var(--num-size), -50%);
+    transform: translate(calc(var(--num-size)*0.8), -50%);
     font-family: 'Montserrat';
     color: #858585;
     text-align: right;
@@ -188,6 +211,7 @@
     font-size: var(--font-size);
     width: 100%;
     white-space: nowrap;
+    transition: all 0.5s;
 }
 
 .txt2 {
@@ -200,11 +224,17 @@
     text-align: right;
     font-weight: 700;
     font-size: var(--font-size);
+    transition: all 0.5s;
+
 
 }
 
 .item:nth-child(5) {
-    transform: rotate(0deg) translate(var(--item-distance));
+    transform: rotate(-5deg) translate(var(--item-distance));
+}
+
+.item:nth-child(5)>* {
+    transform: rotate(5deg);
 }
 
 .item:nth-child(4) {
@@ -316,39 +346,52 @@
     scale: 0.7;
 }  */
 
-@media only screen and (max-height: 800px) {
+@media only screen and (max-height: 700px) {
     .page {
-        --in-circle-size: 12rem;
-        --logo-size: 4rem;
-        --out-circle-size: 30rem;
+        --in-circle-size: 20rem;
+        --logo-size: 8rem;
+        --out-circle-size: 32rem;
         --glow-size: 5rem;
-        --circle-size: 28rem;
+        --circle-size: 23rem;
         --num-size: 2rem;
         --font-size: 1.5rem;
         --outline-offset: 8px;
     }
 }
 
-@media only screen and (max-height: 600px) {
+@media only screen and (max-height: 550px) {
     .page {
-        --in-circle-size: 10rem;
-        --logo-size: 4rem;
-        --out-circle-size: 20rem;
-        --glow-size: 5rem;
-        --circle-size: 18rem;
+        --in-circle-size: 18rem;
+        --logo-size: 7rem;
+        --out-circle-size: 30rem;
+        --glow-size: 4rem;
+        --circle-size: 22rem;
+        --num-size: 1.7rem;
+        --font-size: 1.3rem;
+        --outline-offset: 4px;
+    }
+}
+
+@media only screen and (max-height: 500px) {
+    .page {
+        --in-circle-size: 16rem;
+        --logo-size: 7rem;
+        --out-circle-size: 27rem;
+        --glow-size: 3rem;
+        --circle-size: 19rem;
         --num-size: 1.5rem;
         --font-size: 1.2rem;
         --outline-offset: 4px;
     }
 }
 
-@media only screen and (max-width: 1000px) {
+@media only screen and (max-width: 1100px) {
     .page {
-        --in-circle-size: 12rem;
-        --logo-size: 4rem;
-        --out-circle-size: 30rem;
+        --in-circle-size: 20rem;
+        --logo-size: 8rem;
+        --out-circle-size: 32rem;
         --glow-size: 5rem;
-        --circle-size: 27rem;
+        --circle-size: 23rem;
         --num-size: 2rem;
         --font-size: 1.5rem;
         --outline-offset: 8px;
@@ -357,83 +400,157 @@
 
 @media only screen and (max-width: 900px) {
     .page {
-        --in-circle-size: 10rem;
-        --logo-size: 4rem;
-        --out-circle-size: 20rem;
+        --in-circle-size: 18rem;
+        --logo-size: 7rem;
+        --out-circle-size: 30rem;
         --glow-size: 4rem;
-        --circle-size: 18rem;
+        --circle-size: 22rem;
+        --num-size: 1.7rem;
+        --font-size: 1.3rem;
+        --outline-offset: 4px;
+    }
+}
+
+@media only screen and (max-width: 840px) {
+    .page {
+        --in-circle-size: 16rem;
+        --logo-size: 7rem;
+        --out-circle-size: 27rem;
+        --glow-size: 3rem;
+        --circle-size: 19rem;
         --num-size: 1.5rem;
         --font-size: 1.2rem;
         --outline-offset: 4px;
     }
 }
 
-@media only screen and (max-width: 650px) {
+@media only screen and (max-width: 745px) {
     .page {
-        --in-circle-size: 8rem;
-        --logo-size: 3rem;
-        --out-circle-size: 15rem;
+        --in-circle-size: 15rem;
+        --logo-size: 6rem;
+        --out-circle-size: 25rem;
         --glow-size: 3rem;
-        --circle-size: 13.75rem;
-        --num-size: 1.5rem;
-        --font-size: 1rem;
-        --outline-offset: 4px;
-    }
-}
-
-@media only screen and (max-width: 500px) {
-    .page {
-        --in-circle-size: 5rem;
-        --logo-size: 2rem;
-        --out-circle-size: 13.7rem;
-        --glow-size: 3rem;
-        --circle-size: 12rem;
-        --num-size: 1.3rem;
-        --font-size: 0.8rem;
+        --circle-size: 17rem;
+        --num-size: 1.7rem;
+        --font-size: 1.5rem;
         --outline-offset: 4px;
     }
 
     .five>.txt {
-        transform: translate(-2rem, 100%);
+        transform: translate(-4rem, 75%);
         text-align: center;
         left: -50%;
     }
 
     .item:nth-child(5) {
-        transform: rotate(0deg) translate(var(--item-distance));
+        transform: rotate(-5deg) translate(var(--item-distance));
     }
-    
+
     .item:nth-child(4) {
         transform: rotate(72deg) translate(var(--item-distance));
     }
-    
+
     .item:nth-child(4)>* {
         transform: rotate(-72deg);
     }
-    
+
     .item:nth-child(3) {
         transform: rotate(130deg) translate(var(--item-distance));
     }
-    
+
     .item:nth-child(3)>* {
         transform: rotate(-130deg);
     }
-    
+
     .item:nth-child(2) {
         transform: rotate(230deg) translate(var(--item-distance));
     }
-    
+
     .item:nth-child(2)>* {
         transform: rotate(-230deg);
     }
-    
+
     .item:nth-child(1) {
         transform: rotate(288deg) translate(var(--item-distance));
     }
-    
+
     .item:nth-child(1)>* {
         transform: rotate(-288deg);
     }
+}
+
+@media only screen and (max-width: 640px) {
+    .page {
+        --in-circle-size: 12rem;
+        --logo-size: 5rem;
+        --out-circle-size: 21rem;
+        --glow-size: 3rem;
+        --circle-size: 13rem;
+        --num-size: 1.5rem;
+        --font-size: 1.2rem;
+        --outline-offset: 4px;
+    }
+
+    .five>.txt {
+        transform: translate(-4rem, 75%);
+        text-align: center;
+        left: -50%;
+    }
+}
+@media only screen and (max-width: 550px) {
+    .page {
+        --in-circle-size: 10rem;
+        --logo-size: 4rem;
+        --out-circle-size: 18rem;
+        --glow-size: 3rem;
+        --circle-size: 10rem;
+        --num-size: 1.5rem;
+        --font-size: 1.2rem;
+        --outline-offset: 4px;
+    }
+
+    .five>.txt {
+        transform: translate(-3rem, 75%);
+        text-align: center;
+        left: -50%;
+    }
+}
 
 
+@media only screen and (max-width: 500px) {
+    .page {
+        --in-circle-size: 10rem;
+        --logo-size: 4rem;
+        --out-circle-size: 16rem;
+        --glow-size: 3rem;
+        --circle-size: 8.5rem;
+        --num-size: 1.5rem;
+        --font-size: 1rem;
+        --outline-offset: 4px;
+    }
+
+    .five>.txt {
+        transform: translate(-3rem, 75%);
+        text-align: center;
+        left: -50%;
+    }
+}
+
+@media only screen and (max-width: 410px) {
+    .page {
+        --in-circle-size: 8rem;
+        --logo-size: 4rem;
+        --out-circle-size: 14rem;
+        --glow-size: 3rem;
+        --circle-size: 7rem;
+        --num-size: 1.5rem;
+        --font-size: 0.8rem;
+        --outline-offset: 4px;
+    }
+
+    .five>.txt {
+        transform: translate(-2rem, 75%);
+        text-align: center;
+        left: -50%;
+    }
 }

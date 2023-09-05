@@ -153,7 +153,7 @@ export default function Home() {
 
   useEffect(() => {
     if (typeof window !== "undefined") {
-      console.log("first");
+      // console.log("first");
       setIsLoading(true);
       setShowLoader(true);
 
@@ -210,7 +210,7 @@ export default function Home() {
           const tl = gsap.timeline({
             onComplete: () => {
               if (key === randomLeft1.length - 1) {
-                console.log("Animation 1 complete");
+                // console.log("Animation 1 complete");
                 setrandomLeft1(
                   generateRandomStatesArray(
                     numberOfRandom,
@@ -285,7 +285,7 @@ export default function Home() {
             onComplete: () => {
               if (key === randomLeft2.length - 1) {
                 setDelayGiven(true);
-                console.log("Animation 2 complete");
+                // console.log("Animation 2 complete");
                 setrandomLeft2(
                   generateRandomStatesArray(
                     numberOfRandom,
@@ -354,7 +354,7 @@ export default function Home() {
           const tl = gsap.timeline({
             onComplete: () => {
               if (key === randomRight1.length - 1) {
-                console.log("Animation 1 Right complete");
+                // console.log("Animation 1 Right complete");
                 setRandomRight1(
                   generateRandomStatesArray(
                     numberOfRandom,
@@ -425,7 +425,7 @@ export default function Home() {
             onComplete: () => {
               if (key === randomRight2.length - 1) {
                 setDelayGiven(true);
-                console.log("Animation 2 Right complete");
+                // console.log("Animation 2 Right complete");
                 setRandomRight2(
                   generateRandomStatesArray(
                     numberOfRandom,
@@ -660,8 +660,8 @@ export default function Home() {
                       }}
                       initial={{ scale: 0 }}
                       animate={{ scale: 50 }}
-                      exit={{ scale: 0 }}
-                      transition={{ duration: 1 }}
+                      exit={{ scale: 0, transition : { delay: 1.5}}}
+                      transition={{ duration: 1,  }}
                     ></motion.div>
                   ) : (
                     <div style={{ display: "none" }}></div>
@@ -674,7 +674,7 @@ export default function Home() {
                     key="hamMenu"
                     initial={{ opacity: 0 }}
                     animate={{ opacity: 1 }}
-                    exit={{ opacity: 0 }}
+                    exit={{ opacity: 0, transition: {delay: 1.5} }}
                     transition={{ delay: 0.25, duration: 0.5 }}
                   >
                     <Hamburger />
@@ -692,7 +692,7 @@ export default function Home() {
                   <motion.div
                     key="navigation"
                     initial={{ opacity: 0 }}
-                    animate={{ opacity: 1 }}
+                    animate={{ opacity: 1, transition: {delay: 1.5}}}
                     exit={{ opacity: 0 }}
                     transition={{ delay: 0.5 }}
                   >
@@ -747,7 +747,7 @@ export default function Home() {
                   <motion.div
                     key="register"
                     initial={{ opacity: 0 }}
-                    animate={{ opacity: 1 }}
+                    animate={{ opacity: 1, transition: {delay: 1.5}}}
                     exit={{ opacity: 0 }}
                     transition={{ duration: 1 }}
                     style={{
