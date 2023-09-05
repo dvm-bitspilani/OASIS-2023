@@ -314,6 +314,10 @@
   .hamBtn img {
     scale: 0.8;
   }
+  .hamIcon{
+    scale: .8;
+    /* height: 3rem; */
+  }
 }
 @media screen and (max-width: 400px) {
   .textLogoImg {
@@ -395,6 +399,9 @@
     scale: .8;
    }
    .bookImgWrapper{
+    scale: .8;
+   }
+   .hamAsset{
     scale: .8;
    }
 }

@@ -1,5 +1,4 @@
 "use client";
-
 import styles from "./page.module.css";
 import Image from "next/image";
 import React from "react";
@@ -695,7 +694,7 @@ export default function Home() {
                     initial={{ opacity: 0 }}
                     animate={{ opacity: 1 }}
                     exit={{ opacity: 0 }}
-                    transition={{ delay: .5 }}
+                    transition={{ delay: 0.5 }}
                   >
                     <Navbar />
                   </motion.div>
@@ -914,9 +913,3 @@ export function randomAnimation(direction, random, setRandom, delay, id) {
   }; // cleanup
 }
 
-// export const metadata = {
-//   title: "OASIS '23 | Home",
-//   description: "The official website for OASIS 2023.",
-//   colorScheme: "dark",
-//   icon: "/static/images/navLogo.png",
-// }
