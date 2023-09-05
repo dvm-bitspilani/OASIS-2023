@@ -142,15 +142,17 @@ const formReducerFn = (state, action) => {
     };
   }
   if (action.type === "choreoChange") {
+    const newValue = state.choreographer === "NO" ? "YES" : "NO";
     return {
       ...state,
-      choreographer: action.value.target.value,
+      choreographer: newValue,
     };
   }
   if (action.type === "headChange") {
+    const newValue = state.head_of_society === "NO" ? "YES" : "NO";
     return {
       ...state,
-      head_of_society: action.value.target.value,
+      head_of_society: newValue,
     };
   }
   if (action.type === "eventChange") {
@@ -173,8 +175,8 @@ const formDataTemplate = {
   events: [],
   phone: "",
   year: "",
-  choreographer: "",
-  head_of_society: "",
+  choreographer: "NO",
+  head_of_society: "NO",
   name: "",
   gender: "",
   city: "",
@@ -194,8 +196,14 @@ export default function Page(props) {
 
   const numberOfRandom = 6;
   // [startingYPoint, endingYPoint,startingYRange,endingYRange,startingXPoint,endingXPoint,startingXRange,endingXRange]
-  const randomGenerationTopLeftConfig = useMemo(() => [0, 0, 67, 67, 0, 67, 0, 0], []);
-  const randomGenerationBottomLeftConfig = useMemo(() => [0, 0, 67, 67, 67, 0, 0, 0], []);
+  const randomGenerationTopLeftConfig = useMemo(
+    () => [0, 0, 67, 67, 0, 67, 0, 0],
+    []
+  );
+  const randomGenerationBottomLeftConfig = useMemo(
+    () => [0, 0, 67, 67, 67, 0, 0, 0],
+    []
+  );
 
   const [isLoading, setIsLoading] = useState(true);
   const scope = useRef(null);
@@ -209,13 +217,18 @@ export default function Page(props) {
   );
 
   const [randomStatesBottomLeft1, setRandomStatesBottomLeft1] = useState(
-    generateRandomStatesArray(numberOfRandom, ...randomGenerationBottomLeftConfig)
+    generateRandomStatesArray(
+      numberOfRandom,
+      ...randomGenerationBottomLeftConfig
+    )
   );
 
   const [randomStatesBottomLeft2, setRandomStatesBottomLeft2] = useState(
-    generateRandomStatesArray(numberOfRandom, ...randomGenerationBottomLeftConfig)
+    generateRandomStatesArray(
+      numberOfRandom,
+      ...randomGenerationBottomLeftConfig
+    )
   );
-
 
   const randomSetImagesTopLeft1 = randomStatesTopLeft1.map((item, index) => {
     return (
@@ -247,35 +260,39 @@ export default function Page(props) {
     );
   });
 
-  const randomSetImagesBottomLeft1 = randomStatesBottomLeft1.map((item, index) => {
-    return (
-      <Image
-        key={index}
-        id={`bottom_left_1_${index}`}
-        className={indexStyles.leftSymbol}
-        src={item.file}
-        alt=""
-        width={80}
-        height={80}
-        draggable={false}
-      />
-    );
-  });
+  const randomSetImagesBottomLeft1 = randomStatesBottomLeft1.map(
+    (item, index) => {
+      return (
+        <Image
+          key={index}
+          id={`bottom_left_1_${index}`}
+          className={indexStyles.leftSymbol}
+          src={item.file}
+          alt=""
+          width={80}
+          height={80}
+          draggable={false}
+        />
+      );
+    }
+  );
 
-  const randomSetImagesBottomLeft2 = randomStatesBottomLeft2.map((item, index) => {
-    return (
-      <Image
-        key={index}
-        id={`bottom_left_2_${index}`}
-        className={indexStyles.leftSymbol}
-        src={item.file}
-        alt=""
-        width={80}
-        height={80}
-        draggable={false}
-      />
-    );
-  });
+  const randomSetImagesBottomLeft2 = randomStatesBottomLeft2.map(
+    (item, index) => {
+      return (
+        <Image
+          key={index}
+          id={`bottom_left_2_${index}`}
+          className={indexStyles.leftSymbol}
+          src={item.file}
+          alt=""
+          width={80}
+          height={80}
+          draggable={false}
+        />
+      );
+    }
+  );
 
   const [isDelayed, setIsDelayed] = useState(false);
 
@@ -588,7 +605,6 @@ export default function Page(props) {
     isDelayed,
   ]);
 
-
   const { innerWidth, innerHeight } = useWindowSize();
 
   const [formData, formDispatchFn] = useReducer(
@@ -839,10 +855,12 @@ export default function Page(props) {
           data["data"][0]["events"].map((item) => {
             return { value: item.id, label: item.name };
           })
-          );
-          console.log(data["data"][0]["events"].map((item) => {
-            return { value: item.id, label: item.name };
-          }))
+        );
+        // console.log(
+        //   data["data"][0]["events"].map((item) => {
+        //     return { value: item.id, label: item.name };
+        //   })
+        // );
       })
       .catch((error) => {
         console.log(error);
@@ -919,6 +937,8 @@ export default function Page(props) {
     formContainerElem.scrollTop = (percentage / 100) * maxScrollTopValue;
   };
 
+  console.log(formData)
+
   return (
     <>
       {isLoading && (
@@ -954,7 +974,8 @@ export default function Page(props) {
               id="skull"
               src={skull}
               alt="skull"
-              ref={skullRef}v
+              ref={skullRef}
+              v
             />
           </div>
           <div
@@ -971,8 +992,8 @@ export default function Page(props) {
                 placeholder="Enter your name"
                 id="name"
                 onChange={(inp) => handleNameChange(inp)}
-                onFocus={(e)=> e.target.placeholder = ""}
-                onBlur={(e)=> e.target.placeholder = "Enter your name"}
+                onFocus={(e) => (e.target.placeholder = "")}
+                onBlur={(e) => (e.target.placeholder = "Enter your name")}
               />
 
               <label htmlFor="email_id">EMAIL-ID</label>
@@ -981,8 +1002,8 @@ export default function Page(props) {
                 placeholder="Enter your Email ID"
                 id="email_id"
                 onChange={(inp) => handleEmailChange(inp)}
-                onFocus={(e)=> e.target.placeholder = ""}
-                onBlur={(e)=> e.target.placeholder = "Enter your Email ID"}
+                onFocus={(e) => (e.target.placeholder = "")}
+                onBlur={(e) => (e.target.placeholder = "Enter your Email ID")}
               />
 
               <label htmlFor="phone">PHONE NUMBER</label>
@@ -993,8 +1014,10 @@ export default function Page(props) {
                 maxLength="10"
                 onChange={(inp) => handlePhoneChange(inp)}
                 value={formData.phone}
-                onFocus={(e)=> e.target.placeholder = ""}
-                onBlur={(e)=> e.target.placeholder = "Enter your phone number"}
+                onFocus={(e) => (e.target.placeholder = "")}
+                onBlur={(e) =>
+                  (e.target.placeholder = "Enter your phone number")
+                }
               />
 
               <label>GENDER</label>
@@ -1085,14 +1108,15 @@ export default function Page(props) {
                   name="choreographer"
                   text="YES"
                   onChange={handleChoreoChange}
+                  checked={formData.choreographer === "YES"? true : false}
                 />
-                <Radio
+                {/* <Radio
                   id="NO_Choreo"
                   value="NO"
                   name="choreographer"
                   text="NO"
                   onChange={handleChoreoChange}
-                />
+                /> */}
               </div>
 
               <label>ARE YOU THE HEAD OF A SOCIETY?</label>
@@ -1103,15 +1127,16 @@ export default function Page(props) {
                   name="head_of_society"
                   text="YES"
                   onChange={handleHeadChange}
+                  checked={formData.head_of_society === "YES"? true : false}
                 />
 
-                <Radio
+                {/* <Radio
                   id="NO_Society"
                   value="NO"
                   name="head_of_society"
                   text="NO"
                   onChange={handleHeadChange}
-                />
+                /> */}
               </div>
             </div>
           </div>
