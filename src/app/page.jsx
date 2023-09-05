@@ -685,7 +685,7 @@ export default function Home() {
                 )}
               </AnimatePresence>
             </div>
-            {/* <div className={styles["navSection"]}>
+            <div className={styles["navSection"]}>
               <AnimatePresence>
                 {isHamOpen ? (
                   <div style={{ display: "none" }}></div>
@@ -701,7 +701,7 @@ export default function Home() {
                   </motion.div>
                 )}
               </AnimatePresence>
-            </div> */}
+            </div>
             <div
               className={`${styles.midSection} 
               ${showLoader ? styles.loaderContainer : ""} ${
@@ -753,7 +753,7 @@ export default function Home() {
                     transition={{ duration: 1 }}
                     style={{
                       position: "absolute",
-                      bottom: "40px",
+                      bottom: "50px",
                     }}
                   >
                     <Link href="/register" legacyBehavior>
@@ -767,9 +767,9 @@ export default function Home() {
                         />
                       </a>
                     </Link>
-                    <div className={styles.landingPageDate}>
+                    {/* <div className={styles.landingPageDate}>
                       <span>27TH - 31ST OCTOBER</span>
-                    </div>
+                    </div> */}
                   </motion.div>
                 )}
               </AnimatePresence>
