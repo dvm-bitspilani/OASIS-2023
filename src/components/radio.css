@@ -9,8 +9,8 @@
   margin-top: 0;
   margin-bottom: 0;
   overflow: hidden;
-  color:#FFFFFF ;
-  font-size:1.5rem;
+  color: #ffffff;
+  font-size: 1.5rem;
 }
 
 .radio-input {
@@ -52,6 +52,11 @@
 .genderLabel {
   margin-bottom: 1rem;
 }
+
+input:focus::-webkit-input-placeholder {
+  opacity: 0;
+}
+
 @media (max-width: 1200px) {
   .custom-radio {
     width: 1.5rem;
@@ -69,8 +74,8 @@
     font-size: 1.25rem;
   }
   .custom-radio::after {
-    height: .5rem;
-    width: .5rem;
+    height: 0.5rem;
+    width: 0.5rem;
   }
   #reg-logo {
     margin-left: -1rem;

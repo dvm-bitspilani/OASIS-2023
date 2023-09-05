@@ -10,7 +10,7 @@ const RadioButton = ({ name, id, value, onChange, checked, text }) => {
         name={name}
         id={id}
         value={value}
-        onChange={onChange}
+        onClick={onChange}
         checked={checked}
       />
       <span className="custom-radio" />

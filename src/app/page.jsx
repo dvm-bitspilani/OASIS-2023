@@ -1,5 +1,4 @@
 "use client";
-
 import styles from "./page.module.css";
 import Image from "next/image";
 import React from "react";
@@ -32,7 +31,7 @@ export default function Home() {
   const [showLoader, setShowLoader] = useState(true);
 
   const numberOfRandom = 10;
-  const randomGenerationConfig = [32, -10, 30, 40];
+  const randomGenerationConfig = [32, -10, 30, 40, 25, 86, 0, 0];
 
   const [randomLeft1, setrandomLeft1] = useState(
     generateRandomStatesArray(numberOfRandom, ...randomGenerationConfig)
@@ -685,7 +684,7 @@ export default function Home() {
                 )}
               </AnimatePresence>
             </div>
-            {/* <div className={styles["navSection"]}>
+            <div className={styles["navSection"]}>
               <AnimatePresence>
                 {isHamOpen ? (
                   <div style={{ display: "none" }}></div>
@@ -695,13 +694,13 @@ export default function Home() {
                     initial={{ opacity: 0 }}
                     animate={{ opacity: 1 }}
                     exit={{ opacity: 0 }}
-                    transition={{ delay: .5 }}
+                    transition={{ delay: 0.5 }}
                   >
                     <Navbar />
                   </motion.div>
                 )}
               </AnimatePresence>
-            </div> */}
+            </div>
             <div
               className={`${styles.midSection} 
               ${showLoader ? styles.loaderContainer : ""} ${
@@ -753,7 +752,7 @@ export default function Home() {
                     transition={{ duration: 1 }}
                     style={{
                       position: "absolute",
-                      bottom: "40px",
+                      bottom: "50px",
                     }}
                   >
                     <Link href="/register" legacyBehavior>
@@ -767,9 +766,9 @@ export default function Home() {
                         />
                       </a>
                     </Link>
-                    <div className={styles.landingPageDate}>
+                    {/* <div className={styles.landingPageDate}>
                       <span>27TH - 31ST OCTOBER</span>
-                    </div>
+                    </div> */}
                   </motion.div>
                 )}
               </AnimatePresence>
@@ -785,7 +784,11 @@ export function getRandomStats(
   startingYPoint,
   endingYPoint,
   startingYRange,
-  endingYRange
+  endingYRange,
+  startingXPoint,
+  endingXPoint,
+  startingXRange,
+  endingXRange
 ) {
   const random = {};
   random.int = Math.floor(Math.random() * 10 + 1);
@@ -796,7 +799,9 @@ export function getRandomStats(
   random.startingY = Math.floor(
     Math.random() * startingYRange + startingYPoint
   );
-  random.startingX = 25;
+  random.startingX = Math.floor(
+    Math.random() * startingXRange + startingXPoint
+  );
 
   // test
   // const randomYArr = [6, 21, 36];
@@ -804,8 +809,8 @@ export function getRandomStats(
 
   // get a random number between 6 and 36
   random.endingY = Math.floor(Math.random() * endingYRange + endingYPoint);
-  random.endingX = 86;
-  random.delay = Math.floor(Math.random() * 4);
+  random.endingX = Math.floor(Math.random() * endingXRange + endingXPoint);
+  // random.delay = Math.floor(Math.random() * 4);
   return random;
 }
 
@@ -814,13 +819,26 @@ export function generateRandomStatesArray(
   startingYPoint,
   endingYPoint,
   startingYRange,
-  endingYRange
+  endingYRange,
+  startingXPoint,
+  endingXPoint,
+  startingXRange,
+  endingXRange
 ) {
   const randomArray = [];
   for (let i = 0; i < number; i++) {
     // randomArray.push(getRandomStats(32, -10, 30, 40));
     randomArray.push(
-      getRandomStats(startingYPoint, endingYPoint, startingYRange, endingYRange)
+      getRandomStats(
+        startingYPoint,
+        endingYPoint,
+        startingYRange,
+        endingYRange,
+        startingXPoint,
+        endingXPoint,
+        startingXRange,
+        endingXRange
+      )
     );
   }
   return randomArray;
@@ -895,9 +913,3 @@ export function randomAnimation(direction, random, setRandom, delay, id) {
   }; // cleanup
 }
 
-// export const metadata = {
-//   title: "OASIS '23 | Home",
-//   description: "The official website for OASIS 2023.",
-//   colorScheme: "dark",
-//   icon: "/static/images/navLogo.png",
-// }

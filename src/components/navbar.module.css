@@ -15,24 +15,46 @@
 .navItem:hover {
   cursor: pointer;
 }
-@media(max-width: 1310px){
+@media (max-height: 820px) {
+  .navWrapper {
+    gap: 2rem;
+  }
+  .navItem {
+    font-size: 1.05rem;
+  }
+}
+@media (max-height: 720px) {
+  .navWrapper {
+    gap: 1rem;
+  }
+  .navItem {
+    font-size: 1rem;
+  }
+}
+@media (max-width: 800px) {
+  .navWrapper {
+    display: none;
+  }
+}
+@media (max-height: 685px) {
+  .navWrapper {
+    display: none;
+  }
+}
+
+@media (max-width: 1250px) {
     .navWrapper{
         gap: 2rem;
     }
     .navItem{
-        font-size: 1.15rem;
+        font-size: 1.05rem;
     }
 }
-@media(max-height: 720px){
-    .navWrapper{
-        gap: 1rem;
+@media (max-width: 1120px) {
+    .navWrapper {
+      gap: 1rem;
     }
-    .navItem{
-        font-size: 1rem;
+    .navItem {
+      font-size: 1rem;
     }
-}
-@media (min-width: 1200px) {
-    .navWrapper{
-        display: none;
-    }
-}
+  }
