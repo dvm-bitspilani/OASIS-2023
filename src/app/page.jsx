@@ -111,86 +111,50 @@ export default function Home() {
     );
   });
   const [allAssetsLoaded, setAllAssetsLoaded] = useState(false);
-  // useEffect(() => {
-  //   if (typeof window !== "undefined") {
-  //     setIsLoading(true);
-  //     setShowLoader(true);
-  //     const assets = [textLogo, landingPgBookImg, rightElements, leftElements];
-  //     const loadAssets = () => {
-  //       const assetPromises = assets.map((asset) => {
-  //         return new Promise((resolve) => {
-  //           const img = new Image();
-  //           img.onload = resolve;
-  //           img.src = asset;
-  //         });
-  //       });
-
-  //       Promise.all(assetPromises).then(() => {
-  //         // All assets are loaded
-  //         setIsLoading(false);
-  //         setAllAssetsLoaded(true);
-  //         setShowLoader(false);
-  //       });
-  //     };
-
-  //     // Listen for when all assets are loaded
-  //     window.addEventListener("load", loadAssets);
-
-  //     // setTimeout(() => {
-  //       setTextLogoWidth(Math.floor(window.innerWidth * 0.3));
-  //       setTextLogoHeight(Math.floor(window.innerHeight * 0.2));
-  //       setLandingBookWidth(Math.floor(window.innerWidth * 0.5));
-  //       setLandingBookHeight(Math.floor(window.innerHeight * 0.5));
-  //       setRegisterBtnWidth(Math.min(200, Math.floor(window.innerWidth * 0.5)));
-  //       setRegisterBtnHeight(75);
-  //       // setIsLoading(false);
-  //       // setTimeout(() => {
-  //       // setShowLoader(false);
-  //       // }, 1000);
-  //     // }, 2900);
-  //   }
-  // }, []);
-
   useEffect(() => {
     if (typeof window !== "undefined") {
-      // console.log("first");
+      console.log('first')
       setIsLoading(true);
       setShowLoader(true);
+      const assets = [textLogo, landingPgBookImg, rightElements, leftElements];
+        console.log('second')
+      const loadAssets = () => {
+        const assetPromises = assets.map((asset) => {
+          if (asset) {
+            return new Promise((resolve, reject) => {
+              const img = new Image();
+              img.onload = resolve;
+              img.onerror = reject; 
+              img.src = asset;
+            });
+          }
+        });
 
-      // const assets = [textLogo, landingPgBookImg, rightElements, leftElements];
-      // const assetPromises = assets.map((asset) => {
-      //   return new Promise((resolve) => {
-      //     Image.onload = resolve;
-      //     Image.src = asset;
-      //     console.log('second')
-      //   });
-      // });
-
-      // Promise.all(assetPromises).then(() => {
-      //   // All assets are loaded
-      //   setAllAssetsLoaded(true);
-      //   setShowLoader(false);
-      //   setIsLoading(false);
-      //   console.log('third')
-      //   console.log(showLoader)
-      // });
-
-      setTextLogoWidth(Math.floor(window.innerWidth * 0.3));
-      setTextLogoHeight(Math.floor(window.innerHeight * 0.2));
-      setLandingBookWidth(Math.floor(window.innerWidth * 0.5));
-      setLandingBookHeight(Math.floor(window.innerHeight * 0.5));
-      setRegisterBtnWidth(Math.min(200, Math.floor(window.innerWidth * 0.5)));
-      setRegisterBtnHeight(75);
-      const loaderTimeout = setTimeout(() => {
-        setIsLoading(false);
-        setShowLoader(false);
-      }, 3000); // Adjust the timeout duration as needed
-
-      return () => {
-        // Clear the timeout if the component unmounts
-        clearTimeout(loaderTimeout);
-      };
-    }
+      Promise.all(assetPromises)
+        .then(() => {
+          setAllAssetsLoaded(true);
+          setTimeout(() => {
+            setIsLoading(false);
+            setShowLoader(false);
+          }, 10000);
+          console.log('All assets loaded successfully');
+        })
+        .catch((error) => {
+          console.error('Error loading assets:', error);
+          // setIsLoading(false);
+          setAllAssetsLoaded(true);
+          // setShowLoader(false);
+          setTimeout(() => {
+            setIsLoading(false);
+            setShowLoader(false);
+          }, 2000);
+        });
+    };
+    loadAssets()
+        setRegisterBtnWidth(Math.min(200, Math.floor(window.innerWidth * 0.5)));
+        setRegisterBtnHeight(75);
+    // }
+  }
   }, []);
 
   const [delayGiven, setDelayGiven] = useState(false);
@@ -276,16 +240,12 @@ export default function Home() {
             opacity: 0,
             scale: 0.3,
           });
-
-          // const randomDelay = Math.random() * 2;
-
           const tl = gsap.timeline({
             delay: delayGiven ? 0.1 : 5,
             // delay: 1.5,
             onComplete: () => {
               if (key === randomLeft2.length - 1) {
                 setDelayGiven(true);
-                // console.log("Animation 2 complete");
                 setrandomLeft2(
                   generateRandomStatesArray(
                     numberOfRandom,
@@ -701,7 +661,12 @@ export default function Home() {
                 )}
               </AnimatePresence>
             </div>
-            <div
+            <AnimatePresence mode="wait">
+            <motion.div
+              initial={{ opacity: 0 }}
+    animate={{ opacity: 1 }}
+    exit={{ opacity: 0 }}
+    transition={{ duration: 2}}
               className={`${styles.midSection} 
               ${showLoader ? styles.loaderContainer : ""} ${
                 isLoading ? "loaded" : ""
@@ -772,7 +737,8 @@ export default function Home() {
                   </motion.div>
                 )}
               </AnimatePresence>
-            </div>
+            </motion.div>
+            </AnimatePresence>
           </div>
         </>
       )}

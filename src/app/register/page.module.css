@@ -192,6 +192,27 @@
   top: 1rem;
   left: 1rem;
 }
+.loaderContainer {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 9999;
+  height: 100vh;
+  width: 100vw;
+  background-color: black;
+  /* background-image: url("../../public/static/images/LibraryBgImage.avif"); */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  /* background-position: center; */
+  /* background-repeat: no-repeat; */
+  /* background-size: cover; */
+  opacity: 1;
+  /* transition: opacity 0.5s ease; */
+}
+.loaderContainer video{
+  scale: .3;
+}
 
 @media (max-width: 1000px) {
   .regForm {

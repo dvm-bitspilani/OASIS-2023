@@ -295,6 +295,50 @@ export default function Page(props) {
   );
 
   const [isDelayed, setIsDelayed] = useState(false);
+  const [allAssetsLoaded, setAllAssetsLoaded] = useState(false);
+  useEffect(() => {
+    if (typeof window !== "undefined") {
+      console.log('first')
+      setIsLoading(true);
+      // setShowLoader(true);
+      const assets = [skull, book, register, cross];
+        console.log('second')
+      const loadAssets = () => {
+        const assetPromises = assets.map((asset) => {
+          if (asset) {
+            return new Promise((resolve, reject) => {
+              const img = new Image();
+              img.onload = resolve;
+              img.onerror = reject; 
+              img.src = asset;
+            });
+          }
+        });
+
+      Promise.all(assetPromises)
+        .then(() => {
+          setAllAssetsLoaded(true);
+          setTimeout(() => {
+            setIsLoading(false);
+            // setShowLoader(false);
+          }, 10000);
+          console.log('All assets loaded successfully');
+        })
+        .catch((error) => {
+          console.error('Error loading assets:', error);
+          // setIsLoading(false);
+          setAllAssetsLoaded(true);
+          // setShowLoader(false);
+          setTimeout(() => {
+            setIsLoading(false);
+            // setShowLoader(false);
+          }, 2000);
+        });
+    };
+    loadAssets()
+    // }
+  }
+  }, []);
 
   useLayoutEffect(() => {
     // console.log("Animation 1");
@@ -625,7 +669,87 @@ export default function Page(props) {
   const skullRef = useRef(null);
   const formContainerRef = useRef(null);
   const regLoaderRef = useRef(null);
+  
+  // useEffect(() => {
+  //   const assets = [regLoaderRef.current];
+  //   let assetsLoaded = 0;
 
+  //   const handleAssetLoad = () => {
+  //     assetsLoaded++;
+  //     if (assetsLoaded === assets.length) {
+  //       setTimeout(() => {
+  //         setLoaderLoaded(true);
+  //       }, 1000);
+  //     }
+  //   };
+
+  //   assets.forEach((asset) => {
+  //     if (
+  //       asset.complete ||
+  //       asset.readyState === 4 ||
+  //       asset.tagName === "LINK"
+  //     ) {
+  //       handleAssetLoad();
+  //     } else {
+  //       asset.addEventListener("load", handleAssetLoad);
+  //       asset.addEventListener("error", handleAssetLoad);
+  //     }
+  //   });
+
+  //   const cleanup = () => {
+  //     assets.forEach((asset) => {
+  //       asset.removeEventListener("load", handleAssetLoad);
+  //       asset.removeEventListener("error", handleAssetLoad);
+  //     });
+  //   };
+
+  //   return cleanup;
+  // }, []);
+  // useEffect(() => {
+  //   if (loaderLoaded) {
+  //     const assets = document.querySelectorAll(
+  //       "img",
+  //       "font",
+  //       "style",
+  //       "iframe"
+  //     );
+
+  //     let assetsLoaded = 0;
+
+  //     const handleAssetLoad = () => {
+  //       assetsLoaded++;
+  //       if (assetsLoaded === assets.length) {
+  //         if (colleges.length > 0 && events.length > 0) {
+  //           setTimeout(() => {
+  //             setIsLoading(false);
+  //           }, 2000);
+  //         }
+  //       }
+  //     };
+
+  //     assets.forEach((asset) => {
+  //       if (
+  //         asset.complete ||
+  //         asset.readyState === 4 ||
+  //         asset.tagName === "LINK"
+  //       ) {
+  //         handleAssetLoad();
+  //       } else {
+  //         asset.addEventListener("load", handleAssetLoad);
+  //         asset.addEventListener("error", handleAssetLoad);
+  //       }
+  //     });
+
+  //     const cleanup = () => {
+  //       assets.forEach((asset) => {
+  //         asset.removeEventListener("load", handleAssetLoad);
+  //         asset.removeEventListener("error", handleAssetLoad);
+  //       });
+  //     };
+
+  //     return cleanup;
+  //   }
+  // }, [loaderLoaded, colleges, events]);
   useEffect(() => {
     const assets = [regLoaderRef.current];
     let assetsLoaded = 0;
@@ -641,21 +765,24 @@ export default function Page(props) {
 
     assets.forEach((asset) => {
       if (
-        asset.complete ||
-        asset.readyState === 4 ||
-        asset.tagName === "LINK"
+        asset &&
+        (asset.complete || asset.readyState === 4 || asset.tagName === "LINK")
       ) {
         handleAssetLoad();
       } else {
-        asset.addEventListener("load", handleAssetLoad);
-        asset.addEventListener("error", handleAssetLoad);
+        if (asset) {
+          asset.addEventListener("load", handleAssetLoad);
+          asset.addEventListener("error", handleAssetLoad);
+        }
       }
     });
 
     const cleanup = () => {
       assets.forEach((asset) => {
-        asset.removeEventListener("load", handleAssetLoad);
-        asset.removeEventListener("error", handleAssetLoad);
+        if (asset) {
+          asset.removeEventListener("load", handleAssetLoad);
+          asset.removeEventListener("error", handleAssetLoad);
+        }
       });
     };
 
@@ -675,32 +802,32 @@ export default function Page(props) {
       const handleAssetLoad = () => {
         assetsLoaded++;
         if (assetsLoaded === assets.length) {
-          if (colleges.length > 0 && events.length > 0) {
-            setTimeout(() => {
-              setIsLoading(false);
-            }, 2000);
-          }
+          setTimeout(() => {
+            setIsLoading(false);
+          }, 2000);
         }
       };
 
       assets.forEach((asset) => {
-        if (
-          asset.complete ||
+        if ( asset && 
+          (asset.complete ||
           asset.readyState === 4 ||
-          asset.tagName === "LINK"
+          asset.tagName === "LINK")
         ) {
           handleAssetLoad();
         } else {
+          if(asset){
           asset.addEventListener("load", handleAssetLoad);
           asset.addEventListener("error", handleAssetLoad);
-        }
+        }}
       });
 
       const cleanup = () => {
         assets.forEach((asset) => {
+          if(asset){
           asset.removeEventListener("load", handleAssetLoad);
           asset.removeEventListener("error", handleAssetLoad);
-        });
+        }});
       };
 
       return cleanup;
@@ -940,16 +1067,28 @@ export default function Page(props) {
   return (
     <>
       {isLoading && (
-        <div className={styles.regLoader}>
-          <Image
-            ref={regLoaderRef}
-            id="regLogoImage"
-            src={regLogo}
-            alt="OASIS"
-            width="auto"
-            height="2rem"
-          />
-        </div>
+        // <div className={styles.regLoader}>
+        //   <Image
+        //     ref={regLoaderRef}
+        //     id="regLogoImage"
+        //     src={regLogo}
+        //     alt="OASIS"
+        //     width="auto"
+        //     height="2rem"
+        //   />
+        // </div>
+        <div className={styles.loaderContainer}>
+        {/* <MyVideoLoader/> */}
+        <video
+          src={require("../../../public/static/images/landingLoaderVideo.mp4")} // Update with the correct path
+          autoPlay
+          muted
+          loop
+          playsInline
+          preload="auto"
+          width="100%"
+        />
+      </div>
       )}
       <div className={styles.regPage} ref={scope}>
         <h2>REGISTRATIONS</h2>
