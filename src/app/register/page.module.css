@@ -35,13 +35,13 @@
   transition: all 0.2s ease;
 }
 .regForm {
-  height: 70vh;
+  height: 80vh;
   width: 60vw;
   padding: 2%;
   display: flex;
 }
 .scrollBarContainer {
-  height: 90%;
+  height: 100%;
   width: 10%;
   margin: 6% 0;
   display: flex;
@@ -86,14 +86,15 @@
   flex-direction: column;
 }
 .regBtnContainer {
-  height: 15vh;
-  padding-left: 1%;
+  /* height: 15vh; */
+  /* padding-left: 1%; */
   display: flex;
   align-items: center;
-  margin-top: 5vh;
+  margin-top: 1rem;
 }
 .regBtnContainer img {
-  height: 5rem;
+  /* height: 5rem; */
+  width: 15rem;
   transition: scale 0.25s ease-in-out;
 }
 .regBtnContainer img:hover {
@@ -224,17 +225,23 @@
   .regPage h2 {
     font-size: 4rem;
   }
+  .scrollBarContainer{
+    height: 95%;
+  }
+  .regForm{
+    height: 86vh;
+  }
 }
 @media (max-width: 700px) {
   .regPage h2 {
     font-size: 2.5rem;
     text-align: center;
   }
-  .regBtnContainer {
+  /* .regBtnContainer {
     justify-content: center;
-  }
+  } */
   .regBtnContainer img {
-    scale: 0.8;
+    width: 10rem;
   }
   .regBtnContainer img:hover {
     scale: 0.9;
@@ -247,6 +254,9 @@
   }
   .regBtnContainer {
     margin-top: 0;
+  }
+  #skull{
+    scale: 0.8;
   }
 }
 @media (max-width: 400px) {
