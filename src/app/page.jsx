@@ -731,9 +731,9 @@ export default function Home() {
                         />
                       </a>
                     </Link>
-                    {/* <div className={styles.landingPageDate}>
+                    <div className={styles.landingPageDate}>
                       <span>27TH - 31ST OCTOBER</span>
-                    </div> */}
+                    </div>
                   </motion.div>
                 )}
               </AnimatePresence>
