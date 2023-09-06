@@ -157,7 +157,7 @@ const formReducerFn = (state, action) => {
   }
   if (action.type === "eventChange") {
     const eventsArray = action.value;
-    console.log(eventsArray);
+    // console.log(eventsArray);
     const eventsName = eventsArray.map((item) => {
       return item.value;
     });
@@ -298,11 +298,11 @@ export default function Page(props) {
   const [allAssetsLoaded, setAllAssetsLoaded] = useState(false);
   useEffect(() => {
     if (typeof window !== "undefined") {
-      console.log('first')
+      // console.log('first')
       setIsLoading(true);
       // setShowLoader(true);
       const assets = [skull, book, register, cross];
-        console.log('second')
+        // console.log('second')
       const loadAssets = () => {
         const assetPromises = assets.map((asset) => {
           if (asset) {
@@ -322,7 +322,7 @@ export default function Page(props) {
             setIsLoading(false);
             // setShowLoader(false);
           }, 10000);
-          console.log('All assets loaded successfully');
+          // console.log('All assets loaded successfully');
         })
         .catch((error) => {
           console.error('Error loading assets:', error);
