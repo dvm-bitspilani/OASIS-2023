@@ -3,7 +3,7 @@ export default function CustomStyles() {
     control: (provided, state) => ({
       ...provided,
       minHeight: "2rem",
-      height: "2rem",
+      // height: "2rem",
       backgroundColor: "transparent",
       border: "none",
       borderBottom: state.isFocused ? "2px solid white" : "2px solid white",
@@ -18,12 +18,12 @@ export default function CustomStyles() {
     indicatorSeparator: () => {},
     valueContainer: (provided) => ({
       ...provided,
-      height: "1.8rem",
+      // height: "1.8rem",
       paddingLeft: 0,
     }),
     indicatorsContainer: (provided) => ({
       ...provided,
-      height: "1.8rem",
+      // height: "1.8rem",
     }),
     singleValue: (provided) => ({
       ...provided,
@@ -75,12 +75,13 @@ export default function CustomStyles() {
       cursor: "pointer",
       padding: "5px",
     }),
-    placeholder: (provided) => ({
+    placeholder: (provided , state) => ({
       ...provided,
       fontFamily: "NightmarePills",
       fontSize: "1.5rem",
       opacity: "1",
       color: "rgba(255, 255, 255, 0.6)",
+      opacity: state.isFocused ? "0" : "1",
     }),
     container: (provided) => ({
       ...provided,
@@ -114,30 +115,36 @@ export default function CustomStyles() {
       fontFamily: 'Montserrat',
       fontSize: '1.2rem',
       fontWeight: 700,
-      backgroundColor: 'rgba(255, 255, 255, 0.7)',
+      backgroundColor: 'transparent',
+      border: '1px solid #5db3f1',
       paddingLeft: '.25rem',
       alignItems: 'center',
     }),
-    multiValueGeneric: (provided) => ({
+    multiValueLabel: (provided) => ({
       ...provided,
       color: '#ffffff !important',
+      backgroundColor: 'transparent',
     }),
     multiValueRemove: (provided) => ({
       ...provided,
-      color: 'black',
+      color: '#fff',
       padding: '0',
       paddingLeft: '0',
       paddingRIght: '0',
       width:'14px',
-      height:'14px',
+      height:'100%',
       cursor: 'pointer',
+      '&:hover': {
+        backgroundColor: '#5db3f1',
+        color: '#000',
+      },   
     }),
     clearIndicator: (provided) => ({
       ...provided,
       color: '#fff',
       cursor: 'pointer',
       '&:hover': {
-        color: '#ffd700'
+        color: '#5db3f1'
       }
     }),
   };
