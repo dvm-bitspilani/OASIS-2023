@@ -114,11 +114,11 @@ export default function Home() {
   const [allAssetsLoaded, setAllAssetsLoaded] = useState(false);
   useEffect(() => {
     if (typeof window !== "undefined") {
-      console.log('first')
+      // console.log('first')
       setIsLoading(true);
       setShowLoader(true);
       const assets = [textLogo, landingPgBookImg, rightElements, leftElements];
-        console.log('second')
+        // console.log('second')
       const loadAssets = () => {
         const assetPromises = assets.map((asset) => {
           if (asset) {
@@ -138,7 +138,7 @@ export default function Home() {
             setIsLoading(false);
             setShowLoader(false);
           }, 10000);
-          console.log('All assets loaded successfully');
+          // console.log('All assets loaded successfully');
         })
         .catch((error) => {
           console.error('Error loading assets:', error);
@@ -732,9 +732,9 @@ export default function Home() {
                         />
                       </a>
                     </Link>
-                    {/* <div className={styles.landingPageDate}>
+                    <div className={styles.landingPageDate}>
                       <span>27TH - 31ST OCTOBER</span>
-                    </div> */}
+                    </div>
                   </motion.div>
                 )}
               </AnimatePresence>
