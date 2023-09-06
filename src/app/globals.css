@@ -26,7 +26,6 @@ input:-webkit-autofill:active {
 }
 html{
   overscroll-behavior: none;
-  overflow: hidden;
 }
 html,body{
   margin: 0;

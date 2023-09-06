@@ -10,6 +10,7 @@ import { Metadata } from "next";
 import textLogo from "../../public/static/images/OasisLogo.png";
 import Navbar from "@/components/Navbar";
 import Hamburger from "@/components/hamburger";
+import Events from "@/components/Events";
 import landingPgBookImg from "../../public/static/images/LandingPageBook.png";
 import rightElements from "../../public/static/images/landingPgRightElements.png";
 import leftElements from "../../public/static/images/landingPgLeftElements.png";
@@ -739,6 +740,9 @@ export default function Home() {
               </AnimatePresence>
             </motion.div>
             </AnimatePresence>
+          </div>
+          <div className={styles.eventsWrapper}>
+            <Events />
           </div>
         </>
       )}
