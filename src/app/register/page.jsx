@@ -71,7 +71,7 @@ const customStylesArray = [
 
 async function getCollegeData() {
   const res = await fetch(
-    "https://test.bits-oasis.org/2023/main/registrations/get_college"
+    "https://bits-oasis.org/2023/main/registrations/get_college"
   );
   if (!res.ok) {
     throw new Error("Failed to fetch college");
@@ -80,7 +80,7 @@ async function getCollegeData() {
 }
 async function getEventsData() {
   const res = await fetch(
-    "https://test.bits-oasis.org/2023/main/registrations/events"
+    "https://bits-oasis.org/2023/main/registrations/events"
   );
   if (!res.ok) {
     throw new Error("Failed to get Events");
@@ -157,7 +157,7 @@ const formReducerFn = (state, action) => {
   }
   if (action.type === "eventChange") {
     const eventsArray = action.value;
-    console.log(eventsArray);
+    // console.log(eventsArray);
     const eventsName = eventsArray.map((item) => {
       return item.value;
     });
@@ -191,11 +191,10 @@ const year = [
   { value: "5", label: "5" },
 ];
 
-export default function Page(props) {
-  // console.log(generateRandomStatesArray(5, 12, 12, 14, 14, 10, 10, 10, 10));
+export default function Page() {
 
   const numberOfRandom = 6;
-  // [startingYPoint, endingYPoint,startingYRange,endingYRange,startingXPoint,endingXPoint,startingXRange,endingXRange]
+
   const randomGenerationTopLeftConfig = useMemo(
     () => [0, 0, 67, 67, 0, 67, 0, 0],
     []
@@ -298,11 +297,11 @@ export default function Page(props) {
   const [allAssetsLoaded, setAllAssetsLoaded] = useState(false);
   useEffect(() => {
     if (typeof window !== "undefined") {
-      console.log('first')
+      // console.log('first')
       setIsLoading(true);
       // setShowLoader(true);
       const assets = [skull, book, register, cross];
-        console.log('second')
+        // console.log('second')
       const loadAssets = () => {
         const assetPromises = assets.map((asset) => {
           if (asset) {
@@ -322,7 +321,7 @@ export default function Page(props) {
             setIsLoading(false);
             // setShowLoader(false);
           }, 10000);
-          console.log('All assets loaded successfully');
+          // console.log('All assets loaded successfully');
         })
         .catch((error) => {
           console.error('Error loading assets:', error);
@@ -642,7 +641,6 @@ export default function Page(props) {
     }
   }, [
     isLoading,
-    // randomSetImagesBottomLeft2,
     numberOfRandom,
     randomGenerationBottomLeftConfig,
     randomStatesBottomLeft2,
@@ -670,86 +668,7 @@ export default function Page(props) {
   const formContainerRef = useRef(null);
   const regLoaderRef = useRef(null);
   
-  // useEffect(() => {
-  //   const assets = [regLoaderRef.current];
-  //   let assetsLoaded = 0;
 
-  //   const handleAssetLoad = () => {
-  //     assetsLoaded++;
-  //     if (assetsLoaded === assets.length) {
-  //       setTimeout(() => {
-  //         setLoaderLoaded(true);
-  //       }, 1000);
-  //     }
-  //   };
-
-  //   assets.forEach((asset) => {
-  //     if (
-  //       asset.complete ||
-  //       asset.readyState === 4 ||
-  //       asset.tagName === "LINK"
-  //     ) {
-  //       handleAssetLoad();
-  //     } else {
-  //       asset.addEventListener("load", handleAssetLoad);
-  //       asset.addEventListener("error", handleAssetLoad);
-  //     }
-  //   });
-
-  //   const cleanup = () => {
-  //     assets.forEach((asset) => {
-  //       asset.removeEventListener("load", handleAssetLoad);
-  //       asset.removeEventListener("error", handleAssetLoad);
-  //     });
-  //   };
-
-  //   return cleanup;
-  // }, []);
-  // useEffect(() => {
-  //   if (loaderLoaded) {
-  //     const assets = document.querySelectorAll(
-  //       "img",
-  //       "font",
-  //       "style",
-  //       "iframe"
-  //     );
-
-  //     let assetsLoaded = 0;
-
-  //     const handleAssetLoad = () => {
-  //       assetsLoaded++;
-  //       if (assetsLoaded === assets.length) {
-  //         if (colleges.length > 0 && events.length > 0) {
-  //           setTimeout(() => {
-  //             setIsLoading(false);
-  //           }, 2000);
-  //         }
-  //       }
-  //     };
-
-  //     assets.forEach((asset) => {
-  //       if (
-  //         asset.complete ||
-  //         asset.readyState === 4 ||
-  //         asset.tagName === "LINK"
-  //       ) {
-  //         handleAssetLoad();
-  //       } else {
-  //         asset.addEventListener("load", handleAssetLoad);
-  //         asset.addEventListener("error", handleAssetLoad);
-  //       }
-  //     });
-
-  //     const cleanup = () => {
-  //       assets.forEach((asset) => {
-  //         asset.removeEventListener("load", handleAssetLoad);
-  //         asset.removeEventListener("error", handleAssetLoad);
-  //       });
-  //     };
-
-  //     return cleanup;
-  //   }
-  // }, [loaderLoaded, colleges, events]);
   useEffect(() => {
     const assets = [regLoaderRef.current];
     let assetsLoaded = 0;
@@ -884,7 +803,7 @@ export default function Page(props) {
       };
 
       const res = await fetch(
-        "https://test.bits-oasis.org/2023/main/registrations/Register/",
+        "https://bits-oasis.org/2023/main/registrations/Register/",
         options
       );
       if (!res.ok) {
@@ -1230,11 +1149,9 @@ export default function Page(props) {
                 options={events}
                 id="events"
                 styles={customStylesArray[4]}
-                placeholder="Select all the events you want to register for"
+                placeholder="Select the events"
                 onChange={handleEventChange}
                 isMulti
-                // onFocus={(e)=> e.target.placeholder = ""}
-                // onBlur={(e)=> e.target.placeholder = "Select all the events you want to register for"}
               />
 
               <label>ARE YOU A CHOREOGRAPHER / MENTOR?</label>
@@ -1276,6 +1193,9 @@ export default function Page(props) {
                 />
               </div>
             </div>
+            <div className={styles.regBtnContainer}>
+              <Image src={register} onClick={handleRegisterations} alt="" width="1rem" height="1rem" />
+            </div>
           </div>
         </div>
         {innerWidth > 1000 && (
@@ -1306,9 +1226,6 @@ export default function Page(props) {
             <Image src={book} alt="" style={{ transform: "scaleX(.8)" }} />
           </motion.div>
         )}
-        <div className={styles.regBtnContainer}>
-          <Image src={register} onClick={handleRegisterations} alt="" />
-        </div>
       </div>
     </>
   );
