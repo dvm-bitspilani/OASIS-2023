@@ -1149,11 +1149,9 @@ export default function Page() {
                 options={events}
                 id="events"
                 styles={customStylesArray[4]}
-                placeholder="Select all the events you want to register for"
+                placeholder="Select the events"
                 onChange={handleEventChange}
                 isMulti
-                // onFocus={(e)=> e.target.placeholder = ""}
-                // onBlur={(e)=> e.target.placeholder = "Select all the events you want to register for"}
               />
 
               <label>ARE YOU A CHOREOGRAPHER / MENTOR?</label>
