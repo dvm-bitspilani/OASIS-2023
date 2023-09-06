@@ -11,6 +11,10 @@
   font-family: 'Montserrat';
   src: url(../../public/static/fonts/Montserrat.ttf) format('truetype');
 }
+@font-face {
+  font-family: 'Mantinia';
+  src: url(../../public/static/fonts/Mantinia\ CC\ Regular.ttf) format('truetype');
+}
 *{
   margin: 0;
   padding: 0;

@@ -21,10 +21,6 @@ import { useWindowSize } from "rooks";
 export default function Home() {
   const { isHamOpen, setIsHamOpen } = useContext(HamContext);
 
-  const [textLogoWidth, setTextLogoWidth] = useState(0);
-  const [textLogoHeight, setTextLogoHeight] = useState(0);
-  const [LandingBookWidth, setLandingBookWidth] = useState(0);
-  const [LandingBookHeight, setLandingBookHeight] = useState(0);
   const [RegisterBtnWidth, setRegisterBtnWidth] = useState(200);
   const [RegisterBtnHeight, setRegisterBtnHeight] = useState(75);
   const [isLoading, setIsLoading] = useState(true);
@@ -123,9 +119,9 @@ export default function Home() {
           if (asset) {
             return new Promise((resolve, reject) => {
               const img = new Image();
+              img.src = asset;
               img.onload = resolve;
               img.onerror = reject; 
-              img.src = asset;
             });
           }
         });

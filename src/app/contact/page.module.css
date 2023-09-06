@@ -1,0 +1,48 @@
+.pageWrapper{
+    height: 100vh;
+    width: 100vw;
+    background: url(../../../public/static/images/Library.png);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.heading{
+    font-size: 3rem;
+    font-family: 'NightmarePills';
+    color: #78BBF0;
+    text-shadow:  0px 2.748150110244751px 25.420387268066406px rgba(120, 187, 240, 0.80);
+    height: 20vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.mainSection{
+    display: flex;
+    justify-content: space-between;
+    width: 100vw;
+    align-items:flex-end;
+    height: 80vh;
+}
+.department{
+    align-self: center;
+    width: 60vw;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.department p {
+    font-size: 1.5rem;
+    font-family: 'Mantania';
+    padding-block:1rem;
+    
+}
+.mainSection img{
+    width: min(40vw,576px);
+    height: auto;
+}
