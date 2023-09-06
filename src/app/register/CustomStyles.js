@@ -144,7 +144,7 @@ export default function CustomStyles() {
       color: '#fff',
       cursor: 'pointer',
       '&:hover': {
-        color: '#ffd700'
+        color: '#5db3f1'
       }
     }),
   };
