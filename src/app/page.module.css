@@ -272,7 +272,7 @@
   /* transition: opacity 0.5s ease; */
 }
 .loaderContainer video{
-  scale: .3;
+  scale: .5;
 }
 .loaded {
   opacity: 0;
@@ -285,7 +285,7 @@
 
 @media (max-width: 1400px) {
   .textLogoImg {
-    scale: 0.85;
+    scale: .85;
   }
   .LandingBookImg{
     scale: .95;
