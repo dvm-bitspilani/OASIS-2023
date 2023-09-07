@@ -50,20 +50,56 @@ text-transform: uppercase;
     display: flex;
     align-items: center;
     align-self: center;
+<<<<<<< HEAD
     position:absolute;
     right: -50%;
+=======
+    position: relative;
+>>>>>>> 9005addd9f67c6bcbcf91df5dee9ba849a4a60a3
 }
 .mainSection img{
     /* width: min(40vw,536px);
     width: max(min(40vw, 536px), 400px); */
     height: 80vh;
 }
+.contactWrapper{
+    background-color: red;
+}
+.imgName{
+    position: absolute;
+    bottom: 30%;
+    left: 45%;
+    transform: rotate(-5deg);
+    font-family: 'MetalMania';
+    font-size: 2rem;
+    color: rgba(0, 0, 0, 0.8);
+    font-weight: 400;
+}
+.imgDept{
+    position: absolute;
+    bottom: 25%;
+    left: 35%;
+    transform: rotate(-5deg);
+        font-family: 'MetalMania';
+        color: rgba(0, 0, 0, 0.8);
+}
+.icons{
+    position: absolute;
+    bottom: 20%;
+    left: 50%;
+    display: flex;
+    justify-content: space-between;
+    gap: 1rem;
+    display: none;
+}
 .department p:hover{
     color: #78BBF0; 
     font-size: 1.8rem;
 text-shadow: 0px 0px 18.91876983642578px #78BBF0, 0px 0px 18.91876983642578px rgba(120, 187, 240, 0.80);
-
-
+}
+.icons img{
+  width: 20px;
+  height: auto;
 }
 @media screen and (max-width: 1340px) {
     .department p{
@@ -90,8 +126,17 @@ text-shadow: 0px 0px 18.91876983642578px #78BBF0, 0px 0px 18.91876983642578px rg
         font-size: 1.1rem;
     }
   }
-@media screen and (max-height: 520px) {
+@media screen and (max-height: 650px) {
     .department p{
         padding-block: 0.5rem;
+    }
+    .imgName{
+        bottom: 25%;
+        left: 45%;
+
+    }
+    .imgDept{
+        bottom: 20%;
+        left: 35%;
     }
   }
