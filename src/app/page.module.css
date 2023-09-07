@@ -11,6 +11,10 @@
   position: relative;
   z-index: 1;
 }
+.eventsWrapper{
+  position: relative;
+  height: 500vh;
+}
 .navSection {
   position: absolute;
   left: 4rem;

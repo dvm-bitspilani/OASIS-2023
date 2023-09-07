@@ -1,0 +1,15 @@
+.wrapper {
+  height: 100%;
+  position: relative;
+}
+.wrapper div{
+    position: absolute;
+}
+.wrapper img{
+    position: absolute;
+}
+.wrapper svg{
+    position: absolute;
+    transform-origin: center;
+    transform: translateX(50%) translateY(50%);
+}
