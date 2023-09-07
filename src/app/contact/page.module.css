@@ -44,9 +44,16 @@
 font-weight: 500;
 line-height: normal;
 text-transform: uppercase;
+/* width: max-content; */
+}
+.imgWrapper{
+    display: flex;
+    align-items: center;
+    align-self: center;
 }
 .mainSection img{
-    width: min(40vw,576px);
+    width: min(40vw,536px);
+    width: max(min(40vw, 536px), 400px);
     height: auto;
 }
 .department p:hover{
@@ -56,3 +63,28 @@ text-shadow: 0px 0px 18.91876983642578px #78BBF0, 0px 0px 18.91876983642578px rg
 
 
 }
+@media screen and (max-width: 1340px) {
+    .department p{
+        font-size: 1.2rem;
+    }
+    .department p:hover{
+        font-size: 1.4rem;
+    }
+  }
+@media screen and (max-width: 1000px) {
+    .department p{
+        font-size: 1.2rem;
+        padding-inline:1rem ;
+    }
+    .department p:hover{
+        font-size: 1.3rem;
+    }
+  }
+@media screen and (max-width: 920px) {
+    .department p{
+        font-size: 1rem;
+    }
+    .department p:hover{
+        font-size: 1.1rem;
+    }
+  }
