@@ -5,6 +5,7 @@ import { motion } from "framer-motion";
 import ImageWrapper from "../../../public/static/images/contacts.png"
 import phone from "../../../public/static/images/phone.svg"
 import mail from "../../../public/static/images/mail.svg"
+import shivang from "../../../public/static/images/shivang.png"
 // import ImageWrapper1 from "../../../public/static/images/navLogo.png"
 // import ImageWrapper2 from "../../../public/static/images/hamBG.png"
 // import ImageWrapper3 from "../../../public/static/images/Group3.png"
@@ -42,15 +43,15 @@ const Page = () => {
         <div className={styles.heading}>CONTACT US</div>
         <div className={styles.mainSection}>
             <div className={styles.department}>
-            {/* <p>Registration, Events & Approval Queries</p> */}
-            <p onMouseOver={() => handleMouseOver(ImageWrapper)}>Registration, Events & Approval Queries</p>
-            <p onMouseOver={() => handleMouseOver(ImageWrapper)}>Registration, Events & Approval Queries</p>
-            <p onMouseOver={() => handleMouseOver(ImageWrapper)}>Registration, Events & Approval Queries</p>
-            <p onMouseOver={() => handleMouseOver(ImageWrapper)}>Registration, Events & Approval Queries</p>
-            <p onMouseOver={() => handleMouseOver(ImageWrapper)}>Registration, Events & Approval Queries</p>
-            <p onMouseOver={() => handleMouseOver(ImageWrapper)}>Registration, Events & Approval Queries</p>
-            <p onMouseOver={() => handleMouseOver(ImageWrapper)}>Registration, Events & Approval Queries</p>
-            <p onMouseOver={() => handleMouseOver(ImageWrapper)}>Registration, Events & Approval Queries</p>
+              {/* <p>Registration, Events & Approval Queries</p> */}
+              <p onMouseOver={() => handleMouseOver(ImageWrapper)}>Registration, Events & Approval Queries</p>
+              <p onMouseOver={() => handleMouseOver(ImageWrapper)}>Registration, Events & Approval Queries</p>
+              <p onMouseOver={() => handleMouseOver(ImageWrapper)}>Registration, Events & Approval Queries</p>
+              <p onMouseOver={() => handleMouseOver(ImageWrapper)}>Registration, Events & Approval Queries</p>
+              <p onMouseOver={() => handleMouseOver(ImageWrapper)}>Registration, Events & Approval Queries</p>
+              <p onMouseOver={() => handleMouseOver(ImageWrapper)}>Registration, Events & Approval Queries</p>
+              <p onMouseOver={() => handleMouseOver(ImageWrapper)}>Registration, Events & Approval Queries</p>
+              <p onMouseOver={() => handleMouseOver(ImageWrapper)}>Registration, Events & Approval Queries</p>
             </div>
             <motion.div className={styles.imgWrapper}
               initial={{
@@ -61,20 +62,22 @@ const Page = () => {
                 opacity: isLoading ? 0 : 1,
                 transform: isLoading
                   ? "scale(1) translateX(0) translateY(0) rotate(0)"
-                  : "scaleX(.9) translateX(-8rem) translateY(-3rem) rotate(-0deg)",
+                  : "scaleX(.9) translateX(-8rem) translateY(-3rem) rotate(-10deg)",
               }}
               transition={{ ease: "easeOut", duration: 2 }}
             >
                 <Image
                 src={imageSrc}
+                alt=""
+                className={styles["bookImage"]}
                 />
-                <div className="details">
-                  <Image />
-                  <h1></h1>
-                  <h2></h2>
-                  <div className="icons">
-                    <Image src={phone} />
-                    <Image src={mail} />
+                <div className={styles["details"]}>
+                  <Image src={shivang} alt="" />
+                  <h1>SHIVANG RAI</h1>
+                  <h2>WEBSITE, APP & ONLINE PAYMENTS</h2>
+                  <div className={styles["iconsContainer"]}>
+                    <Image src={phone} alt="" />
+                    <Image src={mail} alt="" />
                   </div>
                 </div>
             </motion.div>

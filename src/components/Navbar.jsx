@@ -8,7 +8,7 @@ const Navbar = () => {
         <Link href="/register" legacyBehavior>
           <a className={nav.navItem}>SPONSORS</a>
         </Link>
-        <Link href="/register" legacyBehavior>
+        <Link href="/contact" legacyBehavior>
           <a className={nav.navItem}>CONTACT</a>
         </Link>
         <Link href="/register" legacyBehavior>

@@ -50,14 +50,10 @@ text-transform: uppercase;
     display: flex;
     align-items: center;
     align-self: center;
-<<<<<<< HEAD
     position:absolute;
     right: -50%;
-=======
-    position: relative;
->>>>>>> 9005addd9f67c6bcbcf91df5dee9ba849a4a60a3
 }
-.mainSection img{
+.bookImage{
     /* width: min(40vw,536px);
     width: max(min(40vw, 536px), 400px); */
     height: 80vh;
@@ -100,6 +96,35 @@ text-shadow: 0px 0px 18.91876983642578px #78BBF0, 0px 0px 18.91876983642578px rg
 .icons img{
   width: 20px;
   height: auto;
+}
+.details{
+    position: absolute;
+    /* height: 50vh; */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    left: 10%;
+    width: 30vw;
+}
+.details h1{
+    color: rgba(0, 0, 0, 0.8);
+    font-family:'MetalMania';
+    font-size: 2.5rem;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+}
+.details h2{
+    color: rgba(0, 0, 0, 0.8);
+    font-family:'MetalMania';
+    font-size: 1.5rem;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+}
+.iconsContainer img{
+    margin: 0 1rem;
+    margin-top: 0.5rem;
 }
 @media screen and (max-width: 1340px) {
     .department p{
