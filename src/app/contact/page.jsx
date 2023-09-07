@@ -10,7 +10,7 @@ import ImageWrapper from "../../../public/static/images/BookContact.png"
 // import ImageWrapper6 from "../../../public/static/images/LandingPageBook.png"
 // import ImageWrapper7 from "../../../public/static/images/Library.png"
 import Image from 'next/image';
-const page = () => {
+const Page = () => {
     const [imageSrc, setImageSrc] = useState(ImageWrapper);
 
   const handleMouseOver = (image) => {
@@ -43,4 +43,4 @@ const page = () => {
   )
 }
 
-export default page
+export default Page;
