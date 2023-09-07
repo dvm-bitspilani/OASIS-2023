@@ -130,7 +130,7 @@ export default function CustomStyles() {
       color: '#fff',
       padding: '0',
       paddingLeft: '0',
-      paddingRIght: '0',
+      paddingRIght: '3px',
       width:'14px',
       height:'100%',
       cursor: 'pointer',

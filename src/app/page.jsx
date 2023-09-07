@@ -21,10 +21,6 @@ import { useWindowSize } from "rooks";
 export default function Home() {
   const { isHamOpen, setIsHamOpen } = useContext(HamContext);
 
-  const [textLogoWidth, setTextLogoWidth] = useState(0);
-  const [textLogoHeight, setTextLogoHeight] = useState(0);
-  const [LandingBookWidth, setLandingBookWidth] = useState(0);
-  const [LandingBookHeight, setLandingBookHeight] = useState(0);
   const [RegisterBtnWidth, setRegisterBtnWidth] = useState(200);
   const [RegisterBtnHeight, setRegisterBtnHeight] = useState(75);
   const [isLoading, setIsLoading] = useState(true);
@@ -117,44 +113,44 @@ export default function Home() {
       setIsLoading(true);
       setShowLoader(true);
       const assets = [textLogo, landingPgBookImg, rightElements, leftElements];
-        // console.log('second')
+      // console.log('second')
       const loadAssets = () => {
         const assetPromises = assets.map((asset) => {
           if (asset) {
             return new Promise((resolve, reject) => {
               const img = new Image();
               img.onload = resolve;
-              img.onerror = reject; 
+              img.onerror = reject;
               img.src = asset;
             });
           }
         });
 
-      Promise.all(assetPromises)
-        .then(() => {
-          setAllAssetsLoaded(true);
-          setTimeout(() => {
-            setIsLoading(false);
-            setShowLoader(false);
-          }, 10000);
-          // console.log('All assets loaded successfully');
-        })
-        .catch((error) => {
-          console.error('Error loading assets:', error);
-          // setIsLoading(false);
-          setAllAssetsLoaded(true);
-          // setShowLoader(false);
-          setTimeout(() => {
-            setIsLoading(false);
-            setShowLoader(false);
-          }, 2000);
-        });
-    };
-    loadAssets()
-        setRegisterBtnWidth(Math.min(200, Math.floor(window.innerWidth * 0.5)));
-        setRegisterBtnHeight(75);
-    // }
-  }
+        Promise.all(assetPromises)
+          .then(() => {
+            setAllAssetsLoaded(true);
+            setTimeout(() => {
+              setIsLoading(false);
+              setShowLoader(false);
+            }, 10000);
+            // console.log('All assets loaded successfully');
+          })
+          .catch((error) => {
+            console.error("Error loading assets:", error);
+            // setIsLoading(false);
+            setAllAssetsLoaded(true);
+            // setShowLoader(false);
+            setTimeout(() => {
+              setIsLoading(false);
+              setShowLoader(false);
+            }, 2000);
+          });
+      };
+      loadAssets();
+      setRegisterBtnWidth(Math.min(200, Math.floor(window.innerWidth * 0.5)));
+      setRegisterBtnHeight(75);
+      // }
+    }
   }, []);
 
   const [delayGiven, setDelayGiven] = useState(false);
@@ -577,7 +573,7 @@ export default function Home() {
       ) : (
         <>
           <div className={styles.pageWrapper}>
-            <div
+            {/* <div
               className={styles.hamSection}
               style={isHamOpen ? { zIndex: 10 } : { zIndex: 2 }}
             >
@@ -620,8 +616,8 @@ export default function Home() {
                       }}
                       initial={{ scale: 0 }}
                       animate={{ scale: 50 }}
-                      exit={{ scale: 0, transition : { delay: 1.5}}}
-                      transition={{ duration: 1,  }}
+                      exit={{ scale: 0, transition: { delay: 1.5 } }}
+                      transition={{ duration: 1 }}
                     ></motion.div>
                   ) : (
                     <div style={{ display: "none" }}></div>
@@ -634,7 +630,7 @@ export default function Home() {
                     key="hamMenu"
                     initial={{ opacity: 0 }}
                     animate={{ opacity: 1 }}
-                    exit={{ opacity: 0, transition: {delay: 1.5} }}
+                    exit={{ opacity: 0, transition: { delay: 1.5 } }}
                     transition={{ delay: 0.25, duration: 0.5 }}
                   >
                     <Hamburger />
@@ -643,7 +639,7 @@ export default function Home() {
                   <div style={{ display: "none" }}></div>
                 )}
               </AnimatePresence>
-            </div>
+            </div> */}
             <div className={styles["navSection"]}>
               <AnimatePresence>
                 {isHamOpen ? (
@@ -652,9 +648,10 @@ export default function Home() {
                   <motion.div
                     key="navigation"
                     initial={{ opacity: 0 }}
-                    animate={{ opacity: 1, transition: {delay: 1.5}}}
+                    animate={{ opacity: 1, transition: { delay: 1.5 } }}
                     exit={{ opacity: 0 }}
                     transition={{ delay: 0.5 }}
+                    style={{display: 'none'}}
                   >
                     <Navbar />
                   </motion.div>
@@ -662,82 +659,82 @@ export default function Home() {
               </AnimatePresence>
             </div>
             <AnimatePresence mode="wait">
-            <motion.div
-              initial={{ opacity: 0 }}
-    animate={{ opacity: 1 }}
-    exit={{ opacity: 0 }}
-    transition={{ duration: 2}}
-              className={`${styles.midSection} 
+              <motion.div
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                exit={{ opacity: 0 }}
+                transition={{ duration: 2 }}
+                className={`${styles.midSection} 
               ${showLoader ? styles.loaderContainer : ""} ${
-                isLoading ? "loaded" : ""
-              }`}
-            >
-              <div className={styles.textLogoWrapper}>
-                <Image
-                  src={textLogo}
-                  // layout="fill"
-                  className={styles.textLogoImg}
-                  alt="OASIS"
-                />
-              </div>
-              <div className={styles.bookImgWrapper}>
-                <div className={styles.leftElements}>
-                  {/* <Image
+                  isLoading ? "loaded" : ""
+                }`}
+              >
+                <div className={styles.textLogoWrapper}>
+                  <Image
+                    src={textLogo}
+                    // layout="fill"
+                    className={styles.textLogoImg}
+                    alt="OASIS"
+                  />
+                </div>
+                <div className={styles.bookImgWrapper}>
+                  <div className={styles.leftElements}>
+                    {/* <Image
                     src={leftElements}
                     className={styles.landingPgLeftGrp}
                     alt="Element"
                   /> */}
-                  {randomSetImageLeft1}
-                  {randomSetImageLeft2}
-                </div>
-                <Image
-                  src={landingPgBookImg}
-                  className={styles.LandingBookImg}
-                  alt="Book"
-                />
-                <div className={styles.rightElements}>
-                  {/* <Image
+                    {randomSetImageLeft1}
+                    {randomSetImageLeft2}
+                  </div>
+                  <Image
+                    src={landingPgBookImg}
+                    className={styles.LandingBookImg}
+                    alt="Book"
+                  />
+                  <div className={styles.rightElements}>
+                    {/* <Image
                     src={rightElements}
                     className={styles.landingPgRightGrp}
                     alt="Element"
                   /> */}
-                  {randomSetImageRight1}
-                  {randomSetImageRight2}
+                    {randomSetImageRight1}
+                    {randomSetImageRight2}
+                  </div>
                 </div>
-              </div>
-              <AnimatePresence>
-                {isHamOpen ? (
-                  <div style={{ display: "none" }}></div>
-                ) : (
-                  <motion.div
-                    key="register"
-                    initial={{ opacity: 0 }}
-                    animate={{ opacity: 1, transition: {delay: 1.5}}}
-                    exit={{ opacity: 0 }}
-                    transition={{ duration: 1 }}
-                    style={{
-                      position: "absolute",
-                      bottom: "50px",
-                    }}
-                  >
-                    <Link href="/register" legacyBehavior>
-                      <a className={styles.registerBtnWrapper}>
-                        <Image
-                          src="/static/images/RegisterButton.png"
-                          width={RegisterBtnWidth}
-                          height={RegisterBtnHeight}
-                          className={styles.RegisterBtnImg}
-                          alt="Register"
-                        />
-                      </a>
-                    </Link>
-                    <div className={styles.landingPageDate}>
-                      <span>27TH - 31ST OCTOBER</span>
-                    </div>
-                  </motion.div>
-                )}
-              </AnimatePresence>
-            </motion.div>
+                <AnimatePresence>
+                  {isHamOpen ? (
+                    <div style={{ display: "none" }}></div>
+                  ) : (
+                    <motion.div
+                      key="register"
+                      initial={{ opacity: 0 }}
+                      animate={{ opacity: 1, transition: { delay: 1.5 } }}
+                      exit={{ opacity: 0 }}
+                      transition={{ duration: 1 }}
+                      style={{
+                        position: "absolute",
+                        bottom: "50px",
+                      }}
+                    >
+                      <Link href="/register" legacyBehavior>
+                        <a className={styles.registerBtnWrapper}>
+                          <Image
+                            src="/static/images/RegisterButton.png"
+                            width={RegisterBtnWidth}
+                            height={RegisterBtnHeight}
+                            className={styles.RegisterBtnImg}
+                            alt="Register"
+                          />
+                        </a>
+                      </Link>
+                      <div className={styles.landingPageDate}>
+                        <span>27TH - 31ST OCTOBER</span>
+                      </div>
+                    </motion.div>
+                  )}
+                </AnimatePresence>
+              </motion.div>
             </AnimatePresence>
           </div>
         </>
@@ -878,4 +875,3 @@ export function randomAnimation(direction, random, setRandom, delay, id) {
     ctx.revert();
   }; // cleanup
 }
-
