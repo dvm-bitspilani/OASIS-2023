@@ -19,8 +19,8 @@ const Events = () => {
       width: 4096,
       height: 2305,
       transformOrigin: "0 0",
-      left: innerWidth / -3,
-      top: innerHeight / -5,
+      left: innerWidth / -25,
+      top: innerHeight / -50,
     });
     gsap.to("#container", {
       duration: 1,
