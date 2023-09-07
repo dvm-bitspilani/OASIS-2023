@@ -45,7 +45,7 @@ const Events = () => {
     // Move container's x/y to follow the red circle
     gsap.ticker.add(() =>
       gsap.to("#container", {
-        duration: 0.7,
+        duration: 2.5,
         x: -gsap.getProperty("#c", "x"),
         y: -gsap.getProperty("#c", "y"),
       })
