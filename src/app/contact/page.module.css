@@ -16,7 +16,7 @@
     font-family: 'NightmarePills';
     color: #78BBF0;
     text-shadow:  0px 2.748150110244751px 25.420387268066406px rgba(120, 187, 240, 0.80);
-    height: 20vh;
+    height: 10vh;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -50,10 +50,12 @@ text-transform: uppercase;
     display: flex;
     align-items: center;
     align-self: center;
+    position:absolute;
+    right: -50%;
 }
 .mainSection img{
-    width: min(40vw,536px);
-    width: max(min(40vw, 536px), 400px);
+    /* width: min(40vw,536px);
+    width: max(min(40vw, 536px), 400px); */
     height: 80vh;
 }
 .department p:hover{
