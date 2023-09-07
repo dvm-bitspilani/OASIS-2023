@@ -62,7 +62,7 @@ const Page = () => {
                 opacity: isLoading ? 0 : 1,
                 transform: isLoading
                   ? "scale(1) translateX(0) translateY(0) rotate(0)"
-                  : "scaleX(.9) translateX(-8rem) translateY(-3rem) rotate(-10deg)",
+                  : "scaleX(.9) translateX(0) translateY(-3rem) rotate(-10deg)",
               }}
               transition={{ ease: "easeOut", duration: 2 }}
             >
