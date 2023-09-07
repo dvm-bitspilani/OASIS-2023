@@ -8,6 +8,7 @@ import { HamContext } from "@/context/HamContextProvider";
 import Link from "next/link";
 import { Metadata } from "next";
 import textLogo from "../../public/static/images/OasisLogo.png";
+import navLogo from "../../public/static/images/navLogo.png"
 import Navbar from "@/components/Navbar";
 import Hamburger from "@/components/hamburger";
 import landingPgBookImg from "../../public/static/images/LandingPageBook.png";
@@ -573,73 +574,73 @@ export default function Home() {
       ) : (
         <>
           <div className={styles.pageWrapper}>
+            <div className={styles.navLogo}>
+              <Image
+                src="/static/images/navLogo.png"
+                width={60}
+                height={60}
+                className={styles.navLogoImg}
+                alt="Text Oasis Logo"
+              />
+            </div>
             {/* <div
               className={styles.hamSection}
               style={isHamOpen ? { zIndex: 10 } : { zIndex: 2 }}
             >
               <div className={styles.hamBtn}>
-                <div className="navLogo">
-                  <Image
-                    src="/static/images/navLogo.png"
-                    width={80}
-                    height={80}
-                    className="navLogoImg"
-                    alt="Text Oasis Logo"
-                  />
-                </div>
-                <AnimatePresence>
-                  <div className={styles.hamAsset}>
-                    <Image
-                      src="/static/images/hamIcon.svg"
-                      width={103}
-                      height={103}
-                      alt="Menu"
-                    />
-                    <div
-                      id="ham-menu"
-                      className={styles.hamIcon}
-                      onClick={openHam}
-                    >
-                      <span id="hamIcon1" className={styles.hamIcon1}></span>
-                      <span id="hamIcon2" className={styles.hamIcon2}></span>
-                      <span id="hamIcon3" className={styles.hamIcon3}></span>
-                    </div>
+              <AnimatePresence>
+              <div className={styles.hamAsset}>
+              <Image
+              src="/static/images/hamIcon.svg"
+              width={103}
+              height={103}
+              alt="Menu"
+              />
+              <div
+              id="ham-menu"
+              className={styles.hamIcon}
+              onClick={openHam}
+              >
+              <span id="hamIcon1" className={styles.hamIcon1}></span>
+              <span id="hamIcon2" className={styles.hamIcon2}></span>
+              <span id="hamIcon3" className={styles.hamIcon3}></span>
+              </div>
+              </div>
+              
+              {isHamOpen ? (
+                <motion.div
+                key="hamBG"
+                className={styles.hamBG}
+                style={{
+                  height: `${innerHeight / 10}px`,
+                  width: `${innerHeight / 10}px`,
+                }}
+                initial={{ scale: 0 }}
+                animate={{ scale: 50 }}
+                exit={{ scale: 0, transition: { delay: 1.5 } }}
+                transition={{ duration: 1 }}
+                ></motion.div>
+                ) : (
+                  <div style={{ display: "none" }}></div>
+                  )}
+                  </AnimatePresence>
                   </div>
-
+                  <AnimatePresence>
                   {isHamOpen ? (
                     <motion.div
-                      key="hamBG"
-                      className={styles.hamBG}
-                      style={{
-                        height: `${innerHeight / 10}px`,
-                        width: `${innerHeight / 10}px`,
-                      }}
-                      initial={{ scale: 0 }}
-                      animate={{ scale: 50 }}
-                      exit={{ scale: 0, transition: { delay: 1.5 } }}
-                      transition={{ duration: 1 }}
-                    ></motion.div>
-                  ) : (
-                    <div style={{ display: "none" }}></div>
-                  )}
-                </AnimatePresence>
-              </div>
-              <AnimatePresence>
-                {isHamOpen ? (
-                  <motion.div
                     key="hamMenu"
                     initial={{ opacity: 0 }}
                     animate={{ opacity: 1 }}
                     exit={{ opacity: 0, transition: { delay: 1.5 } }}
                     transition={{ delay: 0.25, duration: 0.5 }}
-                  >
+                    >
                     <Hamburger />
-                  </motion.div>
-                ) : (
-                  <div style={{ display: "none" }}></div>
-                )}
-              </AnimatePresence>
-            </div> */}
+                    </motion.div>
+                    ) : (
+                      <div style={{ display: "none" }}></div>
+                      )}
+                      </AnimatePresence>
+                    </div> */}
             <div className={styles["navSection"]}>
               <AnimatePresence>
                 {isHamOpen ? (
@@ -658,6 +659,9 @@ export default function Home() {
                 )}
               </AnimatePresence>
             </div>
+            {/* <div className={styles.navLogo}>
+              <Image src={navLogo} />
+            </div> */}
             <AnimatePresence mode="wait">
               <motion.div
                 initial={{ opacity: 0 }}
