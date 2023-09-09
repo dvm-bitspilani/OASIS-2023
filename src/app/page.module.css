@@ -1,7 +1,7 @@
 .pageWrapper {
   height: 100vh;
   width: 100vw;
-  background: url(../../public/static/images/Library.png);
+  background: url(../../public/static/images/updatedLibraryBgImage.png);
   background-position: center;
   background-size: cover;
   background-repeat: no-repeat;
@@ -418,4 +418,10 @@
    .bookImgWrapper{
     scale: .8;
    }
+}
+.navLogo{
+  position: absolute;
+  top: 0;
+  margin-left: 2rem;
+  margin-top: 2rem;
 }
