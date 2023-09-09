@@ -1,7 +1,8 @@
 .regPage {
   width: 100vw;
   height: 100vh;
-  background: url(../../../public/static/images/RegisterBG.svg);
+  /* background: url(../../../public/static/images/RegisterBG.svg); */
+  background: url(../../../public/static/images/updatedLibraryBgImage.png);
   background-position: center center;
   background-size: cover;
   background-repeat: no-repeat;

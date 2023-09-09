@@ -1,7 +1,7 @@
 .pageWrapper{
     height: 100vh;
     width: 100vw;
-    background: url(../../../public/static/images/Library.png);
+    background: url(../../../public/static/images/updatedLibraryBgImage.png);
     background-repeat: no-repeat;
     background-position: center;
     background-size: cover;
@@ -45,6 +45,8 @@ font-weight: 500;
 line-height: normal;
 text-transform: uppercase;
 /* width: max-content; */
+height: 3rem;
+transition: color 0.3s, font-size 0.3s;
 }
 .imgWrapper{
     display: flex;

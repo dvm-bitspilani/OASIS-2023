@@ -7,11 +7,11 @@ import { useContext } from "react";
 import { HamContext } from "@/context/HamContextProvider";
 import Link from "next/link";
 import { Metadata } from "next";
-import textLogo from "../../public/static/images/OasisLogo.png";
+import textLogo from "../../public/static/images/updatedOasisLogo.png";
 import navLogo from "../../public/static/images/navLogo.png"
 import Navbar from "@/components/Navbar";
 import Hamburger from "@/components/hamburger";
-import landingPgBookImg from "../../public/static/images/LandingPageBook.png";
+import landingPgBookImg from "../../public/static/images/updatedLandingPageBook.png";
 import rightElements from "../../public/static/images/landingPgRightElements.png";
 import leftElements from "../../public/static/images/landingPgLeftElements.png";
 // import MyVideoLoader from "@/components/VideoLoader";
@@ -724,7 +724,7 @@ export default function Home() {
                       <Link href="/register" legacyBehavior>
                         <a className={styles.registerBtnWrapper}>
                           <Image
-                            src="/static/images/RegisterButton.png"
+                            src="/static/images/updatedLandingRegBtn.png"
                             width={RegisterBtnWidth}
                             height={RegisterBtnHeight}
                             className={styles.RegisterBtnImg}
