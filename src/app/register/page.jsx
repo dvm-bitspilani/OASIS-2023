@@ -193,6 +193,8 @@ const year = [
 
 export default function Page() {
 
+  const { innerWidth, innerHeight } = useWindowSize();
+
   const numberOfRandom = 6;
 
   const randomGenerationTopLeftConfig = useMemo(
@@ -413,6 +415,7 @@ export default function Page() {
     numberOfRandom,
     randomGenerationTopLeftConfig,
     randomStatesTopLeft1,
+    innerWidth
   ]);
 
   useLayoutEffect(() => {
@@ -491,11 +494,12 @@ export default function Page() {
     randomGenerationTopLeftConfig,
     randomStatesTopLeft2,
     isDelayed,
+    innerWidth,
   ]);
 
   useLayoutEffect(() => {
     // console.log("Animation 3");
-    if (!isLoading) {
+    if (!isLoading && innerWidth > 1000) {
       let ctx = gsap.context(() => {
         randomStatesBottomLeft1.forEach((item, key) => {
           gsap.set(`#bottom_left_1_${key}`, {
@@ -567,11 +571,12 @@ export default function Page() {
     numberOfRandom,
     randomGenerationBottomLeftConfig,
     randomStatesBottomLeft1,
+    innerWidth,
   ]);
 
   useLayoutEffect(() => {
     // console.log("Animation 4");
-    if (!isLoading) {
+    if (!isLoading && innerWidth > 1000) {
       let ctx = gsap.context(() => {
         randomStatesBottomLeft2.forEach((item, key) => {
           gsap.set(`#bottom_left_2_${key}`, {
@@ -645,9 +650,8 @@ export default function Page() {
     randomGenerationBottomLeftConfig,
     randomStatesBottomLeft2,
     isDelayed,
+    innerWidth,
   ]);
-
-  const { innerWidth, innerHeight } = useWindowSize();
 
   const [formData, formDispatchFn] = useReducer(
     formReducerFn,
@@ -939,9 +943,13 @@ export default function Page() {
   }, []);
 
   const handleSkullMouseDown = (e) => {
+    console.log("mousedown");
     e.preventDefault();
     document.addEventListener("mousemove", handleSkullDragMove);
+    document.addEventListener("touchmove", handleSkullDragMove);
+
     document.addEventListener("mouseup", handleSkullDragEnd);
+    document.addEventListener("touchend", handleSkullDragEnd);
   };
 
   const handleSkullDragMove = (e) => {
@@ -951,11 +959,13 @@ export default function Page() {
       `.${styles.scrollBarContainer}`
     );
 
+    const clientY = e.clientY || e.touches[0].clientY;
+
     const maxScrollTopValue =
       formContainerElem.scrollHeight - formContainerElem.clientHeight;
 
     const percentage =
-      ((e.clientY - scrollBarContainer.offsetTop) /
+      ((clientY - scrollBarContainer.offsetTop) /
         scrollBarContainer.clientHeight) *
       100;
 
@@ -978,7 +988,13 @@ export default function Page() {
       100;
     const maxScrollTopValue =
       formContainerElem.scrollHeight - formContainerElem.clientHeight;
-    formContainerElem.scrollTop = (percentage / 100) * maxScrollTopValue;
+
+      // Smooth scroll to the percentage of the max scroll value
+      formContainerElem.scrollTo({
+        top: (percentage / 100) * maxScrollTopValue,
+        behavior: "smooth",
+      });
+    // formContainerElem.scrollTop = (percentage / 100) * maxScrollTopValue;
   };
 
   // console.log(formData)
@@ -1027,6 +1043,7 @@ export default function Page() {
             <div className={styles.scrollBar}></div>
             <Image
               onMouseDown={handleSkullMouseDown}
+              onTouchStart={handleSkullMouseDown}
               id="skull"
               src={skull}
               alt="skull"
