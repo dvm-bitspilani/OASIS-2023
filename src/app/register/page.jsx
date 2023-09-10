@@ -1033,8 +1033,12 @@ export default function Page() {
 
   const handleSkullMouseDown = (e) => {
     e.preventDefault();
+    
     document.addEventListener("mousemove", handleSkullDragMove);
+    document.addEventListener("touchmove", handleSkullDragMove);
+
     document.addEventListener("mouseup", handleSkullDragEnd);
+    document.addEventListener("touchend", handleSkullDragEnd);
   };
 
   const handleSkullDragMove = (e) => {
@@ -1047,8 +1051,10 @@ export default function Page() {
     const maxScrollTopValue =
       formContainerElem.scrollHeight - formContainerElem.clientHeight;
 
+    const clientY = e.clientY || e.touches[0].clientY;
+
     const percentage =
-      ((e.clientY - scrollBarContainer.offsetTop) /
+      ((clientY - scrollBarContainer.offsetTop) /
         scrollBarContainer.clientHeight) *
       100;
 
@@ -1058,6 +1064,8 @@ export default function Page() {
   const handleSkullDragEnd = (e) => {
     document.removeEventListener("mousemove", handleSkullDragMove);
     document.removeEventListener("mouseup", handleSkullDragEnd);
+    document.removeEventListener("touchmove", handleSkullDragMove);
+    document.removeEventListener("touchend", handleSkullDragEnd);
   };
 
   const handleTrackSnap = (e) => {
@@ -1126,6 +1134,7 @@ export default function Page() {
             <div className={styles.scrollBar}></div>
             <Image
               onMouseDown={handleSkullMouseDown}
+              onTouchStart={handleSkullMouseDown}
               id="skull"
               src={skull}
               alt="skull"
