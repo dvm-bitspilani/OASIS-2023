@@ -1162,7 +1162,7 @@ export default function Page() {
               />
 
               <label htmlFor="email_id" ref={emailFieldRef}>
-                EMAIL-ID
+                EMAIL ID
               </label>
               <input
                 type="text"
@@ -1272,7 +1272,7 @@ export default function Page() {
               />
 
               <label>ARE YOU A CHOREOGRAPHER / MENTOR?</label>
-              <div className={styles.radioBtns}>
+              <div className={styles.radioBtns} style={{width:"60%"}}>
                 <Radio
                   id="YES_Choreo"
                   value="YES"
@@ -1292,7 +1292,7 @@ export default function Page() {
               </div>
 
               <label>ARE YOU THE HEAD OF A SOCIETY?</label>
-              <div className={styles.radioBtns}>
+              <div className={styles.radioBtns} style={{width:"60%"}}>
                 <Radio
                   id="YES_Society"
                   value="YES"
