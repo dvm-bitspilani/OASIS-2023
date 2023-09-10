@@ -503,11 +503,12 @@ export default function Page() {
     randomGenerationTopLeftConfig,
     randomStatesTopLeft2,
     isDelayed,
+    innerWidth,
   ]);
 
   useLayoutEffect(() => {
     // console.log("Animation 3");
-    if (!isLoading) {
+    if (!isLoading && innerWidth > 1000) {
       let ctx = gsap.context(() => {
         randomStatesBottomLeft1.forEach((item, key) => {
           gsap.set(`#bottom_left_1_${key}`, {
@@ -579,11 +580,12 @@ export default function Page() {
     numberOfRandom,
     randomGenerationBottomLeftConfig,
     randomStatesBottomLeft1,
+    innerWidth,
   ]);
 
   useLayoutEffect(() => {
     // console.log("Animation 4");
-    if (!isLoading) {
+    if (!isLoading && innerWidth > 1000) {
       let ctx = gsap.context(() => {
         randomStatesBottomLeft2.forEach((item, key) => {
           gsap.set(`#bottom_left_2_${key}`, {
@@ -657,6 +659,7 @@ export default function Page() {
     randomGenerationBottomLeftConfig,
     randomStatesBottomLeft2,
     isDelayed,
+    innerWidth,
   ]);
 
   const [formData, formDispatchFn] = useReducer(
@@ -808,7 +811,7 @@ export default function Page() {
         firstErrorField = yearFieldRef.current;
       }
 
-      if (firstErrorField) {
+      if (firstErrorField && !alert("Please fill in all the fields.")) {
         console.log(firstErrorField);
         //scroll to first error field using scrollintoview
         firstErrorField.scrollIntoView({
@@ -816,6 +819,9 @@ export default function Page() {
           block: "start",
           inline: "center",
         });
+        setTimeout(() => {
+          firstErrorField.focus();
+        }, 700);
       }
 
       return;
@@ -823,7 +829,6 @@ export default function Page() {
 
     if (!/^\d{10}$/.test(formData.phone)) {
       alert("Phone number should be 10 digits.");
-
       return;
     }
 
@@ -997,7 +1002,7 @@ export default function Page() {
   };
 
   const handleSkullDragMove = (e) => {
-    const skullElem = skullRef.current;
+    // const skullElem = skullRef.current;
     const formContainerElem = formContainerRef.current;
     const scrollBarContainer = document.querySelector(
       `.${styles.scrollBarContainer}`
@@ -1138,8 +1143,8 @@ export default function Page() {
                 }
               />
 
-              <label>GENDER</label>
-              <div className={styles.radioBtns} ref={genderFieldRef}>
+              <label ref={genderFieldRef}>GENDER</label>
+              <div className={styles.radioBtns}>
                 <Radio
                   id="M"
                   value="M"
