@@ -13,8 +13,9 @@
   font-family: "NightmarePills";
   font-size: 4.5rem;
   font-weight: 500;
-  padding: 1% 0 0 2%;
-  height: calc(10vh - 0.5rem);
+  /* padding-top: 1rem; */
+  padding: 1rem 0 0 2rem;
+  /* height: calc(10vh - 0.5rem); */
 }
 .regPage button {
   outline: none;
@@ -240,7 +241,8 @@
     font-size: 4rem;
   }
   .scrollBarContainer{
-    height: 95%;
+    height: 88%;
+    margin-block: auto;
   }
   .regForm{
     height: 86vh;
