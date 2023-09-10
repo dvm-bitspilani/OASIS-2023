@@ -14,6 +14,7 @@ import Hamburger from "@/components/hamburger";
 import landingPgBookImg from "../../public/static/images/updatedLandingPageBook.png";
 import rightElements from "../../public/static/images/landingPgRightElements.png";
 import leftElements from "../../public/static/images/landingPgLeftElements.png";
+import updatedBgLibraryImage from "../../public/static/images/updatedLibraryBgImage.png";
 // import MyVideoLoader from "@/components/VideoLoader";
 import { gsap } from "gsap";
 import { AnimatePresence, motion } from "framer-motion";
@@ -113,7 +114,7 @@ export default function Home() {
       // console.log('first')
       setIsLoading(true);
       setShowLoader(true);
-      const assets = [textLogo, landingPgBookImg, rightElements, leftElements];
+      const assets = [textLogo, landingPgBookImg, rightElements, leftElements, updatedBgLibraryImage];
       // console.log('second')
       const loadAssets = () => {
         const assetPromises = assets.map((asset) => {

@@ -1,6 +1,6 @@
 .regPage {
   width: 100vw;
-  height: 100vh;
+  height: 100dvh;
   /* background: url(../../../public/static/images/RegisterBG.svg); */
   background: url(../../../public/static/images/updatedLibraryBgImage.png);
   background-position: center center;
@@ -13,8 +13,9 @@
   font-family: "NightmarePills";
   font-size: 4.5rem;
   font-weight: 500;
-  padding: 1% 0 0 2%;
-  height: calc(10vh - 0.5rem);
+  /* padding-top: 1rem; */
+  padding: 1rem 0 0 2rem;
+  /* height: calc(10vh - 0.5rem); */
 }
 .regPage button {
   outline: none;
@@ -86,12 +87,13 @@
   display: flex;
   flex-direction: column;
 }
+
 .regBtnContainer {
   /* height: 15vh; */
   /* padding-left: 1%; */
   display: flex;
   align-items: center;
-  margin-top: 1rem;
+  margin-top: 5rem;
 }
 .regBtnContainer img {
   /* height: 5rem; */
@@ -110,8 +112,20 @@
   color: #5db3f1;
   font-family: "NightmarePills";
   font-size: 2rem;
-  margin-top: 2rem;
+  margin-top: 3.5rem;
 }
+
+.errorMessage{
+  color: red;
+  font-family: "NightmarePills";
+  font-size: 1.2rem;
+  margin-top: 1rem;
+  margin-bottom: 0;
+
+  text-transform: capitalize;
+
+}
+
 .form input {
   outline: none;
   background: transparent;
@@ -157,7 +171,7 @@
   position: absolute;
   top: 0;
   left: 110px;
-  height: 41%;
+  height: 61%;
   width: 250px;
   transform: translateY(-60%) rotateZ(67deg);
   /* border: 2px solid green; */
@@ -167,7 +181,7 @@
   position: absolute;
   bottom: 0;
   left: 5px;
-  height: 41%;
+  height: 61%;
   width: 250px;
   transform: translateY(47%) rotateZ(138deg);
   /* border: 2px solid blue; */
@@ -191,7 +205,7 @@
 }
 .close {
   position: fixed;
-  top: 1rem;
+  top: 1.5rem;
   left: 1rem;
 }
 .loaderContainer {
@@ -227,7 +241,8 @@
     font-size: 4rem;
   }
   .scrollBarContainer{
-    height: 95%;
+    height: 88%;
+    margin-block: auto;
   }
   .regForm{
     height: 86vh;
@@ -238,15 +253,16 @@
     font-size: 2.5rem;
     text-align: center;
   }
-  /* .regBtnContainer {
+  .regBtnContainer {
     justify-content: center;
-  } */
+    margin-top: 5rem;
+  }
   .regBtnContainer img {
     width: 10rem;
   }
-  .regBtnContainer img:hover {
+  /* .regBtnContainer img:hover {
     scale: 0.9;
-  }
+  } */
   .form label {
     font-size: 1.5rem;
   }
