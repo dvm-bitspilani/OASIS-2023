@@ -86,12 +86,13 @@
   display: flex;
   flex-direction: column;
 }
+
 .regBtnContainer {
   /* height: 15vh; */
   /* padding-left: 1%; */
   display: flex;
   align-items: center;
-  margin-top: 1rem;
+  margin-top: 5rem;
 }
 .regBtnContainer img {
   /* height: 5rem; */
@@ -110,8 +111,20 @@
   color: #5db3f1;
   font-family: "NightmarePills";
   font-size: 2rem;
-  margin-top: 2rem;
+  margin-top: 3.5rem;
 }
+
+.errorMessage{
+  color: red;
+  font-family: "NightmarePills";
+  font-size: 1.2rem;
+  margin-top: 1rem;
+  margin-bottom: 0;
+
+  text-transform: capitalize;
+
+}
+
 .form input {
   outline: none;
   background: transparent;
@@ -238,15 +251,16 @@
     font-size: 2.5rem;
     text-align: center;
   }
-  /* .regBtnContainer {
+  .regBtnContainer {
     justify-content: center;
-  } */
+    margin-top: 5rem;
+  }
   .regBtnContainer img {
     width: 10rem;
   }
-  .regBtnContainer img:hover {
+  /* .regBtnContainer img:hover {
     scale: 0.9;
-  }
+  } */
   .form label {
     font-size: 1.5rem;
   }

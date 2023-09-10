@@ -767,6 +767,12 @@ export default function Page() {
   }, [loaderLoaded, colleges, events]);
 
   const handleRegisterations = async () => {
+
+    const allErrors = document.querySelectorAll(`.${styles.errorMessage}`);
+    allErrors.forEach((error) => {
+      error.remove();
+    });
+
     if (
       formData.name.trim() === "" ||
       formData.email_id.trim() === "" ||
@@ -781,6 +787,7 @@ export default function Page() {
     ) {
       // alert("Please fill in all the fields.");
       let firstErrorField = null;
+      // let fieldName = null;
       // const firstErrorFieldIndex = Object.keys(formData).findIndex((key) => {
       //   return formData[key] === "";
       // });
@@ -811,7 +818,8 @@ export default function Page() {
         firstErrorField = yearFieldRef.current;
       }
 
-      if (firstErrorField && !alert("Please fill in all the fields.")) {
+      // if (firstErrorField && !alert("Please fill in all the fields.")) {
+      if (firstErrorField) {
         console.log(firstErrorField);
         //scroll to first error field using scrollintoview
         firstErrorField.scrollIntoView({
@@ -819,6 +827,10 @@ export default function Page() {
           block: "start",
           inline: "center",
         });
+
+        // Adding an error message div as the next sibling element of the first error field
+        AddingErrorMessage(firstErrorField, "field is required.");
+
         setTimeout(() => {
           firstErrorField.focus();
         }, 700);
@@ -828,13 +840,37 @@ export default function Page() {
     }
 
     if (!/^\d{10}$/.test(formData.phone)) {
-      alert("Phone number should be 10 digits.");
+      // alert("Phone number should be 10 digits.");
+      const firstErrorField = phoneFieldRef.current;
+      firstErrorField.scrollIntoView({
+        behavior: "smooth",
+        block: "start",
+        inline: "center",
+      });
+      AddingErrorMessage(firstErrorField, "should be 10 digits.");
       return;
     }
 
     if (!/\S+@\S+\.\S+/.test(formData.email_id)) {
-      alert("Please provide a valid email address.");
+      // alert("Please provide a valid email address.");
+      const firstErrorField = emailFieldRef.current;
+      firstErrorField.scrollIntoView({
+        behavior: "smooth",
+        block: "start",
+        inline: "center",
+      });
+      AddingErrorMessage(firstErrorField, "is invalid.");
       return;
+    }
+
+    function AddingErrorMessage(firstErrorField, errorMessage) {
+      const errorMessageDiv = document.createElement("div");
+      errorMessageDiv.classList.add(styles.errorMessage);
+      errorMessageDiv.innerText = `*${firstErrorField.innerText} ${errorMessage}`;
+      firstErrorField.parentNode.insertBefore(
+        errorMessageDiv,
+        firstErrorField.nextSibling.nextSibling
+      );
     }
 
     async function uploadData(data) {
