@@ -13,6 +13,7 @@ gsap.registerPlugin(ScrollTrigger);
 const Events = () => {
   const tasks = [
   {
+    key: 1,
     name: "STREET DANCE",
     desc: "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Cum eveniet voluptas, ullam saepe laboriosam quas consequuntur! Itaque consequuntur, fugiat labore, sit rem dolore harum eligendi alias, cumque at tenetur nulla.",
     image: StreetDance,
@@ -20,6 +21,7 @@ const Events = () => {
     left: "5%",
   },
   {
+    key: 2,
     name: "STREET DANCE",
     desc: "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Cum eveniet voluptas, ullam saepe laboriosam quas consequuntur! Itaque consequuntur, fugiat labore, sit rem dolore harum eligendi alias, cumque at tenetur nulla.",
     image: StreetDance,
@@ -27,6 +29,7 @@ const Events = () => {
     left: "10%",
   },
   {
+    key: 3,
     name: "STREET DANCE",
     desc: "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Cum eveniet voluptas, ullam saepe laboriosam quas consequuntur! Itaque consequuntur, fugiat labore, sit rem dolore harum eligendi alias, cumque at tenetur nulla.",
     image: StreetDance,
@@ -34,6 +37,7 @@ const Events = () => {
     left: "20%",
   },
   {
+    key: 4,
     name: "STREET DANCE",
     desc: "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Cum eveniet voluptas, ullam saepe laboriosam quas consequuntur! Itaque consequuntur, fugiat labore, sit rem dolore harum eligendi alias, cumque at tenetur nulla.",
     image: StreetDance,
@@ -41,6 +45,7 @@ const Events = () => {
     left: "5%",
   },
   {
+    key: 5,
     name: "STREET DANCE",
     desc: "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Cum eveniet voluptas, ullam saepe laboriosam quas consequuntur! Itaque consequuntur, fugiat labore, sit rem dolore harum eligendi alias, cumque at tenetur nulla.",
     image: StreetDance,
@@ -48,6 +53,7 @@ const Events = () => {
     left: "9%",
   },
   {
+    key: 6,
     name: "STREET DANCE",
     desc: "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Cum eveniet voluptas, ullam saepe laboriosam quas consequuntur! Itaque consequuntur, fugiat labore, sit rem dolore harum eligendi alias, cumque at tenetur nulla.",
     image: StreetDance,
@@ -55,6 +61,7 @@ const Events = () => {
     left: "30%",
   },
   {
+    key: 7,
     name: "STREET DANCE",
     desc: "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Cum eveniet voluptas, ullam saepe laboriosam quas consequuntur! Itaque consequuntur, fugiat labore, sit rem dolore harum eligendi alias, cumque at tenetur nulla.",
     image: StreetDance,
@@ -62,6 +69,7 @@ const Events = () => {
     left: "35%",
   },
   {
+    key: 8,
     name: "STREET DANCE",
     desc: "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Cum eveniet voluptas, ullam saepe laboriosam quas consequuntur! Itaque consequuntur, fugiat labore, sit rem dolore harum eligendi alias, cumque at tenetur nulla.",
     image: StreetDance,
@@ -69,6 +77,7 @@ const Events = () => {
     left: "40%",
   },
   {
+    key: 9,
     name: "STREET DANCE",
     desc: "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Cum eveniet voluptas, ullam saepe laboriosam quas consequuntur! Itaque consequuntur, fugiat labore, sit rem dolore harum eligendi alias, cumque at tenetur nulla.",
     image: StreetDance,
@@ -76,6 +85,7 @@ const Events = () => {
     left: "50%",
   },
   {
+    key: 10,
     name: "STREET DANCE",
     desc: "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Cum eveniet voluptas, ullam saepe laboriosam quas consequuntur! Itaque consequuntur, fugiat labore, sit rem dolore harum eligendi alias, cumque at tenetur nulla.",
     image: StreetDance,
@@ -83,6 +93,7 @@ const Events = () => {
     left: "55%",
   },
   {
+    key: 11,
     name: "STREET DANCE",
     desc: "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Cum eveniet voluptas, ullam saepe laboriosam quas consequuntur! Itaque consequuntur, fugiat labore, sit rem dolore harum eligendi alias, cumque at tenetur nulla.",
     image: StreetDance,
@@ -90,6 +101,7 @@ const Events = () => {
     left: "55%",
   },
   {
+    key: 12,
     name: "STREET DANCE",
     desc: "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Cum eveniet voluptas, ullam saepe laboriosam quas consequuntur! Itaque consequuntur, fugiat labore, sit rem dolore harum eligendi alias, cumque at tenetur nulla.",
     image: StreetDance,
@@ -97,6 +109,7 @@ const Events = () => {
     left: "50%",
   },
   {
+    key: 13,
     name: "STREET DANCE",
     desc: "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Cum eveniet voluptas, ullam saepe laboriosam quas consequuntur! Itaque consequuntur, fugiat labore, sit rem dolore harum eligendi alias, cumque at tenetur nulla.",
     image: StreetDance,
@@ -104,6 +117,7 @@ const Events = () => {
     left: "60%",
   },
   {
+    key: 14,
     name: "STREET DANCE",
     desc: "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Cum eveniet voluptas, ullam saepe laboriosam quas consequuntur! Itaque consequuntur, fugiat labore, sit rem dolore harum eligendi alias, cumque at tenetur nulla.",
     image: StreetDance,
@@ -111,6 +125,7 @@ const Events = () => {
     left: "75%",
   },
   {
+    key: 15,
     name: "STREET DANCE",
     desc: "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Cum eveniet voluptas, ullam saepe laboriosam quas consequuntur! Itaque consequuntur, fugiat labore, sit rem dolore harum eligendi alias, cumque at tenetur nulla.",
     image: StreetDance,
@@ -118,6 +133,7 @@ const Events = () => {
     left: "72%",
   },
   {
+    key: 16,
     name: "STREET DANCE",
     desc: "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Cum eveniet voluptas, ullam saepe laboriosam quas consequuntur! Itaque consequuntur, fugiat labore, sit rem dolore harum eligendi alias, cumque at tenetur nulla.",
     image: StreetDance,
@@ -125,6 +141,7 @@ const Events = () => {
     left: "77%",
   },
   {
+    key: 17,
     name: "STREET DANCE",
     desc: "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Cum eveniet voluptas, ullam saepe laboriosam quas consequuntur! Itaque consequuntur, fugiat labore, sit rem dolore harum eligendi alias, cumque at tenetur nulla.",
     image: StreetDance,
@@ -132,6 +149,7 @@ const Events = () => {
     left: "60%",
   },
   {
+    key: 18,
     name: "STREET DANCE",
     desc: "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Cum eveniet voluptas, ullam saepe laboriosam quas consequuntur! Itaque consequuntur, fugiat labore, sit rem dolore harum eligendi alias, cumque at tenetur nulla.",
     image: StreetDance,
@@ -139,6 +157,7 @@ const Events = () => {
     left: "77%",
   },
   {
+    key: 19,
     name: "STREET DANCE",
     desc: "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Cum eveniet voluptas, ullam saepe laboriosam quas consequuntur! Itaque consequuntur, fugiat labore, sit rem dolore harum eligendi alias, cumque at tenetur nulla.",
     image: StreetDance,
@@ -236,7 +255,7 @@ const Events = () => {
         <div className={events.itemWrapper}>
           {tasks.map((evt) => {
             return (
-              <EventItem name={evt.name} desc={evt.desc} image={evt.image} top={evt.top} left={evt.left}/>
+              <EventItem key={evt.key} name={evt.name} desc={evt.desc} image={evt.image} top={evt.top} left={evt.left}/>
             );
           })}
         </div>
