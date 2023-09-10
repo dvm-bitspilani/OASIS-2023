@@ -5,10 +5,21 @@ import Map from "../../public/static/images/EventsMap.png";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { useWindowSize } from "rooks";
+import StreetDance from "../../public/static/images/StreetDance.png";
+import EventItem from "./EventItem";
 
 gsap.registerPlugin(ScrollTrigger);
 
 const Events = () => {
+  const tasks = [
+  {
+    name: "STREET DANCE",
+    desc: "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Cum eveniet voluptas, ullam saepe laboriosam quas consequuntur! Itaque consequuntur, fugiat labore, sit rem dolore harum eligendi alias, cumque at tenetur nulla.",
+    image: StreetDance,
+    top: "10%",
+    left: "5%",
+  }
+];
   const { innerWidth, innerHeight } = useWindowSize();
 
   useEffect(() => {
@@ -36,11 +47,11 @@ const Events = () => {
           trigger: "#scrollDist",
           start: "top top",
           end: "bottom bottom",
-          scrub: 1,
+          scrub: 0.5,
         },
       })
       .to("#c", { motionPath: "#p", immediateRender: true, ease: "none" }, 0)
-      .from("#p", { drawSVG: "0 0", ease: "none" }, 0);
+      // .from("#p", { drawSVG: "0 0", ease: "none" }, 0);
 
     // Move container's x/y to follow the red circle
     gsap.ticker.add(() =>
@@ -54,8 +65,8 @@ const Events = () => {
     // Center the container's left/top position
     const resizeHandler = () => {
       gsap.set("#container", {
-        left: innerWidth / 2,
-        top: innerHeight / 2,
+        left: 0,
+        top: 0,
       });
     };
 
@@ -69,7 +80,7 @@ const Events = () => {
 
   return (
     <div className={events.wrapper}>
-      <div id="scrollDist"></div>
+      <div id="scrollDist" className={events.scrollDist}></div>
       <div id="container" className={events.container}>
         <Image
           src={Map}
@@ -92,10 +103,17 @@ const Events = () => {
             id="p"
             d="M9.5 32.9988C47.8333 436.832 222.9 1180.4 488.5 1162C820.5 1139 678 -179.001 991 32.9988C1304 244.999 1019 1111.5 1396.5 1162C1774 1212.5 1789.5 32.9989 2110.5 32.9988C2460.5 32.9987 2332 429.499 2299.5 535.5C2256.75 674.927 2245.5 796.5 2198 1162"
             stroke="#FF0000"
-            stroke-width="5"
+            strokeWidth="5"
             fill="none"
           />
         </svg>
+        <div className={events.itemWrapper}>
+          {tasks.map((evt) => {
+            return (
+              <EventItem name={evt.name} desc={evt.desc} image={evt.image} top={evt.top} left={evt.left}/>
+            );
+          })}
+        </div>
       </div>
     </div>
   );

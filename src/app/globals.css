@@ -11,6 +11,14 @@
   font-family: 'Montserrat';
   src: url(../../public/static/fonts/Montserrat.ttf) format('truetype');
 }
+@font-face {
+  font-family: 'KoPubBatang';
+  src: url(../../public/static/fonts/KoPubBatang-Regular.ttf) format('truetype');
+}
+@font-face {
+  font-family: 'OldNewspaperTypes';
+  src: url(../../public/static/fonts/OldNewspaperTypes.ttf) format('truetype');
+}
 *{
   margin: 0;
   padding: 0;

@@ -2,15 +2,52 @@
   height: 100%;
   position: relative;
 }
-.wrapper div{
-    position: absolute;
+.scrollDist {
+  position: absolute;
 }
-.wrapper img{
-    position: absolute;
+.container {
+  position: absolute;
 }
-.wrapper svg{
-    scale: .75;
-    position: absolute;
-    transform-origin: center;
-    transform: translateX(50%) translateY(50%);
+.wrapper img {
+  position: absolute;
+}
+.wrapper svg {
+  scale: 0.75;
+  position: absolute;
+  transform-origin: center;
+  transform: translateX(50%) translateY(50%);
+}
+.itemWrapper {
+  height: 100%;
+  width: 100%;
+  position: relative;
+}
+.itemContainer {
+  display: flex;
+  position: absolute;
+  height: 10%;
+  width: 20%;
+  z-index: 5;
+}
+.itemImage {
+  height: 100%;
+  width: 200%;
+}
+.itemContent {
+  margin-top: 1.5rem;
+  color: #fff;
+  font-family:"KoPubBatang";
+  font-size: 2rem;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 2rem; 
+}
+.itemContent p {
+  margin-top: 2rem;
+  color: #fff;
+  font-family:"OldNewspaperTypes";
+  font-size: 1.25rem;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 1rem;
 }
