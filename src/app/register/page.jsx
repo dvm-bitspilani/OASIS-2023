@@ -175,8 +175,8 @@ const formDataTemplate = {
   events: [],
   phone: "",
   year: "",
-  choreographer: "",
-  head_of_society: "",
+  choreographer: "NO",
+  head_of_society: "NO",
   name: "",
   gender: "",
   city: "",
@@ -192,20 +192,31 @@ const year = [
 ];
 
 export default function Page() {
+  const { innerWidth, innerHeight } = useWindowSize();
 
   const numberOfRandom = 6;
 
   const randomGenerationTopLeftConfig = useMemo(
-    () => [0, 0, 67, 67, 0, 67, 0, 0],
+    () => [20, 0, 26, 90, 0, 67, 0, 0],
     []
   );
   const randomGenerationBottomLeftConfig = useMemo(
-    () => [0, 0, 67, 67, 67, 0, 0, 0],
+    () => [20, 0, 26, 90, 67, 0, 0, 0],
     []
   );
 
   const [isLoading, setIsLoading] = useState(true);
   const scope = useRef(null);
+
+  const nameFieldRef = useRef(null);
+  const emailFieldRef = useRef(null);
+  const phoneFieldRef = useRef(null);
+  const genderFieldRef = useRef(null);
+  const collegeFieldRef = useRef(null);
+  const stateFieldRef = useRef(null);
+  const cityFieldRef = useRef(null);
+  const yearFieldRef = useRef(null);
+  const eventsFieldRef = useRef(null);
 
   const [randomStatesTopLeft1, setRandomStatesTopLeft1] = useState(
     generateRandomStatesArray(numberOfRandom, ...randomGenerationTopLeftConfig)
@@ -301,42 +312,42 @@ export default function Page() {
       setIsLoading(true);
       // setShowLoader(true);
       const assets = [skull, book, register, cross];
-        // console.log('second')
+      // console.log('second')
       const loadAssets = () => {
         const assetPromises = assets.map((asset) => {
           if (asset) {
             return new Promise((resolve, reject) => {
               const img = new Image();
               img.onload = resolve;
-              img.onerror = reject; 
+              img.onerror = reject;
               img.src = asset;
             });
           }
         });
 
-      Promise.all(assetPromises)
-        .then(() => {
-          setAllAssetsLoaded(true);
-          setTimeout(() => {
-            setIsLoading(false);
+        Promise.all(assetPromises)
+          .then(() => {
+            setAllAssetsLoaded(true);
+            setTimeout(() => {
+              setIsLoading(false);
+              // setShowLoader(false);
+            }, 10000);
+            // console.log('All assets loaded successfully');
+          })
+          .catch((error) => {
+            console.error("Error loading assets:", error);
+            // setIsLoading(false);
+            setAllAssetsLoaded(true);
             // setShowLoader(false);
-          }, 10000);
-          // console.log('All assets loaded successfully');
-        })
-        .catch((error) => {
-          console.error('Error loading assets:', error);
-          // setIsLoading(false);
-          setAllAssetsLoaded(true);
-          // setShowLoader(false);
-          setTimeout(() => {
-            setIsLoading(false);
-            // setShowLoader(false);
-          }, 2000);
-        });
-    };
-    loadAssets()
-    // }
-  }
+            setTimeout(() => {
+              setIsLoading(false);
+              // setShowLoader(false);
+            }, 2000);
+          });
+      };
+      loadAssets();
+      // }
+    }
   }, []);
 
   useLayoutEffect(() => {
@@ -413,6 +424,7 @@ export default function Page() {
     numberOfRandom,
     randomGenerationTopLeftConfig,
     randomStatesTopLeft1,
+    innerWidth,
   ]);
 
   useLayoutEffect(() => {
@@ -647,8 +659,6 @@ export default function Page() {
     isDelayed,
   ]);
 
-  const { innerWidth, innerHeight } = useWindowSize();
-
   const [formData, formDispatchFn] = useReducer(
     formReducerFn,
     formDataTemplate
@@ -667,7 +677,6 @@ export default function Page() {
   const skullRef = useRef(null);
   const formContainerRef = useRef(null);
   const regLoaderRef = useRef(null);
-  
 
   useEffect(() => {
     const assets = [regLoaderRef.current];
@@ -728,25 +737,26 @@ export default function Page() {
       };
 
       assets.forEach((asset) => {
-        if ( asset && 
-          (asset.complete ||
-          asset.readyState === 4 ||
-          asset.tagName === "LINK")
+        if (
+          asset &&
+          (asset.complete || asset.readyState === 4 || asset.tagName === "LINK")
         ) {
           handleAssetLoad();
         } else {
-          if(asset){
-          asset.addEventListener("load", handleAssetLoad);
-          asset.addEventListener("error", handleAssetLoad);
-        }}
+          if (asset) {
+            asset.addEventListener("load", handleAssetLoad);
+            asset.addEventListener("error", handleAssetLoad);
+          }
+        }
       });
 
       const cleanup = () => {
         assets.forEach((asset) => {
-          if(asset){
-          asset.removeEventListener("load", handleAssetLoad);
-          asset.removeEventListener("error", handleAssetLoad);
-        }});
+          if (asset) {
+            asset.removeEventListener("load", handleAssetLoad);
+            asset.removeEventListener("error", handleAssetLoad);
+          }
+        });
       };
 
       return cleanup;
@@ -762,16 +772,58 @@ export default function Page() {
       formData.college_id === "" ||
       formData.state === "" ||
       formData.city === "" ||
-      formData.year === "" 
+      formData.year === ""
       // formData.choreographer === "" ||
       // formData.head_of_society === ""
     ) {
-      alert("Please fill in all the fields.");
+      // alert("Please fill in all the fields.");
+      let firstErrorField = null;
+      // const firstErrorFieldIndex = Object.keys(formData).findIndex((key) => {
+      //   return formData[key] === "";
+      // });
+
+      if (formData.name.trim() === "") {
+        // nameFieldRef.current.focus();
+        firstErrorField = nameFieldRef.current;
+      } else if (formData.email_id.trim() === "") {
+        // emailFieldRef.current.focus();
+        firstErrorField = emailFieldRef.current;
+      } else if (formData.phone.trim() === "") {
+        // phoneFieldRef.current.focus();
+        firstErrorField = phoneFieldRef.current;
+      } else if (formData.gender === "") {
+        // genderFieldRef.current.focus();
+        firstErrorField = genderFieldRef.current;
+      } else if (formData.college_id === "") {
+        // collegeFieldRef.current.focus();
+        firstErrorField = collegeFieldRef.current;
+      } else if (formData.state === "") {
+        // stateFieldRef.current.focus();
+        firstErrorField = stateFieldRef.current;
+      } else if (formData.city === "") {
+        // cityFieldRef.current.focus();
+        firstErrorField = cityFieldRef.current;
+      } else if (formData.year === "") {
+        // yearFieldRef.current.focus();
+        firstErrorField = yearFieldRef.current;
+      }
+
+      if (firstErrorField) {
+        console.log(firstErrorField);
+        //scroll to first error field using scrollintoview
+        firstErrorField.scrollIntoView({
+          behavior: "smooth",
+          block: "start",
+          inline: "center",
+        });
+      }
+
       return;
     }
 
     if (!/^\d{10}$/.test(formData.phone)) {
       alert("Phone number should be 10 digits.");
+
       return;
     }
 
@@ -901,10 +953,10 @@ export default function Page() {
           data["data"][0]["events"].map((item) => {
             return { value: item.id, label: item.name };
           })
-          );
-          // console.log(data["data"][0]["events"].map((item) => {
-          //   return { value: item.id, label: item.name };
-          // }))
+        );
+        // console.log(data["data"][0]["events"].map((item) => {
+        //   return { value: item.id, label: item.name };
+        // }))
       })
       .catch((error) => {
         // console.log(error);
@@ -978,7 +1030,13 @@ export default function Page() {
       100;
     const maxScrollTopValue =
       formContainerElem.scrollHeight - formContainerElem.clientHeight;
-    formContainerElem.scrollTop = (percentage / 100) * maxScrollTopValue;
+
+    // Smooth scroll to the percentage of the max scroll value
+    formContainerElem.scrollTo({
+      top: (percentage / 100) * maxScrollTopValue,
+      behavior: "smooth",
+    });
+    // formContainerElem.scrollTop = (percentage / 100) * maxScrollTopValue;
   };
 
   // console.log(formData)
@@ -997,17 +1055,17 @@ export default function Page() {
         //   />
         // </div>
         <div className={styles.loaderContainer}>
-        {/* <MyVideoLoader/> */}
-        <video
-          src={require("../../../public/static/images/landingLoaderVideo.mp4")} // Update with the correct path
-          autoPlay
-          muted
-          loop
-          playsInline
-          preload="auto"
-          width="100%"
-        />
-      </div>
+          {/* <MyVideoLoader/> */}
+          <video
+            src={require("../../../public/static/images/landingLoaderVideo.mp4")} // Update with the correct path
+            autoPlay
+            muted
+            loop
+            playsInline
+            preload="auto"
+            width="100%"
+          />
+        </div>
       )}
       <div className={styles.regPage} ref={scope}>
         <h2>REGISTRATIONS</h2>
@@ -1040,7 +1098,7 @@ export default function Page() {
             ref={formContainerRef}
           >
             <div className={styles.form} onScroll={handleScroll}>
-              <label htmlFor="name" style={{ marginTop: 0 }}>
+              <label htmlFor="name" style={{ marginTop: 0 }} ref={nameFieldRef}>
                 NAME
               </label>
               <input
@@ -1052,7 +1110,9 @@ export default function Page() {
                 onBlur={(e) => (e.target.placeholder = "Enter your name")}
               />
 
-              <label htmlFor="email_id">EMAIL-ID</label>
+              <label htmlFor="email_id" ref={emailFieldRef}>
+                EMAIL-ID
+              </label>
               <input
                 type="text"
                 placeholder="Enter your Email ID"
@@ -1062,7 +1122,9 @@ export default function Page() {
                 onBlur={(e) => (e.target.placeholder = "Enter your Email ID")}
               />
 
-              <label htmlFor="phone">PHONE NUMBER</label>
+              <label htmlFor="phone" ref={phoneFieldRef}>
+                PHONE NUMBER
+              </label>
               <input
                 type="text"
                 placeholder="Enter your phone number"
@@ -1077,7 +1139,7 @@ export default function Page() {
               />
 
               <label>GENDER</label>
-              <div className={styles.radioBtns}>
+              <div className={styles.radioBtns} ref={genderFieldRef}>
                 <Radio
                   id="M"
                   value="M"
@@ -1101,7 +1163,7 @@ export default function Page() {
                 />
               </div>
 
-              <label>COLLEGE</label>
+              <label ref={collegeFieldRef}>COLLEGE</label>
               <Select
                 options={colleges}
                 id="college"
@@ -1112,7 +1174,7 @@ export default function Page() {
                 // onBlur={(e)=> e.target.placeholder = "Choose your college"}
               />
 
-              <label>STATE</label>
+              <label ref={stateFieldRef}>STATE</label>
               <Select
                 options={states}
                 id="state"
@@ -1123,7 +1185,7 @@ export default function Page() {
                 // onBlur={(e)=> e.target.placeholder = "Choose your state"}
               />
 
-              <label>CITY</label>
+              <label ref={cityFieldRef}>CITY</label>
               <Creatable
                 options={cities}
                 id="city"
@@ -1131,9 +1193,11 @@ export default function Page() {
                 onChange={handleCityChange}
                 placeholder="Choose your city"
                 styles={customStylesArray[2]}
+                // onFocus={(e)=> e.target.placeholder = ""}
+                // onBlur={(e)=> e.target.placeholder = "Choose your city"}
               />
 
-              <label>YEAR OF STUDY</label>
+              <label ref={yearFieldRef}>YEAR OF STUDY</label>
               <Select
                 options={year}
                 id="year"
@@ -1144,7 +1208,7 @@ export default function Page() {
                 // onBlur={(e)=> e.target.placeholder = "Choose your year of study"}
               />
 
-              <label>EVENTS</label>
+              <label ref={eventsFieldRef}>EVENTS</label>
               <Select
                 options={events}
                 id="events"
@@ -1152,6 +1216,8 @@ export default function Page() {
                 placeholder="Select the events"
                 onChange={handleEventChange}
                 isMulti
+                // onFocus={(e)=> e.target.placeholder = ""}
+                // onBlur={(e)=> e.target.placeholder = "Select the events"}
               />
 
               <label>ARE YOU A CHOREOGRAPHER / MENTOR?</label>
@@ -1170,6 +1236,7 @@ export default function Page() {
                   name="choreographer"
                   text="NO"
                   onChange={handleChoreoChange}
+                  checked={formData.choreographer === "NO" ? true : false}
                 />
               </div>
 
@@ -1181,7 +1248,7 @@ export default function Page() {
                   name="head_of_society"
                   text="YES"
                   onChange={handleHeadChange}
-                  checked={formData.head_of_society === "YES"? true : false}
+                  // checked={formData.head_of_society === "YES"? true : false}
                 />
 
                 <Radio
@@ -1190,11 +1257,18 @@ export default function Page() {
                   name="head_of_society"
                   text="NO"
                   onChange={handleHeadChange}
+                  checked={formData.head_of_society === "NO" ? true : false}
                 />
               </div>
             </div>
             <div className={styles.regBtnContainer}>
-              <Image src={register} onClick={handleRegisterations} alt="" width="1rem" height="1rem" />
+              <Image
+                src={register}
+                onClick={handleRegisterations}
+                alt=""
+                width="1rem"
+                height="1rem"
+              />
             </div>
           </div>
         </div>

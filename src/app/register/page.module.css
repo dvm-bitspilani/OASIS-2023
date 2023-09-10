@@ -157,7 +157,7 @@
   position: absolute;
   top: 0;
   left: 110px;
-  height: 41%;
+  height: 61%;
   width: 250px;
   transform: translateY(-60%) rotateZ(67deg);
   /* border: 2px solid green; */
@@ -167,7 +167,7 @@
   position: absolute;
   bottom: 0;
   left: 5px;
-  height: 41%;
+  height: 61%;
   width: 250px;
   transform: translateY(47%) rotateZ(138deg);
   /* border: 2px solid blue; */
@@ -191,7 +191,7 @@
 }
 .close {
   position: fixed;
-  top: 1rem;
+  top: 1.5rem;
   left: 1rem;
 }
 .loaderContainer {
