@@ -825,7 +825,7 @@ export default function Page() {
 
       // if (firstErrorField && !alert("Please fill in all the fields.")) {
       if (firstErrorField) {
-        console.log(firstErrorField);
+        // console.log(firstErrorField);
         //scroll to first error field using scrollintoview
         firstErrorField.scrollIntoView({
           behavior: "smooth",
@@ -1104,7 +1104,7 @@ export default function Page() {
     setErrorScreen(false);
   }
 
-console.log(formData)
+// console.log(formData)
 
   return (
     <>
