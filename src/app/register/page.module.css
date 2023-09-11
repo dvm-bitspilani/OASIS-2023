@@ -10,31 +10,35 @@
 }
 .regPage h2 {
   color: #5db3f1;
-  font-family: "NightmarePills";
+  font-family: "KoPub Batang";
   font-size: 4.5rem;
   font-weight: 500;
   /* padding-top: 1rem; */
   padding: 1rem 0 0 2rem;
   /* height: calc(10vh - 0.5rem); */
 }
-.regPage button {
+
+.backBtn {
   outline: none;
   background: transparent;
-  border: 2px solid #5db3f1;
+  /* border: 2px solid #5db3f1; */
   position: fixed;
-  top: 1.5rem;
-  right: 1rem;
-  color: #5db3f1;
-  font-family: "NightmarePills";
-  font-size: 1.5rem;
-  line-height: 100%;
+  top: 2rem;
+  right: 2rem;
   transition: all 0.2s ease;
+
+  height: fit-content;
 }
-.regPage button:hover {
-  scale: 1;
+
+.backBtn svg {
+  height: 25px;
+  width: auto;
+  fill: #5db3f1;
+}
+
+.backBtn:hover {
+  scale: 1.1;
   cursor: pointer; /*temporarily*/
-  filter: brightness(100);
-  transition: all 0.2s ease;
 }
 .regForm {
   height: 80vh;
@@ -110,20 +114,32 @@
 }
 .form label {
   color: #5db3f1;
-  font-family: "NightmarePills";
+  font-family: "KoPub Batang";
   font-size: 2rem;
-  margin-top: 1.5rem;
+  margin-top: 3rem;
+  transition: all 0.2s ease;
+}
+
+.labelFocus{
+  font-size: 1.5rem !important;
 }
 
 .errorMessage{
   color: red;
-  font-family: "NightmarePills";
+  font-family: "KoPub Batang";
   font-size: 1.2rem;
   margin-top: 1rem;
   margin-bottom: 0;
 
   text-transform: capitalize;
+}
 
+.radioBtns{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  width: 80%;
 }
 
 .form input {
@@ -133,27 +149,27 @@
   border-bottom: 2px solid white;
   height: 2.25rem;
   color: #ffffff;
-  font-family: "NightmarePills";
+  font-family: "KoPub Batang";
   font-size: 1.5rem;
 }
 .form input::-webkit-input-placeholder {
   color: rgba(255, 255, 255, 0.6);
-  font-family: "NightmarePills";
-  font-size: 1.5rem;
+  font-family: "KoPub Batang";
+  font-size: 1.2rem;
   opacity: 1;
 }
 
 .form input:-ms-input-placeholder {
   color: rgba(255, 255, 255, 0.6);
-  font-family: "NightmarePills";
-  font-size: 1.5rem;
+  font-family: "KoPub Batang";
+  font-size: 1.2rem;
   opacity: 1;
 }
 
 .form input::placeholder {
   color: rgba(255, 255, 255, 0.6);
-  font-family: "NightmarePills";
-  font-size: 1.5rem;
+  font-family: "KoPub Batang";
+  font-size: 1.2rem;
   opacity: 1;
 }
 .imgContainer {
