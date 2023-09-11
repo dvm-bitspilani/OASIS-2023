@@ -10,6 +10,7 @@
   overflow-x: hidden;
   position: relative;
   z-index: 1;
+  background-size: 100vw 100vh;
 }
 .navSection {
   position: absolute;

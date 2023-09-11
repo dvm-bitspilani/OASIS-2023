@@ -13,10 +13,12 @@ import shivang from "../../../public/static/images/shivang.png"
 // import ImageWrapper5 from "../../../public/static/images/Group1.png"
 // import ImageWrapper6 from "../../../public/static/images/LandingPageBook.png"
 // import ImageWrapper7 from "../../../public/static/images/Library.png"
+import ContactProfile from '@/components/ContactProfile';
 import Image from 'next/image';
 const Page = () => {
     const [imageSrc, setImageSrc] = useState(ImageWrapper);
     const [isLoading, setIsLoading] = useState(false);
+    
     //  const [hoveredProfile, setHoveredProfile] = useState(null);
      const [hoveredProfileIndex, setHoveredProfileIndex] = useState(null);
   // const handleMouseOver = (image, profile) => {
@@ -85,28 +87,14 @@ const Page = () => {
                 className={styles["bookImage"]}
                 />
                 <AnimatePresence>
-                {/* <motion.div className={styles["details"]}
-                initial={{ opacity: 0}}
-                animate={{ opacity: 1}}
-                exit={{ opacity: 0}}
-                transition={{ ease: 'easeOut', duration: 0.5 }}
-                >
-                  <Image src={shivang} alt="" />
-                  <h1>SHIVANG RAI</h1>
-                  <h2>WEBSITE, APP & ONLINE PAYMENTS</h2>
-                  <div className={styles["iconsContainer"]}>
-                    <Image src={phone} alt="" />
-                    <Image src={mail} alt="" />
-                  </div>
-                </motion.div> */}
                 {hoveredProfile && (
-                <motion.div
-                  className={styles['details']}
-                  // initial={{ opacity: 0 }}
-                  animate={{ opacity: 1 }}
-                  // exit={{ opacity: 0 }}
-                  transition={{ ease: 'easeOut', duration: 5}}
-                >
+                 <motion.div
+                 className={styles['details']}
+                 initial={{ opacity: 0 }}
+                 animate={{ opacity: 1 }}
+                 exit={{ opacity: 0 }}
+                 transition={{ ease: 'easeOut', duration: 0.5 }}
+               >
                   <Image src={shivang} alt="" />
                   <h1>{hoveredProfile.name}</h1>
                   <h2>{hoveredProfile.dept}</h2>
@@ -117,6 +105,11 @@ const Page = () => {
                 </motion.div>
               )}
                 </AnimatePresence>
+                {/* {
+                  hoveredProfile && (
+                    <ContactProfile name= {hoveredProfile.name} dept = {hoveredProfile.dept} />
+                  )
+                } */}
             </motion.div>
         </div>
       </div>

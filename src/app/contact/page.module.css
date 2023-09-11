@@ -106,8 +106,11 @@ text-shadow: 0px 0px 18.91876983642578px #78BBF0, 0px 0px 18.91876983642578px rg
     display: flex;
     flex-direction: column;
     align-items: center;
-    left: 10%;
+    left: -15%;
     width: 40vw;
+    scale: 0.75;
+    opacity: 0;
+  transition: opacity 0.5s ease-in-out; 
 }
 .details h1{
     color: rgba(0, 0, 0, 0.8);
@@ -124,6 +127,7 @@ text-shadow: 0px 0px 18.91876983642578px #78BBF0, 0px 0px 18.91876983642578px rg
     font-style: normal;
     font-weight: 400;
     line-height: normal;
+    width: max-content;
 }
 .iconsContainer img{
     margin: 0 1rem;
@@ -137,6 +141,46 @@ text-shadow: 0px 0px 18.91876983642578px #78BBF0, 0px 0px 18.91876983642578px rg
         font-size: 1.4rem;
     }
   }
+  @media screen and (max-width: 1500px) {
+    .details{
+        left: 0%;
+    }
+  }
+  @media screen and (max-width: 1400px) {
+    .details{
+        left: -10%;
+    }
+  }
+  @media screen and (max-width: 1350px) {
+    .details{
+        left: -5%;
+    }
+  }
+  @media screen and (max-width: 1280px) {
+    .details{
+        left: 0%;
+    }
+  }
+  @media screen and (max-width: 1200px) {
+    .details{
+        left: 5%;
+    }
+  }
+  @media screen and (max-width: 1120px) {
+    .details{
+        left: 5%;
+    }
+  }
+  @media screen and (max-width: 1100px) {
+    .details{
+        left: 8%;
+    }
+  }
+  @media screen and (max-width: 1050px) {
+    .details{
+        left: 8%;
+    }
+  }
 @media screen and (max-width: 1000px) {
     .department p{
         font-size: 1.2rem;
@@ -144,6 +188,9 @@ text-shadow: 0px 0px 18.91876983642578px #78BBF0, 0px 0px 18.91876983642578px rg
     }
     .department p:hover{
         font-size: 1.3rem;
+    }
+    .details{
+        left: 10%;
     }
   }
 @media screen and (max-width: 920px) {
@@ -153,7 +200,7 @@ text-shadow: 0px 0px 18.91876983642578px #78BBF0, 0px 0px 18.91876983642578px rg
     .department p:hover{
         font-size: 1.1rem;
     }
-  }
+}
 @media screen and (max-height: 650px) {
     .department p{
         padding-block: 0.5rem;
@@ -161,10 +208,59 @@ text-shadow: 0px 0px 18.91876983642578px #78BBF0, 0px 0px 18.91876983642578px rg
     .imgName{
         bottom: 25%;
         left: 45%;
-
+        
     }
     .imgDept{
         bottom: 20%;
         left: 35%;
     }
+}
+
+@media screen and (max-height: 650px) and (min-width: 900px) {
+.details{
+    scale: 0.6;
+    left: 5%;
+}
+  }
+@media screen and (max-height: 650px) and (min-width: 1000px) {
+.details{
+    scale: 0.6;
+    left: -10%;
+}
+  }
+@media screen and (max-height: 650px) and (min-width: 1300px) {
+.details{
+    scale: 0.6;
+    left: -15%;
+}
+  }
+@media screen and (max-height: 650px) and (min-width: 1500px) {
+.details{
+    scale: 0.6;
+    left: -20%;
+}
+  }
+@media screen and (max-height: 550px) and (min-width: 900px) {
+.details{
+    scale: 0.6;
+    left: 0%;
+}
+  }
+@media screen and (max-height: 550px) and (min-width: 1000px) {
+.details{
+    scale: 0.6;
+    left: -10%;
+}
+  }
+@media screen and (max-height: 550px) and (min-width: 1350px) {
+.details{
+    scale: 0.6;
+    left: -20%;
+}
+  }
+@media screen and (max-height: 550px) and (min-width: 1400px) {
+.details{
+    scale: 0.6;
+    left: -20%;
+}
   }
