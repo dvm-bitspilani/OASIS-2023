@@ -119,6 +119,7 @@ export default function CustomStyles() {
       border: '1px solid #5db3f1',
       paddingLeft: '.25rem',
       alignItems: 'center',
+      paddingRight: '3px',
     }),
     multiValueLabel: (provided) => ({
       ...provided,
@@ -130,7 +131,7 @@ export default function CustomStyles() {
       color: '#fff',
       padding: '0',
       paddingLeft: '0',
-      paddingRIght: '3px',
+      marginRIght: '3px',
       width:'14px',
       height:'100%',
       cursor: 'pointer',

@@ -15,6 +15,10 @@
   font-family: 'Mantinia';
   src: url(../../public/static/fonts/Mantinia\ CC\ Regular.ttf) format('truetype');
 }
+@font-face {
+  font-family: 'OldNewsPaper';
+  src: url(../../public/static/fonts/OldNewspaperTypes.ttf) format('truetype');
+}
 *{
   margin: 0;
   padding: 0;

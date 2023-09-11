@@ -1,0 +1,111 @@
+.errorContainer{
+    position: fixed;
+    top:0;
+    left:0;
+    right:0;
+    bottom:0;
+    background: rgba(0, 0, 0, 0.60);
+    z-index: 9999999;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.error{
+    background: url(../../../public/static/images/modal.png);
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    padding: 3% 4%;
+    width: 60%;
+    aspect-ratio: 1/0.4;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+}
+.error h1{
+    font-family: 'OldNewsPaper';
+    color: #4A1414;
+    text-align: center; 
+    font-size: 3.5rem;
+    font-weight: 500;
+}
+.error p{
+    color: #4A1414;
+    text-align: center;
+    font-family: OldNewspaperTypes;
+    font-size: 2rem;
+    font-weight: 500;
+    position: relative;
+    top: 5%;
+}
+.cross{
+    position: absolute;
+    top: 3rem;
+    right: 4rem;
+    cursor: pointer;
+    width: 2rem;
+    aspect-ratio: 1/1;
+    height: 2rem;
+}
+.line1{
+    top: 50%;
+    position: absolute;
+    display: inline-block;
+    height: 5px;
+    width: 100%;
+    background: #4A1414;
+    transform: rotate(45deg);
+    transform-origin: 50% 50%;
+}
+.line2{
+    top: 50%;
+    display: inline-block;
+    height: 5px;
+    width: 100%;
+    background: #4A1414;
+    transform: rotate(-45deg);
+    position: absolute;
+}
+
+@media (max-width:1000px) {
+    .error h1{
+        font-size: 2.5rem;
+    }
+    .cross{
+        top: 2rem;
+        right: 2rem;
+    }
+    .error{
+        width: 80%;
+    }
+}
+@media (min-width:750px) {
+    .error h1{
+        position: absolute;
+        top: 0;
+        margin-top: 2rem;
+    }
+}
+@media (max-width:750px) {
+    .error{
+        width: 90%;
+        padding: 3% 6%;
+    }
+    .error h1{
+        margin-top: 1rem;
+    }
+    .error p{
+        font-size: 1.5rem;
+    }
+    .error{
+        justify-content: space-evenly;
+        background-size: cover;
+        padding: 6% ;
+    }
+    .cross{
+        top: 1rem;
+        right: 1rem;
+    }
+}

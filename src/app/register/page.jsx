@@ -24,6 +24,7 @@ import regLogo from "../../../public/static/images/OasisLogo.png";
 import cross from "../../../public/static/images/cross.svg";
 import { useWindowSize } from "rooks";
 import CustomStyles from "./CustomStyles";
+import ErrorScreen from "./ErrorScreen";
 
 import { gsap } from "gsap";
 
@@ -71,7 +72,7 @@ const customStylesArray = [
 
 async function getCollegeData() {
   const res = await fetch(
-    "https://bits-oasis.org/2023/main/registrations/get_college"
+    "https://test.bits-oasis.org/2023/main/registrations/get_college"
   );
   if (!res.ok) {
     throw new Error("Failed to fetch college");
@@ -80,7 +81,7 @@ async function getCollegeData() {
 }
 async function getEventsData() {
   const res = await fetch(
-    "https://bits-oasis.org/2023/main/registrations/events"
+    "https://test.bits-oasis.org/2023/main/registrations/events"
   );
   if (!res.ok) {
     throw new Error("Failed to get Events");
@@ -680,6 +681,10 @@ export default function Page() {
   const skullRef = useRef(null);
   const formContainerRef = useRef(null);
   const regLoaderRef = useRef(null);
+  const [errorScreen, setErrorScreen] = useState(false);
+  const [errorMessage, setErrorMessage] = useState("");
+  const [error, setError] = useState(false);
+
 
   useEffect(() => {
     const assets = [regLoaderRef.current];
@@ -896,18 +901,23 @@ export default function Page() {
       };
 
       const res = await fetch(
-        "https://bits-oasis.org/2023/main/registrations/Register/",
+        "https://test.bits-oasis.org/2023/main/registrations/Register/",
         options
       );
       if (!res.ok) {
+        res.json().then((data) => {setErrorMessage(data["message"]);
+        setErrorScreen(true);
+        setError(true)}
+        );
         throw new Error("Failed to register");
       }
       return res.json();
     }
 
     const response = await uploadData(formData);
-    // console.log(response);
-    alert(response["message"]);
+    setErrorMessage(response["message"]);
+    setError(false)
+    setErrorScreen(true);
   };
 
   function handlePhoneChange(inp) {
@@ -1088,10 +1098,17 @@ export default function Page() {
     // formContainerElem.scrollTop = (percentage / 100) * maxScrollTopValue;
   };
 
-  // console.log(formData)
+  const CloseModal=()=>{
+    setError(false)
+    setErrorMessage("")
+    setErrorScreen(false);
+  }
+
+console.log(formData)
 
   return (
     <>
+      {errorScreen && <ErrorScreen error={error} errorMessage={errorMessage} CloseModal={CloseModal} />}
       {isLoading && (
         // <div className={styles.regLoader}>
         //   <Image

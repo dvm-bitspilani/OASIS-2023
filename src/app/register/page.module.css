@@ -93,7 +93,7 @@
   /* padding-left: 1%; */
   display: flex;
   align-items: center;
-  margin-top: 5rem;
+  margin-top: 2rem;
 }
 .regBtnContainer img {
   /* height: 5rem; */
@@ -112,7 +112,7 @@
   color: #5db3f1;
   font-family: "NightmarePills";
   font-size: 2rem;
-  margin-top: 3.5rem;
+  margin-top: 1.5rem;
 }
 
 .errorMessage{
