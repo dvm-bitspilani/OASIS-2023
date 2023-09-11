@@ -28,7 +28,7 @@ export default function CustomStyles() {
     singleValue: (provided) => ({
       ...provided,
       color: "#eee",
-      fontFamily: "NightmarePills",
+      fontFamily: "KoPub Batang",
       fontSize: "1.5rem",
       fontWeight: 700,
     }),
@@ -36,7 +36,7 @@ export default function CustomStyles() {
       ...provided,
       color: state.isSelected ? "#fff" : "#fff",
       backgroundColor: state.isSelected ? "#7CC6DB" : "#222",
-      fontFamily: "NightmarePills",
+      fontFamily: "KoPub Batang",
       fontSize: "1.5rem",
       fontWeight: 500,
       zIndex: 1002,
@@ -77,8 +77,8 @@ export default function CustomStyles() {
     }),
     placeholder: (provided , state) => ({
       ...provided,
-      fontFamily: "NightmarePills",
-      fontSize: "1.5rem",
+      fontFamily: "KoPub Batang",
+      fontSize: "1.2rem",
       opacity: "1",
       color: "rgba(255, 255, 255, 0.6)",
       opacity: state.isFocused ? "0" : "1",
@@ -90,7 +90,7 @@ export default function CustomStyles() {
     input: (provided) => ({
       ...provided,
       color: "#fff",
-      fontFamily: "NightmarePills",
+      fontFamily: "KoPub Batang",
       fontSize: "1.5rem",
       fontWeight: 700,
       zIndex: 1002,
@@ -102,7 +102,7 @@ export default function CustomStyles() {
     noOptionsMessage: (provided) => ({
       ...provided,
       color: "#fff",
-      fontFamily: "NightmarePills",
+      fontFamily: "KoPub Batang",
       fontSize: "1.5rem",
       paddingLeft: "1rem",
       backgroundColor: "#222222",

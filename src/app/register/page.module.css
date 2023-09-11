@@ -10,7 +10,7 @@
 }
 .regPage h2 {
   color: #5db3f1;
-  font-family: "NightmarePills";
+  font-family: "KoPub Batang";
   font-size: 4.5rem;
   font-weight: 500;
   /* padding-top: 1rem; */
@@ -25,7 +25,7 @@
   top: 1.5rem;
   right: 1rem;
   color: #5db3f1;
-  font-family: "NightmarePills";
+  font-family: "KoPub Batang";
   font-size: 1.5rem;
   line-height: 100%;
   transition: all 0.2s ease;
@@ -110,14 +110,14 @@
 }
 .form label {
   color: #5db3f1;
-  font-family: "NightmarePills";
+  font-family: "KoPub Batang";
   font-size: 2rem;
   margin-top: 3rem;
 }
 
 .errorMessage{
   color: red;
-  font-family: "NightmarePills";
+  font-family: "KoPub Batang";
   font-size: 1.2rem;
   margin-top: 1rem;
   margin-bottom: 0;
@@ -140,27 +140,27 @@
   border-bottom: 2px solid white;
   height: 2.25rem;
   color: #ffffff;
-  font-family: "NightmarePills";
+  font-family: "KoPub Batang";
   font-size: 1.5rem;
 }
 .form input::-webkit-input-placeholder {
   color: rgba(255, 255, 255, 0.6);
-  font-family: "NightmarePills";
-  font-size: 1.5rem;
+  font-family: "KoPub Batang";
+  font-size: 1.2rem;
   opacity: 1;
 }
 
 .form input:-ms-input-placeholder {
   color: rgba(255, 255, 255, 0.6);
-  font-family: "NightmarePills";
-  font-size: 1.5rem;
+  font-family: "KoPub Batang";
+  font-size: 1.2rem;
   opacity: 1;
 }
 
 .form input::placeholder {
   color: rgba(255, 255, 255, 0.6);
-  font-family: "NightmarePills";
-  font-size: 1.5rem;
+  font-family: "KoPub Batang";
+  font-size: 1.2rem;
   opacity: 1;
 }
 .imgContainer {
