@@ -10,7 +10,7 @@
   overflow-x: hidden;
   position: relative;
   z-index: 1;
-  background-size: 100vw 100vh;
+  background-size: 100vw 100dvh;
 }
 .navSection {
   position: absolute;
@@ -259,7 +259,7 @@
   top: 0;
   left: 0;
   z-index: 9999;
-  height: 100vh;
+  height: 100dvh;
   width: 100vw;
   background-color: black;
   /* background-image: url("../../public/static/images/LibraryBgImage.avif"); */
