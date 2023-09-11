@@ -1,6 +1,8 @@
 import React from 'react';
 import "./radio.css"
 
+// import styles from "../app/register/page.module.css"
+
 const RadioButton = ({ name, id, value, onChange, checked, text }) => {
   return (
     <label htmlFor={id} className="radio-label" id='radio-label'>

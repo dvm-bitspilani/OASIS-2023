@@ -767,7 +767,6 @@ export default function Page() {
   }, [loaderLoaded, colleges, events]);
 
   const handleRegisterations = async () => {
-
     const allErrors = document.querySelectorAll(`.${styles.errorMessage}`);
     allErrors.forEach((error) => {
       error.remove();
@@ -1034,7 +1033,7 @@ export default function Page() {
   const handleSkullMouseDown = (e) => {
     console.log("mousedown");
     e.preventDefault();
-    
+
     document.addEventListener("mousemove", handleSkullDragMove);
     document.addEventListener("touchmove", handleSkullDragMove);
 
@@ -1128,7 +1127,23 @@ export default function Page() {
           />
         )}
         {innerWidth > 700 && (
-          <button onClick={() => router.back()}>BACK TO HOME</button>
+          <div className={styles.backBtn} onClick={() => router.back()}>
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="34"
+              height="34"
+              viewBox="0 0 34 34"
+              fill="none"
+            >
+              <path
+                d="M31 3L3 31M3 3L31 31"
+                stroke="#5DB3F1"
+                stroke-width="5"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              />
+            </svg>
+          </div>
         )}
         <div className={styles.regForm}>
           <div className={styles.scrollBarContainer} onClick={handleTrackSnap}>
@@ -1157,8 +1172,14 @@ export default function Page() {
                 placeholder="Enter your name"
                 id="name"
                 onChange={(inp) => handleNameChange(inp)}
-                onFocus={(e) => (e.target.placeholder = "")}
-                onBlur={(e) => (e.target.placeholder = "Enter your name")}
+                onFocus={(e) => {
+                  e.target.placeholder = "";
+                  e.target.previousSibling.classList.add(styles.labelFocus);
+                }}
+                onBlur={(e) => {
+                  e.target.placeholder = "Enter your name";
+                  e.target.previousSibling.classList.remove(styles.labelFocus);
+                }}
               />
 
               <label htmlFor="email_id" ref={emailFieldRef}>
@@ -1169,8 +1190,14 @@ export default function Page() {
                 placeholder="Enter your Email ID"
                 id="email_id"
                 onChange={(inp) => handleEmailChange(inp)}
-                onFocus={(e) => (e.target.placeholder = "")}
-                onBlur={(e) => (e.target.placeholder = "Enter your Email ID")}
+                onFocus={(e) => {
+                  e.target.placeholder = "";
+                  e.target.previousSibling.classList.add(styles.labelFocus);
+                }}
+                onBlur={(e) => {
+                  e.target.placeholder = "Enter your Email ID";
+                  e.target.previousSibling.classList.remove(styles.labelFocus);
+                }}
               />
 
               <label htmlFor="phone" ref={phoneFieldRef}>
@@ -1183,10 +1210,14 @@ export default function Page() {
                 maxLength="10"
                 onChange={(inp) => handlePhoneChange(inp)}
                 value={formData.phone}
-                onFocus={(e) => (e.target.placeholder = "")}
-                onBlur={(e) =>
-                  (e.target.placeholder = "Enter your phone number")
-                }
+                onFocus={(e) => {
+                  e.target.placeholder = "";
+                  e.target.previousSibling.classList.add(styles.labelFocus);
+                }}
+                onBlur={(e) => {
+                  e.target.placeholder = "Enter your phone number";
+                  e.target.previousSibling.classList.remove(styles.labelFocus);
+                }}
               />
 
               <label ref={genderFieldRef}>GENDER</label>
@@ -1221,8 +1252,18 @@ export default function Page() {
                 styles={customStylesArray[0]}
                 placeholder="Choose your college"
                 onChange={handleCollegeChange}
-                // onFocus={(e)=> e.target.placeholder = ""}
-                // onBlur={(e)=> e.target.placeholder = "Choose your college"}
+                onFocus={(e) => {
+                  // e.target.placeholder = "";
+                  e.target.parentElement.parentElement.parentElement.parentElement.previousSibling.classList.add(
+                    styles.labelFocus
+                  );
+                }}
+                onBlur={(e) => {
+                  // e.target.placeholder = "Choose your college";
+                  e.target.parentElement.parentElement.parentElement.parentElement.previousSibling.classList.remove(
+                    styles.labelFocus
+                  );
+                }}
               />
 
               <label ref={stateFieldRef}>STATE</label>
@@ -1234,6 +1275,18 @@ export default function Page() {
                 onChange={handleStateChange}
                 // onFocus={(e)=> e.target.placeholder = ""}
                 // onBlur={(e)=> e.target.placeholder = "Choose your state"}
+                onFocus={(e) => {
+                  // e.target.placeholder = "";
+                  e.target.parentElement.parentElement.parentElement.parentElement.previousSibling.classList.add(
+                    styles.labelFocus
+                  );
+                }}
+                onBlur={(e) => {
+                  // e.target.placeholder = "Choose your state";
+                  e.target.parentElement.parentElement.parentElement.parentElement.previousSibling.classList.remove(
+                    styles.labelFocus
+                  );
+                }}
               />
 
               <label ref={cityFieldRef}>CITY</label>
@@ -1246,6 +1299,18 @@ export default function Page() {
                 styles={customStylesArray[2]}
                 // onFocus={(e)=> e.target.placeholder = ""}
                 // onBlur={(e)=> e.target.placeholder = "Choose your city"}
+                onFocus={(e) => {
+                  // e.target.placeholder = "";
+                  e.target.parentElement.parentElement.parentElement.parentElement.previousSibling.classList.add(
+                    styles.labelFocus
+                  );
+                }}
+                onBlur={(e) => {
+                  // e.target.placeholder = "Choose your city";
+                  e.target.parentElement.parentElement.parentElement.parentElement.previousSibling.classList.remove(
+                    styles.labelFocus
+                  );
+                }}
               />
 
               <label ref={yearFieldRef}>YEAR OF STUDY</label>
@@ -1253,10 +1318,22 @@ export default function Page() {
                 options={year}
                 id="year"
                 styles={customStylesArray[3]}
-                placeholder="Choose your year of study"
+                placeholder="Choose your year"
                 onChange={handleYearChange}
                 // onFocus={(e)=> e.target.placeholder = ""}
                 // onBlur={(e)=> e.target.placeholder = "Choose your year of study"}
+                onFocus={(e) => {
+                  // e.target.placeholder = "";
+                  e.target.parentElement.parentElement.parentElement.parentElement.previousSibling.classList.add(
+                    styles.labelFocus
+                  );
+                }}
+                onBlur={(e) => {
+                  // e.target.placeholder = "Choose your year of study";
+                  e.target.parentElement.parentElement.parentElement.parentElement.previousSibling.classList.remove(
+                    styles.labelFocus
+                  );
+                }}
               />
 
               <label ref={eventsFieldRef}>EVENTS</label>
@@ -1272,7 +1349,7 @@ export default function Page() {
               />
 
               <label>ARE YOU A CHOREOGRAPHER / MENTOR?</label>
-              <div className={styles.radioBtns} style={{width:"60%"}}>
+              <div className={styles.radioBtns} style={{ width: "60%" }}>
                 <Radio
                   id="YES_Choreo"
                   value="YES"
@@ -1292,7 +1369,7 @@ export default function Page() {
               </div>
 
               <label>ARE YOU THE HEAD OF A SOCIETY?</label>
-              <div className={styles.radioBtns} style={{width:"60%"}}>
+              <div className={styles.radioBtns} style={{ width: "60%" }}>
                 <Radio
                   id="YES_Society"
                   value="YES"
