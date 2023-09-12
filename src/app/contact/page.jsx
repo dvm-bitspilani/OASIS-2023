@@ -15,7 +15,7 @@ import contactGhost from "../../../public/static/images/contactGhost.png"
 import mobileImageWrapper from "../../../public/static/images/updatedMobileContactImageContainer.png"
 import ContactProfile from '@/components/ContactProfile';
 import Image from 'next/image';
-const Page = () => {
+const Page = () => {  
   // console.log(shivang)
     const [imageSrc, setImageSrc] = useState(ImageWrapper);
     const [isLoading, setIsLoading] = useState(false);
@@ -101,84 +101,11 @@ const Page = () => {
       </div>
       <div className={styles.mobilePageWrapper}>
         <Image src={updatedbgImage} className={styles.mobileBgImage}/>
+        <div className={styles.majbooriDiv}>
         <div className={styles.mobileHeading}>
           <span>CONTACT US</span>
         </div>
         <div className={styles.mobileMainSection}>
-          {/* <div className={styles.mobileDetails}>
-                    <Image src={mobileImageWrapper} className={styles.mobileImageWrapper}/>
-                    <Image src = {sarthak} className={styles.porImage}/>
-                    <h1>Sarthak Arora</h1>
-                  <h2>Website, App & Online Payments</h2>
-                  <div className={styles.mobileIconsContainer}>
-                    <Image src={phone} alt="" />
-                    <Image src={mail} alt="" />
-                  </div>
-                    </div>
-          <div className={styles.mobileDetails}>
-                    <Image src={mobileImageWrapper} className={styles.mobileImageWrapper}/>
-                    <Image src = {contactGhost} className={styles.porImage}/>
-                    <h1>Aayush Paurana</h1>
-                  <h2 style={{height:"40px"}}>Logistics and Operations</h2>
-                  <div className={styles.mobileIconsContainer}>
-                    <Image src={phone} alt="" />
-                    <Image src={mail} alt="" />
-                  </div>
-                    </div>
-          <div className={styles.mobileDetails}>
-                    <Image src={mobileImageWrapper} className={styles.mobileImageWrapper}/>
-                    <Image src = {shaurya} className={styles.porImage}/>
-                    <h1>Shaurya Parikh</h1>
-                  <h2>Sponsorship and Marketing</h2>
-                  <div className={styles.mobileIconsContainer}>
-                    <Image src={phone} alt="" />
-                    <Image src={mail} alt="" />
-                  </div>
-                    </div>
-          <div className={styles.mobileDetails}>
-                    <Image src={mobileImageWrapper} className={styles.mobileImageWrapper}/>
-                    <Image src = {contactGhost} className={styles.porImage}/>
-                    <h1>Vaibhav Jain</h1>
-                  <h2>Registration, Events & Approval Queries</h2>
-                  <div className={styles.mobileIconsContainer} style={{bottom:'15px', top:"unset"}}>
-                    <Image src={phone} alt="" />
-                    <Image src={mail} alt="" />
-                  </div>
-                    </div>
-          <div className={styles.mobileDetails}>
-                    <Image src={mobileImageWrapper} className={styles.mobileImageWrapper}/>
-                    <Image src = {supreeth} className={styles.porImage}/>
-                    <h1>Supreeth</h1>
-                  <h2>Reception and Accommodation</h2>
-                  <div className={styles.mobileIconsContainer}>
-                    <Image src={phone} alt="" />
-                    <Image src={mail} alt="" />
-                  </div>
-                    </div>
-          <div className={styles.mobileDetails}>
-                    <Image src={mobileImageWrapper} className={styles.mobileImageWrapper}/>
-                    <Image src = {contactGhost} className={styles.porImage}/>
-                    <h1>Adarsh Goel</h1>
-                  <h2>Online Collaborations and Publicity</h2>
-                  <div className={styles.mobileIconsContainer} style={{bottom:'15px', top:"unset"}}>
-                    <Image src={phone} alt="" />
-                    <Image src={mail} alt="" />
-                  </div>
-                    </div> */}
-                    {/* <div className={styles.mobileDetails}>
-                      <Image src={mobileImageWrapper}/>
-                      <div className={styles.mobileDetailsContent}>
-                        <Image src={sarthak}/>
-                        <div className={styles.mobileTextDetails}>
-                          <span className={styles.mobileDetailsName}>Sarthak Arora</span>
-                          <span className={styles.mobileDetailsDept}>Website, App & Online Payments</span>
-                          <div className={styles.mobileIcons}>
-                            <Image src={phone}/>
-                            <Image src={mail}/>
-                          </div>
-                        </div>
-                      </div>
-                    </div> */}
                    {profiles.map((profile, index) => (
   <div className={styles.mobileDetails} key={index}>
     <Image src={mobileImageWrapper} className={styles.newMobileImageWrapper}/>
@@ -189,17 +116,17 @@ const Page = () => {
         <span className={styles.mobileDetailsDept}>{profile.dept}</span>
         <div className={styles.mobileIcons}>
           <a href={profile.phone}>
-            <Image src={phone} />
+            <Image src={phone} className={styles.mobileCallIcon}/>
           </a>
           <a href={profile.mail}>
-            <Image src={mail} />
+            <Image src={mail} className={styles.mobileMailIcon}/>
           </a>
         </div>
       </div>
     </div>
   </div>
-))};
-
+))}
+</div>
         </div>
       </div>
     </>
