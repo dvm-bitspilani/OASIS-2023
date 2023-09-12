@@ -12,7 +12,7 @@ import shaurya from "../../../public/static/images/shaurya.png"
 import sarthak from "../../../public/static/images/sarthak.png"
 import supreeth from "../../../public/static/images/supreeth.png"
 import contactGhost from "../../../public/static/images/contactGhost.png"
-import mobileImageWrapper from "../../../public/static/images/mobileContactImageContainer.png"
+import mobileImageWrapper from "../../../public/static/images/updatedMobileContactImageContainer.png"
 import ContactProfile from '@/components/ContactProfile';
 import Image from 'next/image';
 const Page = () => {
@@ -105,7 +105,7 @@ const Page = () => {
           <span>CONTACT US</span>
         </div>
         <div className={styles.mobileMainSection}>
-          <div className={styles.mobileDetails}>
+          {/* <div className={styles.mobileDetails}>
                     <Image src={mobileImageWrapper} className={styles.mobileImageWrapper}/>
                     <Image src = {sarthak} className={styles.porImage}/>
                     <h1>Sarthak Arora</h1>
@@ -164,7 +164,41 @@ const Page = () => {
                     <Image src={phone} alt="" />
                     <Image src={mail} alt="" />
                   </div>
-                    </div>
+                    </div> */}
+                    {/* <div className={styles.mobileDetails}>
+                      <Image src={mobileImageWrapper}/>
+                      <div className={styles.mobileDetailsContent}>
+                        <Image src={sarthak}/>
+                        <div className={styles.mobileTextDetails}>
+                          <span className={styles.mobileDetailsName}>Sarthak Arora</span>
+                          <span className={styles.mobileDetailsDept}>Website, App & Online Payments</span>
+                          <div className={styles.mobileIcons}>
+                            <Image src={phone}/>
+                            <Image src={mail}/>
+                          </div>
+                        </div>
+                      </div>
+                    </div> */}
+                   {profiles.map((profile, index) => (
+  <div className={styles.mobileDetails} key={index}>
+    <Image src={mobileImageWrapper} className={styles.newMobileImageWrapper}/>
+    <div className={styles.mobileDetailsContent}>
+      <Image src={profile.image} width={100} height = {124}/>
+      <div className={styles.mobileTextDetails}>
+        <span className={styles.mobileDetailsName}>{profile.name}</span>
+        <span className={styles.mobileDetailsDept}>{profile.dept}</span>
+        <div className={styles.mobileIcons}>
+          <a href={profile.phone}>
+            <Image src={phone} />
+          </a>
+          <a href={profile.mail}>
+            <Image src={mail} />
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+))};
 
         </div>
       </div>

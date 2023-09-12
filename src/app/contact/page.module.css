@@ -161,6 +161,7 @@ text-shadow: 0px 0px 18.91876983642578px #78BBF0, 0px 0px 18.91876983642578px rg
     align-items: center;
     flex-wrap: wrap;
     padding-bottom: 2rem;
+    gap: 2rem;
 }
 .mobileBgImage{
     position: fixed;
@@ -229,9 +230,52 @@ text-shadow: 0px 0px 18.91876983642578px #78BBF0, 0px 0px 18.91876983642578px rg
   gap: 2rem;
 
 }
-
-
-
+.mobileDetails{
+    position: relative;
+}
+.mobileDetailsContent{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    left: 50px;
+    top: 5px;
+    width: 75%;
+    height: 100%;
+}
+.mobileDetailsContent > img{
+    width:100px;
+    height: auto;
+}
+.mobileTextDetails{
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+}
+.mobileDetailsName{
+    color: rgba(0, 0, 0, 0.8);
+    font-family:'MetalMania';
+    font-size: 1.5rem;
+    font-style: normal;
+    /* font-weight: 400; */
+    line-height: normal;
+}
+.mobileDetailsDept{
+    color: rgba(0, 0, 0, 0.8);
+    font-family:'MetalMania';
+    font-size: 1rem;
+    font-style: normal;
+    /* font-weight: 400; */
+    line-height: normal;
+    width: 100%;
+    /* width: max-content; */
+}
+.mobileIcons{
+    display: flex;
+    gap: 1rem;
+}
 
 @media screen and (max-width: 1340px) {
     .department p{
@@ -309,6 +353,17 @@ text-shadow: 0px 0px 18.91876983642578px #78BBF0, 0px 0px 18.91876983642578px rg
 @media screen and (max-width: 400px) {
 .mobileHeading span{
     font-size: 2rem;
+}
+
+/* .newMobileImageWrapper{
+    width: 280px;
+    height: auto;
+} */
+.mobileMainSection{
+    gap: unset;
+}
+.mobileDetails{
+    scale: 0.75;
 }
 }
 @media screen and (max-height: 650px) {
