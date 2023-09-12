@@ -84,13 +84,28 @@ const Page = () => {
                >
                   {hoveredProfile && (
                     <>
-                <ContactProfile
+                {/* <ContactProfile
                   name={hoveredProfile.name}
                   dept={hoveredProfile.dept}
                   image = {hoveredProfile.image}
                   phone = {hoveredProfile.phone}
                   mail = {hoveredProfile.mail}
-                />
+                /> */}
+                <motion.div
+                        initial={{ opacity: 0 }}
+                        animate={{ opacity: 1 }}
+                        exit={{ opacity: 0 }}
+                        transition = {{duration:1}}
+                        className={styles.contactDetails}
+                      >
+                        <ContactProfile
+                          name={hoveredProfile.name}
+                          dept={hoveredProfile.dept}
+                          image={hoveredProfile.image}
+                          phone={hoveredProfile.phone}
+                          mail={hoveredProfile.mail}
+                        />
+                      </motion.div>
                 </>
               )}
                 </motion.div>
