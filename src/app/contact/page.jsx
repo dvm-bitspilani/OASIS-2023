@@ -91,6 +91,7 @@ const Page = () => {
                   phone = {hoveredProfile.phone}
                   mail = {hoveredProfile.mail}
                 /> */}
+                <AnimatePresence mode='wait'>
                 <motion.div
                         initial={{ opacity: 0 }}
                         animate={{ opacity: 1 }}
@@ -106,6 +107,7 @@ const Page = () => {
                           mail={hoveredProfile.mail}
                         />
                       </motion.div>
+                      </AnimatePresence>
                 </>
               )}
                 </motion.div>
