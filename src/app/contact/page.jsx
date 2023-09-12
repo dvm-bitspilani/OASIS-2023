@@ -32,14 +32,13 @@ const Page = () => {
     setHoveredProfile(profile)
   };
   const profiles = [
-    { name: 'Sarthak Arora', dept: 'Website, App & Online Payments', image: `${sarthak.src}` },
-    { name: 'Aayush Paurana', dept: 'Logistics and Operations', image: `${contactGhost.src}`  },
-    { name: 'Shaurya Parikh', dept: 'Sponsorship and Marketing', image: `${shaurya.src}`  },
-    { name: 'Vaibhav Jain', dept: 'Registration, Events & Approval Queries', image: `${contactGhost.src}`  },
-    { name: 'Supreeth', dept: 'Reception and Accommodation', image: `${supreeth.src}`  },
-    { name: 'Adarsh Goel', dept: 'Online Collaborations and Publicity' , image: `${contactGhost.src}` },
-    // { name: 'contactGhost Rai', dept: 'Registration, Events & Approval Queries', image: `${contactGhost.src}`  },
-    // { name: 'contactGhost Rai', dept: 'Registration, Events & Approval Queries', image: `${shivang.src}`  },
+    { name: 'Sarthak Arora', dept: 'Website, App & Online Payments', image: `${sarthak.src}`, phone: "tel:+91-7087797760", mail: "mailto:webmaster@bits-oasis.org"},
+    { name: 'Aayush Paurana', dept: 'Logistics and Operations', image: `${contactGhost.src}`, phone: "tel:+91-9930486791",mail:"mailto:controls@bits-oasis.org" },
+    { name: 'Shaurya Parikh', dept: 'Sponsorship and Marketing', image: `${shaurya.src}`,phone: "tel:+91-9920618766", mail:"mailto:sponsorship@bits-oasis.org"  },
+    { name: 'Vaibhav Jain', dept: 'Registration, Events & Approval Queries', image: `${contactGhost.src}`, phone: "tel:+91-9818332330", mail:"mailto:pcr@bits-oasis.org"  },
+    { name: 'Supreeth', dept: 'Reception and Accommodation', image: `${supreeth.src}`, phone: "tel:+91-7349738884", mail:"mailto:recnacc@bits-oasis.org"  },
+    { name: 'Adarsh Goel', dept: 'Online Collaborations and Publicity' , image: `${contactGhost.src}`, phone: "tel:+91-8979951532" , mail:"mailto:collaborations@bits-oasis.org" },
+
   ];
   return (
     <>
@@ -89,6 +88,8 @@ const Page = () => {
                   name={hoveredProfile.name}
                   dept={hoveredProfile.dept}
                   image = {hoveredProfile.image}
+                  phone = {hoveredProfile.phone}
+                  mail = {hoveredProfile.mail}
                 />
                 </>
               )}

@@ -6,7 +6,9 @@ import Image from 'next/image'
 import shivang from "../../public/static/images/shivang.png"
 
 const ContactProfile = (props) => {
-  // const { hoveredProfile } = props;
+  
+  // console.log(props)
+
   return (
     <>
                 {/* <div
@@ -16,8 +18,8 @@ const ContactProfile = (props) => {
                   <h1>{props.name}</h1>
                   <h2>{props.dept}</h2>
                   <div className={styles['iconsContainer']}>
-                    <Image src={callIcon} alt="" />
-                    <Image src={mailIcon} alt="" />
+                    <a href={props.mail}><Image src={mailIcon} alt="" /></a>
+                    <a href={props.phone}><Image src={callIcon} alt="" /></a>
                   </div>
                 {/* </div> */}
     </>
