@@ -306,6 +306,11 @@ text-shadow: 0px 0px 18.91876983642578px #78BBF0, 0px 0px 18.91876983642578px rg
     display: none;
 }
 }
+@media screen and (max-width: 400px) {
+.mobileHeading span{
+    font-size: 2rem;
+}
+}
 @media screen and (max-height: 650px) {
     .department p{
         padding-block: 0.5rem;
