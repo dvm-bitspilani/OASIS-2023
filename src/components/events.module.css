@@ -52,7 +52,7 @@
   line-height: 1rem;
 }
 .backBtn {
-  z-index: 100;
+  z-index: 20;
   position: fixed;
   top: 5vh;
   left: 50vw;
