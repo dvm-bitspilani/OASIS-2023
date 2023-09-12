@@ -5,58 +5,48 @@ import { AnimatePresence, motion } from "framer-motion";
 import ImageWrapper from "../../../public/static/images/contacts.png"
 import phone from "../../../public/static/images/phone.svg"
 import mail from "../../../public/static/images/mail.svg"
+import mobilebgImage from "../../../public/static/images/mobileLibraryBgImage.png"
+import updatedbgImage from "../../../public/static/images/updatedLibraryBgImage.png"
 import shivang from "../../../public/static/images/shivang.png"
-// import ImageWrapper1 from "../../../public/static/images/navLogo.png"
-// import ImageWrapper2 from "../../../public/static/images/hamBG.png"
-// import ImageWrapper3 from "../../../public/static/images/Group3.png"
-// import ImageWrapper4 from "../../../public/static/images/Group2.png"
-// import ImageWrapper5 from "../../../public/static/images/Group1.png"
-// import ImageWrapper6 from "../../../public/static/images/LandingPageBook.png"
-// import ImageWrapper7 from "../../../public/static/images/Library.png"
+import shaurya from "../../../public/static/images/shaurya.png"
+import sarthak from "../../../public/static/images/sarthak.png"
+import supreeth from "../../../public/static/images/supreeth.png"
+import contactGhost from "../../../public/static/images/contactGhost.png"
+import mobileImageWrapper from "../../../public/static/images/mobileContactImageContainer.png"
 import ContactProfile from '@/components/ContactProfile';
 import Image from 'next/image';
 const Page = () => {
+  // console.log(shivang)
     const [imageSrc, setImageSrc] = useState(ImageWrapper);
     const [isLoading, setIsLoading] = useState(false);
-    
-    //  const [hoveredProfile, setHoveredProfile] = useState(null);
      const [hoveredProfileIndex, setHoveredProfileIndex] = useState(null);
-  // const handleMouseOver = (image, profile) => {
-    // setImageSrc(image);
-    // setHoveredProfile(profile);
-  // };
+  // const [hoveredProfile, setHoveredProfile] = useState(null);
+  const [hoveredProfile, setHoveredProfile] = useState({
+    name: 'Sarthak Arora',
+    dept: 'Website, App & Online Payments',
+    image: sarthak.src,
+  });
   const handleMouseOver = (image, profile, index) => {
     setImageSrc(image);
     setHoveredProfileIndex(index);
+    setHoveredProfile(profile)
   };
   const profiles = [
-    { name: 'Shivang Rai', dept: 'Registration, Events & Approval Queries' },
-    { name: 'Shwetabh Niket', dept: 'Registration, Events & Approval Queries' },
-    { name: 'Prateek Kashyap', dept: 'Registration, Events & Approval Queries' },
-    { name: 'Jay Goyal', dept: 'Registration, Events & Approval Queries' },
-    { name: 'Vaibhav Singla', dept: 'Controls' },
-    { name: 'Vedant Vyas', dept: 'Reception and Accommodation' },
-    { name: 'Shivang Rai', dept: 'Registration, Events & Approval Queries' },
-    { name: 'Shivang Rai', dept: 'Registration, Events & Approval Queries' },
-
-    // Add more profiles here
+    { name: 'Sarthak Arora', dept: 'Website, App & Online Payments', image: `${sarthak.src}` },
+    { name: 'Aayush Paurana', dept: 'Logistics and Operations', image: `${contactGhost.src}`  },
+    { name: 'Shaurya Parikh', dept: 'Sponsorship and Marketing', image: `${shaurya.src}`  },
+    { name: 'Vaibhav Jain', dept: 'Registration, Events & Approval Queries', image: `${contactGhost.src}`  },
+    { name: 'Supreeth', dept: 'Reception and Accommodation', image: `${supreeth.src}`  },
+    { name: 'Adarsh Goel', dept: 'Online Collaborations and Publicity' , image: `${contactGhost.src}` },
+    // { name: 'contactGhost Rai', dept: 'Registration, Events & Approval Queries', image: `${contactGhost.src}`  },
+    // { name: 'contactGhost Rai', dept: 'Registration, Events & Approval Queries', image: `${shivang.src}`  },
   ];
-  const hoveredProfile = profiles[hoveredProfileIndex];
   return (
     <>
       <div className={styles.pageWrapper}>
         <div className={styles.heading}>CONTACT US</div>
         <div className={styles.mainSection}>
             <div className={styles.department}>
-              {/* <p>Registration, Events & Approval Queries</p> */}
-              {/* <p onMouseOver={() => handleMouseOver(ImageWrapper)}>Registration, Events & Approval Queries</p>
-              <p onMouseOver={() => handleMouseOver(ImageWrapper)}>Registration, Events & Approval Queries</p>
-              <p onMouseOver={() => handleMouseOver(ImageWrapper)}>Registration, Events & Approval Queries</p>
-              <p onMouseOver={() => handleMouseOver(ImageWrapper)}>Registration, Events & Approval Queries</p>
-              <p onMouseOver={() => handleMouseOver(ImageWrapper)}>Registration, Events & Approval Queries</p>
-              <p onMouseOver={() => handleMouseOver(ImageWrapper)}>Registration, Events & Approval Queries</p>
-              <p onMouseOver={() => handleMouseOver(ImageWrapper)}>Registration, Events & Approval Queries</p>
-              <p onMouseOver={() => handleMouseOver(ImageWrapper)}>Registration, Events & Approval Queries</p> */}
               {profiles.map((profile, index) => (
               <p
                 key={index}
@@ -90,27 +80,91 @@ const Page = () => {
                 {hoveredProfile && (
                  <motion.div
                  className={styles['details']}
-                 initial={{ opacity: 0 }}
-                 animate={{ opacity: 1 }}
-                 exit={{ opacity: 0 }}
-                 transition={{ ease: 'easeOut', duration: 0.5 }}
+                 initial={{ opacity: 1 }}
+                 key={hoveredProfile.name}
                >
-                  <Image src={shivang} alt="" />
-                  <h1>{hoveredProfile.name}</h1>
-                  <h2>{hoveredProfile.dept}</h2>
-                  <div className={styles['iconsContainer']}>
-                    <Image src={phone} alt="" />
-                    <Image src={mail} alt="" />
-                  </div>
+                  {hoveredProfile && (
+                    <>
+                <ContactProfile
+                  name={hoveredProfile.name}
+                  dept={hoveredProfile.dept}
+                  image = {hoveredProfile.image}
+                />
+                </>
+              )}
                 </motion.div>
               )}
                 </AnimatePresence>
-                {/* {
-                  hoveredProfile && (
-                    <ContactProfile name= {hoveredProfile.name} dept = {hoveredProfile.dept} />
-                  )
-                } */}
             </motion.div>
+        </div>
+      </div>
+      <div className={styles.mobilePageWrapper}>
+        <Image src={updatedbgImage} className={styles.mobileBgImage}/>
+        <div className={styles.mobileHeading}>
+          <span>CONTACT US</span>
+        </div>
+        <div className={styles.mobileMainSection}>
+          <div className={styles.mobileDetails}>
+                    <Image src={mobileImageWrapper} className={styles.mobileImageWrapper}/>
+                    <Image src = {sarthak} className={styles.porImage}/>
+                    <h1>Sarthak Arora</h1>
+                  <h2>Website, App & Online Payments</h2>
+                  <div className={styles.mobileIconsContainer}>
+                    <Image src={phone} alt="" />
+                    <Image src={mail} alt="" />
+                  </div>
+                    </div>
+          <div className={styles.mobileDetails}>
+                    <Image src={mobileImageWrapper} className={styles.mobileImageWrapper}/>
+                    <Image src = {contactGhost} className={styles.porImage}/>
+                    <h1>Aayush Paurana</h1>
+                  <h2 style={{height:"40px"}}>Logistics and Operations</h2>
+                  <div className={styles.mobileIconsContainer}>
+                    <Image src={phone} alt="" />
+                    <Image src={mail} alt="" />
+                  </div>
+                    </div>
+          <div className={styles.mobileDetails}>
+                    <Image src={mobileImageWrapper} className={styles.mobileImageWrapper}/>
+                    <Image src = {shaurya} className={styles.porImage}/>
+                    <h1>Shaurya Parikh</h1>
+                  <h2>Sponsorship and Marketing</h2>
+                  <div className={styles.mobileIconsContainer}>
+                    <Image src={phone} alt="" />
+                    <Image src={mail} alt="" />
+                  </div>
+                    </div>
+          <div className={styles.mobileDetails}>
+                    <Image src={mobileImageWrapper} className={styles.mobileImageWrapper}/>
+                    <Image src = {contactGhost} className={styles.porImage}/>
+                    <h1>Vaibhav Jain</h1>
+                  <h2>Registration, Events & Approval Queries</h2>
+                  <div className={styles.mobileIconsContainer} style={{bottom:'15px', top:"unset"}}>
+                    <Image src={phone} alt="" />
+                    <Image src={mail} alt="" />
+                  </div>
+                    </div>
+          <div className={styles.mobileDetails}>
+                    <Image src={mobileImageWrapper} className={styles.mobileImageWrapper}/>
+                    <Image src = {supreeth} className={styles.porImage}/>
+                    <h1>Supreeth</h1>
+                  <h2>Reception and Accommodation</h2>
+                  <div className={styles.mobileIconsContainer}>
+                    <Image src={phone} alt="" />
+                    <Image src={mail} alt="" />
+                  </div>
+                    </div>
+          <div className={styles.mobileDetails}>
+                    <Image src={mobileImageWrapper} className={styles.mobileImageWrapper}/>
+                    <Image src = {contactGhost} className={styles.porImage}/>
+                    <h1>Adarsh Goel</h1>
+                  <h2>Online Collaborations and Publicity</h2>
+                  <div className={styles.mobileIconsContainer} style={{bottom:'15px', top:"unset"}}>
+                    <Image src={phone} alt="" />
+                    <Image src={mail} alt="" />
+                  </div>
+                    </div>
+
         </div>
       </div>
     </>

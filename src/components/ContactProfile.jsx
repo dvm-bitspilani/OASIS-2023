@@ -4,21 +4,22 @@ import callIcon from "../../public/static/images/call.png"
 import mailIcon from "../../public/static/images/mail.png"
 import Image from 'next/image'
 import shivang from "../../public/static/images/shivang.png"
+
 const ContactProfile = (props) => {
-  const { hoveredProfile } = props;
+  // const { hoveredProfile } = props;
   return (
     <>
-                <div
+                {/* <div
                   className={styles['details']}
-                >
-                  <Image src={shivang} alt="" />
-                  <h1>{hoveredProfile.name}</h1>
-                  <h2>{hoveredProfile.dept}</h2>
+                > */}
+                  <Image src={props.image} alt=""  width={274} height={338}/>
+                  <h1>{props.name}</h1>
+                  <h2>{props.dept}</h2>
                   <div className={styles['iconsContainer']}>
                     <Image src={callIcon} alt="" />
                     <Image src={mailIcon} alt="" />
                   </div>
-                </div>
+                {/* </div> */}
     </>
   )
 }
