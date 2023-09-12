@@ -36,33 +36,53 @@
 .itemContent {
   margin-top: 1rem;
   color: #fff;
-  font-family:"KoPubBatang";
+  font-family: "KoPubBatang";
   font-size: 1.5rem;
   font-style: normal;
   font-weight: 700;
-  line-height: 2rem; 
+  line-height: 2rem;
 }
 .itemContent p {
-  margin-top: .5rem;
+  margin-top: 0.5rem;
   color: #fff;
-  font-family:"OldNewspaperTypes";
+  font-family: "OldNewspaperTypes";
   font-size: 1rem;
   font-style: normal;
   font-weight: 400;
   line-height: 1rem;
 }
-@media(max-width: 1300px){
-  .itemContainer{
+.backBtn {
+  z-index: 100;
+  position: fixed;
+  top: 5vh;
+  left: 50vw;
+  transform: translateX(-50%);
+}
+.backBtn button {
+  border: 3px solid #7bbef0;
+  background: rgba(0, 0, 0, 0.33);
+  color: #7bbef0;
+  text-align: center;
+  font-family: "KoPub Batang";
+  font-size: 1.75rem;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 100%; 
+  cursor: pointer;
+  padding: .25rem;
+}
+@media (max-width: 1300px) {
+  .itemContainer {
     width: 15%;
   }
-  .itemImage{
-    scale: .8;
+  .itemImage {
+    scale: 0.8;
   }
-  .itemContent{
+  .itemContent {
     font-size: 1.25rem;
     margin-top: 2rem;
   }
-  .itemContent p{
-    font-size: .85rem;
+  .itemContent p {
+    font-size: 0.85rem;
   }
 }

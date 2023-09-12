@@ -224,8 +224,15 @@ const Events = () => {
   }, []);
 
   return (
+    <>
+    <div className={events.backBtn}>
+      <button>
+        BACK TO HOME
+      </button>
+    </div>
     <div className={events.wrapper}>
       <div id="scrollDist" className={events.scrollDist}></div>
+      
       <div id="container" className={events.container}>
         <Image
           src={Map}
@@ -252,6 +259,7 @@ const Events = () => {
             fill="none"
           />
         </svg>
+        
         <div className={events.itemWrapper}>
           {tasks.map((evt) => {
             return (
@@ -261,6 +269,7 @@ const Events = () => {
         </div>
       </div>
     </div>
+    </>
   );
 };
 
