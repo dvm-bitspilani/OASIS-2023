@@ -101,7 +101,7 @@ const Page = () => {
       </div>
       <div className={styles.mobilePageWrapper}>
         <Image src={updatedbgImage} className={styles.mobileBgImage}/>
-        <div className={styles.majbooriDiv}>
+        <div className={styles.mobileContentWrapper}>
         <div className={styles.mobileHeading}>
           <span>CONTACT US</span>
         </div>
