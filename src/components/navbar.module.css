@@ -1,12 +1,10 @@
 .navWrapper {
   display: flex;
-  gap: 3rem;
 }
 .navItem {
   color: #9ed4fb;
   text-align: center;
   font-family: Montserrat;
-  font-size: 1.25rem;
   font-style: normal;
   font-weight: 500;
   line-height: 100%; /* 20px */
@@ -15,20 +13,19 @@
 .navItem:hover {
   cursor: pointer;
 }
-@media (max-height: 820px) {
   .navWrapper {
     gap: 2rem;
   }
   .navItem {
     font-size: 1.05rem;
   }
-}
+
 @media (max-height: 720px) {
   .navWrapper {
-    gap: 1rem;
+    gap: .75rem;
   }
   .navItem {
-    font-size: 1rem;
+    font-size: .75rem;
   }
 }
 @media (max-width: 800px) {
@@ -44,17 +41,17 @@
 
 @media (max-width: 1250px) {
     .navWrapper{
-        gap: 2rem;
+        gap: 1.5rem;
     }
     .navItem{
-        font-size: 1.05rem;
+        font-size: .85rem;
     }
 }
 @media (max-width: 1120px) {
     .navWrapper {
-      gap: 1rem;
+      gap: .75rem;
     }
     .navItem {
-      font-size: 1rem;
+      font-size: .75rem;
     }
   }
