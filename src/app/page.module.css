@@ -23,7 +23,7 @@
 .eventsWrapper{
   position: relative;
   height: 5000vh;
-  /* width: 200vw; */
+  width: 4096px;
   scrollbar-width: none;
   -ms-overflow-style: none; 
 }
