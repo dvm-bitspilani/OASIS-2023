@@ -114,40 +114,63 @@ export default function Home() {
       // console.log('first')
       setIsLoading(true);
       setShowLoader(true);
-      const assets = [textLogo, landingPgBookImg, rightElements, leftElements, updatedBgLibraryImage];
+      const assets = [textLogo.src, landingPgBookImg.src, rightElements.src, leftElements.src, updatedBgLibraryImage.src];
       // console.log('second')
-      const loadAssets = () => {
+      const loadAssets = async() => {
         const assetPromises = assets.map((asset) => {
           if (asset) {
             return new Promise((resolve, reject) => {
-              const img = new Image();
+              // const img = new img();
+              const img = document.createElement('img');
               img.onload = resolve;
               img.onerror = reject;
               img.src = asset;
             });
           }
         });
-
+        const results = await Promise.allSettled(assetPromises);
+        const allSuccessful = results.every((result) => result.status === 'fulfilled');
         Promise.all(assetPromises)
           .then(() => {
             setAllAssetsLoaded(true);
+            console.log('loaded')
             setTimeout(() => {
               setIsLoading(false);
               setShowLoader(false);
-            }, 10000);
+            }, 5000);
             // console.log('All assets loaded successfully');
           })
           .catch((error) => {
             console.error("Error loading assets:", error);
             // setIsLoading(false);
             setAllAssetsLoaded(true);
-            // setShowLoader(false);
+            console.log('loaded')
+            setShowLoader(false);
             setTimeout(() => {
               setIsLoading(false);
               setShowLoader(false);
-            }, 2000);
+            }, 3000);
           });
       };
+    //   if (allSuccessful) {
+    //     setAllAssetsLoaded(true);
+    //     console.log('loaded')
+    //     // setTimeout(() => {
+    //       setIsLoading(false);
+    //       setShowLoader(false);
+    //     // }, 10000);
+    //     // console.log('All assets loaded successfully');
+    //   } else {
+    //     console.error("Error loading assets:", results);
+    //     // setIsLoading(false);
+    //     setAllAssetsLoaded(true);
+    //     // setShowLoader(false);
+    //     setTimeout(() => {
+    //       setIsLoading(false);
+    //       setShowLoader(false);
+    //     }, 2000);
+    //   }
+    // };
       loadAssets();
       setRegisterBtnWidth(Math.min(200, Math.floor(window.innerWidth * 0.5)));
       setRegisterBtnHeight(75);
@@ -467,89 +490,89 @@ export default function Home() {
 
   const { innerWidth, innerHeight } = useWindowSize();
 
-  const regLoaderRef = useRef(null);
-  const [loaderLoaded, setLoaderLoaded] = useState(false);
-  useEffect(() => {
-    const assets = [regLoaderRef.current];
-    let assetsLoaded = 0;
+  // const regLoaderRef = useRef(null);
+  // const [loaderLoaded, setLoaderLoaded] = useState(false);
+  // useEffect(() => {
+  //   const assets = [regLoaderRef.current];
+  //   let assetsLoaded = 0;
 
-    const handleAssetLoad = () => {
-      assetsLoaded++;
-      if (assetsLoaded === assets.length) {
-        setTimeout(() => {
-          setLoaderLoaded(true);
-        }, 1000);
-      }
-    };
+  //   const handleAssetLoad = () => {
+  //     assetsLoaded++;
+  //     if (assetsLoaded === assets.length) {
+  //       setTimeout(() => {
+  //         setLoaderLoaded(true);
+  //       }, 1000);
+  //     }
+  //   };
 
-    assets.forEach((asset) => {
-      if (
-        asset &&
-        (asset.complete || asset.readyState === 4 || asset.tagName === "LINK")
-      ) {
-        handleAssetLoad();
-      } else {
-        if (asset) {
-          asset.addEventListener("load", handleAssetLoad);
-          asset.addEventListener("error", handleAssetLoad);
-        }
-      }
-    });
+  //   assets.forEach((asset) => {
+  //     if (
+  //       asset &&
+  //       (asset.complete || asset.readyState === 4 || asset.tagName === "LINK")
+  //     ) {
+  //       handleAssetLoad();
+  //     } else {
+  //       if (asset) {
+  //         asset.addEventListener("load", handleAssetLoad);
+  //         asset.addEventListener("error", handleAssetLoad);
+  //       }
+  //     }
+  //   });
 
-    const cleanup = () => {
-      assets.forEach((asset) => {
-        if (asset) {
-          asset.removeEventListener("load", handleAssetLoad);
-          asset.removeEventListener("error", handleAssetLoad);
-        }
-      });
-    };
+  //   const cleanup = () => {
+  //     assets.forEach((asset) => {
+  //       if (asset) {
+  //         asset.removeEventListener("load", handleAssetLoad);
+  //         asset.removeEventListener("error", handleAssetLoad);
+  //       }
+  //     });
+  //   };
 
-    return cleanup;
-  }, []);
-  useEffect(() => {
-    if (loaderLoaded) {
-      const assets = document.querySelectorAll(
-        "img",
-        "font",
-        "style",
-        "iframe"
-      );
+  //   return cleanup;
+  // }, []);
+  // useEffect(() => {
+  //   if (loaderLoaded) {
+  //     const assets = document.querySelectorAll(
+  //       "img",
+  //       "font",
+  //       "style",
+  //       "iframe"
+  //     );
 
-      let assetsLoaded = 0;
+  //     let assetsLoaded = 0;
 
-      const handleAssetLoad = () => {
-        assetsLoaded++;
-        if (assetsLoaded === assets.length) {
-          setTimeout(() => {
-            setIsLoading(false);
-          }, 2000);
-        }
-      };
+  //     const handleAssetLoad = () => {
+  //       assetsLoaded++;
+  //       if (assetsLoaded === assets.length) {
+  //         setTimeout(() => {
+  //           setIsLoading(false);
+  //         }, 2000);
+  //       }
+  //     };
 
-      assets.forEach((asset) => {
-        if (
-          asset.complete ||
-          asset.readyState === 4 ||
-          asset.tagName === "LINK"
-        ) {
-          handleAssetLoad();
-        } else {
-          asset.addEventListener("load", handleAssetLoad);
-          asset.addEventListener("error", handleAssetLoad);
-        }
-      });
+  //     assets.forEach((asset) => {
+  //       if (
+  //         asset.complete ||
+  //         asset.readyState === 4 ||
+  //         asset.tagName === "LINK"
+  //       ) {
+  //         handleAssetLoad();
+  //       } else {
+  //         asset.addEventListener("load", handleAssetLoad);
+  //         asset.addEventListener("error", handleAssetLoad);
+  //       }
+  //     });
 
-      const cleanup = () => {
-        assets.forEach((asset) => {
-          asset.removeEventListener("load", handleAssetLoad);
-          asset.removeEventListener("error", handleAssetLoad);
-        });
-      };
+  //     const cleanup = () => {
+  //       assets.forEach((asset) => {
+  //         asset.removeEventListener("load", handleAssetLoad);
+  //         asset.removeEventListener("error", handleAssetLoad);
+  //       });
+  //     };
 
-      return cleanup;
-    }
-  }, [loaderLoaded]);
+  //     return cleanup;
+  //   }
+  // }, [loaderLoaded]);
 
   return (
     <main
