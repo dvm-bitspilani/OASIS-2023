@@ -7,9 +7,15 @@ import { useContext } from "react";
 import { HamContext } from "@/context/HamContextProvider";
 import Link from "next/link";
 import { Metadata } from "next";
-import textLogo from "../../public/static/images/OasisLogo.png";
+import textLogo from "../../public/static/images/updatedOasisLogo.png";
+import navLogo from "../../public/static/images/navLogo.png"
 import Navbar from "@/components/Navbar";
 import Hamburger from "@/components/hamburger";
+import landingPgBookImg from "../../public/static/images/updatedLandingPageBook.png";
+import rightElements from "../../public/static/images/landingPgRightElements.png";
+import leftElements from "../../public/static/images/landingPgLeftElements.png";
+import updatedBgLibraryImage from "../../public/static/images/updatedLibraryBgImage.png";
+
 import Events from "@/components/Events";
 import landingPgBookImg from "../../public/static/images/LandingPageBook.png";
 import rightElements from "../../public/static/images/landingPgRightElements.png";
@@ -24,10 +30,6 @@ import { useWindowSize } from "rooks";
 export default function Home() {
   const { isHamOpen, setIsHamOpen } = useContext(HamContext);
 
-  const [textLogoWidth, setTextLogoWidth] = useState(0);
-  const [textLogoHeight, setTextLogoHeight] = useState(0);
-  const [LandingBookWidth, setLandingBookWidth] = useState(0);
-  const [LandingBookHeight, setLandingBookHeight] = useState(0);
   const [RegisterBtnWidth, setRegisterBtnWidth] = useState(200);
   const [RegisterBtnHeight, setRegisterBtnHeight] = useState(75);
   const [isLoading, setIsLoading] = useState(true);
@@ -125,40 +127,64 @@ export default function Home() {
       // console.log('first')
       setIsLoading(true);
       setShowLoader(true);
-      const assets = [textLogo, landingPgBookImg, rightElements, leftElements];
+      const assets = [textLogo.src, landingPgBookImg.src, rightElements.src, leftElements.src, updatedBgLibraryImage.src];
       // console.log('second')
-      const loadAssets = () => {
+      const loadAssets = async() => {
         const assetPromises = assets.map((asset) => {
           if (asset) {
             return new Promise((resolve, reject) => {
-              const img = new Image();
+              // const img = new img();
+              const img = document.createElement('img');
               img.onload = resolve;
               img.onerror = reject;
               img.src = asset;
             });
           }
         });
-
+        const results = await Promise.allSettled(assetPromises);
+        const allSuccessful = results.every((result) => result.status === 'fulfilled');
         Promise.all(assetPromises)
           .then(() => {
             setAllAssetsLoaded(true);
+            console.log('loaded')
             setTimeout(() => {
               setIsLoading(false);
               setShowLoader(false);
-            }, 10000);
+            }, 5000);
             // console.log('All assets loaded successfully');
           })
           .catch((error) => {
             console.error("Error loading assets:", error);
             // setIsLoading(false);
             setAllAssetsLoaded(true);
-            // setShowLoader(false);
+            console.log('loaded')
+            setShowLoader(false);
             setTimeout(() => {
               setIsLoading(false);
               setShowLoader(false);
-            }, 2000);
+            }, 3000);
           });
       };
+    //   if (allSuccessful) {
+    //     setAllAssetsLoaded(true);
+    //     console.log('loaded')
+    //     // setTimeout(() => {
+    //       setIsLoading(false);
+    //       setShowLoader(false);
+    //     // }, 10000);
+    //     // console.log('All assets loaded successfully');
+    //   } else {
+    //     console.error("Error loading assets:", results);
+    //     // setIsLoading(false);
+    //     setAllAssetsLoaded(true);
+    //     // setShowLoader(false);
+    //     setTimeout(() => {
+    //       setIsLoading(false);
+    //       setShowLoader(false);
+    //     }, 2000);
+    //   }
+    // };
+
       loadAssets();
       setRegisterBtnWidth(Math.min(200, Math.floor(window.innerWidth * 0.5)));
       setRegisterBtnHeight(75);
@@ -478,89 +504,89 @@ export default function Home() {
 
   const { innerWidth, innerHeight } = useWindowSize();
 
-  const regLoaderRef = useRef(null);
-  const [loaderLoaded, setLoaderLoaded] = useState(false);
-  useEffect(() => {
-    const assets = [regLoaderRef.current];
-    let assetsLoaded = 0;
+  // const regLoaderRef = useRef(null);
+  // const [loaderLoaded, setLoaderLoaded] = useState(false);
+  // useEffect(() => {
+  //   const assets = [regLoaderRef.current];
+  //   let assetsLoaded = 0;
 
-    const handleAssetLoad = () => {
-      assetsLoaded++;
-      if (assetsLoaded === assets.length) {
-        setTimeout(() => {
-          setLoaderLoaded(true);
-        }, 1000);
-      }
-    };
+  //   const handleAssetLoad = () => {
+  //     assetsLoaded++;
+  //     if (assetsLoaded === assets.length) {
+  //       setTimeout(() => {
+  //         setLoaderLoaded(true);
+  //       }, 1000);
+  //     }
+  //   };
 
-    assets.forEach((asset) => {
-      if (
-        asset &&
-        (asset.complete || asset.readyState === 4 || asset.tagName === "LINK")
-      ) {
-        handleAssetLoad();
-      } else {
-        if (asset) {
-          asset.addEventListener("load", handleAssetLoad);
-          asset.addEventListener("error", handleAssetLoad);
-        }
-      }
-    });
+  //   assets.forEach((asset) => {
+  //     if (
+  //       asset &&
+  //       (asset.complete || asset.readyState === 4 || asset.tagName === "LINK")
+  //     ) {
+  //       handleAssetLoad();
+  //     } else {
+  //       if (asset) {
+  //         asset.addEventListener("load", handleAssetLoad);
+  //         asset.addEventListener("error", handleAssetLoad);
+  //       }
+  //     }
+  //   });
 
-    const cleanup = () => {
-      assets.forEach((asset) => {
-        if (asset) {
-          asset.removeEventListener("load", handleAssetLoad);
-          asset.removeEventListener("error", handleAssetLoad);
-        }
-      });
-    };
+  //   const cleanup = () => {
+  //     assets.forEach((asset) => {
+  //       if (asset) {
+  //         asset.removeEventListener("load", handleAssetLoad);
+  //         asset.removeEventListener("error", handleAssetLoad);
+  //       }
+  //     });
+  //   };
 
-    return cleanup;
-  }, []);
-  useEffect(() => {
-    if (loaderLoaded) {
-      const assets = document.querySelectorAll(
-        "img",
-        "font",
-        "style",
-        "iframe"
-      );
+  //   return cleanup;
+  // }, []);
+  // useEffect(() => {
+  //   if (loaderLoaded) {
+  //     const assets = document.querySelectorAll(
+  //       "img",
+  //       "font",
+  //       "style",
+  //       "iframe"
+  //     );
 
-      let assetsLoaded = 0;
+  //     let assetsLoaded = 0;
 
-      const handleAssetLoad = () => {
-        assetsLoaded++;
-        if (assetsLoaded === assets.length) {
-          setTimeout(() => {
-            setIsLoading(false);
-          }, 2000);
-        }
-      };
+  //     const handleAssetLoad = () => {
+  //       assetsLoaded++;
+  //       if (assetsLoaded === assets.length) {
+  //         setTimeout(() => {
+  //           setIsLoading(false);
+  //         }, 2000);
+  //       }
+  //     };
 
-      assets.forEach((asset) => {
-        if (
-          asset.complete ||
-          asset.readyState === 4 ||
-          asset.tagName === "LINK"
-        ) {
-          handleAssetLoad();
-        } else {
-          asset.addEventListener("load", handleAssetLoad);
-          asset.addEventListener("error", handleAssetLoad);
-        }
-      });
+  //     assets.forEach((asset) => {
+  //       if (
+  //         asset.complete ||
+  //         asset.readyState === 4 ||
+  //         asset.tagName === "LINK"
+  //       ) {
+  //         handleAssetLoad();
+  //       } else {
+  //         asset.addEventListener("load", handleAssetLoad);
+  //         asset.addEventListener("error", handleAssetLoad);
+  //       }
+  //     });
 
-      const cleanup = () => {
-        assets.forEach((asset) => {
-          asset.removeEventListener("load", handleAssetLoad);
-          asset.removeEventListener("error", handleAssetLoad);
-        });
-      };
+  //     const cleanup = () => {
+  //       assets.forEach((asset) => {
+  //         asset.removeEventListener("load", handleAssetLoad);
+  //         asset.removeEventListener("error", handleAssetLoad);
+  //       });
+  //     };
 
-      return cleanup;
-    }
-  }, [loaderLoaded]);
+  //     return cleanup;
+  //   }
+  // }, [loaderLoaded]);
 
   const handleTransition = (page) => {
     var tl = gsap.timeline();
@@ -658,73 +684,65 @@ export default function Home() {
             />
           </div>
           <div className={styles.pageWrapper} ref={pageWrapper}>
+                  <Image src={updatedBgLibraryImage} className={styles.pageBgImage}/>
             <div
               className={styles.hamSection}
               style={isHamOpen ? { zIndex: 10 } : { zIndex: 2 }}
             >
               <div className={styles.hamBtn}>
-                <div className="navLogo">
-                  <Image
-                    src="/static/images/navLogo.png"
-                    width={80}
-                    height={80}
-                    className="navLogoImg"
-                    alt="Text Oasis Logo"
-                  />
-                </div>
-                <AnimatePresence>
-                  <div className={styles.hamAsset}>
-                    <Image
-                      src="/static/images/hamIcon.svg"
-                      width={103}
-                      height={103}
-                      alt="Menu"
-                    />
-                    <div
-                      id="ham-menu"
-                      className={styles.hamIcon}
-                      onClick={openHam}
-                    >
-                      <span id="hamIcon1" className={styles.hamIcon1}></span>
-                      <span id="hamIcon2" className={styles.hamIcon2}></span>
-                      <span id="hamIcon3" className={styles.hamIcon3}></span>
-                    </div>
+              <AnimatePresence>
+              <div className={styles.hamAsset}>
+              <Image
+              src="/static/images/hamIcon.svg"
+              width={103}
+              height={103}
+              alt="Menu"
+              />
+              <div
+              id="ham-menu"
+              className={styles.hamIcon}
+              onClick={openHam}
+              >
+              <span id="hamIcon1" className={styles.hamIcon1}></span>
+              <span id="hamIcon2" className={styles.hamIcon2}></span>
+              <span id="hamIcon3" className={styles.hamIcon3}></span>
+              </div>
+              </div>
+              
+              {isHamOpen ? (
+                <motion.div
+                key="hamBG"
+                className={styles.hamBG}
+                style={{
+                  height: `${innerHeight / 10}px`,
+                  width: `${innerHeight / 10}px`,
+                }}
+                initial={{ scale: 0 }}
+                animate={{ scale: 50 }}
+                exit={{ scale: 0, transition: { delay: 1.5 } }}
+                transition={{ duration: 1 }}
+                ></motion.div>
+                ) : (
+                  <div style={{ display: "none" }}></div>
+                  )}
+                  </AnimatePresence>
                   </div>
-
+                  <AnimatePresence>
                   {isHamOpen ? (
                     <motion.div
-                      key="hamBG"
-                      className={styles.hamBG}
-                      style={{
-                        height: `${innerHeight / 10}px`,
-                        width: `${innerHeight / 10}px`,
-                      }}
-                      initial={{ scale: 0 }}
-                      animate={{ scale: 50 }}
-                      exit={{ scale: 0, transition: { delay: 1.5 } }}
-                      transition={{ duration: 1 }}
-                    ></motion.div>
-                  ) : (
-                    <div style={{ display: "none" }}></div>
-                  )}
-                </AnimatePresence>
-              </div>
-              <AnimatePresence>
-                {isHamOpen ? (
-                  <motion.div
                     key="hamMenu"
                     initial={{ opacity: 0 }}
                     animate={{ opacity: 1 }}
                     exit={{ opacity: 0, transition: { delay: 1.5 } }}
                     transition={{ delay: 0.25, duration: 0.5 }}
-                  >
+                    >
                     <Hamburger />
-                  </motion.div>
-                ) : (
-                  <div style={{ display: "none" }}></div>
-                )}
-              </AnimatePresence>
-            </div>
+                    </motion.div>
+                    ) : (
+                      <div style={{ display: "none" }}></div>
+                      )}
+                      </AnimatePresence>
+                    </div> */}
             <div className={styles["navSection"]}>
               <AnimatePresence>
                 {isHamOpen ? (
@@ -736,12 +754,16 @@ export default function Home() {
                     animate={{ opacity: 1, transition: { delay: 1.5 } }}
                     exit={{ opacity: 0 }}
                     transition={{ delay: 0.5 }}
+                    style={{display: 'none'}}
                   >
                     <Navbar handleTransition={handleTransition} />
                   </motion.div>
                 )}
               </AnimatePresence>
             </div>
+            {/* <div className={styles.navLogo}>
+              <Image src={navLogo} />
+            </div> */}
             <AnimatePresence mode="wait">
               <motion.div
                 initial={{ opacity: 0 }}
@@ -804,7 +826,7 @@ export default function Home() {
                       <Link href="/register" legacyBehavior>
                         <a className={styles.registerBtnWrapper}>
                           <Image
-                            src="/static/images/RegisterButton.png"
+                            src="/static/images/updatedLandingRegBtn.png"
                             width={RegisterBtnWidth}
                             height={RegisterBtnHeight}
                             className={styles.RegisterBtnImg}

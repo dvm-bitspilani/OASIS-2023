@@ -8,18 +8,23 @@
 }
 
 .pageWrapper {
-  height: 100vh;
+  height: 100dvh;
   width: 100vw;
-  background: url(../../public/static/images/Library.png);
+  /* background: url(../../public/static/images/updatedLibraryBgImage.png); */
   background-position: center;
   background-size: cover;
   background-repeat: no-repeat;
   display: flex;
   align-items: center;
-  overflow-x: hidden;
+  overflow: hidden;
   position: fixed;
   z-index: 10;
+  background-size: 100vw 100vh;
 }
+.pageBgImage{
+  position: fixed;
+  height: 100vh;
+  width: 100vw;
 .eventsWrapper{
   position: relative;
   height: 5000vh;
@@ -277,7 +282,7 @@
   top: 0;
   left: 0;
   z-index: 9999;
-  height: 100vh;
+  height: 100dvh;
   width: 100vw;
   background-color: black;
   /* background-image: url("../../public/static/images/LibraryBgImage.avif"); */
@@ -291,7 +296,7 @@
   /* transition: opacity 0.5s ease; */
 }
 .loaderContainer video{
-  scale: .3;
+  scale: .5;
 }
 .loaded {
   opacity: 0;
@@ -304,7 +309,7 @@
 
 @media (max-width: 1400px) {
   .textLogoImg {
-    scale: 0.85;
+    scale: .85;
   }
   .LandingBookImg{
     scale: .95;
@@ -437,4 +442,10 @@
    .bookImgWrapper{
     scale: .8;
    }
+}
+.navLogo{
+  position: absolute;
+  top: 0;
+  margin-left: 2rem;
+  margin-top: 2rem;
 }

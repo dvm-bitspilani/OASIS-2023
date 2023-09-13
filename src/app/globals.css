@@ -12,6 +12,14 @@
   src: url(../../public/static/fonts/Montserrat.ttf) format('truetype');
 }
 @font-face {
+  font-family: 'KoPub Batang';
+  src: url(../../public/static/fonts/KoPubBatang-Regular.ttf) format('truetype');
+}
+@font-face {
+  font-family: 'Mantinia';
+  src: url(../../public/static/fonts/Mantinia\ CC\ Regular.ttf) format('truetype');
+}
+@font-face {
   font-family: 'KoPubBatang';
   src: url(../../public/static/fonts/KoPubBatang-Regular.ttf) format('truetype');
 }
