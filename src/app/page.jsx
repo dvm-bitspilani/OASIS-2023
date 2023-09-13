@@ -17,9 +17,6 @@ import leftElements from "../../public/static/images/landingPgLeftElements.png";
 import updatedBgLibraryImage from "../../public/static/images/updatedLibraryBgImage.png";
 
 import Events from "@/components/Events";
-import landingPgBookImg from "../../public/static/images/LandingPageBook.png";
-import rightElements from "../../public/static/images/landingPgRightElements.png";
-import leftElements from "../../public/static/images/landingPgLeftElements.png";
 import TransitionLeft from "../../public/static/images/TransitionLeft.png";
 import TransitionRight from "../../public/static/images/TransitionRight.png";
 // import MyVideoLoader from "@/components/VideoLoader";
@@ -742,7 +739,7 @@ export default function Home() {
                       <div style={{ display: "none" }}></div>
                       )}
                       </AnimatePresence>
-                    </div> */}
+                    </div> 
             <div className={styles["navSection"]}>
               <AnimatePresence>
                 {isHamOpen ? (
@@ -754,7 +751,6 @@ export default function Home() {
                     animate={{ opacity: 1, transition: { delay: 1.5 } }}
                     exit={{ opacity: 0 }}
                     transition={{ delay: 0.5 }}
-                    style={{display: 'none'}}
                   >
                     <Navbar handleTransition={handleTransition} />
                   </motion.div>

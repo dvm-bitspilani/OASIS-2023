@@ -25,6 +25,7 @@
   position: fixed;
   height: 100vh;
   width: 100vw;
+}
 .eventsWrapper{
   position: relative;
   height: 5000vh;
