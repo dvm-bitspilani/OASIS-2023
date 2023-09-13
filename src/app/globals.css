@@ -41,5 +41,17 @@ html,body{
   /* overflow-x: hidden; */
   height: 100%;
   width:100%;
+  scrollbar-width: none;
 }
+/* body::-webkit-scrollbar {
+  width: 0;
+  height: 0;
+} */
+/* body::-webkit-scrollbar-track {
+  background: transparent;
+} */
+/* body::-webkit-scrollbar-thumb {
+  background: transparent;
+  border: none;
+} */
 
