@@ -15,6 +15,10 @@ import landingPgBookImg from "../../public/static/images/updatedLandingPageBook.
 import rightElements from "../../public/static/images/landingPgRightElements.png";
 import leftElements from "../../public/static/images/landingPgLeftElements.png";
 import updatedBgLibraryImage from "../../public/static/images/updatedLibraryBgImage.png";
+
+import Events from "@/components/Events";
+import TransitionLeft from "../../public/static/images/TransitionLeft.png";
+import TransitionRight from "../../public/static/images/TransitionRight.png";
 // import MyVideoLoader from "@/components/VideoLoader";
 import { gsap } from "gsap";
 import { AnimatePresence, motion } from "framer-motion";
@@ -109,6 +113,12 @@ export default function Home() {
     );
   });
   const [allAssetsLoaded, setAllAssetsLoaded] = useState(false);
+  const [showBackBtn, setShowBackBtn] = useState(false);
+
+  const pageWrapper = useRef(null);
+  const transitionLeft = useRef(null);
+  const transitionRight = useRef(null);
+
   useEffect(() => {
     if (typeof window !== "undefined") {
       // console.log('first')
@@ -171,6 +181,7 @@ export default function Home() {
     //     }, 2000);
     //   }
     // };
+
       loadAssets();
       setRegisterBtnWidth(Math.min(200, Math.floor(window.innerWidth * 0.5)));
       setRegisterBtnHeight(75);
@@ -574,11 +585,61 @@ export default function Home() {
   //   }
   // }, [loaderLoaded]);
 
+  const handleTransition = (page) => {
+    var tl = gsap.timeline();
+    tl.to([transitionLeft.current, transitionRight.current], {
+      x: 0,
+      duration: 1,
+      ease: "power2.inOut",
+    });
+    if (page !== "home") {
+      tl.to(pageWrapper.current, {
+        opacity: 0,
+        visibility: "hidden", 
+        ease: "ease",
+        duration: 0.5,
+      });
+      tl.to(scope.current, {
+        height: 'fit-content',
+        width: 'fit-content'
+      })
+      setTimeout(() => {
+        setShowBackBtn(true);
+      }, 1000);
+    } else {
+      tl.to(pageWrapper.current, {
+        opacity: 1,
+        visibility: "visible", 
+        ease: "ease",
+        duration: 0.5,
+      });
+      tl.to(scope.current, {
+        height: '100vh',
+        width: '100vw'
+      })
+      setTimeout(() => {
+        setShowBackBtn(false);
+      }, 1000);
+    }
+    tl.to(transitionLeft.current, {
+      x: "-100%",
+      duration: 1,
+      ease: "power2.inOut",
+    });
+    tl.to(
+      transitionRight.current,
+      { x: "100%", duration: 1, ease: "power2.inOut" },
+      "-=1"
+    );
+  };
   return (
     <main
       key="mainLandingPage"
       style={{
         position: "relative",
+        overflow: 'hidden',
+        height: '100vh',
+        width: '100vw'
       }}
       ref={scope}
     >
@@ -597,19 +658,31 @@ export default function Home() {
         </div>
       ) : (
         <>
-          <div className={styles.pageWrapper}>
-        <Image src={updatedBgLibraryImage} className={styles.pageBgImage}/>
-            
-            <div className={styles.navLogo}>
-              <Image
-                src="/static/images/navLogo.png"
-                width={60}
-                height={60}
-                className={styles.navLogoImg}
-                alt="Text Oasis Logo"
-              />
-            </div>
-            {/* <div
+          <div className={styles.pageTransition}>
+            <Image
+              src={TransitionLeft}
+              width={1037}
+              height={980}
+              ref={transitionLeft}
+              style={{ transform: "translateX(-100%)" }}
+              alt=""
+            />
+            <Image
+              src={TransitionRight}
+              width={1037}
+              height={980}
+              style={{
+                position: "fixed",
+                right: "0",
+                transform: "translateX(100%)",
+              }}
+              ref={transitionRight}
+              alt=""
+            />
+          </div>
+          <div className={styles.pageWrapper} ref={pageWrapper}>
+                  <Image src={updatedBgLibraryImage} className={styles.pageBgImage}/>
+            <div
               className={styles.hamSection}
               style={isHamOpen ? { zIndex: 10 } : { zIndex: 2 }}
             >
@@ -666,7 +739,7 @@ export default function Home() {
                       <div style={{ display: "none" }}></div>
                       )}
                       </AnimatePresence>
-                    </div> */}
+                    </div> 
             <div className={styles["navSection"]}>
               <AnimatePresence>
                 {isHamOpen ? (
@@ -678,9 +751,8 @@ export default function Home() {
                     animate={{ opacity: 1, transition: { delay: 1.5 } }}
                     exit={{ opacity: 0 }}
                     transition={{ delay: 0.5 }}
-                    style={{display: 'none'}}
                   >
-                    <Navbar />
+                    <Navbar handleTransition={handleTransition} />
                   </motion.div>
                 )}
               </AnimatePresence>
@@ -766,6 +838,12 @@ export default function Home() {
                 </AnimatePresence>
               </motion.div>
             </AnimatePresence>
+          </div>
+          <div className={styles.eventsWrapper}>
+            <Events
+              showBackBtn={showBackBtn}
+              handleTransition={handleTransition}
+            />
           </div>
         </>
       )}
