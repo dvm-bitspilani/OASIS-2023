@@ -23,6 +23,7 @@
 .eventsWrapper{
   position: relative;
   height: 5000vh;
+  width: 200vw;
 }
 .navSection {
   position: absolute;
