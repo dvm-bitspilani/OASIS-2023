@@ -575,6 +575,8 @@ export default function Home() {
       ) : (
         <>
           <div className={styles.pageWrapper}>
+        <Image src={updatedBgLibraryImage} className={styles.pageBgImage}/>
+            
             <div className={styles.navLogo}>
               <Image
                 src="/static/images/navLogo.png"
