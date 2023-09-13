@@ -1,11 +1,30 @@
-import React from 'react';
-import "./radio.css"
+import React from "react";
+import "./radio.css";
 
-// import styles from "../app/register/page.module.css"
+import styles from "../app/register/page.module.css";
 
 const RadioButton = ({ name, id, value, onChange, checked, text }) => {
   return (
-    <label htmlFor={id} className="radio-label" id='radio-label'>
+    <label
+      htmlFor={id}
+      className="radio-label"
+      id="radio-label"
+      onPointerDown={(e) => {
+        const targetLabel = e.target.parentElement.parentElement.previousSibling || e.target.parentElement.previousSibling;
+        if (targetLabel !== null) {
+          console.log(targetLabel)
+          const allLabels = document.querySelectorAll("label");
+          allLabels.forEach((label) => {
+            if (label.classList.contains(styles.labelFocus)){
+            label.classList.remove(styles.labelFocus);
+            }
+          });
+          targetLabel.classList.add(
+            styles.labelFocus
+          );
+        }
+      }}
+    >
       <input
         className="radio-input"
         type="radio"
@@ -18,7 +37,7 @@ const RadioButton = ({ name, id, value, onChange, checked, text }) => {
       <span className="custom-radio" />
       {text}
     </label>
-  )
-}
+  );
+};
 
 export default RadioButton;

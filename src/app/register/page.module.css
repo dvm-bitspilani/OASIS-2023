@@ -101,8 +101,8 @@
   margin-top: 2rem;
 }
 .regBtnContainer img {
-  /* height: 5rem; */
-  width: 15rem;
+  height: 20%;
+  width: 18rem;
   transition: scale 0.25s ease-in-out;
 }
 .regBtnContainer img:hover {
@@ -275,7 +275,7 @@
     margin-top: 5rem;
   }
   .regBtnContainer img {
-    width: 10rem;
+    width: 15rem;
   }
   /* .regBtnContainer img:hover {
     scale: 0.9;

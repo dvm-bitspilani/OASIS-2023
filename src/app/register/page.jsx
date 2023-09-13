@@ -685,7 +685,6 @@ export default function Page() {
   const [errorMessage, setErrorMessage] = useState("");
   const [error, setError] = useState(false);
 
-
   useEffect(() => {
     const assets = [regLoaderRef.current];
     let assetsLoaded = 0;
@@ -904,10 +903,11 @@ export default function Page() {
         options
       );
       if (!res.ok) {
-        res.json().then((data) => {setErrorMessage(data["message"]);
-        setErrorScreen(true);
-        setError(true)}
-        );
+        res.json().then((data) => {
+          setErrorMessage(data["message"]);
+          setErrorScreen(true);
+          setError(true);
+        });
         throw new Error("Failed to register");
       }
       return res.json();
@@ -915,7 +915,7 @@ export default function Page() {
 
     const response = await uploadData(formData);
     setErrorMessage(response["message"]);
-    setError(false)
+    setError(false);
     setErrorScreen(true);
   };
 
@@ -1035,8 +1035,29 @@ export default function Page() {
   useEffect(() => {
     formContainerRef.current.addEventListener("scroll", handleScroll);
 
+    // Removing styling on radiobutton main label on click of other input tags
+    const allInputs = document.querySelectorAll("input");
+    allInputs.forEach((input) => {
+      input.addEventListener("focus", () => {
+        const allLabels = document.querySelectorAll("label");
+        allLabels.forEach((label) => {
+          label.classList.remove(styles.labelFocus);
+        });
+      });
+    });
+    
     return () => {
       // formContainerRef.current.removeEventListener("scroll" , handleScroll)
+      document.removeEventListener("scroll", handleScroll);
+      const allInputs = document.querySelectorAll("input");
+      allInputs.forEach((input) => {
+        input.removeEventListener("focus", () => {
+          const allLabels = document.querySelectorAll("label");
+          allLabels.forEach((label) => {
+            label.classList.remove(styles.labelFocus);
+          });
+        });
+      });
     };
   }, []);
 
@@ -1098,17 +1119,23 @@ export default function Page() {
     // formContainerElem.scrollTop = (percentage / 100) * maxScrollTopValue;
   };
 
-  const CloseModal=()=>{
-    setError(false)
-    setErrorMessage("")
+  const CloseModal = () => {
+    setError(false);
+    setErrorMessage("");
     setErrorScreen(false);
-  }
+  };
 
-// console.log(formData)
+  // console.log(formData)
 
   return (
     <>
-      {errorScreen && <ErrorScreen error={error} errorMessage={errorMessage} CloseModal={CloseModal} />}
+      {errorScreen && (
+        <ErrorScreen
+          error={error}
+          errorMessage={errorMessage}
+          CloseModal={CloseModal}
+        />
+      )}
       {isLoading && (
         // <div className={styles.regLoader}>
         //   <Image
@@ -1363,6 +1390,18 @@ export default function Page() {
                 isMulti
                 // onFocus={(e)=> e.target.placeholder = ""}
                 // onBlur={(e)=> e.target.placeholder = "Select the events"}
+                onFocus={(e) => {
+                  // e.target.placeholder = "";
+                  e.target.parentElement.parentElement.parentElement.parentElement.previousSibling.classList.add(
+                    styles.labelFocus
+                  );
+                }}
+                onBlur={(e) => {
+                  // e.target.placeholder = "Select the events";
+                  e.target.parentElement.parentElement.parentElement.parentElement.previousSibling.classList.remove(
+                    styles.labelFocus
+                  );
+                }}
               />
 
               <label>ARE YOU A CHOREOGRAPHER / MENTOR?</label>
