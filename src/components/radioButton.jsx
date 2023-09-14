@@ -18,7 +18,7 @@ const RadioButton = ({ name, id, value, onChange, checked, text }) => {
         });
         const targetLabel = e.target.parentElement.parentElement.previousSibling || e.target.parentElement.previousSibling;
         if (targetLabel !== null && targetLabel.innerText === "GENDER") {
-          console.log(targetLabel)
+          // console.log(targetLabel)
           targetLabel.classList.add(
             styles.labelFocus
           );

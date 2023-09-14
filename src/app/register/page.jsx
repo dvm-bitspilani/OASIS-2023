@@ -1062,7 +1062,7 @@ export default function Page() {
   }, []);
 
   const handleSkullMouseDown = (e) => {
-    console.log("mousedown");
+    // console.log("mousedown");
     e.preventDefault();
 
     document.addEventListener("mousemove", handleSkullDragMove);
