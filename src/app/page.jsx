@@ -8,7 +8,7 @@ import { HamContext } from "@/context/HamContextProvider";
 import Link from "next/link";
 import { Metadata } from "next";
 import textLogo from "../../public/static/images/updatedOasisLogo.png";
-import navLogo from "../../public/static/images/navLogo.png"
+import navLogo from "../../public/static/images/navLogo.png";
 import Navbar from "@/components/Navbar";
 import Hamburger from "@/components/hamburger";
 import landingPgBookImg from "../../public/static/images/updatedLandingPageBook.png";
@@ -124,14 +124,20 @@ export default function Home() {
       // console.log('first')
       setIsLoading(true);
       setShowLoader(true);
-      const assets = [textLogo.src, landingPgBookImg.src, rightElements.src, leftElements.src, updatedBgLibraryImage.src];
+      const assets = [
+        textLogo.src,
+        landingPgBookImg.src,
+        rightElements.src,
+        leftElements.src,
+        updatedBgLibraryImage.src,
+      ];
       // console.log('second')
-      const loadAssets = async() => {
+      const loadAssets = async () => {
         const assetPromises = assets.map((asset) => {
           if (asset) {
             return new Promise((resolve, reject) => {
               // const img = new img();
-              const img = document.createElement('img');
+              const img = document.createElement("img");
               img.onload = resolve;
               img.onerror = reject;
               img.src = asset;
@@ -139,11 +145,13 @@ export default function Home() {
           }
         });
         const results = await Promise.allSettled(assetPromises);
-        const allSuccessful = results.every((result) => result.status === 'fulfilled');
+        const allSuccessful = results.every(
+          (result) => result.status === "fulfilled"
+        );
         Promise.all(assetPromises)
           .then(() => {
             setAllAssetsLoaded(true);
-            console.log('loaded')
+            console.log("loaded");
             setTimeout(() => {
               setIsLoading(false);
               setShowLoader(false);
@@ -154,7 +162,7 @@ export default function Home() {
             console.error("Error loading assets:", error);
             // setIsLoading(false);
             setAllAssetsLoaded(true);
-            console.log('loaded')
+            console.log("loaded");
             setShowLoader(false);
             setTimeout(() => {
               setIsLoading(false);
@@ -162,25 +170,25 @@ export default function Home() {
             }, 3000);
           });
       };
-    //   if (allSuccessful) {
-    //     setAllAssetsLoaded(true);
-    //     console.log('loaded')
-    //     // setTimeout(() => {
-    //       setIsLoading(false);
-    //       setShowLoader(false);
-    //     // }, 10000);
-    //     // console.log('All assets loaded successfully');
-    //   } else {
-    //     console.error("Error loading assets:", results);
-    //     // setIsLoading(false);
-    //     setAllAssetsLoaded(true);
-    //     // setShowLoader(false);
-    //     setTimeout(() => {
-    //       setIsLoading(false);
-    //       setShowLoader(false);
-    //     }, 2000);
-    //   }
-    // };
+      //   if (allSuccessful) {
+      //     setAllAssetsLoaded(true);
+      //     console.log('loaded')
+      //     // setTimeout(() => {
+      //       setIsLoading(false);
+      //       setShowLoader(false);
+      //     // }, 10000);
+      //     // console.log('All assets loaded successfully');
+      //   } else {
+      //     console.error("Error loading assets:", results);
+      //     // setIsLoading(false);
+      //     setAllAssetsLoaded(true);
+      //     // setShowLoader(false);
+      //     setTimeout(() => {
+      //       setIsLoading(false);
+      //       setShowLoader(false);
+      //     }, 2000);
+      //   }
+      // };
 
       loadAssets();
       setRegisterBtnWidth(Math.min(200, Math.floor(window.innerWidth * 0.5)));
@@ -595,28 +603,28 @@ export default function Home() {
     if (page !== "home") {
       tl.to(pageWrapper.current, {
         opacity: 0,
-        visibility: "hidden", 
+        visibility: "hidden",
         ease: "ease",
         duration: 0.5,
       });
       tl.to(scope.current, {
-        height: 'fit-content',
-        width: 'fit-content'
-      })
+        height: "fit-content",
+        width: "fit-content",
+      });
       setTimeout(() => {
         setShowBackBtn(true);
       }, 1000);
     } else {
       tl.to(pageWrapper.current, {
         opacity: 1,
-        visibility: "visible", 
+        visibility: "visible",
         ease: "ease",
         duration: 0.5,
       });
       tl.to(scope.current, {
-        height: '100vh',
-        width: '100vw'
-      })
+        height: "100vh",
+        width: "100vw",
+      });
       setTimeout(() => {
         setShowBackBtn(false);
       }, 1000);
@@ -637,9 +645,9 @@ export default function Home() {
       key="mainLandingPage"
       style={{
         position: "relative",
-        overflow: 'hidden',
-        height: '100vh',
-        width: '100vw'
+        overflow: "hidden",
+        height: "100vh",
+        width: "100vw",
       }}
       ref={scope}
     >
@@ -681,65 +689,72 @@ export default function Home() {
             />
           </div>
           <div className={styles.pageWrapper} ref={pageWrapper}>
-                  <Image src={updatedBgLibraryImage} className={styles.pageBgImage}/>
+            <Image src={updatedBgLibraryImage} className={styles.pageBgImage} />
             <div
               className={styles.hamSection}
               style={isHamOpen ? { zIndex: 10 } : { zIndex: 2 }}
             >
               <div className={styles.hamBtn}>
-              <AnimatePresence>
-              <div className={styles.hamAsset}>
-              <Image
-              src="/static/images/hamIcon.svg"
-              width={103}
-              height={103}
-              alt="Menu"
-              />
-              <div
-              id="ham-menu"
-              className={styles.hamIcon}
-              onClick={openHam}
-              >
-              <span id="hamIcon1" className={styles.hamIcon1}></span>
-              <span id="hamIcon2" className={styles.hamIcon2}></span>
-              <span id="hamIcon3" className={styles.hamIcon3}></span>
-              </div>
-              </div>
-              
-              {isHamOpen ? (
-                <motion.div
-                key="hamBG"
-                className={styles.hamBG}
-                style={{
-                  height: `${innerHeight / 10}px`,
-                  width: `${innerHeight / 10}px`,
-                }}
-                initial={{ scale: 0 }}
-                animate={{ scale: 50 }}
-                exit={{ scale: 0, transition: { delay: 1.5 } }}
-                transition={{ duration: 1 }}
-                ></motion.div>
-                ) : (
-                  <div style={{ display: "none" }}></div>
-                  )}
-                  </AnimatePresence>
+                <Image
+                  src="/static/images/navLogo.png"
+                  width={60}
+                  height={60}
+                  className={styles.navLogoImg}
+                  alt="Text Oasis Logo"
+                />
+                <AnimatePresence>
+                  <div className={styles.hamAsset}>
+                    <Image
+                      src="/static/images/hamIcon.svg"
+                      width={103}
+                      height={103}
+                      alt="Menu"
+                    />
+                    <div
+                      id="ham-menu"
+                      className={styles.hamIcon}
+                      onClick={openHam}
+                    >
+                      <span id="hamIcon1" className={styles.hamIcon1}></span>
+                      <span id="hamIcon2" className={styles.hamIcon2}></span>
+                      <span id="hamIcon3" className={styles.hamIcon3}></span>
+                    </div>
                   </div>
-                  <AnimatePresence>
+
                   {isHamOpen ? (
                     <motion.div
+                      key="hamBG"
+                      className={styles.hamBG}
+                      style={{
+                        height: `${innerHeight / 10}px`,
+                        width: `${innerHeight / 10}px`,
+                      }}
+                      initial={{ scale: 0 }}
+                      animate={{ scale: 50 }}
+                      exit={{ scale: 0, transition: { delay: 1.5 } }}
+                      transition={{ duration: 1 }}
+                    ></motion.div>
+                  ) : (
+                    <div style={{ display: "none" }}></div>
+                  )}
+                </AnimatePresence>
+              </div>
+              <AnimatePresence>
+                {isHamOpen ? (
+                  <motion.div
                     key="hamMenu"
                     initial={{ opacity: 0 }}
                     animate={{ opacity: 1 }}
                     exit={{ opacity: 0, transition: { delay: 1.5 } }}
                     transition={{ delay: 0.25, duration: 0.5 }}
-                    >
+                  >
                     <Hamburger />
-                    </motion.div>
-                    ) : (
-                      <div style={{ display: "none" }}></div>
-                      )}
-                      </AnimatePresence>
-                    </div> 
+                  </motion.div>
+                ) : (
+                  <div style={{ display: "none" }}></div>
+                )}
+              </AnimatePresence>
+            </div>
             <div className={styles["navSection"]}>
               <AnimatePresence>
                 {isHamOpen ? (
