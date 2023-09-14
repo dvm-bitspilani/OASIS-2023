@@ -10,15 +10,15 @@ const RadioButton = ({ name, id, value, onChange, checked, text }) => {
       className="radio-label"
       id="radio-label"
       onPointerDown={(e) => {
+        const allLabels = document.querySelectorAll("label");
+        allLabels.forEach((label) => {
+          if (label.classList.contains(styles.labelFocus)){
+          label.classList.remove(styles.labelFocus);
+          }
+        });
         const targetLabel = e.target.parentElement.parentElement.previousSibling || e.target.parentElement.previousSibling;
-        if (targetLabel !== null) {
+        if (targetLabel !== null && targetLabel.innerText === "GENDER") {
           console.log(targetLabel)
-          const allLabels = document.querySelectorAll("label");
-          allLabels.forEach((label) => {
-            if (label.classList.contains(styles.labelFocus)){
-            label.classList.remove(styles.labelFocus);
-            }
-          });
           targetLabel.classList.add(
             styles.labelFocus
           );
