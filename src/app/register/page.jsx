@@ -19,7 +19,7 @@ import styles from "./page.module.css";
 import indexStyles from "../page.module.css";
 import skull from "../../../public/static/images/skull.svg";
 import book from "../../../public/static/images/regBookOptimised.png";
-import register from "../../../public/static/images/registerBtn.svg";
+import register from "../../../public/static/images/regPageBtn.png";
 import regLogo from "../../../public/static/images/OasisLogo.png";
 import cross from "../../../public/static/images/cross.svg";
 import { useWindowSize } from "rooks";
