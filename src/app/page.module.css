@@ -33,6 +33,15 @@
   scrollbar-width: none;
   -ms-overflow-style: none; 
 }
+.contactsWrapper{
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100vh;
+  width: 100vw;
+  scrollbar-width: none;
+  -ms-overflow-style: none; 
+}
 .eventsWrapper::-webkit-scrollbar {
   display: none;
 }

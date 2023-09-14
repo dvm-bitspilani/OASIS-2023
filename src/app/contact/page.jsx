@@ -21,11 +21,13 @@ const Page = () => {
     const [isLoading, setIsLoading] = useState(false);
      const [hoveredProfileIndex, setHoveredProfileIndex] = useState(null);
   // const [hoveredProfile, setHoveredProfile] = useState(null);
+  
   const [hoveredProfile, setHoveredProfile] = useState({
     name: 'Sarthak Arora',
     dept: 'Website, App & Online Payments',
     image: sarthak.src,
   });
+
   const handleMouseOver = (image, profile, index) => {
     setImageSrc(image);
     setHoveredProfileIndex(index);
