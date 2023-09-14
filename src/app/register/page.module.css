@@ -118,11 +118,12 @@
   font-family: "KoPub Batang";
   font-size: 2rem;
   margin-top: 3rem;
+  transform-origin: bottom left;
   transition: all 0.2s ease;
 }
 
 .labelFocus{
-  font-size: 1.5rem !important;
+  scale: 0.8 !important;
 }
 
 .errorMessage{
