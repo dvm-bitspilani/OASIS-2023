@@ -17,6 +17,7 @@ import leftElements from "../../public/static/images/landingPgLeftElements.png";
 import updatedBgLibraryImage from "../../public/static/images/updatedLibraryBgImage.png";
 
 import Events from "@/components/Events";
+import Contact from "@/components/Contact";
 import TransitionLeft from "../../public/static/images/TransitionLeft.png";
 import TransitionRight from "../../public/static/images/TransitionRight.png";
 // import MyVideoLoader from "@/components/VideoLoader";
@@ -859,6 +860,9 @@ export default function Home() {
               showBackBtn={showBackBtn}
               handleTransition={handleTransition}
             />
+          </div>
+          <div className={styles.contactsWrapper}>
+            <Contact />
           </div>
         </>
       )}
