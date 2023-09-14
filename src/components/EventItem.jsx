@@ -8,7 +8,7 @@ const EventItem = ({ name, desc, image, top, left }) => {
     <>
       <div className={events.itemContainer} style={{top: top, left: left}}>
         <div className={events.itemImage}>
-        <Image src={Item} height={240} width={362} alt="Street Dance"></Image>
+        <Image draggable={false} src={Item} height={240} width={362} alt="Street Dance"></Image>
         </div>
         <div className={events.itemContent}>
           <h2>{name}</h2>

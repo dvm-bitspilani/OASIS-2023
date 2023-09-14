@@ -1139,6 +1139,7 @@ export default function Page() {
       {isLoading && (
         // <div className={styles.regLoader}>
         //   <Image
+        //     draggable={false}
         //     ref={regLoaderRef}
         //     id="regLogoImage"
         //     src={regLogo}
@@ -1168,6 +1169,7 @@ export default function Page() {
             src={cross}
             alt="close"
             className={styles.close}
+            draggable={false}
           />
         )}
         {innerWidth > 700 && (
@@ -1193,6 +1195,7 @@ export default function Page() {
           <div className={styles.scrollBarContainer} onClick={handleTrackSnap}>
             <div className={styles.scrollBar}></div>
             <Image
+            draggable={false}
               onMouseDown={handleSkullMouseDown}
               onTouchStart={handleSkullMouseDown}
               id="skull"
@@ -1447,6 +1450,7 @@ export default function Page() {
             </div>
             <div className={styles.regBtnContainer}>
               <Image
+                draggable={false}
                 src={register}
                 onClick={handleRegisterations}
                 alt=""
@@ -1481,7 +1485,7 @@ export default function Page() {
               {randomSetImagesBottomLeft2}
             </div>
 
-            <Image src={book} alt="" style={{ transform: "scaleX(.8)" }} />
+            <Image draggable={false} src={book} alt="" style={{ transform: "scaleX(.8)" }} />
           </motion.div>
         )}
       </div>

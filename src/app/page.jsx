@@ -100,7 +100,7 @@ export default function Home() {
 
   const randomSetImageRight2 = randomRight2.map((item, key) => {
     return (
-      <Image
+      <Image 
         key={key}
         id={`right_2_${key}`}
         className={styles.rightSymbol}
@@ -667,7 +667,7 @@ export default function Home() {
       ) : (
         <>
           <div className={styles.pageTransition}>
-            <Image
+            <Image draggable={false}
               src={TransitionLeft}
               width={1037}
               height={980}
@@ -675,7 +675,7 @@ export default function Home() {
               style={{ transform: "translateX(-100%)" }}
               alt=""
             />
-            <Image
+            <Image draggable={false}
               src={TransitionRight}
               width={1037}
               height={980}
@@ -689,13 +689,13 @@ export default function Home() {
             />
           </div>
           <div className={styles.pageWrapper} ref={pageWrapper}>
-            <Image src={updatedBgLibraryImage} className={styles.pageBgImage} />
+            <Image draggable={false} src={updatedBgLibraryImage} className={styles.pageBgImage} />
             <div
               className={styles.hamSection}
               style={isHamOpen ? { zIndex: 10 } : { zIndex: 2 }}
             >
               <div className={styles.hamBtn}>
-                <Image
+                <Image draggable={false}
                   src="/static/images/navLogo.png"
                   width={60}
                   height={60}
@@ -704,7 +704,7 @@ export default function Home() {
                 />
                 <AnimatePresence>
                   <div className={styles.hamAsset}>
-                    <Image
+                    <Image draggable={false}
                       src="/static/images/hamIcon.svg"
                       width={103}
                       height={103}
@@ -773,7 +773,7 @@ export default function Home() {
               </AnimatePresence>
             </div>
             {/* <div className={styles.navLogo}>
-              <Image src={navLogo} />
+              <Image draggable={false} src={navLogo} />
             </div> */}
             <AnimatePresence mode="wait">
               <motion.div
@@ -787,7 +787,7 @@ export default function Home() {
                 }`}
               >
                 <div className={styles.textLogoWrapper}>
-                  <Image
+                  <Image draggable={false}
                     src={textLogo}
                     // layout="fill"
                     className={styles.textLogoImg}
@@ -796,7 +796,7 @@ export default function Home() {
                 </div>
                 <div className={styles.bookImgWrapper}>
                   <div className={styles.leftElements}>
-                    {/* <Image
+                    {/* <Image draggable={false}
                     src={leftElements}
                     className={styles.landingPgLeftGrp}
                     alt="Element"
@@ -804,13 +804,13 @@ export default function Home() {
                     {randomSetImageLeft1}
                     {randomSetImageLeft2}
                   </div>
-                  <Image
+                  <Image draggable={false} 
                     src={landingPgBookImg}
                     className={styles.LandingBookImg}
                     alt="Book"
                   />
                   <div className={styles.rightElements}>
-                    {/* <Image
+                    {/* <Image draggable={false} 
                     src={rightElements}
                     className={styles.landingPgRightGrp}
                     alt="Element"
@@ -836,7 +836,7 @@ export default function Home() {
                     >
                       <Link href="/register" legacyBehavior>
                         <a className={styles.registerBtnWrapper}>
-                          <Image
+                          <Image draggable={false}
                             src="/static/images/updatedLandingRegBtn.png"
                             width={RegisterBtnWidth}
                             height={RegisterBtnHeight}
