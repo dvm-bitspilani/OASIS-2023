@@ -604,107 +604,36 @@ export default function Home() {
       duration: 1,
       ease: "power2.inOut",
     });
-    switch (page) {
-      case "contact":
-        tl.to(contactsWrapper.current, {
-          opacity: 1,
-          visibility: "visible",
-          ease: "ease",
-          duration: 0.15,
-        });
-        tl.to(eventsWrapper.current, {
-          opacity: 0,
-          visibility: "hidden",
-          ease: "ease",
-          duration: 0.15,
-        });
-        tl.to(pageWrapper.current, {
-          opacity: 0,
-          visibility: "hidden",
-          ease: "ease",
-          duration: 0.15,
-        });
-        tl.to(navSection.current, {
-          opacity: 1,
-          visibility: "visible",
-          ease: "ease",
-          duration: 0.5,
-        });
-        setTimeout(() => {
-          setShowBackBtn(false);
-        }, 1000);
-        tl.to(scope.current, {
-          height: "100vh",
-          width: "100vw",
-        });
-        break;
-      case "events":
-        tl.to(eventsWrapper.current, {
-          opacity: 1,
-          visibility: "visible",
-          ease: "ease",
-          duration: 0.15,
-        });
-        setTimeout(() => {
-          setShowBackBtn(true);
-        }, 1000);
-        tl.to(contactsWrapper.current, {
-          opacity: 0,
-          visibility: "hidden",
-          ease: "ease",
-          duration: 0.15,
-        });
-        tl.to(pageWrapper.current, {
-          opacity: 0,
-          visibility: "hidden",
-          ease: "ease",
-          duration: 0.15,
-        });
-        tl.to(navSection.current, {
-          opacity: 0,
-          visibility: "hidden",
-          ease: "ease",
-          duration: 0.5,
-        });
-        tl.to(scope.current, {
-          height: "fit-content",
-          width: "fit-content",
-        });
-        break;
-      case "home":
-        tl.to(contactsWrapper.current, {
-          opacity: 0,
-          visibility: "hidden",
-          ease: "ease",
-          duration: 0.15,
-        });
-        tl.to(eventsWrapper.current, {
-          opacity: 0,
-          visibility: "hidden",
-          ease: "ease",
-          duration: 0.15,
-        });
-        tl.to(pageWrapper.current, {
-          opacity: 1,
-          visibility: "visible",
-          ease: "ease",
-          duration: 0.15,
-        });
-        tl.to(navSection.current, {
-          opacity: 1,
-          visibility: "visible",
-          ease: "ease",
-          duration: 0.5,
-        });
-        setTimeout(() => {
-          setShowBackBtn(false);
-        }, 1000);
-        tl.to(scope.current, {
-          height: "100vh",
-          width: "100vw",
-        });
-        break;
+    const elements = {
+      contact: contactsWrapper,
+      events: eventsWrapper,
+      home: pageWrapper,
+    };
+  
+    for (const key in elements) {
+      const element = elements[key].current;
+      const opacity = key === page ? 1 : 0;
+      const visibility = key === page ? "visible" : "hidden";
+      const duration = key === page ? 0.15 : 0.5;
+  
+      tl.to(element, { opacity, visibility, ease: "ease", duration });
     }
+  
+    tl.to(navSection.current, {
+      opacity: page !== "events" ? 1 : 0,
+      visibility: page !== "events" ? "visible" : "hidden",
+      ease: "ease",
+      duration: 0.5,
+    });
+  
+    setTimeout(() => {
+      setShowBackBtn(page !== "home");
+    }, 1000);
+  
+    tl.to(scope.current, {
+      height: page !== "events" ? "100vh" : "fit-content",
+      width: page !== "events" ? "100vw" : "fit-content",
+    });
 
     tl.to(transitionLeft.current, {
       x: "-100%",
