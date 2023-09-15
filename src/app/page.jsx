@@ -8,13 +8,18 @@ import { HamContext } from "@/context/HamContextProvider";
 import Link from "next/link";
 import { Metadata } from "next";
 import textLogo from "../../public/static/images/updatedOasisLogo.png";
-import navLogo from "../../public/static/images/navLogo.png"
+import navLogo from "../../public/static/images/navLogo.png";
 import Navbar from "@/components/Navbar";
 import Hamburger from "@/components/hamburger";
 import landingPgBookImg from "../../public/static/images/updatedLandingPageBook.png";
 import rightElements from "../../public/static/images/landingPgRightElements.png";
 import leftElements from "../../public/static/images/landingPgLeftElements.png";
 import updatedBgLibraryImage from "../../public/static/images/updatedLibraryBgImage.png";
+
+import Events from "@/components/Events";
+import Contact from "@/components/Contact";
+import TransitionLeft from "../../public/static/images/TransitionLeft.png";
+import TransitionRight from "../../public/static/images/TransitionRight.png";
 // import MyVideoLoader from "@/components/VideoLoader";
 import { gsap } from "gsap";
 import { AnimatePresence, motion } from "framer-motion";
@@ -109,45 +114,86 @@ export default function Home() {
     );
   });
   const [allAssetsLoaded, setAllAssetsLoaded] = useState(false);
+  const [showBackBtn, setShowBackBtn] = useState(false);
+
+  const pageWrapper = useRef(null);
+  const navSection = useRef(null);
+  const contactsWrapper = useRef(null);
+  const eventsWrapper = useRef(null);
+  const transitionLeft = useRef(null);
+  const transitionRight = useRef(null);
+
   useEffect(() => {
     if (typeof window !== "undefined") {
       // console.log('first')
       setIsLoading(true);
       setShowLoader(true);
-      const assets = [textLogo, landingPgBookImg, rightElements, leftElements, updatedBgLibraryImage];
+      const assets = [
+        textLogo.src,
+        landingPgBookImg.src,
+        rightElements.src,
+        leftElements.src,
+        updatedBgLibraryImage.src,
+      ];
       // console.log('second')
-      const loadAssets = () => {
+      const loadAssets = async () => {
         const assetPromises = assets.map((asset) => {
           if (asset) {
             return new Promise((resolve, reject) => {
-              const img = new Image();
+              // const img = new img();
+              const img = document.createElement("img");
               img.onload = resolve;
               img.onerror = reject;
               img.src = asset;
             });
           }
         });
-
+        const results = await Promise.allSettled(assetPromises);
+        const allSuccessful = results.every(
+          (result) => result.status === "fulfilled"
+        );
         Promise.all(assetPromises)
           .then(() => {
             setAllAssetsLoaded(true);
+            console.log("loaded");
             setTimeout(() => {
               setIsLoading(false);
               setShowLoader(false);
-            }, 10000);
+            }, 5000);
             // console.log('All assets loaded successfully');
           })
           .catch((error) => {
             console.error("Error loading assets:", error);
             // setIsLoading(false);
             setAllAssetsLoaded(true);
-            // setShowLoader(false);
+            console.log("loaded");
+            setShowLoader(false);
             setTimeout(() => {
               setIsLoading(false);
               setShowLoader(false);
-            }, 2000);
+            }, 3000);
           });
       };
+      //   if (allSuccessful) {
+      //     setAllAssetsLoaded(true);
+      //     console.log('loaded')
+      //     // setTimeout(() => {
+      //       setIsLoading(false);
+      //       setShowLoader(false);
+      //     // }, 10000);
+      //     // console.log('All assets loaded successfully');
+      //   } else {
+      //     console.error("Error loading assets:", results);
+      //     // setIsLoading(false);
+      //     setAllAssetsLoaded(true);
+      //     // setShowLoader(false);
+      //     setTimeout(() => {
+      //       setIsLoading(false);
+      //       setShowLoader(false);
+      //     }, 2000);
+      //   }
+      // };
+
       loadAssets();
       setRegisterBtnWidth(Math.min(200, Math.floor(window.innerWidth * 0.5)));
       setRegisterBtnHeight(75);
@@ -467,96 +513,220 @@ export default function Home() {
 
   const { innerWidth, innerHeight } = useWindowSize();
 
-  const regLoaderRef = useRef(null);
-  const [loaderLoaded, setLoaderLoaded] = useState(false);
-  useEffect(() => {
-    const assets = [regLoaderRef.current];
-    let assetsLoaded = 0;
+  // const regLoaderRef = useRef(null);
+  // const [loaderLoaded, setLoaderLoaded] = useState(false);
+  // useEffect(() => {
+  //   const assets = [regLoaderRef.current];
+  //   let assetsLoaded = 0;
 
-    const handleAssetLoad = () => {
-      assetsLoaded++;
-      if (assetsLoaded === assets.length) {
-        setTimeout(() => {
-          setLoaderLoaded(true);
-        }, 1000);
-      }
+  //   const handleAssetLoad = () => {
+  //     assetsLoaded++;
+  //     if (assetsLoaded === assets.length) {
+  //       setTimeout(() => {
+  //         setLoaderLoaded(true);
+  //       }, 1000);
+  //     }
+  //   };
+
+  //   assets.forEach((asset) => {
+  //     if (
+  //       asset &&
+  //       (asset.complete || asset.readyState === 4 || asset.tagName === "LINK")
+  //     ) {
+  //       handleAssetLoad();
+  //     } else {
+  //       if (asset) {
+  //         asset.addEventListener("load", handleAssetLoad);
+  //         asset.addEventListener("error", handleAssetLoad);
+  //       }
+  //     }
+  //   });
+
+  //   const cleanup = () => {
+  //     assets.forEach((asset) => {
+  //       if (asset) {
+  //         asset.removeEventListener("load", handleAssetLoad);
+  //         asset.removeEventListener("error", handleAssetLoad);
+  //       }
+  //     });
+  //   };
+
+  //   return cleanup;
+  // }, []);
+  // useEffect(() => {
+  //   if (loaderLoaded) {
+  //     const assets = document.querySelectorAll(
+  //       "img",
+  //       "font",
+  //       "style",
+  //       "iframe"
+  //     );
+
+  //     let assetsLoaded = 0;
+
+  //     const handleAssetLoad = () => {
+  //       assetsLoaded++;
+  //       if (assetsLoaded === assets.length) {
+  //         setTimeout(() => {
+  //           setIsLoading(false);
+  //         }, 2000);
+  //       }
+  //     };
+
+  //     assets.forEach((asset) => {
+  //       if (
+  //         asset.complete ||
+  //         asset.readyState === 4 ||
+  //         asset.tagName === "LINK"
+  //       ) {
+  //         handleAssetLoad();
+  //       } else {
+  //         asset.addEventListener("load", handleAssetLoad);
+  //         asset.addEventListener("error", handleAssetLoad);
+  //       }
+  //     });
+
+  //     const cleanup = () => {
+  //       assets.forEach((asset) => {
+  //         asset.removeEventListener("load", handleAssetLoad);
+  //         asset.removeEventListener("error", handleAssetLoad);
+  //       });
+  //     };
+
+  //     return cleanup;
+  //   }
+  // }, [loaderLoaded]);
+
+  const handleTransition = (page) => {
+    var tl = gsap.timeline();
+    tl.to([transitionLeft.current, transitionRight.current], {
+      x: 0,
+      duration: 1,
+      ease: "power2.inOut",
+    });
+    const elements = {
+      contact: contactsWrapper,
+      events: eventsWrapper,
+      home: pageWrapper,
     };
 
-    assets.forEach((asset) => {
-      if (
-        asset &&
-        (asset.complete || asset.readyState === 4 || asset.tagName === "LINK")
-      ) {
-        handleAssetLoad();
-      } else {
-        if (asset) {
-          asset.addEventListener("load", handleAssetLoad);
-          asset.addEventListener("error", handleAssetLoad);
-        }
-      }
+    for (const key in elements) {
+      const element = elements[key].current;
+      const opacity = key === page ? 1 : 0;
+      const visibility = key === page ? "visible" : "hidden";
+      const duration = key === page ? 0.15 : 0.5;
+
+      tl.to(element, { opacity, visibility, ease: "ease", duration });
+    }
+
+    tl.to(navSection.current, {
+      opacity: page !== "events" ? 1 : 0,
+      visibility: page !== "events" ? "visible" : "hidden",
+      ease: "ease",
+      duration: 0.5,
     });
 
-    const cleanup = () => {
-      assets.forEach((asset) => {
-        if (asset) {
-          asset.removeEventListener("load", handleAssetLoad);
-          asset.removeEventListener("error", handleAssetLoad);
-        }
-      });
-    };
+    setTimeout(() => {
+      setShowBackBtn(page !== "home");
+    }, 1000);
 
-    return cleanup;
-  }, []);
-  useEffect(() => {
-    if (loaderLoaded) {
-      const assets = document.querySelectorAll(
-        "img",
-        "font",
-        "style",
-        "iframe"
-      );
+    tl.to(scope.current, {
+      height: page !== "events" ? "100vh" : "fit-content",
+      width: page !== "events" ? "100vw" : "fit-content",
+    });
 
-      let assetsLoaded = 0;
+    tl.to(transitionLeft.current, {
+      x: "-100%",
+      duration: 1,
+      ease: "power2.inOut",
+    });
+    tl.to(
+      transitionRight.current,
+      { x: "100%", duration: 1, ease: "power2.inOut" },
+      "-=1"
+    );
+  };
 
-      const handleAssetLoad = () => {
-        assetsLoaded++;
-        if (assetsLoaded === assets.length) {
-          setTimeout(() => {
-            setIsLoading(false);
-          }, 2000);
-        }
-      };
-
-      assets.forEach((asset) => {
-        if (
-          asset.complete ||
-          asset.readyState === 4 ||
-          asset.tagName === "LINK"
-        ) {
-          handleAssetLoad();
-        } else {
-          asset.addEventListener("load", handleAssetLoad);
-          asset.addEventListener("error", handleAssetLoad);
-        }
-      });
-
-      const cleanup = () => {
-        assets.forEach((asset) => {
-          asset.removeEventListener("load", handleAssetLoad);
-          asset.removeEventListener("error", handleAssetLoad);
-        });
-      };
-
-      return cleanup;
-    }
-  }, [loaderLoaded]);
-
+  // const handleTransition = (page) => {
+  //   var tl = gsap.timeline();
+  //   tl.to([transitionLeft.current, transitionRight.current], {
+  //     x: 0,
+  //     duration: 1,
+  //     ease: "power2.inOut",
+  //   });
+  //   if (page !== "home") {
+  //     tl.to(pageWrapper.current, {
+  //       opacity: 0,
+  //       visibility: "hidden",
+  //       ease: "ease",
+  //       duration: 0.5,
+  //     });
+  //     tl.to(scope.current, {
+  //       height: "fit-content",
+  //       width: "fit-content",
+  //     });
+  //     if (page === "events") {
+  //       tl.to(eventsWrapper.current, {
+  //         opacity: 1,
+  //         visibility: "visible",
+  //         ease: "ease",
+  //         duration: 0.5,
+  //       });
+  //       setTimeout(() => {
+  //         setShowBackBtn(true);
+  //       }, 1000);
+  //     } else {
+  //       if (page === "contact") {
+  //         tl.to(eventsWrapper.current, {
+  //           opacity: 0,
+  //           visibility: "hidden",
+  //           ease: "ease",
+  //           duration: 0.5,
+  //         });
+  //         tl.to(contactsWrapper.current, {
+  //           opacity: 1,
+  //           visibility: "visible",
+  //           ease: "ease",
+  //           duration: 0.5,
+  //         });
+  //       }
+  //     }
+  //   } else {
+  //     tl.to(pageWrapper.current, {
+  //       opacity: 1,
+  //       visibility: "visible",
+  //       ease: "ease",
+  //       duration: 0.5,
+  //     });
+  //     tl.to(scope.current, {
+  //       height: "100vh",
+  //       width: "100vw",
+  //     });
+  //     setTimeout(() => {
+  //       setShowBackBtn(false);
+  //     }, 1000);
+  //   }
+  //   tl.to(transitionLeft.current, {
+  //     x: "-100%",
+  //     duration: 1,
+  //     ease: "power2.inOut",
+  //   });
+  //   tl.to(
+  //     transitionRight.current,
+  //     { x: "100%", duration: 1, ease: "power2.inOut" },
+  //     "-=1"
+  //   );
+  // };
   return (
     <main
       key="mainLandingPage"
       style={{
         position: "relative",
+        overflow: "hidden",
+        height: "100vh",
+        width: "100vw",
       }}
+      suppressHydrationWarning 
       ref={scope}
     >
       {isLoading ? (
@@ -574,99 +744,115 @@ export default function Home() {
         </div>
       ) : (
         <>
-          <div className={styles.pageWrapper}>
-        <Image src={updatedBgLibraryImage} className={styles.pageBgImage}/>
-            
-            <div className={styles.navLogo}>
-              <Image
-                src="/static/images/navLogo.png"
-                width={60}
-                height={60}
-                className={styles.navLogoImg}
-                alt="Text Oasis Logo"
-              />
-            </div>
-            {/* <div
+          <div className={styles.pageTransition}>
+            <Image
+              draggable={false}
+              src={TransitionLeft}
+              width={1037}
+              height={980}
+              ref={transitionLeft}
+              style={{ transform: "translateX(-100%)" }}
+              suppressHydrationWarning 
+              alt=""
+            />
+            <Image
+              draggable={false}
+              src={TransitionRight}
+              width={1037}
+              height={980}
+              style={{
+                position: "fixed",
+                right: "0",
+                transform: "translateX(100%)",
+              }}
+              suppressHydrationWarning 
+              ref={transitionRight}
+              alt=""
+            />
+          </div>
+          <div className={styles.pageWrapper} ref={pageWrapper}>
+            <Image
+              draggable={false}
+              src={updatedBgLibraryImage}
+              className={styles.pageBgImage}
+              alt=""
+            />
+            <div
               className={styles.hamSection}
               style={isHamOpen ? { zIndex: 10 } : { zIndex: 2 }}
+              suppressHydrationWarning 
             >
               <div className={styles.hamBtn}>
-              <AnimatePresence>
-              <div className={styles.hamAsset}>
-              <Image
-              src="/static/images/hamIcon.svg"
-              width={103}
-              height={103}
-              alt="Menu"
-              />
-              <div
-              id="ham-menu"
-              className={styles.hamIcon}
-              onClick={openHam}
-              >
-              <span id="hamIcon1" className={styles.hamIcon1}></span>
-              <span id="hamIcon2" className={styles.hamIcon2}></span>
-              <span id="hamIcon3" className={styles.hamIcon3}></span>
-              </div>
-              </div>
-              
-              {isHamOpen ? (
-                <motion.div
-                key="hamBG"
-                className={styles.hamBG}
-                style={{
-                  height: `${innerHeight / 10}px`,
-                  width: `${innerHeight / 10}px`,
-                }}
-                initial={{ scale: 0 }}
-                animate={{ scale: 50 }}
-                exit={{ scale: 0, transition: { delay: 1.5 } }}
-                transition={{ duration: 1 }}
-                ></motion.div>
-                ) : (
-                  <div style={{ display: "none" }}></div>
-                  )}
-                  </AnimatePresence>
+                <Image
+                  draggable={false}
+                  src="/static/images/navLogo.png"
+                  width={60}
+                  height={60}
+                  className={styles.navLogoImg}
+                  alt="Text Oasis Logo"
+                />
+                <AnimatePresence>
+                  <div key="hamAsset" className={styles.hamAsset}>
+                    <Image
+                      draggable={false}
+                      src="/static/images/hamIcon.svg"
+                      width={103}
+                      height={103}
+                      alt="Menu"
+                    />
+                    <div
+                      id="ham-menu"
+                      className={styles.hamIcon}
+                      onClick={openHam}
+                    >
+                      <span id="hamIcon1" className={styles.hamIcon1}></span>
+                      <span id="hamIcon2" className={styles.hamIcon2}></span>
+                      <span id="hamIcon3" className={styles.hamIcon3}></span>
+                    </div>
                   </div>
-                  <AnimatePresence>
+
                   {isHamOpen ? (
                     <motion.div
+                      key="hamBG"
+                      className={styles.hamBG}
+                      style={{
+                        height: `${innerHeight / 10}px`,
+                        width: `${innerHeight / 10}px`,
+                      }}
+                      suppressHydrationWarning 
+                      initial={{ scale: 0 }}
+                      animate={{ scale: 50 }}
+                      exit={{ scale: 0, transition: { delay: 1.5 } }}
+                      transition={{ duration: 1 }}
+                    ></motion.div>
+                  ) : (
+                    <div key="hiddenDiv" style={{ display: "none" }} suppressHydrationWarning ></div>
+                  )}
+                </AnimatePresence>
+              </div>
+              <AnimatePresence>
+                {isHamOpen ? (
+                  <motion.div
                     key="hamMenu"
                     initial={{ opacity: 0 }}
                     animate={{ opacity: 1 }}
                     exit={{ opacity: 0, transition: { delay: 1.5 } }}
                     transition={{ delay: 0.25, duration: 0.5 }}
-                    >
-                    <Hamburger />
-                    </motion.div>
-                    ) : (
-                      <div style={{ display: "none" }}></div>
-                      )}
-                      </AnimatePresence>
-                    </div> */}
-            <div className={styles["navSection"]}>
-              <AnimatePresence>
-                {isHamOpen ? (
-                  <div style={{ display: "none" }}></div>
-                ) : (
-                  <motion.div
-                    key="navigation"
-                    initial={{ opacity: 0 }}
-                    animate={{ opacity: 1, transition: { delay: 1.5 } }}
-                    exit={{ opacity: 0 }}
-                    transition={{ delay: 0.5 }}
-                    style={{display: 'none'}}
                   >
-                    <Navbar />
+                    <Hamburger />
                   </motion.div>
+                ) : (
+                  <div key="hiddenDiv2" style={{ display: "none" }} suppressHydrationWarning ></div>
                 )}
               </AnimatePresence>
             </div>
+
             {/* <div className={styles.navLogo}>
-              <Image src={navLogo} />
+              <Image draggable={false} src={navLogo} alt=""/>
             </div> */}
             <AnimatePresence mode="wait">
               <motion.div
+                key="midSection"
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 exit={{ opacity: 0 }}
@@ -676,17 +862,18 @@ export default function Home() {
                   isLoading ? "loaded" : ""
                 }`}
               >
-                <div className={styles.textLogoWrapper}>
+                <div key="textLogoWrapper" className={styles.textLogoWrapper}>
                   <Image
+                    draggable={false}
                     src={textLogo}
                     // layout="fill"
                     className={styles.textLogoImg}
                     alt="OASIS"
                   />
                 </div>
-                <div className={styles.bookImgWrapper}>
+                <div key="bookImgWrapper" className={styles.bookImgWrapper}>
                   <div className={styles.leftElements}>
-                    {/* <Image
+                    {/* <Image draggable={false}
                     src={leftElements}
                     className={styles.landingPgLeftGrp}
                     alt="Element"
@@ -695,12 +882,13 @@ export default function Home() {
                     {randomSetImageLeft2}
                   </div>
                   <Image
+                    draggable={false}
                     src={landingPgBookImg}
                     className={styles.LandingBookImg}
                     alt="Book"
                   />
                   <div className={styles.rightElements}>
-                    {/* <Image
+                    {/* <Image draggable={false} 
                     src={rightElements}
                     className={styles.landingPgRightGrp}
                     alt="Element"
@@ -711,7 +899,7 @@ export default function Home() {
                 </div>
                 <AnimatePresence>
                   {isHamOpen ? (
-                    <div style={{ display: "none" }}></div>
+                    <div key="hiddenDiv3" style={{ display: "none" }} suppressHydrationWarning ></div>
                   ) : (
                     <motion.div
                       key="register"
@@ -723,10 +911,12 @@ export default function Home() {
                         position: "absolute",
                         bottom: "50px",
                       }}
+                      suppressHydrationWarning 
                     >
                       <Link href="/register" legacyBehavior>
                         <a className={styles.registerBtnWrapper}>
                           <Image
+                            draggable={false}
                             src="/static/images/updatedLandingRegBtn.png"
                             width={RegisterBtnWidth}
                             height={RegisterBtnHeight}
@@ -743,6 +933,32 @@ export default function Home() {
                 </AnimatePresence>
               </motion.div>
             </AnimatePresence>
+          </div>
+          <div className={styles["navSection"]} ref={navSection}>
+            <AnimatePresence>
+              {isHamOpen ? (
+                <div key="hiddenDiv4" style={{ display: "none" }} suppressHydrationWarning ></div>
+              ) : (
+                <motion.div
+                  key="navigation"
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1, transition: { delay: 1.5 } }}
+                  exit={{ opacity: 0 }}
+                  transition={{ delay: 0.5 }}
+                >
+                  <Navbar handleTransition={handleTransition} />
+                </motion.div>
+              )}
+            </AnimatePresence>
+          </div>
+          <div className={styles.eventsWrapper} ref={eventsWrapper}>
+            <Events
+              showBackBtn={showBackBtn}
+              handleTransition={handleTransition}
+            />
+          </div>
+          <div className={styles.contactsWrapper} ref={contactsWrapper}>
+            <Contact />
           </div>
         </>
       )}

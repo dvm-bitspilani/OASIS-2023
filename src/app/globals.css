@@ -12,15 +12,15 @@
   src: url(../../public/static/fonts/Montserrat.ttf) format('truetype');
 }
 @font-face {
-  font-family: 'KoPub Batang';
-  src: url(../../public/static/fonts/KoPubBatang-Regular.ttf) format('truetype');
-}
-@font-face {
   font-family: 'Mantinia';
   src: url(../../public/static/fonts/Mantinia\ CC\ Regular.ttf) format('truetype');
 }
 @font-face {
-  font-family: 'OldNewsPaper';
+  font-family: 'KoPubBatang';
+  src: url(../../public/static/fonts/KoPubBatang-Regular.ttf) format('truetype');
+}
+@font-face {
+  font-family: 'OldNewspaperTypes';
   src: url(../../public/static/fonts/OldNewspaperTypes.ttf) format('truetype');
 }
 *{
@@ -38,13 +38,24 @@ input:-webkit-autofill:active {
 }
 html{
   overscroll-behavior: none;
-  overflow: hidden;
 }
 html,body{
   margin: 0;
   padding: 0;
-  overflow-x: hidden;
+  /* overflow-x: hidden; */
   height: 100%;
   width:100%;
+  scrollbar-width: none;
 }
+/* body::-webkit-scrollbar {
+  width: 0;
+  height: 0;
+} */
+/* body::-webkit-scrollbar-track {
+  background: transparent;
+} */
+/* body::-webkit-scrollbar-thumb {
+  background: transparent;
+  border: none;
+} */
 

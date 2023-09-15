@@ -1,33 +1,32 @@
 "use client";
 import React, { useState } from "react";
-import styles from "./page.module.css";
+import styles from "./Contact.module.css";
 import { AnimatePresence, motion } from "framer-motion";
-import ImageWrapper from "../../../public/static/images/contacts.png";
-import phone from "../../../public/static/images/phone.svg";
-import mail from "../../../public/static/images/mail.svg";
-import mobilebgImage from "../../../public/static/images/mobileLibraryBgImage.png";
-import updatedbgImage from "../../../public/static/images/updatedLibraryBgImage.png";
-import shivang from "../../../public/static/images/shivang.png";
-import shaurya from "../../../public/static/images/shaurya.png";
-import sarthak from "../../../public/static/images/sarthak.png";
-import supreeth from "../../../public/static/images/supreeth.png";
-import contactGhost from "../../../public/static/images/contactGhost.png";
-import mobileImageWrapper from "../../../public/static/images/updatedMobileContactImageContainer.png";
+import ImageWrapper from "../../public/static/images/contacts.png";
+import phone from "../../public/static/images/phone.svg";
+import mail from "../../public/static/images/mail.svg";
+import mobilebgImage from "../../public/static/images/mobileLibraryBgImage.png";
+import updatedbgImage from "../../public/static/images/updatedLibraryBgImage.png";
+import shivang from "../../public/static/images/shivang.png";
+import shaurya from "../../public/static/images/shaurya.png";
+import sarthak from "../../public/static/images/sarthak.png";
+import supreeth from "../../public/static/images/supreeth.png";
+import contactGhost from "../../public/static/images/contactGhost.png";
+import mobileImageWrapper from "../../public/static/images/updatedMobileContactImageContainer.png";
 import ContactProfile from "@/components/ContactProfile";
 import Image from "next/image";
+
 const Page = () => {
   // console.log(shivang)
   const [imageSrc, setImageSrc] = useState(ImageWrapper);
   const [isLoading, setIsLoading] = useState(false);
   const [hoveredProfileIndex, setHoveredProfileIndex] = useState(null);
   // const [hoveredProfile, setHoveredProfile] = useState(null);
-
   const [hoveredProfile, setHoveredProfile] = useState({
     name: "Sarthak Arora",
     dept: "Website, App & Online Payments",
     image: sarthak.src,
   });
-
   const handleMouseOver = (image, profile, index) => {
     setImageSrc(image);
     setHoveredProfileIndex(index);
@@ -77,6 +76,7 @@ const Page = () => {
       mail: "mailto:collaborations@bits-oasis.org",
     },
   ];
+
   return (
     <>
       <div className={styles.pageWrapper}>
