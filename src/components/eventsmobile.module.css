@@ -1,0 +1,110 @@
+.backBtn {
+    /* display: flex; */
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+    z-index: 100;
+    position: absolute;
+    top: 10vh;
+    left: 50vw;
+}
+
+.backBtn h1 {
+    font-family: "KoPubBatang";
+    color: white;
+    font-size: 2.5rem;
+    position: relative;
+}
+
+.backBtn svg {
+    height: 2rem;
+}
+
+.wrapper {
+    height: 100%;
+    position: relative;
+}
+
+.scrollDist {
+    position: absolute;
+}
+
+.container {
+    position: fixed;
+    height: 100%;
+}
+
+.bgImage {
+    position: fixed;
+    left: 50vw;
+    top: 0;
+    transform: translateX(-37%);
+}
+
+.wrapper img {
+    position: absolute;
+}
+
+.wrapper svg {
+    position: absolute;
+    top: 50vh;
+    left: 50vw;
+    transform-origin: center;
+    height: 1639px;
+    width: auto;
+}
+
+.itemWrapper {
+    height: 100%;
+    width: 500px;
+    position: absolute;
+    top: 5rem;
+    left: 50vw;
+    transform: translateX(-50%);
+}
+
+.itemContainer{
+    position: absolute;
+    display: flex;
+    z-index: 5;
+}
+
+.itemImage img{
+    height: 120px;
+    width: 180px;
+    position: relative;
+}
+
+.itemContent{
+    color: #fff;
+    font-family: "KoPubBatang";
+    font-size: 1.2rem;
+    font-style: normal;
+    line-height: 2.2rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding-bottom: 1.7rem;
+    padding-left: 0.5rem;
+    width: 10rem;
+}
+
+/* .itemContent {
+    margin-top: 1rem;
+    color: #fff;
+    font-family: "KoPubBatang";
+    font-size: 1.5rem;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 2rem;
+} */
+
+/* .itemContent p {
+    margin-top: 0.5rem;
+    color: #fff;
+    font-family: "OldNewspaperTypes";
+    font-size: 1rem;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 1rem;
+} */
