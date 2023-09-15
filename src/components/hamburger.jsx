@@ -228,16 +228,16 @@ export default function Hamburger() {
                 {/* <div className={styles.container}> */}
                 <div className={styles.background}>
                     <div className={styles.glowbox}>
-                        <Image src={glow} id="glow" alt=""></Image>
+                        <Image draggable={false} src={glow} id="glow" alt=""></Image>
                     </div>
                     <div className={`${styles.innercircle} ham-inside-circle`}>
-                        <Image src={innercircle} alt=""></Image>
+                        <Image draggable={false} src={innercircle} alt=""></Image>
                     </div>
                     <div className={`${styles.logo} ham-logo`}>
-                        <Image id="logo" src={logo} alt="" onClick={handleLogoClick}></Image>
+                        <Image draggable={false} id="logo" src={logo} alt="" onClick={handleLogoClick}></Image>
                     </div>
                     <div className={styles.outerpath}>
-                        {/* <Image src={path} id="path"></Image> */}
+                        {/* <Image draggable={false} src={path} id="path"></Image> */}
                         <svg id="path-svg" viewBox="0 0 1044 816" fill="none" xmlns="http://www.w3.org/2000/svg">
                             {/* <path id="base" opacity="0.7" d="M888 417.5C888 622.398 721.898 788.5 517 788.5C312.102 788.5 146 622.398 146 417.5C146 212.602 312.102 46.5 517 46.5C738 46.5 778.5 193 857.5 141.5C936.5 90 1029.5 29 1029.5 29" stroke="#F0F0F0" strokeWidth="0.75" strokeDasharray="5 5" /> */}
                             <path id="path" opacity="0.7" d="M888 417.5C888 622.398 721.898 788.5 517 788.5C312.102 788.5 146 622.398 146 417.5C146 212.602 312.102 46.5 517 46.5C738 46.5 778.5 193 857.5 141.5C936.5 90 1029.5 29 1029.5 29" stroke="#F0F0F0" strokeWidth="1" strokeDasharray="2300" />

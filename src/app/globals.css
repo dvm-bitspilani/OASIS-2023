@@ -12,6 +12,10 @@
   src: url(../../public/static/fonts/Montserrat.ttf) format('truetype');
 }
 @font-face {
+  font-family: 'Mantinia';
+  src: url(../../public/static/fonts/Mantinia\ CC\ Regular.ttf) format('truetype');
+}
+@font-face {
   font-family: 'KoPubBatang';
   src: url(../../public/static/fonts/KoPubBatang-Regular.ttf) format('truetype');
 }
@@ -38,8 +42,20 @@ html{
 html,body{
   margin: 0;
   padding: 0;
-  overflow-x: hidden;
+  /* overflow-x: hidden; */
   height: 100%;
   width:100%;
+  scrollbar-width: none;
 }
+/* body::-webkit-scrollbar {
+  width: 0;
+  height: 0;
+} */
+/* body::-webkit-scrollbar-track {
+  background: transparent;
+} */
+/* body::-webkit-scrollbar-thumb {
+  background: transparent;
+  border: none;
+} */
 

@@ -1,7 +1,8 @@
 .regPage {
   width: 100vw;
-  height: 100vh;
-  background: url(../../../public/static/images/RegisterBG.svg);
+  height: 100dvh;
+  /* background: url(../../../public/static/images/RegisterBG.svg); */
+  background: url(../../../public/static/images/updatedLibraryBgImage.png);
   background-position: center center;
   background-size: cover;
   background-repeat: no-repeat;
@@ -9,39 +10,44 @@
 }
 .regPage h2 {
   color: #5db3f1;
-  font-family: "NightmarePills";
+  font-family: "KoPubBatang";
   font-size: 4.5rem;
   font-weight: 500;
-  padding: 1% 0 0 2%;
-  height: calc(10vh - 0.5rem);
+  /* padding-top: 1rem; */
+  padding: 1rem 0 0 2rem;
+  /* height: calc(10vh - 0.5rem); */
 }
-.regPage button {
+
+.backBtn {
   outline: none;
   background: transparent;
-  border: 2px solid #5db3f1;
+  /* border: 2px solid #5db3f1; */
   position: fixed;
-  top: 1.5rem;
-  right: 1rem;
-  color: #5db3f1;
-  font-family: "NightmarePills";
-  font-size: 1.5rem;
-  line-height: 100%;
+  top: 2rem;
+  right: 2rem;
   transition: all 0.2s ease;
+
+  height: fit-content;
 }
-.regPage button:hover {
-  scale: 1;
+
+.backBtn svg {
+  height: 25px;
+  width: auto;
+  fill: #5db3f1;
+}
+
+.backBtn:hover {
+  scale: 1.1;
   cursor: pointer; /*temporarily*/
-  filter: brightness(100);
-  transition: all 0.2s ease;
 }
 .regForm {
-  height: 70vh;
+  height: 80vh;
   width: 60vw;
   padding: 2%;
   display: flex;
 }
 .scrollBarContainer {
-  height: 90%;
+  height: 100%;
   width: 10%;
   margin: 6% 0;
   display: flex;
@@ -50,7 +56,7 @@
 }
 .scrollBarContainer img {
   position: absolute;
-  transform: translateY(-50%);
+  transform: translateY(-100%);
   /* width: 40px;
   aspect-ratio: 1/1; */
 }
@@ -85,15 +91,18 @@
   display: flex;
   flex-direction: column;
 }
+
 .regBtnContainer {
-  height: 15vh;
-  padding-left: 1%;
+  /* height: 15vh; */
+  /* padding-left: 1%; */
   display: flex;
   align-items: center;
-  margin-top: 5vh;
+  justify-content: center;
+  margin-top: 2rem;
 }
 .regBtnContainer img {
-  height: 5rem;
+  height: 20%;
+  width: 18rem;
   transition: scale 0.25s ease-in-out;
 }
 .regBtnContainer img:hover {
@@ -106,38 +115,63 @@
 }
 .form label {
   color: #5db3f1;
-  font-family: "NightmarePills";
+  font-family: "KoPubBatang";
   font-size: 2rem;
-  margin-top: 2rem;
+  margin-top: 3rem;
+  transform-origin: bottom left;
+  transition: all 0.2s ease;
 }
+
+.labelFocus{
+  scale: 0.8 !important;
+}
+
+.errorMessage{
+  color: red;
+  font-family: "KoPubBatang";
+  font-size: 1.2rem;
+  margin-top: 1rem;
+  margin-bottom: 0;
+
+  text-transform: capitalize;
+}
+
+.radioBtns{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  width: 80%;
+}
+
 .form input {
   outline: none;
   background: transparent;
   border: none;
   border-bottom: 2px solid white;
-  height: 2rem;
+  height: 2.25rem;
   color: #ffffff;
-  font-family: "NightmarePills";
+  font-family: "KoPubBatang";
   font-size: 1.5rem;
 }
 .form input::-webkit-input-placeholder {
   color: rgba(255, 255, 255, 0.6);
-  font-family: "NightmarePills";
-  font-size: 1.5rem;
+  font-family: "KoPubBatang";
+  font-size: 1.2rem;
   opacity: 1;
 }
 
 .form input:-ms-input-placeholder {
   color: rgba(255, 255, 255, 0.6);
-  font-family: "NightmarePills";
-  font-size: 1.5rem;
+  font-family: "KoPubBatang";
+  font-size: 1.2rem;
   opacity: 1;
 }
 
 .form input::placeholder {
   color: rgba(255, 255, 255, 0.6);
-  font-family: "NightmarePills";
-  font-size: 1.5rem;
+  font-family: "KoPubBatang";
+  font-size: 1.2rem;
   opacity: 1;
 }
 .imgContainer {
@@ -155,7 +189,7 @@
   position: absolute;
   top: 0;
   left: 110px;
-  height: 41%;
+  height: 61%;
   width: 250px;
   transform: translateY(-60%) rotateZ(67deg);
   /* border: 2px solid green; */
@@ -165,7 +199,7 @@
   position: absolute;
   bottom: 0;
   left: 5px;
-  height: 41%;
+  height: 61%;
   width: 250px;
   transform: translateY(47%) rotateZ(138deg);
   /* border: 2px solid blue; */
@@ -189,7 +223,7 @@
 }
 .close {
   position: fixed;
-  top: 1rem;
+  top: 1.5rem;
   left: 1rem;
 }
 .loaderContainer {
@@ -224,6 +258,13 @@
   .regPage h2 {
     font-size: 4rem;
   }
+  .scrollBarContainer{
+    height: 88%;
+    margin-block: auto;
+  }
+  .regForm{
+    height: 86vh;
+  }
 }
 @media (max-width: 700px) {
   .regPage h2 {
@@ -232,13 +273,14 @@
   }
   .regBtnContainer {
     justify-content: center;
+    margin-top: 5rem;
   }
   .regBtnContainer img {
-    scale: 0.8;
+    width: 15rem;
   }
-  .regBtnContainer img:hover {
+  /* .regBtnContainer img:hover {
     scale: 0.9;
-  }
+  } */
   .form label {
     font-size: 1.5rem;
   }
@@ -247,6 +289,9 @@
   }
   .regBtnContainer {
     margin-top: 0;
+  }
+  #skull{
+    scale: 0.8;
   }
 }
 @media (max-width: 400px) {

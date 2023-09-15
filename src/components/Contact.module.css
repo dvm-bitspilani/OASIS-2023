@@ -1,0 +1,453 @@
+.pageWrapper{
+    height: 100vh;
+    width: 100vw;
+    background: url(../../public/static/images/updatedLibraryBgImage.png);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.heading{
+    font-size: 3rem;
+    font-family: 'NightmarePills';
+    color: #78BBF0;
+    text-shadow:  0px 2.748150110244751px 25.420387268066406px rgba(120, 187, 240, 0.80);
+    height: 10vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.mainSection{
+    display: flex;
+    justify-content: space-between;
+    width: 100vw;
+    align-items:flex-end;
+    height: 80vh;
+}
+.department{
+    align-self: center;
+    width: 60vw;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.department p {
+    font-size: 1.5rem;
+    font-family: 'Mantinia';
+    padding-block:1rem;
+    font-style: normal;
+font-weight: 500;
+line-height: normal;
+text-transform: uppercase;
+/* width: max-content; */
+height: 3rem;
+transition: color 0.3s, font-size 0.3s;
+}
+.imgWrapper{
+    display: flex;
+    align-items: center;
+    align-self: center;
+    position:absolute;
+    right: 0;
+    width: 40vw;
+}
+.bookImage{
+    /* width: min(40vw,536px);
+    width: max(min(40vw, 536px), 400px); */
+    height: 80vh;
+}
+.contactWrapper{
+    background-color: red;
+}
+.imgName{
+    position: absolute;
+    bottom: 30%;
+    left: 45%;
+    transform: rotate(-5deg);
+    font-family: 'MetalMania';
+    font-size: 2rem;
+    color: rgba(0, 0, 0, 0.8);
+    font-weight: 400;
+}
+.imgDept{
+    position: absolute;
+    bottom: 25%;
+    left: 35%;
+    transform: rotate(-5deg);
+        font-family: 'MetalMania';
+        color: rgba(0, 0, 0, 0.8);
+}
+.icons{
+    position: absolute;
+    bottom: 20%;
+    left: 50%;
+    display: flex;
+    justify-content: space-between;
+    gap: 1rem;
+    display: none;
+}
+.department p:hover{
+    color: #78BBF0; 
+    font-size: 1.8rem;
+text-shadow: 0px 0px 18.91876983642578px #78BBF0, 0px 0px 18.91876983642578px rgba(120, 187, 240, 0.80);
+}
+.icons img{
+  width: 20px;
+  height: auto;
+}
+.details{
+    position: absolute;
+    /* height: 50vh; */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    left: -15%;
+    width: 40vw;
+    scale: 0.75;
+    opacity: 0;
+  transition: opacity 0.5s ease-in-out; 
+}
+.contactDetails{
+    display: flex;
+    flex-direction: column;
+    /* justify-content: center; */
+    align-items: center;
+}
+.iconsContainer a:hover{    
+    transition: all .2s ease-in-out;
+}
+.iconsContainer a:hover img{
+    filter: drop-shadow(0px 0px 10.649142265319824px #5db3f1);
+}
+
+.mobileDetails h1, .contactDetails h1{
+    color: rgba(0, 0, 0, 0.8);
+    font-family:'MetalMania';
+    font-size: 2.5rem;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    text-align: center;
+}
+.mobileDetails h2, .contactDetails h2{
+    color: rgba(0, 0, 0, 0.8);
+    font-family:'MetalMania';
+    font-size: 1.5rem;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    width: max-content;
+    text-align: center;
+}
+.iconsContainer{
+    display: flex;
+    justify-content: center;
+}
+.iconsContainer img{
+    margin: 0 1rem;
+    margin-top: 0.5rem;
+}
+
+.mobilePageWrapper{
+    min-height: 100vh;
+    width: 100vw;
+    z-index: 2;
+    /* background: url('../../../public/static/images/updatedLibraryBgImage.png');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: contain; */
+}
+.mobileContentWrapper{
+    height: 100vh;
+  width: 100vw;
+  overflow: scroll;
+  background: transparent;
+  z-index: 3;
+  position: absolute;
+  top: 0;
+}
+.mobileMainSection{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    padding-bottom: 2rem;
+    gap: 2rem;
+}
+.mobileBgImage{
+    position: fixed;
+    top: 0;
+    height: 100vh;
+    width: 100vw;
+}
+.mobileHeading{
+    text-align: center;
+    height: 20vh;
+    display: flex;
+    align-items: center;
+    justify-content:center ;
+
+}
+.mobileHeading span{
+    color: rgba(120, 187, 240, 1);
+    font-family: 'NightmarePills';
+    font-size: 3rem;
+    z-index: 2;
+}
+
+.mobileIconsContainer{
+    position: absolute;
+    /* top: 270px; */
+    bottom: 15px;
+    display: flex;
+  gap: 2rem;
+
+}
+.mobileDetails{
+    position: relative;
+}
+.mobileDetailsContent{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    left: 50px;
+    top: 5px;
+    width: 75%;
+    height: 100%;
+}
+.mobileDetailsContent > img{
+    width:100px;
+    height: auto;
+}
+.mobileTextDetails{
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+}
+.mobileDetailsName{
+    color: rgba(0, 0, 0, 0.8);
+    font-family:'MetalMania';
+    font-size: 1.5rem;
+    font-style: normal;
+    /* font-weight: 400; */
+    line-height: normal;
+}
+.mobileDetailsDept{
+    color: rgba(0, 0, 0, 0.8);
+    font-family:'MetalMania';
+    font-size: 1rem;
+    font-style: normal;
+    /* font-weight: 400; */
+    line-height: normal;
+    width: 100%;
+    /* width: max-content; */
+}
+.mobileIcons{
+    display: flex;
+    gap: 1rem;
+}
+.mobileCallIcon:hover,.mobileMailIcon:hover{
+    scale: 1.1;
+    cursor: unset;
+}
+@media screen and (max-width: 1340px) {
+    .department p{
+        font-size: 1.2rem;
+    }
+    .department p:hover{
+        font-size: 1.4rem;
+    }
+  }
+  @media screen and (max-width: 1500px) {
+    .details{
+        left: 0%;
+    }
+  }
+  @media screen and (max-width: 1400px) {
+    .details{
+        left: -10%;
+    }
+  }
+  @media screen and (max-width: 1350px) {
+    .details{
+        left: -5%;
+    }
+  }
+  @media screen and (max-width: 1280px) {
+    .details{
+        left: 0%;
+    }
+  }
+  @media screen and (max-width: 1200px) {
+    .details{
+        left: 5%;
+    }
+  }
+  @media screen and (max-width: 1120px) {
+    .details{
+        left: 5%;
+    }
+  }
+  @media screen and (max-width: 1100px) {
+    .details{
+        left: 8%;
+    }
+  }
+  @media screen and (max-width: 1050px) {
+    .details{
+        left: 8%;
+    }
+  }
+@media screen and (max-width: 1000px) {
+    .department p{
+        font-size: 1.2rem;
+        padding-inline:1rem ;
+    }
+    .department p:hover{
+        font-size: 1.3rem;
+    }
+    .details{
+        left: 10%;
+    }
+  }
+@media screen and (max-width: 920px) {
+    .department p{
+        font-size: 1rem;
+    }
+    .department p:hover{
+        font-size: 1.1rem;
+    }
+}
+@media screen and (max-width: 919px) {
+.pageWrapper{
+    display: none;
+}
+}
+@media screen and (max-width: 400px) {
+.mobileHeading span{
+    font-size: 2rem;
+}
+
+/* .newMobileImageWrapper{
+    width: 280px;
+    height: auto;
+} */
+.mobileMainSection{
+    gap: unset;
+}
+.mobileDetails{
+    scale: 0.75;
+}
+}
+@media screen and (max-height: 650px) {
+    .department p{
+        padding-block: 0.5rem;
+    }
+    .imgName{
+        bottom: 25%;
+        left: 45%;
+        
+    }
+    .imgDept{
+        bottom: 20%;
+        left: 35%;
+    }
+}
+
+@media screen and (max-height: 900px) and (min-width: 1200px) {
+.details{
+    scale: 0.75;
+    left: 10%;
+}
+  }
+@media screen and (max-height: 900px) and (min-width: 1500px) {
+.details{
+    scale: 1;
+    left: 0%;
+}
+  }
+@media screen and (max-height: 900px) and (min-width: 1300px) {
+.details{
+    scale: 0.75;
+    left: -5%;
+}
+  }
+  @media screen and (max-height: 750px) and (min-width: 1200px) {
+      .details{
+          scale: 0.75;
+          left: 5%;
+        }
+    }
+    @media screen and (max-height: 750px) and (min-width: 1350px) {
+    .details{
+        scale: 0.75;
+        left: 0%;
+    }
+      }
+    @media screen and (max-height: 750px) and (min-width: 1500px) {
+    .details{
+        scale: 0.75;
+        left: -10%;
+    }
+      }
+@media screen and (max-height: 650px) and (min-width: 900px) {
+.details{
+    scale: 0.6;
+    left: 5%;
+}
+  }
+@media screen and (max-height: 650px) and (min-width: 1000px) {
+.details{
+    scale: 0.6;
+    left: -10%;
+}
+  }
+@media screen and (max-height: 650px) and (min-width: 1300px) {
+.details{
+    scale: 0.6;
+    left: -15%;
+}
+  }
+@media screen and (max-height: 650px) and (min-width: 1500px) {
+.details{
+    scale: 0.6;
+    left: -20%;
+}
+  }
+@media screen and (max-height: 550px) and (min-width: 900px) {
+.details{
+    scale: 0.6;
+    left: 0%;
+}
+  }
+@media screen and (max-height: 550px) and (min-width: 1000px) {
+.details{
+    scale: 0.6;
+    left: -10%;
+}
+  }
+@media screen and (max-height: 550px) and (min-width: 1350px) {
+.details{
+    scale: 0.6;
+    left: -20%;
+}
+  }
+@media screen and (max-height: 550px) and (min-width: 1400px) {
+.details{
+    scale: 0.6;
+    left: -20%;
+}
+  }
+    @media screen and (min-width: 920px) {
+    .mobilePageWrapper{
+        display: none;
+    }
+      }
