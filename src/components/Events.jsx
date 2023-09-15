@@ -254,11 +254,11 @@ const Events = ({ showBackBtn, handleTransition }) => {
             xmlns="http://www.w3.org/2000/svg"
             style={{ position: "absolute" }}
           >
-            <circle id="c" r="10" fill="#f00" />
+            <circle id="c" r="10" fill="#51B6FF" />
             <path
               id="p"
               d="M9.5 32.9988C47.8333 436.832 222.9 1180.4 488.5 1162C820.5 1139 678 -179.001 991 32.9988C1304 244.999 1019 1111.5 1396.5 1162C1774 1212.5 1789.5 32.9989 2110.5 32.9988C2460.5 32.9987 2332 429.499 2299.5 535.5C2256.75 674.927 2245.5 796.5 2198 1162"
-              stroke="#FF0000"
+              stroke="#51B6FF"
               stroke-width="5"
             />
           </svg>

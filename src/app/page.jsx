@@ -101,7 +101,7 @@ export default function Home() {
 
   const randomSetImageRight2 = randomRight2.map((item, key) => {
     return (
-      <Image 
+      <Image
         key={key}
         id={`right_2_${key}`}
         className={styles.rightSymbol}
@@ -117,6 +117,9 @@ export default function Home() {
   const [showBackBtn, setShowBackBtn] = useState(false);
 
   const pageWrapper = useRef(null);
+  const navSection = useRef(null);
+  const contactsWrapper = useRef(null);
+  const eventsWrapper = useRef(null);
   const transitionLeft = useRef(null);
   const transitionRight = useRef(null);
 
@@ -601,35 +604,108 @@ export default function Home() {
       duration: 1,
       ease: "power2.inOut",
     });
-    if (page !== "home") {
-      tl.to(pageWrapper.current, {
-        opacity: 0,
-        visibility: "hidden",
-        ease: "ease",
-        duration: 0.5,
-      });
-      tl.to(scope.current, {
-        height: "fit-content",
-        width: "fit-content",
-      });
-      setTimeout(() => {
-        setShowBackBtn(true);
-      }, 1000);
-    } else {
-      tl.to(pageWrapper.current, {
-        opacity: 1,
-        visibility: "visible",
-        ease: "ease",
-        duration: 0.5,
-      });
-      tl.to(scope.current, {
-        height: "100vh",
-        width: "100vw",
-      });
-      setTimeout(() => {
-        setShowBackBtn(false);
-      }, 1000);
+    switch (page) {
+      case "contact":
+        tl.to(contactsWrapper.current, {
+          opacity: 1,
+          visibility: "visible",
+          ease: "ease",
+          duration: 0.15,
+        });
+        tl.to(eventsWrapper.current, {
+          opacity: 0,
+          visibility: "hidden",
+          ease: "ease",
+          duration: 0.15,
+        });
+        tl.to(pageWrapper.current, {
+          opacity: 0,
+          visibility: "hidden",
+          ease: "ease",
+          duration: 0.15,
+        });
+        tl.to(navSection.current, {
+          opacity: 1,
+          visibility: "visible",
+          ease: "ease",
+          duration: 0.5,
+        });
+        setTimeout(() => {
+          setShowBackBtn(false);
+        }, 1000);
+        tl.to(scope.current, {
+          height: "100vh",
+          width: "100vw",
+        });
+        break;
+      case "events":
+        tl.to(eventsWrapper.current, {
+          opacity: 1,
+          visibility: "visible",
+          ease: "ease",
+          duration: 0.15,
+        });
+        setTimeout(() => {
+          setShowBackBtn(true);
+        }, 1000);
+        tl.to(contactsWrapper.current, {
+          opacity: 0,
+          visibility: "hidden",
+          ease: "ease",
+          duration: 0.15,
+        });
+        tl.to(pageWrapper.current, {
+          opacity: 0,
+          visibility: "hidden",
+          ease: "ease",
+          duration: 0.15,
+        });
+        tl.to(navSection.current, {
+          opacity: 0,
+          visibility: "hidden",
+          ease: "ease",
+          duration: 0.5,
+        });
+        tl.to(scope.current, {
+          height: "fit-content",
+          width: "fit-content",
+        });
+        break;
+      case "home":
+        tl.to(contactsWrapper.current, {
+          opacity: 0,
+          visibility: "hidden",
+          ease: "ease",
+          duration: 0.15,
+        });
+        tl.to(eventsWrapper.current, {
+          opacity: 0,
+          visibility: "hidden",
+          ease: "ease",
+          duration: 0.15,
+        });
+        tl.to(pageWrapper.current, {
+          opacity: 1,
+          visibility: "visible",
+          ease: "ease",
+          duration: 0.15,
+        });
+        tl.to(navSection.current, {
+          opacity: 1,
+          visibility: "visible",
+          ease: "ease",
+          duration: 0.5,
+        });
+        setTimeout(() => {
+          setShowBackBtn(false);
+        }, 1000);
+        tl.to(scope.current, {
+          height: "100vh",
+          width: "100vw",
+        });
+        break;
     }
+
     tl.to(transitionLeft.current, {
       x: "-100%",
       duration: 1,
@@ -641,6 +717,77 @@ export default function Home() {
       "-=1"
     );
   };
+
+  // const handleTransition = (page) => {
+  //   var tl = gsap.timeline();
+  //   tl.to([transitionLeft.current, transitionRight.current], {
+  //     x: 0,
+  //     duration: 1,
+  //     ease: "power2.inOut",
+  //   });
+  //   if (page !== "home") {
+  //     tl.to(pageWrapper.current, {
+  //       opacity: 0,
+  //       visibility: "hidden",
+  //       ease: "ease",
+  //       duration: 0.5,
+  //     });
+  //     tl.to(scope.current, {
+  //       height: "fit-content",
+  //       width: "fit-content",
+  //     });
+  //     if (page === "events") {
+  //       tl.to(eventsWrapper.current, {
+  //         opacity: 1,
+  //         visibility: "visible",
+  //         ease: "ease",
+  //         duration: 0.5,
+  //       });
+  //       setTimeout(() => {
+  //         setShowBackBtn(true);
+  //       }, 1000);
+  //     } else {
+  //       if (page === "contact") {
+  //         tl.to(eventsWrapper.current, {
+  //           opacity: 0,
+  //           visibility: "hidden",
+  //           ease: "ease",
+  //           duration: 0.5,
+  //         });
+  //         tl.to(contactsWrapper.current, {
+  //           opacity: 1,
+  //           visibility: "visible",
+  //           ease: "ease",
+  //           duration: 0.5,
+  //         });
+  //       }
+  //     }
+  //   } else {
+  //     tl.to(pageWrapper.current, {
+  //       opacity: 1,
+  //       visibility: "visible",
+  //       ease: "ease",
+  //       duration: 0.5,
+  //     });
+  //     tl.to(scope.current, {
+  //       height: "100vh",
+  //       width: "100vw",
+  //     });
+  //     setTimeout(() => {
+  //       setShowBackBtn(false);
+  //     }, 1000);
+  //   }
+  //   tl.to(transitionLeft.current, {
+  //     x: "-100%",
+  //     duration: 1,
+  //     ease: "power2.inOut",
+  //   });
+  //   tl.to(
+  //     transitionRight.current,
+  //     { x: "100%", duration: 1, ease: "power2.inOut" },
+  //     "-=1"
+  //   );
+  // };
   return (
     <main
       key="mainLandingPage"
@@ -668,7 +815,8 @@ export default function Home() {
       ) : (
         <>
           <div className={styles.pageTransition}>
-            <Image draggable={false}
+            <Image
+              draggable={false}
               src={TransitionLeft}
               width={1037}
               height={980}
@@ -676,7 +824,8 @@ export default function Home() {
               style={{ transform: "translateX(-100%)" }}
               alt=""
             />
-            <Image draggable={false}
+            <Image
+              draggable={false}
               src={TransitionRight}
               width={1037}
               height={980}
@@ -690,13 +839,18 @@ export default function Home() {
             />
           </div>
           <div className={styles.pageWrapper} ref={pageWrapper}>
-            <Image draggable={false} src={updatedBgLibraryImage} className={styles.pageBgImage} />
+            <Image
+              draggable={false}
+              src={updatedBgLibraryImage}
+              className={styles.pageBgImage}
+            />
             <div
               className={styles.hamSection}
               style={isHamOpen ? { zIndex: 10 } : { zIndex: 2 }}
             >
               <div className={styles.hamBtn}>
-                <Image draggable={false}
+                <Image
+                  draggable={false}
                   src="/static/images/navLogo.png"
                   width={60}
                   height={60}
@@ -705,7 +859,8 @@ export default function Home() {
                 />
                 <AnimatePresence>
                   <div className={styles.hamAsset}>
-                    <Image draggable={false}
+                    <Image
+                      draggable={false}
                       src="/static/images/hamIcon.svg"
                       width={103}
                       height={103}
@@ -756,23 +911,7 @@ export default function Home() {
                 )}
               </AnimatePresence>
             </div>
-            <div className={styles["navSection"]}>
-              <AnimatePresence>
-                {isHamOpen ? (
-                  <div style={{ display: "none" }}></div>
-                ) : (
-                  <motion.div
-                    key="navigation"
-                    initial={{ opacity: 0 }}
-                    animate={{ opacity: 1, transition: { delay: 1.5 } }}
-                    exit={{ opacity: 0 }}
-                    transition={{ delay: 0.5 }}
-                  >
-                    <Navbar handleTransition={handleTransition} />
-                  </motion.div>
-                )}
-              </AnimatePresence>
-            </div>
+
             {/* <div className={styles.navLogo}>
               <Image draggable={false} src={navLogo} />
             </div> */}
@@ -788,7 +927,8 @@ export default function Home() {
                 }`}
               >
                 <div className={styles.textLogoWrapper}>
-                  <Image draggable={false}
+                  <Image
+                    draggable={false}
                     src={textLogo}
                     // layout="fill"
                     className={styles.textLogoImg}
@@ -805,7 +945,8 @@ export default function Home() {
                     {randomSetImageLeft1}
                     {randomSetImageLeft2}
                   </div>
-                  <Image draggable={false} 
+                  <Image
+                    draggable={false}
                     src={landingPgBookImg}
                     className={styles.LandingBookImg}
                     alt="Book"
@@ -837,7 +978,8 @@ export default function Home() {
                     >
                       <Link href="/register" legacyBehavior>
                         <a className={styles.registerBtnWrapper}>
-                          <Image draggable={false}
+                          <Image
+                            draggable={false}
                             src="/static/images/updatedLandingRegBtn.png"
                             width={RegisterBtnWidth}
                             height={RegisterBtnHeight}
@@ -855,13 +997,30 @@ export default function Home() {
               </motion.div>
             </AnimatePresence>
           </div>
-          <div className={styles.eventsWrapper}>
+          <div className={styles["navSection"]} ref={navSection}>
+            <AnimatePresence>
+              {isHamOpen ? (
+                <div style={{ display: "none" }}></div>
+              ) : (
+                <motion.div
+                  key="navigation"
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1, transition: { delay: 1.5 } }}
+                  exit={{ opacity: 0 }}
+                  transition={{ delay: 0.5 }}
+                >
+                  <Navbar handleTransition={handleTransition} />
+                </motion.div>
+              )}
+            </AnimatePresence>
+          </div>
+          <div className={styles.eventsWrapper} ref={eventsWrapper}>
             <Events
               showBackBtn={showBackBtn}
               handleTransition={handleTransition}
             />
           </div>
-          <div className={styles.contactsWrapper}>
+          <div className={styles.contactsWrapper} ref={contactsWrapper}>
             <Contact />
           </div>
         </>
