@@ -26,30 +26,31 @@
   display: flex;
   position: absolute;
   height: 10%;
-  width: 16%;
+  width: 15%;
   z-index: 5;
 }
 .itemImage {
   height: 100%;
   width: 300%;
+  scale: .8;
 }
 .itemContent {
-  margin-top: 1rem;
   color: #fff;
   font-family: "KoPubBatang";
-  font-size: 1.5rem;
   font-style: normal;
   font-weight: 700;
   line-height: 2rem;
+  font-size: 1.25rem;
+    margin-top: 2rem;
 }
 .itemContent p {
   margin-top: 0.5rem;
   color: #fff;
   font-family: "OldNewspaperTypes";
-  font-size: 1rem;
   font-style: normal;
   font-weight: 400;
   line-height: 1rem;
+  font-size: 0.85rem;
 }
 .backBtn {
   z-index: 20;
@@ -84,18 +85,5 @@
   background: rgba(0, 0, 0, 0.25);
   z-index: 20;
 }
-@media (max-width: 1300px) {
-  .itemContainer {
-    width: 15%;
-  }
-  .itemImage {
-    scale: 0.8;
-  }
-  .itemContent {
-    font-size: 1.25rem;
-    margin-top: 2rem;
-  }
-  .itemContent p {
-    font-size: 0.85rem;
-  }
-}
+
+
