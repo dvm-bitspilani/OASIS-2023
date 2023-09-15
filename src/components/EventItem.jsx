@@ -6,7 +6,7 @@ import Item from "../../public/static/images/StreetDance.png";
 const EventItem = ({ name, desc, image, top, left }) => {
   return (
     <>
-      <div className={events.itemContainer} style={{top: top, left: left}}>
+      <div className={events.itemContainer} style={{top: top, left: left}} suppressHydrationWarning>
         <div className={events.itemImage}>
         <Image draggable={false} src={Item} height={240} width={362} alt="Street Dance"></Image>
         </div>

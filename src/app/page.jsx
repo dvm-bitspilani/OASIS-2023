@@ -726,6 +726,7 @@ export default function Home() {
         height: "100vh",
         width: "100vw",
       }}
+      suppressHydrationWarning 
       ref={scope}
     >
       {isLoading ? (
@@ -751,6 +752,7 @@ export default function Home() {
               height={980}
               ref={transitionLeft}
               style={{ transform: "translateX(-100%)" }}
+              suppressHydrationWarning 
               alt=""
             />
             <Image
@@ -763,6 +765,7 @@ export default function Home() {
                 right: "0",
                 transform: "translateX(100%)",
               }}
+              suppressHydrationWarning 
               ref={transitionRight}
               alt=""
             />
@@ -772,10 +775,12 @@ export default function Home() {
               draggable={false}
               src={updatedBgLibraryImage}
               className={styles.pageBgImage}
+              alt=""
             />
             <div
               className={styles.hamSection}
               style={isHamOpen ? { zIndex: 10 } : { zIndex: 2 }}
+              suppressHydrationWarning 
             >
               <div className={styles.hamBtn}>
                 <Image
@@ -814,13 +819,14 @@ export default function Home() {
                         height: `${innerHeight / 10}px`,
                         width: `${innerHeight / 10}px`,
                       }}
+                      suppressHydrationWarning 
                       initial={{ scale: 0 }}
                       animate={{ scale: 50 }}
                       exit={{ scale: 0, transition: { delay: 1.5 } }}
                       transition={{ duration: 1 }}
                     ></motion.div>
                   ) : (
-                    <div key="hiddenDiv" style={{ display: "none" }}></div>
+                    <div key="hiddenDiv" style={{ display: "none" }} suppressHydrationWarning ></div>
                   )}
                 </AnimatePresence>
               </div>
@@ -836,13 +842,13 @@ export default function Home() {
                     <Hamburger />
                   </motion.div>
                 ) : (
-                  <div key="hiddenDiv2" style={{ display: "none" }}></div>
+                  <div key="hiddenDiv2" style={{ display: "none" }} suppressHydrationWarning ></div>
                 )}
               </AnimatePresence>
             </div>
 
             {/* <div className={styles.navLogo}>
-              <Image draggable={false} src={navLogo} />
+              <Image draggable={false} src={navLogo} alt=""/>
             </div> */}
             <AnimatePresence mode="wait">
               <motion.div
@@ -893,7 +899,7 @@ export default function Home() {
                 </div>
                 <AnimatePresence>
                   {isHamOpen ? (
-                    <div key="hiddenDiv3" style={{ display: "none" }}></div>
+                    <div key="hiddenDiv3" style={{ display: "none" }} suppressHydrationWarning ></div>
                   ) : (
                     <motion.div
                       key="register"
@@ -905,6 +911,7 @@ export default function Home() {
                         position: "absolute",
                         bottom: "50px",
                       }}
+                      suppressHydrationWarning 
                     >
                       <Link href="/register" legacyBehavior>
                         <a className={styles.registerBtnWrapper}>
@@ -930,7 +937,7 @@ export default function Home() {
           <div className={styles["navSection"]} ref={navSection}>
             <AnimatePresence>
               {isHamOpen ? (
-                <div key="hiddenDiv4" style={{ display: "none" }}></div>
+                <div key="hiddenDiv4" style={{ display: "none" }} suppressHydrationWarning ></div>
               ) : (
                 <motion.div
                   key="navigation"

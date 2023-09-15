@@ -1211,7 +1211,7 @@ export default function Page() {
             ref={formContainerRef}
           >
             <div className={styles.form} onScroll={handleScroll}>
-              <label htmlFor="name" style={{ marginTop: 0 }} ref={nameFieldRef}>
+              <label htmlFor="name" style={{ marginTop: 0 }} ref={nameFieldRef} suppressHydrationWarning>
                 NAME
               </label>
               <input
@@ -1408,7 +1408,7 @@ export default function Page() {
               />
 
               <label>ARE YOU A CHOREOGRAPHER / MENTOR?</label>
-              <div className={styles.radioBtns} style={{ width: "60%" }}>
+              <div className={styles.radioBtns} style={{ width: "60%" }} suppressHydrationWarning>
                 <Radio
                   id="YES_Choreo"
                   value="YES"
@@ -1428,7 +1428,7 @@ export default function Page() {
               </div>
 
               <label>ARE YOU THE HEAD OF A SOCIETY?</label>
-              <div className={styles.radioBtns} style={{ width: "60%" }}>
+              <div className={styles.radioBtns} style={{ width: "60%" }} suppressHydrationWarning>
                 <Radio
                   id="YES_Society"
                   value="YES"
@@ -1485,7 +1485,7 @@ export default function Page() {
               {randomSetImagesBottomLeft2}
             </div>
 
-            <Image draggable={false} src={book} alt="" style={{ transform: "scaleX(.8)" }} />
+            <Image draggable={false} src={book} alt="" style={{ transform: "scaleX(.8)" }} suppressHydrationWarning />
           </motion.div>
         )}
       </div>
