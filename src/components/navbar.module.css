@@ -33,9 +33,12 @@
     display: none;
   }
 }
-@media (max-height: 685px) {
+@media (max-height: 605px) {
   .navWrapper {
-    display: none;
+    gap: .75rem;
+  }
+  .navItem {
+    font-size: .75rem;
   }
 }
 

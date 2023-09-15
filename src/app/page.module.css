@@ -52,9 +52,13 @@
 .navSection {
   position: fixed;
   left: 4rem;
-  transform-origin: left top;
-  transform: rotate(-90deg) translateX(-135%);
+  transform-origin: left;
+  transform: rotate(-90deg);
   z-index: 20;
+  width: 100vh;
+  display: flex;
+  justify-content: center;
+  top: 100%;
 }
 .hamSection {
   position: absolute;

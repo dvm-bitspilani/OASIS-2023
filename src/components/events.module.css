@@ -71,6 +71,19 @@
   cursor: pointer;
   padding: .25rem;
 }
+.itemData{
+  height: 200vh;
+  width: 101vw;
+  position: fixed;
+  top: 0;
+  left: 1.2%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  opacity: .25;
+  background: rgba(0, 0, 0, 0.25);
+  z-index: 20;
+}
 @media (max-width: 1300px) {
   .itemContainer {
     width: 15%;
