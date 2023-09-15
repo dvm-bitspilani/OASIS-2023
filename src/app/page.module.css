@@ -33,7 +33,7 @@
   scrollbar-width: none;
   -ms-overflow-style: none;
   opacity: 0;
-  visibility: "hidden";
+  visibility: hidden;
 }
 .contactsWrapper {
   position: fixed;
@@ -44,7 +44,7 @@
   scrollbar-width: none;
   -ms-overflow-style: none;
   opacity: 0;
-  visibility: "hidden";
+  visibility: hidden;
 }
 .eventsWrapper::-webkit-scrollbar {
   display: none;

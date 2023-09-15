@@ -118,7 +118,7 @@ const Page = () => {
         </div>
       </div>
       <div className={styles.mobilePageWrapper}>
-        <Image src={updatedbgImage} className={styles.mobileBgImage}/>
+        <Image src={updatedbgImage} className={styles.mobileBgImage} alt=''/>
         <div className={styles.mobileContentWrapper}>
         <div className={styles.mobileHeading}>
           <span>CONTACT US</span>
@@ -126,18 +126,18 @@ const Page = () => {
         <div className={styles.mobileMainSection}>
                    {profiles.map((profile, index) => (
   <div className={styles.mobileDetails} key={index}>
-    <Image src={mobileImageWrapper} className={styles.newMobileImageWrapper}/>
+    <Image src={mobileImageWrapper} className={styles.newMobileImageWrapper} alt=''/>
     <div className={styles.mobileDetailsContent}>
-      <Image src={profile.image} width={100} height = {124}/>
+      <Image src={profile.image} width={100} height = {124} alt=''/>
       <div className={styles.mobileTextDetails}>
         <span className={styles.mobileDetailsName}>{profile.name}</span>
         <span className={styles.mobileDetailsDept}>{profile.dept}</span>
         <div className={styles.mobileIcons}>
           <a href={profile.phone}>
-            <Image src={phone} className={styles.mobileCallIcon}/>
+            <Image src={phone} className={styles.mobileCallIcon} alt=''/>
           </a>
           <a href={profile.mail}>
-            <Image src={mail} className={styles.mobileMailIcon}/>
+            <Image src={mail} className={styles.mobileMailIcon} alt=''/>
           </a>
         </div>
       </div>

@@ -609,27 +609,27 @@ export default function Home() {
       events: eventsWrapper,
       home: pageWrapper,
     };
-  
+
     for (const key in elements) {
       const element = elements[key].current;
       const opacity = key === page ? 1 : 0;
       const visibility = key === page ? "visible" : "hidden";
       const duration = key === page ? 0.15 : 0.5;
-  
+
       tl.to(element, { opacity, visibility, ease: "ease", duration });
     }
-  
+
     tl.to(navSection.current, {
       opacity: page !== "events" ? 1 : 0,
       visibility: page !== "events" ? "visible" : "hidden",
       ease: "ease",
       duration: 0.5,
     });
-  
+
     setTimeout(() => {
       setShowBackBtn(page !== "home");
     }, 1000);
-  
+
     tl.to(scope.current, {
       height: page !== "events" ? "100vh" : "fit-content",
       width: page !== "events" ? "100vw" : "fit-content",
@@ -787,7 +787,7 @@ export default function Home() {
                   alt="Text Oasis Logo"
                 />
                 <AnimatePresence>
-                  <div className={styles.hamAsset}>
+                  <div key="hamAsset" className={styles.hamAsset}>
                     <Image
                       draggable={false}
                       src="/static/images/hamIcon.svg"
@@ -820,7 +820,7 @@ export default function Home() {
                       transition={{ duration: 1 }}
                     ></motion.div>
                   ) : (
-                    <div style={{ display: "none" }}></div>
+                    <div key="hiddenDiv" style={{ display: "none" }}></div>
                   )}
                 </AnimatePresence>
               </div>
@@ -836,7 +836,7 @@ export default function Home() {
                     <Hamburger />
                   </motion.div>
                 ) : (
-                  <div style={{ display: "none" }}></div>
+                  <div key="hiddenDiv2" style={{ display: "none" }}></div>
                 )}
               </AnimatePresence>
             </div>
@@ -846,6 +846,7 @@ export default function Home() {
             </div> */}
             <AnimatePresence mode="wait">
               <motion.div
+                key="midSection"
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 exit={{ opacity: 0 }}
@@ -855,7 +856,7 @@ export default function Home() {
                   isLoading ? "loaded" : ""
                 }`}
               >
-                <div className={styles.textLogoWrapper}>
+                <div key="textLogoWrapper" className={styles.textLogoWrapper}>
                   <Image
                     draggable={false}
                     src={textLogo}
@@ -864,7 +865,7 @@ export default function Home() {
                     alt="OASIS"
                   />
                 </div>
-                <div className={styles.bookImgWrapper}>
+                <div key="bookImgWrapper" className={styles.bookImgWrapper}>
                   <div className={styles.leftElements}>
                     {/* <Image draggable={false}
                     src={leftElements}
@@ -892,7 +893,7 @@ export default function Home() {
                 </div>
                 <AnimatePresence>
                   {isHamOpen ? (
-                    <div style={{ display: "none" }}></div>
+                    <div key="hiddenDiv3" style={{ display: "none" }}></div>
                   ) : (
                     <motion.div
                       key="register"
@@ -929,7 +930,7 @@ export default function Home() {
           <div className={styles["navSection"]} ref={navSection}>
             <AnimatePresence>
               {isHamOpen ? (
-                <div style={{ display: "none" }}></div>
+                <div key="hiddenDiv4" style={{ display: "none" }}></div>
               ) : (
                 <motion.div
                   key="navigation"
