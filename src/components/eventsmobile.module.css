@@ -1,25 +1,3 @@
-.backBtn {
-    /* display: flex; */
-    align-items: center;
-    justify-content: center;
-    gap: 1rem;
-    z-index: 100;
-    position: absolute;
-    top: 10vh;
-    left: 50vw;
-}
-
-.backBtn h1 {
-    font-family: "KoPubBatang";
-    color: white;
-    font-size: 2.5rem;
-    position: relative;
-}
-
-.backBtn svg {
-    height: 2rem;
-}
-
 .wrapper {
     height: 100%;
     position: relative;
@@ -47,11 +25,11 @@
 
 .wrapper svg {
     position: absolute;
-    top: 50vh;
+    top: 300px;
     left: 50vw;
     transform-origin: center;
     height: 1639px;
-    width: auto;
+    width: 252px;
 }
 
 .itemWrapper {
@@ -63,19 +41,20 @@
     transform: translateX(-50%);
 }
 
-.itemContainer{
+.itemContainer {
     position: absolute;
     display: flex;
     z-index: 5;
+    transform-origin: bottom center;
 }
 
-.itemImage img{
+.itemImage img {
     height: 120px;
     width: 180px;
     position: relative;
 }
 
-.itemContent{
+.itemContent {
     color: #fff;
     font-family: "KoPubBatang";
     font-size: 1.2rem;
@@ -89,22 +68,52 @@
     width: 10rem;
 }
 
-/* .itemContent {
-    margin-top: 1rem;
-    color: #fff;
-    font-family: "KoPubBatang";
-    font-size: 1.5rem;
+.navTop {
+    position: fixed;
+    top: 0;
+    left: 50vw;
+    transform: translateX(-50%);
+    /* height: 10vh; */
+    z-index: 9;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
+    width: 100%;
+    gap: 1rem;
+    padding: 1rem;
+    background: linear-gradient(0deg, rgba(2, 22, 46, 0) 0%, rgba(1, 6, 13, 1) 100%);
+}
+
+.navBottom {
+    position: fixed;
+    bottom: 0;
+    left: 50vw;
+    transform: translateX(-50%);
+    /* height: 10vh; */
+    z-index: 9;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
+    width: 100%;
+    gap: 1rem;
+    padding: 1rem;
+    background: linear-gradient(180deg, rgba(2, 22, 46, 0.00) 0%, rgba(1, 6, 13, 0.94) 100%);
+}
+
+.navTop img, .navBottom img {
+    position: relative;
+    height: 20px;
+    width: auto;
+}
+
+.navTop h1 {
+    color: #FFF;
+    text-align: center;
+    font-family: 'KoPubBatang';
+    font-size: 32px;
     font-style: normal;
     font-weight: 700;
-    line-height: 2rem;
-} */
-
-/* .itemContent p {
-    margin-top: 0.5rem;
-    color: #fff;
-    font-family: "OldNewspaperTypes";
-    font-size: 1rem;
-    font-style: normal;
-    font-weight: 400;
-    line-height: 1rem;
-} */
+    line-height: 100%;
+}

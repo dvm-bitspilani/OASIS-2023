@@ -9,6 +9,8 @@ import { useWindowSize } from "rooks";
 import StreetDance from "../../public/static/images/StreetDance.png";
 import EventItemMobile from "./EventItemMobile";
 import backBtnMobile from "../../public/static/images/backBtnMobile.svg"
+import Top from "../../public/static/images/IconTop.svg"
+import Bottom from "../../public/static/images/IconBottom.svg"
 gsap.registerPlugin(ScrollTrigger);
 
 
@@ -20,7 +22,7 @@ export default function EventsMobile() {
             name: "STREET DANCE",
             desc: "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Cum eveniet voluptas, ullam saepe laboriosam quas consequuntur! Itaque consequuntur, fugiat labore, sit rem dolore harum eligendi alias, cumque at tenetur nulla.",
             image: StreetDance,
-            top: "250px",
+            top: "150px",
             left: "40%",
         },
         {
@@ -28,23 +30,23 @@ export default function EventsMobile() {
             name: "STREET DANCE",
             desc: "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Cum eveniet voluptas, ullam saepe laboriosam quas consequuntur! Itaque consequuntur, fugiat labore, sit rem dolore harum eligendi alias, cumque at tenetur nulla.",
             image: StreetDance,
-            top: "450px",
-            left: "67%",
+            top: "350px",
+            left: "70%",
         },
         {
             key: 3,
             name: "STREET DANCE",
             desc: "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Cum eveniet voluptas, ullam saepe laboriosam quas consequuntur! Itaque consequuntur, fugiat labore, sit rem dolore harum eligendi alias, cumque at tenetur nulla.",
             image: StreetDance,
-            top: "650px",
-            left: "38%",
+            top: "550px",
+            left: "35%",
         },
         {
             key: 4,
             name: "STREET DANCE",
             desc: "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Cum eveniet voluptas, ullam saepe laboriosam quas consequuntur! Itaque consequuntur, fugiat labore, sit rem dolore harum eligendi alias, cumque at tenetur nulla.",
             image: StreetDance,
-            top: "850px",
+            top: "750px",
             left: "65%",
         },
         {
@@ -52,7 +54,7 @@ export default function EventsMobile() {
             name: "STREET DANCE",
             desc: "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Cum eveniet voluptas, ullam saepe laboriosam quas consequuntur! Itaque consequuntur, fugiat labore, sit rem dolore harum eligendi alias, cumque at tenetur nulla.",
             image: StreetDance,
-            top: "1050px",
+            top: "950px",
             left: "43%",
         },
         {
@@ -60,7 +62,7 @@ export default function EventsMobile() {
             name: "STREET DANCE",
             desc: "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Cum eveniet voluptas, ullam saepe laboriosam quas consequuntur! Itaque consequuntur, fugiat labore, sit rem dolore harum eligendi alias, cumque at tenetur nulla.",
             image: StreetDance,
-            top: "1250px",
+            top: "1150px",
             left: "70%",
         },
         {
@@ -68,7 +70,7 @@ export default function EventsMobile() {
             name: "STREET DANCE",
             desc: "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Cum eveniet voluptas, ullam saepe laboriosam quas consequuntur! Itaque consequuntur, fugiat labore, sit rem dolore harum eligendi alias, cumque at tenetur nulla.",
             image: StreetDance,
-            top: "1450px",
+            top: "1350px",
             left: "32%",
         },
         {
@@ -76,8 +78,8 @@ export default function EventsMobile() {
             name: "STREET DANCE",
             desc: "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Cum eveniet voluptas, ullam saepe laboriosam quas consequuntur! Itaque consequuntur, fugiat labore, sit rem dolore harum eligendi alias, cumque at tenetur nulla.",
             image: StreetDance,
-            top: "1670px",
-            left: "70%",
+            top: "1550px",
+            left: "73%",
         },
         // {
         //     key: 9,
@@ -233,12 +235,16 @@ export default function EventsMobile() {
 
             <div className={events.wrapper}>
                 <div id="scrollDistMobile" className={events.scrollDistMobile}></div>
-                {/* <div className={events.backBtn}>
-                        <h1>EVENTS</h1>
-                        <svg xmlns="http://www.w3.org/2000/svg" width="46" height="30" viewBox="0 0 46 30" fill="none">
-                            <path fill-rule="evenodd" clip-rule="evenodd" d="M6.03327 7.02125C6.17614 6.79289 6.41796 6.59774 6.72817 6.46046C7.03838 6.32318 7.40305 6.24994 7.77606 6.25H26.6374C28.3712 6.25 30.0881 6.47633 31.6899 6.91605C33.2918 7.35578 34.7473 8.0003 35.9733 8.81282C37.1993 9.62533 38.1718 10.5899 38.8353 11.6515C39.4988 12.7131 39.8403 13.8509 39.8403 15C39.8403 16.1491 39.4988 17.2869 38.8353 18.3485C38.1718 19.4101 37.1993 20.3747 35.9733 21.1872C34.7473 21.9997 33.2918 22.6442 31.6899 23.0839C30.0881 23.5237 28.3712 23.75 26.6374 23.75H9.66219C9.16196 23.75 8.68221 23.6183 8.3285 23.3839C7.97478 23.1495 7.77606 22.8315 7.77606 22.5C7.77606 22.1685 7.97478 21.8505 8.3285 21.6161C8.68221 21.3817 9.16196 21.25 9.66219 21.25H26.6374C29.1386 21.25 31.5373 20.5915 33.3059 19.4194C35.0745 18.2473 36.068 16.6576 36.068 15C36.068 13.3424 35.0745 11.7527 33.3059 10.5806C31.5373 9.40848 29.1386 8.75 26.6374 8.75H12.3292L15.711 10.9913C16.0546 11.227 16.2447 11.5428 16.2404 11.8705C16.2361 12.1982 16.0377 12.5118 15.688 12.7435C15.3383 12.9753 14.8653 13.1067 14.3707 13.1096C13.8762 13.1124 13.3998 12.9864 13.044 12.7587L6.44256 8.38375C6.17863 8.20894 5.99887 7.98618 5.92601 7.74365C5.85316 7.50112 5.89048 7.24972 6.03327 7.02125Z" fill="white" />
-                        </svg>
-                </div> */}
+
+                <div className={events.navTop}>
+                    <Image src={Top}></Image>
+                    <h1>EVENTS</h1>
+                </div>
+
+                <div className={events.navBottom}>
+                    <Image src={Bottom}></Image>
+                </div>
+
                 <div id="containerMobile" className={events.container}>
                     <Image
                         src={Map}
@@ -266,7 +272,7 @@ export default function EventsMobile() {
                             fill="none"
                         />
                     </svg> */}
-                    
+
                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 252 1639" fill="none">
                         <g filter="url(#filter0_d_1343_470)">
                             <circle id="cm" r="10" fill="#f00" />
