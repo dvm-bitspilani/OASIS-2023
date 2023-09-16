@@ -723,7 +723,7 @@ export default function Home() {
       style={{
         position: "relative",
         overflow: "hidden",
-        height: "100vh",
+        height: innerWidth > 820 ? "100vh" : "fit-content",
         width: "100vw",
       }}
       suppressHydrationWarning 

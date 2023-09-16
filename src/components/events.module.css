@@ -8,7 +8,7 @@
 .container {
   position: absolute;
 }
-.wrapper img {
+.map {
   position: absolute;
 }
 .wrapper svg {
@@ -32,7 +32,7 @@
 .itemImage {
   height: 100%;
   width: 300%;
-  scale: .8;
+  scale: 0.8;
 }
 .itemContent {
   color: #fff;
@@ -41,7 +41,7 @@
   font-weight: 700;
   line-height: 2rem;
   font-size: 1.25rem;
-    margin-top: 2rem;
+  margin-top: 1rem;
 }
 .itemContent p {
   margin-top: 0.5rem;
@@ -68,11 +68,11 @@
   font-size: 1.75rem;
   font-style: normal;
   font-weight: 400;
-  line-height: 100%; 
+  line-height: 100%;
   cursor: pointer;
-  padding: .25rem;
+  padding: 0.25rem;
 }
-.itemData{
+.itemData {
   height: 200vh;
   width: 101vw;
   position: fixed;
@@ -81,9 +81,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  opacity: .25;
+  opacity: 0.25;
   background: rgba(0, 0, 0, 0.25);
   z-index: 20;
 }
-
-

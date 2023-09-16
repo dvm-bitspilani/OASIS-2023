@@ -60,6 +60,21 @@
   justify-content: center;
   top: 100%;
 }
+@media (max-width: 820px) {
+  .pageWrapper{
+    position: absolute;
+  }
+  .pageBgImage{
+    position: absolute;
+  }
+  /* .eventsWrapper{
+    position: absolute;
+  }
+  .contactsWrapper{
+    position: absolute;
+    top: 100vh;
+  } */
+}
 .hamSection {
   position: absolute;
   left: 0;
@@ -121,6 +136,7 @@
   padding: 1.5rem 0;
   cursor: pointer;
   z-index: 1000;
+  scale: 0.8;
 }
 @media (max-width: 500px) {
   .hamIcon {
