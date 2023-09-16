@@ -1,8 +1,8 @@
-.pageTransition{
+.pageTransition {
   display: flex;
   justify-content: space-between;
 }
-.pageTransition img{
+.pageTransition img {
   position: fixed;
   z-index: 50;
 }
@@ -21,36 +21,44 @@
   z-index: 10;
   background-size: 100vw 100vh;
 }
-.pageBgImage{
+.pageBgImage {
   position: fixed;
   height: 100vh;
   width: 100vw;
 }
-.eventsWrapper{
+.eventsWrapper {
   position: relative;
   height: 5000vh;
   width: 4096px;
   scrollbar-width: none;
-  -ms-overflow-style: none; 
+  -ms-overflow-style: none;
+  opacity: 0;
+  visibility: hidden;
 }
-.contactsWrapper{
+.contactsWrapper {
   position: fixed;
   top: 0;
   left: 0;
   height: 100vh;
   width: 100vw;
   scrollbar-width: none;
-  -ms-overflow-style: none; 
+  -ms-overflow-style: none;
+  opacity: 0;
+  visibility: hidden;
 }
 .eventsWrapper::-webkit-scrollbar {
   display: none;
 }
 .navSection {
-  position: absolute;
+  position: fixed;
   left: 4rem;
-  transform-origin: left top;
-  transform: rotate(-90deg) translateX(-55%);
-  z-index: 2;
+  transform-origin: left;
+  transform: rotate(-90deg);
+  z-index: 20;
+  width: 100vh;
+  display: flex;
+  justify-content: center;
+  top: 100%;
 }
 .hamSection {
   position: absolute;
@@ -70,7 +78,7 @@
   position: relative;
 }
 .hamAsset img {
-  scale: 1.2;
+  scale: 1;
 }
 .hamAsset:hover > img {
   animation: rotation360 10s linear infinite forwards;
@@ -305,8 +313,8 @@
   opacity: 1;
   /* transition: opacity 0.5s ease; */
 }
-.loaderContainer video{
-  scale: .5;
+.loaderContainer video {
+  scale: 0.5;
 }
 .loaded {
   opacity: 0;
@@ -319,16 +327,16 @@
 
 @media (max-width: 1400px) {
   .textLogoImg {
-    scale: .85;
+    scale: 0.85;
   }
-  .LandingBookImg{
-    scale: .95;
+  .LandingBookImg {
+    scale: 0.95;
   }
 }
 @media (max-width: 1250px) {
- .bookImgWrapper{
-  transform: translateY(-25%);
- }
+  .bookImgWrapper {
+    transform: translateY(-25%);
+  }
 }
 @media (max-width: 1150px) {
   .textLogoImg {
@@ -350,8 +358,8 @@
   .hamBtn img {
     scale: 0.8;
   }
-  .hamIcon{
-    scale: .8;
+  .hamIcon {
+    scale: 0.8;
     /* height: 3rem; */
   }
 }
@@ -415,45 +423,45 @@
     height: 50px;
   }
 }
-@media (max-width: 1250px) and (max-height: 670px){
-  .textLogoWrapper{
+@media (max-width: 1250px) and (max-height: 670px) {
+  .textLogoWrapper {
     top: 10vh;
   }
-  .bookImgWrapper{
-    scale: .8;
+  .bookImgWrapper {
+    scale: 0.8;
   }
 }
 @media (max-height: 775px) and (min-width: 900px) {
-  .pageWrapper{
+  .pageWrapper {
     overflow: hidden;
   }
-  .bookImgWrapper{
+  .bookImgWrapper {
     transform: translateY(-25%);
-   }
-   .textLogoWrapper{
+  }
+  .textLogoWrapper {
     top: 7vh;
-    scale: .8;
-   }
-   .bookImgWrapper{
-    scale: .8;
-   }
+    scale: 0.8;
+  }
+  .bookImgWrapper {
+    scale: 0.8;
+  }
 }
 @media (max-height: 675px) and (min-width: 900px) {
-  .pageWrapper{
+  .pageWrapper {
     overflow: hidden;
   }
-  .bookImgWrapper{
+  .bookImgWrapper {
     transform: translateY(-35%);
-   }
-   .textLogoWrapper{
+  }
+  .textLogoWrapper {
     top: 7vh;
-    scale: .8;
-   }
-   .bookImgWrapper{
-    scale: .8;
-   }
+    scale: 0.8;
+  }
+  .bookImgWrapper {
+    scale: 0.8;
+  }
 }
-.navLogo{
+.navLogo {
   position: absolute;
   top: 0;
   margin-left: 2rem;

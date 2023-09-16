@@ -14,7 +14,7 @@ const Events = ({ showBackBtn, handleTransition }) => {
   const tasks = [
     {
       key: 1,
-      name: "STREET DANCE",
+      name: "RAZZMATAZZ",
       desc: "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Cum eveniet voluptas, ullam saepe laboriosam quas consequuntur! Itaque consequuntur, fugiat labore, sit rem dolore harum eligendi alias, cumque at tenetur nulla.",
       image: StreetDance,
       top: "10%",
@@ -22,7 +22,7 @@ const Events = ({ showBackBtn, handleTransition }) => {
     },
     {
       key: 2,
-      name: "STREET DANCE",
+      name: "DESERT DUEL",
       desc: "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Cum eveniet voluptas, ullam saepe laboriosam quas consequuntur! Itaque consequuntur, fugiat labore, sit rem dolore harum eligendi alias, cumque at tenetur nulla.",
       image: StreetDance,
       top: "25%",
@@ -30,7 +30,7 @@ const Events = ({ showBackBtn, handleTransition }) => {
     },
     {
       key: 3,
-      name: "STREET DANCE",
+      name: "METAMORPHOSIS",
       desc: "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Cum eveniet voluptas, ullam saepe laboriosam quas consequuntur! Itaque consequuntur, fugiat labore, sit rem dolore harum eligendi alias, cumque at tenetur nulla.",
       image: StreetDance,
       top: "35%",
@@ -38,7 +38,7 @@ const Events = ({ showBackBtn, handleTransition }) => {
     },
     {
       key: 4,
-      name: "STREET DANCE",
+      name: "ANDHOLIKA",
       desc: "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Cum eveniet voluptas, ullam saepe laboriosam quas consequuntur! Itaque consequuntur, fugiat labore, sit rem dolore harum eligendi alias, cumque at tenetur nulla.",
       image: StreetDance,
       top: "50%",
@@ -46,7 +46,7 @@ const Events = ({ showBackBtn, handleTransition }) => {
     },
     {
       key: 5,
-      name: "STREET DANCE",
+      name: "SWARANJALI",
       desc: "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Cum eveniet voluptas, ullam saepe laboriosam quas consequuntur! Itaque consequuntur, fugiat labore, sit rem dolore harum eligendi alias, cumque at tenetur nulla.",
       image: StreetDance,
       top: "65%",
@@ -54,7 +54,7 @@ const Events = ({ showBackBtn, handleTransition }) => {
     },
     {
       key: 6,
-      name: "STREET DANCE",
+      name: "TANDAV",
       desc: "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Cum eveniet voluptas, ullam saepe laboriosam quas consequuntur! Itaque consequuntur, fugiat labore, sit rem dolore harum eligendi alias, cumque at tenetur nulla.",
       image: StreetDance,
       top: "70%",
@@ -62,7 +62,7 @@ const Events = ({ showBackBtn, handleTransition }) => {
     },
     {
       key: 7,
-      name: "STREET DANCE",
+      name: "STAGE PLAY",
       desc: "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Cum eveniet voluptas, ullam saepe laboriosam quas consequuntur! Itaque consequuntur, fugiat labore, sit rem dolore harum eligendi alias, cumque at tenetur nulla.",
       image: StreetDance,
       top: "55%",
@@ -70,7 +70,7 @@ const Events = ({ showBackBtn, handleTransition }) => {
     },
     {
       key: 8,
-      name: "STREET DANCE",
+      name: "STREET PLAY",
       desc: "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Cum eveniet voluptas, ullam saepe laboriosam quas consequuntur! Itaque consequuntur, fugiat labore, sit rem dolore harum eligendi alias, cumque at tenetur nulla.",
       image: StreetDance,
       top: "33%",
@@ -78,7 +78,7 @@ const Events = ({ showBackBtn, handleTransition }) => {
     },
     {
       key: 9,
-      name: "STREET DANCE",
+      name: "TARANG",
       desc: "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Cum eveniet voluptas, ullam saepe laboriosam quas consequuntur! Itaque consequuntur, fugiat labore, sit rem dolore harum eligendi alias, cumque at tenetur nulla.",
       image: StreetDance,
       top: "7%",
@@ -86,7 +86,7 @@ const Events = ({ showBackBtn, handleTransition }) => {
     },
     {
       key: 10,
-      name: "STREET DANCE",
+      name: "PITCH PERFECT",
       desc: "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Cum eveniet voluptas, ullam saepe laboriosam quas consequuntur! Itaque consequuntur, fugiat labore, sit rem dolore harum eligendi alias, cumque at tenetur nulla.",
       image: StreetDance,
       top: "20%",
@@ -94,7 +94,7 @@ const Events = ({ showBackBtn, handleTransition }) => {
     },
     {
       key: 11,
-      name: "STREET DANCE",
+      name: "CHOREO",
       desc: "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Cum eveniet voluptas, ullam saepe laboriosam quas consequuntur! Itaque consequuntur, fugiat labore, sit rem dolore harum eligendi alias, cumque at tenetur nulla.",
       image: StreetDance,
       top: "45%",
@@ -110,61 +110,61 @@ const Events = ({ showBackBtn, handleTransition }) => {
     },
     {
       key: 13,
-      name: "STREET DANCE",
+      name: "FASHP",
       desc: "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Cum eveniet voluptas, ullam saepe laboriosam quas consequuntur! Itaque consequuntur, fugiat labore, sit rem dolore harum eligendi alias, cumque at tenetur nulla.",
       image: StreetDance,
       top: "42%",
       left: "70%",
     },
-    {
-      key: 14,
-      name: "STREET DANCE",
-      desc: "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Cum eveniet voluptas, ullam saepe laboriosam quas consequuntur! Itaque consequuntur, fugiat labore, sit rem dolore harum eligendi alias, cumque at tenetur nulla.",
-      image: StreetDance,
-      top: "10%",
-      left: "50%",
-    },
-    {
-      key: 15,
-      name: "STREET DANCE",
-      desc: "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Cum eveniet voluptas, ullam saepe laboriosam quas consequuntur! Itaque consequuntur, fugiat labore, sit rem dolore harum eligendi alias, cumque at tenetur nulla.",
-      image: StreetDance,
-      top: "20%",
-      left: "60%",
-    },
-    {
-      key: 16,
-      name: "STREET DANCE",
-      desc: "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Cum eveniet voluptas, ullam saepe laboriosam quas consequuntur! Itaque consequuntur, fugiat labore, sit rem dolore harum eligendi alias, cumque at tenetur nulla.",
-      image: StreetDance,
-      top: "12%",
-      left: "75%",
-    },
-    {
-      key: 17,
-      name: "STREET DANCE",
-      desc: "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Cum eveniet voluptas, ullam saepe laboriosam quas consequuntur! Itaque consequuntur, fugiat labore, sit rem dolore harum eligendi alias, cumque at tenetur nulla.",
-      image: StreetDance,
-      top: "30%",
-      left: "72%",
-    },
+    // {
+    //   key: 14,
+    //   name: "STREET DANCE",
+    //   desc: "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Cum eveniet voluptas, ullam saepe laboriosam quas consequuntur! Itaque consequuntur, fugiat labore, sit rem dolore harum eligendi alias, cumque at tenetur nulla.",
+    //   image: StreetDance,
+    //   top: "10%",
+    //   left: "50%",
+    // },
+    // {
+    //   key: 15,
+    //   name: "STREET DANCE",
+    //   desc: "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Cum eveniet voluptas, ullam saepe laboriosam quas consequuntur! Itaque consequuntur, fugiat labore, sit rem dolore harum eligendi alias, cumque at tenetur nulla.",
+    //   image: StreetDance,
+    //   top: "20%",
+    //   left: "60%",
+    // },
+    // {
+    //   key: 16,
+    //   name: "STREET DANCE",
+    //   desc: "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Cum eveniet voluptas, ullam saepe laboriosam quas consequuntur! Itaque consequuntur, fugiat labore, sit rem dolore harum eligendi alias, cumque at tenetur nulla.",
+    //   image: StreetDance,
+    //   top: "12%",
+    //   left: "75%",
+    // },
+    // {
+    //   key: 17,
+    //   name: "STREET DANCE",
+    //   desc: "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Cum eveniet voluptas, ullam saepe laboriosam quas consequuntur! Itaque consequuntur, fugiat labore, sit rem dolore harum eligendi alias, cumque at tenetur nulla.",
+    //   image: StreetDance,
+    //   top: "30%",
+    //   left: "72%",
+    // },
     
-    {
-      key: 18,
-      name: "STREET DANCE",
-      desc: "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Cum eveniet voluptas, ullam saepe laboriosam quas consequuntur! Itaque consequuntur, fugiat labore, sit rem dolore harum eligendi alias, cumque at tenetur nulla.",
-      image: StreetDance,
-      top: "55%",
-      left: "60%",
-    },
-    {
-      key: 19,
-      name: "STREET DANCE",
-      desc: "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Cum eveniet voluptas, ullam saepe laboriosam quas consequuntur! Itaque consequuntur, fugiat labore, sit rem dolore harum eligendi alias, cumque at tenetur nulla.",
-      image: StreetDance,
-      top: "75%",
-      left: "70%",
-    },
+    // {
+    //   key: 18,
+    //   name: "STREET DANCE",
+    //   desc: "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Cum eveniet voluptas, ullam saepe laboriosam quas consequuntur! Itaque consequuntur, fugiat labore, sit rem dolore harum eligendi alias, cumque at tenetur nulla.",
+    //   image: StreetDance,
+    //   top: "55%",
+    //   left: "60%",
+    // },
+    // {
+    //   key: 19,
+    //   name: "STREET DANCE",
+    //   desc: "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Cum eveniet voluptas, ullam saepe laboriosam quas consequuntur! Itaque consequuntur, fugiat labore, sit rem dolore harum eligendi alias, cumque at tenetur nulla.",
+    //   image: StreetDance,
+    //   top: "75%",
+    //   left: "70%",
+    // },
   ];
   const { innerWidth, innerHeight } = useWindowSize();
 
@@ -245,6 +245,7 @@ const Events = ({ showBackBtn, handleTransition }) => {
             draggable={false}
             alt=""
             style={{ position: "absolute" }}
+            suppressHydrationWarning
           />
           <svg
             width="2359"
@@ -253,13 +254,14 @@ const Events = ({ showBackBtn, handleTransition }) => {
             fill="none"
             xmlns="http://www.w3.org/2000/svg"
             style={{ position: "absolute" }}
+            suppressHydrationWarning
           >
-            <circle id="c" r="10" fill="#f00" />
+            <circle id="c" r="10" fill="#51B6FF" />
             <path
               id="p"
               d="M9.5 32.9988C47.8333 436.832 222.9 1180.4 488.5 1162C820.5 1139 678 -179.001 991 32.9988C1304 244.999 1019 1111.5 1396.5 1162C1774 1212.5 1789.5 32.9989 2110.5 32.9988C2460.5 32.9987 2332 429.499 2299.5 535.5C2256.75 674.927 2245.5 796.5 2198 1162"
-              stroke="#FF0000"
-              stroke-width="5"
+              stroke="#51B6FF"
+              strokeWidth="5"
             />
           </svg>
 

@@ -102,7 +102,7 @@ export default function Home() {
 
   const randomSetImageRight2 = randomRight2.map((item, key) => {
     return (
-      <Image 
+      <Image
         key={key}
         id={`right_2_${key}`}
         className={styles.rightSymbol}
@@ -118,6 +118,9 @@ export default function Home() {
   const [showBackBtn, setShowBackBtn] = useState(false);
 
   const pageWrapper = useRef(null);
+  const navSection = useRef(null);
+  const contactsWrapper = useRef(null);
+  const eventsWrapper = useRef(null);
   const transitionLeft = useRef(null);
   const transitionRight = useRef(null);
 
@@ -602,35 +605,37 @@ export default function Home() {
       duration: 1,
       ease: "power2.inOut",
     });
-    if (page !== "home") {
-      tl.to(pageWrapper.current, {
-        opacity: 0,
-        visibility: "hidden",
-        ease: "ease",
-        duration: 0.5,
-      });
-      tl.to(scope.current, {
-        height: "fit-content",
-        width: "fit-content",
-      });
-      setTimeout(() => {
-        setShowBackBtn(true);
-      }, 1000);
-    } else {
-      tl.to(pageWrapper.current, {
-        opacity: 1,
-        visibility: "visible",
-        ease: "ease",
-        duration: 0.5,
-      });
-      tl.to(scope.current, {
-        height: "100vh",
-        width: "100vw",
-      });
-      setTimeout(() => {
-        setShowBackBtn(false);
-      }, 1000);
+    const elements = {
+      contact: contactsWrapper,
+      events: eventsWrapper,
+      home: pageWrapper,
+    };
+
+    for (const key in elements) {
+      const element = elements[key].current;
+      const opacity = key === page ? 1 : 0;
+      const visibility = key === page ? "visible" : "hidden";
+      const duration = key === page ? 0.15 : 0.5;
+
+      tl.to(element, { opacity, visibility, ease: "ease", duration });
     }
+
+    tl.to(navSection.current, {
+      opacity: page !== "events" ? 1 : 0,
+      visibility: page !== "events" ? "visible" : "hidden",
+      ease: "ease",
+      duration: 0.5,
+    });
+
+    setTimeout(() => {
+      setShowBackBtn(page !== "home");
+    }, 1000);
+
+    tl.to(scope.current, {
+      height: page !== "events" ? "100vh" : "fit-content",
+      width: page !== "events" ? "100vw" : "fit-content",
+    });
+
     tl.to(transitionLeft.current, {
       x: "-100%",
       duration: 1,
@@ -642,6 +647,77 @@ export default function Home() {
       "-=1"
     );
   };
+
+  // const handleTransition = (page) => {
+  //   var tl = gsap.timeline();
+  //   tl.to([transitionLeft.current, transitionRight.current], {
+  //     x: 0,
+  //     duration: 1,
+  //     ease: "power2.inOut",
+  //   });
+  //   if (page !== "home") {
+  //     tl.to(pageWrapper.current, {
+  //       opacity: 0,
+  //       visibility: "hidden",
+  //       ease: "ease",
+  //       duration: 0.5,
+  //     });
+  //     tl.to(scope.current, {
+  //       height: "fit-content",
+  //       width: "fit-content",
+  //     });
+  //     if (page === "events") {
+  //       tl.to(eventsWrapper.current, {
+  //         opacity: 1,
+  //         visibility: "visible",
+  //         ease: "ease",
+  //         duration: 0.5,
+  //       });
+  //       setTimeout(() => {
+  //         setShowBackBtn(true);
+  //       }, 1000);
+  //     } else {
+  //       if (page === "contact") {
+  //         tl.to(eventsWrapper.current, {
+  //           opacity: 0,
+  //           visibility: "hidden",
+  //           ease: "ease",
+  //           duration: 0.5,
+  //         });
+  //         tl.to(contactsWrapper.current, {
+  //           opacity: 1,
+  //           visibility: "visible",
+  //           ease: "ease",
+  //           duration: 0.5,
+  //         });
+  //       }
+  //     }
+  //   } else {
+  //     tl.to(pageWrapper.current, {
+  //       opacity: 1,
+  //       visibility: "visible",
+  //       ease: "ease",
+  //       duration: 0.5,
+  //     });
+  //     tl.to(scope.current, {
+  //       height: "100vh",
+  //       width: "100vw",
+  //     });
+  //     setTimeout(() => {
+  //       setShowBackBtn(false);
+  //     }, 1000);
+  //   }
+  //   tl.to(transitionLeft.current, {
+  //     x: "-100%",
+  //     duration: 1,
+  //     ease: "power2.inOut",
+  //   });
+  //   tl.to(
+  //     transitionRight.current,
+  //     { x: "100%", duration: 1, ease: "power2.inOut" },
+  //     "-=1"
+  //   );
+  // };
   return (
     <main
       key="mainLandingPage"
@@ -651,6 +727,7 @@ export default function Home() {
         height: "100vh",
         width: "100vw",
       }}
+      suppressHydrationWarning 
       ref={scope}
     >
       {isLoading ? (
@@ -669,15 +746,18 @@ export default function Home() {
       ) : (
         <>
           <div className={styles.pageTransition}>
-            <Image draggable={false}
+            <Image
+              draggable={false}
               src={TransitionLeft}
               width={1037}
               height={980}
               ref={transitionLeft}
               style={{ transform: "translateX(-100%)" }}
+              suppressHydrationWarning 
               alt=""
             />
-            <Image draggable={false}
+            <Image
+              draggable={false}
               src={TransitionRight}
               width={1037}
               height={980}
@@ -686,18 +766,26 @@ export default function Home() {
                 right: "0",
                 transform: "translateX(100%)",
               }}
+              suppressHydrationWarning 
               ref={transitionRight}
               alt=""
             />
           </div>
           <div className={styles.pageWrapper} ref={pageWrapper}>
-            <Image draggable={false} src={updatedBgLibraryImage} className={styles.pageBgImage} alt=""/>
+            <Image
+              draggable={false}
+              src={updatedBgLibraryImage}
+              className={styles.pageBgImage}
+              alt=""
+            />
             <div
               className={styles.hamSection}
               style={isHamOpen ? { zIndex: 10 } : { zIndex: 2 }}
+              suppressHydrationWarning 
             >
               <div className={styles.hamBtn}>
-                <Image draggable={false}
+                <Image
+                  draggable={false}
                   src="/static/images/navLogo.png"
                   width={60}
                   height={60}
@@ -705,8 +793,9 @@ export default function Home() {
                   alt="Text Oasis Logo"
                 />
                 <AnimatePresence>
-                  <div className={styles.hamAsset}>
-                    <Image draggable={false}
+                  <div key="hamAsset" className={styles.hamAsset}>
+                    <Image
+                      draggable={false}
                       src="/static/images/hamIcon.svg"
                       width={103}
                       height={103}
@@ -731,13 +820,14 @@ export default function Home() {
                         height: `${innerHeight / 10}px`,
                         width: `${innerHeight / 10}px`,
                       }}
+                      suppressHydrationWarning 
                       initial={{ scale: 0 }}
                       animate={{ scale: 50 }}
                       exit={{ scale: 0, transition: { delay: 1.5 } }}
                       transition={{ duration: 1 }}
                     ></motion.div>
                   ) : (
-                    <div style={{ display: "none" }}></div>
+                    <div key="hiddenDiv" style={{ display: "none" }} suppressHydrationWarning ></div>
                   )}
                 </AnimatePresence>
               </div>
@@ -753,32 +843,17 @@ export default function Home() {
                     <Hamburger />
                   </motion.div>
                 ) : (
-                  <div style={{ display: "none" }}></div>
+                  <div key="hiddenDiv2" style={{ display: "none" }} suppressHydrationWarning ></div>
                 )}
               </AnimatePresence>
             </div>
-            <div className={styles["navSection"]}>
-              <AnimatePresence>
-                {isHamOpen ? (
-                  <div style={{ display: "none" }}></div>
-                ) : (
-                  <motion.div
-                    key="navigation"
-                    initial={{ opacity: 0 }}
-                    animate={{ opacity: 1, transition: { delay: 1.5 } }}
-                    exit={{ opacity: 0 }}
-                    transition={{ delay: 0.5 }}
-                  >
-                    <Navbar handleTransition={handleTransition} />
-                  </motion.div>
-                )}
-              </AnimatePresence>
-            </div>
+
             {/* <div className={styles.navLogo}>
-              <Image draggable={false} src={navLogo} />
+              <Image draggable={false} src={navLogo} alt=""/>
             </div> */}
             <AnimatePresence mode="wait">
               <motion.div
+                key="midSection"
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 exit={{ opacity: 0 }}
@@ -788,15 +863,16 @@ export default function Home() {
                   isLoading ? "loaded" : ""
                 }`}
               >
-                <div className={styles.textLogoWrapper}>
-                  <Image draggable={false}
+                <div key="textLogoWrapper" className={styles.textLogoWrapper}>
+                  <Image
+                    draggable={false}
                     src={textLogo}
                     // layout="fill"
                     className={styles.textLogoImg}
                     alt="OASIS"
                   />
                 </div>
-                <div className={styles.bookImgWrapper}>
+                <div key="bookImgWrapper" className={styles.bookImgWrapper}>
                   <div className={styles.leftElements}>
                     {/* <Image draggable={false}
                     src={leftElements}
@@ -806,7 +882,8 @@ export default function Home() {
                     {randomSetImageLeft1}
                     {randomSetImageLeft2}
                   </div>
-                  <Image draggable={false} 
+                  <Image
+                    draggable={false}
                     src={landingPgBookImg}
                     className={styles.LandingBookImg}
                     alt="Book"
@@ -823,7 +900,7 @@ export default function Home() {
                 </div>
                 <AnimatePresence>
                   {isHamOpen ? (
-                    <div style={{ display: "none" }}></div>
+                    <div key="hiddenDiv3" style={{ display: "none" }} suppressHydrationWarning ></div>
                   ) : (
                     <motion.div
                       key="register"
@@ -835,10 +912,12 @@ export default function Home() {
                         position: "absolute",
                         bottom: "50px",
                       }}
+                      suppressHydrationWarning 
                     >
                       <Link href="/register" legacyBehavior>
                         <a className={styles.registerBtnWrapper}>
-                          <Image draggable={false}
+                          <Image
+                            draggable={false}
                             src="/static/images/updatedLandingRegBtn.png"
                             width={RegisterBtnWidth}
                             height={RegisterBtnHeight}
@@ -856,13 +935,30 @@ export default function Home() {
               </motion.div>
             </AnimatePresence>
           </div>
-          <div className={styles.eventsWrapper}>
+          <div className={styles["navSection"]} ref={navSection}>
+            <AnimatePresence>
+              {isHamOpen ? (
+                <div key="hiddenDiv4" style={{ display: "none" }} suppressHydrationWarning ></div>
+              ) : (
+                <motion.div
+                  key="navigation"
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1, transition: { delay: 1.5 } }}
+                  exit={{ opacity: 0 }}
+                  transition={{ delay: 0.5 }}
+                >
+                  <Navbar handleTransition={handleTransition} />
+                </motion.div>
+              )}
+            </AnimatePresence>
+          </div>
+          <div className={styles.eventsWrapper} ref={eventsWrapper}>
             <Events
               showBackBtn={showBackBtn}
               handleTransition={handleTransition}
             />
           </div>
-          <div className={styles.contactsWrapper}>
+          <div className={styles.contactsWrapper} ref={contactsWrapper}>
             <Contact />
           </div>
         </>
