@@ -30,7 +30,7 @@
 }
 @media (max-width: 800px) {
   .navWrapper {
-    /* display: none; */
+    display: none;
   }
 }
 @media (max-height: 605px) {
