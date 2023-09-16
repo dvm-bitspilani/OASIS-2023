@@ -1448,17 +1448,17 @@ export default function Page() {
                 />
               </div>
             </div>
-            <div className={styles.regBtnContainer}>
-              <Image
-                draggable={false}
-                src={register}
-                onClick={handleRegisterations}
-                alt=""
-                width="1rem"
-                height="1rem"
-              />
-            </div>
           </div>
+        </div>
+        <div className={styles.regBtnContainer}>
+          <Image
+            draggable={false}
+            src={register}
+            onClick={handleRegisterations}
+            alt=""
+            width="1rem"
+            height="1rem"
+          />
         </div>
         {innerWidth > 1000 && (
           <motion.div

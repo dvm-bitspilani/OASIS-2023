@@ -6,7 +6,6 @@
   font-family: 'MetalMania';
   src: url('../../public/static/fonts/MetalMania-Regular.ttf') format('truetype');
 }
-
 @font-face {
   font-family: 'Montserrat';
   src: url(../../public/static/fonts/Montserrat.ttf) format('truetype');
@@ -42,7 +41,7 @@ html{
 html,body{
   margin: 0;
   padding: 0;
-  /* overflow-x: hidden; */
+  overflow: hidden;
   height: 100%;
   width:100%;
   scrollbar-width: none;
@@ -58,4 +57,9 @@ html,body{
   background: transparent;
   border: none;
 } */
+
+.swiper-slide{
+  width: 100% !important;
+}
+
 
