@@ -1,4 +1,5 @@
 "use client";
+
 import styles from "./page.module.css";
 import Image from "next/image";
 import React from "react";
@@ -690,7 +691,7 @@ export default function Home() {
             />
           </div>
           <div className={styles.pageWrapper} ref={pageWrapper}>
-            <Image draggable={false} src={updatedBgLibraryImage} className={styles.pageBgImage} />
+            <Image draggable={false} src={updatedBgLibraryImage} className={styles.pageBgImage} alt=""/>
             <div
               className={styles.hamSection}
               style={isHamOpen ? { zIndex: 10 } : { zIndex: 2 }}

@@ -37,7 +37,7 @@ export default function CustomStyles() {
       color: state.isSelected ? "#fff" : "#fff",
       backgroundColor: state.isSelected ? "#7CC6DB" : "#222",
       fontFamily: "KoPub Batang",
-      fontSize: "1.5rem",
+      fontSize: "1.2rem",
       fontWeight: 500,
       zIndex: 1002,
       "&:hover": {
@@ -60,8 +60,9 @@ export default function CustomStyles() {
     }),
     menuList: (provided) => ({
       ...provided,
-      paddingTop: "0",
-      paddingBottom: "0",
+      paddingTop: "1rem",
+      paddingBottom: "1rem",
+      backgroundColor: "#222222",
       "&::-webkit-scrollbar": {
         display: "none",
       },
@@ -103,7 +104,7 @@ export default function CustomStyles() {
       ...provided,
       color: "#fff",
       fontFamily: "KoPub Batang",
-      fontSize: "1.5rem",
+      fontSize: "1.2rem",
       paddingLeft: "1rem",
       backgroundColor: "#222222",
       paddingTop: "0px",
