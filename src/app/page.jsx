@@ -884,12 +884,12 @@ export default function Home() {
               showBackBtn={showBackBtn}
               handleTransition={handleTransition}
             />}
-            {innerWidth < 820 && 
+            {/* {innerWidth < 820 && 
             <EventsMobile
             showBackBtn={showBackBtn}
             handleTransition={handleTransition}
             />
-            }
+            } */}
 
           </div>
           <div className={styles.contactsWrapper} ref={contactsWrapper}>

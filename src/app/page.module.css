@@ -73,15 +73,18 @@
     position: relative;
   }
   .pageBgImage{
-    position: absolute;
+    /* position: absolute; */
   }
   .eventsWrapper{
     position: static;
     visibility: visible;
     opacity: 1;
+    height: 0vh;
   }
   .contactsWrapper{
     position: static;
+    visibility: visible;
+    opacity: 1;
   }
 }
 .hamSection {
