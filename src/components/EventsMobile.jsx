@@ -234,10 +234,10 @@ export default function EventsMobile() {
     }
 
     const scrollDown = () => {
-        window.scrollTo(0, 52920)
+        window.scrollTo(0, 60000)
     }
 
-    // console.log(window.scrollY)
+    console.log(window.scrollY)
 
 
     return (
