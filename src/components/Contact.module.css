@@ -35,6 +35,8 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    margin-left: 4rem;
+  gap: 0.5rem;
 }
 .department p {
     font-size: 1.5rem;
