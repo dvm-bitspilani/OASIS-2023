@@ -24,7 +24,7 @@ import TransitionRight from "../../public/static/images/TransitionRight.png";
 import { gsap } from "gsap";
 import { AnimatePresence, motion } from "framer-motion";
 import { useWindowSize } from "rooks";
-
+import EventsMobile from "@/components/EventsMobile";
 export default function Home() {
   const { isHamOpen, setIsHamOpen } = useContext(HamContext);
 
@@ -875,10 +875,22 @@ export default function Home() {
             </AnimatePresence>
           </div>
           <div className={styles.eventsWrapper} ref={eventsWrapper}>
+            {/* <Events
+              showBackBtn={showBackBtn}
+              handleTransition={handleTransition}
+            /> */}
+            {innerWidth >= 820 && 
             <Events
               showBackBtn={showBackBtn}
               handleTransition={handleTransition}
+            />}
+            {innerWidth < 820 && 
+            <EventsMobile
+            showBackBtn={showBackBtn}
+            handleTransition={handleTransition}
             />
+            }
+
           </div>
           <div className={styles.contactsWrapper} ref={contactsWrapper}>
             <Contact />

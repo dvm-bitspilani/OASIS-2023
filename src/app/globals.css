@@ -45,6 +45,7 @@ html,body{
   height: 100%;
   width:100%;
   scrollbar-width: none;
+  scroll-behavior: smooth;
 }
 /* body::-webkit-scrollbar {
   width: 0;
