@@ -106,6 +106,7 @@
     position: relative;
     height: 20px;
     width: auto;
+    cursor: pointer;
 }
 
 .navTop h1 {

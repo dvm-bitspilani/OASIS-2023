@@ -229,27 +229,36 @@ export default function EventsMobile() {
         };
     }, []);
 
+    const scrollUp = () => {
+        window.scrollTo(0,0)
+    }
+
+    const scrollDown = () => {
+        window.scrollTo(0, 52920)
+    }
+
+    // console.log(window.scrollY)
+
 
     return (
         <>
-
             <div className={events.wrapper}>
                 <div id="scrollDistMobile" className={events.scrollDistMobile}></div>
 
                 <div className={events.navTop}>
-                    <Image src={Top}></Image>
+                    <Image src={Top} onClick={scrollUp}></Image>
                     <h1>EVENTS</h1>
                 </div>
 
                 <div className={events.navBottom}>
-                    <Image src={Bottom}></Image>
+                    <Image src={Bottom} onClick={scrollDown}></Image>
                 </div>
 
                 <div id="containerMobile" className={events.container}>
                     <Image
                         src={Map}
                         width={1000}
-                        height={2600}
+                        height={2700}
                         draggable={false}
                         alt=""
                         style={{ position: "absolute" }}
@@ -275,7 +284,7 @@ export default function EventsMobile() {
 
                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 252 1639" fill="none">
                         <g filter="url(#filter0_d_1343_470)">
-                            <circle id="cm" r="10" fill="#f00" />
+                            <circle id="cm" r="10" fill="#51B6FF"/>
                             <path id="pm" d="M56.5 8C56.5 8 208.829 115.632 207.5 216C206.1 321.769 34.1179 318.222 34 424C33.8893 523.31 181.229 528.33 186.5 627.5C191.505 721.664 70 794 70 839C70 873.5 222 981.5 224 1033.5C226 1085.5 4.0009 1115.5 4 1223.5C3.99949 1285 232.339 1305.58 231.5 1424C230.692 1538.12 17.5 1623 17.5 1623" stroke="url(#paint0_linear_1343_470)" stroke-width="4" stroke-linecap="round" stroke-dasharray="12 12" />
                         </g>
                         <defs>
