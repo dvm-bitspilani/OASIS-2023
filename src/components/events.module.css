@@ -54,7 +54,7 @@
   font-size: 0.85rem;
 }
 .backBtn {
-  z-index: 100;
+  z-index: 20;
   position: fixed;
   top: 5vh;
   left: 50vw;
