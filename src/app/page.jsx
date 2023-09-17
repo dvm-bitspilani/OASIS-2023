@@ -1,5 +1,4 @@
 "use client";
-
 import styles from "./page.module.css";
 import Image from "next/image";
 import React from "react";
@@ -647,87 +646,10 @@ export default function Home() {
       "-=1"
     );
   };
-
-  // const handleTransition = (page) => {
-  //   var tl = gsap.timeline();
-  //   tl.to([transitionLeft.current, transitionRight.current], {
-  //     x: 0,
-  //     duration: 1,
-  //     ease: "power2.inOut",
-  //   });
-  //   if (page !== "home") {
-  //     tl.to(pageWrapper.current, {
-  //       opacity: 0,
-  //       visibility: "hidden",
-  //       ease: "ease",
-  //       duration: 0.5,
-  //     });
-  //     tl.to(scope.current, {
-  //       height: "fit-content",
-  //       width: "fit-content",
-  //     });
-  //     if (page === "events") {
-  //       tl.to(eventsWrapper.current, {
-  //         opacity: 1,
-  //         visibility: "visible",
-  //         ease: "ease",
-  //         duration: 0.5,
-  //       });
-  //       setTimeout(() => {
-  //         setShowBackBtn(true);
-  //       }, 1000);
-  //     } else {
-  //       if (page === "contact") {
-  //         tl.to(eventsWrapper.current, {
-  //           opacity: 0,
-  //           visibility: "hidden",
-  //           ease: "ease",
-  //           duration: 0.5,
-  //         });
-  //         tl.to(contactsWrapper.current, {
-  //           opacity: 1,
-  //           visibility: "visible",
-  //           ease: "ease",
-  //           duration: 0.5,
-  //         });
-  //       }
-  //     }
-  //   } else {
-  //     tl.to(pageWrapper.current, {
-  //       opacity: 1,
-  //       visibility: "visible",
-  //       ease: "ease",
-  //       duration: 0.5,
-  //     });
-  //     tl.to(scope.current, {
-  //       height: "100vh",
-  //       width: "100vw",
-  //     });
-  //     setTimeout(() => {
-  //       setShowBackBtn(false);
-  //     }, 1000);
-  //   }
-  //   tl.to(transitionLeft.current, {
-  //     x: "-100%",
-  //     duration: 1,
-  //     ease: "power2.inOut",
-  //   });
-  //   tl.to(
-  //     transitionRight.current,
-  //     { x: "100%", duration: 1, ease: "power2.inOut" },
-  //     "-=1"
-  //   );
-  // };
   return (
     <main
       key="mainLandingPage"
-      style={{
-        position: "relative",
-        overflow: "hidden",
-        height: innerWidth > 820 ? "100vh" : "fit-content",
-        width: "100vw",
-      }}
-      suppressHydrationWarning 
+      className={styles.scope}
       ref={scope}
     >
       {isLoading ? (
