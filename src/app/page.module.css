@@ -85,6 +85,7 @@
     position: static;
     visibility: visible;
     opacity: 1;
+    min-height: fit-content;
   }
 }
 .hamSection {

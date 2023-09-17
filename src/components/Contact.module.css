@@ -453,3 +453,14 @@ text-shadow: 0px 0px 18.91876983642578px #78BBF0, 0px 0px 18.91876983642578px rg
         display: none;
     }
       }
+
+    @media (max-width: 820px) {
+        .mobileContentWrapper{
+            z-index: 10;
+            top: 100vh;
+            height: fit-content;
+        }
+        .mobileDetailsDept{
+            padding-inline: .3rem;
+        }
+    }
