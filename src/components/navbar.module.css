@@ -28,7 +28,7 @@
     font-size: .75rem;
   }
 }
-@media (max-width: 800px) {
+@media (max-width: 820px) {
   .navWrapper {
     display: none;
   }

@@ -41,10 +41,11 @@ html{
 html,body{
   margin: 0;
   padding: 0;
-  overflow: hidden;
+  overflow-x: hidden;
   height: 100%;
   width:100%;
   scrollbar-width: none;
+  scroll-behavior: smooth;
 }
 /* body::-webkit-scrollbar {
   width: 0;

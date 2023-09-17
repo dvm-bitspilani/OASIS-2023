@@ -1,6 +1,7 @@
 .wrapper {
   height: 100%;
   position: relative;
+  overflow-x: hidden;
 }
 .scrollDist {
   position: absolute;
@@ -64,7 +65,7 @@
   background: rgba(0, 0, 0, 0.33);
   color: #7bbef0;
   text-align: center;
-  font-family: "KoPubBatang";
+  font-family: "KoPub Batang";
   font-size: 1.75rem;
   font-style: normal;
   font-weight: 400;
@@ -72,7 +73,9 @@
   cursor: pointer;
   padding: 0.25rem;
 }
-.itemData {
+
+
+.itemData{
   height: 200vh;
   width: 101vw;
   position: fixed;
