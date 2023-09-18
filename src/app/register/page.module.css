@@ -81,7 +81,7 @@
   overflow: scroll;
   -ms-overflow-style: none;
   scrollbar-width: none;
-  margin-top: 6%;
+  /* margin-top: 6%; */
 }
 .formContainer::-webkit-scrollbar {
   display: none;

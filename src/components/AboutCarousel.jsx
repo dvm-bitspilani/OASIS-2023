@@ -22,6 +22,14 @@ import {
 import styles from "./aboutCarousel.module.css";
 
 export default function AboutCarousel() {
+
+  // React.useEffect(() => {
+  //   document.documentElement.style.overflow = "hidden";
+  //   return () => {
+  //     document.documentElement.style.overflow = "auto";
+  //   };
+  // }, []);
+
   return (
     <>
       <Swiper

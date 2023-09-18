@@ -3,10 +3,11 @@
 import React from "react";
 import styles from "./about.module.css";
 
-export default function CarouselControllerButtons() {
+export default function CarouselControllerButtons({classApplied}) {
   const swiper = React.useRef(null);
 
   React.useEffect(() => {
+
     swiper.current = document.querySelector(".swiper").swiper;
     // console.log(swiper.current);
 
@@ -31,15 +32,17 @@ export default function CarouselControllerButtons() {
   });
 
   const carouselPrevElem = () => {
+    // console.log(swiper.current);
     swiper.current.slidePrev(2000, false);
   };
 
   const carouselNextElem = () => {
+    // console.log(swiper.current);
     swiper.current.slideNext(2000, false);
   };
 
   return (
-    <div className={styles.carouselControllerButtons}>
+    <div className={classApplied}>
       <button
         className={styles.carouselLeftButton}
         onClick={() => carouselPrevElem()}

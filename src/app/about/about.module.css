@@ -20,8 +20,8 @@
 
 .heading {
   /* border: 2px solid green; */
-
-  height: 20%;
+  flex: 0 0 auto;
+  height: 15%;
   width: 100%;
   display: flex;
   justify-content: center;
@@ -42,7 +42,7 @@
 }
 
 .contentContainer {
-  flex: 1 0 auto;
+  flex: 1 1 auto;
   /* border: 2px solid red; */
 
   display: flex;
@@ -50,6 +50,8 @@
   justify-content: start;
   align-items: center;
   gap: 3rem;
+
+  overflow: hidden;
 }
 
 .carouselContainer {
@@ -57,7 +59,7 @@
   border: 1.4px solid #78bbf0;
   box-shadow: 0px 4px 50px 0px rgba(120, 187, 240, 0.5);
 
-  max-height: 40%;
+  max-height: 50%;
   /* width: 60%; */
   aspect-ratio: 16/9;
   max-width: 80%;
@@ -65,7 +67,7 @@
   justify-content: center;
   align-items: center;
 
-  margin-top: 2rem;
+  /* margin-top: 2rem; */
 
   position: relative;
 
@@ -91,6 +93,10 @@
     align-items: center;
     width: 140%;
     height: 100%;
+}
+
+.carouselControllerButtonsMobile{
+  display: none;
 }
 
 .carouselControllerButtons button{
@@ -135,11 +141,11 @@
 }
 
 .leftHand {
-  bottom: -10%;
+  bottom: -15%;
   left: 7%;
   height: 250px;
   width: auto;
-  transition: all 5s ease-in-out;
+  /* transition: all 5s ease-in-out; */
   transform: translate(30%, -30%) rotate(10deg);
 }
 
@@ -148,7 +154,34 @@
   right: -3%;
   height: 250px;
   width: auto;
-  transition: all 0.5s ease-in-out;
+  /* transition: all 0.5s ease-in-out; */
   /* transform: rotateY(180deg) rotateZ(30deg); */
   transform: translate(-30%, -10%) rotateY(180deg) rotateZ(35deg);
+}
+
+@media screen and (max-width : 1110px) {
+  .carouselControllerButtons{
+    width: 120%;
+  }
+  .description {
+    width: 75%;
+  }
+  .leftHand, .rightHand{
+    display: none;
+  }
+}
+
+@media screen and (max-width:600px) {
+  .carouselControllerButtons{
+    display: none;
+  }
+  .carouselControllerButtonsMobile{
+    display: flex;
+    width: 20%;
+    justify-content: space-between;
+    scale: 0.8;
+  }
+  .contentContainer{
+    gap: 2rem;
+  }
 }

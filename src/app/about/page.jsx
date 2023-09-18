@@ -31,8 +31,11 @@ export default function page() {
             className={styles.carouselHand}
           />
           <AboutCarousel />
-          <CarouselControllerButtons />
+          <CarouselControllerButtons classApplied={styles.carouselControllerButtons} />
         </div>
+        <CarouselControllerButtons
+          classApplied={styles.carouselControllerButtonsMobile}
+        />
         <div className={styles.description}>
           <p>
             Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
@@ -59,5 +62,3 @@ export default function page() {
     </main>
   );
 }
-
-
