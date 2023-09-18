@@ -1461,7 +1461,6 @@ export default function Page() {
             onClick={handleRegisterations}
             alt=""
             width="1rem"
-            height="1rem"
           />
         </div>
         {innerWidth > 1000 && (
