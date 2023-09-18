@@ -253,7 +253,7 @@ export default function Hamburger() {
                         <div className={`${styles.item} two`}>
                             <div className={`${styles.number} ${styles.two}`} >
                                 <span className={styles.numbox}><div className={styles.num}>2</div></span>
-                                <span className={styles.txt2}>ECLIPSE</span>
+                                <span className={styles.txt2}>GALLERY</span>
                             </div>
                         </div>
                         <div className={`${styles.item} three`}>
@@ -275,26 +275,7 @@ export default function Hamburger() {
                             </div>
                         </div>
                     </div>
-
-                    {/* <div className={styles.circle2}>
-                    <div className={`${styles.tag} one`}>
-                        <div className={styles.text}>SPONSORS</div>
-                    </div>
-                    <div className={`${styles.tag} two`}>
-                        <div className={styles.text} >ECLIPSE</div>
-                    </div>
-                    <div className={`${styles.tag} three`}>
-                        <div className={styles.text} >WALLMAG</div>
-                    </div>
-                    <div className={`${styles.tag} four`}>
-                        <div className={styles.text} >MEDIA PARTNERS</div>
-                    </div>
-                    <div className={`${styles.tag} five`}>
-                        <div className={styles.text} >DEVELOPERS</div>
-                    </div>
-                </div> */}
                 </div>
-                {/* </div> */}
             </div>
         </>
     )
