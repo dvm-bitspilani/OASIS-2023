@@ -247,7 +247,11 @@
 .loaderContainer video{
   scale: .3;
 }
-
+.guideLink a{
+  color:#5db3f1 ;
+  font-size: 1.5rem;
+  padding-left: 2rem;
+}
 @media (max-width: 1000px) {
   .regForm {
     width: 90vw;
@@ -292,6 +296,9 @@
   }
   #skull{
     scale: 0.8;
+  }
+  .guideLink{
+    text-align: center;
   }
 }
 @media (max-width: 400px) {
