@@ -75,6 +75,20 @@ const Page = () => {
       phone: "tel:+91-8979951532",
       mail: "mailto:collaborations@bits-oasis.org",
     },
+    {
+      name: "Abhinav Lamba",
+      dept: "General Secretary, Students' Union",
+      image: `${contactGhost.src}`,
+      phone: "tel:+91-7078879443",
+      mail: "mailto:gensec@pilani.bits-pilani.ac.in",
+    },
+    {
+      name: "Sarthak Aggarwal",
+      dept: "President, Students' Union",
+      image: `${contactGhost.src}`,
+      phone: "tel:+91-8005000213",
+      mail: "mailto:president@pilani.bits-pilani.ac.in",
+    },
   ];
 
   return (

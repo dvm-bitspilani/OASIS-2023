@@ -6,7 +6,12 @@
   position: fixed;
   z-index: 50;
 }
-
+.scope{
+  position: relative;
+  overflow: hidden;
+  height: 100vh;
+  width: 100vh;
+}
 .pageWrapper {
   height: 100dvh;
   width: 100vw;
@@ -59,6 +64,29 @@
   display: flex;
   justify-content: center;
   top: 100%;
+}
+@media (max-width: 820px) {
+  .scope{
+    height: fit-content;
+  }
+  .pageWrapper{
+    position: relative;
+  }
+  .pageBgImage{
+    /* position: absolute; */
+  }
+  .eventsWrapper{
+    position: static;
+    visibility: visible;
+    opacity: 1;
+    height: 0vh;
+  }
+  .contactsWrapper{
+    position: static;
+    visibility: visible;
+    opacity: 1;
+    min-height: fit-content;
+  }
 }
 .hamSection {
   position: absolute;
@@ -121,6 +149,7 @@
   padding: 1.5rem 0;
   cursor: pointer;
   z-index: 1000;
+  scale: 0.8;
 }
 @media (max-width: 500px) {
   .hamIcon {

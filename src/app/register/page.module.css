@@ -41,7 +41,7 @@
   cursor: pointer; /*temporarily*/
 }
 .regForm {
-  height: 80vh;
+  height: 60vh;
   width: 60vw;
   padding: 2%;
   display: flex;
@@ -97,7 +97,7 @@
   /* padding-left: 1%; */
   display: flex;
   align-items: center;
-  justify-content: center;
+  /* justify-content: center; */
   margin-top: 2rem;
 }
 .regBtnContainer img {
@@ -247,7 +247,11 @@
 .loaderContainer video{
   scale: .3;
 }
-
+.guideLink a{
+  color:#5db3f1 ;
+  font-size: 1.5rem;
+  padding-left: 2rem;
+}
 @media (max-width: 1000px) {
   .regForm {
     width: 90vw;
@@ -263,7 +267,7 @@
     margin-block: auto;
   }
   .regForm{
-    height: 86vh;
+    height: 80vh;
   }
 }
 @media (max-width: 700px) {
@@ -292,6 +296,9 @@
   }
   #skull{
     scale: 0.8;
+  }
+  .guideLink{
+    text-align: center;
   }
 }
 @media (max-width: 400px) {

@@ -1163,6 +1163,9 @@ export default function Page() {
       )}
       <div className={styles.regPage} ref={scope}>
         <h2>REGISTRATIONS</h2>
+        <div className={styles.guideLink}>
+          <a href="https://drive.google.com/file/d/1L7gLFhgsR2YRqwD0DvWwEBVpvZmSc6Qg/view?usp=sharing">Guide To Registration</a>
+        </div>
         {innerWidth < 700 && (
           <Image
             onClick={() => router.back()}
@@ -1448,17 +1451,17 @@ export default function Page() {
                 />
               </div>
             </div>
-            <div className={styles.regBtnContainer}>
-              <Image
-                draggable={false}
-                src={register}
-                onClick={handleRegisterations}
-                alt=""
-                width="1rem"
-                height="1rem"
-              />
-            </div>
           </div>
+        </div>
+        <div className={styles.regBtnContainer}>
+          <Image
+            draggable={false}
+            src={register}
+            onClick={handleRegisterations}
+            alt=""
+            width="1rem"
+            height="1rem"
+          />
         </div>
         {innerWidth > 1000 && (
           <motion.div
