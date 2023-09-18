@@ -1164,7 +1164,8 @@ export default function Page() {
       <div className={styles.regPage} ref={scope}>
         <h2>REGISTRATIONS</h2>
         <div className={styles.guideLink}>
-          <a href="https://drive.google.com/file/d/1L7gLFhgsR2YRqwD0DvWwEBVpvZmSc6Qg/view?usp=sharing">Guide To Registration</a>
+          {/* <a href="https://drive.google.com/file/d/1L7gLFhgsR2YRqwD0DvWwEBVpvZmSc6Qg/view?usp=sharing" >Guide To Registration</a> */}
+          <a href="http://drive.google.com/file/d/1L7gLFhgsR2YRqwD0DvWwEBVpvZmSc6Qg/view?usp=sharing" target="_blank" rel="noopener noreferrer">Guide To Registration</a>
         </div>
         {innerWidth < 700 && (
           <Image
