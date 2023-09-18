@@ -163,6 +163,9 @@ text-shadow: 0px 0px 18.91876983642578px #78BBF0, 0px 0px 18.91876983642578px rg
     background-position: center;
     background-repeat: no-repeat;
     background-size: contain; */
+    height: auto;
+  position: relative;
+  z-index: 10;
 }
 .mobileContentWrapper{
     height: 100vh;
@@ -170,7 +173,7 @@ text-shadow: 0px 0px 18.91876983642578px #78BBF0, 0px 0px 18.91876983642578px rg
   overflow: scroll;
   background: transparent;
   z-index: 3;
-  position: absolute;
+  /* position: absolute; */
   top: 0;
 }
 .mobileMainSection{
@@ -186,6 +189,7 @@ text-shadow: 0px 0px 18.91876983642578px #78BBF0, 0px 0px 18.91876983642578px rg
     top: 0;
     height: 100vh;
     width: 100vw;
+    display: none;
 }
 .mobileHeading{
     text-align: center;
@@ -346,7 +350,28 @@ text-shadow: 0px 0px 18.91876983642578px #78BBF0, 0px 0px 18.91876983642578px rg
     gap: unset;
 }
 .mobileDetails{
-    scale: 0.75;
+    scale: 0.95;
+}
+}
+@media screen and (max-width: 400px) {
+.mobileHeading span{
+    font-size: 2rem;
+}
+
+/* .newMobileImageWrapper{
+    width: 280px;
+    height: auto;
+} */
+.mobileMainSection{
+    gap: unset;
+}
+.mobileDetails{
+    scale: 0.95;
+}
+}
+@media screen and (max-width: 350px) {
+.mobileDetails{
+    scale: 0.90;
 }
 }
 @media screen and (max-height: 650px) {

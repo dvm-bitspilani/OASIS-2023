@@ -4,7 +4,7 @@ import styles from "./Contact.module.css";
 import { AnimatePresence, motion } from "framer-motion";
 import ImageWrapper from "../../public/static/images/contacts.png";
 import phone from "../../public/static/images/phone.svg";
-import mail from "../../public/static/images/mail.svg";
+import mail from "../../public/static/images/mailicon.svg";
 import mobilebgImage from "../../public/static/images/mobileLibraryBgImage.png";
 import updatedbgImage from "../../public/static/images/updatedLibraryBgImage.png";
 import shivang from "../../public/static/images/shivang.png";

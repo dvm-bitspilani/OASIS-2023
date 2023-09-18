@@ -1,5 +1,6 @@
 .regPage {
   width: 100vw;
+  height: 100vh;
   /* background: url(../../../public/static/images/RegisterBG.svg); */
   background: url(../../../public/static/images/updatedLibraryBgImage.png);
   background-position: center center;
@@ -44,6 +45,7 @@
   width: 60vw;
   padding: 2%;
   display: flex;
+  margin-top: 2vh;
 }
 .scrollBarContainer {
   height: 100%;
@@ -81,7 +83,6 @@
   overflow: scroll;
   -ms-overflow-style: none;
   scrollbar-width: none;
-  /* margin-top: 6%; */
 }
 .formContainer::-webkit-scrollbar {
   display: none;
@@ -97,7 +98,7 @@
   display: flex;
   align-items: center;
   /* justify-content: center; */
-  margin-top: 2rem;
+  /* margin-top: 2rem; */
 }
 .regBtnContainer img {
   height: 20%;
@@ -247,7 +248,7 @@
   scale: .3;
 }
 .guideLink a{
-  color:#5db3f1 ;
+  color: #abdcff;
   font-size: 1.5rem;
   padding-left: 2rem;
 }
@@ -266,7 +267,7 @@
     margin-block: auto;
   }
   .regForm{
-    height: 80vh;
+    height: 65vh;
   }
 }
 @media (max-width: 700px) {
