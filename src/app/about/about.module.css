@@ -99,17 +99,17 @@
   display: none;
 }
 
-.carouselControllerButtons button{
+.carouselControllerButtons button, .carouselControllerButtonsMobile button{
     background-color: transparent;
     border: none;
     transition: all 0.5s ease-in-out;
 }
 
-.carouselControllerButtons button:hover{
+.carouselControllerButtons button:hover, .carouselControllerButtonsMobile button:hover{
     cursor: pointer;
 }
 
-.carouselControllerButtons button:disabled{
+.carouselControllerButtons button:disabled, .carouselControllerButtonsMobile button:disabled{
     cursor: not-allowed;
 }
 

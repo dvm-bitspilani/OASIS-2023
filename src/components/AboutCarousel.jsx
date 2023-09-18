@@ -22,13 +22,14 @@ import {
 import styles from "./aboutCarousel.module.css";
 
 export default function AboutCarousel() {
-
-  // React.useEffect(() => {
-  //   document.documentElement.style.overflow = "hidden";
-  //   return () => {
-  //     document.documentElement.style.overflow = "auto";
-  //   };
-  // }, []);
+  React.useEffect(() => {
+    // document.documentElement.style.overflow = "hidden";
+    document.body.style.height = "100dvh";
+    return () => {
+      document.body.style.height = "auto";
+      //   document.documentElement.style.overflow = "auto";
+    };
+  }, []);
 
   return (
     <>
@@ -43,7 +44,7 @@ export default function AboutCarousel() {
         //   delay: 4000,
         //     disableOnInteraction: false,
         // }}
-   
+
         speed={2000}
         // loop={true}
         className={styles.carousel}
