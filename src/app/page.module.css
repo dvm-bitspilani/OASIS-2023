@@ -85,9 +85,17 @@
   }
   .pageWrapper {
     position: relative;
+    z-index: 1;
   }
   .pageBgImage {
-    /* position: absolute; */
+    /* display: none; */
+  }
+  .aboutWrapper{
+    position: relative;
+    visibility: visible;
+    opacity: 1;
+    min-height: fit-content;
+    z-index: 15;
   }
   .eventsWrapper {
     position: static;

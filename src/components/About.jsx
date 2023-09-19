@@ -16,7 +16,7 @@ export default function page() {
       <Image
         draggable={false}
         src={updatedBgLibraryImage}
-        className={landingStyles.pageBgImage}
+        className={styles.pageBgImage}
         alt=""
       />
       <div className={styles.heading}>
