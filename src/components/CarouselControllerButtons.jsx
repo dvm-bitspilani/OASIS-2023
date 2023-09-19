@@ -3,17 +3,20 @@
 import React from "react";
 import styles from "./about.module.css";
 
-export default function CarouselControllerButtons({classApplied}) {
+export default function CarouselControllerButtons({ classApplied }) {
   const swiper = React.useRef(null);
 
   React.useEffect(() => {
-
     swiper.current = document.querySelector(".swiper").swiper;
     // console.log(swiper.current);
 
     swiper.current.on("slideChange", () => {
-      const carouselPrevButton = document.querySelector(`.${styles.carouselLeftButton}`);
-      const carouselNextButton = document.querySelector(`.${styles.carouselRightButton}`);
+      const carouselPrevButton = document.querySelector(
+        `.${styles.carouselLeftButton}`
+      );
+      const carouselNextButton = document.querySelector(
+        `.${styles.carouselRightButton}`
+      );
       if (swiper.current.progress === 0) {
         carouselPrevButton.style.opacity = 0.5;
         carouselPrevButton.disabled = true;
@@ -30,6 +33,15 @@ export default function CarouselControllerButtons({classApplied}) {
       }
     });
   });
+
+  React.useEffect(() => {
+    const carouselPrevButton = document.querySelector(
+      `.${styles.carouselLeftButton}`
+    );
+    carouselPrevButton.style.opacity = 0.5;
+    carouselPrevButton.disabled = true;
+  }
+  , []);
 
   const carouselPrevElem = () => {
     // console.log(swiper.current);
