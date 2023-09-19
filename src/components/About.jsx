@@ -1,10 +1,10 @@
 import styles from "./about.module.css";
-import landingStyles from "../page.module.css";
+import landingStyles from "../app/page.module.css";
 
-import updatedBgLibraryImage from "../../../public/static/images/updatedLibraryBgImage.png";
-import leftHandImg from "../../../public/static/images/aboutLeftHand.png";
-// import rightHandImg from "../../../public/static/images/aboutRightHand.png";
-import topHandImg from "../../../public/static/images/aboutHandTop.png";
+import updatedBgLibraryImage from "../../public/static/images/updatedLibraryBgImage.png";
+import leftHandImg from "../../public/static/images/aboutLeftHand.png";
+// import rightHandImg from "../../public/static/images/aboutRightHand.png";
+import topHandImg from "../../public/static/images/aboutHandTop.png";
 
 import Image from "next/image";
 import AboutCarousel from "@/components/AboutCarousel";

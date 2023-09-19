@@ -18,6 +18,7 @@ import updatedBgLibraryImage from "../../public/static/images/updatedLibraryBgIm
 
 import Events from "@/components/Events";
 import Contact from "@/components/Contact";
+import About from "@/components/About";
 import TransitionLeft from "../../public/static/images/TransitionLeft.png";
 import TransitionRight from "../../public/static/images/TransitionRight.png";
 // import MyVideoLoader from "@/components/VideoLoader";
@@ -120,6 +121,7 @@ export default function Home() {
   const navSection = useRef(null);
   const contactsWrapper = useRef(null);
   const eventsWrapper = useRef(null);
+  const aboutWrapper = useRef(null)
   const transitionLeft = useRef(null);
   const transitionRight = useRef(null);
 
@@ -608,6 +610,7 @@ export default function Home() {
       contact: contactsWrapper,
       events: eventsWrapper,
       home: pageWrapper,
+      about: aboutWrapper,
     };
 
     for (const key in elements) {
@@ -874,6 +877,9 @@ export default function Home() {
               )}
             </AnimatePresence>
           </div>
+          <div className={styles.aboutWrapper} ref={aboutWrapper}>
+              <About />
+            </div>
           <div className={styles.eventsWrapper} ref={eventsWrapper}>
             {/* <Events
               showBackBtn={showBackBtn}
@@ -890,6 +896,7 @@ export default function Home() {
             handleTransition={handleTransition}
             />
             } */}
+            
 
           </div>
           <div className={styles.contactsWrapper} ref={contactsWrapper}>

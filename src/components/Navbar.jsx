@@ -19,9 +19,9 @@ const Navbar = ({ handleTransition }) => {
         <a className={nav.navItem} onClick={() => handleNavClick("events")}>
           EVENTS
         </a>
-        <Link className={nav.navItem} href="/about">
+        <a className={nav.navItem} onClick={() => handleNavClick("about")}>
           ABOUT US
-        </Link>
+        </a>
         <a className={nav.navItem} onClick={() => handleNavClick("home")}>
           HOME
         </a>
