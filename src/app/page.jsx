@@ -513,6 +513,20 @@ export default function Home() {
     }
   }, [isHamOpen]);
 
+  useEffect(() => {
+    if (isHamOpen) {
+      gsap.to(scope.current , {
+        overflowY: 'hidden'
+      })
+    }
+    else{
+      gsap.to(scope.current , {
+        overflowY: 'scroll',
+        delay: 2
+      })
+    }
+  }, [isHamOpen])
+
   const { innerWidth, innerHeight } = useWindowSize();
 
   // const regLoaderRef = useRef(null);
