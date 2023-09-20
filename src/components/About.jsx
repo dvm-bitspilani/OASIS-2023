@@ -1,10 +1,10 @@
 import styles from "./about.module.css";
-import landingStyles from "../page.module.css";
+import landingStyles from "../app/page.module.css";
 
-import updatedBgLibraryImage from "../../../public/static/images/updatedLibraryBgImage.png";
-import leftHandImg from "../../../public/static/images/aboutLeftHand.png";
-// import rightHandImg from "../../../public/static/images/aboutRightHand.png";
-import topHandImg from "../../../public/static/images/aboutHandTop.png";
+import updatedBgLibraryImage from "../../public/static/images/updatedLibraryBgImage.png";
+import leftHandImg from "../../public/static/images/aboutLeftHand.png";
+// import rightHandImg from "../../public/static/images/aboutRightHand.png";
+import topHandImg from "../../public/static/images/aboutHandTop.png";
 
 import Image from "next/image";
 import AboutCarousel from "@/components/AboutCarousel";
@@ -16,7 +16,7 @@ export default function page() {
       <Image
         draggable={false}
         src={updatedBgLibraryImage}
-        className={landingStyles.pageBgImage}
+        className={styles.pageBgImage}
         alt=""
       />
       <div className={styles.heading}>
@@ -31,16 +31,14 @@ export default function page() {
             className={styles.carouselHand}
           />
           <AboutCarousel />
-          <CarouselControllerButtons />
+          <CarouselControllerButtons classApplied={styles.carouselControllerButtons} />
         </div>
+        <CarouselControllerButtons
+          classApplied={styles.carouselControllerButtonsMobile}
+        />
         <div className={styles.description}>
           <p>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-            eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim
-            ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-            aliquip ex ea commodo consequat. Duis aute irure dolor in
-            reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
-            pariatur. Excepteur sint occaecat cupidatat not
+          Oasis, the annual cultural extravaganza of Birla Institute of Technology and Science, Pilani, has been a vibrant part of India's cultural tapestry since 1971. Managed entirely by students, it's a dazzling showcase of talent in Dance, Drama, Literature, Comedy, Fashion, and Music. It's where dreams come alive, laughter fills the air, and creativity knows no bounds. Step into the world of Oasis, where youth's boundless potential shines.
           </p>
         </div>
       </div>
@@ -59,5 +57,3 @@ export default function page() {
     </main>
   );
 }
-
-

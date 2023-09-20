@@ -10,7 +10,6 @@ const Navbar = ({ handleTransition }) => {
   return (
     <>
       <div className={nav.navWrapper}>
-
         <a className={nav.navItem} onClick={() => handleNavClick("sponsors")}>
           SPONSORS
         </a>

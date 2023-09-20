@@ -3,7 +3,7 @@
 import React from "react";
 import styles from "./about.module.css";
 
-export default function CarouselControllerButtons() {
+export default function CarouselControllerButtons({ classApplied }) {
   const swiper = React.useRef(null);
 
   React.useEffect(() => {
@@ -11,8 +11,12 @@ export default function CarouselControllerButtons() {
     // console.log(swiper.current);
 
     swiper.current.on("slideChange", () => {
-      const carouselPrevButton = document.querySelector(`.${styles.carouselLeftButton}`);
-      const carouselNextButton = document.querySelector(`.${styles.carouselRightButton}`);
+      const carouselPrevButton = document.querySelector(
+        `.${styles.carouselLeftButton}`
+      );
+      const carouselNextButton = document.querySelector(
+        `.${styles.carouselRightButton}`
+      );
       if (swiper.current.progress === 0) {
         carouselPrevButton.style.opacity = 0.5;
         carouselPrevButton.disabled = true;
@@ -30,16 +34,27 @@ export default function CarouselControllerButtons() {
     });
   });
 
+  React.useEffect(() => {
+    const carouselPrevButton = document.querySelector(
+      `.${styles.carouselLeftButton}`
+    );
+    carouselPrevButton.style.opacity = 0.5;
+    carouselPrevButton.disabled = true;
+  }
+  , []);
+
   const carouselPrevElem = () => {
+    // console.log(swiper.current);
     swiper.current.slidePrev(2000, false);
   };
 
   const carouselNextElem = () => {
+    // console.log(swiper.current);
     swiper.current.slideNext(2000, false);
   };
 
   return (
-    <div className={styles.carouselControllerButtons}>
+    <div className={classApplied}>
       <button
         className={styles.carouselLeftButton}
         onClick={() => carouselPrevElem()}
