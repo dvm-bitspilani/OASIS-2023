@@ -11,6 +11,7 @@
   overflow: hidden;
   height: 100vh;
   width: 100vw;
+  cursor: none;
 }
 .pageWrapper {
   height: 100dvh;
@@ -169,7 +170,7 @@
   flex-direction: column;
   justify-content: space-between;
   padding: 1.5rem 0;
-  cursor: pointer;
+  /* cursor: pointer; */
   z-index: 1000;
   scale: 0.8;
 }
@@ -230,7 +231,7 @@
   display: inline-block;
 }
 .registerBtnWrapper:hover {
-  cursor: pointer;
+  /* cursor: pointer; */
   scale: 1.1;
 }
 .landingPageDate > span {

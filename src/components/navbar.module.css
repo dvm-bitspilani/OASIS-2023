@@ -11,7 +11,7 @@
   text-decoration: none;
 }
 .navItem:hover {
-  cursor: pointer;
+  /* cursor: pointer; */
 }
   .navWrapper {
     gap: 2rem;
