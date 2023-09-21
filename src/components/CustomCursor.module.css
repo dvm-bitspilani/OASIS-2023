@@ -1,0 +1,20 @@
+.customCursor {
+  position: fixed;
+  pointer-events: none;
+  transform: translate(-12%, -85%);
+  transition: transform 0.25s ease, filter 0.25s ease;
+  will-change: transform;
+  z-index: 9999;
+  filter: drop-shadow(0px 0px 25px #000000);
+}
+
+.customCursor img {
+  width: 30px;
+  height: auto;
+}
+
+.customCursor.hovered {
+  transform: translate(-12%, -85%) scale(1.5);
+  filter: brightness(1.5);
+  filter: drop-shadow(0px 0px 25px #ffffff);
+}

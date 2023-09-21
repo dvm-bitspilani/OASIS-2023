@@ -10,19 +10,19 @@ const Navbar = ({ handleTransition }) => {
   return (
     <>
       <div className={nav.navWrapper}>
-        <a className={nav.navItem} onClick={() => handleNavClick("sponsors")}>
+        <a className={`${nav.navItem} customHover`} onClick={() => handleNavClick("sponsors")}>
           SPONSORS
         </a>
-        <a className={nav.navItem} onClick={() => handleNavClick("contact")}>
+        <a className={`${nav.navItem} customHover`} onClick={() => handleNavClick("contact")}>
           CONTACT
         </a>
-        <a className={nav.navItem} onClick={() => handleNavClick("events")}>
+        <a className={`${nav.navItem} customHover`} onClick={() => handleNavClick("events")}>
           EVENTS
         </a>
-        <a className={nav.navItem} onClick={() => handleNavClick("about")}>
+        <a className={`${nav.navItem} customHover`} onClick={() => handleNavClick("about")}>
           ABOUT US
         </a>
-        <a className={nav.navItem} onClick={() => handleNavClick("home")}>
+        <a className={`${nav.navItem} customHover`} onClick={() => handleNavClick("home")}>
           HOME
         </a>
       </div>

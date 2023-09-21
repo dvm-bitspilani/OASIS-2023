@@ -26,6 +26,8 @@ import { gsap } from "gsap";
 import { AnimatePresence, motion } from "framer-motion";
 import { useWindowSize } from "rooks";
 import EventsMobile from "@/components/EventsMobile";
+import CustomCursor from "@/components/CustomCursor";
+
 export default function Home() {
   const { isHamOpen, setIsHamOpen } = useContext(HamContext);
 
@@ -684,6 +686,7 @@ export default function Home() {
         </div>
       ) : (
         <>
+              <CustomCursor/>
           <div className={styles.pageTransition}>
             <Image
               draggable={false}
@@ -732,7 +735,8 @@ export default function Home() {
                   alt="Text Oasis Logo"
                 />
                 <AnimatePresence>
-                  <div key="hamAsset" className={styles.hamAsset}>
+                  <div key="hamAsset"
+                  className={`${styles.hamAsset} customHover`}>
                     <Image
                       draggable={false}
                       src="/static/images/hamIcon.svg"
@@ -854,7 +858,9 @@ export default function Home() {
                       suppressHydrationWarning 
                     >
                       <Link href="/register" legacyBehavior>
-                        <a className={styles.registerBtnWrapper}>
+                        <a
+                          className={`${styles.registerBtnWrapper} customHover`}
+                        >
                           <Image
                             draggable={false}
                             src="/static/images/updatedLandingRegBtn.png"
