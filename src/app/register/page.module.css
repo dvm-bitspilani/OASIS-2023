@@ -48,7 +48,7 @@
   margin-top: 2vh;
 }
 .scrollBarContainer {
-  height: 100%;
+  height: 90%;
   width: 10%;
   margin: 6% 0;
   display: flex;
@@ -248,8 +248,8 @@
   scale: .3;
 }
 .guideLink a{
-  color: #abdcff;
-  font-size: 1.5rem;
+  color: #477AA1;
+  font-size: 1.25rem;
   padding-left: 2rem;
 }
 @media (max-width: 1000px) {

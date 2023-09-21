@@ -40,7 +40,7 @@ export default function page() {
         />
         <div className={styles.description}>
           <p>
-          Oasis, the annual cultural extravaganza of Birla Institute of Technology and Science, Pilani, has been a vibrant part of India's cultural tapestry since 1971. Managed entirely by students, it's a dazzling showcase of talent in Dance, Drama, Literature, Comedy, Fashion, and Music. It's where dreams come alive, laughter fills the air, and creativity knows no bounds. Step into the world of Oasis, where youth's boundless potential shines.
+          Oasis, the annual cultural extravaganza of Birla Institute of Technology and Science, Pilani, has been a vibrant part of India&apos;s cultural tapestry since 1971. Managed entirely by students, it&apos;s a dazzling showcase of talent in Dance, Drama, Literature, Comedy, Fashion, and Music. It&apos;s where dreams come alive, laughter fills the air, and creativity knows no bounds. Step into the world of Oasis, where youth&apos;s boundless potential shines.
           </p>
         </div>
       </div>

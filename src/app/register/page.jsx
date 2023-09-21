@@ -156,6 +156,13 @@ const formReducerFn = (state, action) => {
       head_of_society: action.value.target.value,
     };
   }
+  if (action.type === "visitorChange") {
+    // const newValue = state.visitor === "NO" ? "YES" : "NO";
+    return {
+      ...state,
+      visitor: action.value.target.value,
+    };
+  }
   if (action.type === "eventChange") {
     const eventsArray = action.value;
     // console.log(eventsArray);
@@ -178,6 +185,7 @@ const formDataTemplate = {
   year: "",
   choreographer: "NO",
   head_of_society: "NO",
+  visitor: "NO",
   name: "",
   gender: "",
   city: "",
@@ -193,6 +201,7 @@ const year = [
 ];
 
 export default function Page() {
+
   const { innerWidth, innerHeight } = useWindowSize();
 
   const numberOfRandom = 6;
@@ -889,6 +898,12 @@ export default function Page() {
       if (data.head_of_society === "YES") {
         data.head_of_society = 1;
       }
+      if (data.visitor === "NO") {
+        data.visitor = 0;
+      }
+      if (data.visitor === "YES") {
+        data.visitor = 1;
+      }
       // console.log(data);
       const options = {
         method: "POST",
@@ -952,6 +967,9 @@ export default function Page() {
   }
   function handleHeadChange(inp) {
     formDispatchFn({ type: "headChange", value: inp });
+  }
+  function handleVisitorChange(inp) {
+    formDispatchFn({ type: "visitorChange", value: inp });
   }
   function handleEventChange(inp) {
     formDispatchFn({ type: "eventChange", value: inp });
@@ -1125,7 +1143,7 @@ export default function Page() {
     setErrorScreen(false);
   };
 
-  // console.log(formData)
+  console.log(formData)
 
   return (
     <>
@@ -1449,6 +1467,27 @@ export default function Page() {
                   text="NO"
                   onChange={handleHeadChange}
                   checked={formData.head_of_society === "NO" ? true : false}
+                />
+              </div>
+
+              <label>ARE YOU A VISITOR?</label>
+              <div className={styles.radioBtns} style={{ width: "60%" }} suppressHydrationWarning>
+                <Radio
+                  id="YES_Visitor"
+                  value="YES"
+                  name="visitor"
+                  text="YES"
+                  onChange={handleVisitorChange}
+                  // checked={formData.visitor === "YES"? true : false}
+                />
+
+                <Radio
+                  id="NO_Visitor"
+                  value="NO"
+                  name="visitor"
+                  text="NO"
+                  onChange={handleVisitorChange}
+                  checked={formData.visitor === "NO" ? true : false}
                 />
               </div>
             </div>
