@@ -41,23 +41,23 @@ html{
 html,body{
   margin: 0;
   padding: 0;
-  overflow-x: hidden;
+  /* overflow-x: hidden; */
   height: 100%;
   width:100%;
   scrollbar-width: none;
   scroll-behavior: smooth;
 }
-/* body::-webkit-scrollbar {
+body::-webkit-scrollbar {
   width: 0;
   height: 0;
-} */
-/* body::-webkit-scrollbar-track {
+}
+body::-webkit-scrollbar-track {
   background: transparent;
-} */
-/* body::-webkit-scrollbar-thumb {
+}
+body::-webkit-scrollbar-thumb {
   background: transparent;
   border: none;
-} */
+}
 
 .swiper-slide{
   width: 100% !important;
