@@ -162,7 +162,12 @@
   /* transform: rotateY(180deg) rotateZ(30deg); */
   transform: translate(-30%, -10%) rotateY(180deg) rotateZ(35deg);
 }
-
+.leftHandMobile{
+  display: none;
+}
+.rightHandMobile{
+  display: none;
+}
 @media screen and (max-width : 1110px) {
   .carouselControllerButtons{
     width: 120%;
@@ -193,4 +198,60 @@
   .pageBgImage {
     display: none;
   }
+  .pageWrapper{
+    position: relative;
+    top: 0;
+    height: auto;
+    /* min-height: 100vh; */
+  }
+  .leftHandMobile{
+    display: block;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+  }
+  .rightHandMobile{
+    display: block;
+    position: absolute;
+    top: 0;
+    right: 0;
+  }
+  .heading{
+    margin-top: 4rem;
+  }
 }
+@media screen and (max-height: 1000px) and (min-width: 280px) {
+  .pageWrapper{
+    min-height: 100vh;
+  }
+    }
+@media screen and (max-height: 900px) and (min-width: 280px) {
+  .pageWrapper{
+    min-height: 125vh;
+  }
+    }
+@media screen and (max-height: 900px) and (min-width: 340px) {
+  .pageWrapper{
+    min-height: 110vh;
+  }
+    }
+@media screen and (max-height: 900px) and (min-width: 600px) {
+  .pageWrapper{
+    min-height: 100vh;
+  }
+    }
+@media screen and (max-height: 800px) and (min-width: 280px) {
+  .pageWrapper{
+    min-height: 135vh;
+  }
+    }
+@media screen and (max-height: 800px) and (min-width: 340px) {
+  .pageWrapper{
+    min-height: 120vh;
+  }
+    }
+@media screen and (max-height: 700px) and (min-width: 340px) {
+  .pageWrapper{
+    min-height: 140vh;
+  }
+    }
