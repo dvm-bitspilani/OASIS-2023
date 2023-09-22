@@ -1470,7 +1470,7 @@ export default function Page() {
                 />
               </div>
 
-              <label>ARE YOU A VISITOR?</label>
+              {/*<label>ARE YOU A VISITOR?</label>
               <div className={styles.radioBtns} style={{ width: "60%" }} suppressHydrationWarning>
                 <Radio
                   id="YES_Visitor"
@@ -1489,7 +1489,7 @@ export default function Page() {
                   onChange={handleVisitorChange}
                   checked={formData.visitor === "NO" ? true : false}
                 />
-              </div>
+              </div>*/}
             </div>
           </div>
         </div>
