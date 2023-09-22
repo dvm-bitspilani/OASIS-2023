@@ -180,6 +180,12 @@
   }
 }
 
+@media (max-width: 600px) {
+  .scope{
+    cursor: auto;
+  }
+}
+
 .hamIcon1 {
   height: 3.5px;
   width: 50%;
