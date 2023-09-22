@@ -686,7 +686,7 @@ export default function Home() {
         </div>
       ) : (
         <>
-              <CustomCursor/>
+              {window.innerWidth >= 600 && <CustomCursor/>}
           <div className={styles.pageTransition}>
             <Image
               draggable={false}
