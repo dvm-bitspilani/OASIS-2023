@@ -40,7 +40,7 @@ export default function EventsMobile2({width, image, name, desc, key, onForward,
                         <Image src={StreetDance} alt="img not found"
                         />
                     </div>
-                    <h1 className={styles.name} style={{ fontFamily: 'KoPub' }}>{name}</h1>
+                    <h1 className={styles.title} style={{ fontFamily: 'KoPub' }}>{name}</h1>
                     <p className={styles.desc}>{desc}</p>
                 </div>
 

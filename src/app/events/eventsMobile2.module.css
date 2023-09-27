@@ -40,7 +40,8 @@
 .title{
     font-size: 2rem;
     font-family: 'KoPub';
-
+    text-align: center;
+    padding-inline: 1rem;
 }
 
 .desc{
