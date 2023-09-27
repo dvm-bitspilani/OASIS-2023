@@ -115,9 +115,7 @@
     position: relative;
     z-index: 1;
   }
-  .pageBgImage {
-    /* display: none; */
-  }
+  
   .aboutWrapper{
     position: relative;
     visibility: visible;
