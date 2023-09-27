@@ -900,6 +900,8 @@ export default function Home() {
           </div>
           <div className={styles.aboutWrapper} ref={aboutWrapper}>
               <About />
+            </div>
+            <div className={styles.aboutWrapper}>
               <EventsMobile2 handleTransition={handleTransition}/>
             </div>
           <div className={styles.eventsWrapper} ref={eventsWrapper}>
