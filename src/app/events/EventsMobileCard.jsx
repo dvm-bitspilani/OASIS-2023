@@ -44,10 +44,10 @@ export default function EventsMobile2({width, image, name, desc, key, onForward,
                     <p className={styles.desc}>{desc}</p>
                 </div>
 
-                <div className={styles.navigation}>
+                {/* <div className={styles.navigation}>
                     <Image src={Backward} onClick={handleBackward} />
                     <Image src={Forward} onClick={handleForward} />
-                </div>
+                </div> */}
             </div>
         </>
     )

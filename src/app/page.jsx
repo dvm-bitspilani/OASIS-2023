@@ -900,7 +900,7 @@ export default function Home() {
           </div>
           <div className={styles.aboutWrapper} ref={aboutWrapper}>
               <About />
-              <EventsMobile2/>
+              <EventsMobile2 handleTransition={handleTransition}/>
             </div>
           <div className={styles.eventsWrapper} ref={eventsWrapper}>
             {/* <Events

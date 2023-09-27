@@ -9,7 +9,7 @@ import StreetDance from "../../../public/static/images/SampleEvent.png"
 import Forward from "../../../public/static/images/forwardArrow.svg"
 import Backward from "../../../public/static/images/backArrow.svg"
 
-export default function EventsMobile2() {
+export default function EventsMobile2({ handleTransition }) {
   const tasks = [
     {
       key: 1,
@@ -177,7 +177,7 @@ export default function EventsMobile2() {
   const [width, setWidth] = useState(0)
   const [translateX, setTranslateX] = useState(0);
   const [cardNo, setCardNo] = useState(1)
-  const totalCards = tasks.length + 1
+  const totalCards = tasks.length + 2
 
 
   useEffect(() => {
@@ -191,26 +191,53 @@ export default function EventsMobile2() {
     };
   }, []);
 
+  const [buttonTranslate, setButtonTranslate] = useState(() => window.innerWidth);
+
   const handleForward = () => {
-    console.log("fowrard")
-    if(cardNo != totalCards){
+    // console.log("fowrard")
+    if (cardNo != totalCards) {
       setCardNo(cardNo + 1)
       setTranslateX(translateX - width)
     }
   }
   const handleBackward = () => {
-    console.log("back")
-    if(cardNo != 1){
+    // console.log("back")
+    if (cardNo != 1) {
       setCardNo(cardNo - 1)
       setTranslateX(translateX + width)
+    }
   }
-}
 
-    console.log(cardNo)
+  const handleFirstForward = () => {
+    setCardNo(cardNo + 1)
+    setTranslateX(translateX - width)
+    setButtonTranslate(0)
+  }
 
+  const handleFirstBackward = () => {
+    setCardNo(cardNo - 1)
+    setTranslateX(translateX + width)
+    setButtonTranslate(width)
+  }
+
+  const handleLastForward = () => {
+    if (cardNo != totalCards) {
+    setCardNo(cardNo + 1)
+    setTranslateX(translateX - width)
+    setButtonTranslate(-width)}
+  }
+
+  const handleLastBackward = () => {
+    setCardNo(1)
+    setTranslateX(translateX + width*(totalCards-1))
+    setButtonTranslate(width)
+  }
 
   const translateStyle = {
     transform: `translateX(${translateX}px)`,
+  }
+  const buttonTranslateStyle = {
+    transform: `translateX(${buttonTranslate}px)`,
   }
 
   let CardsList = tasks.map((card) => {
@@ -236,20 +263,28 @@ export default function EventsMobile2() {
         >
           <div className="firstCard" style={{ width: width }}>
             <h1 className={styles.firstHeading} style={{ width: width }}>EVENTS</h1>
-            <p className={styles.firstText} style={{ width: width }}>Tap to start your journey!<br/>Adventures lie ahead...</p>
+            <p className={styles.firstText} style={{ width: width }}>Tap to start your journey!<br />Adventures lie ahead...</p>
             <div className={styles.navigation} style={{ width: width }}>
-                    {/* <Image src={Backward} onClick={handleBackward} /> */}
-                    <Image src={Forward} onClick={handleForward} />
+              {/* <Image src={Backward} onClick={handleBackward} /> */}
+              <Image src={Forward} onClick={handleFirstForward} />
             </div>
           </div>
           {CardsList}
-          {/* <div className="firstCard" style={{ width: width }}>
-            <p className={styles.firstText} style={{ width: width }}>More adventure?<br/>Here awaits a map containing all events</p>
-            <div className={styles.navigation} style={{ width: width }}>
-                    <Image src={Backward} onClick={handleBackward} />
-                    {/* <Image src={Forward} onClick={handleForward} />
+          <div className="firstCard" style={{ width: width }}>
+            <p className={styles.lastText} style={{ width: width }}>More adventure?<br/>Here awaits a map containing all events</p>
+            <div className={styles.lastArrow} style={{ width: width }}>
+                    {/* <Image src={Backward} onClick={handleBackward} /> */}
+                    <Image  src={Forward}
+                    // onClick={() => handleNavClick("events")}
+                    />
             </div>
-           </div> */}
+            <div onClick={handleLastBackward} className={styles.backToStart} style={{ width: width }}>&lt;&lt;&lt; back to start</div>
+           </div>
+        </div>
+        <div className={styles.navigation} style={buttonTranslateStyle}>
+          <Image src={Backward} onClick={cardNo == 2 ? handleFirstBackward : handleBackward}
+          />
+          <Image src={Forward} onClick={cardNo == totalCards-1 ? handleLastForward : handleForward} />
         </div>
       </div>
     </>

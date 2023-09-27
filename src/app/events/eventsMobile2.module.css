@@ -58,6 +58,22 @@
     z-index: 999;
     align-items: center;
     justify-content: center;
+    margin: auto;
+    width: 100%;
+    transition: transform 0.5s ease-in-out;
+}
+
+.lastArrow{
+    display: flex;
+    gap: 2rem;
+    position: absolute;
+    bottom: 40%;
+    z-index: 999;
+    align-items: center;
+    justify-content: center;
+    margin: auto;
+    width: 100%;
+    transition: transform 0.5s ease-in-out;
 }
 
 .navigation img{
@@ -78,6 +94,12 @@
     font-family: 'KoPub';
 }
 
+.lastText{
+    position: absolute;
+    bottom: 50%;
+    text-align: center;
+    font-family: 'KoPub';
+}
 
 
 
@@ -111,4 +133,11 @@
 .BGImage{
     height: 100%;
 
+}
+
+.backToStart{
+    position: absolute;
+    bottom: 20%;
+    text-align: center;
+    font-family: 'KoPub';
 }
