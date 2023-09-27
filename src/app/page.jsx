@@ -26,6 +26,7 @@ import { gsap } from "gsap";
 import { AnimatePresence, motion } from "framer-motion";
 import { useWindowSize } from "rooks";
 import EventsMobile from "@/components/EventsMobile";
+import EventsMobile2 from "./events/page";
 import CustomCursor from "@/components/CustomCursor";
 
 export default function Home() {
@@ -899,6 +900,7 @@ export default function Home() {
           </div>
           <div className={styles.aboutWrapper} ref={aboutWrapper}>
               <About />
+              <EventsMobile2/>
             </div>
           <div className={styles.eventsWrapper} ref={eventsWrapper}>
             {/* <Events
@@ -916,8 +918,6 @@ export default function Home() {
             handleTransition={handleTransition}
             />
             } */}
-            
-
           </div>
           <div className={styles.contactsWrapper} ref={contactsWrapper}>
             <Contact />
