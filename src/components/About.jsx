@@ -56,7 +56,7 @@ export default function page() {
         alt=""
         draggable={false}
       />
-      <Image
+      {/* <Image
         src={leftHandMobile}
         className={styles.leftHandMobile}
         alt=""
@@ -67,7 +67,7 @@ export default function page() {
         className={styles.rightHandMobile}
         alt=""
         draggable={false}
-      />
+      /> */}
     </main>
   );
 }

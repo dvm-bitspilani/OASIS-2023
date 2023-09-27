@@ -160,7 +160,7 @@ export default function Home() {
         Promise.all(assetPromises)
           .then(() => {
             setAllAssetsLoaded(true);
-            console.log("loaded");
+            // console.log("loaded");
             setTimeout(() => {
               setIsLoading(false);
               setShowLoader(false);
@@ -171,7 +171,7 @@ export default function Home() {
             console.error("Error loading assets:", error);
             // setIsLoading(false);
             setAllAssetsLoaded(true);
-            console.log("loaded");
+            // console.log("loaded");
             setShowLoader(false);
             setTimeout(() => {
               setIsLoading(false);
