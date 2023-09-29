@@ -8,8 +8,12 @@ import Image from "next/image";
 import StreetDance from "../../../public/static/images/SampleEvent.png"
 import Forward from "../../../public/static/images/forwardArrow.svg"
 import Backward from "../../../public/static/images/backArrow.svg"
+import { useWindowSize } from "rooks";
 
 export default function EventsMobile2({ handleTransition }) {
+
+  const { innerWidth, innerHeight } = useWindowSize();
+
   const tasks = [
     {
       key: 1,
@@ -182,7 +186,7 @@ export default function EventsMobile2({ handleTransition }) {
 
   useEffect(() => {
     const updateWidth = () => {
-      setWidth(window.innerWidth);
+      setWidth(innerWidth);
     };
     window.addEventListener("resize", updateWidth);
     updateWidth();
@@ -191,7 +195,7 @@ export default function EventsMobile2({ handleTransition }) {
     };
   }, []);
 
-  const [buttonTranslate, setButtonTranslate] = useState(() => window.innerWidth);
+  const [buttonTranslate, setButtonTranslate] = useState(() => innerWidth);
 
   const handleForward = () => {
     // console.log("fowrard")
