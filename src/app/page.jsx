@@ -26,6 +26,7 @@ import { gsap } from "gsap";
 import { AnimatePresence, motion } from "framer-motion";
 import { useWindowSize } from "rooks";
 import EventsMobile from "@/components/EventsMobile";
+import EventsMobile2 from "./events/page";
 import CustomCursor from "@/components/CustomCursor";
 
 export default function Home() {
@@ -159,7 +160,7 @@ export default function Home() {
         Promise.all(assetPromises)
           .then(() => {
             setAllAssetsLoaded(true);
-            console.log("loaded");
+            // console.log("loaded");
             setTimeout(() => {
               setIsLoading(false);
               setShowLoader(false);
@@ -170,7 +171,7 @@ export default function Home() {
             console.error("Error loading assets:", error);
             // setIsLoading(false);
             setAllAssetsLoaded(true);
-            console.log("loaded");
+            // console.log("loaded");
             setShowLoader(false);
             setTimeout(() => {
               setIsLoading(false);
@@ -900,6 +901,9 @@ export default function Home() {
           <div className={styles.aboutWrapper} ref={aboutWrapper}>
               <About />
             </div>
+            <div className={styles.aboutWrapper}>
+              <EventsMobile2 handleTransition={handleTransition}/>
+            </div>
           <div className={styles.eventsWrapper} ref={eventsWrapper}>
             {/* <Events
               showBackBtn={showBackBtn}
@@ -916,8 +920,6 @@ export default function Home() {
             handleTransition={handleTransition}
             />
             } */}
-            
-
           </div>
           <div className={styles.contactsWrapper} ref={contactsWrapper}>
             <Contact />

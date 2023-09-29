@@ -52,7 +52,7 @@ const Page = () => {
       dept: "Sponsorship and Marketing",
       image: `${shaurya.src}`,
       phone: "tel:+91-9920618766",
-      mail: "mailto:sponsorship@bits-oasis.org",
+      mail: "mailto:Shaurya@bits-oasis.org",
     },
     {
       name: "Vaibhav Jain",
@@ -103,6 +103,7 @@ const Page = () => {
                 onMouseOver={() =>
                   handleMouseOver(ImageWrapper, profile, index)
                 }
+                className={`${styles.registerBtnWrapper} customHover`}
               >
                 {profile.dept}
               </p>

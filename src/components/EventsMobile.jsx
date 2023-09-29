@@ -176,7 +176,7 @@ export default function EventsMobile() {
     // Set initial states
     gsap.set("#scrollDistMobile", { width: "100%", height: "100%" });
     gsap.set("#containerMobile", {
-      position: "relative",
+      position: "fixed",
       // width: 595,
       // height: 1971,
       transformOrigin: "0.5 0.5",

@@ -3,7 +3,6 @@ import styles from '../app/contact/page.module.css'
 import callIcon from "../../public/static/images/call.png"
 import mailIcon from "../../public/static/images/mailicon.svg"
 import Image from 'next/image'
-import shivang from "../../public/static/images/shivang.png"
 
 const ContactProfile = (props) => {
   
