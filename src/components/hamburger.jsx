@@ -14,6 +14,8 @@ import { gsap } from 'gsap';
 import { MotionPathPlugin } from 'gsap/all';
 import { CustomEase } from "gsap/all";
 import { delay } from "framer-motion";
+import Link from 'next/link';
+
 gsap.registerPlugin(MotionPathPlugin);
 gsap.registerPlugin(CustomEase);
 
@@ -247,7 +249,7 @@ export default function Hamburger() {
                         <div className={`${styles.item} one`}>
                             <div className={`${styles.number} ${styles.one}`} >
                                 <span className={styles.numbox}><div className={styles.num}>1</div></span>
-                                <span className={styles.txt}>SPONSORS</span>
+                                <Link href="/sponsors" className={styles.txt}>SPONSORS</Link>
                             </div>
                         </div>
                         <div className={`${styles.item} two`}>
@@ -259,7 +261,7 @@ export default function Hamburger() {
                         <div className={`${styles.item} three`}>
                             <div className={`${styles.number} ${styles.three}`} >
                                 <span className={styles.numbox}><div className={styles.num}>3</div></span>
-                                <span className={styles.txt2}>WALLMAG</span>
+                                <Link href="/wallmag" className={styles.txt2}>WALLMAG</Link>
                             </div>
                         </div>
                         <div className={`${styles.item} four`}>
