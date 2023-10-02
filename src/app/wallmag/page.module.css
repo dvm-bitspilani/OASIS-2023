@@ -34,14 +34,14 @@
 .scrollBarContainer {
   height: 80%;
   width: 10%;
-  padding-top: 6% ;
+  /* padding-top: 6% ; */
   display: flex;
   justify-content: center;
   position: relative;
 }
 .scrollBarContainer img {
   position: absolute;
-  transform: translateY(-100%);
+  transform: translateY(-50%);
   /* width: 40px;
 aspect-ratio: 1/1; */
 }
