@@ -66,3 +66,6 @@ body::-webkit-scrollbar-thumb {
 .customHover{
   cursor: none;
 }
+a{
+  text-decoration: none;
+}
