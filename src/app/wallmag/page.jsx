@@ -6,6 +6,7 @@ import { useRouter } from "next/navigation";
 import Image from "next/image";
 
 import skullImg from "../../../public/static/images/skull.svg";
+import CustomCursor from "@/components/CustomCursor";
 // import skullImg from "../../../";
 
 const Page = () => {
@@ -220,6 +221,7 @@ const Page = () => {
 
     return (
         <div className={styles["wallmagPage"]}>
+            <CustomCursor />
             <img src="/static/images/web1.svg" className={styles.web1} alt="" />
             <img src="/static/images/web2.png" className={styles.web2} alt="" />
             <img

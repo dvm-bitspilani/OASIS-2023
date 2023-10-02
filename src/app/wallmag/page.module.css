@@ -4,6 +4,8 @@
   background: url("../../../public/static/images/updatedLibraryBgImage.png")
     no-repeat center center;
   background-size: cover;
+
+  cursor: none;
 }
 .web1 {
   height: 10vh;
