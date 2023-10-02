@@ -57,7 +57,7 @@
 }
 .scrollBarContainer img {
   position: absolute;
-  transform: translateY(-100%);
+  transform: translateY(-50%);
   /* width: 40px;
   aspect-ratio: 1/1; */
 }
