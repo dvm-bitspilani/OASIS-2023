@@ -6,6 +6,9 @@ import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { useSafeSetState, useWindowSize } from "rooks";
 import StreetDance from "../../public/static/images/StreetDance.png";
+import RapWars from "../../public/static/images/RapWars.png";
+import Tandav from "../../public/static/images/Tandav.png";
+import Swaranjali from "../../public/static/images/Swaranjali.png";
 import EventItem from "./EventItem";
 import EventModal from "./EventModal";
 gsap.registerPlugin(ScrollTrigger);
@@ -49,7 +52,7 @@ const Events = ({ showBackBtn, handleTransition }) => {
       key: 5,
       name: "SWARANJALI",
       desc: "Swaranjali is a classical music competition. Participants trained in the vocal and instrumental aspects of both Carnatic and Hindustani styles are invited to compete. (Instruments: violin, sitar, veena, flute, Hawaiian guitar, tabla, mridangam, ghatam, keyboard, harmonium, kanjira, sarangi and sarod.)",
-      image: StreetDance,
+      image: Swaranjali,
       top: "65%",
       left: "9%",
     },
@@ -57,7 +60,7 @@ const Events = ({ showBackBtn, handleTransition }) => {
       key: 6,
       name: "TANDAV",
       desc: "Tandav is a classical dance competition. It invites participants trained in Odissi, Kathak, Kuchipudi, Bharatanatyam, Manipuri, Kathakali, Mohiniattam and Sattriya.",
-      image: StreetDance,
+      image: Tandav,
       top: "70%",
       left: "30%",
     },
