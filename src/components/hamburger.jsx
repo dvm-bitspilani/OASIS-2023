@@ -249,7 +249,7 @@ export default function Hamburger() {
                         <div className={`${styles.item} one`}>
                             <div className={`${styles.number} ${styles.one}`} >
                                 <span className={styles.numbox}><div className={styles.num}>1</div></span>
-                                <Link href="/sponsors" className={styles.txt}>SPONSORS</Link>
+                                <span href="/sponsors" className={styles.txt}>SPONSORS</span>
                             </div>
                         </div>
                         <div className={`${styles.item} two`}>
