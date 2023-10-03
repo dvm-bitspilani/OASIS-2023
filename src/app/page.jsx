@@ -11,7 +11,7 @@ import textLogo from "../../public/static/images/updatedOasisLogo.png";
 import navLogo from "../../public/static/images/navLogo.png";
 import Navbar from "@/components/Navbar";
 import Hamburger from "@/components/hamburger";
-import landingPgBookImg from "../../public/static/images/updatedLandingPageBook.png";
+import landingPgBookImg from "../../public/static/images/Book.png";
 import rightElements from "../../public/static/images/landingPgRightElements.png";
 import leftElements from "../../public/static/images/landingPgLeftElements.png";
 import updatedBgLibraryImage from "../../public/static/images/updatedLibraryBgImage.png";

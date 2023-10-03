@@ -21,7 +21,6 @@
     --item-fontsize: calc(var(--item-size)*0.5);
     /* --circle2-size: var(--out-circle-size); */
 }
-
 .background {
     width: 100%;
     height: 100%;
