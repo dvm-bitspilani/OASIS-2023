@@ -1,0 +1,77 @@
+.wrapper{
+    width: 100vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+    top: 0;
+    z-index: 50;
+    height: 100vh;
+    overflow: auto;
+    /* background-color: grey; */
+    background: transparent;
+    /* opacity: 0.75; */
+}
+.backgroundImage{
+    position: absolute;
+    top: 20%;
+    left: auto;
+    height: auto;
+    width: 75vw;
+    margin-bottom: 20vh;
+}
+.modalContent{
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 75vw;
+    flex-direction: column;
+    top: 40%;
+    gap: 3rem;
+}
+.heading{
+    height: 20%;
+    display: flex;
+  align-items: center;
+}
+.heading h2{
+    font-family: 'OldNewspaperTypes';
+    font-weight: 500;
+    font-size: 3rem;
+    color: rgba(0, 0, 0, 1);
+}
+.subheadings{
+    display: flex;
+    width: 75%;
+    justify-content: space-around;
+    align-items: center;
+}
+.subheadings span{
+    font-size: 2rem;
+    font-family: 'OldNewspaperTypes';
+    color: #000;
+}
+.eventImage img{
+    width: 30vw;
+    height: auto;
+    /* margin-top: 2rem; */
+}
+.eventDescription{
+    width: 75%;
+    font-family: 'OldNewspaperTypes';
+    font-size: 1.5rem;
+    color: black;
+    font-weight: 100;
+    height: 30vh;
+    overflow-y: scroll;
+    text-align: center;
+}
+.closeBtn{
+    position: absolute;
+    top: 0;
+    height: 4rem;
+    display:flex;
+    align-items: center;
+    right: 10%;
+}

@@ -7,10 +7,11 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { useSafeSetState, useWindowSize } from "rooks";
 import StreetDance from "../../public/static/images/StreetDance.png";
 import EventItem from "./EventItem";
-
+import EventModal from "./EventModal";
 gsap.registerPlugin(ScrollTrigger);
 
 const Events = ({ showBackBtn, handleTransition }) => {
+  const [selectedEvent, setSelectedEvent] = useState(null);
   const tasks = [
     {
       key: 1,
@@ -234,7 +235,13 @@ const Events = ({ showBackBtn, handleTransition }) => {
   const handleBtnClick = (page) => {
     handleTransition(page);
   };
+  const openModal = (event) => {
+    setSelectedEvent(event);
+  };
 
+  const closeModal = () => {
+    setSelectedEvent(null);
+  };
   return (
     <>
       {showBackBtn && (
@@ -277,6 +284,11 @@ const Events = ({ showBackBtn, handleTransition }) => {
           <div className={events.itemWrapper}>
             {tasks.map((evt) => {
               return (
+                <div
+        key={evt.key}
+        onClick={() => openModal(evt)}
+        className={events.eventItem}
+      >
                 <EventItem
                   key={evt.key}
                   name={evt.name}
@@ -285,11 +297,15 @@ const Events = ({ showBackBtn, handleTransition }) => {
                   top={evt.top}
                   left={evt.left}
                 />
+                </div>
               );
             })}
           </div>
         </div>
       </div>
+      {selectedEvent && (
+  <EventModal event={selectedEvent} closeModal={closeModal} />
+)}
     </>
   );
 };
