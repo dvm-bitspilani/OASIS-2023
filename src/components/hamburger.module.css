@@ -68,7 +68,7 @@
 .logo img {
     height: var(--logo-size);
     width: var(--logo-size);
-    cursor: pointer;
+    /* cursor: pointer; */
     transition: filter 1s ease-in-out, transform 2s ease-in-out;
     -webkit-filter: drop-shadow(0px 0px 5px rgba(99, 99, 99, 0.5));
     filter: drop-shadow(0px 0px 5px rgba(99, 99, 99, 0.5));
@@ -136,7 +136,7 @@
     font-size: var(--item-fontsize);
     font-family: 'Montserrat';
     z-index: 2;
-    cursor: pointer;
+    /* cursor: pointer; */
 }
 
 .number {
