@@ -7,17 +7,15 @@ import scrollAsset from "../../public/static/images/EventItem.png";
 const EventItem = ({ name, desc, image, top, left }) => {
   return (
     <>
-      <div className={events.itemContainer} style={{top: top, left: left}} suppressHydrationWarning>
         {/* <div className={events.itemImage}> */}
         <Image draggable={false} src={image} height={240} width={362} alt="Street Dance"></Image>
         {/* </div> */}
         <div className={events.itemContent}>
           <h2>{name}</h2>
           <p>
-            {desc.slice(0,215)+"..."}
+            {desc.length > 210 ? desc.slice(0, 210) + "..." : desc}
           </p>
         </div>
-      </div>
       {/* <div className={events.itemData}>
           <Image draggable={false} alt="" src={scrollAsset} height={1200} width={840} />
       </div> */}
