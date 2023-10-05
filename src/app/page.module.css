@@ -39,7 +39,7 @@
 }
 .eventsWrapper {
   position: relative;
-  height: 5000vh;
+  height: 3000vh;
   width: 4096px;
   scrollbar-width: none;
   -ms-overflow-style: none;
