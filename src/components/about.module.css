@@ -55,7 +55,7 @@
   align-items: center;
   gap: 3rem;
 
-  overflow: hidden;
+  /* overflow: hidden; */
 }
 
 .carouselContainer {
