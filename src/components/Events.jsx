@@ -15,6 +15,7 @@ gsap.registerPlugin(ScrollTrigger);
 
 const Events = ({ showBackBtn, handleTransition }) => {
   const [selectedEvent, setSelectedEvent] = useState(null);
+  const [reduceBrightness, setReduceBrightness] = useState(false);
   const tasks = [
     {
       key: 1,
@@ -240,11 +241,16 @@ const Events = ({ showBackBtn, handleTransition }) => {
   };
   const openModal = (event) => {
     setSelectedEvent(event);
+    setReduceBrightness(true);
   };
 
   const closeModal = () => {
-    setSelectedEvent(null);
+    setTimeout(() => {
+      setSelectedEvent(null);
+      setReduceBrightness(false);
+    }, 300)
   };
+  const containerClassName = reduceBrightness ? `${events.container} ${events.reduceBrightness}` : events.container;
   return (
     <>
       {showBackBtn && (
@@ -255,7 +261,7 @@ const Events = ({ showBackBtn, handleTransition }) => {
       <div className={events.wrapper}>
         <div id="scrollDist" className={events.scrollDist}></div>
 
-        <div id="container" className={events.container}>
+        <div id="container" className={containerClassName}>
           <Image
             src={Map}
             width={4096}

@@ -168,3 +168,6 @@
   background: rgba(0, 0, 0, 0.25);
   z-index: 20;
 }
+.reduceBrightness {
+  filter: brightness(50%);
+}

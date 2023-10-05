@@ -4,13 +4,13 @@
     justify-content: center;
     align-items: center;
     position: fixed;
-    top: 0;
+    top: 0%;
     z-index: 50;
     height: 100vh;
     overflow: auto;
-    /* background-color: grey; */
     background: transparent;
-    /* opacity: 0.75; */
+    transform: translateY(80%);
+    transition: transform 0.3s ease-in-out;
 }
 .backgroundImage{
     position: absolute;
@@ -74,4 +74,10 @@
     display:flex;
     align-items: center;
     right: 10%;
+}
+.open{
+    transform: translateY(0%);
+}
+.close{
+    transform: translateY(80%);
 }
