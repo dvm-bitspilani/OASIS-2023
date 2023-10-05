@@ -181,7 +181,7 @@ export default function EventsMobile2({ handleTransition }) {
   const [width, setWidth] = useState(0)
   const [translateX, setTranslateX] = useState(0);
   const [cardNo, setCardNo] = useState(1)
-  const totalCards = tasks.length + 2
+  const totalCards = tasks.length + 1
 
 
   useEffect(() => {
@@ -274,21 +274,20 @@ export default function EventsMobile2({ handleTransition }) {
             </div>
           </div>
           {CardsList}
-          <div className="firstCard" style={{ width: width }}>
+          {/* <div className="firstCard" style={{ width: width }}>
             <p className={styles.lastText} style={{ width: width }}>More adventure?<br/>Here awaits a map containing all events</p>
             <div className={styles.lastArrow} style={{ width: width }}>
-                    {/* <Image src={Backward} onClick={handleBackward} /> */}
                     <Image  src={Forward}
-                    // onClick={() => handleNavClick("events")}
                     />
             </div>
             <div onClick={handleLastBackward} className={styles.backToStart} style={{ width: width }}>&lt;&lt;&lt; back to start</div>
-           </div>
+           </div> */}
         </div>
         <div className={styles.navigation} style={buttonTranslateStyle}>
           <Image src={Backward} onClick={cardNo == 2 ? handleFirstBackward : handleBackward}
           />
-          <Image src={Forward} onClick={cardNo == totalCards-1 ? handleLastForward : handleForward} />
+          <Image src={Forward} onClick={cardNo == totalCards ? "" : handleForward} 
+          style={{opacity: cardNo == totalCards ? "0.4" : "1", cursor: cardNo == totalCards ? "auto" : "pointer"}}/>
         </div>
       </div>
     </>

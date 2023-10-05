@@ -55,7 +55,7 @@
   align-items: center;
   gap: 3rem;
 
-  overflow: hidden;
+  /* overflow: hidden; */
 }
 
 .carouselContainer {
@@ -110,7 +110,8 @@
 }
 
 .carouselControllerButtons button:hover, .carouselControllerButtonsMobile button:hover{
-    cursor: pointer;
+    /* cursor: pointer; */
+    cursor: none;
 }
 
 .carouselControllerButtons button:disabled, .carouselControllerButtonsMobile button:disabled{

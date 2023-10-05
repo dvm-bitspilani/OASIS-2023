@@ -6,11 +6,16 @@ import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { useSafeSetState, useWindowSize } from "rooks";
 import StreetDance from "../../public/static/images/StreetDance.png";
+import RapWars from "../../public/static/images/RapWars.png";
+import Tandav from "../../public/static/images/Tandav.png";
+import Swaranjali from "../../public/static/images/Swaranjali.png";
 import EventItem from "./EventItem";
-
+import EventModal from "./EventModal";
 gsap.registerPlugin(ScrollTrigger);
 
 const Events = ({ showBackBtn, handleTransition }) => {
+  const [selectedEvent, setSelectedEvent] = useState(null);
+  const [reduceBrightness, setReduceBrightness] = useState(false);
   const tasks = [
     {
       key: 1,
@@ -47,16 +52,16 @@ const Events = ({ showBackBtn, handleTransition }) => {
     {
       key: 5,
       name: "SWARANJALI",
-      desc: "Swaranjali is the classical music competition.",
-      image: StreetDance,
+      desc: "Swaranjali is a classical music competition. Participants trained in the vocal and instrumental aspects of both Carnatic and Hindustani styles are invited to compete. (Instruments: violin, sitar, veena, flute, Hawaiian guitar, tabla, mridangam, ghatam, keyboard, harmonium, kanjira, sarangi and sarod.)",
+      image: Swaranjali,
       top: "65%",
       left: "9%",
     },
     {
       key: 6,
       name: "TANDAV",
-      desc: "Tandav is the classical dance competition",
-      image: StreetDance,
+      desc: "Tandav is a classical dance competition. It invites participants trained in Odissi, Kathak, Kuchipudi, Bharatanatyam, Manipuri, Kathakali, Mohiniattam and Sattriya.",
+      image: Tandav,
       top: "70%",
       left: "30%",
     },
@@ -234,7 +239,18 @@ const Events = ({ showBackBtn, handleTransition }) => {
   const handleBtnClick = (page) => {
     handleTransition(page);
   };
+  const openModal = (event) => {
+    setSelectedEvent(event);
+    setReduceBrightness(true);
+  };
 
+  const closeModal = () => {
+    setTimeout(() => {
+      setSelectedEvent(null);
+      setReduceBrightness(false);
+    }, 300)
+  };
+  const containerClassName = reduceBrightness ? `${events.container} ${events.reduceBrightness}` : events.container;
   return (
     <>
       {showBackBtn && (
@@ -245,7 +261,7 @@ const Events = ({ showBackBtn, handleTransition }) => {
       <div className={events.wrapper}>
         <div id="scrollDist" className={events.scrollDist}></div>
 
-        <div id="container" className={events.container}>
+        <div id="container" className={containerClassName}>
           <Image
             src={Map}
             width={4096}
@@ -277,19 +293,28 @@ const Events = ({ showBackBtn, handleTransition }) => {
           <div className={events.itemWrapper}>
             {tasks.map((evt) => {
               return (
+                <div
+        key={evt.key}
+        onClick={() => openModal(evt)}
+        className={events.eventItem}
+      >
                 <EventItem
                   key={evt.key}
                   name={evt.name}
                   desc={evt.desc}
                   image={evt.image}
-                  top={evt.top}
-                  left={evt.left}
+                  // top={evt.top}
+                  // left={evt.left}
                 />
+                </div>
               );
             })}
           </div>
         </div>
       </div>
+      {selectedEvent && (
+  <EventModal event={selectedEvent} closeModal={closeModal} />
+)}
     </>
   );
 };
