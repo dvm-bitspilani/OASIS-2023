@@ -60,7 +60,7 @@ const Events = ({ showBackBtn, handleTransition }) => {
     {
       key: 6,
       name: "TANDAV",
-      desc: "Tandav Solo is an Indian classical dance competition wherein Dancers across India come and participate in a show of their best abilities on an individual level.",
+      desc: "Tandav is a classical dance competition. It invites participants trained in Odissi, Kathak, Kuchipudi, Bharatanatyam, Manipuri, Kathakali, Mohiniattam and Sattriya.\n There are 2 categories: \n Solo and Group",
       image: Tandav,
       top: "70%",
       left: "30%",
@@ -99,8 +99,8 @@ const Events = ({ showBackBtn, handleTransition }) => {
     },
     {
       key: 11,
-      name: "SWARANJALI SOLO (VOCALS)",
-      desc: "Swaranjali is a classical music competition. Participants trained in the vocal and instrumental aspects of both Carnatic and Hindustani styles are invited to compete. (Instruments: violin, sitar, veena, flute, Hawaiian guitar, tabla, mridangam, ghatam, keyboard, harmonium, kanjira, sarangi and sarod.) There are 4 categories: 1. Solo Vocals 2. Solo Wind and String 3. Solo Percussion 4. Group",
+      name: "SWARANJALI",
+      desc: "Swaranjali is a classical music competition. Participants trained in the vocal and instrumental aspects of both Carnatic and Hindustani styles are invited to compete. (Instruments: violin, sitar, veena, flute, Hawaiian guitar, tabla, mridangam, ghatam, keyboard, harmonium, kanjira, sarangi and sarod.) \n There are 4 categories: \n 1. Solo Vocals \n 2. Solo Wind and String \n 3. Solo Percussion \n 4. Group",
       image: Swaranjali,
       top: "45%",
       left: "50%",
