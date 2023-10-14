@@ -271,6 +271,9 @@
   }
 }
 @media (max-width: 700px) {
+  .regPage{
+    overflow: scroll;
+  }
   .regPage h2 {
     font-size: 2.5rem;
     text-align: center;
@@ -278,6 +281,7 @@
   .regBtnContainer {
     justify-content: center;
     margin-top: 5rem;
+    flex-direction: column;
   }
   .regBtnContainer img {
     width: 15rem;

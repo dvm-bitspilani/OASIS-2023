@@ -25,6 +25,7 @@ import cross from "../../../public/static/images/cross.svg";
 import { useWindowSize } from "rooks";
 import CustomStyles from "./CustomStyles";
 import ErrorScreen from "./ErrorScreen";
+import ReCAPTCHA from "react-google-recaptcha";
 
 import { gsap } from "gsap";
 
@@ -202,7 +203,61 @@ const year = [
 
 export default function Page() {
 
+
+  async function uploadData(data) {
+    if (data.choreographer === "NO") {
+      data.choreographer = 0;
+    }
+    if (data.choreographer === "YES") {
+      data.choreographer = 1;
+    }
+    if (data.head_of_society === "NO") {
+      data.head_of_society = 0;
+    }
+    if (data.head_of_society === "YES") {
+      data.head_of_society = 1;
+    }
+    if (data.visitor === "NO") {
+      data.visitor = 0;
+    }
+    if (data.visitor === "YES") {
+      data.visitor = 1;
+    }
+    // console.log(data);
+    const options = {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(data),
+    };
+
+    const res = await fetch(
+      "https://bits-oasis.org/2023/main/registrations/Register/",
+      options
+    );
+    if (!res.ok) {
+      res.json().then((data) => {
+        setErrorMessage(data["message"]);
+        setErrorScreen(true);
+        setError(true);
+      });
+      throw new Error("Failed to register");
+    }
+    return res.json();
+  }
+
   const { innerWidth, innerHeight } = useWindowSize();
+  const [isCaptchaVerified, setIsCaptchaVerified] = useState(false);
+  const [isCaptchaClicked , setIsCaptcaClicked] = useState(false);
+
+  // Callback function when reCAPTCHA is verified
+  const handleCaptchaVerify = async(value) => {
+    const response = await uploadData(formData);
+    setErrorMessage(response["message"]);
+    setError(false);
+    setErrorScreen(true);
+  }
 
   const numberOfRandom = 6;
 
@@ -885,53 +940,9 @@ export default function Page() {
       );
     }
 
-    async function uploadData(data) {
-      if (data.choreographer === "NO") {
-        data.choreographer = 0;
-      }
-      if (data.choreographer === "YES") {
-        data.choreographer = 1;
-      }
-      if (data.head_of_society === "NO") {
-        data.head_of_society = 0;
-      }
-      if (data.head_of_society === "YES") {
-        data.head_of_society = 1;
-      }
-      if (data.visitor === "NO") {
-        data.visitor = 0;
-      }
-      if (data.visitor === "YES") {
-        data.visitor = 1;
-      }
-      // console.log(data);
-      const options = {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(data),
-      };
-
-      const res = await fetch(
-        "https://bits-oasis.org/2023/main/registrations/Register/",
-        options
-      );
-      if (!res.ok) {
-        res.json().then((data) => {
-          setErrorMessage(data["message"]);
-          setErrorScreen(true);
-          setError(true);
-        });
-        throw new Error("Failed to register");
-      }
-      return res.json();
+    if(!isCaptchaVerified){
+      setIsCaptchaVerified(true)
     }
-
-    const response = await uploadData(formData);
-    setErrorMessage(response["message"]);
-    setError(false);
-    setErrorScreen(true);
   };
 
   function handlePhoneChange(inp) {
@@ -1141,6 +1152,7 @@ export default function Page() {
     setError(false);
     setErrorMessage("");
     setErrorScreen(false);
+    setIsCaptchaVerified(false)
   };
 
   console.log(formData)
@@ -1501,6 +1513,10 @@ export default function Page() {
             alt=""
             width="1rem"
           />
+        {isCaptchaVerified && <ReCAPTCHA
+          sitekey="6Lfkbp8oAAAAAI2Kugy_-z746PKbc2lzHKOezrw9" // Replace with your actual Site Key
+          onChange={handleCaptchaVerify} // Callback when reCAPTCHA is verified
+        />}
         </div>
         {innerWidth > 1000 && (
           <motion.div
