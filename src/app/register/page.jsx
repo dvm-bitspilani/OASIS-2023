@@ -192,6 +192,7 @@ const formDataTemplate = {
   city: "",
   state: "",
   college_id: "",
+  captcha:"",
 };
 const year = [
   { value: "1", label: "1" },
@@ -253,6 +254,7 @@ export default function Page() {
 
   // Callback function when reCAPTCHA is verified
   const handleCaptchaVerify = async(value) => {
+    formData["captcha"]=value
     const response = await uploadData(formData);
     setErrorMessage(response["message"]);
     setError(false);
@@ -1155,7 +1157,7 @@ export default function Page() {
     setIsCaptchaVerified(false)
   };
 
-  console.log(formData)
+  // console.log(formData)
 
   return (
     <>
