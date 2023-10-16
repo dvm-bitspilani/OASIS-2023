@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useRef } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import styles from "./page.module.css";
 import { useRouter } from "next/navigation";
 import Image from "next/image";
@@ -8,6 +8,8 @@ import Image from "next/image";
 import skullImg from "../../../public/static/images/skull.svg";
 import CustomCursor from "@/components/CustomCursor";
 // import skullImg from "../../../";
+
+import cross from "../../../public/static/images/cross.svg";
 
 const Page = () => {
     const router = useRouter();
@@ -75,11 +77,9 @@ const Page = () => {
     function handleScroll(inp) {
         // const maxScrollTopValue = formContainerRef.current.scrollTopMax;
         const maxScrollTopValue =
-            contentRef.current.scrollHeight -
-            contentRef.current.clientHeight;
+            contentRef.current.scrollHeight - contentRef.current.clientHeight;
         // const percentage = (contentRef.current.scrollTop / maxScrollTopValue )*100;
-        const percentage =
-            (contentRef.current.scrollTop / maxScrollTopValue) * 100;
+        const percentage = (contentRef.current.scrollTop / maxScrollTopValue) * 100;
         percentage > 100
             ? (skullRef.current.style.top = "100%")
             : (skullRef.current.style.top = `${percentage}%`);
@@ -89,150 +89,45 @@ const Page = () => {
         // skullElem.style.top = `${percentage}%`;
     }
 
-    // replace this with api later on
-    const cards = [
-        {
-            image: "/static/images/temp_wallmag.png",
-            name: "Shivang Rai",
-            dept: "Department of Visual Media",
-            desc: "Lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem ipsum dolor sit amet consectetur, adipisicing elit. Blanditiis repellat praesentium nihil placeat culpa, reiciendis dolorem qui cupiditate, sint, laborum quae expedita quis fuga deleniti assumenda voluptas inventore incidunt consequatu",
-        },
-        {
-            image: "/static/images/temp_wallmag.png",
-            name: "Shivang Rai",
-            dept: "Department of Visual Media",
-            desc: "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Blanditiis repellat praesentium nihil placeat culpa, reiciendis dolorem qui cupiditate, sint, laborum quae expedita quis fuga deleniti assumenda voluptas inventore incidunt consequatu",
-        },
-        {
-            image: "/static/images/temp_wallmag.png",
-            name: "Shivang Rai",
-            dept: "Department of Visual Media",
-            desc: "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Blanditiis repellat praesentium nihil placeat culpa, reiciendis dolorem qui cupiditate, sint, laborum quae expedita quis fuga deleniti assumenda voluptas inventore incidunt consequatu",
-        },
-        {
-            image: "/static/images/temp_wallmag.png",
-            name: "Shivang Rai",
-            dept: "Department of Visual Media",
-            desc: "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Blanditiis repellat praesentium nihil placeat culpa, reiciendis dolorem qui cupiditate, sint, laborum quae expedita quis fuga deleniti assumenda voluptas inventore incidunt consequatu",
-        },
-        {
-            image: "/static/images/temp_wallmag.png",
-            name: "Shivang Rai",
-            dept: "Department of Visual Media",
-            desc: "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Blanditiis repellat praesentium nihil placeat culpa, reiciendis dolorem qui cupiditate, sint, laborum quae expedita quis fuga deleniti assumenda voluptas inventore incidunt consequatu",
-        },
-        {
-            image: "/static/images/temp_wallmag.png",
-            name: "Shivang Rai",
-            dept: "Department of Visual Media",
-            desc: "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Blanditiis repellat praesentium nihil placeat culpa, reiciendis dolorem qui cupiditate, sint, laborum quae expedita quis fuga deleniti assumenda voluptas inventore incidunt consequatu",
-        },
-        {
-            image: "/static/images/temp_wallmag.png",
-            name: "Shivang Rai",
-            dept: "Department of Visual Media",
-            desc: "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Blanditiis repellat praesentium nihil placeat culpa, reiciendis dolorem qui cupiditate, sint, laborum quae expedita quis fuga deleniti assumenda voluptas inventore incidunt consequatu",
-        },
-        {
-            image: "/static/images/temp_wallmag.png",
-            name: "Shivang Rai",
-            dept: "Department of Visual Media",
-            desc: "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Blanditiis repellat praesentium nihil placeat culpa, reiciendis dolorem qui cupiditate, sint, laborum quae expedita quis fuga deleniti assumenda voluptas inventore incidunt consequatu",
-        },
-        {
-            image: "/static/images/temp_wallmag.png",
-            name: "Shivang Rai",
-            dept: "Department of Visual Media",
-            desc: "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Blanditiis repellat praesentium nihil placeat culpa, reiciendis dolorem qui cupiditate, sint, laborum quae expedita quis fuga deleniti assumenda voluptas inventore incidunt consequatu",
-        },
-        {
-            image: "/static/images/temp_wallmag.png",
-            name: "Shivang Rai",
-            dept: "Department of Visual Media",
-            desc: "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Blanditiis repellat praesentium nihil placeat culpa, reiciendis dolorem qui cupiditate, sint, laborum quae expedita quis fuga deleniti assumenda voluptas inventore incidunt consequatu",
-        },
-        {
-            image: "/static/images/temp_wallmag.png",
-            name: "Shivang Rai",
-            dept: "Department of Visual Media",
-            desc: "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Blanditiis repellat praesentium nihil placeat culpa, reiciendis dolorem qui cupiditate, sint, laborum quae expedita quis fuga deleniti assumenda voluptas inventore incidunt consequatu",
-        },
-        {
-            image: "/static/images/temp_wallmag.png",
-            name: "Shivang Rai",
-            dept: "Department of Visual Media",
-            desc: "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Blanditiis repellat praesentium nihil placeat culpa, reiciendis dolorem qui cupiditate, sint, laborum quae expedita quis fuga deleniti assumenda voluptas inventore incidunt consequatu",
-        },
-        {
-            image: "/static/images/temp_wallmag.png",
-            name: "Shivang Rai",
-            dept: "Department of Visual Media",
-            desc: "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Blanditiis repellat praesentium nihil placeat culpa, reiciendis dolorem qui cupiditate, sint, laborum quae expedita quis fuga deleniti assumenda voluptas inventore incidunt consequatu",
-        },
-        {
-            image: "/static/images/temp_wallmag.png",
-            name: "Shivang Rai",
-            dept: "Department of Visual Media",
-            desc: "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Blanditiis repellat praesentium nihil placeat culpa, reiciendis dolorem qui cupiditate, sint, laborum quae expedita quis fuga deleniti assumenda voluptas inventore incidunt consequatu",
-        },
-        {
-            image: "/static/images/temp_wallmag.png",
-            name: "Shivang Rai",
-            dept: "Department of Visual Media",
-            desc: "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Blanditiis repellat praesentium nihil placeat culpa, reiciendis dolorem qui cupiditate, sint, laborum quae expedita quis fuga deleniti assumenda voluptas inventore incidunt consequatu",
-        },
-        {
-            image: "/static/images/temp_wallmag.png",
-            name: "Shivang Rai",
-            dept: "Department of Visual Media",
-            desc: "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Blanditiis repellat praesentium nihil placeat culpa, reiciendis dolorem qui cupiditate, sint, laborum quae expedita quis fuga deleniti assumenda voluptas inventore incidunt consequatu",
-        },
-        {
-            image: "/static/images/temp_wallmag.png",
-            name: "Shivang Rai",
-            dept: "Department of Visual Media",
-            desc: "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Blanditiis repellat praesentium nihil placeat culpa, reiciendis dolorem qui cupiditate, sint, laborum quae expedita quis fuga deleniti assumenda voluptas inventore incidunt consequatu",
-        },
-        {
-            image: "/static/images/temp_wallmag.png",
-            name: "Shivang Rai",
-            dept: "Department of Visual Media",
-            desc: "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Blanditiis repellat praesentium nihil placeat culpa, reiciendis dolorem qui cupiditate, sint, laborum quae expedita quis fuga deleniti assumenda voluptas inventore incidunt consequatu",
-        },
-        {
-            image: "/static/images/temp_wallmag.png",
-            name: "Shivang Rai",
-            dept: "Department of Visual Media",
-            desc: "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Blanditiis repellat praesentium nihil placeat culpa, reiciendis dolorem qui cupiditate, sint, laborum quae expedita quis fuga deleniti assumenda voluptas inventore incidunt consequatu",
-        },
-        {
-            image: "/static/images/temp_wallmag.png",
-            name: "Shivang Rai",
-            dept: "Department of Visual Media",
-            desc: "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Blanditiis repellat praesentium nihil placeat culpa, reiciendis dolorem qui cupiditate, sint, laborum quae expedita quis fuga deleniti assumenda voluptas inventore incidunt consequatu",
-        },
-        {
-            image: "/static/images/temp_wallmag.png",
-            name: "Shivang Rai",
-            dept: "Department of Visual Media",
-            desc: "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Blanditiis repellat praesentium nihil placeat culpa, reiciendis dolorem qui cupiditate, sint, laborum quae expedita quis fuga deleniti assumenda voluptas inventore incidunt consequatu",
-        },
-    ];
+    const [data, setData] = useState([]);
+
+    useEffect(() => {
+        const fetchData = async () => {
+            const res = await fetch("https://bits-oasis.org/2023/main/wallet/sponsors/");
+            const json = await res.json();
+            setData(json.sponsors);
+        };
+        fetchData();
+    }, []
+    );
+
+    // map the data to the cards where url is not ''
+    const sponsorCards = data.map((sponsor) => {
+        if (sponsor.url != '') {
+            return (
+                <SponsorCard key={sponsor.id} props={{
+                    id: sponsor.id,
+                    name: sponsor.name,
+                    description: sponsor.category,
+                    image: sponsor.url
+                }} />
+            );
+        }
+    }
+    );
 
     return (
-        <div className={styles["wallmagPage"]}>
+        <div className={styles["sponsorsPage"]}>
             <CustomCursor />
-            <Image src="/static/images/web1.svg" className={styles.web1} alt="" />
-            <Image src="/static/images/web2.png" className={styles.web2} alt="" />
             <Image
-                src="/static/images/cross.svg"
+                src={cross}
                 onClick={() => router.back()}
                 alt="Close"
                 className={styles.cross}
             />
-            <h1 className={styles.wallmagHeading}>WALLMAG</h1>
+            <h1 className={styles.heading}>SPONSORS</h1>
 
-            <div className={styles["wallmagContent"]}>
+            <div className={styles.sponsorsContent}>
                 <div className={styles.scrollBarContainer} onClick={handleTrackSnap}>
                     <div className={styles.scrollBar}></div>
                     <Image
@@ -245,22 +140,19 @@ const Page = () => {
                         ref={skullRef}
                     />
                 </div>
-                <div className={styles.wallmagContentContainer} ref={contentRef} onScroll={handleScroll}>
+                <div
+                    className={styles.sponsorsContentContainer}
+                    ref={contentRef}
+                    onScroll={handleScroll}
+                >
                     <div className={styles.cardsContainer}>
-                        {cards.map((card, index) => (
-                            <div className={styles.card} key={index}>
-                                <div className={styles.cardImageContainer}>
-                                    <img src={card.image} alt="" className={styles.cardImage} />
-                                    <div className={styles.cardHeading}>
-                                        <h1>{card.name}</h1>
-                                        <h2>{card.dept}</h2>
-                                    </div>
-                                </div>
-                                <div className={styles.cardDesc}>
-                                    <p>{card.desc}</p>
-                                </div>
-                            </div>
-                        ))}
+                        <div className={styles.cardsFirstRow}>
+                            {sponsorCards[0]}
+                        </div>
+                        <div className={styles.cardsSecondRow}>
+                            {sponsorCards.splice(1, 3)}
+                        </div>
+                        {sponsorCards.splice(3)}
                     </div>
                 </div>
             </div>
@@ -269,3 +161,16 @@ const Page = () => {
 };
 
 export default Page;
+
+export function SponsorCard({ props }) {
+    console.log(props);
+    return (
+        <div className={styles.card}>
+            <div className={styles.imgContainer} style={{backgroundImage : `url(${props.image})`}}></div>
+            <div className={styles.cardContent}>
+                <h2>{props.name}</h2>
+                <p>{props.description}</p>
+            </div>
+        </div>
+    );
+}
