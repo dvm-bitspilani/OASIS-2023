@@ -116,7 +116,6 @@ const Page = () => {
     }
     );
 
-
     return (
         <div className={styles["sponsorsPage"]}>
             <CustomCursor />

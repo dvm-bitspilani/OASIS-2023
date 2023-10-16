@@ -13,6 +13,8 @@ import EventItem from "./EventItem";
 import EventModal from "./EventModal";
 gsap.registerPlugin(ScrollTrigger);
 
+import cross from "../../public/static/images/cross.svg";
+
 const Events = ({ showBackBtn, handleTransition }) => {
   const [selectedEvent, setSelectedEvent] = useState(null);
   const [reduceBrightness, setReduceBrightness] = useState(false);
@@ -153,7 +155,7 @@ const Events = ({ showBackBtn, handleTransition }) => {
     //   top: "30%",
     //   left: "72%",
     // },
-    
+
     // {
     //   key: 18,
     //   name: "Film Festival Inauguration",
@@ -254,9 +256,12 @@ const Events = ({ showBackBtn, handleTransition }) => {
   return (
     <>
       {showBackBtn && (
-        <div className={events.backBtn}>
-          <button onClick={() => handleBtnClick("home")}>BACK TO HOME</button>
-        </div>
+        <button onClick={() => handleBtnClick("home")} className={events.cross}>
+          <Image
+            src={cross}
+            alt="Close"
+          />
+        </button>
       )}
       <div className={events.wrapper}>
         <div id="scrollDist" className={events.scrollDist}></div>
@@ -294,18 +299,18 @@ const Events = ({ showBackBtn, handleTransition }) => {
             {tasks.map((evt) => {
               return (
                 <div
-        key={evt.key}
-        onClick={() => openModal(evt)}
-        className={events.eventItem}
-      >
-                <EventItem
                   key={evt.key}
-                  name={evt.name}
-                  desc={evt.desc}
-                  image={evt.image}
+                  onClick={() => openModal(evt)}
+                  className={events.eventItem}
+                >
+                  <EventItem
+                    key={evt.key}
+                    name={evt.name}
+                    desc={evt.desc}
+                    image={evt.image}
                   // top={evt.top}
                   // left={evt.left}
-                />
+                  />
                 </div>
               );
             })}
@@ -313,8 +318,8 @@ const Events = ({ showBackBtn, handleTransition }) => {
         </div>
       </div>
       {selectedEvent && (
-  <EventModal event={selectedEvent} closeModal={closeModal} />
-)}
+        <EventModal event={selectedEvent} closeModal={closeModal} />
+      )}
     </>
   );
 };

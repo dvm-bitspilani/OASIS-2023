@@ -12,6 +12,21 @@
 .map {
   position: absolute;
 }
+.cross {
+  position: fixed;
+  top: 2rem;
+  right: 2rem;
+  z-index: 20;
+  background: transparent;
+  border: none;
+  scale: 1.5;
+}
+
+.cross img{
+  height: 100%;
+  aspect-ratio: 1/1;
+}
+
 .wrapper svg {
   scale: 0.75;
   position: absolute;
@@ -23,90 +38,90 @@
   width: 100%;
   position: relative;
 }
-.eventItem{
+.eventItem {
   display: flex;
   position: absolute;
   height: 10%;
   width: 15%;
   z-index: 5;
 }
-.eventItem:nth-child(1){
+.eventItem:nth-child(1) {
   top: 10%;
   left: 5%;
 }
-.eventItem:nth-child(2){
+.eventItem:nth-child(2) {
   top: 25%;
   left: 10%;
 }
-.eventItem:nth-child(3){
+.eventItem:nth-child(3) {
   top: 20%;
   left: 60%;
 }
-.eventItem:nth-child(4){
+.eventItem:nth-child(4) {
   top: 50%;
   left: 5%;
 }
-.eventItem:nth-child(5){
+.eventItem:nth-child(5) {
   top: 65%;
   left: 9%;
 }
-.eventItem:nth-child(6){
+.eventItem:nth-child(6) {
   top: 70%;
   left: 30%;
 }
-.eventItem:nth-child(7){
+.eventItem:nth-child(7) {
   top: 55%;
   left: 35%;
 }
-.eventItem:nth-child(8){
+.eventItem:nth-child(8) {
   top: 12%;
   left: 75%;
 }
-.eventItem:nth-child(9){
+.eventItem:nth-child(9) {
   top: 7%;
   left: 23%;
 }
-.eventItem:nth-child(10){
+.eventItem:nth-child(10) {
   top: 20%;
   left: 30%;
 }
-.eventItem:nth-child(11){
+.eventItem:nth-child(11) {
   top: 45%;
   left: 50%;
 }
-.eventItem:nth-child(12){
+.eventItem:nth-child(12) {
   top: 67%;
   left: 55%;
 }
-.eventItem:nth-child(13){
+.eventItem:nth-child(13) {
   top: 42%;
   left: 70%;
 }
-.eventItem:nth-child(14){
+.eventItem:nth-child(14) {
   top: 10%;
   left: 50%;
 }
-.eventItem:nth-child(15){
+.eventItem:nth-child(15) {
   top: 20%;
   left: 60%;
 }
-.eventItem:nth-child(16){
+.eventItem:nth-child(16) {
   top: 12%;
   left: 75%;
 }
-.eventItem:nth-child(17){
+.eventItem:nth-child(17) {
   top: 30%;
   left: 72%;
 }
-.eventItem:nth-child(18){
+.eventItem:nth-child(18) {
   top: 55%;
   left: 60%;
 }
-.eventItem:nth-child(19){
+.eventItem:nth-child(19) {
   top: 75%;
   left: 70%;
 }
-.eventItem:nth-child(20){
+.eventItem:nth-child(20) {
   top: 57%;
   left: 75%;
 }
@@ -133,7 +148,7 @@
   line-height: 1rem;
   font-size: 0.85rem;
 }
-.backBtn {
+/* .backBtn {
   z-index: 20;
   position: fixed;
   top: 5vh;
@@ -152,10 +167,9 @@
   line-height: 100%;
   cursor: pointer;
   padding: 0.25rem;
-}
+} */
 
-
-.itemData{
+.itemData {
   height: 200vh;
   width: 101vw;
   position: fixed;
