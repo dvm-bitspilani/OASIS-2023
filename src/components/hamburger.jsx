@@ -246,7 +246,9 @@ export default function Hamburger() {
                         </svg>
                     </div>
                     <div className={styles.circle}>
-                        <Link href="/sponsors" className={`${styles.item} one`}>
+                        <Link href="/sponsors" className={`${styles.item} one`} onMouseDown={()=>{
+                            setIsHamOpen(false)
+                        }}>
                             <div className={`${styles.number} ${styles.one}`} >
                                 <span className={styles.numbox}><div className={styles.num}>1</div></span>
                                 <span className={styles.txt}>SPONSORS</span>
@@ -258,7 +260,9 @@ export default function Hamburger() {
                                 <span className={styles.txt2}>GALLERY</span>
                             </div>
                         </div>
-                        <Link href="/wallmag" className={`${styles.item} three`}>
+                        <Link href="/wallmag" className={`${styles.item} three`} onMouseDown={()=>{
+                            setIsHamOpen(false)
+                        }}>
                             <div className={`${styles.number} ${styles.three}`} >
                                 <span className={styles.numbox}><div className={styles.num}>3</div></span>
                                 <span className={styles.txt2}>WALLMAG</span>

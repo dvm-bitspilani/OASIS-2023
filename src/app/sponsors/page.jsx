@@ -116,12 +116,15 @@ const Page = () => {
     }
     );
 
+
     return (
         <div className={styles["sponsorsPage"]}>
             <CustomCursor />
             <Image
                 src={cross}
-                onClick={() => router.back()}
+                onClick={() => {
+                    router.push("/")
+                }}
                 alt="Close"
                 className={styles.cross}
             />
@@ -166,7 +169,7 @@ export function SponsorCard({ props }) {
     console.log(props);
     return (
         <div className={styles.card}>
-            <div className={styles.imgContainer} style={{backgroundImage : `url(${props.image})`}}></div>
+            <div className={styles.imgContainer} style={{ backgroundImage: `url(${props.image})` }}></div>
             <div className={styles.cardContent}>
                 <h2>{props.name}</h2>
                 <p>{props.description}</p>
