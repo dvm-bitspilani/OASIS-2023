@@ -21,7 +21,6 @@ import Contact from "@/components/Contact";
 import About from "@/components/About";
 import TransitionLeft from "../../public/static/images/TransitionLeft.png";
 import TransitionRight from "../../public/static/images/TransitionRight.png";
-// import MyVideoLoader from "@/components/VideoLoader";
 import { gsap } from "gsap";
 import { AnimatePresence, motion } from "framer-motion";
 import { useWindowSize } from "rooks";
@@ -128,6 +127,45 @@ export default function Home() {
   const transitionLeft = useRef(null);
   const transitionRight = useRef(null);
 
+
+  // useEffect(() => {
+  //   const loadImages = () => {
+  //     setIsLoading(true);
+  //     setShowLoader(true);
+  //     const images = document.querySelectorAll('img');
+  //     let loaded = 0;
+  
+  //     const handleImageLoad = () => {
+  //       loaded++;
+  //       if (loaded === images.length) {
+  //         setTimeout(() => {
+  //           setIsLoading(false);
+  //           setShowLoader(false);
+  //         }, 3000);
+  //       }
+  //     };
+  
+  //     images.forEach((img) => {
+  //       if (img.complete) {
+  //         handleImageLoad();
+  //       } else {
+  //         img.addEventListener('load', handleImageLoad);
+  //       }
+  //     });
+  
+  //     return () => {
+  //       images.forEach((img) => {
+  //         img.removeEventListener('load', handleImageLoad);
+  //       });
+  //     };
+  //   };
+  
+  //   if (typeof window !== "undefined") {
+  //     setTimeout(loadImages, 100);
+  //   }
+  // }, []);
+  
+
   useEffect(() => {
     if (typeof window !== "undefined") {
       // console.log('first')
@@ -179,30 +217,10 @@ export default function Home() {
             }, 3000);
           });
       };
-      //   if (allSuccessful) {
-      //     setAllAssetsLoaded(true);
-      //     console.log('loaded')
-      //     // setTimeout(() => {
-      //       setIsLoading(false);
-      //       setShowLoader(false);
-      //     // }, 10000);
-      //     // console.log('All assets loaded successfully');
-      //   } else {
-      //     console.error("Error loading assets:", results);
-      //     // setIsLoading(false);
-      //     setAllAssetsLoaded(true);
-      //     // setShowLoader(false);
-      //     setTimeout(() => {
-      //       setIsLoading(false);
-      //       setShowLoader(false);
-      //     }, 2000);
-      //   }
-      // };
 
       loadAssets();
       setRegisterBtnWidth(Math.min(200, Math.floor(window.innerWidth * 0.5)));
       setRegisterBtnHeight(75);
-      // }
     }
   }, []);
 

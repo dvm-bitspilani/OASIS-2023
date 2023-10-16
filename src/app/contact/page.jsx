@@ -11,6 +11,9 @@ import shivang from "../../../public/static/images/shivang.png";
 import shaurya from "../../../public/static/images/shaurya.png";
 import sarthak from "../../../public/static/images/sarthak.png";
 import supreeth from "../../../public/static/images/supreeth.png";
+import sarthak_president from "../../../public/static/images/sarthak_president.png"
+import vaibhav from "../../../public/static/images/vaibhav.png"
+import abhinav from "../../../public/static/images/abhinav.png"
 import contactGhost from "../../../public/static/images/contactGhost.png";
 import mobileImageWrapper from "../../../public/static/images/updatedMobileContactImageContainer.png";
 import ContactProfile from "@/components/ContactProfile";
@@ -58,12 +61,12 @@ const Page = () => {
     {
       name: "Vaibhav Jain",
       dept: "Registration, Events & Approval Queries",
-      image: `${contactGhost.src}`,
+      image: `${vaibhav.src}`,
       phone: "tel:+91-9818332330",
       mail: "mailto:pcr@bits-oasis.org",
     },
     {
-      name: "Supreeth",
+      name: "Supreeth MK",
       dept: "Reception and Accommodation",
       image: `${supreeth.src}`,
       phone: "tel:+91-7349738884",
