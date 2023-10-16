@@ -9,6 +9,10 @@ import skullImg from "../../../public/static/images/skull.svg";
 import CustomCursor from "@/components/CustomCursor";
 // import skullImg from "../../../";
 
+import web1 from "../../../public/static/images/web1.svg"
+import web2 from "../../../public/static/images/web2.png"
+import cross from "../../../public/static/images/cross.svg"
+
 const Page = () => {
     const router = useRouter();
 
@@ -222,10 +226,10 @@ const Page = () => {
     return (
         <div className={styles["wallmagPage"]}>
             <CustomCursor />
-            <img src="/static/images/web1.svg" className={styles.web1} alt="" />
-            <img src="/static/images/web2.png" className={styles.web2} alt="" />
-            <img
-                src="/static/images/cross.svg"
+            <Image src={web1} className={styles.web1} alt="" />
+            <Image src={web2} className={styles.web2} alt="" />
+            <Image
+                src={cross}
                 onClick={() => router.back()}
                 alt="Close"
                 className={styles.cross}

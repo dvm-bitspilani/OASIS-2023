@@ -9,11 +9,13 @@
 }
 .web1 {
   height: 10vh;
+  width: 100px;
   position: fixed;
   top: 0;
   left: 0;
 }
 .web2 {
+  width: 200px;
   height: 6vh;
   position: fixed;
   bottom: 0;
