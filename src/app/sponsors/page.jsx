@@ -11,9 +11,6 @@ import CustomCursor from "@/components/CustomCursor";
 
 import cross from "../../../public/static/images/cross.svg";
 
-
-
-
 const Page = () => {
     const router = useRouter();
 
