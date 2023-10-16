@@ -219,7 +219,7 @@ export default function Home() {
       };
 
       loadAssets();
-      setRegisterBtnWidth(Math.min(200, Math.floor(window.innerWidth * 0.5)));
+      setRegisterBtnWidth(Math.min(200, Math.floor(innerWidth * 0.5)));
       setRegisterBtnHeight(75);
     }
   }, []);
@@ -690,7 +690,7 @@ export default function Home() {
       className={styles.scope}
       ref={scope}
     >
-      {isLoading ? (
+      {isLoading && 
         <div className={styles.loaderContainer}>
           {/* <MyVideoLoader/> */}
           <video
@@ -702,10 +702,8 @@ export default function Home() {
             preload="auto"
             width="100%"
           />
-        </div>
-      ) : (
-        <>
-          {window.innerWidth >= 600 && <CustomCursor />}
+        </div>}
+          {innerWidth >= 600 && <CustomCursor />}
           <div className={styles.pageTransition}>
             <Image
               draggable={false}
@@ -941,8 +939,6 @@ export default function Home() {
           <div className={styles.contactsWrapper} ref={contactsWrapper}>
             <Contact />
           </div>
-        </>
-      )}
     </main>
   );
 }
