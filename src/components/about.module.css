@@ -238,7 +238,7 @@
   }
 }
 
-@media screen and (max-height : 550px){
+@media screen and (max-height : 600px){
   .description p{
     font-size: 1.2rem;
   }
