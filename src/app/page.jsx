@@ -518,12 +518,12 @@ export default function Home() {
 
   useEffect(() => {
     if (isHamOpen) {
-      gsap.to(scope.current , {
+      gsap.to(scope.current, {
         overflowY: 'hidden'
       })
     }
-    else{
-      gsap.to(scope.current , {
+    else {
+      gsap.to(scope.current, {
         overflowY: 'scroll',
         delay: 2
       })
@@ -687,7 +687,7 @@ export default function Home() {
         </div>
       ) : (
         <>
-              {window.innerWidth >= 600 && <CustomCursor/>}
+          {window.innerWidth >= 600 && <CustomCursor />}
           <div className={styles.pageTransition}>
             <Image
               draggable={false}
@@ -696,7 +696,7 @@ export default function Home() {
               height={980}
               ref={transitionLeft}
               style={{ transform: "translateX(-100%)" }}
-              suppressHydrationWarning 
+              suppressHydrationWarning
               alt=""
             />
             <Image
@@ -709,7 +709,7 @@ export default function Home() {
                 right: "0",
                 transform: "translateX(100%)",
               }}
-              suppressHydrationWarning 
+              suppressHydrationWarning
               ref={transitionRight}
               alt=""
             />
@@ -724,7 +724,7 @@ export default function Home() {
             <div
               className={styles.hamSection}
               style={isHamOpen ? { zIndex: 10 } : { zIndex: 2 }}
-              suppressHydrationWarning 
+              suppressHydrationWarning
             >
               <div className={styles.hamBtn}>
                 <Image
@@ -737,7 +737,7 @@ export default function Home() {
                 />
                 <AnimatePresence>
                   <div key="hamAsset"
-                  className={`${styles.hamAsset} customHover`}>
+                    className={`${styles.hamAsset} customHover`}>
                     <Image
                       draggable={false}
                       src="/static/images/hamIcon.svg"
@@ -764,7 +764,7 @@ export default function Home() {
                         height: `${innerHeight / 10}px`,
                         width: `${innerHeight / 10}px`,
                       }}
-                      suppressHydrationWarning 
+                      suppressHydrationWarning
                       initial={{ scale: 0 }}
                       animate={{ scale: 50 }}
                       exit={{ scale: 0, transition: { delay: 1.5 } }}
@@ -803,9 +803,8 @@ export default function Home() {
                 exit={{ opacity: 0 }}
                 transition={{ duration: 2 }}
                 className={`${styles.midSection} 
-              ${showLoader ? styles.loaderContainer : ""} ${
-                  isLoading ? "loaded" : ""
-                }`}
+              ${showLoader ? styles.loaderContainer : ""} ${isLoading ? "loaded" : ""
+                  }`}
               >
                 <div key="textLogoWrapper" className={styles.textLogoWrapper}>
                   <Image
@@ -856,7 +855,7 @@ export default function Home() {
                         position: "absolute",
                         bottom: "50px",
                       }}
-                      suppressHydrationWarning 
+                      suppressHydrationWarning
                     >
                       <Link href="/register" legacyBehavior>
                         <a
@@ -899,21 +898,21 @@ export default function Home() {
             </AnimatePresence>
           </div>
           <div className={styles.aboutWrapper} ref={aboutWrapper}>
-              <About />
-            </div>
-            <div className={styles.aboutWrapper}>
-              <EventsMobile2 handleTransition={handleTransition}/>
-            </div>
+            <About />
+          </div>
+          <div className={styles.aboutWrapper}>
+            <EventsMobile2 handleTransition={handleTransition} />
+          </div>
           <div className={styles.eventsWrapper} ref={eventsWrapper}>
             {/* <Events
               showBackBtn={showBackBtn}
               handleTransition={handleTransition}
             /> */}
-            {innerWidth >= 820 && 
-            <Events
-              showBackBtn={showBackBtn}
-              handleTransition={handleTransition}
-            />}
+            {innerWidth >= 820 &&
+              <Events
+                showBackBtn={showBackBtn}
+                handleTransition={handleTransition}
+              />}
             {/* {innerWidth < 820 && 
             <EventsMobile
             showBackBtn={showBackBtn}

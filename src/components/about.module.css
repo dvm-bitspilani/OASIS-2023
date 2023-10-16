@@ -39,7 +39,7 @@
   text-shadow: 0px 2.748150110244751px 25.420387268066406px
     rgba(120, 187, 240, 0.8);
   font-family: NightmarePills;
-  font-size: 67px;
+  font-size: 4rem;
   font-style: normal;
   font-weight: 400;
   line-height: normal;
@@ -51,7 +51,7 @@
 
   display: flex;
   flex-direction: column;
-  justify-content: start;
+  justify-content: flex-start;
   align-items: center;
   gap: 3rem;
 
@@ -143,6 +143,8 @@
   font-style: normal;
   font-weight: 400;
   line-height: 1; /* 24px */
+
+  margin-bottom: 1.5rem;
 }
 
 .leftHand {
@@ -195,6 +197,7 @@
     gap: 2rem;
   }
 }
+
 @media (max-width: 820px) {
   .pageBgImage {
     display: none;
@@ -218,9 +221,19 @@
     right: 0;
   }
   .heading{
-    margin-top: 4rem;
+    margin-block: 1rem;
+  }
+  .heading h1{
+    font-size: 3rem;
   }
 }
+
+@media screen and (max-height:715px) and (min-width : 820px){
+  .carouselContainer{
+    height: 40%;
+  }
+}
+
 @media screen and (max-height: 1000px) and (min-width: 280px) {
   .pageWrapper{
     min-height: 100vh;
@@ -228,31 +241,31 @@
     }
 @media screen and (max-height: 900px) and (min-width: 280px) {
   .pageWrapper{
-    min-height: 125vh;
+    /* min-height: 125vh; */
   }
     }
 @media screen and (max-height: 900px) and (min-width: 340px) {
   .pageWrapper{
-    min-height: 110vh;
+    /* min-height: 110vh; */
   }
     }
 @media screen and (max-height: 900px) and (min-width: 600px) {
   .pageWrapper{
-    min-height: 100vh;
+    /* min-height: 100vh; */
   }
     }
 @media screen and (max-height: 800px) and (min-width: 280px) {
   .pageWrapper{
-    min-height: 135vh;
+    /* min-height: 135vh; */
   }
     }
 @media screen and (max-height: 800px) and (min-width: 340px) {
   .pageWrapper{
-    min-height: 120vh;
+    /* min-height: 120vh; */
   }
     }
 @media screen and (max-height: 700px) and (min-width: 340px) {
   .pageWrapper{
-    min-height: 140vh;
+    /* min-height: 140vh; */
   }
     }
