@@ -312,7 +312,7 @@
 }
 .bookImgWrapper {
   position: relative;
-  transform: translateY(-15%);
+  transform: translateY(-20%);
   width: max(80%, 650px);
 
   display: flex;

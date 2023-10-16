@@ -1183,7 +1183,7 @@ export default function Page() {
         <div className={styles.loaderContainer}>
           {/* <MyVideoLoader/> */}
           <video
-            src={require("../../../public/static/images/landingLoaderVideo.mp4")} // Update with the correct path
+            src={require("../../../public/static/images/loadervideo.mp4")} // Update with the correct path
             autoPlay
             muted
             loop
