@@ -11,6 +11,7 @@
     background: transparent;
     transform: translateY(80%);
     transition: transform 0.3s ease-in-out;
+    left: 0%;
 }
 .backgroundImage{
     position: absolute;
@@ -63,21 +64,47 @@
     font-size: 1.5rem;
     color: black;
     font-weight: 100;
-    height: 30vh;
+    /* height: 30vh; */
     overflow-y: scroll;
     text-align: center;
 }
 .closeBtn{
     position: absolute;
-    top: 0;
-    height: 4rem;
+    top: 28%;
+    height: unset;
     display:flex;
     align-items: center;
-    right: 10%;
+    right: 20%;
 }
 .open{
     transform: translateY(0%);
 }
 .close{
     transform: translateY(80%);
+}
+.contentWrapper{
+    position: absolute;
+    top: 20%;
+    left: auto;
+    height: fit-content;
+    width: 75vw;
+    background-image: url(../../public/static/images/eventsModalBgLaptop.png);
+    height: auto;
+    background-size: 100% 100%;
+    /* margin-bottom: 20vh; */
+    padding-block: 10rem;
+}
+.heading span{
+    margin-inline: auto;
+    font-size: 3rem;
+    font-family: 'OldNewspaperTypes';
+    color: black;
+}
+.eventImage{
+    display: flex;
+    justify-content: center;
+    padding-block:3rem ;
+}
+.eventDescription{
+    margin-inline: auto;
 }

@@ -20,7 +20,7 @@ const EventModal = ({ event, closeModal }) => {
   return (
     <div className={`${styles.wrapper} ${isOpen ? `${styles.open}` : `${styles.close}`}`}
     onClick={handleClose}>
-        <Image src={BackgroundImage}
+        {/* <Image src={BackgroundImage}
         alt="Background Image" 
         draggable={false}
         className={styles.backgroundImage}
@@ -40,8 +40,22 @@ const EventModal = ({ event, closeModal }) => {
             {event.desc}
         </div>
         <div className={styles.closeBtn}>
-            <Image src={closeCross} alt="close" onClick={closeModal}/>
+            <Image src={closeCross} alt="close" onClick={handleClose}/>
         </div>
+        </div> */}
+        <div className={styles.contentWrapper} onClick={(e) => e.stopPropagation()}>
+          <div className={styles.heading}>
+            <span>{event.name}</span>
+          </div>
+          <div className={styles.eventImage}>
+        <Image src={StreetDance} alt="" />
+          </div>
+          <div className={styles.eventDescription}>
+            {event.desc}
+          </div>
+        </div>
+        <div className={styles.closeBtn}>
+            <Image src={closeCross} alt="close" onClick={handleClose}/>
         </div>
     </div>
   )
