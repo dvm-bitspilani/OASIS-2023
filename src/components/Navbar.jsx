@@ -10,9 +10,9 @@ const Navbar = ({ handleTransition }) => {
   return (
     <>
       <div className={nav.navWrapper}>
-        <a className={`${nav.navItem} customHover`} onClick={() => handleNavClick("sponsors")}>
+        {/* <a className={`${nav.navItem} customHover`} onClick={() => handleNavClick("sponsors")}>
           SPONSORS
-        </a>
+        </a> */}
         <a className={`${nav.navItem} customHover`} onClick={() => handleNavClick("contact")}>
           CONTACT
         </a>
