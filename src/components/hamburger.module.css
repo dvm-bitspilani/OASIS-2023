@@ -137,6 +137,7 @@
     font-family: 'Montserrat';
     z-index: 2;
     /* cursor: pointer; */
+    color: white;
 }
 
 .number {
