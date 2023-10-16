@@ -244,6 +244,12 @@
   }
 }
 
+@media screen and (max-height : 800px) and (max-width: 820px){
+  .description p{
+    font-size: 1.3rem;
+  }
+}
+
 
 @media screen and (max-height: 1000px) and (min-width: 280px) {
   .pageWrapper {
