@@ -39,7 +39,7 @@
   text-shadow: 0px 2.748150110244751px 25.420387268066406px
     rgba(120, 187, 240, 0.8);
   font-family: NightmarePills;
-  font-size: 67px;
+  font-size: 4rem;
   font-style: normal;
   font-weight: 400;
   line-height: normal;
@@ -51,7 +51,7 @@
 
   display: flex;
   flex-direction: column;
-  justify-content: start;
+  justify-content: flex-start;
   align-items: center;
   gap: 3rem;
 
@@ -87,45 +87,48 @@
   z-index: 3;
 }
 
-.carouselControllerButtons{
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-    z-index: 1;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    width: 140%;
-    height: 100%;
+.carouselControllerButtons {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 1;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 140%;
+  height: 100%;
 }
 
-.carouselControllerButtonsMobile{
+.carouselControllerButtonsMobile {
   display: none;
 }
 
-.carouselControllerButtons button, .carouselControllerButtonsMobile button{
-    background-color: transparent;
-    border: none;
-    transition: all 0.5s ease-in-out;
+.carouselControllerButtons button,
+.carouselControllerButtonsMobile button {
+  background-color: transparent;
+  border: none;
+  transition: all 0.5s ease-in-out;
 }
 
-.carouselControllerButtons button:hover, .carouselControllerButtonsMobile button:hover{
-    /* cursor: pointer; */
-    cursor: none;
+.carouselControllerButtons button:hover,
+.carouselControllerButtonsMobile button:hover {
+  /* cursor: pointer; */
+  cursor: none;
 }
 
-.carouselControllerButtons button:disabled, .carouselControllerButtonsMobile button:disabled{
-    cursor: not-allowed;
+.carouselControllerButtons button:disabled,
+.carouselControllerButtonsMobile button:disabled {
+  cursor: not-allowed;
 }
 
-.carouselLeftButton{
-    /* color: #78bbf0;
+.carouselLeftButton {
+  /* color: #78bbf0;
     font-size: 2rem;
     transform: translateX(-50%); */
 }
 
-.carouselRightButton{
-    /* color: #78bbf0;
+.carouselRightButton {
+  /* color: #78bbf0;
     font-size: 2rem;
     transform: translateX(50%); */
 }
@@ -143,6 +146,8 @@
   font-style: normal;
   font-weight: 400;
   line-height: 1; /* 24px */
+
+  margin-bottom: 1.5rem;
 }
 
 .leftHand {
@@ -163,96 +168,115 @@
   /* transform: rotateY(180deg) rotateZ(30deg); */
   transform: translate(-30%, -10%) rotateY(180deg) rotateZ(35deg);
 }
-.leftHandMobile{
+.leftHandMobile {
   display: none;
 }
-.rightHandMobile{
+.rightHandMobile {
   display: none;
 }
-@media screen and (max-width : 1110px) {
-  .carouselControllerButtons{
+@media screen and (max-width: 1110px) {
+  .carouselControllerButtons {
     width: 120%;
   }
   .description {
     width: 75%;
   }
-  .leftHand, .rightHand{
+  .leftHand,
+  .rightHand {
     display: none;
   }
 }
 
-@media screen and (max-width:600px) {
-  .carouselControllerButtons{
+@media screen and (max-width: 600px) {
+  .carouselControllerButtons {
     display: none;
   }
-  .carouselControllerButtonsMobile{
+  .carouselControllerButtonsMobile {
     display: flex;
     width: 20%;
     justify-content: space-between;
     scale: 0.8;
   }
-  .contentContainer{
+  .contentContainer {
     gap: 2rem;
   }
 }
+
 @media (max-width: 820px) {
   .pageBgImage {
     display: none;
   }
-  .pageWrapper{
+  .pageWrapper {
     position: relative;
     top: 0;
     height: auto;
     /* min-height: 100vh; */
   }
-  .leftHandMobile{
+  .leftHandMobile {
     display: block;
     position: absolute;
     bottom: 0;
     left: 0;
   }
-  .rightHandMobile{
+  .rightHandMobile {
     display: block;
     position: absolute;
     top: 0;
     right: 0;
   }
-  .heading{
-    margin-top: 4rem;
+  .heading {
+    margin-block: 1rem;
+  }
+  .heading h1 {
+    font-size: 3rem;
   }
 }
+
+@media screen and (max-height: 715px) and (min-width: 820px) {
+  .carouselContainer {
+    height: 40%;
+  }
+}
+
+@media screen and (max-height : 550px){
+  .description p{
+    font-size: 1.2rem;
+  }
+}
+
+
 @media screen and (max-height: 1000px) and (min-width: 280px) {
-  .pageWrapper{
+  .pageWrapper {
     min-height: 100vh;
   }
-    }
+}
 @media screen and (max-height: 900px) and (min-width: 280px) {
-  .pageWrapper{
-    min-height: 125vh;
+  .pageWrapper {
+    /* min-height: 125vh; */
   }
-    }
+}
 @media screen and (max-height: 900px) and (min-width: 340px) {
-  .pageWrapper{
-    min-height: 110vh;
+  .pageWrapper {
+    /* min-height: 110vh; */
   }
-    }
+}
 @media screen and (max-height: 900px) and (min-width: 600px) {
-  .pageWrapper{
-    min-height: 100vh;
+  .pageWrapper {
+    /* min-height: 100vh; */
   }
-    }
+}
 @media screen and (max-height: 800px) and (min-width: 280px) {
-  .pageWrapper{
-    min-height: 135vh;
+  .pageWrapper {
+    /* min-height: 135vh; */
   }
-    }
+}
 @media screen and (max-height: 800px) and (min-width: 340px) {
-  .pageWrapper{
-    min-height: 120vh;
+  .pageWrapper {
+    /* min-height: 120vh; */
   }
-    }
+}
 @media screen and (max-height: 700px) and (min-width: 340px) {
-  .pageWrapper{
-    min-height: 140vh;
+  .pageWrapper {
+    /* min-height: 140vh; */
   }
-    }
+}

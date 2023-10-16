@@ -9,6 +9,10 @@ import skullImg from "../../../public/static/images/skull.svg";
 import CustomCursor from "@/components/CustomCursor";
 // import skullImg from "../../../";
 
+import web1 from "../../../public/static/images/web1.svg"
+import web2 from "../../../public/static/images/web2.png"
+import cross from "../../../public/static/images/cross.svg"
+
 const Page = () => {
     const router = useRouter();
 
@@ -90,142 +94,144 @@ const Page = () => {
     }
 
     // replace this with api later on
-    const cards = [
-        {
-            image: "/static/images/temp_wallmag.png",
-            name: "Shivang Rai",
-            dept: "Department of Visual Media",
-            desc: "Lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem ipsum dolor sit amet consectetur, adipisicing elit. Blanditiis repellat praesentium nihil placeat culpa, reiciendis dolorem qui cupiditate, sint, laborum quae expedita quis fuga deleniti assumenda voluptas inventore incidunt consequatu",
-        },
-        {
-            image: "/static/images/temp_wallmag.png",
-            name: "Shivang Rai",
-            dept: "Department of Visual Media",
-            desc: "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Blanditiis repellat praesentium nihil placeat culpa, reiciendis dolorem qui cupiditate, sint, laborum quae expedita quis fuga deleniti assumenda voluptas inventore incidunt consequatu",
-        },
-        {
-            image: "/static/images/temp_wallmag.png",
-            name: "Shivang Rai",
-            dept: "Department of Visual Media",
-            desc: "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Blanditiis repellat praesentium nihil placeat culpa, reiciendis dolorem qui cupiditate, sint, laborum quae expedita quis fuga deleniti assumenda voluptas inventore incidunt consequatu",
-        },
-        {
-            image: "/static/images/temp_wallmag.png",
-            name: "Shivang Rai",
-            dept: "Department of Visual Media",
-            desc: "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Blanditiis repellat praesentium nihil placeat culpa, reiciendis dolorem qui cupiditate, sint, laborum quae expedita quis fuga deleniti assumenda voluptas inventore incidunt consequatu",
-        },
-        {
-            image: "/static/images/temp_wallmag.png",
-            name: "Shivang Rai",
-            dept: "Department of Visual Media",
-            desc: "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Blanditiis repellat praesentium nihil placeat culpa, reiciendis dolorem qui cupiditate, sint, laborum quae expedita quis fuga deleniti assumenda voluptas inventore incidunt consequatu",
-        },
-        {
-            image: "/static/images/temp_wallmag.png",
-            name: "Shivang Rai",
-            dept: "Department of Visual Media",
-            desc: "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Blanditiis repellat praesentium nihil placeat culpa, reiciendis dolorem qui cupiditate, sint, laborum quae expedita quis fuga deleniti assumenda voluptas inventore incidunt consequatu",
-        },
-        {
-            image: "/static/images/temp_wallmag.png",
-            name: "Shivang Rai",
-            dept: "Department of Visual Media",
-            desc: "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Blanditiis repellat praesentium nihil placeat culpa, reiciendis dolorem qui cupiditate, sint, laborum quae expedita quis fuga deleniti assumenda voluptas inventore incidunt consequatu",
-        },
-        {
-            image: "/static/images/temp_wallmag.png",
-            name: "Shivang Rai",
-            dept: "Department of Visual Media",
-            desc: "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Blanditiis repellat praesentium nihil placeat culpa, reiciendis dolorem qui cupiditate, sint, laborum quae expedita quis fuga deleniti assumenda voluptas inventore incidunt consequatu",
-        },
-        {
-            image: "/static/images/temp_wallmag.png",
-            name: "Shivang Rai",
-            dept: "Department of Visual Media",
-            desc: "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Blanditiis repellat praesentium nihil placeat culpa, reiciendis dolorem qui cupiditate, sint, laborum quae expedita quis fuga deleniti assumenda voluptas inventore incidunt consequatu",
-        },
-        {
-            image: "/static/images/temp_wallmag.png",
-            name: "Shivang Rai",
-            dept: "Department of Visual Media",
-            desc: "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Blanditiis repellat praesentium nihil placeat culpa, reiciendis dolorem qui cupiditate, sint, laborum quae expedita quis fuga deleniti assumenda voluptas inventore incidunt consequatu",
-        },
-        {
-            image: "/static/images/temp_wallmag.png",
-            name: "Shivang Rai",
-            dept: "Department of Visual Media",
-            desc: "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Blanditiis repellat praesentium nihil placeat culpa, reiciendis dolorem qui cupiditate, sint, laborum quae expedita quis fuga deleniti assumenda voluptas inventore incidunt consequatu",
-        },
-        {
-            image: "/static/images/temp_wallmag.png",
-            name: "Shivang Rai",
-            dept: "Department of Visual Media",
-            desc: "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Blanditiis repellat praesentium nihil placeat culpa, reiciendis dolorem qui cupiditate, sint, laborum quae expedita quis fuga deleniti assumenda voluptas inventore incidunt consequatu",
-        },
-        {
-            image: "/static/images/temp_wallmag.png",
-            name: "Shivang Rai",
-            dept: "Department of Visual Media",
-            desc: "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Blanditiis repellat praesentium nihil placeat culpa, reiciendis dolorem qui cupiditate, sint, laborum quae expedita quis fuga deleniti assumenda voluptas inventore incidunt consequatu",
-        },
-        {
-            image: "/static/images/temp_wallmag.png",
-            name: "Shivang Rai",
-            dept: "Department of Visual Media",
-            desc: "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Blanditiis repellat praesentium nihil placeat culpa, reiciendis dolorem qui cupiditate, sint, laborum quae expedita quis fuga deleniti assumenda voluptas inventore incidunt consequatu",
-        },
-        {
-            image: "/static/images/temp_wallmag.png",
-            name: "Shivang Rai",
-            dept: "Department of Visual Media",
-            desc: "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Blanditiis repellat praesentium nihil placeat culpa, reiciendis dolorem qui cupiditate, sint, laborum quae expedita quis fuga deleniti assumenda voluptas inventore incidunt consequatu",
-        },
-        {
-            image: "/static/images/temp_wallmag.png",
-            name: "Shivang Rai",
-            dept: "Department of Visual Media",
-            desc: "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Blanditiis repellat praesentium nihil placeat culpa, reiciendis dolorem qui cupiditate, sint, laborum quae expedita quis fuga deleniti assumenda voluptas inventore incidunt consequatu",
-        },
-        {
-            image: "/static/images/temp_wallmag.png",
-            name: "Shivang Rai",
-            dept: "Department of Visual Media",
-            desc: "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Blanditiis repellat praesentium nihil placeat culpa, reiciendis dolorem qui cupiditate, sint, laborum quae expedita quis fuga deleniti assumenda voluptas inventore incidunt consequatu",
-        },
-        {
-            image: "/static/images/temp_wallmag.png",
-            name: "Shivang Rai",
-            dept: "Department of Visual Media",
-            desc: "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Blanditiis repellat praesentium nihil placeat culpa, reiciendis dolorem qui cupiditate, sint, laborum quae expedita quis fuga deleniti assumenda voluptas inventore incidunt consequatu",
-        },
-        {
-            image: "/static/images/temp_wallmag.png",
-            name: "Shivang Rai",
-            dept: "Department of Visual Media",
-            desc: "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Blanditiis repellat praesentium nihil placeat culpa, reiciendis dolorem qui cupiditate, sint, laborum quae expedita quis fuga deleniti assumenda voluptas inventore incidunt consequatu",
-        },
-        {
-            image: "/static/images/temp_wallmag.png",
-            name: "Shivang Rai",
-            dept: "Department of Visual Media",
-            desc: "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Blanditiis repellat praesentium nihil placeat culpa, reiciendis dolorem qui cupiditate, sint, laborum quae expedita quis fuga deleniti assumenda voluptas inventore incidunt consequatu",
-        },
-        {
-            image: "/static/images/temp_wallmag.png",
-            name: "Shivang Rai",
-            dept: "Department of Visual Media",
-            desc: "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Blanditiis repellat praesentium nihil placeat culpa, reiciendis dolorem qui cupiditate, sint, laborum quae expedita quis fuga deleniti assumenda voluptas inventore incidunt consequatu",
-        },
-    ];
+    // const cards = [
+    //     {
+    //         image: "/static/images/temp_wallmag.png",
+    //         name: "Shivang Rai",
+    //         dept: "Department of Visual Media",
+    //         desc: "Lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem ipsum dolor sit amet consectetur, adipisicing elit. Blanditiis repellat praesentium nihil placeat culpa, reiciendis dolorem qui cupiditate, sint, laborum quae expedita quis fuga deleniti assumenda voluptas inventore incidunt consequatu",
+    //     },
+    //     {
+    //         image: "/static/images/temp_wallmag.png",
+    //         name: "Shivang Rai",
+    //         dept: "Department of Visual Media",
+    //         desc: "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Blanditiis repellat praesentium nihil placeat culpa, reiciendis dolorem qui cupiditate, sint, laborum quae expedita quis fuga deleniti assumenda voluptas inventore incidunt consequatu",
+    //     },
+    //     {
+    //         image: "/static/images/temp_wallmag.png",
+    //         name: "Shivang Rai",
+    //         dept: "Department of Visual Media",
+    //         desc: "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Blanditiis repellat praesentium nihil placeat culpa, reiciendis dolorem qui cupiditate, sint, laborum quae expedita quis fuga deleniti assumenda voluptas inventore incidunt consequatu",
+    //     },
+    //     {
+    //         image: "/static/images/temp_wallmag.png",
+    //         name: "Shivang Rai",
+    //         dept: "Department of Visual Media",
+    //         desc: "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Blanditiis repellat praesentium nihil placeat culpa, reiciendis dolorem qui cupiditate, sint, laborum quae expedita quis fuga deleniti assumenda voluptas inventore incidunt consequatu",
+    //     },
+    //     {
+    //         image: "/static/images/temp_wallmag.png",
+    //         name: "Shivang Rai",
+    //         dept: "Department of Visual Media",
+    //         desc: "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Blanditiis repellat praesentium nihil placeat culpa, reiciendis dolorem qui cupiditate, sint, laborum quae expedita quis fuga deleniti assumenda voluptas inventore incidunt consequatu",
+    //     },
+    //     {
+    //         image: "/static/images/temp_wallmag.png",
+    //         name: "Shivang Rai",
+    //         dept: "Department of Visual Media",
+    //         desc: "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Blanditiis repellat praesentium nihil placeat culpa, reiciendis dolorem qui cupiditate, sint, laborum quae expedita quis fuga deleniti assumenda voluptas inventore incidunt consequatu",
+    //     },
+    //     {
+    //         image: "/static/images/temp_wallmag.png",
+    //         name: "Shivang Rai",
+    //         dept: "Department of Visual Media",
+    //         desc: "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Blanditiis repellat praesentium nihil placeat culpa, reiciendis dolorem qui cupiditate, sint, laborum quae expedita quis fuga deleniti assumenda voluptas inventore incidunt consequatu",
+    //     },
+    //     {
+    //         image: "/static/images/temp_wallmag.png",
+    //         name: "Shivang Rai",
+    //         dept: "Department of Visual Media",
+    //         desc: "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Blanditiis repellat praesentium nihil placeat culpa, reiciendis dolorem qui cupiditate, sint, laborum quae expedita quis fuga deleniti assumenda voluptas inventore incidunt consequatu",
+    //     },
+    //     {
+    //         image: "/static/images/temp_wallmag.png",
+    //         name: "Shivang Rai",
+    //         dept: "Department of Visual Media",
+    //         desc: "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Blanditiis repellat praesentium nihil placeat culpa, reiciendis dolorem qui cupiditate, sint, laborum quae expedita quis fuga deleniti assumenda voluptas inventore incidunt consequatu",
+    //     },
+    //     {
+    //         image: "/static/images/temp_wallmag.png",
+    //         name: "Shivang Rai",
+    //         dept: "Department of Visual Media",
+    //         desc: "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Blanditiis repellat praesentium nihil placeat culpa, reiciendis dolorem qui cupiditate, sint, laborum quae expedita quis fuga deleniti assumenda voluptas inventore incidunt consequatu",
+    //     },
+    //     {
+    //         image: "/static/images/temp_wallmag.png",
+    //         name: "Shivang Rai",
+    //         dept: "Department of Visual Media",
+    //         desc: "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Blanditiis repellat praesentium nihil placeat culpa, reiciendis dolorem qui cupiditate, sint, laborum quae expedita quis fuga deleniti assumenda voluptas inventore incidunt consequatu",
+    //     },
+    //     {
+    //         image: "/static/images/temp_wallmag.png",
+    //         name: "Shivang Rai",
+    //         dept: "Department of Visual Media",
+    //         desc: "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Blanditiis repellat praesentium nihil placeat culpa, reiciendis dolorem qui cupiditate, sint, laborum quae expedita quis fuga deleniti assumenda voluptas inventore incidunt consequatu",
+    //     },
+    //     {
+    //         image: "/static/images/temp_wallmag.png",
+    //         name: "Shivang Rai",
+    //         dept: "Department of Visual Media",
+    //         desc: "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Blanditiis repellat praesentium nihil placeat culpa, reiciendis dolorem qui cupiditate, sint, laborum quae expedita quis fuga deleniti assumenda voluptas inventore incidunt consequatu",
+    //     },
+    //     {
+    //         image: "/static/images/temp_wallmag.png",
+    //         name: "Shivang Rai",
+    //         dept: "Department of Visual Media",
+    //         desc: "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Blanditiis repellat praesentium nihil placeat culpa, reiciendis dolorem qui cupiditate, sint, laborum quae expedita quis fuga deleniti assumenda voluptas inventore incidunt consequatu",
+    //     },
+    //     {
+    //         image: "/static/images/temp_wallmag.png",
+    //         name: "Shivang Rai",
+    //         dept: "Department of Visual Media",
+    //         desc: "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Blanditiis repellat praesentium nihil placeat culpa, reiciendis dolorem qui cupiditate, sint, laborum quae expedita quis fuga deleniti assumenda voluptas inventore incidunt consequatu",
+    //     },
+    //     {
+    //         image: "/static/images/temp_wallmag.png",
+    //         name: "Shivang Rai",
+    //         dept: "Department of Visual Media",
+    //         desc: "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Blanditiis repellat praesentium nihil placeat culpa, reiciendis dolorem qui cupiditate, sint, laborum quae expedita quis fuga deleniti assumenda voluptas inventore incidunt consequatu",
+    //     },
+    //     {
+    //         image: "/static/images/temp_wallmag.png",
+    //         name: "Shivang Rai",
+    //         dept: "Department of Visual Media",
+    //         desc: "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Blanditiis repellat praesentium nihil placeat culpa, reiciendis dolorem qui cupiditate, sint, laborum quae expedita quis fuga deleniti assumenda voluptas inventore incidunt consequatu",
+    //     },
+    //     {
+    //         image: "/static/images/temp_wallmag.png",
+    //         name: "Shivang Rai",
+    //         dept: "Department of Visual Media",
+    //         desc: "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Blanditiis repellat praesentium nihil placeat culpa, reiciendis dolorem qui cupiditate, sint, laborum quae expedita quis fuga deleniti assumenda voluptas inventore incidunt consequatu",
+    //     },
+    //     {
+    //         image: "/static/images/temp_wallmag.png",
+    //         name: "Shivang Rai",
+    //         dept: "Department of Visual Media",
+    //         desc: "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Blanditiis repellat praesentium nihil placeat culpa, reiciendis dolorem qui cupiditate, sint, laborum quae expedita quis fuga deleniti assumenda voluptas inventore incidunt consequatu",
+    //     },
+    //     {
+    //         image: "/static/images/temp_wallmag.png",
+    //         name: "Shivang Rai",
+    //         dept: "Department of Visual Media",
+    //         desc: "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Blanditiis repellat praesentium nihil placeat culpa, reiciendis dolorem qui cupiditate, sint, laborum quae expedita quis fuga deleniti assumenda voluptas inventore incidunt consequatu",
+    //     },
+    //     {
+    //         image: "/static/images/temp_wallmag.png",
+    //         name: "Shivang Rai",
+    //         dept: "Department of Visual Media",
+    //         desc: "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Blanditiis repellat praesentium nihil placeat culpa, reiciendis dolorem qui cupiditate, sint, laborum quae expedita quis fuga deleniti assumenda voluptas inventore incidunt consequatu",
+    //     },
+    // ];
+
+    const cards = []
 
     return (
         <div className={styles["wallmagPage"]}>
             <CustomCursor />
-            <img src="/static/images/web1.svg" className={styles.web1} alt="" />
-            <img src="/static/images/web2.png" className={styles.web2} alt="" />
-            <img
-                src="/static/images/cross.svg"
+            <Image src={web1} className={styles.web1} alt="" />
+            <Image src={web2} className={styles.web2} alt="" />
+            <Image
+                src={cross}
                 onClick={() => router.back()}
                 alt="Close"
                 className={styles.cross}
@@ -261,6 +267,9 @@ const Page = () => {
                                 </div>
                             </div>
                         ))}
+                        <div style={{display:"flex", height:"75vh", alignItems:"center"}}>
+                            <h1 className={styles.wallmagHeading}>Coming Soon</h1>
+                        </div>
                     </div>
                 </div>
             </div>

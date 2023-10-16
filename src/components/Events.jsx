@@ -13,6 +13,8 @@ import EventItem from "./EventItem";
 import EventModal from "./EventModal";
 gsap.registerPlugin(ScrollTrigger);
 
+import cross from "../../public/static/images/cross.svg";
+
 const Events = ({ showBackBtn, handleTransition }) => {
   const [selectedEvent, setSelectedEvent] = useState(null);
   const [reduceBrightness, setReduceBrightness] = useState(false);
@@ -60,7 +62,7 @@ const Events = ({ showBackBtn, handleTransition }) => {
     {
       key: 6,
       name: "TANDAV",
-      desc: "Tandav Solo is an Indian classical dance competition wherein Dancers across India come and participate in a show of their best abilities on an individual level.",
+      desc: "Tandav is a classical dance competition. It invites participants trained in Odissi, Kathak, Kuchipudi, Bharatanatyam, Manipuri, Kathakali, Mohiniattam and Sattriya.\n There are 2 categories: \n Solo and Group",
       image: Tandav,
       top: "70%",
       left: "30%",
@@ -99,8 +101,8 @@ const Events = ({ showBackBtn, handleTransition }) => {
     },
     {
       key: 11,
-      name: "SWARANJALI SOLO (VOCALS)",
-      desc: "Swaranjali is a classical music competition. Participants trained in the vocal and instrumental aspects of both Carnatic and Hindustani styles are invited to compete. (Instruments: violin, sitar, veena, flute, Hawaiian guitar, tabla, mridangam, ghatam, keyboard, harmonium, kanjira, sarangi and sarod.) There are 4 categories: 1. Solo Vocals 2. Solo Wind and String 3. Solo Percussion 4. Group",
+      name: "SWARANJALI",
+      desc: "Swaranjali is a classical music competition. Participants trained in the vocal and instrumental aspects of both Carnatic and Hindustani styles are invited to compete. (Instruments: violin, sitar, veena, flute, Hawaiian guitar, tabla, mridangam, ghatam, keyboard, harmonium, kanjira, sarangi and sarod.) \n There are 4 categories: \n 1. Solo Vocals \n 2. Solo Wind and String \n 3. Solo Percussion \n 4. Group",
       image: Swaranjali,
       top: "45%",
       left: "50%",
@@ -153,7 +155,7 @@ const Events = ({ showBackBtn, handleTransition }) => {
     //   top: "30%",
     //   left: "72%",
     // },
-    
+
     // {
     //   key: 18,
     //   name: "Film Festival Inauguration",
@@ -254,9 +256,12 @@ const Events = ({ showBackBtn, handleTransition }) => {
   return (
     <>
       {showBackBtn && (
-        <div className={events.backBtn}>
-          <button onClick={() => handleBtnClick("home")}>BACK TO HOME</button>
-        </div>
+        <button onClick={() => handleBtnClick("home")} className={events.cross}>
+          <Image
+            src={cross}
+            alt="Close"
+          />
+        </button>
       )}
       <div className={events.wrapper}>
         <div id="scrollDist" className={events.scrollDist}></div>
@@ -294,18 +299,18 @@ const Events = ({ showBackBtn, handleTransition }) => {
             {tasks.map((evt) => {
               return (
                 <div
-        key={evt.key}
-        onClick={() => openModal(evt)}
-        className={events.eventItem}
-      >
-                <EventItem
                   key={evt.key}
-                  name={evt.name}
-                  desc={evt.desc}
-                  image={evt.image}
+                  onClick={() => openModal(evt)}
+                  className={events.eventItem}
+                >
+                  <EventItem
+                    key={evt.key}
+                    name={evt.name}
+                    desc={evt.desc}
+                    image={evt.image}
                   // top={evt.top}
                   // left={evt.left}
-                />
+                  />
                 </div>
               );
             })}
@@ -313,8 +318,8 @@ const Events = ({ showBackBtn, handleTransition }) => {
         </div>
       </div>
       {selectedEvent && (
-  <EventModal event={selectedEvent} closeModal={closeModal} />
-)}
+        <EventModal event={selectedEvent} closeModal={closeModal} />
+      )}
     </>
   );
 };

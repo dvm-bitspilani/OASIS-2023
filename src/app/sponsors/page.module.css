@@ -1,4 +1,4 @@
-.wallmagPage {
+.sponsorsPage {
   height: 100vh;
   width: 100vw;
   background: url("../../../public/static/images/updatedLibraryBgImage.png")
@@ -7,26 +7,12 @@
 
   cursor: none;
 }
-.web1 {
-  height: 10vh;
-  width: 100px;
-  position: fixed;
-  top: 0;
-  left: 0;
-}
-.web2 {
-  width: 200px;
-  height: 6vh;
-  position: fixed;
-  bottom: 0;
-  right: 0;
-}
 .cross {
   position: fixed;
   top: 2rem;
   right: 2rem;
 }
-.wallmagHeading {
+.heading {
   font-family: "NightmarePills";
   text-align: center;
   font-size: 2.5rem;
@@ -57,13 +43,13 @@ aspect-ratio: 1/1; */
   filter: drop-shadow(0px 0px 15px rgba(123, 190, 240, 0.91));
   border-radius: 5px;
 }
-.wallmagContent{
+.sponsorsContent{
     height: 80vh;
     margin-top: 5vh;
     display: flex;
     align-items: center;
 }
-.wallmagContentContainer{
+.sponsorsContentContainer{
     height: 100%;
     width: 100%;
     margin-right: 5vw;
@@ -71,72 +57,103 @@ aspect-ratio: 1/1; */
     -ms-overflow-style: none;
     scrollbar-width: none;
 }
-.wallmagContentContainer::-webkit-scrollbar {
+.sponsorsContentContainer::-webkit-scrollbar {
     display: none;
   }
+
+/* .cardWrapper{
+    width: auto;
+    height: auto;
+
+    display: flex;
+    justify-content: center;
+} */
+
 .cardsContainer{
-    /* height: 100vh; */
     height: auto;
     width: 100%;
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
-    gap: 1rem;
+    row-gap: 1rem;
+    column-gap: 7.5rem;
+}
+
+.cardsFirstRow{
+    height: fit-content;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.cardsSecondRow{
+    height: fit-content;
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+}
+
+.card{
+    width: 300px;
+    height: 200px;
+    /* height: fit-content; */
+    /* padding: 3% 2% 2% 2%; */
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+}
+.cardContent{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.imgContainer{
+    height: 45%;
+    width: 100%;
+
+    display: flex;
+    justify-content: center;
+
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+.card img{
+    height: 100px;
+    /* width: 100%; */
+    /* object-fit: contain; */
 }
 .card{
-    background: url("/static/images/wallmagcard.png");
-    background-size: contain;
-    background-position: center;
-    background-repeat: no-repeat;
-    width: 300px;
-    height: 300px;
-    padding: 3% 2% 2% 2%;
-    display: flex;
-    justify-content: space-evenly;
-    flex-direction: column;
-}
-.cardImageContainer{
-    display: flex;
-}
-.cardImageContainer img{
-    flex-grow: 0;
-    flex-shrink: 0;
-    height: 5rem;
-}
-.cardHeading{
     display: flex;
     flex-direction: column;
 }
-.cardHeading h1{
+.card h2{
     text-align: center;
-    font-family: 'OldNewspaperTypes';
+    font-family: MetalMania;
     font-size: 1.5rem;
-    color: rgb(74, 20, 20);
 }
-.cardHeading h2{
-    text-align: center;
-    font-family: 'OldNewspaperTypes';
-    font-size: 1rem;
-    color: rgb(74, 20, 20);
-}
-.cardDesc p{
-    color: #4A1414;
+.card p{
     text-align: center;
     font-family: 'MetalMania';
-    font-size: 12px;
+    font-size: 1rem;
 }
+
 @media (max-width:1000px) {
     .card{
-        padding: 3% 3% 2% 3%;
+        /* padding: 3% 3% 2% 3%; */
     }
 }
 @media (max-width:600px) {
     .card{
-        padding: 3% 4% 2% 6%;
+        /* padding: 3% 4% 2% 6%; */
     }
 }
 @media (max-width:350px){
-    .wallmagContentContainer{
+    .sponsorsContentContainer{
         margin-right: 1vw;
     }
 }

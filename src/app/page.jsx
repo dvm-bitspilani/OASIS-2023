@@ -21,7 +21,6 @@ import Contact from "@/components/Contact";
 import About from "@/components/About";
 import TransitionLeft from "../../public/static/images/TransitionLeft.png";
 import TransitionRight from "../../public/static/images/TransitionRight.png";
-// import MyVideoLoader from "@/components/VideoLoader";
 import { gsap } from "gsap";
 import { AnimatePresence, motion } from "framer-motion";
 import { useWindowSize } from "rooks";
@@ -128,6 +127,45 @@ export default function Home() {
   const transitionLeft = useRef(null);
   const transitionRight = useRef(null);
 
+
+  // useEffect(() => {
+  //   const loadImages = () => {
+  //     setIsLoading(true);
+  //     setShowLoader(true);
+  //     const images = document.querySelectorAll('img');
+  //     let loaded = 0;
+  
+  //     const handleImageLoad = () => {
+  //       loaded++;
+  //       if (loaded === images.length) {
+  //         setTimeout(() => {
+  //           setIsLoading(false);
+  //           setShowLoader(false);
+  //         }, 3000);
+  //       }
+  //     };
+  
+  //     images.forEach((img) => {
+  //       if (img.complete) {
+  //         handleImageLoad();
+  //       } else {
+  //         img.addEventListener('load', handleImageLoad);
+  //       }
+  //     });
+  
+  //     return () => {
+  //       images.forEach((img) => {
+  //         img.removeEventListener('load', handleImageLoad);
+  //       });
+  //     };
+  //   };
+  
+  //   if (typeof window !== "undefined") {
+  //     setTimeout(loadImages, 100);
+  //   }
+  // }, []);
+  
+
   useEffect(() => {
     if (typeof window !== "undefined") {
       // console.log('first')
@@ -179,30 +217,10 @@ export default function Home() {
             }, 3000);
           });
       };
-      //   if (allSuccessful) {
-      //     setAllAssetsLoaded(true);
-      //     console.log('loaded')
-      //     // setTimeout(() => {
-      //       setIsLoading(false);
-      //       setShowLoader(false);
-      //     // }, 10000);
-      //     // console.log('All assets loaded successfully');
-      //   } else {
-      //     console.error("Error loading assets:", results);
-      //     // setIsLoading(false);
-      //     setAllAssetsLoaded(true);
-      //     // setShowLoader(false);
-      //     setTimeout(() => {
-      //       setIsLoading(false);
-      //       setShowLoader(false);
-      //     }, 2000);
-      //   }
-      // };
 
       loadAssets();
-      setRegisterBtnWidth(Math.min(200, Math.floor(window.innerWidth * 0.5)));
+      setRegisterBtnWidth(Math.min(200, Math.floor(innerWidth * 0.5)));
       setRegisterBtnHeight(75);
-      // }
     }
   }, []);
 
@@ -518,12 +536,12 @@ export default function Home() {
 
   useEffect(() => {
     if (isHamOpen) {
-      gsap.to(scope.current , {
+      gsap.to(scope.current, {
         overflowY: 'hidden'
       })
     }
-    else{
-      gsap.to(scope.current , {
+    else {
+      gsap.to(scope.current, {
         overflowY: 'scroll',
         delay: 2
       })
@@ -672,11 +690,11 @@ export default function Home() {
       className={styles.scope}
       ref={scope}
     >
-      {isLoading ? (
+      {isLoading && 
         <div className={styles.loaderContainer}>
           {/* <MyVideoLoader/> */}
           <video
-            src={require("../../public/static/images/landingLoaderVideo.mp4")} // Update with the correct path
+            src={require("../../public/static/images/loadervideo.mp4")} // Update with the correct path
             autoPlay
             muted
             loop
@@ -684,10 +702,8 @@ export default function Home() {
             preload="auto"
             width="100%"
           />
-        </div>
-      ) : (
-        <>
-              {window.innerWidth >= 600 && <CustomCursor/>}
+        </div>}
+          {innerWidth >= 600 && <CustomCursor />}
           <div className={styles.pageTransition}>
             <Image
               draggable={false}
@@ -696,7 +712,7 @@ export default function Home() {
               height={980}
               ref={transitionLeft}
               style={{ transform: "translateX(-100%)" }}
-              suppressHydrationWarning 
+              suppressHydrationWarning
               alt=""
             />
             <Image
@@ -709,7 +725,7 @@ export default function Home() {
                 right: "0",
                 transform: "translateX(100%)",
               }}
-              suppressHydrationWarning 
+              suppressHydrationWarning
               ref={transitionRight}
               alt=""
             />
@@ -724,7 +740,7 @@ export default function Home() {
             <div
               className={styles.hamSection}
               style={isHamOpen ? { zIndex: 10 } : { zIndex: 2 }}
-              suppressHydrationWarning 
+              suppressHydrationWarning
             >
               <div className={styles.hamBtn}>
                 <Image
@@ -737,7 +753,7 @@ export default function Home() {
                 />
                 <AnimatePresence>
                   <div key="hamAsset"
-                  className={`${styles.hamAsset} customHover`}>
+                    className={`${styles.hamAsset} customHover`}>
                     <Image
                       draggable={false}
                       src="/static/images/hamIcon.svg"
@@ -764,7 +780,7 @@ export default function Home() {
                         height: `${innerHeight / 10}px`,
                         width: `${innerHeight / 10}px`,
                       }}
-                      suppressHydrationWarning 
+                      suppressHydrationWarning
                       initial={{ scale: 0 }}
                       animate={{ scale: 50 }}
                       exit={{ scale: 0, transition: { delay: 1.5 } }}
@@ -803,9 +819,8 @@ export default function Home() {
                 exit={{ opacity: 0 }}
                 transition={{ duration: 2 }}
                 className={`${styles.midSection} 
-              ${showLoader ? styles.loaderContainer : ""} ${
-                  isLoading ? "loaded" : ""
-                }`}
+              ${showLoader ? styles.loaderContainer : ""} ${isLoading ? "loaded" : ""
+                  }`}
               >
                 <div key="textLogoWrapper" className={styles.textLogoWrapper}>
                   <Image
@@ -856,7 +871,7 @@ export default function Home() {
                         position: "absolute",
                         bottom: "50px",
                       }}
-                      suppressHydrationWarning 
+                      suppressHydrationWarning
                     >
                       <Link href="/register" legacyBehavior>
                         <a
@@ -899,21 +914,21 @@ export default function Home() {
             </AnimatePresence>
           </div>
           <div className={styles.aboutWrapper} ref={aboutWrapper}>
-              <About />
-            </div>
-            <div className={styles.aboutWrapper}>
-              <EventsMobile2 handleTransition={handleTransition}/>
-            </div>
+            <About />
+          </div>
+          <div className={styles.aboutWrapper}>
+            <EventsMobile2 handleTransition={handleTransition} />
+          </div>
           <div className={styles.eventsWrapper} ref={eventsWrapper}>
             {/* <Events
               showBackBtn={showBackBtn}
               handleTransition={handleTransition}
             /> */}
-            {innerWidth >= 820 && 
-            <Events
-              showBackBtn={showBackBtn}
-              handleTransition={handleTransition}
-            />}
+            {innerWidth >= 820 &&
+              <Events
+                showBackBtn={showBackBtn}
+                handleTransition={handleTransition}
+              />}
             {/* {innerWidth < 820 && 
             <EventsMobile
             showBackBtn={showBackBtn}
@@ -924,8 +939,6 @@ export default function Home() {
           <div className={styles.contactsWrapper} ref={contactsWrapper}>
             <Contact />
           </div>
-        </>
-      )}
     </main>
   );
 }

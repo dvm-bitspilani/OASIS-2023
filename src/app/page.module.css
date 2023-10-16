@@ -71,7 +71,7 @@
   -ms-overflow-style: none;
   opacity: 0;
   visibility: hidden;
-  height: auto;
+  /* height: auto; */
   scroll-snap-align: start;
   scroll-behavior: smooth;
   scroll-snap-destination: 0% 60%;
@@ -122,6 +122,7 @@
     opacity: 1;
     min-height: fit-content;
     z-index: 15;
+    height: auto;
   }
   .eventsWrapper {
     position: static;
@@ -311,7 +312,7 @@
 }
 .bookImgWrapper {
   position: relative;
-  transform: translateY(-15%);
+  transform: translateY(-20%);
   width: max(80%, 650px);
 
   display: flex;

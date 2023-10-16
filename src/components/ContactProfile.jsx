@@ -1,5 +1,5 @@
 import React from 'react'
-import styles from '../app/contact/page.module.css'
+import styles from './Contact.module.css'
 import callIcon from "../../public/static/images/call.png"
 import mailIcon from "../../public/static/images/mailicon.svg"
 import Image from 'next/image'

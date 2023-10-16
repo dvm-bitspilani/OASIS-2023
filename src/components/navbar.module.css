@@ -22,7 +22,7 @@
 
 @media (max-height: 720px) {
   .navWrapper {
-    gap: .75rem;
+    gap: 1.5rem;
   }
   .navItem {
     font-size: .75rem;
@@ -33,28 +33,28 @@
     display: none;
   }
 }
-@media (max-height: 605px) {
+
+@media (max-width: 1250px) {
+  .navWrapper{
+    gap: 1.5rem;
+  }
+  .navItem{
+    font-size: .85rem;
+  }
+}
+@media (max-width: 1120px) {
   .navWrapper {
-    gap: .75rem;
+    gap: 1.75rem;
   }
   .navItem {
     font-size: .75rem;
   }
 }
-
-@media (max-width: 1250px) {
-    .navWrapper{
-        gap: 1.5rem;
-    }
-    .navItem{
-        font-size: .85rem;
-    }
-}
-@media (max-width: 1120px) {
-    .navWrapper {
-      gap: .75rem;
-    }
-    .navItem {
-      font-size: .75rem;
-    }
+@media (max-height: 605px) {
+  .navWrapper {
+    gap: 1rem;
   }
+  .navItem {
+    font-size: .75rem;
+  }
+}
