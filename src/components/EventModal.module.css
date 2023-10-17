@@ -15,10 +15,10 @@
 }
 .backgroundImage{
     position: absolute;
-    top: 20%;
+    top: 10%;
     left: auto;
     height: auto;
-    width: 75vw;
+    width: 68vw;
     margin-bottom: 20vh;
 }
 .modalContent{
@@ -70,11 +70,11 @@
 }
 .closeBtn{
     position: absolute;
-    top: 28%;
+    top: 15%;
     height: unset;
     display:flex;
     align-items: center;
-    right: 20%;
+    right: 25%;
 }
 .open{
     transform: translateY(0%);
@@ -84,15 +84,15 @@
 }
 .contentWrapper{
     position: absolute;
-    top: 20%;
+    top: 5%;
     left: auto;
     height: fit-content;
-    width: 75vw;
+    width: 68vw;
     background-image: url(../../public/static/images/eventsModalBgLaptop.png);
     height: auto;
     background-size: 100% 100%;
     /* margin-bottom: 20vh; */
-    padding-block: 10rem;
+    padding-block: 8rem;
 }
 .heading span{
     margin-inline: auto;
@@ -104,6 +104,8 @@
     display: flex;
     justify-content: center;
     padding-block:3rem ;
+    padding-bottom: 0;
+    /* margin-bottom: -2rem; */
 }
 .eventDescription{
     margin-inline: auto;

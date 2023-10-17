@@ -4,6 +4,7 @@ import styles from "./EventModal.module.css";
 import BackgroundImage from "../../public/static/images/eventsModalBgLaptop.png"
 import Image from "next/image";
 import StreetDance from "../../public/static/images/desertDuelModal.png";
+import OasisLogo from "../../public/static/images/eventsModalOasisLogo.png";
 import closeCross from "../../public/static/images/eventsModalCloseButton.png"
 const EventModal = ({ event, closeModal }) => {
     const [isOpen, setIsOpen] = useState(false);
@@ -48,7 +49,7 @@ const EventModal = ({ event, closeModal }) => {
             <span>{event.name}</span>
           </div>
           <div className={styles.eventImage}>
-        <Image src={StreetDance} alt="" />
+        <Image src={event.image} alt="" />
           </div>
           <div className={styles.eventDescription}>
             {event.desc}
