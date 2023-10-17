@@ -12,6 +12,63 @@ import CustomCursor from "@/components/CustomCursor";
 import cross from "../../../public/static/images/cross.svg";
 
 const Page = () => {
+
+    // const [isLoading, setIsLoading] = useState(true);
+
+    // useEffect(() => {
+    //     if (typeof window !== "undefined") {
+            
+    //       setIsLoading(true);
+    //       const assets = [
+    //         textLogo.src,
+    //         landingPgBookImg.src,
+    //         rightElements.src,
+    //         leftElements.src,
+    //         updatedBgLibraryImage.src,
+    //       ];
+    //       // console.log('second')
+    //       const loadAssets = async () => {
+    //         const assetPromises = assets.map((asset) => {
+    //           if (asset) {
+    //             return new Promise((resolve, reject) => {
+    //               // const img = new img();
+    //               const img = document.createElement("img");
+    //               img.onload = resolve;
+    //               img.onerror = reject;
+    //               img.src = asset;
+    //             });
+    //           }
+    //         });
+    //         const results = await Promise.allSettled(assetPromises);
+    //         const allSuccessful = results.every(
+    //           (result) => result.status === "fulfilled"
+    //         );
+    //         Promise.all(assetPromises)
+    //           .then(() => {
+    //             // console.log("loaded");
+    //             setTimeout(() => {
+    //               setIsLoading(false);
+    //             }, 3000);
+    //             // console.log('All assets loaded successfully');
+    //           })
+    //           .catch((error) => {
+    //             console.error("Error loading assets:", error);
+                
+    //             // console.log("loaded");
+    //             setTimeout(() => {
+    //               setIsLoading(false);
+    //             }, 3000);
+    //           });
+    //       };
+    
+    //       loadAssets();
+    //       setRegisterBtnWidth(Math.min(200, Math.floor(innerWidth * 0.5)));
+    //       setRegisterBtnHeight(75);
+    //     }
+    //   }, []);
+
+
+
     const router = useRouter();
 
     const skullRef = useRef(null);
@@ -120,6 +177,7 @@ const Page = () => {
         <div className={styles["sponsorsPage"]}>
             <CustomCursor />
             <Image
+            suppressHydrationWarning
                 src={cross}
                 onClick={() => {
                     router.push("/")
@@ -133,6 +191,7 @@ const Page = () => {
                 <div className={styles.scrollBarContainer} onClick={handleTrackSnap}>
                     <div className={styles.scrollBar}></div>
                     <Image
+                    suppressHydrationWarning
                         draggable={false}
                         onMouseDown={handleSkullMouseDown}
                         onTouchStart={handleSkullMouseDown}

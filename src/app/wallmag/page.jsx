@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useRef } from "react";
+import React, { useRef, useState } from "react";
 import styles from "./page.module.css";
 import { useRouter } from "next/navigation";
 import Image from "next/image";
@@ -15,6 +15,7 @@ import cross from "../../../public/static/images/cross.svg"
 
 const Page = () => {
     const router = useRouter();
+    // const [isLoading , setIsLoading] = useState(true)
 
     const skullRef = useRef(null);
     const contentRef = useRef(null);
@@ -93,7 +94,7 @@ const Page = () => {
         // skullElem.style.top = `${percentage}%`;
     }
 
-    // replace this with api later on
+    // replace this with api later on and set isLoading to false
     // const cards = [
     //     {
     //         image: "/static/images/temp_wallmag.png",

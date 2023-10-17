@@ -116,7 +116,7 @@ export function YoutubeEmbed({ embedId }) {
       height="315"
       src={`https://www.youtube.com/embed/${embedId}`}
       title="YouTube video player"
-      frameborder="0"
+      frameBorder="0"
       allowFullScreen
       preload="metadata"
       allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"

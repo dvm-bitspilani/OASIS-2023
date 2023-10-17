@@ -19,6 +19,39 @@ import cross from "../../public/static/images/cross.svg";
 const Events = ({ showBackBtn, handleTransition }) => {
   const [selectedEvent, setSelectedEvent] = useState(null);
   const [reduceBrightness, setReduceBrightness] = useState(false);
+  const [eventDetails, setEventDetails] = useState([]);
+
+  async function getEventDetails() {
+    const res = await fetch(
+      "https://bits-oasis.org/2023/main/registrations/events_details"
+    );
+    if (!res.ok) {
+      throw new Error("Failed to get Events");
+    }
+    return res.json();
+  }
+
+  useEffect(() => {
+    getEventDetails()
+      .then((data) => {
+        setEventDetails(
+          data[0]["events"].map((item) => {
+            return {
+              name: item.name,
+              desc: item.about,
+              image: item.img_url,
+              organiser: item.organiser,
+              contact: item.contact,
+            };
+          })
+        );
+        // console.log(data[0]["events"]);
+      })
+      .catch((error) => {
+        // console.log(error);
+      });
+  }, []);
+
   const tasks = [
     {
       key: 1,
@@ -251,9 +284,11 @@ const Events = ({ showBackBtn, handleTransition }) => {
     setTimeout(() => {
       setSelectedEvent(null);
       setReduceBrightness(false);
-    }, 300)
+    }, 300);
   };
-  const containerClassName = reduceBrightness ? `${events.container} ${events.reduceBrightness}` : events.container;
+  const containerClassName = reduceBrightness
+    ? `${events.container} ${events.reduceBrightness}`
+    : events.container;
   return (
     <>
       {showBackBtn && (
@@ -309,8 +344,8 @@ const Events = ({ showBackBtn, handleTransition }) => {
                     name={evt.name}
                     desc={evt.desc}
                     image={evt.image}
-                  // top={evt.top}
-                  // left={evt.left}
+                    // top={evt.top}
+                    // left={evt.left}
                   />
                 </div>
               );

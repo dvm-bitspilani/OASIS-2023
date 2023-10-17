@@ -3,8 +3,8 @@ import React, { useState } from "react";
 import styles from "./Contact.module.css";
 import { AnimatePresence, motion } from "framer-motion";
 import ImageWrapper from "../../public/static/images/contacts.png";
-import phone from "../../public/static/images/phone.svg";
-import mail from "../../public/static/images/mailicon.svg";
+import phone from "../../public/static/images/compressed_phone.svg";
+import mail from "../../public/static/images/compressed_mail.svg";
 // import mobilebgImage from "../../public/static/images/mobileLibraryBgImage.png";
 import updatedbgImage from "../../public/static/images/updatedLibraryBgImage.png";
 // import shivang from "../../public/static/images/shivang.png";
@@ -126,7 +126,7 @@ const Page = () => {
             }}
             transition={{ ease: "easeOut", duration: 2 }}
           >
-            <Image src={imageSrc} alt="" className={styles["bookImage"]} />
+            <Image src={imageSrc} alt="" className={styles["bookImage"]} suppressHydrationWarning />
             <AnimatePresence>
               {hoveredProfile && (
                 <motion.div
@@ -169,7 +169,7 @@ const Page = () => {
         </div>
       </div>
       <div className={styles.mobilePageWrapper}>
-        <Image src={updatedbgImage} className={styles.mobileBgImage} alt="" />
+        <Image src={updatedbgImage} className={styles.mobileBgImage} alt="" suppressHydrationWarning />
         <div className={styles.mobileContentWrapper}>
           <div className={styles.mobileHeading}>
             <span>CONTACT US</span>
@@ -182,9 +182,10 @@ const Page = () => {
                   className={styles.newMobileImageWrapper}
                   alt=""
                   priority
+                  suppressHydrationWarning
                 />
                 <div className={styles.mobileDetailsContent}>
-                  <Image src={profile.image} width={100} height={124} alt="" placeholder="blur" blurDataURL={sarthak.blurDataURL} />
+                  <Image src={profile.image} width={100} height={124} alt="" placeholder="blur" blurDataURL={sarthak.blurDataURL} suppressHydrationWarning/>
                   <div className={styles.mobileTextDetails}>
                     <span className={styles.mobileDetailsName}>
                       {profile.name}
@@ -199,6 +200,7 @@ const Page = () => {
                           className={styles.mobileCallIcon}
                           alt=""
                           priority
+                          suppressHydrationWarning
                         />
                       </a>
                       <a href={profile.mail}>
@@ -207,6 +209,7 @@ const Page = () => {
                           className={styles.mobileMailIcon}
                           alt=""
                           priority
+                          suppressHydrationWarning
                         />
                       </a>
                     </div>
