@@ -703,7 +703,7 @@ export default function Home() {
             width="100%"
           />
         </div>}
-          {innerWidth >= 600 && <CustomCursor />}
+          {!isLoading && innerWidth >= 600 && <CustomCursor />}
           <div className={styles.pageTransition}>
             <Image
               draggable={false}
