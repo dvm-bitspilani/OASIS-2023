@@ -5,7 +5,8 @@ import Card from "./EventsMobileCard";
 import BG from "../../../public/static/images/eventsmobileBG.png";
 import * as styles from "./eventsMobile2.module.css";
 import Image from "next/image";
-import StreetDance from "../../../public/static/images/SampleEvent.png";
+import StreetDance from "../../../public/static/images/eventsModalOasisLogo.png";
+// import StreetDance from "../../../public/static/images/eventsOasisModalLogo.png"
 import Forward from "../../../public/static/images/forwardArrow.svg";
 import Backward from "../../../public/static/images/backArrow.svg";
 import { useWindowSize } from "rooks";

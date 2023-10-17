@@ -206,7 +206,7 @@ export default function Home() {
             setTimeout(() => {
               setIsLoading(false);
               setShowLoader(false);
-            }, 5000);
+            }, 2000);
             // console.log('All assets loaded successfully');
           })
           .catch((error) => {
