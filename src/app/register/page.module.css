@@ -244,8 +244,13 @@
   opacity: 1;
   /* transition: opacity 0.5s ease; */
 }
-.loaderContainer video{
-  scale: .3;
+.loaderContainer video {
+  scale: 0.5;
+}
+@media (max-width:800px) {
+  .loaderContainer video{
+    scale: 0.85;
+  }
 }
 .guideLink a{
   color: #477AA1;
