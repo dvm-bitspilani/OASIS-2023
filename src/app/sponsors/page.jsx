@@ -13,61 +13,7 @@ import cross from "../../../public/static/images/cross.svg";
 
 const Page = () => {
 
-    // const [isLoading, setIsLoading] = useState(true);
-
-    // useEffect(() => {
-    //     if (typeof window !== "undefined") {
-            
-    //       setIsLoading(true);
-    //       const assets = [
-    //         textLogo.src,
-    //         landingPgBookImg.src,
-    //         rightElements.src,
-    //         leftElements.src,
-    //         updatedBgLibraryImage.src,
-    //       ];
-    //       // console.log('second')
-    //       const loadAssets = async () => {
-    //         const assetPromises = assets.map((asset) => {
-    //           if (asset) {
-    //             return new Promise((resolve, reject) => {
-    //               // const img = new img();
-    //               const img = document.createElement("img");
-    //               img.onload = resolve;
-    //               img.onerror = reject;
-    //               img.src = asset;
-    //             });
-    //           }
-    //         });
-    //         const results = await Promise.allSettled(assetPromises);
-    //         const allSuccessful = results.every(
-    //           (result) => result.status === "fulfilled"
-    //         );
-    //         Promise.all(assetPromises)
-    //           .then(() => {
-    //             // console.log("loaded");
-    //             setTimeout(() => {
-    //               setIsLoading(false);
-    //             }, 3000);
-    //             // console.log('All assets loaded successfully');
-    //           })
-    //           .catch((error) => {
-    //             console.error("Error loading assets:", error);
-                
-    //             // console.log("loaded");
-    //             setTimeout(() => {
-    //               setIsLoading(false);
-    //             }, 3000);
-    //           });
-    //       };
-    
-    //       loadAssets();
-    //       setRegisterBtnWidth(Math.min(200, Math.floor(innerWidth * 0.5)));
-    //       setRegisterBtnHeight(75);
-    //     }
-    //   }, []);
-
-
+    const [isLoading, setIsLoading] = useState(true);
 
     const router = useRouter();
 
@@ -152,6 +98,9 @@ const Page = () => {
         const fetchData = async () => {
             const res = await fetch("https://bits-oasis.org/2023/main/wallet/sponsors/");
             const json = await res.json();
+            setTimeout(() => {
+                setIsLoading(false);
+            }, 2000);
             setData(json.sponsors);
         };
         fetchData();
@@ -174,6 +123,21 @@ const Page = () => {
     );
 
     return (
+        <>
+            {isLoading && (
+            <div className={styles.loaderContainer}>
+            {/* <MyVideoLoader/> */}
+            <video
+                src={require("../../../public/static/images/loadervideo.mp4")} // Update with the correct path
+                autoPlay
+                muted
+                loop
+                playsInline
+                preload="auto"
+                width="100%"
+            />
+            </div>
+        )}
         <div className={styles["sponsorsPage"]}>
             <CustomCursor />
             <Image
@@ -218,6 +182,7 @@ const Page = () => {
                 </div>
             </div>
         </div>
+        </>
     );
 };
 
