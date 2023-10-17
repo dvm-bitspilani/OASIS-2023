@@ -707,7 +707,7 @@ export default function Home() {
           width={1037}
           height={980}
           ref={transitionLeft}
-          style={{ transform: "translateX(-100%)" }}
+          style={{ transform: "translateX(-100%)" , height: '100vh'}}
           suppressHydrationWarning
           alt=""
         />
@@ -720,6 +720,7 @@ export default function Home() {
             position: "fixed",
             right: "0",
             transform: "translateX(100%)",
+                height: '100vh'
           }}
           suppressHydrationWarning
           ref={transitionRight}

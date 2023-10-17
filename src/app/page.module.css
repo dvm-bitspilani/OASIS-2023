@@ -190,7 +190,7 @@
   height: 4.5rem;
   position: absolute;
   top: 1rem;
-  left: 2.45rem;
+  left: 2.25rem;
   width: 2rem;
   display: flex;
   flex-direction: column;
@@ -306,7 +306,7 @@
 }
 .bookImgWrapper {
   position: relative;
-  transform: translateY(-20%);
+  transform: translateY(-30%);
   width: max(80%, 650px);
 
   display: flex;
@@ -394,6 +394,11 @@
 .loaderContainer video {
   scale: 0.5;
 }
+@media (max-width:800px) {
+  .loaderContainer video{
+    scale: 0.85;
+  }
+}
 .loaded {
   opacity: 0;
   transition: opacity 0.5s ease;
@@ -413,7 +418,7 @@
 }
 @media (max-width: 1250px) {
   .bookImgWrapper {
-    transform: translateY(-25%);
+    transform: translateY(-35%);
   }
 }
 @media (max-width: 1150px) {
@@ -439,7 +444,7 @@
   .hamIcon {
     scale: 0.8;
     /* height: 3rem; */
-    margin-left: -0.25rem;
+    /* margin-left: -0.25rem; */
   }
   .hamAsset {
     scale: 0.8;
@@ -519,7 +524,7 @@
     overflow: hidden;
   }
   .bookImgWrapper {
-    transform: translateY(-25%);
+    transform: translateY(-35%);
   }
   .textLogoWrapper {
     top: 7vh;
@@ -527,6 +532,9 @@
   }
   .bookImgWrapper {
     scale: 0.8;
+  }
+  .bookImgWrapper {
+    transform: translateY(-40%);
   }
 }
 @media (max-height: 675px) and (min-width: 900px) {
@@ -534,10 +542,11 @@
     overflow: hidden;
   }
   .bookImgWrapper {
-    transform: translateY(-35%);
+    transform: translateY(-50%);
   }
   .textLogoWrapper {
     top: 7vh;
+    top: unset;
     scale: 0.8;
   }
   .bookImgWrapper {
