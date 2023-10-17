@@ -767,7 +767,7 @@ const [currentPage, setCurrentPage] = useState("home");
               alt="Text Oasis Logo"
             />
             <AnimatePresence>
-              <div key="hamAsset" className={`${styles.hamAsset} customHover`}>
+              <div key="hamAsset" className={`${styles.hamAsset} customHover`} onClick={openHam}>
                 <Image
                   draggable={false}
                   src="/static/images/hamIcon.svg"
