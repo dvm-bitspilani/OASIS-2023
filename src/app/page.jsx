@@ -129,10 +129,9 @@ export default function Home() {
   const navSection = useRef(null);
   const contactsWrapper = useRef(null);
   const eventsWrapper = useRef(null);
-  const aboutWrapper = useRef(null)
+  const aboutWrapper = useRef(null);
   const transitionLeft = useRef(null);
   const transitionRight = useRef(null);
-
 
   // useEffect(() => {
   //   const loadImages = () => {
@@ -140,7 +139,7 @@ export default function Home() {
   //     setShowLoader(true);
   //     const images = document.querySelectorAll('img');
   //     let loaded = 0;
-  
+
   //     const handleImageLoad = () => {
   //       loaded++;
   //       if (loaded === images.length) {
@@ -150,7 +149,7 @@ export default function Home() {
   //         }, 3000);
   //       }
   //     };
-  
+
   //     images.forEach((img) => {
   //       if (img.complete) {
   //         handleImageLoad();
@@ -158,19 +157,18 @@ export default function Home() {
   //         img.addEventListener('load', handleImageLoad);
   //       }
   //     });
-  
+
   //     return () => {
   //       images.forEach((img) => {
   //         img.removeEventListener('load', handleImageLoad);
   //       });
   //     };
   //   };
-  
+
   //   if (typeof window !== "undefined") {
   //     setTimeout(loadImages, 100);
   //   }
   // }, []);
-  
 
   useEffect(() => {
     if (typeof window !== "undefined") {
@@ -543,16 +541,15 @@ export default function Home() {
   useEffect(() => {
     if (isHamOpen) {
       gsap.to(scope.current, {
-        overflowY: 'hidden'
-      })
-    }
-    else {
+        overflowY: "hidden",
+      });
+    } else {
       gsap.to(scope.current, {
-        overflowY: 'scroll',
-        delay: 2
-      })
+        overflowY: "scroll",
+        delay: 2,
+      });
     }
-  }, [isHamOpen])
+  }, [isHamOpen]);
 
   const { innerWidth, innerHeight } = useWindowSize();
 
@@ -691,12 +688,8 @@ export default function Home() {
     );
   };
   return (
-    <main
-      key="mainLandingPage"
-      className={styles.scope}
-      ref={scope}
-    >
-      {isLoading && 
+    <main key="mainLandingPage" className={styles.scope} ref={scope}>
+      {isLoading && (
         <div className={styles.loaderContainer}>
           {/* <MyVideoLoader/> */}
           <video
@@ -708,117 +701,121 @@ export default function Home() {
             preload="auto"
             width="100%"
           />
-        </div>}
-          {!isLoading && innerWidth >= 600 && <CustomCursor />}
-          <div className={styles.pageTransition}>
-            <Image
-              draggable={false}
-              src={TransitionLeft}
-              width={1037}
-              height={980}
-              ref={transitionLeft}
-              style={{ transform: "translateX(-100%)" , height: '100vh'}}
-              suppressHydrationWarning
-              alt=""
-            />
-            <Image
-              draggable={false}
-              src={TransitionRight}
-              width={1037}
-              height={980}
-              style={{
-                position: "fixed",
-                right: "0",
-                transform: "translateX(100%)",
+        </div>
+      )}
+      {!isLoading && innerWidth >= 600 && <CustomCursor />}
+      <div className={styles.pageTransition}>
+        <Image
+          draggable={false}
+          src={TransitionLeft}
+          width={1037}
+          height={980}
+          ref={transitionLeft}
+          style={{ transform: "translateX(-100%)" , height: '100vh'}}
+          suppressHydrationWarning
+          alt=""
+        />
+        <Image
+          draggable={false}
+          src={TransitionRight}
+          width={1037}
+          height={980}
+          style={{
+            position: "fixed",
+            right: "0",
+            transform: "translateX(100%)",
                 height: '100vh'
-              }}
-              suppressHydrationWarning
-              ref={transitionRight}
-              alt=""
-            />
-          </div>
-          <div className={styles.pageWrapper} ref={pageWrapper}>
-            <Image
+          }}
+          suppressHydrationWarning
+          ref={transitionRight}
+          alt=""
+        />
+      </div>
+      <div className={styles.pageWrapper} ref={pageWrapper}>
+        <Image
             suppressHydrationWarning
-              draggable={false}
-              src={updatedBgLibraryImage}
-              className={styles.pageBgImage}
-              alt=""
-            />
-            <div
-              className={styles.hamSection}
-              style={isHamOpen ? { zIndex: 10 } : { zIndex: 2 }}
-              suppressHydrationWarning
-            >
-              <div className={styles.hamBtn}>
-                <Image
+          draggable={false}
+          src={updatedBgLibraryImage}
+          className={styles.pageBgImage}
+          alt=""
+        />
+        <div
+          className={styles.hamSection}
+          style={isHamOpen ? { zIndex: 10 } : { zIndex: 2 }}
+          suppressHydrationWarning
+        >
+          <div className={styles.hamBtn}>
+            <Image
                 suppressHydrationWarning
+              draggable={false}
+              src="/static/images/navLogo.png"
+              width={60}
+              height={60}
+              className={styles.navLogoImg}
+              alt="Text Oasis Logo"
+            />
+            <AnimatePresence>
+              <div key="hamAsset" className={`${styles.hamAsset} customHover`}>
+                <Image
                   draggable={false}
-                  src="/static/images/navLogo.png"
-                  width={60}
-                  height={60}
-                  className={styles.navLogoImg}
-                  alt="Text Oasis Logo"
+                  src="/static/images/hamIcon.svg"
+                  width={103}
+                  height={103}
+                  alt="Menu"
+                      suppressHydrationWarning
                 />
-                <AnimatePresence>
-                  <div key="hamAsset"
-                    className={`${styles.hamAsset} customHover`}>
-                    <Image
-                      draggable={false}
-                      src="/static/images/hamIcon.svg"
-                      width={103}
-                      height={103}
-                      alt="Menu"
-                      suppressHydrationWarning
-                    />
-                    <div
-                      id="ham-menu"
-                      className={styles.hamIcon}
-                      onClick={openHam}
-                    >
-                      <span id="hamIcon1" className={styles.hamIcon1}></span>
-                      <span id="hamIcon2" className={styles.hamIcon2}></span>
-                      <span id="hamIcon3" className={styles.hamIcon3}></span>
-                    </div>
-                  </div>
-
-                  {isHamOpen ? (
-                    <motion.div
-                      key="hamBG"
-                      className={styles.hamBG}
-                      style={{
-                        height: `${innerHeight / 10}px`,
-                        width: `${innerHeight / 10}px`,
-                      }}
-                      suppressHydrationWarning
-                      initial={{ scale: 0 }}
-                      animate={{ scale: 50 }}
-                      exit={{ scale: 0, transition: { delay: 1.5 } }}
-                      transition={{ duration: 1 }}
-                    ></motion.div>
-                  ) : (
-                    <div key="hiddenDiv" style={{ display: "none" }} suppressHydrationWarning ></div>
-                  )}
-                </AnimatePresence>
+                <div id="ham-menu" className={styles.hamIcon} onClick={openHam}>
+                  <span id="hamIcon1" className={styles.hamIcon1}></span>
+                  <span id="hamIcon2" className={styles.hamIcon2}></span>
+                  <span id="hamIcon3" className={styles.hamIcon3}></span>
+                </div>
               </div>
-              <AnimatePresence>
-                {isHamOpen ? (
-                  <motion.div
-                    key="hamMenu"
-                    initial={{ opacity: 0 }}
-                    animate={{ opacity: 1 }}
-                    exit={{ opacity: 0, transition: { delay: 1.5 } }}
-                    transition={{ delay: 0.25, duration: 0.5 }}
-                  >
-                    <Hamburger />
-                  </motion.div>
-                ) : (
-                  <div key="hiddenDiv2" style={{ display: "none" }} suppressHydrationWarning ></div>
-                )}
-              </AnimatePresence>
-            </div>
 
-            {/* <div className={styles.navLogo}>
+              {isHamOpen ? (
+                <motion.div
+                  key="hamBG"
+                  className={styles.hamBG}
+                  style={{
+                    height: `${innerHeight / 10}px`,
+                    width: `${innerHeight / 10}px`,
+                  }}
+                  suppressHydrationWarning
+                  initial={{ scale: 0 }}
+                  animate={{ scale: 50 }}
+                  exit={{ scale: 0, transition: { delay: 1.5 } }}
+                  transition={{ duration: 1 }}
+                ></motion.div>
+              ) : (
+                <div
+                  key="hiddenDiv"
+                  style={{ display: "none" }}
+                  suppressHydrationWarning
+                ></div>
+              )}
+            </AnimatePresence>
+          </div>
+          <AnimatePresence>
+            {isHamOpen ? (
+              <motion.div
+                key="hamMenu"
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                exit={{ opacity: 0, transition: { delay: 1.5 } }}
+                transition={{ delay: 0.25, duration: 0.5 }}
+              >
+                <Hamburger />
+              </motion.div>
+            ) : (
+              <div
+                key="hiddenDiv2"
+                style={{ display: "none" }}
+                suppressHydrationWarning
+              ></div>
+            )}
+          </AnimatePresence>
+        </div>
+
+        {/* <div className={styles.navLogo}>
               <Image draggable={false} src={navLogo} alt=""/>
             </div> */}
             <AnimatePresence mode="wait">
@@ -839,7 +836,6 @@ export default function Home() {
                     // layout="fill"
                     className={styles.textLogoImg}
                     alt="OASIS"
-                    suppressHydrationWarning
                   />
                 </div>
                 <div key="bookImgWrapper" className={styles.bookImgWrapper}>
@@ -849,17 +845,17 @@ export default function Home() {
                     className={styles.landingPgLeftGrp}
                     alt="Element"
                   /> */}
-                    {randomSetImageLeft1}
-                    {randomSetImageLeft2}
-                  </div>
-                  <Image
-                    draggable={false}
-                    src={landingPgBookImg}
-                    className={styles.LandingBookImg}
-                    alt="Book"
-                  />
-                  <div className={styles.rightElements}>
-                    {/* <Image draggable={false} 
+                {randomSetImageLeft1}
+                {randomSetImageLeft2}
+              </div>
+              <Image
+                draggable={false}
+                src={landingPgBookImg}
+                className={styles.LandingBookImg}
+                alt="Book"
+              />
+              <div className={styles.rightElements}>
+                {/* <Image draggable={false} 
                     src={rightElements}
                     className={styles.landingPgRightGrp}
                     alt="Element"
@@ -896,7 +892,6 @@ export default function Home() {
                             className={styles.RegisterBtnImg}
                             alt="Register"
                             priority
-                            suppressHydrationWarning
                           />
                         </a>
                       </Link>
@@ -937,21 +932,22 @@ export default function Home() {
               showBackBtn={showBackBtn}
               handleTransition={handleTransition}
             /> */}
-            {innerWidth >= 820 &&
-              <Events
-                showBackBtn={showBackBtn}
-                handleTransition={handleTransition}
-              />}
-            {/* {innerWidth < 820 && 
+        {innerWidth >= 820 && (
+          <Events
+            showBackBtn={showBackBtn}
+            handleTransition={handleTransition}
+          />
+        )}
+        {/* {innerWidth < 820 && 
             <EventsMobile
             showBackBtn={showBackBtn}
             handleTransition={handleTransition}
             />
             } */}
-          </div>
-          <div className={styles.contactsWrapper} ref={contactsWrapper}>
-            <Contact />
-          </div>
+      </div>
+      <div className={styles.contactsWrapper} ref={contactsWrapper}>
+        <Contact />
+      </div>
     </main>
   );
 }
