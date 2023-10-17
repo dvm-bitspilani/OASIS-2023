@@ -884,6 +884,7 @@ export default function Home() {
                             height={RegisterBtnHeight}
                             className={styles.RegisterBtnImg}
                             alt="Register"
+                            priority
                           />
                         </a>
                       </Link>

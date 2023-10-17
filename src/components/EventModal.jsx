@@ -4,6 +4,7 @@ import styles from "./EventModal.module.css";
 import BackgroundImage from "../../public/static/images/eventsModalBgLaptop.png"
 import Image from "next/image";
 import StreetDance from "../../public/static/images/desertDuelModal.png";
+import OasisLogo from "../../public/static/images/eventsModalOasisLogo.png";
 import closeCross from "../../public/static/images/eventsModalCloseButton.png"
 const EventModal = ({ event, closeModal }) => {
     const [isOpen, setIsOpen] = useState(false);
@@ -20,7 +21,7 @@ const EventModal = ({ event, closeModal }) => {
   return (
     <div className={`${styles.wrapper} ${isOpen ? `${styles.open}` : `${styles.close}`}`}
     onClick={handleClose}>
-        <Image src={BackgroundImage}
+        {/* <Image src={BackgroundImage}
         alt="Background Image" 
         draggable={false}
         className={styles.backgroundImage}
@@ -40,8 +41,22 @@ const EventModal = ({ event, closeModal }) => {
             {event.desc}
         </div>
         <div className={styles.closeBtn}>
-            <Image src={closeCross} alt="close" onClick={closeModal}/>
+            <Image src={closeCross} alt="close" onClick={handleClose}/>
         </div>
+        </div> */}
+        <div className={styles.contentWrapper} onClick={(e) => e.stopPropagation()}>
+          <div className={styles.heading}>
+            <span>{event.name}</span>
+          </div>
+          <div className={styles.eventImage}>
+        <Image src={event.image} alt="" />
+          </div>
+          <div className={styles.eventDescription}>
+            {event.desc}
+          </div>
+        </div>
+        <div className={styles.closeBtn}>
+            <Image src={closeCross} alt="close" onClick={handleClose}/>
         </div>
     </div>
   )

@@ -5,9 +5,9 @@ import { AnimatePresence, motion } from "framer-motion";
 import ImageWrapper from "../../public/static/images/contacts.png";
 import phone from "../../public/static/images/phone.svg";
 import mail from "../../public/static/images/mailicon.svg";
-import mobilebgImage from "../../public/static/images/mobileLibraryBgImage.png";
+// import mobilebgImage from "../../public/static/images/mobileLibraryBgImage.png";
 import updatedbgImage from "../../public/static/images/updatedLibraryBgImage.png";
-import shivang from "../../public/static/images/shivang.png";
+// import shivang from "../../public/static/images/shivang.png";
 import shaurya from "../../public/static/images/shaurya.png";
 import sarthak from "../../public/static/images/sarthak.png";
 import supreeth from "../../public/static/images/supreeth.png";
@@ -181,9 +181,10 @@ const Page = () => {
                   src={mobileImageWrapper}
                   className={styles.newMobileImageWrapper}
                   alt=""
+                  priority
                 />
                 <div className={styles.mobileDetailsContent}>
-                  <Image src={profile.image} width={100} height={124} alt="" />
+                  <Image src={profile.image} width={100} height={124} alt="" placeholder="blur" blurDataURL={sarthak.blurDataURL} />
                   <div className={styles.mobileTextDetails}>
                     <span className={styles.mobileDetailsName}>
                       {profile.name}
@@ -197,6 +198,7 @@ const Page = () => {
                           src={phone}
                           className={styles.mobileCallIcon}
                           alt=""
+                          priority
                         />
                       </a>
                       <a href={profile.mail}>
@@ -204,6 +206,7 @@ const Page = () => {
                           src={mail}
                           className={styles.mobileMailIcon}
                           alt=""
+                          priority
                         />
                       </a>
                     </div>
