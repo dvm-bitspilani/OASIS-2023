@@ -270,7 +270,7 @@ export default function EventsMobile2({ handleTransition }) {
             <p className={styles.firstText} style={{ width: width }}>Tap to start your journey!<br />Adventures lie ahead...</p>
             <div className={styles.navigation} style={{ width: width, display: "none"  }}>
               {/* <Image src={Backward} onClick={handleBackward} /> */}
-              <Image src={Forward} onClick={handleFirstForward} />
+              <Image src={Forward} onClick={handleFirstForward} suppressHydrationWarning />
             </div>
           </div>
           {CardsList}
@@ -290,12 +290,13 @@ export default function EventsMobile2({ handleTransition }) {
   src={Backward}
   onClick={cardNo === 2 ? handleFirstBackward : handleBackward}
   disabled={cardNo === 1}
+  suppressHydrationWarning
   style={{
     opacity: cardNo === 1 ? "0.4" : "1",
     cursor: cardNo === 1 ? "auto" : "pointer",
   }}
 />
-          <Image src={Forward} onClick={cardNo == totalCards ? "" : handleForward} 
+          <Image suppressHydrationWarning src={Forward} onClick={cardNo == totalCards ? "" : handleForward } 
           style={{opacity: cardNo == totalCards ? "0.4" : "1", cursor: cardNo == totalCards ? "auto" : "pointer"}}/>
         </div>
       </div>

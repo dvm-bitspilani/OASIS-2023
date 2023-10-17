@@ -17,8 +17,8 @@ const ContactProfile = (props) => {
                   <h1>{props.name}</h1>
                   <h2>{props.dept}</h2>
                   <div className={styles['iconsContainer']}>
-                    <a href={props.mail}><Image draggable={false} src={mailIcon} alt="" /></a>
-                    <a href={props.phone}><Image draggable={false} src={callIcon} alt="" /></a>
+                    <a href={props.mail}><Image suppressHydrationWarning draggable={false} src={mailIcon} alt="" /></a>
+                    <a href={props.phone}><Image suppressHydrationWarning draggable={false} src={callIcon} alt="" /></a>
                   </div>
                 {/* </div> */}
     </>

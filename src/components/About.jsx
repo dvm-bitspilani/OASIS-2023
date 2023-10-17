@@ -16,6 +16,7 @@ export default function page() {
   return (
     <main className={styles.pageWrapper}>
       <Image
+      suppressHydrationWarning
         draggable={false}
         src={updatedBgLibraryImage}
         className={styles.pageBgImage}
@@ -27,6 +28,7 @@ export default function page() {
       <div className={styles.contentContainer}>
         <div className={styles.carouselContainer}>
           <Image
+          suppressHydrationWarning
             src={topHandImg}
             alt=""
             draggable={false}
@@ -45,12 +47,14 @@ export default function page() {
         </div>
       </div>
       <Image
+        suppressHydrationWarning
         src={leftHandImg}
         className={styles.leftHand}
         alt=""
         draggable={false}
       />
       <Image
+      suppressHydrationWarning
         src={leftHandImg}
         className={styles.rightHand}
         alt=""

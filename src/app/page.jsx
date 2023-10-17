@@ -62,6 +62,7 @@ export default function Home() {
   const randomSetImageLeft1 = randomLeft1.map((item, key) => {
     return (
       <Image
+      suppressHydrationWarning
         key={key}
         id={`left_1_${key}`}
         className={styles.leftSymbol}
@@ -77,6 +78,7 @@ export default function Home() {
   const randomSetImageLeft2 = randomLeft2.map((item, key) => {
     return (
       <Image
+      suppressHydrationWarning
         key={key}
         id={`left_2_${key}`}
         className={styles.leftSymbol}
@@ -92,6 +94,7 @@ export default function Home() {
   const randomSetImageRight1 = randomRight1.map((item, key) => {
     return (
       <Image
+      suppressHydrationWarning
         key={key}
         id={`right_1_${key}`}
         className={styles.rightSymbol}
@@ -107,6 +110,7 @@ export default function Home() {
   const randomSetImageRight2 = randomRight2.map((item, key) => {
     return (
       <Image
+      suppressHydrationWarning
         key={key}
         id={`right_2_${key}`}
         className={styles.rightSymbol}
@@ -735,6 +739,7 @@ export default function Home() {
           </div>
           <div className={styles.pageWrapper} ref={pageWrapper}>
             <Image
+            suppressHydrationWarning
               draggable={false}
               src={updatedBgLibraryImage}
               className={styles.pageBgImage}
@@ -747,6 +752,7 @@ export default function Home() {
             >
               <div className={styles.hamBtn}>
                 <Image
+                suppressHydrationWarning
                   draggable={false}
                   src="/static/images/navLogo.png"
                   width={60}
@@ -763,6 +769,7 @@ export default function Home() {
                       width={103}
                       height={103}
                       alt="Menu"
+                      suppressHydrationWarning
                     />
                     <div
                       id="ham-menu"
@@ -832,6 +839,7 @@ export default function Home() {
                     // layout="fill"
                     className={styles.textLogoImg}
                     alt="OASIS"
+                    suppressHydrationWarning
                   />
                 </div>
                 <div key="bookImgWrapper" className={styles.bookImgWrapper}>
@@ -888,6 +896,7 @@ export default function Home() {
                             className={styles.RegisterBtnImg}
                             alt="Register"
                             priority
+                            suppressHydrationWarning
                           />
                         </a>
                       </Link>
