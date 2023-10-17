@@ -206,12 +206,6 @@
   }
 }
 
-@media (max-width: 600px) {
-  .scope {
-    cursor: auto;
-  }
-}
-
 .hamIcon1 {
   height: 3.5px;
   width: 50%;
@@ -399,6 +393,11 @@
 }
 .loaderContainer video {
   scale: 0.5;
+}
+@media (max-width:800px) {
+  .loaderContainer video{
+    scale: 0.85;
+  }
 }
 .loaded {
   opacity: 0;

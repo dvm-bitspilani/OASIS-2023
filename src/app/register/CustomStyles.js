@@ -10,7 +10,6 @@ export default function CustomStyles() {
       "&:hover": {
         borderColor: "white",
       },
-      cursor: "text",
       outline: "none",
       boxShadow: "none",
       borderRadius: "0px",
@@ -73,7 +72,6 @@ export default function CustomStyles() {
     dropdownIndicator: (provided, state) => ({
       ...provided,
       color: "white",
-      cursor: "pointer",
       padding: "5px",
     }),
     placeholder: (provided , state) => ({
@@ -135,7 +133,6 @@ export default function CustomStyles() {
       marginRIght: '3px',
       width:'14px',
       height:'100%',
-      cursor: 'pointer',
       '&:hover': {
         backgroundColor: '#5db3f1',
         color: '#000',
@@ -144,7 +141,6 @@ export default function CustomStyles() {
     clearIndicator: (provided) => ({
       ...provided,
       color: '#fff',
-      cursor: 'pointer',
       '&:hover': {
         color: '#5db3f1'
       }

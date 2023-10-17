@@ -1,4 +1,6 @@
 "use client";
+
+//refactor
 import styles from "./page.module.css";
 import Image from "next/image";
 import React from "react";
@@ -703,7 +705,7 @@ export default function Home() {
             width="100%"
           />
         </div>}
-          {innerWidth >= 600 && <CustomCursor />}
+          {!isLoading && innerWidth >= 600 && <CustomCursor />}
           <div className={styles.pageTransition}>
             <Image
               draggable={false}
@@ -711,7 +713,7 @@ export default function Home() {
               width={1037}
               height={980}
               ref={transitionLeft}
-              style={{ transform: "translateX(-100%)" }}
+              style={{ transform: "translateX(-100%)" , height: '100vh'}}
               suppressHydrationWarning
               alt=""
             />
@@ -724,6 +726,7 @@ export default function Home() {
                 position: "fixed",
                 right: "0",
                 transform: "translateX(100%)",
+                height: '100vh'
               }}
               suppressHydrationWarning
               ref={transitionRight}
