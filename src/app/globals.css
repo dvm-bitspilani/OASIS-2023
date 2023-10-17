@@ -60,6 +60,10 @@ body::-webkit-scrollbar-thumb {
   border: none;
 }
 
+canvas{
+  z-index: 1600 !important;
+}
+
 .swiper-slide{
   width: 100% !important;
 }

@@ -46,6 +46,7 @@ export default function RootLayout({ children }) {
           gtag('config', 'G-YDR1E9BREE');
         `}
         </Script>
+        <CustomTrail />
         <Provider>{children}</Provider>
       </body>
     </html>
