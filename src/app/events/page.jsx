@@ -1,17 +1,16 @@
-"use client"
+"use client";
 
 import React, { useState, useEffect } from "react";
-import Card from "./EventsMobileCard"
-import BG from "../../../public/static/images/eventsmobileBG.png"
-import * as styles from "./eventsMobile2.module.css"
+import Card from "./EventsMobileCard";
+import BG from "../../../public/static/images/eventsmobileBG.png";
+import * as styles from "./eventsMobile2.module.css";
 import Image from "next/image";
-import StreetDance from "../../../public/static/images/SampleEvent.png"
-import Forward from "../../../public/static/images/forwardArrow.svg"
-import Backward from "../../../public/static/images/backArrow.svg"
+import StreetDance from "../../../public/static/images/SampleEvent.png";
+import Forward from "../../../public/static/images/forwardArrow.svg";
+import Backward from "../../../public/static/images/backArrow.svg";
 import { useWindowSize } from "rooks";
 
 export default function EventsMobile2({ handleTransition }) {
-
   const { innerWidth, innerHeight } = useWindowSize();
 
   const tasks = [
@@ -47,14 +46,6 @@ export default function EventsMobile2({ handleTransition }) {
       top: "50%",
       left: "5%",
     },
-    // {
-    //   key: 5,
-    //   name: "SWARANJALI",
-    //   desc: "Swaranjali is a classical music competition. Participants trained in the vocal and instrumental aspects of both Carnatic and Hindustani styles are invited to compete. (Instruments: violin, sitar, veena, flute, Hawaiian guitar, tabla, mridangam, ghatam, keyboard, harmonium, kanjira, sarangi and sarod.)",
-    //   image: Swaranjali,
-    //   top: "65%",
-    //   left: "9%",
-    // },
     {
       key: 6,
       name: "TANDAV",
@@ -127,62 +118,12 @@ export default function EventsMobile2({ handleTransition }) {
       top: "10%",
       left: "50%",
     },
-    // {
-    //   key: 15,
-    //   name: "Cinema and Literature quiz",
-    //   desc: "A quiz with the topics of cinema and literature",
-    //   image: StreetDance,
-    //   top: "20%",
-    //   left: "60%",
-    // },
-    // {
-    //   key: 16,
-    //   name: "HyperCut",
-    //   desc: "HyperCut is an Ad making competition. Participants can form teams and show their creativity in making the ads. The teams will have 3 days from the reveal of the brand on which the ad has to be made to the final submission.",
-    //   image: StreetDance,
-    //   top: "12%",
-    //   left: "75%",
-    // },
-    // {
-    //   key: 17,
-    //   name: "Uncharted - An Escape Room",
-    //   desc: "Just a standard escape room in which hints and riddles will be there in form of film  related stuff",
-    //   image: StreetDance,
-    //   top: "30%",
-    //   left: "72%",
-    // },
-    
-    // {
-    //   key: 18,
-    //   name: "Film Festival Inauguration",
-    //   desc: "Film Festival is an umbrella event consisting of events hosted by FMaC, Photog, CrAC, etc. An Inauguration for the same is needed, for which a Guest from the industry will be invited (with Embryo's help)",
-    //   image: StreetDance,
-    //   top: "55%",
-    //   left: "60%",
-    // },
-    // {
-    //   key: 19,
-    //   name: "Movie Screening with Guest Talk",
-    //   desc: "A movie will be screened in the presence of a guest from the industry, followed by the guest talk",
-    //   image: StreetDance,
-    //   top: "75%",
-    //   left: "70%",
-    // },
-    // {
-    //   key: 20,
-    //   name: "REAL POLITIK",
-    //   desc: "AUCTION OF WORLD LEADERS OF THE PAST AND PRESENT. First round, i.e., quiz round, will be conducted on the spot. the second round will be the auction round. limited teams will be going to the auction round.",
-    //   image: StreetDance,
-    //   top: "57%",
-    //   left: "75%",
-    // },
   ];
 
-  const [width, setWidth] = useState(0)
+  const [width, setWidth] = useState(0);
   const [translateX, setTranslateX] = useState(0);
-  const [cardNo, setCardNo] = useState(1)
-  const totalCards = tasks.length + 1
-
+  const [cardNo, setCardNo] = useState(1);
+  const totalCards = tasks.length + 1;
 
   useEffect(() => {
     const updateWidth = () => {
@@ -200,49 +141,50 @@ export default function EventsMobile2({ handleTransition }) {
   const handleForward = () => {
     // console.log("fowrard")
     if (cardNo != totalCards) {
-      setCardNo(cardNo + 1)
-      setTranslateX(translateX - width)
+      setCardNo(cardNo + 1);
+      setTranslateX(translateX - width);
     }
-  }
+  };
   const handleBackward = () => {
     // console.log("back")
     if (cardNo != 1) {
-      setCardNo(cardNo - 1)
-      setTranslateX(translateX + width)
+      setCardNo(cardNo - 1);
+      setTranslateX(translateX + width);
     }
-  }
+  };
 
   const handleFirstForward = () => {
-    setCardNo(cardNo + 1)
-    setTranslateX(translateX - width)
-    setButtonTranslate(0)
-  }
+    setCardNo(cardNo + 1);
+    setTranslateX(translateX - width);
+    setButtonTranslate(0);
+  };
 
   const handleFirstBackward = () => {
-    setCardNo(cardNo - 1)
-    setTranslateX(translateX + width)
-    setButtonTranslate(width)
-  }
+    setCardNo(cardNo - 1);
+    setTranslateX(translateX + width);
+    setButtonTranslate(width);
+  };
 
   const handleLastForward = () => {
     if (cardNo != totalCards) {
-    setCardNo(cardNo + 1)
-    setTranslateX(translateX - width)
-    setButtonTranslate(-width)}
-  }
+      setCardNo(cardNo + 1);
+      setTranslateX(translateX - width);
+      setButtonTranslate(-width);
+    }
+  };
 
   const handleLastBackward = () => {
-    setCardNo(1)
-    setTranslateX(translateX + width*(totalCards-1))
-    setButtonTranslate(width)
-  }
+    setCardNo(1);
+    setTranslateX(translateX + width * (totalCards - 1));
+    setButtonTranslate(width);
+  };
 
   const translateStyle = {
     transform: `translateX(${translateX}px)`,
-  }
+  };
   const buttonTranslateStyle = {
     transform: `translateX(${buttonTranslate}px)`,
-  }
+  };
 
   let CardsList = tasks.map((card) => {
     return (
@@ -255,22 +197,28 @@ export default function EventsMobile2({ handleTransition }) {
         onForward={handleForward}
         width={width}
       />
-    )
-
-  })
+    );
+  });
 
   return (
     <>
       <div className={styles.container}>
-        <div className={styles.mainContainer}
-          style={translateStyle}
-        >
-          <div className="firstCard" style={{ width: width}}>
-            <h1 className={styles.firstHeading} style={{ width: width }}>EVENTS</h1>
-            <p className={styles.firstText} style={{ width: width }}>Tap to start your journey!<br />Adventures lie ahead...</p>
-            <div className={styles.navigation} style={{ width: width, display: "none"  }}>
+        <div className={styles.mainContainer} style={translateStyle}>
+          <div className="firstCard" style={{ width: width }}>
+            <h1 className={styles.firstHeading} style={{ width: width }}>
+              EVENTS
+            </h1>
+            <p className={styles.firstText} style={{ width: width }}>
+              Tap to start your journey!
+              <br />
+              Adventures lie ahead...
+            </p>
+            <div
+              className={styles.navigation}
+              style={{ width: width, display: "none" }}
+            >
               {/* <Image src={Backward} onClick={handleBackward} /> */}
-              <Image src={Forward} onClick={handleFirstForward} suppressHydrationWarning />
+              <Image src={Forward} onClick={handleFirstForward} alt="" />
             </div>
           </div>
           {CardsList}
@@ -284,22 +232,20 @@ export default function EventsMobile2({ handleTransition }) {
            </div> */}
         </div>
         <div className={styles.navigation} style={buttonTranslateStyle}>
-          {/* <Image src={Backward} onClick={cardNo == 2 ? handleFirstBackward : handleBackward}
-          /> */}
           <Image
-  src={Backward}
-  onClick={cardNo === 2 ? handleFirstBackward : handleBackward}
-  disabled={cardNo === 1}
-  suppressHydrationWarning
-  style={{
-    opacity: cardNo === 1 ? "0.4" : "1",
-    cursor: cardNo === 1 ? "auto" : "pointer",
-  }}
-/>
-          <Image suppressHydrationWarning src={Forward} onClick={cardNo == totalCards ? "" : handleForward } 
-          style={{opacity: cardNo == totalCards ? "0.4" : "1", cursor: cardNo == totalCards ? "auto" : "pointer"}}/>
+            src={Backward}
+            onClick={cardNo == 2 ? handleFirstBackward : handleBackward}
+          />
+          <Image
+            src={Forward}
+            onClick={cardNo == totalCards ? "" : handleForward}
+            style={{
+              opacity: cardNo == totalCards ? "0.4" : "1",
+              cursor: cardNo == totalCards ? "auto" : "pointer",
+            }}
+          />
         </div>
       </div>
     </>
-  )
+  );
 }

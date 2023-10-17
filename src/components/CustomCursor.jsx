@@ -32,7 +32,7 @@ const CustomCursor = () => {
       className={`${styles.customCursor} ${isHovered ? styles.hovered : ''}`}
       style={{ left: `${position.x}px`, top: `${position.y}px` }}
     >
-      <Image suppressHydrationWarning src={penImage}/>
+      <Image src={penImage} alt=''/>
     </div>
   );
 };
