@@ -137,7 +137,15 @@ export default function EventsMobile2({ handleTransition }) {
     };
   }, []);
 
-  const [buttonTranslate, setButtonTranslate] = useState(() => innerWidth);
+  // const [buttonTranslate, setButtonTranslate] = useState(() => innerWidth);
+  // console.log(buttonTranslate)
+
+  let translateStyle = {
+    transform: `translateX(${translateX}px)`,
+  };
+  // let buttonTranslateStyle = {
+  //   transform: `translateX(${buttonTranslate}px)`,
+  // };
 
   const handleForward = () => {
     // console.log("fowrard")
@@ -157,35 +165,30 @@ export default function EventsMobile2({ handleTransition }) {
   const handleFirstForward = () => {
     setCardNo(cardNo + 1);
     setTranslateX(translateX - width);
-    setButtonTranslate(0);
+    // setButtonTranslate(0);
   };
 
   const handleFirstBackward = () => {
     setCardNo(cardNo - 1);
     setTranslateX(translateX + width);
-    setButtonTranslate(width);
+    // setButtonTranslate(width);
   };
 
-  const handleLastForward = () => {
-    if (cardNo != totalCards) {
-      setCardNo(cardNo + 1);
-      setTranslateX(translateX - width);
-      setButtonTranslate(-width);
-    }
-  };
+  // const handleLastForward = () => {
+  //   if (cardNo != totalCards) {
+  //     setCardNo(cardNo + 1);
+  //     setTranslateX(translateX - width);
+  //     setButtonTranslate(-width);
+  //   }
+  // };
 
-  const handleLastBackward = () => {
-    setCardNo(1);
-    setTranslateX(translateX + width * (totalCards - 1));
-    setButtonTranslate(width);
-  };
+  // const handleLastBackward = () => {
+  //   setCardNo(1);
+  //   setTranslateX(translateX + width * (totalCards - 1));
+  //   setButtonTranslate(width);
+  // };
 
-  const translateStyle = {
-    transform: `translateX(${translateX}px)`,
-  };
-  const buttonTranslateStyle = {
-    transform: `translateX(${buttonTranslate}px)`,
-  };
+  
 
   let CardsList = tasks.map((card) => {
     return (
@@ -216,7 +219,7 @@ export default function EventsMobile2({ handleTransition }) {
             </p>
             <div
               className={styles.navigation}
-              style={{ width: width, display: "none" }}
+              style={{ width: width}}
             >
               {/* <Image src={Backward} onClick={handleBackward} /> */}
               <Image src={Forward} onClick={handleFirstForward} alt="" />
@@ -232,7 +235,7 @@ export default function EventsMobile2({ handleTransition }) {
             <div onClick={handleLastBackward} className={styles.backToStart} style={{ width: width }}>&lt;&lt;&lt; back to start</div>
            </div> */}
         </div>
-        <div className={styles.navigation} style={buttonTranslateStyle}>
+        <div className={styles.navigation} style={{transform: cardNo == 1 ? `translateX(${width}px)` : `translateX(${0}px)`}}>
           <Image
             src={Backward}
             onClick={cardNo == 2 ? handleFirstBackward : handleBackward}
