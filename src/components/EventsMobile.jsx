@@ -243,12 +243,12 @@ export default function EventsMobile() {
         <div id="scrollDistMobile" className={events.scrollDistMobile}></div>
 
         <div className={events.navTop}>
-          <Image src={Top} onClick={scrollUp}></Image>
+          <Image src={Top} onClick={scrollUp} alt=""></Image>
           <h1>EVENTS</h1>
         </div>
 
         <div className={events.navBottom}>
-          <Image src={Bottom} onClick={scrollDown}></Image>
+          <Image src={Bottom} onClick={scrollDown} alt=""></Image>
         </div>
 
         <div id="containerMobile" className={events.container}>
