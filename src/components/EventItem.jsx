@@ -9,7 +9,7 @@ const EventItem = ({ name, desc, image, top, left }) => {
   return (
     <>
         {/* <div className={events.itemImage}> */}
-        <Image draggable={false} src={image} height={240} width={362} alt="Street Dance"></Image>
+        <Image suppressHydrationWarning draggable={false} src={image} height={240} width={362} alt="Street Dance"></Image>
         {/* </div> */}
         <div className={events.itemContent}>
           <h2>{name}</h2>
