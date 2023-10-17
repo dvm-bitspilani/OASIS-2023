@@ -265,10 +265,10 @@ export default function EventsMobile2({ handleTransition }) {
         <div className={styles.mainContainer}
           style={translateStyle}
         >
-          <div className="firstCard" style={{ width: width }}>
+          <div className="firstCard" style={{ width: width}}>
             <h1 className={styles.firstHeading} style={{ width: width }}>EVENTS</h1>
             <p className={styles.firstText} style={{ width: width }}>Tap to start your journey!<br />Adventures lie ahead...</p>
-            <div className={styles.navigation} style={{ width: width }}>
+            <div className={styles.navigation} style={{ width: width, display: "none"  }}>
               {/* <Image src={Backward} onClick={handleBackward} /> */}
               <Image src={Forward} onClick={handleFirstForward} />
             </div>
@@ -284,8 +284,17 @@ export default function EventsMobile2({ handleTransition }) {
            </div> */}
         </div>
         <div className={styles.navigation} style={buttonTranslateStyle}>
-          <Image src={Backward} onClick={cardNo == 2 ? handleFirstBackward : handleBackward}
-          />
+          {/* <Image src={Backward} onClick={cardNo == 2 ? handleFirstBackward : handleBackward}
+          /> */}
+          <Image
+  src={Backward}
+  onClick={cardNo === 2 ? handleFirstBackward : handleBackward}
+  disabled={cardNo === 1}
+  style={{
+    opacity: cardNo === 1 ? "0.4" : "1",
+    cursor: cardNo === 1 ? "auto" : "pointer",
+  }}
+/>
           <Image src={Forward} onClick={cardNo == totalCards ? "" : handleForward} 
           style={{opacity: cardNo == totalCards ? "0.4" : "1", cursor: cardNo == totalCards ? "auto" : "pointer"}}/>
         </div>
