@@ -1,4 +1,6 @@
 "use client";
+
+//refactor
 import styles from "./page.module.css";
 import Image from "next/image";
 import React from "react";
