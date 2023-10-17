@@ -26,6 +26,7 @@ import { useWindowSize } from "rooks";
 import CustomStyles from "./CustomStyles";
 import ErrorScreen from "./ErrorScreen";
 import ReCAPTCHA from "react-google-recaptcha";
+import CustomCursor from "@/components/CustomCursor";
 
 import { gsap } from "gsap";
 
@@ -1161,6 +1162,7 @@ export default function Page() {
 
   return (
     <>
+      <CustomCursor />
       {errorScreen && (
         <ErrorScreen
           error={error}
