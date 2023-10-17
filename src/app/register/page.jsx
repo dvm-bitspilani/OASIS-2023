@@ -73,7 +73,7 @@ const customStylesArray = [
 
 async function getCollegeData() {
   const res = await fetch(
-    "https://test.bits-oasis.org/2023/main/registrations/get_college"
+    "https://bits-oasis.org/2023/main/registrations/get_college"
   );
   if (!res.ok) {
     throw new Error("Failed to fetch college");
@@ -82,7 +82,7 @@ async function getCollegeData() {
 }
 async function getEventsData() {
   const res = await fetch(
-    "https://test.bits-oasis.org/2023/main/registrations/events"
+    "https://bits-oasis.org/2023/main/registrations/events"
   );
   if (!res.ok) {
     throw new Error("Failed to get Events");
@@ -234,7 +234,7 @@ export default function Page() {
     };
 
     const res = await fetch(
-      "https://test.bits-oasis.org/2023/main/registrations/Register/",
+      "https://bits-oasis.org/2023/main/registrations/Register/",
       options
     );
     if (!res.ok) {
