@@ -1,7 +1,7 @@
 import React from 'react'
 import styles from './Contact.module.css'
-import callIcon from "../../public/static/images/call.png"
-import mailIcon from "../../public/static/images/mailicon.svg"
+import callIcon from "../../public/static/images/compressed_phone.png"
+import mailIcon from "../../public/static/images/compressed_mail.svg"
 import Image from 'next/image'
 
 const ContactProfile = (props) => {
