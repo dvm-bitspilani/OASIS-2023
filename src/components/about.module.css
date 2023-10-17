@@ -250,7 +250,6 @@
   }
 }
 
-
 @media screen and (max-height: 1000px) and (min-width: 280px) {
   .pageWrapper {
     min-height: 100vh;

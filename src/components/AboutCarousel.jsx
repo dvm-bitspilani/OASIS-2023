@@ -79,7 +79,7 @@ export default function AboutCarousel() {
         <SwiperSlide>
           <YoutubeEmbed embedId="u-Z00aGn5ro?si=q6qjRow9M-PhGCCk" />
         </SwiperSlide>
-        <SwiperSlide>
+        {/* <SwiperSlide>
           <YoutubeEmbed embedId="Tqo4SGWzmtY?si=HTHCSbDUJU37KtQ2" />
         </SwiperSlide>
         <SwiperSlide>
@@ -102,7 +102,7 @@ export default function AboutCarousel() {
         </SwiperSlide>
         <SwiperSlide>
           <YoutubeEmbed embedId="u-Z00aGn5ro?si=q6qjRow9M-PhGCCk" />
-        </SwiperSlide>
+        </SwiperSlide> */}
       </Swiper>
     </>
   );
