@@ -1,6 +1,6 @@
 .carousel{
     width: 100%;
-    aspect-ratio: 16/9;
+    aspect-ratio: 16/8.9;
     position: relative;
     overflow: hidden;
     z-index: 2;

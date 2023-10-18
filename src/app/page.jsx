@@ -637,7 +637,7 @@ export default function Home() {
   //   }
   // }, [loaderLoaded]);
 
-const [currentPage, setCurrentPage] = useState("home");
+  const [currentPage, setCurrentPage] = useState("home");
 
   const handleTransition = (page) => {
     console.log(page);
@@ -690,7 +690,7 @@ const [currentPage, setCurrentPage] = useState("home");
         duration: 1,
         ease: "power2.inOut",
         onComplete: () => {
-          setCurrentPage(page)
+          setCurrentPage(page);
           console.log(currentPage);
         },
       });
@@ -769,7 +769,11 @@ const [currentPage, setCurrentPage] = useState("home");
               alt="Text Oasis Logo"
             />
             <AnimatePresence>
-              <div key="hamAsset" className={`${styles.hamAsset} customHover`} onClick={openHam}>
+              <div
+                key="hamAsset"
+                className={`${styles.hamAsset} customHover`}
+                onClick={openHam}
+              >
                 <Image
                   draggable={false}
                   src="/static/images/hamIcon.svg"
@@ -948,24 +952,24 @@ const [currentPage, setCurrentPage] = useState("home");
       <div className={styles.aboutWrapper}>
         <EventsMobile2 handleTransition={handleTransition} />
       </div>
-      <div className={styles.eventsWrapper} ref={eventsWrapper}>
-        {/* <Events
+      {innerWidth >= 820 && (
+        <div className={styles.eventsWrapper} ref={eventsWrapper}>
+          {/* <Events
               showBackBtn={showBackBtn}
               handleTransition={handleTransition}
             /> */}
-        {innerWidth >= 820 && (
           <Events
             showBackBtn={showBackBtn}
             handleTransition={handleTransition}
           />
-        )}
-        {/* {innerWidth < 820 && 
-            <EventsMobile
-            showBackBtn={showBackBtn}
-            handleTransition={handleTransition}
-            />
-            } */}
-      </div>
+          {/* {innerWidth < 820 && 
+                <EventsMobile
+                showBackBtn={showBackBtn}
+                handleTransition={handleTransition}
+                />
+                } */}
+        </div>
+      )}
       <div className={styles.contactsWrapper} ref={contactsWrapper}>
         <Contact />
       </div>
