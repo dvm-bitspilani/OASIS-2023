@@ -648,6 +648,7 @@ const [currentPage, setCurrentPage] = useState("home");
       var tl = gsap.timeline();
       tl.to([transitionLeft.current, transitionRight.current], {
         x: 0,
+        scale: 1.5,
         duration: 1,
         ease: "power2.inOut",
       });
@@ -685,6 +686,7 @@ const [currentPage, setCurrentPage] = useState("home");
 
       tl.to(transitionLeft.current, {
         x: "-100%",
+        scale: 1,
         duration: 1,
         ease: "power2.inOut",
         onComplete: () => {
@@ -694,7 +696,7 @@ const [currentPage, setCurrentPage] = useState("home");
       });
       tl.to(
         transitionRight.current,
-        { x: "100%", duration: 1, ease: "power2.inOut" },
+        { x: "100%", scale: 1, duration: 1, ease: "power2.inOut" },
         "-=1"
       );
     }
