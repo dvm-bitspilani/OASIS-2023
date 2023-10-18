@@ -221,7 +221,7 @@ const Events = ({ showBackBtn, handleTransition }) => {
     // Set initial states
     gsap.set("#scrollDist", { width: "100%", height: "100%" });
 
-    if (innerWidth < 820) {
+    if (innerWidth > 820) {
       gsap.set("#container", {
         position: "fixed",
         width: 4096,
@@ -264,7 +264,7 @@ const Events = ({ showBackBtn, handleTransition }) => {
 
     // Center the container's left/top position
     const resizeHandler = () => {
-      if (innerWidth < 820) {
+      if (innerWidth > 820) {
         gsap.set("#container", {
           left: 0,
           top: 0,
