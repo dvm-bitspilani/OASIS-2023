@@ -488,8 +488,8 @@
 @media (max-width: 820px) {
   .mobileContentWrapper {
     height: fit-content;
-    z-index: 10;
-    top: 100vh;
+    /* z-index: 10; */
+    /* top: 100vh; */
   }
   .mobileDetailsDept {
     padding-inline: 0.3rem;

@@ -58,8 +58,8 @@
   visibility: hidden;
   height: auto;
   scroll-snap-align: start;
-  scroll-behavior: smooth;
-  scroll-snap-destination: 0% 60%;
+  /* scroll-behavior: smooth;
+  scroll-snap-destination: 0% 60%; */
 }
 .aboutWrapper {
   position: fixed;
