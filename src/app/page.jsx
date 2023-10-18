@@ -62,7 +62,7 @@ export default function Home() {
   const randomSetImageLeft1 = randomLeft1.map((item, key) => {
     return (
       <Image
-      suppressHydrationWarning
+        suppressHydrationWarning
         key={key}
         id={`left_1_${key}`}
         className={styles.leftSymbol}
@@ -78,7 +78,7 @@ export default function Home() {
   const randomSetImageLeft2 = randomLeft2.map((item, key) => {
     return (
       <Image
-      suppressHydrationWarning
+        suppressHydrationWarning
         key={key}
         id={`left_2_${key}`}
         className={styles.leftSymbol}
@@ -94,7 +94,7 @@ export default function Home() {
   const randomSetImageRight1 = randomRight1.map((item, key) => {
     return (
       <Image
-      suppressHydrationWarning
+        suppressHydrationWarning
         key={key}
         id={`right_1_${key}`}
         className={styles.rightSymbol}
@@ -110,7 +110,7 @@ export default function Home() {
   const randomSetImageRight2 = randomRight2.map((item, key) => {
     return (
       <Image
-      suppressHydrationWarning
+        suppressHydrationWarning
         key={key}
         id={`right_2_${key}`}
         className={styles.rightSymbol}
@@ -206,7 +206,7 @@ export default function Home() {
             setTimeout(() => {
               setIsLoading(false);
               setShowLoader(false);
-            }, 5000);
+            }, 2000);
             // console.log('All assets loaded successfully');
           })
           .catch((error) => {
@@ -524,9 +524,9 @@ export default function Home() {
     const topBar2 = document.querySelector("#hamIcon2");
     const topBar3 = document.querySelector("#hamIcon3");
     if (isHamOpen && !isLoading) {
-      topBar1.style.transform = "rotatez(45deg) translate(6px,0px)";
-      topBar2.style.transform = "rotatez(-45deg) translate(1px,0px)";
-      topBar3.style.transform = "translate(15px,-6px) rotatez(47deg)";
+      topBar1.style.transform = "rotatez(45deg) translate(3px,2px)";
+      topBar2.style.transform = "rotatez(-45deg) translate(-1px,-2px)";
+      topBar3.style.transform = "translate(11px,-7px) rotatez(45deg)";
       topBar3.style.width = "50%";
       topBar3.style.borderRadius = "0px 5px 5px 0px";
     } else if (!isHamOpen && !isLoading) {
@@ -637,55 +637,69 @@ export default function Home() {
   //   }
   // }, [loaderLoaded]);
 
+const [currentPage, setCurrentPage] = useState("home");
+
   const handleTransition = (page) => {
-    var tl = gsap.timeline();
-    tl.to([transitionLeft.current, transitionRight.current], {
-      x: 0,
-      duration: 1,
-      ease: "power2.inOut",
-    });
-    const elements = {
-      contact: contactsWrapper,
-      events: eventsWrapper,
-      home: pageWrapper,
-      about: aboutWrapper,
-    };
+    console.log(page);
 
-    for (const key in elements) {
-      const element = elements[key].current;
-      const opacity = key === page ? 1 : 0;
-      const visibility = key === page ? "visible" : "hidden";
-      const duration = key === page ? 0.15 : 0.5;
+    if (page === currentPage) {
+      return;
+    } else {
+      var tl = gsap.timeline();
+      tl.to([transitionLeft.current, transitionRight.current], {
+        x: 0,
+        scale: 1.5,
+        duration: 1,
+        ease: "power2.inOut",
+      });
+      const elements = {
+        contact: contactsWrapper,
+        events: eventsWrapper,
+        home: pageWrapper,
+        about: aboutWrapper,
+      };
 
-      tl.to(element, { opacity, visibility, ease: "ease", duration });
+      for (const key in elements) {
+        const element = elements[key].current;
+        const opacity = key === page ? 1 : 0;
+        const visibility = key === page ? "visible" : "hidden";
+        const duration = key === page ? 0.15 : 0.5;
+
+        tl.to(element, { opacity, visibility, ease: "ease", duration });
+      }
+
+      tl.to(navSection.current, {
+        opacity: page !== "events" ? 1 : 0,
+        visibility: page !== "events" ? "visible" : "hidden",
+        ease: "ease",
+        duration: 0.5,
+      });
+
+      setTimeout(() => {
+        setShowBackBtn(page !== "home");
+      }, 1000);
+
+      tl.to(scope.current, {
+        height: page !== "events" ? "100vh" : "fit-content",
+        width: page !== "events" ? "100vw" : "fit-content",
+      });
+
+      tl.to(transitionLeft.current, {
+        x: "-100%",
+        scale: 1,
+        duration: 1,
+        ease: "power2.inOut",
+        onComplete: () => {
+          setCurrentPage(page)
+          console.log(currentPage);
+        },
+      });
+      tl.to(
+        transitionRight.current,
+        { x: "100%", scale: 1, duration: 1, ease: "power2.inOut" },
+        "-=1"
+      );
     }
-
-    tl.to(navSection.current, {
-      opacity: page !== "events" ? 1 : 0,
-      visibility: page !== "events" ? "visible" : "hidden",
-      ease: "ease",
-      duration: 0.5,
-    });
-
-    setTimeout(() => {
-      setShowBackBtn(page !== "home");
-    }, 1000);
-
-    tl.to(scope.current, {
-      height: page !== "events" ? "100vh" : "fit-content",
-      width: page !== "events" ? "100vw" : "fit-content",
-    });
-
-    tl.to(transitionLeft.current, {
-      x: "-100%",
-      duration: 1,
-      ease: "power2.inOut",
-    });
-    tl.to(
-      transitionRight.current,
-      { x: "100%", duration: 1, ease: "power2.inOut" },
-      "-=1"
-    );
   };
   return (
     <main key="mainLandingPage" className={styles.scope} ref={scope}>
@@ -711,7 +725,7 @@ export default function Home() {
           width={1037}
           height={980}
           ref={transitionLeft}
-          style={{ transform: "translateX(-100%)" , height: '100vh'}}
+          style={{ transform: "translateX(-100%)", height: "100vh" }}
           suppressHydrationWarning
           alt=""
         />
@@ -724,7 +738,7 @@ export default function Home() {
             position: "fixed",
             right: "0",
             transform: "translateX(100%)",
-                height: '100vh'
+            height: "100vh",
           }}
           suppressHydrationWarning
           ref={transitionRight}
@@ -733,7 +747,7 @@ export default function Home() {
       </div>
       <div className={styles.pageWrapper} ref={pageWrapper}>
         <Image
-            suppressHydrationWarning
+          suppressHydrationWarning
           draggable={false}
           src={updatedBgLibraryImage}
           className={styles.pageBgImage}
@@ -746,7 +760,7 @@ export default function Home() {
         >
           <div className={styles.hamBtn}>
             <Image
-                suppressHydrationWarning
+              suppressHydrationWarning
               draggable={false}
               src="/static/images/navLogo.png"
               width={60}
@@ -755,14 +769,14 @@ export default function Home() {
               alt="Text Oasis Logo"
             />
             <AnimatePresence>
-              <div key="hamAsset" className={`${styles.hamAsset} customHover`}>
+              <div key="hamAsset" className={`${styles.hamAsset} customHover`} onClick={openHam}>
                 <Image
                   draggable={false}
                   src="/static/images/hamIcon.svg"
                   width={103}
                   height={103}
                   alt="Menu"
-                      suppressHydrationWarning
+                  suppressHydrationWarning
                 />
                 <div id="ham-menu" className={styles.hamIcon} onClick={openHam}>
                   <span id="hamIcon1" className={styles.hamIcon1}></span>
@@ -818,29 +832,30 @@ export default function Home() {
         {/* <div className={styles.navLogo}>
               <Image draggable={false} src={navLogo} alt=""/>
             </div> */}
-            <AnimatePresence mode="wait">
-              <motion.div
-                key="midSection"
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                exit={{ opacity: 0 }}
-                transition={{ duration: 2 }}
-                className={`${styles.midSection} 
-              ${showLoader ? styles.loaderContainer : ""} ${isLoading ? "loaded" : ""
-                  }`}
-              >
-                <div key="textLogoWrapper" className={styles.textLogoWrapper}>
-                  <Image
-                    draggable={false}
-                    src={textLogo}
-                    // layout="fill"
-                    className={styles.textLogoImg}
-                    alt="OASIS"
-                  />
-                </div>
-                <div key="bookImgWrapper" className={styles.bookImgWrapper}>
-                  <div className={styles.leftElements}>
-                    {/* <Image draggable={false}
+        <AnimatePresence mode="wait">
+          <motion.div
+            key="midSection"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 2 }}
+            className={`${styles.midSection} 
+              ${showLoader ? styles.loaderContainer : ""} ${
+              isLoading ? "loaded" : ""
+            }`}
+          >
+            <div key="textLogoWrapper" className={styles.textLogoWrapper}>
+              <Image
+                draggable={false}
+                src={textLogo}
+                // layout="fill"
+                className={styles.textLogoImg}
+                alt="OASIS"
+              />
+            </div>
+            <div key="bookImgWrapper" className={styles.bookImgWrapper}>
+              <div className={styles.leftElements}>
+                {/* <Image draggable={false}
                     src={leftElements}
                     className={styles.landingPgLeftGrp}
                     alt="Element"
@@ -860,75 +875,81 @@ export default function Home() {
                     className={styles.landingPgRightGrp}
                     alt="Element"
                   /> */}
-                    {randomSetImageRight1}
-                    {randomSetImageRight2}
-                  </div>
-                </div>
-                <AnimatePresence>
-                  {isHamOpen ? (
-                    <div key="hiddenDiv3" style={{ display: "none" }} suppressHydrationWarning ></div>
-                  ) : (
-                    <motion.div
-                      key="register"
-                      initial={{ opacity: 0 }}
-                      animate={{ opacity: 1, transition: { delay: 1.5 } }}
-                      exit={{ opacity: 0 }}
-                      transition={{ duration: 1 }}
-                      style={{
-                        position: "absolute",
-                        bottom: "50px",
-                      }}
-                      suppressHydrationWarning
-                    >
-                      <Link href="/register" legacyBehavior>
-                        <a
-                          className={`${styles.registerBtnWrapper} customHover`}
-                        >
-                          <Image
-                            draggable={false}
-                            src="/static/images/updatedLandingRegBtn.png"
-                            width={RegisterBtnWidth}
-                            height={RegisterBtnHeight}
-                            className={styles.RegisterBtnImg}
-                            alt="Register"
-                            priority
-                          />
-                        </a>
-                      </Link>
-                      <div className={styles.landingPageDate}>
-                        <span>27TH - 31ST OCTOBER</span>
-                      </div>
-                    </motion.div>
-                  )}
-                </AnimatePresence>
-              </motion.div>
-            </AnimatePresence>
-          </div>
-          <div className={styles["navSection"]} ref={navSection}>
+                {randomSetImageRight1}
+                {randomSetImageRight2}
+              </div>
+            </div>
             <AnimatePresence>
               {isHamOpen ? (
-                <div key="hiddenDiv4" style={{ display: "none" }} suppressHydrationWarning ></div>
+                <div
+                  key="hiddenDiv3"
+                  style={{ display: "none" }}
+                  suppressHydrationWarning
+                ></div>
               ) : (
                 <motion.div
-                  key="navigation"
+                  key="register"
                   initial={{ opacity: 0 }}
                   animate={{ opacity: 1, transition: { delay: 1.5 } }}
                   exit={{ opacity: 0 }}
-                  transition={{ delay: 0.5 }}
+                  transition={{ duration: 1 }}
+                  style={{
+                    position: "absolute",
+                    bottom: "50px",
+                  }}
+                  suppressHydrationWarning
                 >
-                  <Navbar handleTransition={handleTransition} />
+                  <Link href="/register" legacyBehavior>
+                    <a className={`${styles.registerBtnWrapper} customHover`}>
+                      <Image
+                        draggable={false}
+                        src="/static/images/updatedLandingRegBtn.png"
+                        width={RegisterBtnWidth}
+                        height={RegisterBtnHeight}
+                        className={styles.RegisterBtnImg}
+                        alt="Register"
+                        priority
+                      />
+                    </a>
+                  </Link>
+                  <div className={styles.landingPageDate}>
+                    <span>27TH - 31ST OCTOBER</span>
+                  </div>
                 </motion.div>
               )}
             </AnimatePresence>
-          </div>
-          <div className={styles.aboutWrapper} ref={aboutWrapper}>
-            <About />
-          </div>
-          <div className={styles.aboutWrapper}>
-            <EventsMobile2 handleTransition={handleTransition} />
-          </div>
-          <div className={styles.eventsWrapper} ref={eventsWrapper}>
-            {/* <Events
+          </motion.div>
+        </AnimatePresence>
+      </div>
+      <div className={styles["navSection"]} ref={navSection}>
+        <AnimatePresence>
+          {isHamOpen ? (
+            <div
+              key="hiddenDiv4"
+              style={{ display: "none" }}
+              suppressHydrationWarning
+            ></div>
+          ) : (
+            <motion.div
+              key="navigation"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1, transition: { delay: 1.5 } }}
+              exit={{ opacity: 0 }}
+              transition={{ delay: 0.5 }}
+            >
+              <Navbar handleTransition={handleTransition} />
+            </motion.div>
+          )}
+        </AnimatePresence>
+      </div>
+      <div className={styles.aboutWrapper} ref={aboutWrapper}>
+        <About />
+      </div>
+      <div className={styles.aboutWrapper}>
+        <EventsMobile2 handleTransition={handleTransition} />
+      </div>
+      <div className={styles.eventsWrapper} ref={eventsWrapper}>
+        {/* <Events
               showBackBtn={showBackBtn}
               handleTransition={handleTransition}
             /> */}

@@ -1,32 +1,35 @@
 @font-face {
-  font-family: 'NightmarePills';
-  src: url('../../public/static/fonts/NIGHTMARE PILLS - DEMO.ttf') format('truetype');
+  font-family: "NightmarePills";
+  src: url("../../public/static/fonts/NIGHTMARE PILLS - DEMO.ttf")
+    format("truetype");
 }
 @font-face {
-  font-family: 'MetalMania';
-  src: url('../../public/static/fonts/MetalMania-Regular.ttf') format('truetype');
+  font-family: "MetalMania";
+  src: url("../../public/static/fonts/MetalMania-Regular.ttf")
+    format("truetype");
 }
 @font-face {
-  font-family: 'Montserrat';
-  src: url(../../public/static/fonts/Montserrat.ttf) format('truetype');
+  font-family: "Montserrat";
+  src: url(../../public/static/fonts/Montserrat.ttf) format("truetype");
 }
 @font-face {
-  font-family: 'Mantinia';
-  src: url(../../public/static/fonts/Mantinia\ CC\ Regular.ttf) format('truetype');
+  font-family: "Mantinia";
+  src: url(../../public/static/fonts/Mantinia\ CC\ Regular.ttf)
+    format("truetype");
 }
 @font-face {
-  font-family: 'KoPubBatang';
-  src: url(../../public/static/fonts/KoPubBatang-Regular.ttf) format('truetype');
+  font-family: "KoPubBatang";
+  src: url(../../public/static/fonts/KoPubBatang-Regular.ttf) format("truetype");
 }
 @font-face {
-  font-family: 'OldNewspaperTypes';
-  src: url(../../public/static/fonts/OldNewspaperTypes.ttf) format('truetype');
+  font-family: "OldNewspaperTypes";
+  src: url(../../public/static/fonts/OldNewspaperTypes.ttf) format("truetype");
 }
-*{
+* {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  user-select:none;
+  user-select: none;
   cursor: none;
 }
 input:-webkit-autofill,
@@ -36,15 +39,16 @@ input:-webkit-autofill:active {
   -webkit-text-fill-color: white !important;
   transition: background-color 999999s ease-in-out 0s;
 }
-html{
+html {
   overscroll-behavior: none;
 }
-html,body{
+html,
+body {
   margin: 0;
   padding: 0;
   /* overflow-x: hidden; */
   height: 100%;
-  width:100%;
+  width: 100%;
   scrollbar-width: none;
   scroll-behavior: smooth;
 }
@@ -60,13 +64,44 @@ body::-webkit-scrollbar-thumb {
   border: none;
 }
 
-.swiper-slide{
+canvas {
+  z-index: 1600 !important;
+}
+
+.swiper-slide {
   width: 100% !important;
 }
 
-.customHover{
+.customHover {
   cursor: none;
 }
-a{
+a {
   text-decoration: none;
+}
+
+.loaderContainer {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 9999;
+  height: 100vh;
+  width: 100vw;
+  background-color: black;
+  /* background-image: url("../../public/static/images/LibraryBgImage.avif"); */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  /* background-position: center; */
+  /* background-repeat: no-repeat; */
+  /* background-size: cover; */
+  opacity: 1;
+  /* transition: opacity 0.5s ease; */
+}
+.loaderContainer video {
+  scale: 0.5;
+}
+@media (max-width: 800px) {
+  .loaderContainer video {
+    scale: 0.85;
+  }
 }

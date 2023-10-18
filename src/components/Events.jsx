@@ -220,20 +220,23 @@ const Events = ({ showBackBtn, handleTransition }) => {
   useEffect(() => {
     // Set initial states
     gsap.set("#scrollDist", { width: "100%", height: "100%" });
-    gsap.set("#container", {
-      position: "fixed",
-      width: 4096,
-      height: 2305,
-      transformOrigin: "0 0",
-      left: innerWidth / -25,
-      top: innerHeight / -50,
-    });
-    gsap.to("#container", {
-      duration: 1,
-      opacity: 1,
-      ease: "ease",
-      delay: 0.3,
-    });
+
+    if (innerWidth < 820) {
+      gsap.set("#container", {
+        position: "fixed",
+        width: 4096,
+        height: 2305,
+        transformOrigin: "0 0",
+        left: innerWidth / -25,
+        top: innerHeight / -50,
+      });
+      gsap.to("#container", {
+        duration: 1,
+        opacity: 1,
+        ease: "ease",
+        delay: 0.3,
+      });
+    }
 
     // Tween the SVG path + circle
     gsap
@@ -248,21 +251,25 @@ const Events = ({ showBackBtn, handleTransition }) => {
       .to("#c", { motionPath: "#p", immediateRender: true, ease: "none" }, 0);
     // .from("#p", { drawSVG: "0 0", ease: "none" }, 0);
 
-    // Move container's x/y to follow the red circle
-    gsap.ticker.add(() =>
-      gsap.to("#container", {
-        duration: 2.5,
-        x: -gsap.getProperty("#c", "x"),
-        y: -gsap.getProperty("#c", "y"),
-      })
-    );
+    if (innerWidth > 820) {
+      // Move container's x/y to follow the red circle
+      gsap.ticker.add(() =>
+        gsap.to("#container", {
+          duration: 2.5,
+          x: -gsap.getProperty("#c", "x"),
+          y: -gsap.getProperty("#c", "y"),
+        })
+      );
+    }
 
     // Center the container's left/top position
     const resizeHandler = () => {
-      gsap.set("#container", {
-        left: 0,
-        top: 0,
-      });
+      if (innerWidth < 820) {
+        gsap.set("#container", {
+          left: 0,
+          top: 0,
+        });
+      }
     };
 
     window.addEventListener("load", resizeHandler);
@@ -293,10 +300,7 @@ const Events = ({ showBackBtn, handleTransition }) => {
     <>
       {showBackBtn && (
         <button onClick={() => handleBtnClick("home")} className={events.cross}>
-          <Image
-            src={cross}
-            alt="Close"
-          />
+          <Image src={cross} alt="Close" />
         </button>
       )}
       <div className={events.wrapper}>
