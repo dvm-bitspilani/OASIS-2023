@@ -524,9 +524,9 @@ export default function Home() {
     const topBar2 = document.querySelector("#hamIcon2");
     const topBar3 = document.querySelector("#hamIcon3");
     if (isHamOpen && !isLoading) {
-      topBar1.style.transform = "rotatez(45deg) translate(6px,0px)";
-      topBar2.style.transform = "rotatez(-45deg) translate(1px,0px)";
-      topBar3.style.transform = "translate(15px,-6px) rotatez(47deg)";
+      topBar1.style.transform = "rotatez(45deg) translate(3px,2px)";
+      topBar2.style.transform = "rotatez(-45deg) translate(-1px,-2px)";
+      topBar3.style.transform = "translate(11px,-7px) rotatez(47deg)";
       topBar3.style.width = "50%";
       topBar3.style.borderRadius = "0px 5px 5px 0px";
     } else if (!isHamOpen && !isLoading) {
