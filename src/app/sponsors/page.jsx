@@ -2,6 +2,7 @@
 
 import React, { useEffect, useRef, useState } from "react";
 import styles from "./page.module.css";
+import "../globals.css"
 import { useRouter } from "next/navigation";
 import Image from "next/image";
 
@@ -125,7 +126,7 @@ const Page = () => {
     return (
         <>
             {isLoading && (
-            <div className={styles.loaderContainer}>
+            <div className="loaderContainer">
             {/* <MyVideoLoader/> */}
             <video
                 src={require("../../../public/static/images/loadervideo.mp4")} // Update with the correct path
