@@ -762,7 +762,7 @@ export default function Home() {
             <Image
               suppressHydrationWarning
               draggable={false}
-              src="/static/images/navLogo.png"
+              src="/static/images/OasisLogoNew.png"
               width={60}
               height={60}
               className={styles.navLogoImg}

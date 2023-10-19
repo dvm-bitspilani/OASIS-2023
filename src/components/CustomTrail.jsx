@@ -10,7 +10,7 @@ export default function CustomTrail({ children }) {
     const trailProps = {
         lineDuration: 3,
         lineWidthStart: 10,
-        strokeColor: "#5DB3F1",
+        strokeColor: "#b99139",
         lag: 0,
       };
     return (

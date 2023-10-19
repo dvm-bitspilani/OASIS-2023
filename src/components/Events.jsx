@@ -9,6 +9,8 @@ import StreetDance from "../../public/static/images/StreetDance.png";
 import RapWars from "../../public/static/images/RapWars.png";
 import Tandav from "../../public/static/images/Tandav.png";
 import Swaranjali from "../../public/static/images/Swaranjali.png";
+import Razz from "../../public/static/images/Razz.png";
+import DesertDuel from "../../public/static/images/DesertDuel.png";
 import OasisLogo from "../../public/static/images/eventsOasisLogo.png";
 import EventItem from "./EventItem";
 import EventModal from "./EventModal";
@@ -57,7 +59,7 @@ const Events = ({ showBackBtn, handleTransition }) => {
       key: 1,
       name: "RAZZMATAZZ",
       desc: "Razzmatazz is a one-of-its-kind group dance competition that tests finesse and artistry in showcasing coordinated group choreographies. With equal weightage in judgement given to execution, presentation and creativity, it is fashioned to test the esprit de corps of the participating teams. All forms of dance including fusions are allowed. So trip the light fantastic toe and let there be a razzle-dazzle of sheer splendour.",
-      image: OasisLogo,
+      image: Razz,
       top: "10%",
       left: "5%",
     },
@@ -65,7 +67,7 @@ const Events = ({ showBackBtn, handleTransition }) => {
       key: 2,
       name: "DESERT DUEL",
       desc: "It is a solo dance event in which dancers from every college participate and showcase their talent. Depending on the dancer, styles can vary from western to classical to hip-hop and even to the typical Bollywood style.",
-      image: OasisLogo,
+      image: DesertDuel,
       top: "25%",
       left: "10%",
     },
@@ -313,7 +315,7 @@ const Events = ({ showBackBtn, handleTransition }) => {
             height={2305}
             draggable={false}
             alt=""
-            style={{ position: "absolute" }}
+            style={{ position: "absolute", scale: 1.5 }}
             className={events.map}
             suppressHydrationWarning
           />
