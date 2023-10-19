@@ -139,6 +139,9 @@
   font-size: 1.25rem;
   margin-top: 1rem;
 }
+.itemContent h2{
+  text-transform: uppercase;
+}
 .itemContent p {
   margin-top: 0.5rem;
   color: #fff;

@@ -37,7 +37,7 @@ const Events = ({ showBackBtn, handleTransition }) => {
     getEventDetails()
       .then((data) => {
         setEventDetails(
-          data[0]["events"].map((item) => {
+          data.map((item) => {
             return {
               name: item.name,
               desc: item.about,
@@ -47,11 +47,12 @@ const Events = ({ showBackBtn, handleTransition }) => {
             };
           })
         );
-        // console.log(data[0]["events"]);
+        // console.log(data);
       })
       .catch((error) => {
         // console.log(error);
       });
+      // console.log(eventDetails)
   }, []);
 
   const tasks = [
@@ -300,7 +301,7 @@ const Events = ({ showBackBtn, handleTransition }) => {
           </svg>
 
           <div className={events.itemWrapper}>
-            {tasks.map((evt) => {
+            {eventDetails.map((evt) => {
               return (
                 <div
                   key={evt.key}

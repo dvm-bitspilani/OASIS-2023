@@ -49,7 +49,7 @@ const EventModal = ({ event, closeModal }) => {
             <span>{event.name}</span>
           </div>
           <div className={styles.eventImage}>
-        <Image src={event.image} alt="" />
+        <Image src={event.image} alt="" width={200} height={200}/>
           </div>
           <div className={styles.eventDescription}>
             {event.desc}
