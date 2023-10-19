@@ -54,16 +54,16 @@
   left: 10%;
 }
 .eventItem:nth-child(3) {
-  top: 20%;
-  left: 60%;
+  top: 53%;
+  left: 17%;
 }
 .eventItem:nth-child(4) {
-  top: 50%;
+  top: 40%;
   left: 5%;
 }
 .eventItem:nth-child(5) {
   top: 65%;
-  left: 9%;
+  left: 11%;
 }
 .eventItem:nth-child(6) {
   top: 70%;
@@ -106,8 +106,8 @@
   left: 60%;
 }
 .eventItem:nth-child(16) {
-  top: 12%;
-  left: 75%;
+  top: 32%;
+  left: 55%;
 }
 .eventItem:nth-child(17) {
   top: 30%;
@@ -118,8 +118,8 @@
   left: 60%;
 }
 .eventItem:nth-child(19) {
-  top: 75%;
-  left: 70%;
+  top: 38%;
+  left: 23%;
 }
 .eventItem:nth-child(20) {
   top: 57%;
