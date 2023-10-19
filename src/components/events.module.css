@@ -66,7 +66,7 @@
   left: 11%;
 }
 .eventItem:nth-child(6) {
-  top: 70%;
+  top: 65%;
   left: 30%;
 }
 .eventItem:nth-child(7) {
@@ -124,6 +124,10 @@
 .eventItem:nth-child(20) {
   top: 57%;
   left: 75%;
+}
+.eventItem:nth-child(21) {
+  top: 34%;
+  left: 39%;
 }
 .itemImage {
   height: 100%;
