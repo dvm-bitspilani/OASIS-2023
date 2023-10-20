@@ -117,10 +117,11 @@ export default function GalleryCarouselControllerButtons({ classApplied }) {
             strokeLinejoin="round"
           />
         </svg> */}
-      </button>
-      <svg width="24" height="41" viewBox="0 0 24 41" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <svg width="24" height="41" viewBox="0 0 24 41" fill="none" xmlns="http://www.w3.org/2000/svg">
   <path d="M2.99998 37.6387L20.3193 20.3193L2.99998 3" stroke="#5DB3F1" stroke-width="5.77312" stroke-linecap="round" stroke-linejoin="round"/>
 </svg>
+      </button>
+
     </div>
   );
 }
