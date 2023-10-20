@@ -9,11 +9,13 @@ import rightHand from "../../../public/static/images/galleryRightHand.png"
 import leftHand from "../../../public/static/images/galleryLeftHand.png"
 import about from "../../components/GalleryCarousel.module.css";
 import cross from "../../../public/static/images/cross.svg";
+// import { useWindowSize } from "rooks";
 const gallery = () => {
+    // const { innerWidth, innerHeight } = useWindowSize();
   return <>
 
         <div className={styles.pageWrapper}>
-        {innerWidth < 700 && (
+        {/* {innerWidth < 700 && ( */}
           <Image
             onClick={() => router.back()}
             src={cross}
@@ -21,26 +23,26 @@ const gallery = () => {
             className={styles.close}
             draggable={false}
           />
-        )}
-        {innerWidth > 700 && (
-          <div className={styles.backBtn} onClick={() => router.back()}>
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              width="34"
-              height="34"
-              viewBox="0 0 34 34"
-              fill="none"
-            >
-              <path
-                d="M31 3L3 31M3 3L31 31"
-                stroke="#5DB3F1"
-                stroke-width="5"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-              />
-            </svg>
-          </div>
-        )}
+        {/* )} */}
+        {/* {innerWidth > 700 && ( */}
+          {/* <div className={styles.backBtn} onClick={() => router.back()}> */}
+            {/* <svg */}
+              {/* xmlns="http://www.w3.org/2000/svg" */}
+              {/* width="34" */}
+              {/* height="34" */}
+              {/* viewBox="0 0 34 34" */}
+              {/* fill="none" */}
+            {/* > */}
+              {/* <path */}
+                {/* d="M31 3L3 31M3 3L31 31" */}
+                {/* stroke="#5DB3F1" */}
+                {/* strokeWidth="5" */}
+                {/* strokeLinecap="round" */}
+                {/* strokeLinejoin="round" */}
+              {/* /> */}
+            {/* </svg> */}
+          {/* </div> */}
+        {/* )} */}
             <Image src={web} alt ="Image not Found"className={styles.webImage}/>
             <div className={styles.heading}>
                 <span>Gallery</span>
