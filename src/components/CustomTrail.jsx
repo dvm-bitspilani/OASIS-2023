@@ -7,10 +7,10 @@ export default function CustomTrail({ children }) {
 
     const {innerWidth} = useWindowSize();
 
-    const trailProps = {
+      const trailProps = {
         lineDuration: 3,
         lineWidthStart: 10,
-        strokeColor: "#b99139",
+        strokeColor: "#5DB3F1",
         lag: 0,
       };
     return (
