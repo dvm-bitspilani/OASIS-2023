@@ -13,6 +13,39 @@ import { useWindowSize } from "rooks";
 
 export default function EventsMobile2({ handleTransition }) {
   const { innerWidth, innerHeight } = useWindowSize();
+  const [eventDetails, setEventDetails] = useState([]);
+
+  async function getEventDetails() {
+    const res = await fetch(
+      "https://bits-oasis.org/2023/main/registrations/events_details"
+    );
+    if (!res.ok) {
+      throw new Error("Failed to get Events");
+    }
+    return res.json();
+  }
+
+  useEffect(() => {
+    getEventDetails()
+      .then((data) => {
+        setEventDetails(
+          data.map((item) => {
+            return {
+              name: item.name,
+              desc: item.about,
+              image: item.img_mobile_url,
+              organiser: item.organiser,
+              contact: item.contact,
+            };
+          })
+        );
+        // console.log(data);
+      })
+      .catch((error) => {
+        // console.log(error);
+      });
+      // console.log(eventDetails)
+  }, []);
 
   const tasks = [
     {
@@ -190,7 +223,7 @@ export default function EventsMobile2({ handleTransition }) {
 
   
 
-  let CardsList = tasks.map((card) => {
+  let CardsList = eventDetails.map((card) => {
     return (
       <Card
         key={card.key}

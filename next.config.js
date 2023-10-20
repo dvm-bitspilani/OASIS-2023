@@ -1,6 +1,18 @@
 /** @type {import('next').NextConfig} */
-const nextConfig = {}
-
-module.exports = nextConfig
-const withVideos = require('next-videos')
-module.exports = withVideos()
+const nextConfig = {
+    images: {
+      remotePatterns: [
+        {
+          protocol: 'https',
+          hostname: 'bits-oasis.org',
+          port: '',
+          pathname: '/media/**',
+        },
+      ],
+    },
+  };
+  
+  const withVideos = require('next-videos');
+  
+  module.exports = withVideos(nextConfig);
+  

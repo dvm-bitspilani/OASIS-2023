@@ -92,9 +92,8 @@ aspect-ratio: 1/1; */
     width: 100%;
     display: flex;
     flex-wrap: wrap;
-    justify-content: space-evenly;
+    justify-content: space-between;
 }
-
 .card{
     width: 300px;
     height: 200px;
@@ -147,9 +146,12 @@ aspect-ratio: 1/1; */
         /* padding: 3% 3% 2% 3%; */
     }
 }
-@media (max-width:600px) {
+@media (max-width:750px) {
     .card{
         /* padding: 3% 4% 2% 6%; */
+    }
+    .cardsSecondRow{
+        justify-content: center;
     }
 }
 @media (max-width:350px){
