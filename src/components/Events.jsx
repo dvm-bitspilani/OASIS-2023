@@ -22,6 +22,10 @@ const Events = ({ showBackBtn, handleTransition }) => {
   const [selectedEvent, setSelectedEvent] = useState(null);
   const [reduceBrightness, setReduceBrightness] = useState(false);
   const [eventDetails, setEventDetails] = useState([]);
+  const [crossButtonOpacity, setCrossButtonOpacity] = useState(1);
+  useEffect(() => {
+    setCrossButtonOpacity(selectedEvent ? 0 : 1);
+  }, [selectedEvent]);
 
   async function getEventDetails() {
     const res = await fetch(
@@ -264,7 +268,9 @@ const Events = ({ showBackBtn, handleTransition }) => {
   return (
     <>
       {showBackBtn && (
-        <button onClick={() => handleBtnClick("home")} className={events.cross}>
+        <button onClick={() => handleBtnClick("home")}
+         className={events.cross}
+         style={{ opacity: crossButtonOpacity }}>
           <Image src={cross} alt="Close" />
         </button>
       )}

@@ -190,15 +190,34 @@ const Page = () => {
 export default Page;
 
 export function SponsorCard({ props }) {
+  const { name, description, image } = props;
+  const cardStyle = {
+    // Set font size to 4rem if there is no image
+
+    // Unset min-height if there is no image
+    minHeight: !image ? 'unset' : '200px', // Set the default min-height value here
+  };
+  const fontStyle = {
+    // fontSize: !image ? '4rem' : '1.5rem',
+    fontSize: !image ? name === 'Made In India' ? '3rem': '4rem'  : '1.5rem',
+    width: 'max-content',
+  }
 //   console.log(props);
   return (
-    <div className={styles.card}>
-      <div
+    <div className={styles.card} style={cardStyle}>
+      {/* <div
         className={styles.imgContainer}
-        style={{ backgroundImage: `url(${props.image})` }}
-      ></div>
+        // style={{ backgroundImage: `url(${props.image})` }}
+      >
+        <img src={props.image} alt="image not found" />
+      </div> */}
+      {props.image && (
+        <div className={styles.imgContainer}>
+          <img src={props.image} alt="image not found" />
+        </div>
+      )}
       <div className={styles.cardContent}>
-        <h2>{props.name}</h2>
+        <h2 style={fontStyle}>{props.name}</h2>
         <p>{props.description}</p>
       </div>
     </div>

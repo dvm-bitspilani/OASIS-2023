@@ -96,22 +96,24 @@ aspect-ratio: 1/1; */
 }
 .card{
     width: 300px;
-    height: 200px;
+    min-height: 200px;
     /* height: fit-content; */
     /* padding: 3% 2% 2% 2%; */
     display: flex;
     flex-direction: column;
     justify-content: space-evenly;
     align-items: center;
+    height: auto;
 }
 .cardContent{
     display: flex;
     flex-direction: column;
     align-items: center;
+    margin-top: 1.5rem;
 }
 
 .imgContainer{
-    height: 45%;
+    min-height: 45%;
     width: 100%;
 
     display: flex;
@@ -122,13 +124,49 @@ aspect-ratio: 1/1; */
     background-position: center;
 }
 .card img{
-    height: 100px;
+    /* height: 100px; */
     /* width: 100%; */
     /* object-fit: contain; */
+    width: 300px;
+    height: auto;
+    max-height: 100px;
+    /* min-height: 100px; */
+}
+.card:nth-child(1) img{
+    max-height: unset;
+}
+.card:nth-child(9) img{
+    max-height: 200px;
+}
+.card:nth-child(16) img{
+    max-height: 150px;
+}
+.card:nth-child(20) img{
+    max-height: 150px;
+}
+.card:nth-child(21) img{
+    max-height: 150px;
+}
+.card:nth-child(22) img{
+    /* max-height: 10px; */
+    /* width: 350px; */
+    max-height: unset ;
+    /* min-height: 100px; */
+}
+.card:nth-child(23) img{
+    /* max-height: 10px; */
+    max-height: 170px;
+    /* min-height: 100px; */
+}
+.card:nth-child(24) img{
+    /* max-height: 10px; */
+    max-height: 170px;
+    /* min-height: 100px; */
 }
 .card{
     display: flex;
     flex-direction: column;
+    padding-block: 1.5rem;
 }
 .card h2{
     text-align: center;
