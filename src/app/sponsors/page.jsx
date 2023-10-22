@@ -195,8 +195,10 @@ export function SponsorCard({ props }) {
     <div className={styles.card}>
       <div
         className={styles.imgContainer}
-        style={{ backgroundImage: `url(${props.image})` }}
-      ></div>
+        // style={{ backgroundImage: `url(${props.image})` }}
+      >
+        <img src={props.image} alt="image not found" />
+      </div>
       <div className={styles.cardContent}>
         <h2>{props.name}</h2>
         <p>{props.description}</p>
