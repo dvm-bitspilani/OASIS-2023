@@ -35,58 +35,58 @@ const GalleryCarousel = () => {
         mousewheel = {true}
         spaceBetween={30}
         modules={[Grid, Navigation, Keyboard, Mousewheel]}  
-        className="mySwiper"
+        className="mySwiper gallerySwiper"
       >
-        <SwiperSlide></SwiperSlide>
-        <SwiperSlide></SwiperSlide>
-        <SwiperSlide></SwiperSlide>
-        <SwiperSlide></SwiperSlide>
-        <SwiperSlide></SwiperSlide>
-        <SwiperSlide></SwiperSlide>
-        <SwiperSlide></SwiperSlide>
-        <SwiperSlide></SwiperSlide>
-        <SwiperSlide></SwiperSlide>
-        <SwiperSlide></SwiperSlide>
-        <SwiperSlide></SwiperSlide>
-        <SwiperSlide></SwiperSlide>
-        <SwiperSlide></SwiperSlide>
-        <SwiperSlide></SwiperSlide>
-        <SwiperSlide></SwiperSlide>
-        <SwiperSlide></SwiperSlide>
-        <SwiperSlide></SwiperSlide>
-        <SwiperSlide></SwiperSlide>
-        <SwiperSlide></SwiperSlide>
-        <SwiperSlide></SwiperSlide>
-        <SwiperSlide></SwiperSlide>
-        <SwiperSlide></SwiperSlide>
-        <SwiperSlide></SwiperSlide>
-        <SwiperSlide></SwiperSlide>
-        <SwiperSlide></SwiperSlide>
-        <SwiperSlide></SwiperSlide>
-        <SwiperSlide></SwiperSlide>
-        <SwiperSlide></SwiperSlide>
-        <SwiperSlide></SwiperSlide>
-        <SwiperSlide></SwiperSlide>
-        <SwiperSlide></SwiperSlide>
-        <SwiperSlide></SwiperSlide>
-        <SwiperSlide></SwiperSlide>
-        <SwiperSlide></SwiperSlide>
-        <SwiperSlide></SwiperSlide>
-        <SwiperSlide></SwiperSlide>
-        <SwiperSlide></SwiperSlide>
-        <SwiperSlide></SwiperSlide>
-        <SwiperSlide></SwiperSlide>
-        <SwiperSlide></SwiperSlide>
-        <SwiperSlide></SwiperSlide>
-        <SwiperSlide></SwiperSlide>
-        <SwiperSlide></SwiperSlide>
-        <SwiperSlide></SwiperSlide>
-        <SwiperSlide></SwiperSlide>
-        <SwiperSlide></SwiperSlide>
-        <SwiperSlide></SwiperSlide>
-        <SwiperSlide></SwiperSlide>
-        <SwiperSlide></SwiperSlide>
-        <SwiperSlide></SwiperSlide>
+        <SwiperSlide className="gallerySlide"></SwiperSlide>
+        <SwiperSlide className="gallerySlide"></SwiperSlide>
+        <SwiperSlide className="gallerySlide"></SwiperSlide>
+        <SwiperSlide className="gallerySlide"></SwiperSlide>
+        <SwiperSlide className="gallerySlide"></SwiperSlide>
+        <SwiperSlide className="gallerySlide"></SwiperSlide>
+        <SwiperSlide className="gallerySlide"></SwiperSlide>
+        <SwiperSlide className="gallerySlide"></SwiperSlide>
+        <SwiperSlide className="gallerySlide"></SwiperSlide>
+        <SwiperSlide className="gallerySlide"></SwiperSlide>
+        <SwiperSlide className="gallerySlide"></SwiperSlide>
+        <SwiperSlide className="gallerySlide"></SwiperSlide>
+        <SwiperSlide className="gallerySlide"></SwiperSlide>
+        <SwiperSlide className="gallerySlide"></SwiperSlide>
+        <SwiperSlide className="gallerySlide"></SwiperSlide>
+        <SwiperSlide className="gallerySlide"></SwiperSlide>
+        <SwiperSlide className="gallerySlide"></SwiperSlide>
+        <SwiperSlide className="gallerySlide"></SwiperSlide>
+        <SwiperSlide className="gallerySlide"></SwiperSlide>
+        <SwiperSlide className="gallerySlide"></SwiperSlide>
+        <SwiperSlide className="gallerySlide"></SwiperSlide>
+        <SwiperSlide className="gallerySlide"></SwiperSlide>
+        <SwiperSlide className="gallerySlide"></SwiperSlide>
+        <SwiperSlide className="gallerySlide"></SwiperSlide>
+        <SwiperSlide className="gallerySlide"></SwiperSlide>
+        <SwiperSlide className="gallerySlide"></SwiperSlide>
+        <SwiperSlide className="gallerySlide"></SwiperSlide>
+        <SwiperSlide className="gallerySlide"></SwiperSlide>
+        <SwiperSlide className="gallerySlide"></SwiperSlide>
+        <SwiperSlide className="gallerySlide"></SwiperSlide>
+        <SwiperSlide className="gallerySlide"></SwiperSlide>
+        <SwiperSlide className="gallerySlide"></SwiperSlide>
+        <SwiperSlide className="gallerySlide"></SwiperSlide>
+        <SwiperSlide className="gallerySlide"></SwiperSlide>
+        <SwiperSlide className="gallerySlide"></SwiperSlide>
+        <SwiperSlide className="gallerySlide"></SwiperSlide>
+        <SwiperSlide className="gallerySlide"></SwiperSlide>
+        <SwiperSlide className="gallerySlide"></SwiperSlide>
+        <SwiperSlide className="gallerySlide"></SwiperSlide>
+        <SwiperSlide className="gallerySlide"></SwiperSlide>
+        <SwiperSlide className="gallerySlide"></SwiperSlide>
+        <SwiperSlide className="gallerySlide"></SwiperSlide>
+        <SwiperSlide className="gallerySlide"></SwiperSlide>
+        <SwiperSlide className="gallerySlide"></SwiperSlide>
+        <SwiperSlide className="gallerySlide"></SwiperSlide>
+        <SwiperSlide className="gallerySlide"></SwiperSlide>
+        <SwiperSlide className="gallerySlide"></SwiperSlide>
+        <SwiperSlide className="gallerySlide"></SwiperSlide>
+        <SwiperSlide className="gallerySlide"></SwiperSlide>
+        <SwiperSlide className="gallerySlide"></SwiperSlide>
       </Swiper>
     </>
   )
