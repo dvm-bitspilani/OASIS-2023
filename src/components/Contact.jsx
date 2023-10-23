@@ -14,6 +14,7 @@ import supreeth from "../../public/static/images/supreeth.png";
 import sarthak_president from "../../public/static/images/prez.png"
 import vaibhav from "../../public/static/images/vaibhav.png"
 import abhinav from "../../public/static/images/abhinav.png"
+import adarsh from "../../public/static/images/adarsh.png"
 import paurana from "../../public/static/images/paurana.png"
 import contactGhost from "../../public/static/images/contactGhost.png";
 import mobileImageWrapper from "../../public/static/images/updatedMobileContactImageContainer.png";
@@ -75,7 +76,7 @@ const Page = () => {
     {
       name: "Adarsh Goel",
       dept: "Online Collaborations and Publicity",
-      image: `${contactGhost.src}`,
+      image: `${adarsh.src}`,
       phone: "tel:+91-8979951532",
       mail: "mailto:collaborations@bits-oasis.org",
     },
