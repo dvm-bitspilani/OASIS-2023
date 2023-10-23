@@ -38,7 +38,7 @@
   align-items: center;
 }
 .heading h2 {
-  font-family: 'OldNewspaperTypes';
+  font-family: "OldNewspaperTypes";
   font-weight: 500;
   font-size: 3rem;
   color: rgba(0, 0, 0, 1);
@@ -51,7 +51,7 @@
 }
 .subheadings span {
   font-size: 2rem;
-  font-family: 'OldNewspaperTypes';
+  font-family: "OldNewspaperTypes";
   color: #000;
 }
 .eventImage img {
@@ -61,7 +61,7 @@
 }
 .eventDescription {
   width: 75%;
-  font-family: 'OldNewspaperTypes';
+  font-family: "OldNewspaperTypes";
   font-size: 1.5rem;
   color: black;
   font-weight: 100;
@@ -98,7 +98,7 @@
 .heading span {
   margin-inline: auto;
   font-size: 3rem;
-  font-family: 'OldNewspaperTypes';
+  font-family: "OldNewspaperTypes";
   color: black;
 }
 .eventImage {

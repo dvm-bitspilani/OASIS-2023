@@ -1,13 +1,13 @@
-'use client'
+"use client"
 
-import React from 'react'
-import { Swiper, SwiperSlide } from 'swiper/react'
+import React from "react"
+import { Swiper, SwiperSlide } from "swiper/react"
 
 // Import Swiper styles
-import 'swiper/css'
-import 'swiper/css/navigation'
-import 'swiper/css/effect-fade'
-import 'swiper/css/effect-creative'
+import "swiper/css"
+import "swiper/css/navigation"
+import "swiper/css/effect-fade"
+import "swiper/css/effect-creative"
 
 import {
   Navigation,
@@ -17,16 +17,16 @@ import {
   Autoplay,
   EffectCreative,
   EffectFade,
-} from 'swiper/modules'
+} from "swiper/modules"
 
-import styles from './aboutCarousel.module.css'
+import styles from "./aboutCarousel.module.css"
 
 export default function AboutCarousel() {
   React.useEffect(() => {
     // document.documentElement.style.overflow = "hidden";
-    document.body.style.height = '100dvh'
+    document.body.style.height = "100dvh"
     return () => {
-      document.body.style.height = 'auto'
+      document.body.style.height = "auto"
       //   document.documentElement.style.overflow = "auto";
     }
   }, [])
@@ -120,7 +120,7 @@ export function YoutubeEmbed({ embedId }) {
       allowFullScreen
       preload="metadata"
       allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-      style={{ height: '100%', width: '100%' }}
+      style={{ height: "100%", width: "100%" }}
     ></iframe>
     // </div>
   )

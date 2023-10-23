@@ -1,7 +1,7 @@
 .sponsorsPage {
   height: 100dvh;
   width: 100vw;
-  background: url('../../../public/static/images/updatedLibraryBgImage.png')
+  background: url("../../../public/static/images/updatedLibraryBgImage.png")
     no-repeat center center;
   background-size: cover;
 
@@ -13,7 +13,7 @@
   right: 2rem;
 }
 .heading {
-  font-family: 'NightmarePills';
+  font-family: "NightmarePills";
   text-align: center;
   font-size: 2.5rem;
   padding-top: 2rem;
@@ -175,7 +175,7 @@ aspect-ratio: 1/1; */
 }
 .card p {
   text-align: center;
-  font-family: 'MetalMania';
+  font-family: "MetalMania";
   font-size: 1rem;
 }
 

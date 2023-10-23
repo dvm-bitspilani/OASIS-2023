@@ -1,11 +1,11 @@
-'use client'
-import React, { useState, useEffect } from 'react'
-import styles from './EventModal.module.css'
-import BackgroundImage from '../../public/static/images/eventsModalBgLaptop.png'
-import Image from 'next/image'
-import StreetDance from '../../public/static/images/desertDuelModal.png'
-import OasisLogo from '../../public/static/images/eventsModalOasisLogo.png'
-import closeCross from '../../public/static/images/eventsModalCloseButton.png'
+"use client"
+import React, { useState, useEffect } from "react"
+import styles from "./EventModal.module.css"
+import BackgroundImage from "../../public/static/images/eventsModalBgLaptop.png"
+import Image from "next/image"
+import StreetDance from "../../public/static/images/desertDuelModal.png"
+import OasisLogo from "../../public/static/images/eventsModalOasisLogo.png"
+import closeCross from "../../public/static/images/eventsModalCloseButton.png"
 const EventModal = ({ event, closeModal }) => {
   const [isOpen, setIsOpen] = useState(false)
   useEffect(() => {

@@ -1,6 +1,6 @@
-import React from 'react'
-import * as nav from '../components/navbar.module.css'
-import Link from 'next/link'
+import React from "react"
+import * as nav from "../components/navbar.module.css"
+import Link from "next/link"
 
 const Navbar = ({ handleTransition }) => {
   const handleNavClick = (page) => {
@@ -15,25 +15,25 @@ const Navbar = ({ handleTransition }) => {
         </a> */}
         <a
           className={`${nav.navItem} customHover`}
-          onClick={() => handleNavClick('contact')}
+          onClick={() => handleNavClick("contact")}
         >
           CONTACT
         </a>
         <a
           className={`${nav.navItem} customHover`}
-          onClick={() => handleNavClick('events')}
+          onClick={() => handleNavClick("events")}
         >
           EVENTS
         </a>
         <a
           className={`${nav.navItem} customHover`}
-          onClick={() => handleNavClick('about')}
+          onClick={() => handleNavClick("about")}
         >
           ABOUT US
         </a>
         <a
           className={`${nav.navItem} customHover`}
-          onClick={() => handleNavClick('home')}
+          onClick={() => handleNavClick("home")}
         >
           HOME
         </a>

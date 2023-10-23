@@ -1,7 +1,7 @@
 .wallmagPage {
   height: 100dvh;
   width: 100vw;
-  background: url('../../../public/static/images/updatedLibraryBgImage.png')
+  background: url("../../../public/static/images/updatedLibraryBgImage.png")
     no-repeat center center;
   background-size: cover;
 
@@ -27,7 +27,7 @@
   right: 2rem;
 }
 .wallmagHeading {
-  font-family: 'NightmarePills';
+  font-family: "NightmarePills";
   text-align: center;
   font-size: 2.5rem;
   padding-top: 2rem;
@@ -84,7 +84,7 @@ aspect-ratio: 1/1; */
   gap: 1rem;
 }
 .card {
-  background: url('/static/images/wallmagcard.png');
+  background: url("/static/images/wallmagcard.png");
   background-size: contain;
   background-position: center;
   background-repeat: no-repeat;
@@ -109,20 +109,20 @@ aspect-ratio: 1/1; */
 }
 .cardHeading h1 {
   text-align: center;
-  font-family: 'OldNewspaperTypes';
+  font-family: "OldNewspaperTypes";
   font-size: 1.5rem;
   color: rgb(74, 20, 20);
 }
 .cardHeading h2 {
   text-align: center;
-  font-family: 'OldNewspaperTypes';
+  font-family: "OldNewspaperTypes";
   font-size: 1rem;
   color: rgb(74, 20, 20);
 }
 .cardDesc p {
   color: #4a1414;
   text-align: center;
-  font-family: 'MetalMania';
+  font-family: "MetalMania";
   font-size: 12px;
 }
 @media (max-width: 1000px) {

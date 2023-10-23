@@ -1,16 +1,16 @@
-'use client'
+"use client"
 
-import React, { useEffect, useRef, useState } from 'react'
-import styles from './page.module.css'
-import '../globals.css'
-import { useRouter } from 'next/navigation'
-import Image from 'next/image'
+import React, { useEffect, useRef, useState } from "react"
+import styles from "./page.module.css"
+import "../globals.css"
+import { useRouter } from "next/navigation"
+import Image from "next/image"
 
-import skullImg from '../../../public/static/images/skull.svg'
-import CustomCursor from '@/components/CustomCursor'
+import skullImg from "../../../public/static/images/skull.svg"
+import CustomCursor from "@/components/CustomCursor"
 // import skullImg from "../../../";
 
-import cross from '../../../public/static/images/cross.svg'
+import cross from "../../../public/static/images/cross.svg"
 
 const Page = () => {
   const [isLoading, setIsLoading] = useState(true)
@@ -35,7 +35,7 @@ const Page = () => {
 
     formContainerElem.scrollTo({
       top: (percentage / 100) * maxScrollTopValue,
-      behavior: 'smooth',
+      behavior: "smooth",
     })
   }
 
@@ -43,11 +43,11 @@ const Page = () => {
     // console.log("mousedown");
     e.preventDefault()
 
-    document.addEventListener('mousemove', handleSkullDragMove)
-    document.addEventListener('touchmove', handleSkullDragMove)
+    document.addEventListener("mousemove", handleSkullDragMove)
+    document.addEventListener("touchmove", handleSkullDragMove)
 
-    document.addEventListener('mouseup', handleSkullDragEnd)
-    document.addEventListener('touchend', handleSkullDragEnd)
+    document.addEventListener("mouseup", handleSkullDragEnd)
+    document.addEventListener("touchend", handleSkullDragEnd)
   }
 
   const handleSkullDragMove = (e) => {
@@ -71,10 +71,10 @@ const Page = () => {
   }
 
   const handleSkullDragEnd = (e) => {
-    document.removeEventListener('mousemove', handleSkullDragMove)
-    document.removeEventListener('mouseup', handleSkullDragEnd)
-    document.removeEventListener('touchmove', handleSkullDragMove)
-    document.removeEventListener('touchend', handleSkullDragEnd)
+    document.removeEventListener("mousemove", handleSkullDragMove)
+    document.removeEventListener("mouseup", handleSkullDragEnd)
+    document.removeEventListener("touchmove", handleSkullDragMove)
+    document.removeEventListener("touchend", handleSkullDragEnd)
   }
 
   function handleScroll(inp) {
@@ -84,7 +84,7 @@ const Page = () => {
     // const percentage = (contentRef.current.scrollTop / maxScrollTopValue )*100;
     const percentage = (contentRef.current.scrollTop / maxScrollTopValue) * 100
     percentage > 100
-      ? (skullRef.current.style.top = '100%')
+      ? (skullRef.current.style.top = "100%")
       : (skullRef.current.style.top = `${percentage}%`)
 
     // console.log(percentage);
@@ -97,7 +97,7 @@ const Page = () => {
   useEffect(() => {
     const fetchData = async () => {
       const res = await fetch(
-        'https://bits-oasis.org/2023/main/wallet/sponsors/'
+        "https://bits-oasis.org/2023/main/wallet/sponsors/"
       )
       const json = await res.json()
       setTimeout(() => {
@@ -129,7 +129,7 @@ const Page = () => {
         <div className="loaderContainer">
           {/* <MyVideoLoader/> */}
           <video
-            src={require('../../../public/static/images/loadervideo.mp4')} // Update with the correct path
+            src={require("../../../public/static/images/loadervideo.mp4")} // Update with the correct path
             autoPlay
             muted
             loop
@@ -139,13 +139,13 @@ const Page = () => {
           />
         </div>
       )}
-      <div className={styles['sponsorsPage']}>
+      <div className={styles["sponsorsPage"]}>
         <CustomCursor />
         <Image
           suppressHydrationWarning
           src={cross}
           onClick={() => {
-            router.push('/')
+            router.push("/")
           }}
           alt="Close"
           className={styles.cross}
@@ -195,12 +195,12 @@ export function SponsorCard({ props }) {
     // Set font size to 4rem if there is no image
 
     // Unset min-height if there is no image
-    minHeight: !image ? 'unset' : '200px', // Set the default min-height value here
+    minHeight: !image ? "unset" : "200px", // Set the default min-height value here
   }
   const fontStyle = {
     // fontSize: !image ? '4rem' : '1.5rem',
-    fontSize: !image ? (name === 'Made In India' ? '3rem' : '4rem') : '1.5rem',
-    width: 'max-content',
+    fontSize: !image ? (name === "Made In India" ? "3rem" : "4rem") : "1.5rem",
+    width: "max-content",
   }
   //   console.log(props);
   return (

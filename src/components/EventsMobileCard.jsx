@@ -1,9 +1,9 @@
-'use client'
+"use client"
 
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useState } from "react"
 // import StreetDance from "../../../public/static/images/SampleEvent.png"
-import Image from 'next/image'
-import * as styles from './eventsMobile2.module.css'
+import Image from "next/image"
+import * as styles from "./eventsMobile2.module.css"
 // import Forward from "../../../public/static/images/forwardArrow.svg"
 // import Backward from "../../../public/static/images/backArrow.svg"
 
@@ -48,7 +48,7 @@ export default function EventsMobile2({
           >
             <Image width={300} height={200} src={image} alt="img not found" />
           </div>
-          <h1 className={styles.title} style={{ fontFamily: 'KoPub' }}>
+          <h1 className={styles.title} style={{ fontFamily: "KoPub" }}>
             {name}
           </h1>
           <p className={styles.desc}>{desc}</p>

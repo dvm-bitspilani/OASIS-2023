@@ -136,7 +136,7 @@
 }
 .itemContent {
   color: #fff;
-  font-family: 'KoPubBatang';
+  font-family: "KoPubBatang";
   font-style: normal;
   font-weight: 700;
   line-height: 2rem;
@@ -149,7 +149,7 @@
 .itemContent p {
   margin-top: 0.5rem;
   color: #fff;
-  font-family: 'OldNewspaperTypes';
+  font-family: "OldNewspaperTypes";
   font-style: normal;
   font-weight: 400;
   line-height: 1rem;

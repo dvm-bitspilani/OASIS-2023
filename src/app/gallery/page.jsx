@@ -1,15 +1,15 @@
-'use client'
-import React from 'react'
-import * as styles from './gallery.module.css'
-import web from '../../../public/static/images/web1.svg'
-import Image from 'next/image'
-import GalleryCarousel from '@/components/GalleryCarousel'
-import GalleryCarouselControllerButtons from '@/components/GalleryCarouselControllerButtons'
-import rightHand from '../../../public/static/images/galleryRightHand.png'
-import leftHand from '../../../public/static/images/galleryLeftHand.png'
-import about from '../../components/GalleryCarousel.module.css'
-import cross from '../../../public/static/images/cross.svg'
-import bgImage from '../../../public/static/images/galleryPageBgImage.png'
+"use client"
+import React from "react"
+import * as styles from "./gallery.module.css"
+import web from "../../../public/static/images/web1.svg"
+import Image from "next/image"
+import GalleryCarousel from "@/components/GalleryCarousel"
+import GalleryCarouselControllerButtons from "@/components/GalleryCarouselControllerButtons"
+import rightHand from "../../../public/static/images/galleryRightHand.png"
+import leftHand from "../../../public/static/images/galleryLeftHand.png"
+import about from "../../components/GalleryCarousel.module.css"
+import cross from "../../../public/static/images/cross.svg"
+import bgImage from "../../../public/static/images/galleryPageBgImage.png"
 // import { useWindowSize } from "rooks";
 const gallery = () => {
   console.log(bgImage)

@@ -1,29 +1,29 @@
 @font-face {
-  font-family: 'NightmarePills';
-  src: url('../../public/static/fonts/NIGHTMARE PILLS - DEMO.ttf')
-    format('truetype');
+  font-family: "NightmarePills";
+  src: url("../../public/static/fonts/NIGHTMARE PILLS - DEMO.ttf")
+    format("truetype");
 }
 @font-face {
-  font-family: 'MetalMania';
-  src: url('../../public/static/fonts/MetalMania-Regular.ttf')
-    format('truetype');
+  font-family: "MetalMania";
+  src: url("../../public/static/fonts/MetalMania-Regular.ttf")
+    format("truetype");
 }
 @font-face {
-  font-family: 'Montserrat';
-  src: url(../../public/static/fonts/Montserrat.ttf) format('truetype');
+  font-family: "Montserrat";
+  src: url(../../public/static/fonts/Montserrat.ttf) format("truetype");
 }
 @font-face {
-  font-family: 'Mantinia';
+  font-family: "Mantinia";
   src: url(../../public/static/fonts/Mantinia\ CC\ Regular.ttf)
-    format('truetype');
+    format("truetype");
 }
 @font-face {
-  font-family: 'KoPubBatang';
-  src: url(../../public/static/fonts/KoPubBatang-Regular.ttf) format('truetype');
+  font-family: "KoPubBatang";
+  src: url(../../public/static/fonts/KoPubBatang-Regular.ttf) format("truetype");
 }
 @font-face {
-  font-family: 'OldNewspaperTypes';
-  src: url(../../public/static/fonts/OldNewspaperTypes.ttf) format('truetype');
+  font-family: "OldNewspaperTypes";
+  src: url(../../public/static/fonts/OldNewspaperTypes.ttf) format("truetype");
 }
 * {
   margin: 0;

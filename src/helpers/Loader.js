@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from 'react'
+import React, { useState, useEffect, useRef } from "react"
 
 export default function Loader(props) {
   const { isLoading, setIsLoading } = props
@@ -7,9 +7,9 @@ export default function Loader(props) {
 
   useEffect(() => {
     if (isLoading) {
-      document.body.style.overflow = 'hidden'
+      document.body.style.overflow = "hidden"
     } else {
-      document.body.style.overflow = 'auto'
+      document.body.style.overflow = "auto"
     }
   }, [isLoading])
 
@@ -29,13 +29,13 @@ export default function Loader(props) {
     assets.forEach((asset) => {
       if (
         asset &&
-        (asset.complete || asset.readyState === 4 || asset.tagName === 'LINK')
+        (asset.complete || asset.readyState === 4 || asset.tagName === "LINK")
       ) {
         handleAssetLoad()
       } else {
         if (asset) {
-          asset.addEventListener('load', handleAssetLoad)
-          asset.addEventListener('error', handleAssetLoad)
+          asset.addEventListener("load", handleAssetLoad)
+          asset.addEventListener("error", handleAssetLoad)
         }
       }
     })
@@ -43,8 +43,8 @@ export default function Loader(props) {
     const cleanup = () => {
       assets.forEach((asset) => {
         if (asset) {
-          asset.removeEventListener('load', handleAssetLoad)
-          asset.removeEventListener('error', handleAssetLoad)
+          asset.removeEventListener("load", handleAssetLoad)
+          asset.removeEventListener("error", handleAssetLoad)
         }
       })
     }
@@ -53,7 +53,7 @@ export default function Loader(props) {
   }, [setLoaderLoaded])
   useEffect(() => {
     if (loaderLoaded) {
-      const assets = document.querySelectorAll('img', 'font', 'style', 'iframe')
+      const assets = document.querySelectorAll("img", "font", "style", "iframe")
 
       let assetsLoaded = 0
 
@@ -69,13 +69,13 @@ export default function Loader(props) {
       assets.forEach((asset) => {
         if (
           asset &&
-          (asset.complete || asset.readyState === 4 || asset.tagName === 'LINK')
+          (asset.complete || asset.readyState === 4 || asset.tagName === "LINK")
         ) {
           handleAssetLoad()
         } else {
           if (asset) {
-            asset.addEventListener('load', handleAssetLoad)
-            asset.addEventListener('error', handleAssetLoad)
+            asset.addEventListener("load", handleAssetLoad)
+            asset.addEventListener("error", handleAssetLoad)
           }
         }
       })
@@ -83,8 +83,8 @@ export default function Loader(props) {
       const cleanup = () => {
         assets.forEach((asset) => {
           if (asset) {
-            asset.removeEventListener('load', handleAssetLoad)
-            asset.removeEventListener('error', handleAssetLoad)
+            asset.removeEventListener("load", handleAssetLoad)
+            asset.removeEventListener("error", handleAssetLoad)
           }
         })
       }
@@ -99,7 +99,7 @@ export default function Loader(props) {
         <div className="loaderContainer">
           <video
             ref={regLoaderRef}
-            src={require('../../public/static/images/loadervideo.mp4')}
+            src={require("../../public/static/images/loadervideo.mp4")}
             autoPlay
             muted
             loop

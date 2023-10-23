@@ -1,4 +1,4 @@
-import CustomStyles from '@/app/register/CustomStyles'
+import CustomStyles from "@/app/register/CustomStyles"
 
 const customStylesArray = [
   {

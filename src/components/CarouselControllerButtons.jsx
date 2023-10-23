@@ -1,16 +1,16 @@
-'use client'
+"use client"
 
-import React from 'react'
-import styles from './about.module.css'
+import React from "react"
+import styles from "./about.module.css"
 
 export default function CarouselControllerButtons({ classApplied }) {
   const swiper = React.useRef(null)
 
   React.useEffect(() => {
-    swiper.current = document.querySelector('.swiper').swiper
+    swiper.current = document.querySelector(".swiper").swiper
     // console.log(swiper.current);
 
-    swiper.current.on('slideChange', () => {
+    swiper.current.on("slideChange", () => {
       const carouselPrevButton = document.querySelector(
         `.${styles.carouselLeftButton}`
       )

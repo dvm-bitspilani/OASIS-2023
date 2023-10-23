@@ -1,8 +1,8 @@
-import React from 'react'
-import styles from './ErrorScreen.module.css'
+import React from "react"
+import styles from "./ErrorScreen.module.css"
 
 export default function ErrorScreen({ error, errorMessage, CloseModal }) {
-  const heading = error ? 'Oops!' : 'Success!'
+  const heading = error ? "Oops!" : "Success!"
 
   const handleBackdropClick = (e) => {
     if (e.target === e.currentTarget) {

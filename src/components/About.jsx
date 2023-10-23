@@ -1,16 +1,16 @@
-import styles from './about.module.css'
-import landingStyles from '../app/page.module.css'
+import styles from "./about.module.css"
+import landingStyles from "../app/page.module.css"
 
-import updatedBgLibraryImage from '../../public/static/images/updatedLibraryBgImage.png'
-import leftHandImg from '../../public/static/images/aboutLeftHand.png'
-import rightHandMobile from '../../public/static/images/rightHandMobile.png'
-import leftHandMobile from '../../public/static/images/leftHandMobile.png'
+import updatedBgLibraryImage from "../../public/static/images/updatedLibraryBgImage.png"
+import leftHandImg from "../../public/static/images/aboutLeftHand.png"
+import rightHandMobile from "../../public/static/images/rightHandMobile.png"
+import leftHandMobile from "../../public/static/images/leftHandMobile.png"
 // import rightHandImg from "../../public/static/images/aboutRightHand.png";
-import topHandImg from '../../public/static/images/zombieHandsUpdated.png'
+import topHandImg from "../../public/static/images/zombieHandsUpdated.png"
 
-import Image from 'next/image'
-import AboutCarousel from '@/components/AboutCarousel'
-import CarouselControllerButtons from './CarouselControllerButtons'
+import Image from "next/image"
+import AboutCarousel from "@/components/AboutCarousel"
+import CarouselControllerButtons from "./CarouselControllerButtons"
 
 export default function page() {
   return (

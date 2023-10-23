@@ -1,35 +1,35 @@
-'use client'
+"use client"
 
 //refactor
-import styles from './page.module.css'
-import Image from 'next/image'
-import React from 'react'
-import { useState, useEffect, useRef, useLayoutEffect } from 'react'
-import { useContext } from 'react'
-import { HamContext } from '@/context/HamContextProvider'
-import Link from 'next/link'
-import { Metadata } from 'next'
-import textLogo from '../../public/static/images/updatedOasisLogo.png'
-import navLogo from '../../public/static/images/navLogo.png'
-import Navbar from '@/components/Navbar'
-import Hamburger from '@/components/hamburger'
-import landingPgBookImg from '../../public/static/images/Book.png'
-import rightElements from '../../public/static/images/landingPgRightElements.png'
-import leftElements from '../../public/static/images/landingPgLeftElements.png'
-import updatedBgLibraryImage from '../../public/static/images/updatedLibraryBgImage.png'
+import styles from "./page.module.css"
+import Image from "next/image"
+import React from "react"
+import { useState, useEffect, useRef, useLayoutEffect } from "react"
+import { useContext } from "react"
+import { HamContext } from "@/context/HamContextProvider"
+import Link from "next/link"
+import { Metadata } from "next"
+import textLogo from "../../public/static/images/updatedOasisLogo.png"
+import navLogo from "../../public/static/images/navLogo.png"
+import Navbar from "@/components/Navbar"
+import Hamburger from "@/components/hamburger"
+import landingPgBookImg from "../../public/static/images/Book.png"
+import rightElements from "../../public/static/images/landingPgRightElements.png"
+import leftElements from "../../public/static/images/landingPgLeftElements.png"
+import updatedBgLibraryImage from "../../public/static/images/updatedLibraryBgImage.png"
 
-import Events from '@/components/Events'
-import Contact from '@/components/Contact'
-import About from '@/components/About'
-import TransitionLeft from '../../public/static/images/TransitionLeft.png'
-import TransitionRight from '../../public/static/images/TransitionRight.png'
-import { gsap } from 'gsap'
-import { AnimatePresence, motion } from 'framer-motion'
-import { useWindowSize } from 'rooks'
-import EventsMobile2 from '@/components/EventsMobile'
+import Events from "@/components/Events"
+import Contact from "@/components/Contact"
+import About from "@/components/About"
+import TransitionLeft from "../../public/static/images/TransitionLeft.png"
+import TransitionRight from "../../public/static/images/TransitionRight.png"
+import { gsap } from "gsap"
+import { AnimatePresence, motion } from "framer-motion"
+import { useWindowSize } from "rooks"
+import EventsMobile2 from "@/components/EventsMobile"
 // import EventsMobile2 from "./events/page";
-import CustomCursor from '@/components/CustomCursor'
-import { useMemo } from 'react'
+import CustomCursor from "@/components/CustomCursor"
+import { useMemo } from "react"
 
 export default function Home() {
   const { isHamOpen, setIsHamOpen } = useContext(HamContext)
@@ -176,7 +176,7 @@ export default function Home() {
   // }, []);
 
   useEffect(() => {
-    if (typeof window !== 'undefined') {
+    if (typeof window !== "undefined") {
       // console.log('first')
       setIsLoading(true)
       setShowLoader(true)
@@ -193,7 +193,7 @@ export default function Home() {
           if (asset) {
             return new Promise((resolve, reject) => {
               // const img = new img();
-              const img = document.createElement('img')
+              const img = document.createElement("img")
               img.onload = resolve
               img.onerror = reject
               img.src = asset
@@ -202,7 +202,7 @@ export default function Home() {
         })
         const results = await Promise.allSettled(assetPromises)
         const allSuccessful = results.every(
-          (result) => result.status === 'fulfilled'
+          (result) => result.status === "fulfilled"
         )
         Promise.all(assetPromises)
           .then(() => {
@@ -215,7 +215,7 @@ export default function Home() {
             // console.log('All assets loaded successfully');
           })
           .catch((error) => {
-            console.error('Error loading assets:', error)
+            console.error("Error loading assets:", error)
             // setIsLoading(false);
             setAllAssetsLoaded(true)
             // console.log("loaded");
@@ -268,23 +268,23 @@ export default function Home() {
             // opacity: 1,
             delay: `${Math.floor(key / 1.2) * 1}`,
             duration: 2.5,
-            ease: 'none',
+            ease: "none",
           })
           tl.to(
             `#left_1_${key}`,
             {
               opacity: 1,
               duration: 2.5,
-              ease: 'power2.in',
+              ease: "power2.in",
             },
-            '-=2.5'
+            "-=2.5"
           )
           tl.to(`#left_1_${key}`, {
             right: `${item.endingX}%`,
             top: `${item.endingY}%`,
             opacity: 0,
             duration: 2.5,
-            ease: 'none',
+            ease: "none",
           })
           tl.to(
             `#left_1_${key}`,
@@ -292,9 +292,9 @@ export default function Home() {
               scale: 1,
               rotate: 80,
               duration: 5,
-              ease: 'none',
+              ease: "none",
             },
-            '-=5'
+            "-=5"
           )
         })
       }, scope) // <- IMPORTANT! Scopes selector text
@@ -339,23 +339,23 @@ export default function Home() {
             // opacity: 1,
             delay: `${Math.floor(key / 1.2) * 1}`,
             duration: 2.5,
-            ease: 'none',
+            ease: "none",
           })
           tl.to(
             `#left_2_${key}`,
             {
               opacity: 1,
               duration: 2.5,
-              ease: 'power2.in',
+              ease: "power2.in",
             },
-            '-=2.5'
+            "-=2.5"
           )
           tl.to(`#left_2_${key}`, {
             right: `${item.endingX}%`,
             top: `${item.endingY}%`,
             opacity: 0,
             duration: 2.5,
-            ease: 'none',
+            ease: "none",
           })
           tl.to(
             `#left_2_${key}`,
@@ -363,9 +363,9 @@ export default function Home() {
               rotate: -80,
               scale: 1,
               duration: 5,
-              ease: 'none',
+              ease: "none",
             },
-            '-=5'
+            "-=5"
           )
         })
       }, scope) // <- IMPORTANT! Scopes selector text
@@ -414,23 +414,23 @@ export default function Home() {
             // opacity: 1,
             delay: `${Math.floor(key / 1.2) * 1}`,
             duration: 2.5,
-            ease: 'none',
+            ease: "none",
           })
           tl.to(
             `#right_1_${key}`,
             {
               opacity: 1,
               duration: 2.5,
-              ease: 'power2.in',
+              ease: "power2.in",
             },
-            '-=2.5'
+            "-=2.5"
           )
           tl.to(`#right_1_${key}`, {
             left: `${item.endingX}%`,
             top: `${item.endingY}%`,
             opacity: 0,
             duration: 2.5,
-            ease: 'none',
+            ease: "none",
           })
           tl.to(
             `#right_1_${key}`,
@@ -438,9 +438,9 @@ export default function Home() {
               scale: 1,
               rotate: -80,
               duration: 5,
-              ease: 'none',
+              ease: "none",
             },
-            '-=5'
+            "-=5"
           )
         })
       }, scope) // <- IMPORTANT! Scopes selector text
@@ -485,23 +485,23 @@ export default function Home() {
             // opacity: 1,
             delay: `${Math.floor(key / 1.2) * 1}`,
             duration: 2.5,
-            ease: 'none',
+            ease: "none",
           })
           tl.to(
             `#right_2_${key}`,
             {
               opacity: 1,
               duration: 2.5,
-              ease: 'power2.in',
+              ease: "power2.in",
             },
-            '-=2.5'
+            "-=2.5"
           )
           tl.to(`#right_2_${key}`, {
             left: `${item.endingX}%`,
             top: `${item.endingY}%`,
             opacity: 0,
             duration: 2.5,
-            ease: 'none',
+            ease: "none",
           })
           tl.to(
             `#right_2_${key}`,
@@ -509,9 +509,9 @@ export default function Home() {
               rotate: 80,
               scale: 1,
               duration: 5,
-              ease: 'none',
+              ease: "none",
             },
-            '-=5'
+            "-=5"
           )
         })
       }, scope) // <- IMPORTANT! Scopes selector text
@@ -537,32 +537,32 @@ export default function Home() {
   }
 
   useEffect(() => {
-    const topBar1 = document.querySelector('#hamIcon1')
-    const topBar2 = document.querySelector('#hamIcon2')
-    const topBar3 = document.querySelector('#hamIcon3')
+    const topBar1 = document.querySelector("#hamIcon1")
+    const topBar2 = document.querySelector("#hamIcon2")
+    const topBar3 = document.querySelector("#hamIcon3")
     if (isHamOpen && !isLoading) {
-      topBar1.style.transform = 'rotatez(45deg) translate(3px,2px)'
-      topBar2.style.transform = 'rotatez(-45deg) translate(-1px,-2px)'
-      topBar3.style.transform = 'translate(11px,-7px) rotatez(45deg)'
-      topBar3.style.width = '50%'
-      topBar3.style.borderRadius = '0px 5px 5px 0px'
+      topBar1.style.transform = "rotatez(45deg) translate(3px,2px)"
+      topBar2.style.transform = "rotatez(-45deg) translate(-1px,-2px)"
+      topBar3.style.transform = "translate(11px,-7px) rotatez(45deg)"
+      topBar3.style.width = "50%"
+      topBar3.style.borderRadius = "0px 5px 5px 0px"
     } else if (!isHamOpen && !isLoading) {
-      topBar1.style.transform = 'rotate(0deg) translate(0px,0px)'
-      topBar2.style.transform = 'rotatez(0deg) translate(0px,0px)'
-      topBar3.style.transform = 'translate(0px,0px) rotatez(0deg)'
-      topBar3.style.width = '75%'
-      topBar3.style.borderRadius = '5px'
+      topBar1.style.transform = "rotate(0deg) translate(0px,0px)"
+      topBar2.style.transform = "rotatez(0deg) translate(0px,0px)"
+      topBar3.style.transform = "translate(0px,0px) rotatez(0deg)"
+      topBar3.style.width = "75%"
+      topBar3.style.borderRadius = "5px"
     }
   }, [isHamOpen, isLoading])
 
   useEffect(() => {
     if (isHamOpen) {
       gsap.to(scope.current, {
-        overflowY: 'hidden',
+        overflowY: "hidden",
       })
     } else {
       gsap.to(scope.current, {
-        overflowY: 'scroll',
+        overflowY: "scroll",
         delay: 2,
       })
     }
@@ -652,7 +652,7 @@ export default function Home() {
   //   }
   // }, [loaderLoaded]);
 
-  const [currentPage, setCurrentPage] = useState('home')
+  const [currentPage, setCurrentPage] = useState("home")
 
   const handleTransition = (page) => {
     console.log(page)
@@ -665,7 +665,7 @@ export default function Home() {
         x: 0,
         scale: 1.5,
         duration: 1,
-        ease: 'power2.inOut',
+        ease: "power2.inOut",
       })
       const elements = {
         contact: contactsWrapper,
@@ -677,33 +677,33 @@ export default function Home() {
       for (const key in elements) {
         const element = elements[key].current
         const opacity = key === page ? 1 : 0
-        const visibility = key === page ? 'visible' : 'hidden'
+        const visibility = key === page ? "visible" : "hidden"
         const duration = key === page ? 0.15 : 0.5
 
-        tl.to(element, { opacity, visibility, ease: 'ease', duration })
+        tl.to(element, { opacity, visibility, ease: "ease", duration })
       }
 
       tl.to(navSection.current, {
-        opacity: page !== 'events' ? 1 : 0,
-        visibility: page !== 'events' ? 'visible' : 'hidden',
-        ease: 'ease',
+        opacity: page !== "events" ? 1 : 0,
+        visibility: page !== "events" ? "visible" : "hidden",
+        ease: "ease",
         duration: 0.5,
       })
 
       setTimeout(() => {
-        setShowBackBtn(page !== 'home')
+        setShowBackBtn(page !== "home")
       }, 1000)
 
       tl.to(scope.current, {
-        height: page !== 'events' ? '100vh' : 'fit-content',
-        width: page !== 'events' ? '100vw' : 'fit-content',
+        height: page !== "events" ? "100vh" : "fit-content",
+        width: page !== "events" ? "100vw" : "fit-content",
       })
 
       tl.to(transitionLeft.current, {
-        x: '-100%',
+        x: "-100%",
         scale: 1,
         duration: 1,
-        ease: 'power2.inOut',
+        ease: "power2.inOut",
         onComplete: () => {
           setCurrentPage(page)
           console.log(currentPage)
@@ -711,8 +711,8 @@ export default function Home() {
       })
       tl.to(
         transitionRight.current,
-        { x: '100%', scale: 1, duration: 1, ease: 'power2.inOut' },
-        '-=1'
+        { x: "100%", scale: 1, duration: 1, ease: "power2.inOut" },
+        "-=1"
       )
     }
   }
@@ -722,7 +722,7 @@ export default function Home() {
         <div className={styles.loaderContainer}>
           {/* <MyVideoLoader/> */}
           <video
-            src={require('../../public/static/images/loadervideo.mp4')} // Update with the correct path
+            src={require("../../public/static/images/loadervideo.mp4")} // Update with the correct path
             autoPlay
             muted
             loop
@@ -740,7 +740,7 @@ export default function Home() {
           width={1037}
           height={980}
           ref={transitionLeft}
-          style={{ transform: 'translateX(-100%)', height: '100vh' }}
+          style={{ transform: "translateX(-100%)", height: "100vh" }}
           suppressHydrationWarning
           alt=""
         />
@@ -750,10 +750,10 @@ export default function Home() {
           width={1037}
           height={980}
           style={{
-            position: 'fixed',
-            right: '0',
-            transform: 'translateX(100%)',
-            height: '100vh',
+            position: "fixed",
+            right: "0",
+            transform: "translateX(100%)",
+            height: "100vh",
           }}
           suppressHydrationWarning
           ref={transitionRight}
@@ -821,7 +821,7 @@ export default function Home() {
               ) : (
                 <div
                   key="hiddenDiv"
-                  style={{ display: 'none' }}
+                  style={{ display: "none" }}
                   suppressHydrationWarning
                 ></div>
               )}
@@ -841,7 +841,7 @@ export default function Home() {
             ) : (
               <div
                 key="hiddenDiv2"
-                style={{ display: 'none' }}
+                style={{ display: "none" }}
                 suppressHydrationWarning
               ></div>
             )}
@@ -859,8 +859,8 @@ export default function Home() {
             exit={{ opacity: 0 }}
             transition={{ duration: 2 }}
             className={`${styles.midSection} 
-              ${showLoader ? styles.loaderContainer : ''} ${
-                isLoading ? 'loaded' : ''
+              ${showLoader ? styles.loaderContainer : ""} ${
+                isLoading ? "loaded" : ""
               }`}
           >
             <div key="textLogoWrapper" className={styles.textLogoWrapper}>
@@ -902,7 +902,7 @@ export default function Home() {
               {isHamOpen ? (
                 <div
                   key="hiddenDiv3"
-                  style={{ display: 'none' }}
+                  style={{ display: "none" }}
                   suppressHydrationWarning
                 ></div>
               ) : (
@@ -913,8 +913,8 @@ export default function Home() {
                   exit={{ opacity: 0 }}
                   transition={{ duration: 1 }}
                   style={{
-                    position: 'absolute',
-                    bottom: '50px',
+                    position: "absolute",
+                    bottom: "50px",
                   }}
                   suppressHydrationWarning
                 >
@@ -940,12 +940,12 @@ export default function Home() {
           </motion.div>
         </AnimatePresence>
       </div>
-      <div className={styles['navSection']} ref={navSection}>
+      <div className={styles["navSection"]} ref={navSection}>
         <AnimatePresence>
           {isHamOpen ? (
             <div
               key="hiddenDiv4"
-              style={{ display: 'none' }}
+              style={{ display: "none" }}
               suppressHydrationWarning
             ></div>
           ) : (
@@ -1085,23 +1085,23 @@ export function randomAnimation(direction, random, setRandom, delay, id) {
         // opacity: 1,
         delay: `${key * 0.5}`,
         duration: 2.5,
-        ease: 'none',
+        ease: "none",
       })
       tl.to(
         `#${id}${key}`,
         {
           opacity: 1,
           duration: 2.5,
-          ease: 'power2.in',
+          ease: "power2.in",
         },
-        '-=1.5'
+        "-=1.5"
       )
       tl.to(`#${id}${key}`, {
         left: `${item.endingX}%`,
         top: `${item.endingY}%`,
         opacity: 0,
         duration: 2.5,
-        ease: 'none',
+        ease: "none",
       })
       tl.to(
         `#${id}${key}`,
@@ -1109,9 +1109,9 @@ export function randomAnimation(direction, random, setRandom, delay, id) {
           rotate: -80,
           scale: 1,
           duration: 3,
-          ease: 'power2.in',
+          ease: "power2.in",
         },
-        '-=3'
+        "-=3"
       )
     })
   }, scope) // <- IMPORTANT! Scopes selector text

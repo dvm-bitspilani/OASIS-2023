@@ -1,20 +1,20 @@
 // "use client";
 
-import React, { useState } from 'react'
-import styles from './hamburger.module.css'
-import { HamContext } from '@/context/HamContextProvider'
-import path from '../../public/static/images/path.svg'
-import innercircle from '../../public/static/images/innercircle.png'
-import logo from '../../public/static/images/oasis-logo-ham.png'
-import glow from '../../public/static/images/glow.png'
-import { useContext } from 'react'
-import Image from 'next/image'
-import { useEffect } from 'react'
-import { gsap } from 'gsap'
-import { MotionPathPlugin } from 'gsap/all'
-import { CustomEase } from 'gsap/all'
-import { delay } from 'framer-motion'
-import Link from 'next/link'
+import React, { useState } from "react"
+import styles from "./hamburger.module.css"
+import { HamContext } from "@/context/HamContextProvider"
+import path from "../../public/static/images/path.svg"
+import innercircle from "../../public/static/images/innercircle.png"
+import logo from "../../public/static/images/oasis-logo-ham.png"
+import glow from "../../public/static/images/glow.png"
+import { useContext } from "react"
+import Image from "next/image"
+import { useEffect } from "react"
+import { gsap } from "gsap"
+import { MotionPathPlugin } from "gsap/all"
+import { CustomEase } from "gsap/all"
+import { delay } from "framer-motion"
+import Link from "next/link"
 
 gsap.registerPlugin(MotionPathPlugin)
 gsap.registerPlugin(CustomEase)
@@ -27,16 +27,16 @@ export default function Hamburger() {
   }
 
   useEffect(() => {
-    const element = document.querySelector('#glow')
-    const path = document.querySelector('#path')
-    const svg = document.querySelector('#path-svg')
-    const one = document.querySelectorAll('.one')
-    const two = document.querySelectorAll('.two')
-    const three = document.querySelectorAll('.three')
-    const four = document.querySelectorAll('.four')
-    const five = document.querySelectorAll('.five')
-    const insideCircle = document.querySelectorAll('.ham-inside-circle')
-    const logo = document.querySelectorAll('.ham-logo')
+    const element = document.querySelector("#glow")
+    const path = document.querySelector("#path")
+    const svg = document.querySelector("#path-svg")
+    const one = document.querySelectorAll(".one")
+    const two = document.querySelectorAll(".two")
+    const three = document.querySelectorAll(".three")
+    const four = document.querySelectorAll(".four")
+    const five = document.querySelectorAll(".five")
+    const insideCircle = document.querySelectorAll(".ham-inside-circle")
+    const logo = document.querySelectorAll(".ham-logo")
 
     var duration = 1.2
     var delay = 1.7
@@ -58,8 +58,8 @@ export default function Hamburger() {
         repeat: 0,
         delay: 0.5,
         ease: CustomEase.create(
-          'custom',
-          'M0,0 C0.065,0 0.332,-0.042 0.514,0.184 0.611,0.305 0.634,0.686 0.708,0.874 0.757,1.001 0.98,0.997 0.989,0.999 0.993,0.999 0.996,1 1,1 '
+          "custom",
+          "M0,0 C0.065,0 0.332,-0.042 0.514,0.184 0.611,0.305 0.634,0.686 0.708,0.874 0.757,1.001 0.98,0.997 0.989,0.999 0.993,0.999 0.996,1 1,1 "
         ),
       })
 
@@ -88,7 +88,7 @@ export default function Hamburger() {
       gsap.to(logo, {
         rotation: 360,
         duration: 2.5,
-        ease: 'power4.out',
+        ease: "power4.out",
       })
 
       gsap.set(one, {
@@ -155,8 +155,8 @@ export default function Hamburger() {
         repeat: 0,
         delay: 0.5,
         ease: CustomEase.create(
-          'custom',
-          'M0,0 C0.065,0 0.332,-0.042 0.514,0.184 0.611,0.305 0.634,0.686 0.708,0.874 0.757,1.001 0.98,0.997 0.989,0.999 0.993,0.999 0.996,1 1,1 '
+          "custom",
+          "M0,0 C0.065,0 0.332,-0.042 0.514,0.184 0.611,0.305 0.634,0.686 0.708,0.874 0.757,1.001 0.98,0.997 0.989,0.999 0.993,0.999 0.996,1 1,1 "
         ),
         motionPath: {
           path: path,
@@ -186,8 +186,8 @@ export default function Hamburger() {
         repeat: 0,
         delay: 0.5,
         ease: CustomEase.create(
-          'custom',
-          'M0,0 C0.065,0 0.332,-0.042 0.514,0.184 0.611,0.305 0.634,0.686 0.708,0.874 0.757,1.001 0.98,0.997 0.989,0.999 0.993,0.999 0.996,1 1,1 '
+          "custom",
+          "M0,0 C0.065,0 0.332,-0.042 0.514,0.184 0.611,0.305 0.634,0.686 0.708,0.874 0.757,1.001 0.98,0.997 0.989,0.999 0.993,0.999 0.996,1 1,1 "
         ),
       })
 

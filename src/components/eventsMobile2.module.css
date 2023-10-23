@@ -1,6 +1,6 @@
 @font-face {
-  font-family: 'KoPub';
-  src: url(../../public/static/fonts/KoPubBatang-Regular.ttf) format('truetype');
+  font-family: "KoPub";
+  src: url(../../public/static/fonts/KoPubBatang-Regular.ttf) format("truetype");
 }
 
 .cardContainer {
@@ -33,20 +33,20 @@
 .desc {
   color: #f3f3f3;
   text-align: center;
-  font-family: 'KoPub';
+  font-family: "KoPub";
   font-style: normal;
 }
 
 .title {
   font-size: 2rem;
-  font-family: 'KoPub';
+  font-family: "KoPub";
   text-align: center;
   padding-inline: 1rem;
 }
 
 .desc {
   font-size: 0.8rem;
-  font-family: 'KoPub';
+  font-family: "KoPub";
   padding-inline: 2rem;
 }
 
@@ -84,21 +84,21 @@
   position: absolute;
   top: 15%;
   text-align: center;
-  font-family: 'KoPub';
+  font-family: "KoPub";
 }
 
 .firstText {
   position: absolute;
   bottom: 30%;
   text-align: center;
-  font-family: 'KoPub';
+  font-family: "KoPub";
 }
 
 .lastText {
   position: absolute;
   bottom: 50%;
   text-align: center;
-  font-family: 'KoPub';
+  font-family: "KoPub";
 }
 
 .container {
@@ -128,5 +128,5 @@
   position: absolute;
   bottom: 20%;
   text-align: center;
-  font-family: 'KoPub';
+  font-family: "KoPub";
 }

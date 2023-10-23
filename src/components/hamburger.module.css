@@ -24,7 +24,7 @@
 .background {
   width: 100%;
   height: 100%;
-  background-image: url('../../public/static/images/hamBG.png');
+  background-image: url("../../public/static/images/hamBG.png");
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
@@ -135,7 +135,7 @@
   align-items: center;
   border-radius: 50%;
   font-size: var(--item-fontsize);
-  font-family: 'Montserrat';
+  font-family: "Montserrat";
   z-index: 2;
   /* cursor: pointer; */
   color: white;
@@ -202,7 +202,7 @@
   left: 0;
   top: 0;
   transform: translate(calc(var(--num-size) * 0.8), -50%);
-  font-family: 'Montserrat';
+  font-family: "Montserrat";
   color: #858585;
   text-align: right;
   font-weight: 700;
@@ -217,7 +217,7 @@
   right: 0;
   top: 0;
   transform: translate(calc(var(--num-size) * -1), -50%);
-  font-family: 'Montserrat';
+  font-family: "Montserrat";
   color: #858585;
   text-align: right;
   font-weight: 700;

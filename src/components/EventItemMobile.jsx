@@ -1,6 +1,6 @@
-import React from 'react'
-import Image from 'next/image'
-import * as events from './eventsmobile.module.css'
+import React from "react"
+import Image from "next/image"
+import * as events from "./eventsmobile.module.css"
 
 const EventItem = ({ name, desc, image, top, left }) => {
   return (
