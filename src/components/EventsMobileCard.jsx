@@ -1,11 +1,11 @@
 "use client"
 
 import React, { useEffect, useState } from "react";
-import StreetDance from "../../../public/static/images/SampleEvent.png"
+// import StreetDance from "../../../public/static/images/SampleEvent.png"
 import Image from "next/image";
 import * as styles from "./eventsMobile2.module.css"
-import Forward from "../../../public/static/images/forwardArrow.svg"
-import Backward from "../../../public/static/images/backArrow.svg"
+// import Forward from "../../../public/static/images/forwardArrow.svg"
+// import Backward from "../../../public/static/images/backArrow.svg"
 
 export default function EventsMobile2({width, image, name, desc, key, onForward, onBackward }) {
     // const [width, setWidth] = useState(0)

@@ -1,369 +1,286 @@
-import React, { useState } from "react";
-import { useEffect } from "react";
-import * as events from "../components/eventsmobile.module.css";
-import Image from "next/image";
-import Map from "../../public/static/images/EventsMapMobile.png";
-import gsap from "gsap";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
-import { useWindowSize, useWindowScrollPosition } from "rooks";
-// import streetdance from "../../public/static/images/StreetDance.png";
-import placeholder from "../../public/static/images/eventsModalOasisLogo.png"
-import EventItemMobile from "./EventItemMobile";
-import backBtnMobile from "../../public/static/images/backBtnMobile.svg";
-import Top from "../../public/static/images/IconTop.svg";
-import Bottom from "../../public/static/images/IconBottom.svg";
-gsap.registerPlugin(ScrollTrigger);
+"use client";
 
-export default function EventsMobile() {
+import React, { useState, useEffect } from "react";
+import Card from "./EventsMobileCard";
+// import BG from "../../../public/static/images/eventsmobileBG.png";
+import * as styles from "./eventsMobile2.module.css";
+import Image from "next/image";
+import StreetDance from "../../public/static/images/eventsModalOasisLogo.png";
+// import StreetDance from "../../../public/static/images/eventsOasisModalLogo.png"
+import Forward from "../../public/static/images/forwardArrow.svg";
+import Backward from "../../public/static/images/backArrow.svg";
+import { useWindowSize } from "rooks";
+
+export default function EventsMobile2({ handleTransition }) {
+  const { innerWidth, innerHeight } = useWindowSize();
+  const [eventDetails, setEventDetails] = useState([]);
+
+  async function getEventDetails() {
+    const res = await fetch(
+      "https://bits-oasis.org/2023/main/registrations/events_details"
+    );
+    if (!res.ok) {
+      throw new Error("Failed to get Events");
+    }
+    return res.json();
+  }
+
+  useEffect(() => {
+    getEventDetails()
+      .then((data) => {
+        setEventDetails(
+          data.map((item) => {
+            return {
+              name: item.name,
+              desc: item.about,
+              image: item.img_mobile_url,
+              organiser: item.organiser,
+              contact: item.contact,
+            };
+          })
+        );
+        // console.log(data);
+      })
+      .catch((error) => {
+        // console.log(error);
+      });
+      // console.log(eventDetails)
+  }, []);
+
   const tasks = [
     {
       key: 1,
-      name: "STREET DANCE",
-      desc: "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Cum eveniet voluptas, ullam saepe laboriosam quas consequuntur! Itaque consequuntur, fugiat labore, sit rem dolore harum eligendi alias, cumque at tenetur nulla.",
-      image: placeholder,
-      top: "150px",
-      left: "40%",
+      name: "RAZZMATAZZ",
+      desc: "Razzmatazz is a one-of-its-kind group dance competition that tests finesse and artistry in showcasing coordinated group choreographies. With equal weightage in judgement given to execution, presentation and creativity, it is fashioned to test the esprit de corps of the participating teams. All forms of dance including fusions are allowed. So trip the light fantastic toe and let there be a razzle-dazzle of sheer splendour.",
+      image: StreetDance,
+      top: "10%",
+      left: "5%",
     },
     {
       key: 2,
-      name: "STREET DANCE",
-      desc: "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Cum eveniet voluptas, ullam saepe laboriosam quas consequuntur! Itaque consequuntur, fugiat labore, sit rem dolore harum eligendi alias, cumque at tenetur nulla.",
-      image: placeholder,
-      top: "350px",
-      left: "70%",
+      name: "DESERT DUEL",
+      desc: "It is a solo dance event in which dancers from every college participate and showcase their talent. Depending on the dancer, styles can vary from western to classical to hip-hop and even to the typical Bollywood style.",
+      image: StreetDance,
+      top: "25%",
+      left: "10%",
     },
     {
       key: 3,
-      name: "STREET DANCE",
-      desc: "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Cum eveniet voluptas, ullam saepe laboriosam quas consequuntur! Itaque consequuntur, fugiat labore, sit rem dolore harum eligendi alias, cumque at tenetur nulla.",
-      image: placeholder,
-      top: "550px",
-      left: "35%",
+      name: "CHOREO",
+      desc: "Choreo is a dance event which features contemporary dance performances by teams from colleges around the country. This event is conducted in the central auditorium. After the initial elimination round, about six to eight teams are shortlisted for the final round. The final round features contemporary dance performances that are usually based on a certain theme.",
+      image: StreetDance,
+      top: "35%",
+      left: "20%",
     },
     {
       key: 4,
       name: "STREET DANCE",
-      desc: "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Cum eveniet voluptas, ullam saepe laboriosam quas consequuntur! Itaque consequuntur, fugiat labore, sit rem dolore harum eligendi alias, cumque at tenetur nulla.",
-      image: placeholder,
-      top: "750px",
-      left: "65%",
-    },
-    {
-      key: 5,
-      name: "STREET DANCE",
-      desc: "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Cum eveniet voluptas, ullam saepe laboriosam quas consequuntur! Itaque consequuntur, fugiat labore, sit rem dolore harum eligendi alias, cumque at tenetur nulla.",
-      image: placeholder,
-      top: "950px",
-      left: "43%",
+      desc: "As the name suggests, Street Dance is a street-style dance event which features performances by teams from colleges around the country. Street Dance is considered a crowd favourite and is held in the Rotunda, the open-air amphitheatre of BITS. After the initial elimination round, about eight to ten teams are shortlisted for the final round. The first stage of the final round features street-style performances by the participating teams. The second stage of the final round is a face-off challenge between pairs of teams. These pairs are allotted randomly.",
+      image: StreetDance,
+      top: "50%",
+      left: "5%",
     },
     {
       key: 6,
-      name: "STREET DANCE",
-      desc: "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Cum eveniet voluptas, ullam saepe laboriosam quas consequuntur! Itaque consequuntur, fugiat labore, sit rem dolore harum eligendi alias, cumque at tenetur nulla.",
-      image: placeholder,
-      top: "1150px",
-      left: "70%",
+      name: "TANDAV",
+      desc: "Tandav Solo is an Indian classical dance competition wherein Dancers across India come and participate in a show of their best abilities on an individual level.",
+      image: StreetDance,
+      top: "70%",
+      left: "30%",
     },
     {
       key: 7,
-      name: "STREET DANCE",
-      desc: "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Cum eveniet voluptas, ullam saepe laboriosam quas consequuntur! Itaque consequuntur, fugiat labore, sit rem dolore harum eligendi alias, cumque at tenetur nulla.",
-      image: placeholder,
-      top: "1350px",
-      left: "32%",
+      name: "STAGE PLAY",
+      desc: "It is said that the stage is a magic circle where only the most real things happen, a neutral territory outside the jurisdiction of fate where stars may be crossed with impunity. A truer and more real place does not exist in all the universe. The Stage Play event brings you a wholesome feat of drama to awaken and thrill your senses. It gives you a chance to captivate your audience with your actions and expressions and to watch and perform captivating plays.",
+      image: StreetDance,
+      top: "55%",
+      left: "35%",
     },
     {
       key: 8,
-      name: "STREET DANCE",
-      desc: "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Cum eveniet voluptas, ullam saepe laboriosam quas consequuntur! Itaque consequuntur, fugiat labore, sit rem dolore harum eligendi alias, cumque at tenetur nulla.",
-      image: placeholder,
-      top: "1550px",
-      left: "73%",
+      name: "STREET PLAY",
+      desc: "Oasis brings to you, right from the streets, a loud and larger-than-life exchange of ideologies, with drama full of humour and zeal. Street Plays aka Nukkad Natak, are carried out to propagate social and political messages among the masses, amidst the direct, intimate, and effective means of theatre by means of shouts, chants, drums and catchy songs.",
+      image: StreetDance,
+      top: "33%",
+      left: "37%",
     },
-    // {
-    //     key: 9,
-    //     name: "STREET DANCE",
-    //     desc: "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Cum eveniet voluptas, ullam saepe laboriosam quas consequuntur! Itaque consequuntur, fugiat labore, sit rem dolore harum eligendi alias, cumque at tenetur nulla.",
-    //     image: placeholder,
-    //     top: "45%",
-    //     left: "50%",
-    // },
-    // {
-    //     key: 10,
-    //     name: "STREET DANCE",
-    //     desc: "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Cum eveniet voluptas, ullam saepe laboriosam quas consequuntur! Itaque consequuntur, fugiat labore, sit rem dolore harum eligendi alias, cumque at tenetur nulla.",
-    //     image: placeholder,
-    //     top: "67%",
-    //     left: "50%",
-    // },
-    // {
-    //     key: 11,
-    //     name: "STREET DANCE",
-    //     desc: "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Cum eveniet voluptas, ullam saepe laboriosam quas consequuntur! Itaque consequuntur, fugiat labore, sit rem dolore harum eligendi alias, cumque at tenetur nulla.",
-    //     image: placeholder,
-    //     top: "35%",
-    //     left: "50%",
-    // },
-    // {
-    //     key: 12,
-    //     name: "STREET DANCE",
-    //     desc: "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Cum eveniet voluptas, ullam saepe laboriosam quas consequuntur! Itaque consequuntur, fugiat labore, sit rem dolore harum eligendi alias, cumque at tenetur nulla.",
-    //     image: placeholder,
-    //     top: "10%",
-    //     left: "50%",
-    // },
-    // {
-    //     key: 13,
-    //     name: "STREET DANCE",
-    //     desc: "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Cum eveniet voluptas, ullam saepe laboriosam quas consequuntur! Itaque consequuntur, fugiat labore, sit rem dolore harum eligendi alias, cumque at tenetur nulla.",
-    //     image: placeholder,
-    //     top: "20%",
-    //     left: "50%",
-    // },
-    // {
-    //     key: 14,
-    //     name: "STREET DANCE",
-    //     desc: "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Cum eveniet voluptas, ullam saepe laboriosam quas consequuntur! Itaque consequuntur, fugiat labore, sit rem dolore harum eligendi alias, cumque at tenetur nulla.",
-    //     image: placeholder,
-    //     top: "12%",
-    //     left: "50%",
-    // },
-    // {
-    //     key: 15,
-    //     name: "STREET DANCE",
-    //     desc: "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Cum eveniet voluptas, ullam saepe laboriosam quas consequuntur! Itaque consequuntur, fugiat labore, sit rem dolore harum eligendi alias, cumque at tenetur nulla.",
-    //     image: placeholder,
-    //     top: "30%",
-    //     left: "50%",
-    // },
-    // {
-    //     key: 16,
-    //     name: "STREET DANCE",
-    //     desc: "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Cum eveniet voluptas, ullam saepe laboriosam quas consequuntur! Itaque consequuntur, fugiat labore, sit rem dolore harum eligendi alias, cumque at tenetur nulla.",
-    //     image: placeholder,
-    //     top: "40%",
-    //     left: "50%",
-    // },
-    // {
-    //     key: 17,
-    //     name: "STREET DANCE",
-    //     desc: "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Cum eveniet voluptas, ullam saepe laboriosam quas consequuntur! Itaque consequuntur, fugiat labore, sit rem dolore harum eligendi alias, cumque at tenetur nulla.",
-    //     image: placeholder,
-    //     top: "55%",
-    //     left: "50%",
-    // },
-    // {
-    //     key: 18,
-    //     name: "STREET DANCE",
-    //     desc: "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Cum eveniet voluptas, ullam saepe laboriosam quas consequuntur! Itaque consequuntur, fugiat labore, sit rem dolore harum eligendi alias, cumque at tenetur nulla.",
-    //     image: placeholder,
-    //     top: "60%",
-    //     left: "50%",
-    // },
-    // {
-    //     key: 19,
-    //     name: "STREET DANCE",
-    //     desc: "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Cum eveniet voluptas, ullam saepe laboriosam quas consequuntur! Itaque consequuntur, fugiat labore, sit rem dolore harum eligendi alias, cumque at tenetur nulla.",
-    //     image: placeholder,
-    //     top: "75%",
-    //     left: "50%",
-    // },
+    {
+      key: 9,
+      name: "TARANG",
+      desc: "Tarang – a musical fusion extravaganza from the Indian heartland and its innumerably diverse facets. Cover an existing piece or create your own. Come as a band and the stage is yours.",
+      image: StreetDance,
+      top: "7%",
+      left: "23%",
+    },
+    {
+      key: 10,
+      name: "PITCH PERFECT",
+      desc: "Be it the catchy rhythm of Anna Kendrick or the calm and breezy voice of Bobby McFerrin, experience a cappella at its best at Pitch Perfect. With participants from over 10 institutions, Pitch Perfect is the platform for a growing crowd of Cappella enthusiasts to face off against each other. A battle of the bands with no instruments, this symphony of voices at the Main Auditorium is establishing a new dimensionality of music vastly unexplored till date.",
+      image: StreetDance,
+      top: "20%",
+      left: "30%",
+    },
+    {
+      key: 11,
+      name: "SWARANJALI SOLO (VOCALS)",
+      desc: "Swaranjali is a classical music competition. Participants trained in the vocal and instrumental aspects of both Carnatic and Hindustani styles are invited to compete. (Instruments: violin, sitar, veena, flute, Hawaiian guitar, tabla, mridangam, ghatam, keyboard, harmonium, kanjira, sarangi and sarod.) There are 4 categories: 1. Solo Vocals 2. Solo Wind and String 3. Solo Percussion 4. Group",
+      image: StreetDance,
+      top: "45%",
+      left: "50%",
+    },
+    {
+      key: 12,
+      name: "ANDHOLIKA",
+      desc: "Andholika is a talent hunt for the most versatile singer amongst the participants. The event is split into two independent sections, Eastern And Western",
+      image: StreetDance,
+      top: "67%",
+      left: "55%",
+    },
+    {
+      key: 13,
+      name: "METAMORPHOSIS",
+      desc: "Metamorphosis is a theme based short film making competition, where aspiring filmmakers from all over the country showcase their talent through their aesthetic sense, ingenuity, perspective and emotion. Every year we get multiple entries and the best of them are screened during Oasis.",
+      image: StreetDance,
+      top: "42%",
+      left: "70%",
+    },
+    {
+      key: 14,
+      name: "FASHP",
+      desc: "Fashion is an art, a religion, a peek into a personality. For some, it’s an escape or a disguise while for others it’s just being comfortable. But ultimately, fashion is an individual statement of expression for each of us and Fashion Parade is the avenue to express yourself. The epilogue of one's pursuit of fashion and style. With the stage set for ingenious designers to parade their stunning models in their own never-seen-before designs, it will be an ethereal experience for all.",
+      image: StreetDance,
+      top: "10%",
+      left: "50%",
+    },
   ];
 
-  const { innerWidth, innerHeight } = useWindowSize();
-
+  const [width, setWidth] = useState(0);
+  const [translateX, setTranslateX] = useState(0);
+  const [cardNo, setCardNo] = useState(1);
+  const totalCards = tasks.length + 1;
 
   useEffect(() => {
-    // Set initial states
-    gsap.set("#scrollDistMobile", { width: "100%", height: "100%" });
-    gsap.set("#containerMobile", {
-      position: "fixed",
-      // width: 595,
-      // height: 1971,
-      transformOrigin: "0.5 0.5",
-      top: 0,
-    });
-    gsap.to("#containerMobile", {
-      duration: 1,
-      opacity: 1,
-      ease: "power2.inOut",
-      delay: 0.3,
-    });
-
-    // Tween the SVG path + circle
-    gsap
-      .timeline({
-        scrollTrigger: {
-          trigger: "#scrollDistMobile",
-          start: "top top",
-          end: "bottom bottom",
-          scrub: 0.5,
-        },
-      })
-      .to("#cm", { motionPath: "#pm", immediateRender: true, ease: "none" }, 0);
-    // .from("#p", { drawSVG: "0 0", ease: "none" }, 0);
-
-    // Move container's x/y to follow the red circle
-    gsap.ticker.add(() =>
-      gsap.to("#containerMobile", {
-        duration: 2.5,
-        x: -gsap.getProperty("#cm", "x"),
-        y: -gsap.getProperty("#cm", "y"),
-      })
-    );
-
-    // Center the container's left/top position
-    const resizeHandler = () => {
-      gsap.set("#containerMobile", {
-        left: 0,
-        top: 0,
-      });
+    const updateWidth = () => {
+      setWidth(innerWidth);
     };
-
-    window.addEventListener("load", resizeHandler);
-    window.addEventListener("resize", resizeHandler);
+    window.addEventListener("resize", updateWidth);
+    updateWidth();
     return () => {
-      window.removeEventListener("load", resizeHandler);
-      window.removeEventListener("resize", resizeHandler);
+      window.removeEventListener("resize", updateWidth);
     };
   }, []);
 
-  const scrollUp = () => {
-    window.scrollTo(0, 0);
+  // const [buttonTranslate, setButtonTranslate] = useState(() => innerWidth);
+  // console.log(buttonTranslate)
+
+  let translateStyle = {
+    transform: `translateX(${translateX}px)`,
+  };
+  // let buttonTranslateStyle = {
+  //   transform: `translateX(${buttonTranslate}px)`,
+  // };
+
+  const handleForward = () => {
+    // console.log("fowrard")
+    if (cardNo != totalCards) {
+      setCardNo(cardNo + 1);
+      setTranslateX(translateX - width);
+    }
+  };
+  const handleBackward = () => {
+    // console.log("back")
+    if (cardNo != 1) {
+      setCardNo(cardNo - 1);
+      setTranslateX(translateX + width);
+    }
   };
 
-  const scrollDown = () => {
-    window.scrollTo(0, 52920);
+  const handleFirstForward = () => {
+    setCardNo(cardNo + 1);
+    setTranslateX(translateX - width);
+    // setButtonTranslate(0);
   };
 
-  // console.log(window.scrollY)
+  const handleFirstBackward = () => {
+    setCardNo(cardNo - 1);
+    setTranslateX(translateX + width);
+    // setButtonTranslate(width);
+  };
+
+  // const handleLastForward = () => {
+  //   if (cardNo != totalCards) {
+  //     setCardNo(cardNo + 1);
+  //     setTranslateX(translateX - width);
+  //     setButtonTranslate(-width);
+  //   }
+  // };
+
+  // const handleLastBackward = () => {
+  //   setCardNo(1);
+  //   setTranslateX(translateX + width * (totalCards - 1));
+  //   setButtonTranslate(width);
+  // };
+
+  
+
+  let CardsList = eventDetails.map((card) => {
+    return (
+      <Card
+        key={card.key}
+        name={card.name}
+        image={card.image}
+        desc={card.desc}
+        onBackward={handleBackward}
+        onForward={handleForward}
+        width={width}
+      />
+    );
+  });
 
   return (
     <>
-      <div className={events.wrapper}>
-        <div id="scrollDistMobile" className={events.scrollDistMobile}></div>
-
-        <div className={events.navTop}>
-          <Image src={Top} onClick={scrollUp} alt=""></Image>
-          <h1>EVENTS</h1>
-        </div>
-
-        <div className={events.navBottom}>
-          <Image src={Bottom} onClick={scrollDown} alt=""></Image>
-        </div>
-
-        <div id="containerMobile" className={events.container}>
-          <Image
-            src={Map}
-            width={1000}
-            height={2700}
-            draggable={false}
-            alt=""
-            style={{ position: "absolute" }}
-            className={events.bgImage}
-          />
-          {/* <svg
-                        width="2359"
-                        height="1173"
-                        viewBox="0 0 2359 1173"
-                        fill="none"
-                        xmlns="http://www.w3.org/2000/svg"
-                        style={{ position: "absolute" }}
-                    >
-                        <circle id="c" r="10" fill="#f00" />
-                        <path
-                            id="p"
-                            d="M9.5 32.9988C47.8333 436.832 222.9 1180.4 488.5 1162C820.5 1139 678 -179.001 991 32.9988C1304 244.999 1019 1111.5 1396.5 1162C1774 1212.5 1789.5 32.9989 2110.5 32.9988C2460.5 32.9987 2332 429.499 2299.5 535.5C2256.75 674.927 2245.5 796.5 2198 1162"
-                            stroke="#FF0000"
-                            strokeWidth="5"
-                            fill="none"
-                        />
-                    </svg> */}
-
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            viewBox="0 0 252 1639"
-            fill="none"
-          >
-            <g filter="url(#filter0_d_1343_470)">
-              <circle id="cm" r="10" fill="#51B6FF" />
-              <path
-                id="pm"
-                d="M56.5 8C56.5 8 208.829 115.632 207.5 216C206.1 321.769 34.1179 318.222 34 424C33.8893 523.31 181.229 528.33 186.5 627.5C191.505 721.664 70 794 70 839C70 873.5 222 981.5 224 1033.5C226 1085.5 4.0009 1115.5 4 1223.5C3.99949 1285 232.339 1305.58 231.5 1424C230.692 1538.12 17.5 1623 17.5 1623"
-                stroke="url(#paint0_linear_1343_470)"
-                stroke-width="4"
-                stroke-linecap="round"
-                stroke-dasharray="12 12"
-              />
-            </g>
-            <defs>
-              <filter
-                id="filter0_d_1343_470"
-                x="0"
-                y="-0.000244141"
-                width="251.502"
-                height="1639"
-                filterUnits="userSpaceOnUse"
-                color-interpolation-filters="sRGB"
-              >
-                <feFlood flood-opacity="0" result="BackgroundImageFix" />
-                <feColorMatrix
-                  in="SourceAlpha"
-                  type="matrix"
-                  values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0"
-                  result="hardAlpha"
-                />
-                <feOffset dx="8" dy="4" />
-                <feGaussianBlur stdDeviation="5" />
-                <feComposite in2="hardAlpha" operator="out" />
-                <feColorMatrix
-                  type="matrix"
-                  values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0"
-                />
-                <feBlend
-                  mode="normal"
-                  in2="BackgroundImageFix"
-                  result="effect1_dropShadow_1343_470"
-                />
-                <feBlend
-                  mode="normal"
-                  in="SourceGraphic"
-                  in2="effect1_dropShadow_1343_470"
-                  result="shape"
-                />
-              </filter>
-              <linearGradient
-                id="paint0_linear_1343_470"
-                x1="12.5965"
-                y1="165.144"
-                x2="280.025"
-                y2="195.546"
-                gradientUnits="userSpaceOnUse"
-              >
-                <stop offset="0.0121923" stop-color="#51B6FF" />
-                <stop offset="0.199266" stop-color="#E8F5FF" />
-                <stop offset="0.382301" stop-color="#4CB4FF" />
-                <stop offset="0.573397" stop-color="#B4E0FF" />
-                <stop offset="0.75482" stop-color="#51B6FF" />
-                <stop offset="0.920297" stop-color="#BEE4FF" />
-              </linearGradient>
-            </defs>
-          </svg>
-
-          <div className={events.itemWrapper}>
-            {tasks.map((evt) => {
-              return (
-                <EventItemMobile
-                  key={evt.key}
-                  name={evt.name}
-                  desc={evt.desc}
-                  image={evt.image}
-                  top={evt.top}
-                  left={evt.left}
-                />
-              );
-            })}
+      <div className={styles.container}>
+        <div className={styles.mainContainer} style={translateStyle}>
+          <div className="firstCard" style={{ width: width }}>
+            <h1 className={styles.firstHeading} style={{ width: width }}>
+              EVENTS
+            </h1>
+            <p className={styles.firstText} style={{ width: width }}>
+              Tap to start your journey!
+              <br />
+              Adventures lie ahead...
+            </p>
+            <div
+              className={styles.navigation}
+              style={{ width: width}}
+            >
+              {/* <Image src={Backward} onClick={handleBackward} /> */}
+              <Image src={Forward} onClick={handleFirstForward} alt="" />
+            </div>
           </div>
+          {CardsList}
+          {/* <div className="firstCard" style={{ width: width }}>
+            <p className={styles.lastText} style={{ width: width }}>More adventure?<br/>Here awaits a map containing all events</p>
+            <div className={styles.lastArrow} style={{ width: width }}>
+                    <Image  src={Forward}
+                    />
+            </div>
+            <div onClick={handleLastBackward} className={styles.backToStart} style={{ width: width }}>&lt;&lt;&lt; back to start</div>
+           </div> */}
+        </div>
+        <div className={styles.navigation} style={{transform: cardNo == 1 ? `translateX(${width}px)` : `translateX(${0}px)`}}>
+          <Image
+            src={Backward}
+            onClick={cardNo == 2 ? handleFirstBackward : handleBackward}
+          />
+          <Image
+            src={Forward}
+            onClick={cardNo == totalCards ? "" : handleForward}
+            style={{
+              opacity: cardNo == totalCards ? "0.4" : "1",
+              cursor: cardNo == totalCards ? "auto" : "pointer",
+            }}
+          />
         </div>
       </div>
     </>

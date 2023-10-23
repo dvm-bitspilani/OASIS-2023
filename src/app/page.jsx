@@ -26,8 +26,8 @@ import TransitionRight from "../../public/static/images/TransitionRight.png";
 import { gsap } from "gsap";
 import { AnimatePresence, motion } from "framer-motion";
 import { useWindowSize } from "rooks";
-import EventsMobile from "@/components/EventsMobile";
-import EventsMobile2 from "./events/page";
+import EventsMobile2 from "@/components/EventsMobile";
+// import EventsMobile2 from "./events/page";
 import CustomCursor from "@/components/CustomCursor";
 
 export default function Home() {
