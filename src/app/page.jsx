@@ -29,9 +29,11 @@ import { useWindowSize } from "rooks";
 import EventsMobile2 from "@/components/EventsMobile";
 // import EventsMobile2 from "./events/page";
 import CustomCursor from "@/components/CustomCursor";
+import { useMemo } from "react";
 
 export default function Home() {
   const { isHamOpen, setIsHamOpen } = useContext(HamContext);
+  const { innerWidth, innerHeight } = useWindowSize();
 
   const [RegisterBtnWidth, setRegisterBtnWidth] = useState(200);
   const [RegisterBtnHeight, setRegisterBtnHeight] = useState(75);
@@ -39,7 +41,10 @@ export default function Home() {
   const [showLoader, setShowLoader] = useState(true);
 
   const numberOfRandom = 10;
-  const randomGenerationConfig = [32, -10, 30, 40, 25, 86, 0, 0];
+
+  const randomGenerationConfig = useMemo(() => {
+    return [32, -10, 30, 40, 25, 86, 0, 0]; 
+  }, []);
 
   const [randomLeft1, setrandomLeft1] = useState(
     generateRandomStatesArray(numberOfRandom, ...randomGenerationConfig)
@@ -226,7 +231,7 @@ export default function Home() {
       setRegisterBtnWidth(Math.min(200, Math.floor(innerWidth * 0.5)));
       setRegisterBtnHeight(75);
     }
-  }, []);
+  }, [innerWidth]);
 
   const [delayGiven, setDelayGiven] = useState(false);
 
@@ -298,7 +303,7 @@ export default function Home() {
         ctx.revert();
       }; // cleanup
     }
-  }, [isLoading, randomLeft1, numberOfRandom]);
+  }, [isLoading, randomLeft1, numberOfRandom , randomGenerationConfig]);
 
   useLayoutEffect(() => {
     // create our context. This function is invoked immediately and all GSAP animations and ScrollTriggers created during the execution of this function get recorded so we can revert() them later (cleanup)
@@ -369,7 +374,7 @@ export default function Home() {
         ctx.revert();
       }; // cleanup
     }
-  }, [isLoading, randomLeft2, delayGiven, numberOfRandom]);
+  }, [isLoading, randomLeft2, delayGiven, numberOfRandom , randomGenerationConfig]);
 
   useLayoutEffect(() => {
     if (!isLoading) {
@@ -438,7 +443,7 @@ export default function Home() {
         ctx.revert();
       }; // cleanup
     }
-  }, [isLoading, randomRight1, numberOfRandom]);
+  }, [isLoading, randomRight1, numberOfRandom , randomGenerationConfig]);
 
   useLayoutEffect(() => {
     if (!isLoading) {
@@ -509,7 +514,7 @@ export default function Home() {
         ctx.revert();
       }; // cleanup
     }
-  }, [isLoading, randomRight2, delayGiven, numberOfRandom]);
+  }, [isLoading, randomRight2, delayGiven, numberOfRandom , randomGenerationConfig]);
 
   const openHam = () => {
     if (isHamOpen) {
@@ -536,7 +541,7 @@ export default function Home() {
       topBar3.style.width = "75%";
       topBar3.style.borderRadius = "5px";
     }
-  }, [isHamOpen]);
+  }, [isHamOpen , isLoading]);
 
   useEffect(() => {
     if (isHamOpen) {
@@ -551,7 +556,6 @@ export default function Home() {
     }
   }, [isHamOpen]);
 
-  const { innerWidth, innerHeight } = useWindowSize();
 
   // const regLoaderRef = useRef(null);
   // const [loaderLoaded, setLoaderLoaded] = useState(false);

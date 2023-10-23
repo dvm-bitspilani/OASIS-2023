@@ -168,7 +168,7 @@ export default function EventsMobile2({ handleTransition }) {
     return () => {
       window.removeEventListener("resize", updateWidth);
     };
-  }, []);
+  }, [innerWidth]);
 
   // const [buttonTranslate, setButtonTranslate] = useState(() => innerWidth);
   // console.log(buttonTranslate)
@@ -272,6 +272,7 @@ export default function EventsMobile2({ handleTransition }) {
           <Image
             src={Backward}
             onClick={cardNo == 2 ? handleFirstBackward : handleBackward}
+            alt=""
           />
           <Image
             src={Forward}
@@ -280,6 +281,7 @@ export default function EventsMobile2({ handleTransition }) {
               opacity: cardNo == totalCards ? "0.4" : "1",
               cursor: cardNo == totalCards ? "auto" : "pointer",
             }}
+            alt=""
           />
         </div>
       </div>
