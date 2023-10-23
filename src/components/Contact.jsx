@@ -14,6 +14,7 @@ import supreeth from "../../public/static/images/supreeth.png";
 import sarthak_president from "../../public/static/images/prez.png"
 import vaibhav from "../../public/static/images/vaibhav.png"
 import abhinav from "../../public/static/images/abhinav.png"
+import paurana from "../../public/static/images/paurana.png"
 import contactGhost from "../../public/static/images/contactGhost.png";
 import mobileImageWrapper from "../../public/static/images/updatedMobileContactImageContainer.png";
 import ContactProfile from "@/components/ContactProfile";
@@ -46,7 +47,7 @@ const Page = () => {
     {
       name: "Aayush Paurana",
       dept: "Logistics and Operations",
-      image: `${contactGhost.src}`,
+      image: `${paurana.src}`,
       phone: "tel:+91-9930486791",
       mail: "mailto:controls@bits-oasis.org",
     },
@@ -79,18 +80,18 @@ const Page = () => {
       mail: "mailto:collaborations@bits-oasis.org",
     },
     {
-      name: "Abhinav Lamba",
-      dept: "General Secretary, Students' Union",
-      image: `${abhinav.src}`,
-      phone: "tel:+91-7078879443",
-      mail: "mailto:gensec@pilani.bits-pilani.ac.in",
-    },
-    {
       name: "Sarthak Aggarwal",
       dept: "President, Students' Union",
       image: `${sarthak_president.src}`,
       phone: "tel:+91-8005000213",
       mail: "mailto:president@pilani.bits-pilani.ac.in",
+    },
+    {
+      name: "Abhinav Lamba",
+      dept: "General Secretary, Students' Union",
+      image: `${abhinav.src}`,
+      phone: "tel:+91-7078879443",
+      mail: "mailto:gensec@pilani.bits-pilani.ac.in",
     },
   ];
 
