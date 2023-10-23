@@ -76,7 +76,7 @@ const Page = () => {
     {
       name: "Adarsh Goel",
       dept: "Online Collaborations and Publicity",
-      image: `${contactGhost.src}`,
+      image: `${adarsh.src}`,
       phone: "tel:+91-8979951532",
       mail: "mailto:collaborations@bits-oasis.org",
     },
