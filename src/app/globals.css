@@ -66,10 +66,10 @@ body::-webkit-scrollbar-thumb {
 canvas {
   z-index: 1600 !important;
 }
-/* 
+
 .swiper-slide {
   width: 100% !important;
-} */
+}
 
 .customHover {
   cursor: none;
@@ -107,7 +107,7 @@ a {
 
 
 
-/* .carousel {
+.carousel {
   overflow: hidden;
   width: 100%;
   height: 300px;
@@ -126,16 +126,16 @@ a {
   background: #f1f1f1;
   border: 1px solid #ccc;
   border-radius: 8px;
-} */
+}
 
-.swiper {
+.swiper.gallerySwiper {
   width: 80% !important;
   height: 60% !important;
   margin-left: auto !important;
   margin-right: auto !important;
 }
 
-.swiper-slide {
+.swiper-slide.gallerySlide {
   text-align: center !important;
   font-size: 18px !important;
   background: grey !important;
