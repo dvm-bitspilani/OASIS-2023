@@ -8,9 +8,7 @@ import { useState, useEffect, useRef, useLayoutEffect } from "react"
 import { useContext } from "react"
 import { HamContext } from "@/context/HamContextProvider"
 import Link from "next/link"
-import { Metadata } from "next"
 import textLogo from "../../public/static/images/updatedOasisLogo.png"
-import navLogo from "../../public/static/images/navLogo.png"
 import Navbar from "@/components/Navbar"
 import Hamburger from "@/components/hamburger"
 import landingPgBookImg from "../../public/static/images/Book.png"
@@ -30,6 +28,8 @@ import EventsMobile2 from "@/components/EventsMobile"
 // import EventsMobile2 from "./events/page";
 import CustomCursor from "@/components/CustomCursor"
 import { useMemo } from "react"
+import { generateRandomStatesArray } from "@/helpers/generateRandomStatesArray"
+import Loader from "@/helpers/Loader"
 
 export default function Home() {
   const { isHamOpen, setIsHamOpen } = useContext(HamContext)
@@ -138,42 +138,6 @@ export default function Home() {
   const transitionLeft = useRef(null)
   const transitionRight = useRef(null)
 
-  // useEffect(() => {
-  //   const loadImages = () => {
-  //     setIsLoading(true);
-  //     setShowLoader(true);
-  //     const images = document.querySelectorAll('img');
-  //     let loaded = 0;
-
-  //     const handleImageLoad = () => {
-  //       loaded++;
-  //       if (loaded === images.length) {
-  //         setTimeout(() => {
-  //           setIsLoading(false);
-  //           setShowLoader(false);
-  //         }, 3000);
-  //       }
-  //     };
-
-  //     images.forEach((img) => {
-  //       if (img.complete) {
-  //         handleImageLoad();
-  //       } else {
-  //         img.addEventListener('load', handleImageLoad);
-  //       }
-  //     });
-
-  //     return () => {
-  //       images.forEach((img) => {
-  //         img.removeEventListener('load', handleImageLoad);
-  //       });
-  //     };
-  //   };
-
-  //   if (typeof window !== "undefined") {
-  //     setTimeout(loadImages, 100);
-  //   }
-  // }, []);
 
   useEffect(() => {
     if (typeof window !== "undefined") {
@@ -568,89 +532,6 @@ export default function Home() {
     }
   }, [isHamOpen])
 
-  // const regLoaderRef = useRef(null);
-  // const [loaderLoaded, setLoaderLoaded] = useState(false);
-  // useEffect(() => {
-  //   const assets = [regLoaderRef.current];
-  //   let assetsLoaded = 0;
-
-  //   const handleAssetLoad = () => {
-  //     assetsLoaded++;
-  //     if (assetsLoaded === assets.length) {
-  //       setTimeout(() => {
-  //         setLoaderLoaded(true);
-  //       }, 1000);
-  //     }
-  //   };
-
-  //   assets.forEach((asset) => {
-  //     if (
-  //       asset &&
-  //       (asset.complete || asset.readyState === 4 || asset.tagName === "LINK")
-  //     ) {
-  //       handleAssetLoad();
-  //     } else {
-  //       if (asset) {
-  //         asset.addEventListener("load", handleAssetLoad);
-  //         asset.addEventListener("error", handleAssetLoad);
-  //       }
-  //     }
-  //   });
-
-  //   const cleanup = () => {
-  //     assets.forEach((asset) => {
-  //       if (asset) {
-  //         asset.removeEventListener("load", handleAssetLoad);
-  //         asset.removeEventListener("error", handleAssetLoad);
-  //       }
-  //     });
-  //   };
-
-  //   return cleanup;
-  // }, []);
-  // useEffect(() => {
-  //   if (loaderLoaded) {
-  //     const assets = document.querySelectorAll(
-  //       "img",
-  //       "font",
-  //       "style",
-  //       "iframe"
-  //     );
-
-  //     let assetsLoaded = 0;
-
-  //     const handleAssetLoad = () => {
-  //       assetsLoaded++;
-  //       if (assetsLoaded === assets.length) {
-  //         setTimeout(() => {
-  //           setIsLoading(false);
-  //         }, 2000);
-  //       }
-  //     };
-
-  //     assets.forEach((asset) => {
-  //       if (
-  //         asset.complete ||
-  //         asset.readyState === 4 ||
-  //         asset.tagName === "LINK"
-  //       ) {
-  //         handleAssetLoad();
-  //       } else {
-  //         asset.addEventListener("load", handleAssetLoad);
-  //         asset.addEventListener("error", handleAssetLoad);
-  //       }
-  //     });
-
-  //     const cleanup = () => {
-  //       assets.forEach((asset) => {
-  //         asset.removeEventListener("load", handleAssetLoad);
-  //         asset.removeEventListener("error", handleAssetLoad);
-  //       });
-  //     };
-
-  //     return cleanup;
-  //   }
-  // }, [loaderLoaded]);
 
   const [currentPage, setCurrentPage] = useState("home")
 
@@ -990,133 +871,4 @@ export default function Home() {
       </div>
     </main>
   )
-}
-
-export function getRandomStats(
-  startingYPoint,
-  endingYPoint,
-  startingYRange,
-  endingYRange,
-  startingXPoint,
-  endingXPoint,
-  startingXRange,
-  endingXRange
-) {
-  const random = {}
-  random.int = Math.floor(Math.random() * 10 + 1)
-  random.file = `/static/images/Group${random.int}.png`
-
-  // x - right, y - top
-  // get a random number from 35 to 45
-  random.startingY = Math.floor(Math.random() * startingYRange + startingYPoint)
-  random.startingX = Math.floor(Math.random() * startingXRange + startingXPoint)
-
-  // test
-  // const randomYArr = [6, 21, 36];
-  // const randomY = randomYArr[Math.floor(Math.random() * 2)];
-
-  // get a random number between 6 and 36
-  random.endingY = Math.floor(Math.random() * endingYRange + endingYPoint)
-  random.endingX = Math.floor(Math.random() * endingXRange + endingXPoint)
-  // random.delay = Math.floor(Math.random() * 4);
-  return random
-}
-
-export function generateRandomStatesArray(
-  number,
-  startingYPoint,
-  endingYPoint,
-  startingYRange,
-  endingYRange,
-  startingXPoint,
-  endingXPoint,
-  startingXRange,
-  endingXRange
-) {
-  const randomArray = []
-  for (let i = 0; i < number; i++) {
-    // randomArray.push(getRandomStats(32, -10, 30, 40));
-    randomArray.push(
-      getRandomStats(
-        startingYPoint,
-        endingYPoint,
-        startingYRange,
-        endingYRange,
-        startingXPoint,
-        endingXPoint,
-        startingXRange,
-        endingXRange
-      )
-    )
-  }
-  return randomArray
-}
-
-export function randomAnimation(direction, random, setRandom, delay, id) {
-  let ctx = gsap.context(() => {
-    random.forEach((item, key) => {
-      gsap.set(`#${id}${key}`, {
-        right: `${item.startingX}%`,
-        top: `${item.startingY}%`,
-        opacity: 0,
-        scale: 0.3,
-      })
-
-      const randomDelay = Math.random() * 2
-
-      const tl = gsap.timeline({
-        delay: delay ? randomDelay : 0,
-        onComplete: () => {
-          if (key === random.length - 1) {
-            setRandom([
-              getRandomStats(),
-              getRandomStats(),
-              getRandomStats(),
-              getRandomStats(),
-            ])
-          }
-        },
-      })
-
-      tl.to(`#${id}${key}`, {
-        left: `${(item.endingX + item.startingX) / 2}%`,
-        top: `${(item.endingY + item.startingY) / 2}%`,
-        // scale: 1,
-        // opacity: 1,
-        delay: `${key * 0.5}`,
-        duration: 2.5,
-        ease: "none",
-      })
-      tl.to(
-        `#${id}${key}`,
-        {
-          opacity: 1,
-          duration: 2.5,
-          ease: "power2.in",
-        },
-        "-=1.5"
-      )
-      tl.to(`#${id}${key}`, {
-        left: `${item.endingX}%`,
-        top: `${item.endingY}%`,
-        opacity: 0,
-        duration: 2.5,
-        ease: "none",
-      })
-      tl.to(
-        `#${id}${key}`,
-        {
-          rotate: -80,
-          scale: 1,
-          duration: 3,
-          ease: "power2.in",
-        },
-        "-=3"
-      )
-    })
-  }, scope) // <- IMPORTANT! Scopes selector text
-
-  return () => {
-    ctx.revert()
-  } // cleanup
 }

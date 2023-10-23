@@ -33,11 +33,11 @@ import CustomCursor from "@/components/CustomCursor"
 import { useWindowSize } from "rooks"
 import { gsap } from "gsap"
 import statesData from "./states.json"
-import { generateRandomStatesArray } from "../page"
 import customStylesArray from "@/helpers/CustomStylesArray"
 import formReducerFn from "@/helpers/formReducerFn"
 import { getCollegeData, getEventsData } from "@/helpers/regPageFetch"
-import LoaderComponent from "@/helpers/Loader"
+import Loader from "@/helpers/Loader"
+import { generateRandomStatesArray } from "@/helpers/generateRandomStatesArray"
 
 // Images
 import skull from "../../../public/static/images/skull.svg"
@@ -909,7 +909,7 @@ export default function Page() {
           CloseModal={CloseModal}
         />
       )}
-      <LoaderComponent isLoading={isLoading} setIsLoading={setIsLoading} />
+      <Loader isLoading={isLoading} setIsLoading={setIsLoading} />
       <div className={styles.regPage} ref={scope}>
         <h2>REGISTRATIONS</h2>
         <div className={styles.guideLink}>
