@@ -1,6 +1,6 @@
 'use client'
 
-import statesData from './states.json'
+// React and Hooks
 import React, {
   useState,
   useEffect,
@@ -9,175 +9,46 @@ import React, {
   useLayoutEffect,
   useMemo,
 } from 'react'
+
+// Next.js
 import { useRouter } from 'next/navigation'
-import { motion } from 'framer-motion'
 import Image from 'next/image'
+
+// Styling
+import indexStyles from '../page.module.css'
+import styles from './page.module.css'
+
+// External Libraries
+import { motion } from 'framer-motion'
 import Select from 'react-select'
 import Creatable from 'react-select/creatable'
+import ReCAPTCHA from 'react-google-recaptcha'
+
+// Components
 import Radio from '../../components/radioButton.jsx'
-import styles from './page.module.css'
-import indexStyles from '../page.module.css'
+import ErrorScreen from './ErrorScreen'
+import CustomCursor from '@/components/CustomCursor'
+
+// Other Dependencies
+import { useWindowSize } from 'rooks'
+import { gsap } from 'gsap'
+import statesData from './states.json'
+import { generateRandomStatesArray } from '../page'
+import customStylesArray from '@/helpers/CustomStylesArray'
+import formReducerFn from '@/helpers/formReducerFn'
+import { getCollegeData, getEventsData } from '@/helpers/regPageFetch'
+import LoaderComponent from '@/helpers/Loader'
+
+// Images
 import skull from '../../../public/static/images/skull.svg'
 import book from '../../../public/static/images/regBookOptimised.png'
 import register from '../../../public/static/images/regPageBtn.png'
-import regLogo from '../../../public/static/images/OasisLogo.png'
 import cross from '../../../public/static/images/cross.svg'
-import { useWindowSize } from 'rooks'
-import CustomStyles from './CustomStyles'
-import ErrorScreen from './ErrorScreen'
-import ReCAPTCHA from 'react-google-recaptcha'
-import CustomCursor from '@/components/CustomCursor'
-
-import { gsap } from 'gsap'
-
-import { generateRandomStatesArray } from '../page'
 
 const noCitiesMessage = () => 'Select a State First'
 
-const customStylesArray = [
-  {
-    ...CustomStyles(),
-    menu: (provided) => ({
-      ...provided,
-      zIndex: 10000,
-    }),
-  },
-  {
-    ...CustomStyles(),
-    menu: (provided) => ({
-      ...provided,
-      zIndex: 9999,
-    }),
-  },
-  {
-    ...CustomStyles(),
-    menu: (provided) => ({
-      ...provided,
-      zIndex: 9998,
-    }),
-  },
-  {
-    ...CustomStyles(),
-    menu: (provided) => ({
-      ...provided,
-      zIndex: 9997,
-    }),
-  },
-  {
-    ...CustomStyles(),
-    menu: (provided) => ({
-      ...provided,
-      zIndex: 9996,
-    }),
-  },
-]
-
-async function getCollegeData() {
-  const res = await fetch(
-    'https://bits-oasis.org/2023/main/registrations/get_college'
-  )
-  if (!res.ok) {
-    throw new Error('Failed to fetch college')
-  }
-  return res.json()
-}
-async function getEventsData() {
-  const res = await fetch(
-    'https://bits-oasis.org/2023/main/registrations/events'
-  )
-  if (!res.ok) {
-    throw new Error('Failed to get Events')
-  }
-  return res.json()
-}
-
 function filterObjectsByName(objectsArray, searchName) {
   return objectsArray.filter((object) => object.name === searchName)
-}
-
-const formReducerFn = (state, action) => {
-  if (action.type === 'nameChange') {
-    return {
-      ...state,
-      name: action.value.target.value,
-    }
-  }
-  if (action.type === 'emailChange') {
-    return {
-      ...state,
-      email_id: action.value.target.value,
-    }
-  }
-  if (action.type === 'phoneChange') {
-    return {
-      ...state,
-      phone: action.value,
-    }
-  }
-  if (action.type === 'stateChange') {
-    return {
-      ...state,
-      state: action.value.value,
-    }
-  }
-  if (action.type === 'cityChange') {
-    return {
-      ...state,
-      city: action.value.value,
-    }
-  }
-  if (action.type === 'collegeChange') {
-    return {
-      ...state,
-      college_id: action.value.value,
-    }
-  }
-  if (action.type === 'yearChange') {
-    return {
-      ...state,
-      year: action.value.value,
-    }
-  }
-  if (action.type === 'genderChange') {
-    return {
-      ...state,
-      gender: action.value.target.id,
-    }
-  }
-  if (action.type === 'choreoChange') {
-    // const newValue = state.choreographer === "NO" ? "YES" : "NO";
-    return {
-      ...state,
-      choreographer: action.value.target.value,
-    }
-  }
-  if (action.type === 'headChange') {
-    // const newValue = state.head_of_society === "NO" ? "YES" : "NO";
-    return {
-      ...state,
-      head_of_society: action.value.target.value,
-    }
-  }
-  if (action.type === 'visitorChange') {
-    // const newValue = state.visitor === "NO" ? "YES" : "NO";
-    return {
-      ...state,
-      visitor: action.value.target.value,
-    }
-  }
-  if (action.type === 'eventChange') {
-    const eventsArray = action.value
-    // console.log(eventsArray);
-    const eventsName = eventsArray.map((item) => {
-      return item.value
-    })
-    return {
-      ...state,
-      events: eventsName,
-    }
-  }
-
-  return state
 }
 
 const formDataTemplate = {
@@ -204,6 +75,8 @@ const year = [
 ]
 
 export default function Page() {
+  const [isLoading, setIsLoading] = useState(false)
+
   async function uploadData(data) {
     if (data.choreographer === 'NO') {
       data.choreographer = 0
@@ -249,7 +122,6 @@ export default function Page() {
 
   const { innerWidth, innerHeight } = useWindowSize()
   const [isCaptchaVerified, setIsCaptchaVerified] = useState(false)
-  const [isCaptchaClicked, setIsCaptcaClicked] = useState(false)
 
   // Callback function when reCAPTCHA is verified
   const handleCaptchaVerify = async (value) => {
@@ -271,7 +143,6 @@ export default function Page() {
     []
   )
 
-  const [isLoading, setIsLoading] = useState(true)
   const scope = useRef(null)
 
   const nameFieldRef = useRef(null)
@@ -306,11 +177,11 @@ export default function Page() {
     )
   )
 
-  const randomSetImagesTopLeft1 = randomStatesTopLeft1.map((item, index) => {
-    return (
+  function generateRandomSetImages(states, prefix) {
+    return states.map((item, index) => (
       <Image
         key={index}
-        id={`top_left_1_${index}`}
+        id={`${prefix}_${index}`}
         className={indexStyles.leftSymbol}
         src={item.file}
         alt=""
@@ -318,60 +189,27 @@ export default function Page() {
         height={80}
         draggable={false}
       />
-    )
-  })
+    ))
+  }
 
-  const randomSetImagesTopLeft2 = randomStatesTopLeft2.map((item, index) => {
-    return (
-      <Image
-        key={index}
-        id={`top_left_2_${index}`}
-        className={indexStyles.leftSymbol}
-        src={item.file}
-        alt=""
-        width={80}
-        height={80}
-        draggable={false}
-      />
-    )
-  })
-
-  const randomSetImagesBottomLeft1 = randomStatesBottomLeft1.map(
-    (item, index) => {
-      return (
-        <Image
-          key={index}
-          id={`bottom_left_1_${index}`}
-          className={indexStyles.leftSymbol}
-          src={item.file}
-          alt=""
-          width={80}
-          height={80}
-          draggable={false}
-        />
-      )
-    }
+  const randomSetImagesTopLeft1 = generateRandomSetImages(
+    randomStatesTopLeft1,
+    'top_left_1'
   )
-
-  const randomSetImagesBottomLeft2 = randomStatesBottomLeft2.map(
-    (item, index) => {
-      return (
-        <Image
-          key={index}
-          id={`bottom_left_2_${index}`}
-          className={indexStyles.leftSymbol}
-          src={item.file}
-          alt=""
-          width={80}
-          height={80}
-          draggable={false}
-        />
-      )
-    }
+  const randomSetImagesTopLeft2 = generateRandomSetImages(
+    randomStatesTopLeft2,
+    'top_left_2'
+  )
+  const randomSetImagesBottomLeft1 = generateRandomSetImages(
+    randomStatesBottomLeft1,
+    'bottom_left_1'
+  )
+  const randomSetImagesBottomLeft2 = generateRandomSetImages(
+    randomStatesBottomLeft2,
+    'bottom_left_2'
   )
 
   const [isDelayed, setIsDelayed] = useState(false)
-  const [allAssetsLoaded, setAllAssetsLoaded] = useState(false)
   useEffect(() => {
     if (typeof window !== 'undefined') {
       // console.log('first')
@@ -393,7 +231,6 @@ export default function Page() {
 
         Promise.all(assetPromises)
           .then(() => {
-            setAllAssetsLoaded(true)
             setTimeout(() => {
               setIsLoading(false)
               // setShowLoader(false);
@@ -402,9 +239,6 @@ export default function Page() {
           })
           .catch((error) => {
             console.error('Error loading assets:', error)
-            // setIsLoading(false);
-            setAllAssetsLoaded(true)
-            // setShowLoader(false);
             setTimeout(() => {
               setIsLoading(false)
               // setShowLoader(false);
@@ -730,7 +564,6 @@ export default function Page() {
 
   const [formData, formDispatchFn] = useReducer(formReducerFn, formDataTemplate)
   const router = useRouter()
-  const [loaderLoaded, setLoaderLoaded] = useState(false)
   const [fetchedData, setFetchedData] = useState(null)
   const [colleges, setColleges] = useState([])
   const [events, setEvents] = useState([])
@@ -742,90 +575,9 @@ export default function Page() {
   })
   const skullRef = useRef(null)
   const formContainerRef = useRef(null)
-  const regLoaderRef = useRef(null)
   const [errorScreen, setErrorScreen] = useState(false)
   const [errorMessage, setErrorMessage] = useState('')
   const [error, setError] = useState(false)
-
-  useEffect(() => {
-    const assets = [regLoaderRef.current]
-    let assetsLoaded = 0
-
-    const handleAssetLoad = () => {
-      assetsLoaded++
-      if (assetsLoaded === assets.length) {
-        setTimeout(() => {
-          setLoaderLoaded(true)
-        }, 1000)
-      }
-    }
-
-    assets.forEach((asset) => {
-      if (
-        asset &&
-        (asset.complete || asset.readyState === 4 || asset.tagName === 'LINK')
-      ) {
-        handleAssetLoad()
-      } else {
-        if (asset) {
-          asset.addEventListener('load', handleAssetLoad)
-          asset.addEventListener('error', handleAssetLoad)
-        }
-      }
-    })
-
-    const cleanup = () => {
-      assets.forEach((asset) => {
-        if (asset) {
-          asset.removeEventListener('load', handleAssetLoad)
-          asset.removeEventListener('error', handleAssetLoad)
-        }
-      })
-    }
-
-    return cleanup
-  }, [])
-  useEffect(() => {
-    if (loaderLoaded) {
-      const assets = document.querySelectorAll('img', 'font', 'style', 'iframe')
-
-      let assetsLoaded = 0
-
-      const handleAssetLoad = () => {
-        assetsLoaded++
-        if (assetsLoaded === assets.length) {
-          setTimeout(() => {
-            setIsLoading(false)
-          }, 2000)
-        }
-      }
-
-      assets.forEach((asset) => {
-        if (
-          asset &&
-          (asset.complete || asset.readyState === 4 || asset.tagName === 'LINK')
-        ) {
-          handleAssetLoad()
-        } else {
-          if (asset) {
-            asset.addEventListener('load', handleAssetLoad)
-            asset.addEventListener('error', handleAssetLoad)
-          }
-        }
-      })
-
-      const cleanup = () => {
-        assets.forEach((asset) => {
-          if (asset) {
-            asset.removeEventListener('load', handleAssetLoad)
-            asset.removeEventListener('error', handleAssetLoad)
-          }
-        })
-      }
-
-      return cleanup
-    }
-  }, [loaderLoaded, colleges, events])
 
   const handleRegisterations = async () => {
     const allErrors = document.querySelectorAll(`.${styles.errorMessage}`)
@@ -1158,31 +910,7 @@ export default function Page() {
           CloseModal={CloseModal}
         />
       )}
-      {isLoading && (
-        // <div className={styles.regLoader}>
-        //   <Image
-        //     draggable={false}
-        //     ref={regLoaderRef}
-        //     id="regLogoImage"
-        //     src={regLogo}
-        //     alt="OASIS"
-        //     width="auto"
-        //     height="2rem"
-        //   />
-        // </div>
-        <div className={styles.loaderContainer}>
-          {/* <MyVideoLoader/> */}
-          <video
-            src={require('../../../public/static/images/loadervideo.mp4')} // Update with the correct path
-            autoPlay
-            muted
-            loop
-            playsInline
-            preload="auto"
-            width="100%"
-          />
-        </div>
-      )}
+      <LoaderComponent isLoading={isLoading} setIsLoading={setIsLoading} />
       <div className={styles.regPage} ref={scope}>
         <h2>REGISTRATIONS</h2>
         <div className={styles.guideLink}>
@@ -1217,8 +945,8 @@ export default function Page() {
                 d="M31 3L3 31M3 3L31 31"
                 stroke="#5DB3F1"
                 stroke-width="5"
-                stroke-linecap="round"
-                stroke-linejoin="round"
+                strokeLinecap="round"
+                strokeLinejoin="round"
               />
             </svg>
           </div>
