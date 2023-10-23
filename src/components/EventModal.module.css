@@ -1,113 +1,113 @@
-.wrapper{
-    width: 100vw;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    position: fixed;
-    top: 0%;
-    z-index: 50;
-    height: 100vh;
-    overflow: auto;
-    background: transparent;
-    transform: translateY(80%);
-    transition: transform 0.3s ease-in-out;
-    left: 0%;
-    scrollbar-width: none;
+.wrapper {
+  width: 100vw;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: fixed;
+  top: 0%;
+  z-index: 50;
+  height: 100vh;
+  overflow: auto;
+  background: transparent;
+  transform: translateY(80%);
+  transition: transform 0.3s ease-in-out;
+  left: 0%;
+  scrollbar-width: none;
 }
-.backgroundImage{
-    position: absolute;
-    top: 10%;
-    left: auto;
-    height: auto;
-    width: 68vw;
-    margin-bottom: 20vh;
+.backgroundImage {
+  position: absolute;
+  top: 10%;
+  left: auto;
+  height: auto;
+  width: 68vw;
+  margin-bottom: 20vh;
 }
-.modalContent{
-    position: absolute;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 75vw;
-    flex-direction: column;
-    top: 40%;
-    gap: 3rem;
+.modalContent {
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 75vw;
+  flex-direction: column;
+  top: 40%;
+  gap: 3rem;
 }
-.heading{
-    height: 20%;
-    display: flex;
+.heading {
+  height: 20%;
+  display: flex;
   align-items: center;
 }
-.heading h2{
-    font-family: 'OldNewspaperTypes';
-    font-weight: 500;
-    font-size: 3rem;
-    color: rgba(0, 0, 0, 1);
+.heading h2 {
+  font-family: 'OldNewspaperTypes';
+  font-weight: 500;
+  font-size: 3rem;
+  color: rgba(0, 0, 0, 1);
 }
-.subheadings{
-    display: flex;
-    width: 75%;
-    justify-content: space-around;
-    align-items: center;
+.subheadings {
+  display: flex;
+  width: 75%;
+  justify-content: space-around;
+  align-items: center;
 }
-.subheadings span{
-    font-size: 2rem;
-    font-family: 'OldNewspaperTypes';
-    color: #000;
+.subheadings span {
+  font-size: 2rem;
+  font-family: 'OldNewspaperTypes';
+  color: #000;
 }
-.eventImage img{
-    width: 30vw;
-    height: auto;
-    /* margin-top: 2rem; */
+.eventImage img {
+  width: 30vw;
+  height: auto;
+  /* margin-top: 2rem; */
 }
-.eventDescription{
-    width: 75%;
-    font-family: 'OldNewspaperTypes';
-    font-size: 1.5rem;
-    color: black;
-    font-weight: 100;
-    /* height: 30vh; */
-    overflow-y: scroll;
-    text-align: center;
+.eventDescription {
+  width: 75%;
+  font-family: 'OldNewspaperTypes';
+  font-size: 1.5rem;
+  color: black;
+  font-weight: 100;
+  /* height: 30vh; */
+  overflow-y: scroll;
+  text-align: center;
 }
-.closeBtn{
-    position: absolute;
-    top: 15%;
-    height: unset;
-    display:flex;
-    align-items: center;
-    right: 25%;
+.closeBtn {
+  position: absolute;
+  top: 15%;
+  height: unset;
+  display: flex;
+  align-items: center;
+  right: 25%;
 }
-.open{
-    transform: translateY(0%);
+.open {
+  transform: translateY(0%);
 }
-.close{
-    transform: translateY(80%);
+.close {
+  transform: translateY(80%);
 }
-.contentWrapper{
-    position: absolute;
-    top: 5%;
-    left: auto;
-    height: fit-content;
-    width: 68vw;
-    background-image: url(../../public/static/images/eventsModalBgLaptop.png);
-    height: auto;
-    background-size: 100% 100%;
-    /* margin-bottom: 20vh; */
-    padding-block: 8rem;
+.contentWrapper {
+  position: absolute;
+  top: 5%;
+  left: auto;
+  height: fit-content;
+  width: 68vw;
+  background-image: url(../../public/static/images/eventsModalBgLaptop.png);
+  height: auto;
+  background-size: 100% 100%;
+  /* margin-bottom: 20vh; */
+  padding-block: 8rem;
 }
-.heading span{
-    margin-inline: auto;
-    font-size: 3rem;
-    font-family: 'OldNewspaperTypes';
-    color: black;
+.heading span {
+  margin-inline: auto;
+  font-size: 3rem;
+  font-family: 'OldNewspaperTypes';
+  color: black;
 }
-.eventImage{
-    display: flex;
-    justify-content: center;
-    padding-block:3rem ;
-    padding-bottom: 0;
-    /* margin-bottom: -2rem; */
+.eventImage {
+  display: flex;
+  justify-content: center;
+  padding-block: 3rem;
+  padding-bottom: 0;
+  /* margin-bottom: -2rem; */
 }
-.eventDescription{
-    margin-inline: auto;
+.eventDescription {
+  margin-inline: auto;
 }

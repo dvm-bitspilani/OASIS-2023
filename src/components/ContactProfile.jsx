@@ -1,8 +1,8 @@
-import React from "react";
-import styles from "./Contact.module.css";
-import callIcon from "../../public/static/images/compressed_phone.svg";
-import mailIcon from "../../public/static/images/compressed_mail.svg";
-import Image from "next/image";
+import React from 'react'
+import styles from './Contact.module.css'
+import callIcon from '../../public/static/images/compressed_phone.svg'
+import mailIcon from '../../public/static/images/compressed_mail.svg'
+import Image from 'next/image'
 
 const ContactProfile = (props) => {
   // console.log(props)
@@ -21,7 +21,7 @@ const ContactProfile = (props) => {
       />
       <h1>{props.name}</h1>
       <h2>{props.dept}</h2>
-      <div className={styles["iconsContainer"]}>
+      <div className={styles['iconsContainer']}>
         <a href={props.mail}>
           <Image draggable={false} src={mailIcon} alt="" />
         </a>
@@ -31,7 +31,7 @@ const ContactProfile = (props) => {
       </div>
       {/* </div> */}
     </>
-  );
-};
+  )
+}
 
-export default ContactProfile;
+export default ContactProfile

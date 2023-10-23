@@ -1,17 +1,17 @@
-import "./globals.css";
-import { Inter } from "next/font/google";
-import Script from "next/script";
-import Provider from "../context/Provider";
-import CustomTrail from "../components/CustomTrail";
-import OasisLogo from "../../public/static/images/eventsModalOasisLogo.png"
+import './globals.css'
+import { Inter } from 'next/font/google'
+import Script from 'next/script'
+import Provider from '../context/Provider'
+import CustomTrail from '../components/CustomTrail'
+import OasisLogo from '../../public/static/images/eventsModalOasisLogo.png'
 
-const inter = Inter({ subsets: ["latin"] });
+const inter = Inter({ subsets: ['latin'] })
 
 export const metadata = {
   title: "Oasis '23",
-  description: "The Official Website for OASIS 2023.",
+  description: 'The Official Website for OASIS 2023.',
   image: OasisLogo,
-  colorScheme: "dark",
+  colorScheme: 'dark',
   robots: {
     index: true,
     follow: true,
@@ -20,17 +20,17 @@ export const metadata = {
       index: true,
       follow: true,
       noimageindex: false,
-      "max-video-preview": -1,
-      "max-image-preview": "large",
-      "max-snippet": -1,
+      'max-video-preview': -1,
+      'max-image-preview': 'large',
+      'max-snippet': -1,
     },
     viewport: {
-      width: "device-width",
+      width: 'device-width',
       initialScale: 1,
       maximumScale: 1,
     },
   },
-};
+}
 
 export default function RootLayout({ children }) {
   return (
@@ -50,5 +50,5 @@ export default function RootLayout({ children }) {
         <Provider>{children}</Provider>
       </body>
     </html>
-  );
+  )
 }

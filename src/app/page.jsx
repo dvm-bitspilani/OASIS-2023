@@ -1,68 +1,68 @@
-"use client";
+'use client'
 
 //refactor
-import styles from "./page.module.css";
-import Image from "next/image";
-import React from "react";
-import { useState, useEffect, useRef, useLayoutEffect } from "react";
-import { useContext } from "react";
-import { HamContext } from "@/context/HamContextProvider";
-import Link from "next/link";
-import { Metadata } from "next";
-import textLogo from "../../public/static/images/updatedOasisLogo.png";
-import navLogo from "../../public/static/images/navLogo.png";
-import Navbar from "@/components/Navbar";
-import Hamburger from "@/components/hamburger";
-import landingPgBookImg from "../../public/static/images/Book.png";
-import rightElements from "../../public/static/images/landingPgRightElements.png";
-import leftElements from "../../public/static/images/landingPgLeftElements.png";
-import updatedBgLibraryImage from "../../public/static/images/updatedLibraryBgImage.png";
+import styles from './page.module.css'
+import Image from 'next/image'
+import React from 'react'
+import { useState, useEffect, useRef, useLayoutEffect } from 'react'
+import { useContext } from 'react'
+import { HamContext } from '@/context/HamContextProvider'
+import Link from 'next/link'
+import { Metadata } from 'next'
+import textLogo from '../../public/static/images/updatedOasisLogo.png'
+import navLogo from '../../public/static/images/navLogo.png'
+import Navbar from '@/components/Navbar'
+import Hamburger from '@/components/hamburger'
+import landingPgBookImg from '../../public/static/images/Book.png'
+import rightElements from '../../public/static/images/landingPgRightElements.png'
+import leftElements from '../../public/static/images/landingPgLeftElements.png'
+import updatedBgLibraryImage from '../../public/static/images/updatedLibraryBgImage.png'
 
-import Events from "@/components/Events";
-import Contact from "@/components/Contact";
-import About from "@/components/About";
-import TransitionLeft from "../../public/static/images/TransitionLeft.png";
-import TransitionRight from "../../public/static/images/TransitionRight.png";
-import { gsap } from "gsap";
-import { AnimatePresence, motion } from "framer-motion";
-import { useWindowSize } from "rooks";
-import EventsMobile2 from "@/components/EventsMobile";
+import Events from '@/components/Events'
+import Contact from '@/components/Contact'
+import About from '@/components/About'
+import TransitionLeft from '../../public/static/images/TransitionLeft.png'
+import TransitionRight from '../../public/static/images/TransitionRight.png'
+import { gsap } from 'gsap'
+import { AnimatePresence, motion } from 'framer-motion'
+import { useWindowSize } from 'rooks'
+import EventsMobile2 from '@/components/EventsMobile'
 // import EventsMobile2 from "./events/page";
-import CustomCursor from "@/components/CustomCursor";
-import { useMemo } from "react";
+import CustomCursor from '@/components/CustomCursor'
+import { useMemo } from 'react'
 
 export default function Home() {
-  const { isHamOpen, setIsHamOpen } = useContext(HamContext);
-  const { innerWidth, innerHeight } = useWindowSize();
+  const { isHamOpen, setIsHamOpen } = useContext(HamContext)
+  const { innerWidth, innerHeight } = useWindowSize()
 
-  const [RegisterBtnWidth, setRegisterBtnWidth] = useState(200);
-  const [RegisterBtnHeight, setRegisterBtnHeight] = useState(75);
-  const [isLoading, setIsLoading] = useState(true);
-  const [showLoader, setShowLoader] = useState(true);
+  const [RegisterBtnWidth, setRegisterBtnWidth] = useState(200)
+  const [RegisterBtnHeight, setRegisterBtnHeight] = useState(75)
+  const [isLoading, setIsLoading] = useState(true)
+  const [showLoader, setShowLoader] = useState(true)
 
-  const numberOfRandom = 10;
+  const numberOfRandom = 10
 
   const randomGenerationConfig = useMemo(() => {
-    return [32, -10, 30, 40, 25, 86, 0, 0]; 
-  }, []);
+    return [32, -10, 30, 40, 25, 86, 0, 0]
+  }, [])
 
   const [randomLeft1, setrandomLeft1] = useState(
     generateRandomStatesArray(numberOfRandom, ...randomGenerationConfig)
-  );
+  )
 
   const [randomLeft2, setrandomLeft2] = useState(
     generateRandomStatesArray(numberOfRandom, ...randomGenerationConfig)
-  );
+  )
 
   const [randomRight1, setRandomRight1] = useState(
     generateRandomStatesArray(numberOfRandom, ...randomGenerationConfig)
-  );
+  )
 
   const [randomRight2, setRandomRight2] = useState(
     generateRandomStatesArray(numberOfRandom, ...randomGenerationConfig)
-  );
+  )
 
-  const scope = useRef(null);
+  const scope = useRef(null)
 
   const randomSetImageLeft1 = randomLeft1.map((item, key) => {
     return (
@@ -77,8 +77,8 @@ export default function Home() {
         height={80}
         draggable={false}
       />
-    );
-  });
+    )
+  })
 
   const randomSetImageLeft2 = randomLeft2.map((item, key) => {
     return (
@@ -93,8 +93,8 @@ export default function Home() {
         height={80}
         draggable={false}
       />
-    );
-  });
+    )
+  })
 
   const randomSetImageRight1 = randomRight1.map((item, key) => {
     return (
@@ -109,8 +109,8 @@ export default function Home() {
         height={80}
         draggable={false}
       />
-    );
-  });
+    )
+  })
 
   const randomSetImageRight2 = randomRight2.map((item, key) => {
     return (
@@ -125,18 +125,18 @@ export default function Home() {
         height={80}
         draggable={false}
       />
-    );
-  });
-  const [allAssetsLoaded, setAllAssetsLoaded] = useState(false);
-  const [showBackBtn, setShowBackBtn] = useState(false);
+    )
+  })
+  const [allAssetsLoaded, setAllAssetsLoaded] = useState(false)
+  const [showBackBtn, setShowBackBtn] = useState(false)
 
-  const pageWrapper = useRef(null);
-  const navSection = useRef(null);
-  const contactsWrapper = useRef(null);
-  const eventsWrapper = useRef(null);
-  const aboutWrapper = useRef(null);
-  const transitionLeft = useRef(null);
-  const transitionRight = useRef(null);
+  const pageWrapper = useRef(null)
+  const navSection = useRef(null)
+  const contactsWrapper = useRef(null)
+  const eventsWrapper = useRef(null)
+  const aboutWrapper = useRef(null)
+  const transitionLeft = useRef(null)
+  const transitionRight = useRef(null)
 
   // useEffect(() => {
   //   const loadImages = () => {
@@ -176,64 +176,64 @@ export default function Home() {
   // }, []);
 
   useEffect(() => {
-    if (typeof window !== "undefined") {
+    if (typeof window !== 'undefined') {
       // console.log('first')
-      setIsLoading(true);
-      setShowLoader(true);
+      setIsLoading(true)
+      setShowLoader(true)
       const assets = [
         textLogo.src,
         landingPgBookImg.src,
         rightElements.src,
         leftElements.src,
         updatedBgLibraryImage.src,
-      ];
+      ]
       // console.log('second')
       const loadAssets = async () => {
         const assetPromises = assets.map((asset) => {
           if (asset) {
             return new Promise((resolve, reject) => {
               // const img = new img();
-              const img = document.createElement("img");
-              img.onload = resolve;
-              img.onerror = reject;
-              img.src = asset;
-            });
+              const img = document.createElement('img')
+              img.onload = resolve
+              img.onerror = reject
+              img.src = asset
+            })
           }
-        });
-        const results = await Promise.allSettled(assetPromises);
+        })
+        const results = await Promise.allSettled(assetPromises)
         const allSuccessful = results.every(
-          (result) => result.status === "fulfilled"
-        );
+          (result) => result.status === 'fulfilled'
+        )
         Promise.all(assetPromises)
           .then(() => {
-            setAllAssetsLoaded(true);
+            setAllAssetsLoaded(true)
             // console.log("loaded");
             setTimeout(() => {
-              setIsLoading(false);
-              setShowLoader(false);
-            }, 2000);
+              setIsLoading(false)
+              setShowLoader(false)
+            }, 2000)
             // console.log('All assets loaded successfully');
           })
           .catch((error) => {
-            console.error("Error loading assets:", error);
+            console.error('Error loading assets:', error)
             // setIsLoading(false);
-            setAllAssetsLoaded(true);
+            setAllAssetsLoaded(true)
             // console.log("loaded");
-            setShowLoader(false);
+            setShowLoader(false)
             setTimeout(() => {
-              setIsLoading(false);
-              setShowLoader(false);
-            }, 3000);
-          });
-      };
+              setIsLoading(false)
+              setShowLoader(false)
+            }, 3000)
+          })
+      }
 
-      loadAssets();
-      setRegisterBtnWidth(Math.min(200, Math.floor(innerWidth * 0.5)));
-      setRegisterBtnHeight(75);
+      loadAssets()
+      setRegisterBtnWidth(Math.min(200, Math.floor(innerWidth * 0.5)))
+      setRegisterBtnHeight(75)
     }
-  }, [innerWidth]);
+  }, [innerWidth])
 
-  const [delayGiven, setDelayGiven] = useState(false);
+  const [delayGiven, setDelayGiven] = useState(false)
 
   useLayoutEffect(() => {
     // create our context. This function is invoked immediately and all GSAP animations and ScrollTriggers created during the execution of this function get recorded so we can revert() them later (cleanup)\
@@ -245,7 +245,7 @@ export default function Home() {
             top: `${item.startingY}%`,
             opacity: 0,
             scale: 0.3,
-          });
+          })
 
           const tl = gsap.timeline({
             onComplete: () => {
@@ -256,10 +256,10 @@ export default function Home() {
                     numberOfRandom,
                     ...randomGenerationConfig
                   )
-                );
+                )
               }
             },
-          });
+          })
 
           tl.to(`#left_1_${key}`, {
             right: `${(item.endingX + item.startingX) / 2}%`,
@@ -268,42 +268,42 @@ export default function Home() {
             // opacity: 1,
             delay: `${Math.floor(key / 1.2) * 1}`,
             duration: 2.5,
-            ease: "none",
-          });
+            ease: 'none',
+          })
           tl.to(
             `#left_1_${key}`,
             {
               opacity: 1,
               duration: 2.5,
-              ease: "power2.in",
+              ease: 'power2.in',
             },
-            "-=2.5"
-          );
+            '-=2.5'
+          )
           tl.to(`#left_1_${key}`, {
             right: `${item.endingX}%`,
             top: `${item.endingY}%`,
             opacity: 0,
             duration: 2.5,
-            ease: "none",
-          });
+            ease: 'none',
+          })
           tl.to(
             `#left_1_${key}`,
             {
               scale: 1,
               rotate: 80,
               duration: 5,
-              ease: "none",
+              ease: 'none',
             },
-            "-=5"
-          );
-        });
-      }, scope); // <- IMPORTANT! Scopes selector text
+            '-=5'
+          )
+        })
+      }, scope) // <- IMPORTANT! Scopes selector text
 
       return () => {
-        ctx.revert();
-      }; // cleanup
+        ctx.revert()
+      } // cleanup
     }
-  }, [isLoading, randomLeft1, numberOfRandom , randomGenerationConfig]);
+  }, [isLoading, randomLeft1, numberOfRandom, randomGenerationConfig])
 
   useLayoutEffect(() => {
     // create our context. This function is invoked immediately and all GSAP animations and ScrollTriggers created during the execution of this function get recorded so we can revert() them later (cleanup)
@@ -315,22 +315,22 @@ export default function Home() {
             top: `${item.startingY}%`,
             opacity: 0,
             scale: 0.3,
-          });
+          })
           const tl = gsap.timeline({
             delay: delayGiven ? 0.1 : 5,
             // delay: 1.5,
             onComplete: () => {
               if (key === randomLeft2.length - 1) {
-                setDelayGiven(true);
+                setDelayGiven(true)
                 setrandomLeft2(
                   generateRandomStatesArray(
                     numberOfRandom,
                     ...randomGenerationConfig
                   )
-                );
+                )
               }
             },
-          });
+          })
 
           tl.to(`#left_2_${key}`, {
             right: `${(item.endingX + item.startingX) / 2}%`,
@@ -339,42 +339,48 @@ export default function Home() {
             // opacity: 1,
             delay: `${Math.floor(key / 1.2) * 1}`,
             duration: 2.5,
-            ease: "none",
-          });
+            ease: 'none',
+          })
           tl.to(
             `#left_2_${key}`,
             {
               opacity: 1,
               duration: 2.5,
-              ease: "power2.in",
+              ease: 'power2.in',
             },
-            "-=2.5"
-          );
+            '-=2.5'
+          )
           tl.to(`#left_2_${key}`, {
             right: `${item.endingX}%`,
             top: `${item.endingY}%`,
             opacity: 0,
             duration: 2.5,
-            ease: "none",
-          });
+            ease: 'none',
+          })
           tl.to(
             `#left_2_${key}`,
             {
               rotate: -80,
               scale: 1,
               duration: 5,
-              ease: "none",
+              ease: 'none',
             },
-            "-=5"
-          );
-        });
-      }, scope); // <- IMPORTANT! Scopes selector text
+            '-=5'
+          )
+        })
+      }, scope) // <- IMPORTANT! Scopes selector text
 
       return () => {
-        ctx.revert();
-      }; // cleanup
+        ctx.revert()
+      } // cleanup
     }
-  }, [isLoading, randomLeft2, delayGiven, numberOfRandom , randomGenerationConfig]);
+  }, [
+    isLoading,
+    randomLeft2,
+    delayGiven,
+    numberOfRandom,
+    randomGenerationConfig,
+  ])
 
   useLayoutEffect(() => {
     if (!isLoading) {
@@ -385,7 +391,7 @@ export default function Home() {
             top: `${item.startingY}%`,
             opacity: 0,
             scale: 0.3,
-          });
+          })
 
           const tl = gsap.timeline({
             onComplete: () => {
@@ -396,10 +402,10 @@ export default function Home() {
                     numberOfRandom,
                     ...randomGenerationConfig
                   )
-                );
+                )
               }
             },
-          });
+          })
 
           tl.to(`#right_1_${key}`, {
             left: `${(item.endingX + item.startingX) / 2}%`,
@@ -408,42 +414,42 @@ export default function Home() {
             // opacity: 1,
             delay: `${Math.floor(key / 1.2) * 1}`,
             duration: 2.5,
-            ease: "none",
-          });
+            ease: 'none',
+          })
           tl.to(
             `#right_1_${key}`,
             {
               opacity: 1,
               duration: 2.5,
-              ease: "power2.in",
+              ease: 'power2.in',
             },
-            "-=2.5"
-          );
+            '-=2.5'
+          )
           tl.to(`#right_1_${key}`, {
             left: `${item.endingX}%`,
             top: `${item.endingY}%`,
             opacity: 0,
             duration: 2.5,
-            ease: "none",
-          });
+            ease: 'none',
+          })
           tl.to(
             `#right_1_${key}`,
             {
               scale: 1,
               rotate: -80,
               duration: 5,
-              ease: "none",
+              ease: 'none',
             },
-            "-=5"
-          );
-        });
-      }, scope); // <- IMPORTANT! Scopes selector text
+            '-=5'
+          )
+        })
+      }, scope) // <- IMPORTANT! Scopes selector text
 
       return () => {
-        ctx.revert();
-      }; // cleanup
+        ctx.revert()
+      } // cleanup
     }
-  }, [isLoading, randomRight1, numberOfRandom , randomGenerationConfig]);
+  }, [isLoading, randomRight1, numberOfRandom, randomGenerationConfig])
 
   useLayoutEffect(() => {
     if (!isLoading) {
@@ -454,23 +460,23 @@ export default function Home() {
             top: `${item.startingY}%`,
             opacity: 0,
             scale: 0.3,
-          });
+          })
 
           const tl = gsap.timeline({
             delay: delayGiven ? 0.1 : 5,
             onComplete: () => {
               if (key === randomRight2.length - 1) {
-                setDelayGiven(true);
+                setDelayGiven(true)
                 // console.log("Animation 2 Right complete");
                 setRandomRight2(
                   generateRandomStatesArray(
                     numberOfRandom,
                     ...randomGenerationConfig
                   )
-                );
+                )
               }
             },
-          });
+          })
 
           tl.to(`#right_2_${key}`, {
             left: `${(item.endingX + item.startingX) / 2}%`,
@@ -479,83 +485,88 @@ export default function Home() {
             // opacity: 1,
             delay: `${Math.floor(key / 1.2) * 1}`,
             duration: 2.5,
-            ease: "none",
-          });
+            ease: 'none',
+          })
           tl.to(
             `#right_2_${key}`,
             {
               opacity: 1,
               duration: 2.5,
-              ease: "power2.in",
+              ease: 'power2.in',
             },
-            "-=2.5"
-          );
+            '-=2.5'
+          )
           tl.to(`#right_2_${key}`, {
             left: `${item.endingX}%`,
             top: `${item.endingY}%`,
             opacity: 0,
             duration: 2.5,
-            ease: "none",
-          });
+            ease: 'none',
+          })
           tl.to(
             `#right_2_${key}`,
             {
               rotate: 80,
               scale: 1,
               duration: 5,
-              ease: "none",
+              ease: 'none',
             },
-            "-=5"
-          );
-        });
-      }, scope); // <- IMPORTANT! Scopes selector text
+            '-=5'
+          )
+        })
+      }, scope) // <- IMPORTANT! Scopes selector text
 
       return () => {
-        ctx.revert();
-      }; // cleanup
+        ctx.revert()
+      } // cleanup
     }
-  }, [isLoading, randomRight2, delayGiven, numberOfRandom , randomGenerationConfig]);
+  }, [
+    isLoading,
+    randomRight2,
+    delayGiven,
+    numberOfRandom,
+    randomGenerationConfig,
+  ])
 
   const openHam = () => {
     if (isHamOpen) {
-      setIsHamOpen(false);
+      setIsHamOpen(false)
     } else {
-      setIsHamOpen(true);
+      setIsHamOpen(true)
     }
-  };
+  }
 
   useEffect(() => {
-    const topBar1 = document.querySelector("#hamIcon1");
-    const topBar2 = document.querySelector("#hamIcon2");
-    const topBar3 = document.querySelector("#hamIcon3");
+    const topBar1 = document.querySelector('#hamIcon1')
+    const topBar2 = document.querySelector('#hamIcon2')
+    const topBar3 = document.querySelector('#hamIcon3')
     if (isHamOpen && !isLoading) {
-      topBar1.style.transform = "rotatez(45deg) translate(3px,2px)";
-      topBar2.style.transform = "rotatez(-45deg) translate(-1px,-2px)";
-      topBar3.style.transform = "translate(11px,-7px) rotatez(45deg)";
-      topBar3.style.width = "50%";
-      topBar3.style.borderRadius = "0px 5px 5px 0px";
+      topBar1.style.transform = 'rotatez(45deg) translate(3px,2px)'
+      topBar2.style.transform = 'rotatez(-45deg) translate(-1px,-2px)'
+      topBar3.style.transform = 'translate(11px,-7px) rotatez(45deg)'
+      topBar3.style.width = '50%'
+      topBar3.style.borderRadius = '0px 5px 5px 0px'
     } else if (!isHamOpen && !isLoading) {
-      topBar1.style.transform = "rotate(0deg) translate(0px,0px)";
-      topBar2.style.transform = "rotatez(0deg) translate(0px,0px)";
-      topBar3.style.transform = "translate(0px,0px) rotatez(0deg)";
-      topBar3.style.width = "75%";
-      topBar3.style.borderRadius = "5px";
+      topBar1.style.transform = 'rotate(0deg) translate(0px,0px)'
+      topBar2.style.transform = 'rotatez(0deg) translate(0px,0px)'
+      topBar3.style.transform = 'translate(0px,0px) rotatez(0deg)'
+      topBar3.style.width = '75%'
+      topBar3.style.borderRadius = '5px'
     }
-  }, [isHamOpen , isLoading]);
+  }, [isHamOpen, isLoading])
 
   useEffect(() => {
     if (isHamOpen) {
       gsap.to(scope.current, {
-        overflowY: "hidden",
-      });
+        overflowY: 'hidden',
+      })
     } else {
       gsap.to(scope.current, {
-        overflowY: "scroll",
+        overflowY: 'scroll',
         delay: 2,
-      });
+      })
     }
-  }, [isHamOpen]);
-
+  }, [isHamOpen])
 
   // const regLoaderRef = useRef(null);
   // const [loaderLoaded, setLoaderLoaded] = useState(false);
@@ -641,77 +652,77 @@ export default function Home() {
   //   }
   // }, [loaderLoaded]);
 
-  const [currentPage, setCurrentPage] = useState("home");
+  const [currentPage, setCurrentPage] = useState('home')
 
   const handleTransition = (page) => {
-    console.log(page);
+    console.log(page)
 
     if (page === currentPage) {
-      return;
+      return
     } else {
-      var tl = gsap.timeline();
+      var tl = gsap.timeline()
       tl.to([transitionLeft.current, transitionRight.current], {
         x: 0,
         scale: 1.5,
         duration: 1,
-        ease: "power2.inOut",
-      });
+        ease: 'power2.inOut',
+      })
       const elements = {
         contact: contactsWrapper,
         events: eventsWrapper,
         home: pageWrapper,
         about: aboutWrapper,
-      };
+      }
 
       for (const key in elements) {
-        const element = elements[key].current;
-        const opacity = key === page ? 1 : 0;
-        const visibility = key === page ? "visible" : "hidden";
-        const duration = key === page ? 0.15 : 0.5;
+        const element = elements[key].current
+        const opacity = key === page ? 1 : 0
+        const visibility = key === page ? 'visible' : 'hidden'
+        const duration = key === page ? 0.15 : 0.5
 
-        tl.to(element, { opacity, visibility, ease: "ease", duration });
+        tl.to(element, { opacity, visibility, ease: 'ease', duration })
       }
 
       tl.to(navSection.current, {
-        opacity: page !== "events" ? 1 : 0,
-        visibility: page !== "events" ? "visible" : "hidden",
-        ease: "ease",
+        opacity: page !== 'events' ? 1 : 0,
+        visibility: page !== 'events' ? 'visible' : 'hidden',
+        ease: 'ease',
         duration: 0.5,
-      });
+      })
 
       setTimeout(() => {
-        setShowBackBtn(page !== "home");
-      }, 1000);
+        setShowBackBtn(page !== 'home')
+      }, 1000)
 
       tl.to(scope.current, {
-        height: page !== "events" ? "100vh" : "fit-content",
-        width: page !== "events" ? "100vw" : "fit-content",
-      });
+        height: page !== 'events' ? '100vh' : 'fit-content',
+        width: page !== 'events' ? '100vw' : 'fit-content',
+      })
 
       tl.to(transitionLeft.current, {
-        x: "-100%",
+        x: '-100%',
         scale: 1,
         duration: 1,
-        ease: "power2.inOut",
+        ease: 'power2.inOut',
         onComplete: () => {
-          setCurrentPage(page);
-          console.log(currentPage);
+          setCurrentPage(page)
+          console.log(currentPage)
         },
-      });
+      })
       tl.to(
         transitionRight.current,
-        { x: "100%", scale: 1, duration: 1, ease: "power2.inOut" },
-        "-=1"
-      );
+        { x: '100%', scale: 1, duration: 1, ease: 'power2.inOut' },
+        '-=1'
+      )
     }
-  };
+  }
   return (
     <main key="mainLandingPage" className={styles.scope} ref={scope}>
       {isLoading && (
         <div className={styles.loaderContainer}>
           {/* <MyVideoLoader/> */}
           <video
-            src={require("../../public/static/images/loadervideo.mp4")} // Update with the correct path
+            src={require('../../public/static/images/loadervideo.mp4')} // Update with the correct path
             autoPlay
             muted
             loop
@@ -729,7 +740,7 @@ export default function Home() {
           width={1037}
           height={980}
           ref={transitionLeft}
-          style={{ transform: "translateX(-100%)", height: "100vh" }}
+          style={{ transform: 'translateX(-100%)', height: '100vh' }}
           suppressHydrationWarning
           alt=""
         />
@@ -739,10 +750,10 @@ export default function Home() {
           width={1037}
           height={980}
           style={{
-            position: "fixed",
-            right: "0",
-            transform: "translateX(100%)",
-            height: "100vh",
+            position: 'fixed',
+            right: '0',
+            transform: 'translateX(100%)',
+            height: '100vh',
           }}
           suppressHydrationWarning
           ref={transitionRight}
@@ -810,7 +821,7 @@ export default function Home() {
               ) : (
                 <div
                   key="hiddenDiv"
-                  style={{ display: "none" }}
+                  style={{ display: 'none' }}
                   suppressHydrationWarning
                 ></div>
               )}
@@ -830,7 +841,7 @@ export default function Home() {
             ) : (
               <div
                 key="hiddenDiv2"
-                style={{ display: "none" }}
+                style={{ display: 'none' }}
                 suppressHydrationWarning
               ></div>
             )}
@@ -848,9 +859,9 @@ export default function Home() {
             exit={{ opacity: 0 }}
             transition={{ duration: 2 }}
             className={`${styles.midSection} 
-              ${showLoader ? styles.loaderContainer : ""} ${
-              isLoading ? "loaded" : ""
-            }`}
+              ${showLoader ? styles.loaderContainer : ''} ${
+                isLoading ? 'loaded' : ''
+              }`}
           >
             <div key="textLogoWrapper" className={styles.textLogoWrapper}>
               <Image
@@ -891,7 +902,7 @@ export default function Home() {
               {isHamOpen ? (
                 <div
                   key="hiddenDiv3"
-                  style={{ display: "none" }}
+                  style={{ display: 'none' }}
                   suppressHydrationWarning
                 ></div>
               ) : (
@@ -902,8 +913,8 @@ export default function Home() {
                   exit={{ opacity: 0 }}
                   transition={{ duration: 1 }}
                   style={{
-                    position: "absolute",
-                    bottom: "50px",
+                    position: 'absolute',
+                    bottom: '50px',
                   }}
                   suppressHydrationWarning
                 >
@@ -929,12 +940,12 @@ export default function Home() {
           </motion.div>
         </AnimatePresence>
       </div>
-      <div className={styles["navSection"]} ref={navSection}>
+      <div className={styles['navSection']} ref={navSection}>
         <AnimatePresence>
           {isHamOpen ? (
             <div
               key="hiddenDiv4"
-              style={{ display: "none" }}
+              style={{ display: 'none' }}
               suppressHydrationWarning
             ></div>
           ) : (
@@ -978,7 +989,7 @@ export default function Home() {
         <Contact />
       </div>
     </main>
-  );
+  )
 }
 
 export function getRandomStats(
@@ -991,28 +1002,24 @@ export function getRandomStats(
   startingXRange,
   endingXRange
 ) {
-  const random = {};
-  random.int = Math.floor(Math.random() * 10 + 1);
-  random.file = `/static/images/Group${random.int}.png`;
+  const random = {}
+  random.int = Math.floor(Math.random() * 10 + 1)
+  random.file = `/static/images/Group${random.int}.png`
 
   // x - right, y - top
   // get a random number from 35 to 45
-  random.startingY = Math.floor(
-    Math.random() * startingYRange + startingYPoint
-  );
-  random.startingX = Math.floor(
-    Math.random() * startingXRange + startingXPoint
-  );
+  random.startingY = Math.floor(Math.random() * startingYRange + startingYPoint)
+  random.startingX = Math.floor(Math.random() * startingXRange + startingXPoint)
 
   // test
   // const randomYArr = [6, 21, 36];
   // const randomY = randomYArr[Math.floor(Math.random() * 2)];
 
   // get a random number between 6 and 36
-  random.endingY = Math.floor(Math.random() * endingYRange + endingYPoint);
-  random.endingX = Math.floor(Math.random() * endingXRange + endingXPoint);
+  random.endingY = Math.floor(Math.random() * endingYRange + endingYPoint)
+  random.endingX = Math.floor(Math.random() * endingXRange + endingXPoint)
   // random.delay = Math.floor(Math.random() * 4);
-  return random;
+  return random
 }
 
 export function generateRandomStatesArray(
@@ -1026,7 +1033,7 @@ export function generateRandomStatesArray(
   startingXRange,
   endingXRange
 ) {
-  const randomArray = [];
+  const randomArray = []
   for (let i = 0; i < number; i++) {
     // randomArray.push(getRandomStats(32, -10, 30, 40));
     randomArray.push(
@@ -1040,9 +1047,9 @@ export function generateRandomStatesArray(
         startingXRange,
         endingXRange
       )
-    );
+    )
   }
-  return randomArray;
+  return randomArray
 }
 
 export function randomAnimation(direction, random, setRandom, delay, id) {
@@ -1053,9 +1060,9 @@ export function randomAnimation(direction, random, setRandom, delay, id) {
         top: `${item.startingY}%`,
         opacity: 0,
         scale: 0.3,
-      });
+      })
 
-      const randomDelay = Math.random() * 2;
+      const randomDelay = Math.random() * 2
 
       const tl = gsap.timeline({
         delay: delay ? randomDelay : 0,
@@ -1066,10 +1073,10 @@ export function randomAnimation(direction, random, setRandom, delay, id) {
               getRandomStats(),
               getRandomStats(),
               getRandomStats(),
-            ]);
+            ])
           }
         },
-      });
+      })
 
       tl.to(`#${id}${key}`, {
         left: `${(item.endingX + item.startingX) / 2}%`,
@@ -1078,38 +1085,38 @@ export function randomAnimation(direction, random, setRandom, delay, id) {
         // opacity: 1,
         delay: `${key * 0.5}`,
         duration: 2.5,
-        ease: "none",
-      });
+        ease: 'none',
+      })
       tl.to(
         `#${id}${key}`,
         {
           opacity: 1,
           duration: 2.5,
-          ease: "power2.in",
+          ease: 'power2.in',
         },
-        "-=1.5"
-      );
+        '-=1.5'
+      )
       tl.to(`#${id}${key}`, {
         left: `${item.endingX}%`,
         top: `${item.endingY}%`,
         opacity: 0,
         duration: 2.5,
-        ease: "none",
-      });
+        ease: 'none',
+      })
       tl.to(
         `#${id}${key}`,
         {
           rotate: -80,
           scale: 1,
           duration: 3,
-          ease: "power2.in",
+          ease: 'power2.in',
         },
-        "-=3"
-      );
-    });
-  }, scope); // <- IMPORTANT! Scopes selector text
+        '-=3'
+      )
+    })
+  }, scope) // <- IMPORTANT! Scopes selector text
 
   return () => {
-    ctx.revert();
-  }; // cleanup
+    ctx.revert()
+  } // cleanup
 }

@@ -1,143 +1,132 @@
 @font-face {
-    font-family: 'KoPub';
-    src: url(../../public/static/fonts/KoPubBatang-Regular.ttf) format('truetype');
-  }
-
-.cardContainer{
-    /* border: solid red; */
-    width: 400px;
-    height: 100vh;
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
+  font-family: 'KoPub';
+  src: url(../../public/static/fonts/KoPubBatang-Regular.ttf) format('truetype');
 }
 
-.content{
-    /* border: solid blue; */
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    height: 100%;
-    gap: 1rem;
-    margin: auto;
-    padding-bottom: 20%;
+.cardContainer {
+  /* border: solid red; */
+  width: 400px;
+  height: 100vh;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
 }
 
-.image{
-    border-radius: 1rem;
-    /* border: solid #84CBFF 5px; */
+.content {
+  /* border: solid blue; */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  gap: 1rem;
+  margin: auto;
+  padding-bottom: 20%;
+}
+
+.image {
+  border-radius: 1rem;
+  /* border: solid #84CBFF 5px; */
 }
 
 .title,
-.desc{
-    color: #F3F3F3;
-    text-align: center;
-    font-family: 'KoPub';
-    font-style: normal;
+.desc {
+  color: #f3f3f3;
+  text-align: center;
+  font-family: 'KoPub';
+  font-style: normal;
 }
 
-.title{
-    font-size: 2rem;
-    font-family: 'KoPub';
-    text-align: center;
-    padding-inline: 1rem;
+.title {
+  font-size: 2rem;
+  font-family: 'KoPub';
+  text-align: center;
+  padding-inline: 1rem;
 }
 
-.desc{
-    font-size: .8rem;
-    font-family: 'KoPub';
-    padding-inline: 2rem;
+.desc {
+  font-size: 0.8rem;
+  font-family: 'KoPub';
+  padding-inline: 2rem;
 }
 
-.navigation{
-    display: flex;
-    gap: 2rem;
-    position: absolute;
-    bottom: 15%;
-    z-index: 999;
-    align-items: center;
-    justify-content: center;
-    margin: auto;
-    width: 100%;
-    transition: transform 0.5s ease-in-out;
+.navigation {
+  display: flex;
+  gap: 2rem;
+  position: absolute;
+  bottom: 15%;
+  z-index: 999;
+  align-items: center;
+  justify-content: center;
+  margin: auto;
+  width: 100%;
+  transition: transform 0.5s ease-in-out;
 }
 
-.lastArrow{
-    display: flex;
-    gap: 2rem;
-    position: absolute;
-    bottom: 40%;
-    z-index: 999;
-    align-items: center;
-    justify-content: center;
-    margin: auto;
-    width: 100%;
-    transition: transform 0.5s ease-in-out;
+.lastArrow {
+  display: flex;
+  gap: 2rem;
+  position: absolute;
+  bottom: 40%;
+  z-index: 999;
+  align-items: center;
+  justify-content: center;
+  margin: auto;
+  width: 100%;
+  transition: transform 0.5s ease-in-out;
 }
 
-.navigation img{
-    cursor: pointer;
+.navigation img {
+  cursor: pointer;
 }
 
-.firstHeading{
-    position: absolute;
-    top: 15%;
-    text-align: center;
-    font-family: 'KoPub';
+.firstHeading {
+  position: absolute;
+  top: 15%;
+  text-align: center;
+  font-family: 'KoPub';
 }
 
-.firstText{
-    position: absolute;
-    bottom: 30%;
-    text-align: center;
-    font-family: 'KoPub';
+.firstText {
+  position: absolute;
+  bottom: 30%;
+  text-align: center;
+  font-family: 'KoPub';
 }
 
-.lastText{
-    position: absolute;
-    bottom: 50%;
-    text-align: center;
-    font-family: 'KoPub';
+.lastText {
+  position: absolute;
+  bottom: 50%;
+  text-align: center;
+  font-family: 'KoPub';
 }
 
-
-
-
-
-
-
-
-
-
-
-.container{
-    position: relative;
-    overflow: hidden;
-    height: 100vh;
-    width: 100vw;
+.container {
+  position: relative;
+  overflow: hidden;
+  height: 100vh;
+  width: 100vw;
 }
 
-.mainContainer{
-    position: absolute;
-    top: 0;
-    display: flex;
-    background-image: url(../../public/static/images/eventsmobileBG.png);
-    background-size: contain;
-    background-repeat: repeat;
-    height: auto;
-    overflow: hidden;
-    transition: transform 0.5s ease-in-out;
+.mainContainer {
+  position: absolute;
+  top: 0;
+  display: flex;
+  background-image: url(../../public/static/images/eventsmobileBG.png);
+  background-size: contain;
+  background-repeat: repeat;
+  height: auto;
+  overflow: hidden;
+  transition: transform 0.5s ease-in-out;
 }
 
-.BGImage{
-    height: 100%;
-
+.BGImage {
+  height: 100%;
 }
 
-.backToStart{
-    position: absolute;
-    bottom: 20%;
-    text-align: center;
-    font-family: 'KoPub';
+.backToStart {
+  position: absolute;
+  bottom: 20%;
+  text-align: center;
+  font-family: 'KoPub';
 }

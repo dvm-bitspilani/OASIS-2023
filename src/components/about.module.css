@@ -238,14 +238,14 @@
   }
 }
 
-@media screen and (max-height : 600px){
-  .description p{
+@media screen and (max-height: 600px) {
+  .description p {
     font-size: 1.2rem;
   }
 }
 
-@media screen and (max-height : 800px) and (max-width: 820px){
-  .description p{
+@media screen and (max-height: 800px) and (max-width: 820px) {
+  .description p {
     font-size: 1.3rem;
   }
 }

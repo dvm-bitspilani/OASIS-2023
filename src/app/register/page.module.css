@@ -11,7 +11,7 @@
 }
 .regPage h2 {
   color: #5db3f1;
-  font-family: "KoPubBatang";
+  font-family: 'KoPubBatang';
   font-size: 4.5rem;
   font-weight: 500;
   /* padding-top: 1rem; */
@@ -115,20 +115,20 @@
 }
 .form label {
   color: #5db3f1;
-  font-family: "KoPubBatang";
+  font-family: 'KoPubBatang';
   font-size: 2rem;
   margin-top: 3rem;
   transform-origin: bottom left;
   transition: all 0.2s ease;
 }
 
-.labelFocus{
+.labelFocus {
   scale: 0.8 !important;
 }
 
-.errorMessage{
+.errorMessage {
   color: red;
-  font-family: "KoPubBatang";
+  font-family: 'KoPubBatang';
   font-size: 1.2rem;
   margin-top: 1rem;
   margin-bottom: 0;
@@ -136,7 +136,7 @@
   text-transform: capitalize;
 }
 
-.radioBtns{
+.radioBtns {
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -151,26 +151,26 @@
   border-bottom: 2px solid white;
   height: 2.25rem;
   color: #ffffff;
-  font-family: "KoPubBatang";
+  font-family: 'KoPubBatang';
   font-size: 1.5rem;
 }
 .form input::-webkit-input-placeholder {
   color: rgba(255, 255, 255, 0.6);
-  font-family: "KoPubBatang";
+  font-family: 'KoPubBatang';
   font-size: 1.2rem;
   opacity: 1;
 }
 
 .form input:-ms-input-placeholder {
   color: rgba(255, 255, 255, 0.6);
-  font-family: "KoPubBatang";
+  font-family: 'KoPubBatang';
   font-size: 1.2rem;
   opacity: 1;
 }
 
 .form input::placeholder {
   color: rgba(255, 255, 255, 0.6);
-  font-family: "KoPubBatang";
+  font-family: 'KoPubBatang';
   font-size: 1.2rem;
   opacity: 1;
 }
@@ -247,13 +247,13 @@
 .loaderContainer video {
   scale: 0.5;
 }
-@media (max-width:800px) {
-  .loaderContainer video{
+@media (max-width: 800px) {
+  .loaderContainer video {
     scale: 0.85;
   }
 }
-.guideLink a{
-  color: #477AA1;
+.guideLink a {
+  color: #477aa1;
   font-size: 1.25rem;
   padding-left: 2rem;
 }
@@ -267,16 +267,16 @@
   .regPage h2 {
     font-size: 4rem;
   }
-  .scrollBarContainer{
+  .scrollBarContainer {
     height: 88%;
     margin-block: auto;
   }
-  .regForm{
+  .regForm {
     height: 65vh;
   }
 }
 @media (max-width: 700px) {
-  .regPage{
+  .regPage {
     overflow: scroll;
   }
   .regPage h2 {
@@ -303,10 +303,10 @@
   .regBtnContainer {
     margin-top: 0;
   }
-  #skull{
+  #skull {
     scale: 0.8;
   }
-  .guideLink{
+  .guideLink {
     text-align: center;
   }
 }
@@ -319,6 +319,6 @@
     margin-top: 0;
   }
 }
-.guideLink a{
+.guideLink a {
   font-family: KoPubBatang;
 }

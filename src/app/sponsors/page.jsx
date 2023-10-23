@@ -1,112 +1,112 @@
-"use client";
+'use client'
 
-import React, { useEffect, useRef, useState } from "react";
-import styles from "./page.module.css";
-import "../globals.css";
-import { useRouter } from "next/navigation";
-import Image from "next/image";
+import React, { useEffect, useRef, useState } from 'react'
+import styles from './page.module.css'
+import '../globals.css'
+import { useRouter } from 'next/navigation'
+import Image from 'next/image'
 
-import skullImg from "../../../public/static/images/skull.svg";
-import CustomCursor from "@/components/CustomCursor";
+import skullImg from '../../../public/static/images/skull.svg'
+import CustomCursor from '@/components/CustomCursor'
 // import skullImg from "../../../";
 
-import cross from "../../../public/static/images/cross.svg";
+import cross from '../../../public/static/images/cross.svg'
 
 const Page = () => {
-  const [isLoading, setIsLoading] = useState(true);
+  const [isLoading, setIsLoading] = useState(true)
 
-  const router = useRouter();
+  const router = useRouter()
 
-  const skullRef = useRef(null);
-  const contentRef = useRef(null);
+  const skullRef = useRef(null)
+  const contentRef = useRef(null)
 
   const handleTrackSnap = (e) => {
-    const formContainerElem = contentRef.current;
+    const formContainerElem = contentRef.current
     const scrollBarContainer = document.querySelector(
       `.${styles.scrollBarContainer}`
-    );
+    )
 
     const percentage =
       ((e.clientY - scrollBarContainer.offsetTop) /
         scrollBarContainer.clientHeight) *
-      100;
+      100
     const maxScrollTopValue =
-      formContainerElem.scrollHeight - formContainerElem.clientHeight;
+      formContainerElem.scrollHeight - formContainerElem.clientHeight
 
     formContainerElem.scrollTo({
       top: (percentage / 100) * maxScrollTopValue,
-      behavior: "smooth",
-    });
-  };
+      behavior: 'smooth',
+    })
+  }
 
   const handleSkullMouseDown = (e) => {
     // console.log("mousedown");
-    e.preventDefault();
+    e.preventDefault()
 
-    document.addEventListener("mousemove", handleSkullDragMove);
-    document.addEventListener("touchmove", handleSkullDragMove);
+    document.addEventListener('mousemove', handleSkullDragMove)
+    document.addEventListener('touchmove', handleSkullDragMove)
 
-    document.addEventListener("mouseup", handleSkullDragEnd);
-    document.addEventListener("touchend", handleSkullDragEnd);
-  };
+    document.addEventListener('mouseup', handleSkullDragEnd)
+    document.addEventListener('touchend', handleSkullDragEnd)
+  }
 
   const handleSkullDragMove = (e) => {
     // const skullElem = skullRef.current;
-    const formContainerElem = contentRef.current;
+    const formContainerElem = contentRef.current
     const scrollBarContainer = document.querySelector(
       `.${styles.scrollBarContainer}`
-    );
+    )
 
     const maxScrollTopValue =
-      formContainerElem.scrollHeight - formContainerElem.clientHeight;
+      formContainerElem.scrollHeight - formContainerElem.clientHeight
 
-    const clientY = e.clientY || e.touches[0].clientY;
+    const clientY = e.clientY || e.touches[0].clientY
 
     const percentage =
       ((clientY - scrollBarContainer.offsetTop) /
         scrollBarContainer.clientHeight) *
-      100;
+      100
 
-    formContainerElem.scrollTop = (percentage / 100) * maxScrollTopValue;
-  };
+    formContainerElem.scrollTop = (percentage / 100) * maxScrollTopValue
+  }
 
   const handleSkullDragEnd = (e) => {
-    document.removeEventListener("mousemove", handleSkullDragMove);
-    document.removeEventListener("mouseup", handleSkullDragEnd);
-    document.removeEventListener("touchmove", handleSkullDragMove);
-    document.removeEventListener("touchend", handleSkullDragEnd);
-  };
+    document.removeEventListener('mousemove', handleSkullDragMove)
+    document.removeEventListener('mouseup', handleSkullDragEnd)
+    document.removeEventListener('touchmove', handleSkullDragMove)
+    document.removeEventListener('touchend', handleSkullDragEnd)
+  }
 
   function handleScroll(inp) {
     // const maxScrollTopValue = formContainerRef.current.scrollTopMax;
     const maxScrollTopValue =
-      contentRef.current.scrollHeight - contentRef.current.clientHeight;
+      contentRef.current.scrollHeight - contentRef.current.clientHeight
     // const percentage = (contentRef.current.scrollTop / maxScrollTopValue )*100;
-    const percentage = (contentRef.current.scrollTop / maxScrollTopValue) * 100;
+    const percentage = (contentRef.current.scrollTop / maxScrollTopValue) * 100
     percentage > 100
-      ? (skullRef.current.style.top = "100%")
-      : (skullRef.current.style.top = `${percentage}%`);
+      ? (skullRef.current.style.top = '100%')
+      : (skullRef.current.style.top = `${percentage}%`)
 
     // console.log(percentage);
     // skullRef.current.style.top = `${percentage}%`;
     // skullElem.style.top = `${percentage}%`;
   }
 
-  const [data, setData] = useState([]);
+  const [data, setData] = useState([])
 
   useEffect(() => {
     const fetchData = async () => {
       const res = await fetch(
-        "https://bits-oasis.org/2023/main/wallet/sponsors/"
-      );
-      const json = await res.json();
+        'https://bits-oasis.org/2023/main/wallet/sponsors/'
+      )
+      const json = await res.json()
       setTimeout(() => {
-        setIsLoading(false);
-      }, 2000);
-      setData(json);
-    };
-    fetchData();
-  }, []);
+        setIsLoading(false)
+      }, 2000)
+      setData(json)
+    }
+    fetchData()
+  }, [])
 
   // map the data to the cards where url is not ''
   const sponsorCards = data.map((sponsor) => {
@@ -120,8 +120,8 @@ const Page = () => {
           image: sponsor.url,
         }}
       />
-    );
-  });
+    )
+  })
 
   return (
     <>
@@ -129,7 +129,7 @@ const Page = () => {
         <div className="loaderContainer">
           {/* <MyVideoLoader/> */}
           <video
-            src={require("../../../public/static/images/loadervideo.mp4")} // Update with the correct path
+            src={require('../../../public/static/images/loadervideo.mp4')} // Update with the correct path
             autoPlay
             muted
             loop
@@ -139,13 +139,13 @@ const Page = () => {
           />
         </div>
       )}
-      <div className={styles["sponsorsPage"]}>
+      <div className={styles['sponsorsPage']}>
         <CustomCursor />
         <Image
           suppressHydrationWarning
           src={cross}
           onClick={() => {
-            router.push("/");
+            router.push('/')
           }}
           alt="Close"
           className={styles.cross}
@@ -184,25 +184,25 @@ const Page = () => {
         </div>
       </div>
     </>
-  );
-};
+  )
+}
 
-export default Page;
+export default Page
 
 export function SponsorCard({ props }) {
-  const { name, description, image } = props;
+  const { name, description, image } = props
   const cardStyle = {
     // Set font size to 4rem if there is no image
 
     // Unset min-height if there is no image
     minHeight: !image ? 'unset' : '200px', // Set the default min-height value here
-  };
+  }
   const fontStyle = {
     // fontSize: !image ? '4rem' : '1.5rem',
-    fontSize: !image ? name === 'Made In India' ? '3rem': '4rem'  : '1.5rem',
+    fontSize: !image ? (name === 'Made In India' ? '3rem' : '4rem') : '1.5rem',
     width: 'max-content',
   }
-//   console.log(props);
+  //   console.log(props);
   return (
     <div className={styles.card} style={cardStyle}>
       {/* <div
@@ -221,5 +221,5 @@ export function SponsorCard({ props }) {
         <p>{props.description}</p>
       </div>
     </div>
-  );
+  )
 }

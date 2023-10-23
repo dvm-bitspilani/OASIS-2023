@@ -1,7 +1,7 @@
 .sponsorsPage {
   height: 100dvh;
   width: 100vw;
-  background: url("../../../public/static/images/updatedLibraryBgImage.png")
+  background: url('../../../public/static/images/updatedLibraryBgImage.png')
     no-repeat center center;
   background-size: cover;
 
@@ -13,7 +13,7 @@
   right: 2rem;
 }
 .heading {
-  font-family: "NightmarePills";
+  font-family: 'NightmarePills';
   text-align: center;
   font-size: 2.5rem;
   padding-top: 2rem;
@@ -43,23 +43,23 @@ aspect-ratio: 1/1; */
   filter: drop-shadow(0px 0px 15px rgba(123, 190, 240, 0.91));
   border-radius: 5px;
 }
-.sponsorsContent{
-    height: 80vh;
-    margin-top: 5vh;
-    display: flex;
-    align-items: center;
+.sponsorsContent {
+  height: 80vh;
+  margin-top: 5vh;
+  display: flex;
+  align-items: center;
 }
-.sponsorsContentContainer{
-    height: 100%;
-    width: 100%;
-    margin-right: 5vw;
-    overflow: scroll;
-    -ms-overflow-style: none;
-    scrollbar-width: none;
+.sponsorsContentContainer {
+  height: 100%;
+  width: 100%;
+  margin-right: 5vw;
+  overflow: scroll;
+  -ms-overflow-style: none;
+  scrollbar-width: none;
 }
 .sponsorsContentContainer::-webkit-scrollbar {
-    display: none;
-  }
+  display: none;
+}
 
 /* .cardWrapper{
     width: auto;
@@ -69,131 +69,131 @@ aspect-ratio: 1/1; */
     justify-content: center;
 } */
 
-.cardsContainer{
-    height: auto;
-    width: 100%;
-    display: flex;
-    flex-wrap: wrap;
+.cardsContainer {
+  height: auto;
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  row-gap: 1rem;
+  column-gap: 7.5rem;
+}
+
+.cardsFirstRow {
+  height: fit-content;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.cardsSecondRow {
+  height: fit-content;
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+.card {
+  width: 300px;
+  min-height: 200px;
+  /* height: fit-content; */
+  /* padding: 3% 2% 2% 2%; */
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
+  height: auto;
+}
+.cardContent {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 1.5rem;
+}
+
+.imgContainer {
+  min-height: 45%;
+  width: 100%;
+
+  display: flex;
+  justify-content: center;
+
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+.card img {
+  /* height: 100px; */
+  /* width: 100%; */
+  /* object-fit: contain; */
+  width: 300px;
+  height: auto;
+  max-height: 100px;
+  /* min-height: 100px; */
+}
+.card:nth-child(1) img {
+  max-height: unset;
+}
+.card:nth-child(9) img {
+  max-height: 200px;
+}
+.card:nth-child(16) img {
+  max-height: 150px;
+}
+.card:nth-child(20) img {
+  max-height: 150px;
+}
+.card:nth-child(21) img {
+  max-height: 150px;
+}
+.card:nth-child(22) img {
+  /* max-height: 10px; */
+  /* width: 350px; */
+  max-height: unset;
+  /* min-height: 100px; */
+}
+.card:nth-child(23) img {
+  /* max-height: 10px; */
+  max-height: 170px;
+  /* min-height: 100px; */
+}
+.card:nth-child(24) img {
+  /* max-height: 10px; */
+  max-height: 170px;
+  /* min-height: 100px; */
+}
+.card {
+  display: flex;
+  flex-direction: column;
+  padding-block: 1.5rem;
+}
+.card h2 {
+  text-align: center;
+  font-family: MetalMania;
+  font-size: 1.5rem;
+}
+.card p {
+  text-align: center;
+  font-family: 'MetalMania';
+  font-size: 1rem;
+}
+
+@media (max-width: 1000px) {
+  .card {
+    /* padding: 3% 3% 2% 3%; */
+  }
+}
+@media (max-width: 750px) {
+  .card {
+    /* padding: 3% 4% 2% 6%; */
+  }
+  .cardsSecondRow {
     justify-content: center;
-    row-gap: 1rem;
-    column-gap: 7.5rem;
+  }
 }
-
-.cardsFirstRow{
-    height: fit-content;
-    width: 100%;
-    display: flex;
-    justify-content: center;
-    flex-wrap: wrap;
-}
-
-.cardsSecondRow{
-    height: fit-content;
-    width: 100%;
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
-}
-.card{
-    width: 300px;
-    min-height: 200px;
-    /* height: fit-content; */
-    /* padding: 3% 2% 2% 2%; */
-    display: flex;
-    flex-direction: column;
-    justify-content: space-evenly;
-    align-items: center;
-    height: auto;
-}
-.cardContent{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    margin-top: 1.5rem;
-}
-
-.imgContainer{
-    min-height: 45%;
-    width: 100%;
-
-    display: flex;
-    justify-content: center;
-
-    background-size: contain;
-    background-repeat: no-repeat;
-    background-position: center;
-}
-.card img{
-    /* height: 100px; */
-    /* width: 100%; */
-    /* object-fit: contain; */
-    width: 300px;
-    height: auto;
-    max-height: 100px;
-    /* min-height: 100px; */
-}
-.card:nth-child(1) img{
-    max-height: unset;
-}
-.card:nth-child(9) img{
-    max-height: 200px;
-}
-.card:nth-child(16) img{
-    max-height: 150px;
-}
-.card:nth-child(20) img{
-    max-height: 150px;
-}
-.card:nth-child(21) img{
-    max-height: 150px;
-}
-.card:nth-child(22) img{
-    /* max-height: 10px; */
-    /* width: 350px; */
-    max-height: unset ;
-    /* min-height: 100px; */
-}
-.card:nth-child(23) img{
-    /* max-height: 10px; */
-    max-height: 170px;
-    /* min-height: 100px; */
-}
-.card:nth-child(24) img{
-    /* max-height: 10px; */
-    max-height: 170px;
-    /* min-height: 100px; */
-}
-.card{
-    display: flex;
-    flex-direction: column;
-    padding-block: 1.5rem;
-}
-.card h2{
-    text-align: center;
-    font-family: MetalMania;
-    font-size: 1.5rem;
-}
-.card p{
-    text-align: center;
-    font-family: 'MetalMania';
-    font-size: 1rem;
-}
-
-@media (max-width:1000px) {
-    .card{
-        /* padding: 3% 3% 2% 3%; */
-    }
-}
-@media (max-width:750px) {
-    .card{
-        /* padding: 3% 4% 2% 6%; */
-    }
-    .cardsSecondRow{
-        justify-content: center;
-    }
-}
-@media (max-width:350px){
-    .sponsorsContentContainer{
-        margin-right: 1vw;
-    }
+@media (max-width: 350px) {
+  .sponsorsContentContainer {
+    margin-right: 1vw;
+  }
 }

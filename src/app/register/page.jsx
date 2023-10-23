@@ -1,6 +1,6 @@
-"use client";
+'use client'
 
-import statesData from "./states.json";
+import statesData from './states.json'
 import React, {
   useState,
   useEffect,
@@ -8,31 +8,31 @@ import React, {
   useRef,
   useLayoutEffect,
   useMemo,
-} from "react";
-import { useRouter } from "next/navigation";
-import { motion } from "framer-motion";
-import Image from "next/image";
-import Select from "react-select";
-import Creatable from "react-select/creatable";
-import Radio from "../../components/radioButton.jsx";
-import styles from "./page.module.css";
-import indexStyles from "../page.module.css";
-import skull from "../../../public/static/images/skull.svg";
-import book from "../../../public/static/images/regBookOptimised.png";
-import register from "../../../public/static/images/regPageBtn.png";
-import regLogo from "../../../public/static/images/OasisLogo.png";
-import cross from "../../../public/static/images/cross.svg";
-import { useWindowSize } from "rooks";
-import CustomStyles from "./CustomStyles";
-import ErrorScreen from "./ErrorScreen";
-import ReCAPTCHA from "react-google-recaptcha";
-import CustomCursor from "@/components/CustomCursor";
+} from 'react'
+import { useRouter } from 'next/navigation'
+import { motion } from 'framer-motion'
+import Image from 'next/image'
+import Select from 'react-select'
+import Creatable from 'react-select/creatable'
+import Radio from '../../components/radioButton.jsx'
+import styles from './page.module.css'
+import indexStyles from '../page.module.css'
+import skull from '../../../public/static/images/skull.svg'
+import book from '../../../public/static/images/regBookOptimised.png'
+import register from '../../../public/static/images/regPageBtn.png'
+import regLogo from '../../../public/static/images/OasisLogo.png'
+import cross from '../../../public/static/images/cross.svg'
+import { useWindowSize } from 'rooks'
+import CustomStyles from './CustomStyles'
+import ErrorScreen from './ErrorScreen'
+import ReCAPTCHA from 'react-google-recaptcha'
+import CustomCursor from '@/components/CustomCursor'
 
-import { gsap } from "gsap";
+import { gsap } from 'gsap'
 
-import { generateRandomStatesArray } from "../page";
+import { generateRandomStatesArray } from '../page'
 
-const noCitiesMessage = () => "Select a State First";
+const noCitiesMessage = () => 'Select a State First'
 
 const customStylesArray = [
   {
@@ -70,243 +70,241 @@ const customStylesArray = [
       zIndex: 9996,
     }),
   },
-];
+]
 
 async function getCollegeData() {
   const res = await fetch(
-    "https://bits-oasis.org/2023/main/registrations/get_college"
-  );
+    'https://bits-oasis.org/2023/main/registrations/get_college'
+  )
   if (!res.ok) {
-    throw new Error("Failed to fetch college");
+    throw new Error('Failed to fetch college')
   }
-  return res.json();
+  return res.json()
 }
 async function getEventsData() {
   const res = await fetch(
-    "https://bits-oasis.org/2023/main/registrations/events"
-  );
+    'https://bits-oasis.org/2023/main/registrations/events'
+  )
   if (!res.ok) {
-    throw new Error("Failed to get Events");
+    throw new Error('Failed to get Events')
   }
-  return res.json();
+  return res.json()
 }
 
 function filterObjectsByName(objectsArray, searchName) {
-  return objectsArray.filter((object) => object.name === searchName);
+  return objectsArray.filter((object) => object.name === searchName)
 }
 
 const formReducerFn = (state, action) => {
-  if (action.type === "nameChange") {
+  if (action.type === 'nameChange') {
     return {
       ...state,
       name: action.value.target.value,
-    };
+    }
   }
-  if (action.type === "emailChange") {
+  if (action.type === 'emailChange') {
     return {
       ...state,
       email_id: action.value.target.value,
-    };
+    }
   }
-  if (action.type === "phoneChange") {
+  if (action.type === 'phoneChange') {
     return {
       ...state,
       phone: action.value,
-    };
+    }
   }
-  if (action.type === "stateChange") {
+  if (action.type === 'stateChange') {
     return {
       ...state,
       state: action.value.value,
-    };
+    }
   }
-  if (action.type === "cityChange") {
+  if (action.type === 'cityChange') {
     return {
       ...state,
       city: action.value.value,
-    };
+    }
   }
-  if (action.type === "collegeChange") {
+  if (action.type === 'collegeChange') {
     return {
       ...state,
       college_id: action.value.value,
-    };
+    }
   }
-  if (action.type === "yearChange") {
+  if (action.type === 'yearChange') {
     return {
       ...state,
       year: action.value.value,
-    };
+    }
   }
-  if (action.type === "genderChange") {
+  if (action.type === 'genderChange') {
     return {
       ...state,
       gender: action.value.target.id,
-    };
+    }
   }
-  if (action.type === "choreoChange") {
+  if (action.type === 'choreoChange') {
     // const newValue = state.choreographer === "NO" ? "YES" : "NO";
     return {
       ...state,
       choreographer: action.value.target.value,
-    };
+    }
   }
-  if (action.type === "headChange") {
+  if (action.type === 'headChange') {
     // const newValue = state.head_of_society === "NO" ? "YES" : "NO";
     return {
       ...state,
       head_of_society: action.value.target.value,
-    };
+    }
   }
-  if (action.type === "visitorChange") {
+  if (action.type === 'visitorChange') {
     // const newValue = state.visitor === "NO" ? "YES" : "NO";
     return {
       ...state,
       visitor: action.value.target.value,
-    };
+    }
   }
-  if (action.type === "eventChange") {
-    const eventsArray = action.value;
+  if (action.type === 'eventChange') {
+    const eventsArray = action.value
     // console.log(eventsArray);
     const eventsName = eventsArray.map((item) => {
-      return item.value;
-    });
+      return item.value
+    })
     return {
       ...state,
       events: eventsName,
-    };
+    }
   }
 
-  return state;
-};
+  return state
+}
 
 const formDataTemplate = {
-  email_id: "",
+  email_id: '',
   events: [],
-  phone: "",
-  year: "",
-  choreographer: "NO",
-  head_of_society: "NO",
-  visitor: "NO",
-  name: "",
-  gender: "",
-  city: "",
-  state: "",
-  college_id: "",
-  captcha:"",
-};
+  phone: '',
+  year: '',
+  choreographer: 'NO',
+  head_of_society: 'NO',
+  visitor: 'NO',
+  name: '',
+  gender: '',
+  city: '',
+  state: '',
+  college_id: '',
+  captcha: '',
+}
 const year = [
-  { value: "1", label: "1" },
-  { value: "2", label: "2" },
-  { value: "3", label: "3" },
-  { value: "4", label: "4" },
-  { value: "5", label: "5" },
-];
+  { value: '1', label: '1' },
+  { value: '2', label: '2' },
+  { value: '3', label: '3' },
+  { value: '4', label: '4' },
+  { value: '5', label: '5' },
+]
 
 export default function Page() {
-
-
   async function uploadData(data) {
-    if (data.choreographer === "NO") {
-      data.choreographer = 0;
+    if (data.choreographer === 'NO') {
+      data.choreographer = 0
     }
-    if (data.choreographer === "YES") {
-      data.choreographer = 1;
+    if (data.choreographer === 'YES') {
+      data.choreographer = 1
     }
-    if (data.head_of_society === "NO") {
-      data.head_of_society = 0;
+    if (data.head_of_society === 'NO') {
+      data.head_of_society = 0
     }
-    if (data.head_of_society === "YES") {
-      data.head_of_society = 1;
+    if (data.head_of_society === 'YES') {
+      data.head_of_society = 1
     }
-    if (data.visitor === "NO") {
-      data.visitor = 0;
+    if (data.visitor === 'NO') {
+      data.visitor = 0
     }
-    if (data.visitor === "YES") {
-      data.visitor = 1;
+    if (data.visitor === 'YES') {
+      data.visitor = 1
     }
     // console.log(data);
     const options = {
-      method: "POST",
+      method: 'POST',
       headers: {
-        "Content-Type": "application/json",
+        'Content-Type': 'application/json',
       },
       body: JSON.stringify(data),
-    };
+    }
 
     const res = await fetch(
-      "https://bits-oasis.org/2023/main/registrations/Register/",
+      'https://bits-oasis.org/2023/main/registrations/Register/',
       options
-    );
+    )
     if (!res.ok) {
       res.json().then((data) => {
-        setErrorMessage(data["message"]);
-        setErrorScreen(true);
-        setError(true);
-      });
-      throw new Error("Failed to register");
+        setErrorMessage(data['message'])
+        setErrorScreen(true)
+        setError(true)
+      })
+      throw new Error('Failed to register')
     }
-    return res.json();
+    return res.json()
   }
 
-  const { innerWidth, innerHeight } = useWindowSize();
-  const [isCaptchaVerified, setIsCaptchaVerified] = useState(false);
-  const [isCaptchaClicked , setIsCaptcaClicked] = useState(false);
+  const { innerWidth, innerHeight } = useWindowSize()
+  const [isCaptchaVerified, setIsCaptchaVerified] = useState(false)
+  const [isCaptchaClicked, setIsCaptcaClicked] = useState(false)
 
   // Callback function when reCAPTCHA is verified
-  const handleCaptchaVerify = async(value) => {
-    formData["captcha"]=value
-    const response = await uploadData(formData);
-    setErrorMessage(response["message"]);
-    setError(false);
-    setErrorScreen(true);
+  const handleCaptchaVerify = async (value) => {
+    formData['captcha'] = value
+    const response = await uploadData(formData)
+    setErrorMessage(response['message'])
+    setError(false)
+    setErrorScreen(true)
   }
 
-  const numberOfRandom = 6;
+  const numberOfRandom = 6
 
   const randomGenerationTopLeftConfig = useMemo(
     () => [20, 0, 26, 90, 0, 67, 0, 0],
     []
-  );
+  )
   const randomGenerationBottomLeftConfig = useMemo(
     () => [20, 0, 26, 90, 67, 0, 0, 0],
     []
-  );
+  )
 
-  const [isLoading, setIsLoading] = useState(true);
-  const scope = useRef(null);
+  const [isLoading, setIsLoading] = useState(true)
+  const scope = useRef(null)
 
-  const nameFieldRef = useRef(null);
-  const emailFieldRef = useRef(null);
-  const phoneFieldRef = useRef(null);
-  const genderFieldRef = useRef(null);
-  const collegeFieldRef = useRef(null);
-  const stateFieldRef = useRef(null);
-  const cityFieldRef = useRef(null);
-  const yearFieldRef = useRef(null);
-  const eventsFieldRef = useRef(null);
+  const nameFieldRef = useRef(null)
+  const emailFieldRef = useRef(null)
+  const phoneFieldRef = useRef(null)
+  const genderFieldRef = useRef(null)
+  const collegeFieldRef = useRef(null)
+  const stateFieldRef = useRef(null)
+  const cityFieldRef = useRef(null)
+  const yearFieldRef = useRef(null)
+  const eventsFieldRef = useRef(null)
 
   const [randomStatesTopLeft1, setRandomStatesTopLeft1] = useState(
     generateRandomStatesArray(numberOfRandom, ...randomGenerationTopLeftConfig)
-  );
+  )
 
   const [randomStatesTopLeft2, setRandomStatesTopLeft2] = useState(
     generateRandomStatesArray(numberOfRandom, ...randomGenerationTopLeftConfig)
-  );
+  )
 
   const [randomStatesBottomLeft1, setRandomStatesBottomLeft1] = useState(
     generateRandomStatesArray(
       numberOfRandom,
       ...randomGenerationBottomLeftConfig
     )
-  );
+  )
 
   const [randomStatesBottomLeft2, setRandomStatesBottomLeft2] = useState(
     generateRandomStatesArray(
       numberOfRandom,
       ...randomGenerationBottomLeftConfig
     )
-  );
+  )
 
   const randomSetImagesTopLeft1 = randomStatesTopLeft1.map((item, index) => {
     return (
@@ -320,8 +318,8 @@ export default function Page() {
         height={80}
         draggable={false}
       />
-    );
-  });
+    )
+  })
 
   const randomSetImagesTopLeft2 = randomStatesTopLeft2.map((item, index) => {
     return (
@@ -335,8 +333,8 @@ export default function Page() {
         height={80}
         draggable={false}
       />
-    );
-  });
+    )
+  })
 
   const randomSetImagesBottomLeft1 = randomStatesBottomLeft1.map(
     (item, index) => {
@@ -351,9 +349,9 @@ export default function Page() {
           height={80}
           draggable={false}
         />
-      );
+      )
     }
-  );
+  )
 
   const randomSetImagesBottomLeft2 = randomStatesBottomLeft2.map(
     (item, index) => {
@@ -368,55 +366,55 @@ export default function Page() {
           height={80}
           draggable={false}
         />
-      );
+      )
     }
-  );
+  )
 
-  const [isDelayed, setIsDelayed] = useState(false);
-  const [allAssetsLoaded, setAllAssetsLoaded] = useState(false);
+  const [isDelayed, setIsDelayed] = useState(false)
+  const [allAssetsLoaded, setAllAssetsLoaded] = useState(false)
   useEffect(() => {
-    if (typeof window !== "undefined") {
+    if (typeof window !== 'undefined') {
       // console.log('first')
-      setIsLoading(true);
+      setIsLoading(true)
       // setShowLoader(true);
-      const assets = [skull, book, register, cross];
+      const assets = [skull, book, register, cross]
       // console.log('second')
       const loadAssets = () => {
         const assetPromises = assets.map((asset) => {
           if (asset) {
             return new Promise((resolve, reject) => {
-              const img = new Image();
-              img.onload = resolve;
-              img.onerror = reject;
-              img.src = asset;
-            });
+              const img = new Image()
+              img.onload = resolve
+              img.onerror = reject
+              img.src = asset
+            })
           }
-        });
+        })
 
         Promise.all(assetPromises)
           .then(() => {
-            setAllAssetsLoaded(true);
+            setAllAssetsLoaded(true)
             setTimeout(() => {
-              setIsLoading(false);
+              setIsLoading(false)
               // setShowLoader(false);
-            }, 10000);
+            }, 10000)
             // console.log('All assets loaded successfully');
           })
           .catch((error) => {
-            console.error("Error loading assets:", error);
+            console.error('Error loading assets:', error)
             // setIsLoading(false);
-            setAllAssetsLoaded(true);
+            setAllAssetsLoaded(true)
             // setShowLoader(false);
             setTimeout(() => {
-              setIsLoading(false);
+              setIsLoading(false)
               // setShowLoader(false);
-            }, 2000);
-          });
-      };
-      loadAssets();
+            }, 2000)
+          })
+      }
+      loadAssets()
       // }
     }
-  }, []);
+  }, [])
 
   useLayoutEffect(() => {
     // console.log("Animation 1");
@@ -428,7 +426,7 @@ export default function Page() {
             top: `${item.startingY}%`,
             opacity: 0,
             scale: 0.3,
-          });
+          })
 
           const tl = gsap.timeline({
             onComplete: () => {
@@ -439,10 +437,10 @@ export default function Page() {
                     numberOfRandom,
                     ...randomGenerationTopLeftConfig
                   )
-                );
+                )
               }
             },
-          });
+          })
 
           tl.to(`#top_left_1_${key}`, {
             right: `${(item.endingX + item.startingX) / 2}%`,
@@ -451,40 +449,40 @@ export default function Page() {
             // opacity: 1,
             delay: `${key * 1.4}`,
             duration: 2.5,
-            ease: "none",
-          });
+            ease: 'none',
+          })
           tl.to(
             `#top_left_1_${key}`,
             {
               opacity: 1,
               duration: 2.5,
-              ease: "power2.in",
+              ease: 'power2.in',
             },
-            "-=2.5"
-          );
+            '-=2.5'
+          )
           tl.to(`#top_left_1_${key}`, {
             right: `${item.endingX}%`,
             top: `${item.endingY}%`,
             opacity: 0,
             duration: 2.5,
-            ease: "none",
-          });
+            ease: 'none',
+          })
           tl.to(
             `#top_left_1_${key}`,
             {
               scale: 0.8,
               rotate: 80,
               duration: 5,
-              ease: "none",
+              ease: 'none',
             },
-            "-=5"
-          );
-        });
-      }, scope); // <- IMPORTANT! Scopes selector text
+            '-=5'
+          )
+        })
+      }, scope) // <- IMPORTANT! Scopes selector text
 
       return () => {
-        ctx.revert();
-      }; // cleanup
+        ctx.revert()
+      } // cleanup
     }
   }, [
     isLoading,
@@ -493,7 +491,7 @@ export default function Page() {
     randomGenerationTopLeftConfig,
     randomStatesTopLeft1,
     innerWidth,
-  ]);
+  ])
 
   useLayoutEffect(() => {
     // console.log("Animation 2");
@@ -505,7 +503,7 @@ export default function Page() {
             top: `${item.startingY}%`,
             opacity: 0,
             scale: 0.3,
-          });
+          })
 
           const tl = gsap.timeline({
             delay: isDelayed ? 0 : 7,
@@ -517,10 +515,10 @@ export default function Page() {
                     numberOfRandom,
                     ...randomGenerationTopLeftConfig
                   )
-                );
+                )
               }
             },
-          });
+          })
 
           tl.to(`#top_left_2_${key}`, {
             right: `${(item.endingX + item.startingX) / 2}%`,
@@ -529,40 +527,40 @@ export default function Page() {
             // opacity: 1,
             delay: `${key * 1.4}`,
             duration: 2.5,
-            ease: "none",
-          });
+            ease: 'none',
+          })
           tl.to(
             `#top_left_2_${key}`,
             {
               opacity: 1,
               duration: 2.5,
-              ease: "power2.in",
+              ease: 'power2.in',
             },
-            "-=2.5"
-          );
+            '-=2.5'
+          )
           tl.to(`#top_left_2_${key}`, {
             right: `${item.endingX}%`,
             top: `${item.endingY}%`,
             opacity: 0,
             duration: 2.5,
-            ease: "none",
-          });
+            ease: 'none',
+          })
           tl.to(
             `#top_left_2_${key}`,
             {
               scale: 0.8,
               rotate: 80,
               duration: 5,
-              ease: "none",
+              ease: 'none',
             },
-            "-=5"
-          );
-        });
-      }, scope); // <- IMPORTANT! Scopes selector text
+            '-=5'
+          )
+        })
+      }, scope) // <- IMPORTANT! Scopes selector text
 
       return () => {
-        ctx.revert();
-      }; // cleanup
+        ctx.revert()
+      } // cleanup
     }
   }, [
     isLoading,
@@ -572,7 +570,7 @@ export default function Page() {
     randomStatesTopLeft2,
     isDelayed,
     innerWidth,
-  ]);
+  ])
 
   useLayoutEffect(() => {
     // console.log("Animation 3");
@@ -584,7 +582,7 @@ export default function Page() {
             top: `${item.startingY}%`,
             opacity: 0,
             scale: 0.3,
-          });
+          })
 
           const tl = gsap.timeline({
             onComplete: () => {
@@ -595,10 +593,10 @@ export default function Page() {
                     numberOfRandom,
                     ...randomGenerationBottomLeftConfig
                   )
-                );
+                )
               }
             },
-          });
+          })
 
           tl.to(`#bottom_left_1_${key}`, {
             right: `${(item.endingX + item.startingX) / 2}%`,
@@ -607,40 +605,40 @@ export default function Page() {
             // opacity: 1,
             delay: `${key * 1.4}`,
             duration: 2.5,
-            ease: "none",
-          });
+            ease: 'none',
+          })
           tl.to(
             `#bottom_left_1_${key}`,
             {
               opacity: 1,
               duration: 2.5,
-              ease: "power2.in",
+              ease: 'power2.in',
             },
-            "-=2.5"
-          );
+            '-=2.5'
+          )
           tl.to(`#bottom_left_1_${key}`, {
             right: `${item.endingX}%`,
             top: `${item.endingY}%`,
             opacity: 0,
             duration: 2.5,
-            ease: "none",
-          });
+            ease: 'none',
+          })
           tl.to(
             `#bottom_left_1_${key}`,
             {
               scale: 0.8,
               rotate: 80,
               duration: 5,
-              ease: "none",
+              ease: 'none',
             },
-            "-=5"
-          );
-        });
-      }, scope); // <- IMPORTANT! Scopes selector text
+            '-=5'
+          )
+        })
+      }, scope) // <- IMPORTANT! Scopes selector text
 
       return () => {
-        ctx.revert();
-      }; // cleanup
+        ctx.revert()
+      } // cleanup
     }
   }, [
     isLoading,
@@ -649,7 +647,7 @@ export default function Page() {
     randomGenerationBottomLeftConfig,
     randomStatesBottomLeft1,
     innerWidth,
-  ]);
+  ])
 
   useLayoutEffect(() => {
     // console.log("Animation 4");
@@ -661,23 +659,23 @@ export default function Page() {
             top: `${item.startingY}%`,
             opacity: 0,
             scale: 0.3,
-          });
+          })
 
           const tl = gsap.timeline({
             delay: isDelayed ? 0 : 7,
             onComplete: () => {
               if (key === randomStatesBottomLeft2.length - 1) {
                 // console.log("Animation 4 complete");
-                setIsDelayed(true);
+                setIsDelayed(true)
                 setRandomStatesBottomLeft2(
                   generateRandomStatesArray(
                     numberOfRandom,
                     ...randomGenerationBottomLeftConfig
                   )
-                );
+                )
               }
             },
-          });
+          })
 
           tl.to(`#bottom_left_2_${key}`, {
             right: `${(item.endingX + item.startingX) / 2}%`,
@@ -686,40 +684,40 @@ export default function Page() {
             // opacity: 1,
             delay: `${key * 1.4}`,
             duration: 2.5,
-            ease: "none",
-          });
+            ease: 'none',
+          })
           tl.to(
             `#bottom_left_2_${key}`,
             {
               opacity: 1,
               duration: 2.5,
-              ease: "power2.in",
+              ease: 'power2.in',
             },
-            "-=2.5"
-          );
+            '-=2.5'
+          )
           tl.to(`#bottom_left_2_${key}`, {
             right: `${item.endingX}%`,
             top: `${item.endingY}%`,
             opacity: 0,
             duration: 2.5,
-            ease: "none",
-          });
+            ease: 'none',
+          })
           tl.to(
             `#bottom_left_2_${key}`,
             {
               scale: 0.8,
               rotate: 80,
               duration: 5,
-              ease: "none",
+              ease: 'none',
             },
-            "-=5"
-          );
-        });
-      }, scope); // <- IMPORTANT! Scopes selector text
+            '-=5'
+          )
+        })
+      }, scope) // <- IMPORTANT! Scopes selector text
 
       return () => {
-        ctx.revert();
-      }; // cleanup
+        ctx.revert()
+      } // cleanup
     }
   }, [
     isLoading,
@@ -728,164 +726,156 @@ export default function Page() {
     randomStatesBottomLeft2,
     isDelayed,
     innerWidth,
-  ]);
+  ])
 
-  const [formData, formDispatchFn] = useReducer(
-    formReducerFn,
-    formDataTemplate
-  );
-  const router = useRouter();
-  const [loaderLoaded, setLoaderLoaded] = useState(false);
-  const [fetchedData, setFetchedData] = useState(null);
-  const [colleges, setColleges] = useState([]);
-  const [events, setEvents] = useState([]);
-  const [states, setStates] = useState([]);
-  const [cities, setCities] = useState([]);
+  const [formData, formDispatchFn] = useReducer(formReducerFn, formDataTemplate)
+  const router = useRouter()
+  const [loaderLoaded, setLoaderLoaded] = useState(false)
+  const [fetchedData, setFetchedData] = useState(null)
+  const [colleges, setColleges] = useState([])
+  const [events, setEvents] = useState([])
+  const [states, setStates] = useState([])
+  const [cities, setCities] = useState([])
   const [selectedState, setSelectedState] = useState({
-    value: "",
-    label: "",
-  });
-  const skullRef = useRef(null);
-  const formContainerRef = useRef(null);
-  const regLoaderRef = useRef(null);
-  const [errorScreen, setErrorScreen] = useState(false);
-  const [errorMessage, setErrorMessage] = useState("");
-  const [error, setError] = useState(false);
+    value: '',
+    label: '',
+  })
+  const skullRef = useRef(null)
+  const formContainerRef = useRef(null)
+  const regLoaderRef = useRef(null)
+  const [errorScreen, setErrorScreen] = useState(false)
+  const [errorMessage, setErrorMessage] = useState('')
+  const [error, setError] = useState(false)
 
   useEffect(() => {
-    const assets = [regLoaderRef.current];
-    let assetsLoaded = 0;
+    const assets = [regLoaderRef.current]
+    let assetsLoaded = 0
 
     const handleAssetLoad = () => {
-      assetsLoaded++;
+      assetsLoaded++
       if (assetsLoaded === assets.length) {
         setTimeout(() => {
-          setLoaderLoaded(true);
-        }, 1000);
+          setLoaderLoaded(true)
+        }, 1000)
       }
-    };
+    }
 
     assets.forEach((asset) => {
       if (
         asset &&
-        (asset.complete || asset.readyState === 4 || asset.tagName === "LINK")
+        (asset.complete || asset.readyState === 4 || asset.tagName === 'LINK')
       ) {
-        handleAssetLoad();
+        handleAssetLoad()
       } else {
         if (asset) {
-          asset.addEventListener("load", handleAssetLoad);
-          asset.addEventListener("error", handleAssetLoad);
+          asset.addEventListener('load', handleAssetLoad)
+          asset.addEventListener('error', handleAssetLoad)
         }
       }
-    });
+    })
 
     const cleanup = () => {
       assets.forEach((asset) => {
         if (asset) {
-          asset.removeEventListener("load", handleAssetLoad);
-          asset.removeEventListener("error", handleAssetLoad);
+          asset.removeEventListener('load', handleAssetLoad)
+          asset.removeEventListener('error', handleAssetLoad)
         }
-      });
-    };
+      })
+    }
 
-    return cleanup;
-  }, []);
+    return cleanup
+  }, [])
   useEffect(() => {
     if (loaderLoaded) {
-      const assets = document.querySelectorAll(
-        "img",
-        "font",
-        "style",
-        "iframe"
-      );
+      const assets = document.querySelectorAll('img', 'font', 'style', 'iframe')
 
-      let assetsLoaded = 0;
+      let assetsLoaded = 0
 
       const handleAssetLoad = () => {
-        assetsLoaded++;
+        assetsLoaded++
         if (assetsLoaded === assets.length) {
           setTimeout(() => {
-            setIsLoading(false);
-          }, 2000);
+            setIsLoading(false)
+          }, 2000)
         }
-      };
+      }
 
       assets.forEach((asset) => {
         if (
           asset &&
-          (asset.complete || asset.readyState === 4 || asset.tagName === "LINK")
+          (asset.complete || asset.readyState === 4 || asset.tagName === 'LINK')
         ) {
-          handleAssetLoad();
+          handleAssetLoad()
         } else {
           if (asset) {
-            asset.addEventListener("load", handleAssetLoad);
-            asset.addEventListener("error", handleAssetLoad);
+            asset.addEventListener('load', handleAssetLoad)
+            asset.addEventListener('error', handleAssetLoad)
           }
         }
-      });
+      })
 
       const cleanup = () => {
         assets.forEach((asset) => {
           if (asset) {
-            asset.removeEventListener("load", handleAssetLoad);
-            asset.removeEventListener("error", handleAssetLoad);
+            asset.removeEventListener('load', handleAssetLoad)
+            asset.removeEventListener('error', handleAssetLoad)
           }
-        });
-      };
+        })
+      }
 
-      return cleanup;
+      return cleanup
     }
-  }, [loaderLoaded, colleges, events]);
+  }, [loaderLoaded, colleges, events])
 
   const handleRegisterations = async () => {
-    const allErrors = document.querySelectorAll(`.${styles.errorMessage}`);
+    const allErrors = document.querySelectorAll(`.${styles.errorMessage}`)
     allErrors.forEach((error) => {
-      error.remove();
-    });
+      error.remove()
+    })
 
     if (
-      formData.name.trim() === "" ||
-      formData.email_id.trim() === "" ||
-      formData.phone.trim() === "" ||
-      formData.gender === "" ||
-      formData.college_id === "" ||
-      formData.state === "" ||
-      formData.city === "" ||
-      formData.year === ""
+      formData.name.trim() === '' ||
+      formData.email_id.trim() === '' ||
+      formData.phone.trim() === '' ||
+      formData.gender === '' ||
+      formData.college_id === '' ||
+      formData.state === '' ||
+      formData.city === '' ||
+      formData.year === ''
       // formData.choreographer === "" ||
       // formData.head_of_society === ""
     ) {
       // alert("Please fill in all the fields.");
-      let firstErrorField = null;
+      let firstErrorField = null
       // let fieldName = null;
       // const firstErrorFieldIndex = Object.keys(formData).findIndex((key) => {
       //   return formData[key] === "";
       // });
 
-      if (formData.name.trim() === "") {
+      if (formData.name.trim() === '') {
         // nameFieldRef.current.focus();
-        firstErrorField = nameFieldRef.current;
-      } else if (formData.email_id.trim() === "") {
+        firstErrorField = nameFieldRef.current
+      } else if (formData.email_id.trim() === '') {
         // emailFieldRef.current.focus();
-        firstErrorField = emailFieldRef.current;
-      } else if (formData.phone.trim() === "") {
+        firstErrorField = emailFieldRef.current
+      } else if (formData.phone.trim() === '') {
         // phoneFieldRef.current.focus();
-        firstErrorField = phoneFieldRef.current;
-      } else if (formData.gender === "") {
+        firstErrorField = phoneFieldRef.current
+      } else if (formData.gender === '') {
         // genderFieldRef.current.focus();
-        firstErrorField = genderFieldRef.current;
-      } else if (formData.college_id === "") {
+        firstErrorField = genderFieldRef.current
+      } else if (formData.college_id === '') {
         // collegeFieldRef.current.focus();
-        firstErrorField = collegeFieldRef.current;
-      } else if (formData.state === "") {
+        firstErrorField = collegeFieldRef.current
+      } else if (formData.state === '') {
         // stateFieldRef.current.focus();
-        firstErrorField = stateFieldRef.current;
-      } else if (formData.city === "") {
+        firstErrorField = stateFieldRef.current
+      } else if (formData.city === '') {
         // cityFieldRef.current.focus();
-        firstErrorField = cityFieldRef.current;
-      } else if (formData.year === "") {
+        firstErrorField = cityFieldRef.current
+      } else if (formData.year === '') {
         // yearFieldRef.current.focus();
-        firstErrorField = yearFieldRef.current;
+        firstErrorField = yearFieldRef.current
       }
 
       // if (firstErrorField && !alert("Please fill in all the fields.")) {
@@ -893,270 +883,268 @@ export default function Page() {
         // console.log(firstErrorField);
         //scroll to first error field using scrollintoview
         firstErrorField.scrollIntoView({
-          behavior: "smooth",
-          block: "start",
-          inline: "center",
-        });
+          behavior: 'smooth',
+          block: 'start',
+          inline: 'center',
+        })
 
         // Adding an error message div as the next sibling element of the first error field
-        AddingErrorMessage(firstErrorField, "field is required.");
+        AddingErrorMessage(firstErrorField, 'field is required.')
 
         setTimeout(() => {
-          firstErrorField.focus();
-        }, 700);
+          firstErrorField.focus()
+        }, 700)
       }
 
-      return;
+      return
     }
 
     if (!/^\d{10}$/.test(formData.phone)) {
       // alert("Phone number should be 10 digits.");
-      const firstErrorField = phoneFieldRef.current;
+      const firstErrorField = phoneFieldRef.current
       firstErrorField.scrollIntoView({
-        behavior: "smooth",
-        block: "start",
-        inline: "center",
-      });
-      AddingErrorMessage(firstErrorField, "should be 10 digits.");
-      return;
+        behavior: 'smooth',
+        block: 'start',
+        inline: 'center',
+      })
+      AddingErrorMessage(firstErrorField, 'should be 10 digits.')
+      return
     }
 
     if (!/\S+@\S+\.\S+/.test(formData.email_id)) {
       // alert("Please provide a valid email address.");
-      const firstErrorField = emailFieldRef.current;
+      const firstErrorField = emailFieldRef.current
       firstErrorField.scrollIntoView({
-        behavior: "smooth",
-        block: "start",
-        inline: "center",
-      });
-      AddingErrorMessage(firstErrorField, "is invalid.");
-      return;
+        behavior: 'smooth',
+        block: 'start',
+        inline: 'center',
+      })
+      AddingErrorMessage(firstErrorField, 'is invalid.')
+      return
     }
 
     function AddingErrorMessage(firstErrorField, errorMessage) {
-      const errorMessageDiv = document.createElement("div");
-      errorMessageDiv.classList.add(styles.errorMessage);
-      errorMessageDiv.innerText = `*${firstErrorField.innerText} ${errorMessage}`;
+      const errorMessageDiv = document.createElement('div')
+      errorMessageDiv.classList.add(styles.errorMessage)
+      errorMessageDiv.innerText = `*${firstErrorField.innerText} ${errorMessage}`
       firstErrorField.parentNode.insertBefore(
         errorMessageDiv,
         firstErrorField.nextSibling.nextSibling
-      );
+      )
     }
 
-    if(!isCaptchaVerified){
+    if (!isCaptchaVerified) {
       setIsCaptchaVerified(true)
     }
-  };
+  }
 
   function handlePhoneChange(inp) {
     formDispatchFn({
-      type: "phoneChange",
-      value: inp.target.value.replace(/\D/g, ""),
-    });
+      type: 'phoneChange',
+      value: inp.target.value.replace(/\D/g, ''),
+    })
   }
   function handleNameChange(inp) {
-    formDispatchFn({ type: "nameChange", value: inp });
+    formDispatchFn({ type: 'nameChange', value: inp })
   }
   function handleEmailChange(inp) {
-    formDispatchFn({ type: "emailChange", value: inp });
+    formDispatchFn({ type: 'emailChange', value: inp })
   }
   function handleStateChange(inp) {
-    setSelectedState(inp);
-    formDispatchFn({ type: "stateChange", value: inp });
+    setSelectedState(inp)
+    formDispatchFn({ type: 'stateChange', value: inp })
   }
   function handleCityChange(inp) {
-    formDispatchFn({ type: "cityChange", value: inp });
+    formDispatchFn({ type: 'cityChange', value: inp })
   }
   function handleCollegeChange(inp) {
-    formDispatchFn({ type: "collegeChange", value: inp });
+    formDispatchFn({ type: 'collegeChange', value: inp })
   }
   function handleYearChange(inp) {
-    formDispatchFn({ type: "yearChange", value: inp });
+    formDispatchFn({ type: 'yearChange', value: inp })
   }
   function handleGenderChange(inp) {
-    formDispatchFn({ type: "genderChange", value: inp });
+    formDispatchFn({ type: 'genderChange', value: inp })
   }
   function handleChoreoChange(inp) {
-    formDispatchFn({ type: "choreoChange", value: inp });
+    formDispatchFn({ type: 'choreoChange', value: inp })
   }
   function handleHeadChange(inp) {
-    formDispatchFn({ type: "headChange", value: inp });
+    formDispatchFn({ type: 'headChange', value: inp })
   }
   function handleVisitorChange(inp) {
-    formDispatchFn({ type: "visitorChange", value: inp });
+    formDispatchFn({ type: 'visitorChange', value: inp })
   }
   function handleEventChange(inp) {
-    formDispatchFn({ type: "eventChange", value: inp });
+    formDispatchFn({ type: 'eventChange', value: inp })
   }
 
   function handleScroll(inp) {
     // const maxScrollTopValue = formContainerRef.current.scrollTopMax;
     const maxScrollTopValue =
       formContainerRef.current.scrollHeight -
-      formContainerRef.current.clientHeight;
+      formContainerRef.current.clientHeight
     // const percentage = (formContainerRef.current.scrollTop / maxScrollTopValue )*100;
     const percentage =
-      (formContainerRef.current.scrollTop / maxScrollTopValue) * 100;
+      (formContainerRef.current.scrollTop / maxScrollTopValue) * 100
     percentage > 100
-      ? (skullRef.current.style.top = "100%")
-      : (skullRef.current.style.top = `${percentage}%`);
+      ? (skullRef.current.style.top = '100%')
+      : (skullRef.current.style.top = `${percentage}%`)
     // console.log(percentage);
     // skullRef.current.style.top = `${percentage}%`;
     // skullElem.style.top = `${percentage}%`;
   }
 
   useEffect(() => {
-    setFetchedData(statesData);
+    setFetchedData(statesData)
     getCollegeData()
       .then((data) => {
         setColleges(
-          data["data"].map((item) => {
-            return { value: item.id, label: item.name };
+          data['data'].map((item) => {
+            return { value: item.id, label: item.name }
           })
-        );
+        )
       })
       .catch((error) => {
-        console.error(error);
-      });
+        console.error(error)
+      })
     getCollegeData()
       .then((data) => {
         setColleges(
-          data["data"].map((item) => {
-            return { value: item.id, label: item.name };
+          data['data'].map((item) => {
+            return { value: item.id, label: item.name }
           })
-        );
+        )
       })
       .catch((error) => {
         // console.log(error);
-      });
+      })
     getEventsData()
       .then((data) => {
         setEvents(
-          data["data"][0]["events"].map((item) => {
-            return { value: item.id, label: item.name };
+          data['data'][0]['events'].map((item) => {
+            return { value: item.id, label: item.name }
           })
-        );
+        )
         // console.log(data["data"][0]["events"].map((item) => {
         //   return { value: item.id, label: item.name };
         // }))
       })
       .catch((error) => {
         // console.log(error);
-      });
-  }, [statesData]);
+      })
+  }, [statesData])
 
   useEffect(() => {
     if (fetchedData) {
-      const keys = Object.values(fetchedData);
-      setStates(
-        keys.map((key) => ({ value: key["name"], label: key["name"] }))
-      );
+      const keys = Object.values(fetchedData)
+      setStates(keys.map((key) => ({ value: key['name'], label: key['name'] })))
       if (
-        filterObjectsByName(fetchedData, selectedState["value"]) &&
-        filterObjectsByName(fetchedData, selectedState["value"])[0]
+        filterObjectsByName(fetchedData, selectedState['value']) &&
+        filterObjectsByName(fetchedData, selectedState['value'])[0]
       ) {
         setCities(
-          filterObjectsByName(fetchedData, selectedState["value"])[0][
-            "cities"
-          ].map((key) => ({ value: key["name"], label: key["name"] }))
-        );
+          filterObjectsByName(fetchedData, selectedState['value'])[0][
+            'cities'
+          ].map((key) => ({ value: key['name'], label: key['name'] }))
+        )
       }
     }
-  }, [fetchedData, selectedState]);
+  }, [fetchedData, selectedState])
 
   useEffect(() => {
-    formContainerRef.current.addEventListener("scroll", handleScroll);
+    formContainerRef.current.addEventListener('scroll', handleScroll)
 
     // Removing styling on radiobutton main label on click of other input tags
-    const allInputs = document.querySelectorAll("input");
+    const allInputs = document.querySelectorAll('input')
     allInputs.forEach((input) => {
-      input.addEventListener("focus", () => {
-        const allLabels = document.querySelectorAll("label");
+      input.addEventListener('focus', () => {
+        const allLabels = document.querySelectorAll('label')
         allLabels.forEach((label) => {
-          label.classList.remove(styles.labelFocus);
-        });
-      });
-    });
-    
+          label.classList.remove(styles.labelFocus)
+        })
+      })
+    })
+
     return () => {
       // formContainerRef.current.removeEventListener("scroll" , handleScroll)
-      document.removeEventListener("scroll", handleScroll);
-      const allInputs = document.querySelectorAll("input");
+      document.removeEventListener('scroll', handleScroll)
+      const allInputs = document.querySelectorAll('input')
       allInputs.forEach((input) => {
-        input.removeEventListener("focus", () => {
-          const allLabels = document.querySelectorAll("label");
+        input.removeEventListener('focus', () => {
+          const allLabels = document.querySelectorAll('label')
           allLabels.forEach((label) => {
-            label.classList.remove(styles.labelFocus);
-          });
-        });
-      });
-    };
-  }, []);
+            label.classList.remove(styles.labelFocus)
+          })
+        })
+      })
+    }
+  }, [])
 
   const handleSkullMouseDown = (e) => {
     // console.log("mousedown");
-    e.preventDefault();
+    e.preventDefault()
 
-    document.addEventListener("mousemove", handleSkullDragMove);
-    document.addEventListener("touchmove", handleSkullDragMove);
+    document.addEventListener('mousemove', handleSkullDragMove)
+    document.addEventListener('touchmove', handleSkullDragMove)
 
-    document.addEventListener("mouseup", handleSkullDragEnd);
-    document.addEventListener("touchend", handleSkullDragEnd);
-  };
+    document.addEventListener('mouseup', handleSkullDragEnd)
+    document.addEventListener('touchend', handleSkullDragEnd)
+  }
 
   const handleSkullDragMove = (e) => {
     // const skullElem = skullRef.current;
-    const formContainerElem = formContainerRef.current;
+    const formContainerElem = formContainerRef.current
     const scrollBarContainer = document.querySelector(
       `.${styles.scrollBarContainer}`
-    );
+    )
 
     const maxScrollTopValue =
-      formContainerElem.scrollHeight - formContainerElem.clientHeight;
+      formContainerElem.scrollHeight - formContainerElem.clientHeight
 
-    const clientY = e.clientY || e.touches[0].clientY;
+    const clientY = e.clientY || e.touches[0].clientY
 
     const percentage =
       ((clientY - scrollBarContainer.offsetTop) /
         scrollBarContainer.clientHeight) *
-      100;
+      100
 
-    formContainerElem.scrollTop = (percentage / 100) * maxScrollTopValue;
-  };
+    formContainerElem.scrollTop = (percentage / 100) * maxScrollTopValue
+  }
 
   const handleSkullDragEnd = (e) => {
-    document.removeEventListener("mousemove", handleSkullDragMove);
-    document.removeEventListener("mouseup", handleSkullDragEnd);
-    document.removeEventListener("touchmove", handleSkullDragMove);
-    document.removeEventListener("touchend", handleSkullDragEnd);
-  };
+    document.removeEventListener('mousemove', handleSkullDragMove)
+    document.removeEventListener('mouseup', handleSkullDragEnd)
+    document.removeEventListener('touchmove', handleSkullDragMove)
+    document.removeEventListener('touchend', handleSkullDragEnd)
+  }
 
   const handleTrackSnap = (e) => {
-    const formContainerElem = formContainerRef.current;
+    const formContainerElem = formContainerRef.current
     const scrollBarContainer = document.querySelector(
       `.${styles.scrollBarContainer}`
-    );
+    )
     const percentage =
       ((e.clientY - scrollBarContainer.offsetTop) /
         scrollBarContainer.clientHeight) *
-      100;
+      100
     const maxScrollTopValue =
-      formContainerElem.scrollHeight - formContainerElem.clientHeight;
+      formContainerElem.scrollHeight - formContainerElem.clientHeight
 
     // Smooth scroll to the percentage of the max scroll value
     formContainerElem.scrollTo({
       top: (percentage / 100) * maxScrollTopValue,
-      behavior: "smooth",
-    });
+      behavior: 'smooth',
+    })
     // formContainerElem.scrollTop = (percentage / 100) * maxScrollTopValue;
-  };
+  }
 
   const CloseModal = () => {
-    setError(false);
-    setErrorMessage("");
-    setErrorScreen(false);
+    setError(false)
+    setErrorMessage('')
+    setErrorScreen(false)
     setIsCaptchaVerified(false)
-  };
+  }
 
   // console.log(formData)
 
@@ -1185,7 +1173,7 @@ export default function Page() {
         <div className={styles.loaderContainer}>
           {/* <MyVideoLoader/> */}
           <video
-            src={require("../../../public/static/images/loadervideo.mp4")} // Update with the correct path
+            src={require('../../../public/static/images/loadervideo.mp4')} // Update with the correct path
             autoPlay
             muted
             loop
@@ -1199,7 +1187,13 @@ export default function Page() {
         <h2>REGISTRATIONS</h2>
         <div className={styles.guideLink}>
           {/* <a href="https://drive.google.com/file/d/1L7gLFhgsR2YRqwD0DvWwEBVpvZmSc6Qg/view?usp=sharing" >Guide To Registration</a> */}
-          <a href="http://drive.google.com/file/d/1L7gLFhgsR2YRqwD0DvWwEBVpvZmSc6Qg/view?usp=sharing" target="_blank" rel="noopener noreferrer">Guide To Registration</a>
+          <a
+            href="http://drive.google.com/file/d/1L7gLFhgsR2YRqwD0DvWwEBVpvZmSc6Qg/view?usp=sharing"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Guide To Registration
+          </a>
         </div>
         {innerWidth < 700 && (
           <Image
@@ -1233,7 +1227,7 @@ export default function Page() {
           <div className={styles.scrollBarContainer} onClick={handleTrackSnap}>
             <div className={styles.scrollBar}></div>
             <Image
-            draggable={false}
+              draggable={false}
               onMouseDown={handleSkullMouseDown}
               onTouchStart={handleSkullMouseDown}
               id="skull"
@@ -1249,7 +1243,12 @@ export default function Page() {
             ref={formContainerRef}
           >
             <div className={styles.form} onScroll={handleScroll}>
-              <label htmlFor="name" style={{ marginTop: 0 }} ref={nameFieldRef} suppressHydrationWarning>
+              <label
+                htmlFor="name"
+                style={{ marginTop: 0 }}
+                ref={nameFieldRef}
+                suppressHydrationWarning
+              >
                 NAME
               </label>
               <input
@@ -1258,12 +1257,12 @@ export default function Page() {
                 id="name"
                 onChange={(inp) => handleNameChange(inp)}
                 onFocus={(e) => {
-                  e.target.placeholder = "";
-                  e.target.previousSibling.classList.add(styles.labelFocus);
+                  e.target.placeholder = ''
+                  e.target.previousSibling.classList.add(styles.labelFocus)
                 }}
                 onBlur={(e) => {
-                  e.target.placeholder = "Enter your name";
-                  e.target.previousSibling.classList.remove(styles.labelFocus);
+                  e.target.placeholder = 'Enter your name'
+                  e.target.previousSibling.classList.remove(styles.labelFocus)
                 }}
               />
 
@@ -1276,12 +1275,12 @@ export default function Page() {
                 id="email_id"
                 onChange={(inp) => handleEmailChange(inp)}
                 onFocus={(e) => {
-                  e.target.placeholder = "";
-                  e.target.previousSibling.classList.add(styles.labelFocus);
+                  e.target.placeholder = ''
+                  e.target.previousSibling.classList.add(styles.labelFocus)
                 }}
                 onBlur={(e) => {
-                  e.target.placeholder = "Enter your Email ID";
-                  e.target.previousSibling.classList.remove(styles.labelFocus);
+                  e.target.placeholder = 'Enter your Email ID'
+                  e.target.previousSibling.classList.remove(styles.labelFocus)
                 }}
               />
 
@@ -1296,12 +1295,12 @@ export default function Page() {
                 onChange={(inp) => handlePhoneChange(inp)}
                 value={formData.phone}
                 onFocus={(e) => {
-                  e.target.placeholder = "";
-                  e.target.previousSibling.classList.add(styles.labelFocus);
+                  e.target.placeholder = ''
+                  e.target.previousSibling.classList.add(styles.labelFocus)
                 }}
                 onBlur={(e) => {
-                  e.target.placeholder = "Enter your phone number";
-                  e.target.previousSibling.classList.remove(styles.labelFocus);
+                  e.target.placeholder = 'Enter your phone number'
+                  e.target.previousSibling.classList.remove(styles.labelFocus)
                 }}
               />
 
@@ -1341,13 +1340,13 @@ export default function Page() {
                   // e.target.placeholder = "";
                   e.target.parentElement.parentElement.parentElement.parentElement.previousSibling.classList.add(
                     styles.labelFocus
-                  );
+                  )
                 }}
                 onBlur={(e) => {
                   // e.target.placeholder = "Choose your college";
                   e.target.parentElement.parentElement.parentElement.parentElement.previousSibling.classList.remove(
                     styles.labelFocus
-                  );
+                  )
                 }}
               />
 
@@ -1364,13 +1363,13 @@ export default function Page() {
                   // e.target.placeholder = "";
                   e.target.parentElement.parentElement.parentElement.parentElement.previousSibling.classList.add(
                     styles.labelFocus
-                  );
+                  )
                 }}
                 onBlur={(e) => {
                   // e.target.placeholder = "Choose your state";
                   e.target.parentElement.parentElement.parentElement.parentElement.previousSibling.classList.remove(
                     styles.labelFocus
-                  );
+                  )
                 }}
               />
 
@@ -1388,13 +1387,13 @@ export default function Page() {
                   // e.target.placeholder = "";
                   e.target.parentElement.parentElement.parentElement.parentElement.previousSibling.classList.add(
                     styles.labelFocus
-                  );
+                  )
                 }}
                 onBlur={(e) => {
                   // e.target.placeholder = "Choose your city";
                   e.target.parentElement.parentElement.parentElement.parentElement.previousSibling.classList.remove(
                     styles.labelFocus
-                  );
+                  )
                 }}
               />
 
@@ -1411,13 +1410,13 @@ export default function Page() {
                   // e.target.placeholder = "";
                   e.target.parentElement.parentElement.parentElement.parentElement.previousSibling.classList.add(
                     styles.labelFocus
-                  );
+                  )
                 }}
                 onBlur={(e) => {
                   // e.target.placeholder = "Choose your year of study";
                   e.target.parentElement.parentElement.parentElement.parentElement.previousSibling.classList.remove(
                     styles.labelFocus
-                  );
+                  )
                 }}
               />
 
@@ -1435,18 +1434,22 @@ export default function Page() {
                   // e.target.placeholder = "";
                   e.target.parentElement.parentElement.parentElement.parentElement.previousSibling.classList.add(
                     styles.labelFocus
-                  );
+                  )
                 }}
                 onBlur={(e) => {
                   // e.target.placeholder = "Select the events";
                   e.target.parentElement.parentElement.parentElement.parentElement.previousSibling.classList.remove(
                     styles.labelFocus
-                  );
+                  )
                 }}
               />
 
               <label>ARE YOU A CHOREOGRAPHER / MENTOR?</label>
-              <div className={styles.radioBtns} style={{ width: "60%" }} suppressHydrationWarning>
+              <div
+                className={styles.radioBtns}
+                style={{ width: '60%' }}
+                suppressHydrationWarning
+              >
                 <Radio
                   id="YES_Choreo"
                   value="YES"
@@ -1461,12 +1464,16 @@ export default function Page() {
                   name="choreographer"
                   text="NO"
                   onChange={handleChoreoChange}
-                  checked={formData.choreographer === "NO" ? true : false}
+                  checked={formData.choreographer === 'NO' ? true : false}
                 />
               </div>
 
               <label>ARE YOU THE HEAD OF A SOCIETY?</label>
-              <div className={styles.radioBtns} style={{ width: "60%" }} suppressHydrationWarning>
+              <div
+                className={styles.radioBtns}
+                style={{ width: '60%' }}
+                suppressHydrationWarning
+              >
                 <Radio
                   id="YES_Society"
                   value="YES"
@@ -1482,7 +1489,7 @@ export default function Page() {
                   name="head_of_society"
                   text="NO"
                   onChange={handleHeadChange}
-                  checked={formData.head_of_society === "NO" ? true : false}
+                  checked={formData.head_of_society === 'NO' ? true : false}
                 />
               </div>
 
@@ -1517,25 +1524,27 @@ export default function Page() {
             alt=""
             width="1rem"
           />
-        {isCaptchaVerified && <ReCAPTCHA
-          sitekey="6Lfkbp8oAAAAAI2Kugy_-z746PKbc2lzHKOezrw9" // Replace with your actual Site Key
-          onChange={handleCaptchaVerify} // Callback when reCAPTCHA is verified
-        />}
+          {isCaptchaVerified && (
+            <ReCAPTCHA
+              sitekey="6Lfkbp8oAAAAAI2Kugy_-z746PKbc2lzHKOezrw9" // Replace with your actual Site Key
+              onChange={handleCaptchaVerify} // Callback when reCAPTCHA is verified
+            />
+          )}
         </div>
         {innerWidth > 1000 && (
           <motion.div
             className={styles.imgContainer}
             initial={{
               opacity: 0,
-              transform: "scale(1) translateX(0) translateY(0) rotate(0deg)",
+              transform: 'scale(1) translateX(0) translateY(0) rotate(0deg)',
             }}
             animate={{
               opacity: isLoading ? 0 : 1,
               transform: isLoading
-                ? "scale(1) translateX(0) translateY(0) rotate(0)"
-                : "scaleX(.9) translateX(-8rem) translateY(5rem) rotate(-10deg)",
+                ? 'scale(1) translateX(0) translateY(0) rotate(0)'
+                : 'scaleX(.9) translateX(-8rem) translateY(5rem) rotate(-10deg)',
             }}
-            transition={{ ease: "easeOut", duration: 2 }}
+            transition={{ ease: 'easeOut', duration: 2 }}
           >
             <div className={styles.topLeftRandomDiv}>
               {randomSetImagesTopLeft1}
@@ -1547,10 +1556,16 @@ export default function Page() {
               {randomSetImagesBottomLeft2}
             </div>
 
-            <Image draggable={false} src={book} alt="" style={{ transform: "scaleX(.8)" }} suppressHydrationWarning />
+            <Image
+              draggable={false}
+              src={book}
+              alt=""
+              style={{ transform: 'scaleX(.8)' }}
+              suppressHydrationWarning
+            />
           </motion.div>
         )}
       </div>
     </>
-  );
+  )
 }

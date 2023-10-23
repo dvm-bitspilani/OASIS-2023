@@ -1,120 +1,129 @@
 .wrapper {
-    height: 100%;
-    position: relative;
+  height: 100%;
+  position: relative;
 }
 
 .scrollDist {
-    position: absolute;
+  position: absolute;
 }
 
 .container {
-    position: fixed;
-    height: 100%;
+  position: fixed;
+  height: 100%;
 }
 
 .bgImage {
-    position: fixed;
-    left: 50vw;
-    top: 0;
-    transform: translateX(-37%);
+  position: fixed;
+  left: 50vw;
+  top: 0;
+  transform: translateX(-37%);
 }
 
 .wrapper img {
-    position: absolute;
+  position: absolute;
 }
 
 .wrapper svg {
-    position: absolute;
-    top: 300px;
-    left: 50vw;
-    transform-origin: center;
-    height: 1639px;
-    width: 252px;
+  position: absolute;
+  top: 300px;
+  left: 50vw;
+  transform-origin: center;
+  height: 1639px;
+  width: 252px;
 }
 
 .itemWrapper {
-    height: 100%;
-    width: 500px;
-    position: absolute;
-    top: 5rem;
-    left: 50vw;
-    transform: translateX(-50%);
+  height: 100%;
+  width: 500px;
+  position: absolute;
+  top: 5rem;
+  left: 50vw;
+  transform: translateX(-50%);
 }
 
 .itemContainer {
-    position: absolute;
-    display: flex;
-    z-index: 5;
-    transform-origin: bottom center;
+  position: absolute;
+  display: flex;
+  z-index: 5;
+  transform-origin: bottom center;
 }
 
 .itemImage img {
-    height: 120px;
-    width: 180px;
-    position: relative;
+  height: 120px;
+  width: 180px;
+  position: relative;
 }
 
 .itemContent {
-    color: #fff;
-    font-family: "KoPubBatang";
-    font-size: 1.2rem;
-    font-style: normal;
-    line-height: 2.2rem;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding-bottom: 1.7rem;
-    padding-left: 0.5rem;
-    width: 10rem;
+  color: #fff;
+  font-family: 'KoPubBatang';
+  font-size: 1.2rem;
+  font-style: normal;
+  line-height: 2.2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding-bottom: 1.7rem;
+  padding-left: 0.5rem;
+  width: 10rem;
 }
 
 .navTop {
-    position: fixed;
-    top: 0;
-    left: 50vw;
-    transform: translateX(-50%);
-    /* height: 10vh; */
-    z-index: 9;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: space-evenly;
-    width: 100%;
-    gap: 1rem;
-    padding: 1rem;
-    background: linear-gradient(0deg, rgba(2, 22, 46, 0) 0%, rgba(1, 6, 13, 1) 100%);
+  position: fixed;
+  top: 0;
+  left: 50vw;
+  transform: translateX(-50%);
+  /* height: 10vh; */
+  z-index: 9;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-evenly;
+  width: 100%;
+  gap: 1rem;
+  padding: 1rem;
+  background: linear-gradient(
+    0deg,
+    rgba(2, 22, 46, 0) 0%,
+    rgba(1, 6, 13, 1) 100%
+  );
 }
 
 .navBottom {
-    position: fixed;
-    bottom: 0;
-    left: 50vw;
-    transform: translateX(-50%);
-    /* height: 10vh; */
-    z-index: 0;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: space-evenly;
-    width: 100%;
-    gap: 1rem;
-    padding: 1rem;
-    background: linear-gradient(180deg, rgba(2, 22, 46, 0.00) 0%, rgba(1, 6, 13, 0.94) 100%);
+  position: fixed;
+  bottom: 0;
+  left: 50vw;
+  transform: translateX(-50%);
+  /* height: 10vh; */
+  z-index: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-evenly;
+  width: 100%;
+  gap: 1rem;
+  padding: 1rem;
+  background: linear-gradient(
+    180deg,
+    rgba(2, 22, 46, 0) 0%,
+    rgba(1, 6, 13, 0.94) 100%
+  );
 }
 
-.navTop img, .navBottom img {
-    position: relative;
-    height: 20px;
-    width: auto;
-    cursor: pointer;
+.navTop img,
+.navBottom img {
+  position: relative;
+  height: 20px;
+  width: auto;
+  cursor: pointer;
 }
 
 .navTop h1 {
-    color: #FFF;
-    text-align: center;
-    font-family: 'KoPubBatang';
-    font-size: 32px;
-    font-style: normal;
-    font-weight: 700;
-    line-height: 100%;
+  color: #fff;
+  text-align: center;
+  font-family: 'KoPubBatang';
+  font-size: 32px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 100%;
 }
