@@ -39,13 +39,6 @@ const Page = () => {
   };
   const profiles = [
     {
-      name: "Sarthak Aggarwal",
-      dept: "President, Students' Union",
-      image: `${sarthak_president.src}`,
-      phone: "tel:+91-8005000213",
-      mail: "mailto:president@pilani.bits-pilani.ac.in",
-    },
-    {
       name: "Sarthak Arora",
       dept: "Website, App & Online Payments",
       image: `${sarthak.src}`,
@@ -83,9 +76,16 @@ const Page = () => {
     {
       name: "Adarsh Goel",
       dept: "Online Collaborations and Publicity",
-      image: `${adarsh.src}`,
+      image: `${contactGhost.src}`,
       phone: "tel:+91-8979951532",
       mail: "mailto:collaborations@bits-oasis.org",
+    },
+    {
+      name: "Sarthak Aggarwal",
+      dept: "President, Students' Union",
+      image: `${sarthak_president.src}`,
+      phone: "tel:+91-8005000213",
+      mail: "mailto:president@pilani.bits-pilani.ac.in",
     },
     {
       name: "Abhinav Lamba",
@@ -104,7 +104,7 @@ const Page = () => {
           <div className={styles.department}>
             {profiles.map((profile, index) => (
               <p
-                key={index}
+              key={index}
                 onMouseOver={() =>
                   handleMouseOver(ImageWrapper, profile, index)
                 }
