@@ -7,11 +7,8 @@
   font-family: Montserrat;
   font-style: normal;
   font-weight: 500;
-  line-height: 100%; /* 20px */
+  line-height: 100%;
   text-decoration: none;
-}
-.navItem:hover {
-  /* cursor: pointer; */
 }
 .navWrapper {
   gap: 2rem;

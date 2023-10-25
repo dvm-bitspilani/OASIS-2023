@@ -8,8 +8,6 @@ export default function GalleryCarouselControllerButtons({ classApplied }) {
 
   React.useEffect(() => {
     swiper.current = document.querySelector(".swiper").swiper
-    // console.log(swiper.current);
-
     swiper.current.on("slideChange", () => {
       const carouselPrevButton = document.querySelector(
         `.${styles.carouselLeftButton}`
@@ -23,8 +21,6 @@ export default function GalleryCarouselControllerButtons({ classApplied }) {
       const carouselNextButtonMobile = document.querySelectorAll(
         `.${styles.carouselRightButton}`
       )[1]
-
-      //   console.log(carouselNextButtonMobile);
       if (swiper.current.progress === 0) {
         carouselPrevButton.style.opacity = 0.5
         carouselPrevButton.disabled = true
@@ -54,7 +50,6 @@ export default function GalleryCarouselControllerButtons({ classApplied }) {
     })
   })
 
-  // Setting the initial left button as disabled
   React.useEffect(() => {
     const carouselPrevButton = document.querySelector(
       `.${styles.carouselLeftButton}`
@@ -64,12 +59,10 @@ export default function GalleryCarouselControllerButtons({ classApplied }) {
   }, [])
 
   const carouselPrevElem = () => {
-    // console.log(swiper.current);
     swiper.current.slidePrev(2000, false)
   }
 
   const carouselNextElem = () => {
-    // console.log(swiper.current);
     swiper.current.slideNext(2000, false)
   }
 
@@ -79,21 +72,6 @@ export default function GalleryCarouselControllerButtons({ classApplied }) {
         className={styles.carouselLeftButton}
         onClick={() => carouselPrevElem()}
       >
-        {/* <svg
-          xmlns="http://www.w3.org/2000/svg"
-          width="24"
-          height="41"
-          viewBox="0 0 24 41"
-          fill="none"
-        >
-          <path
-            d="M20.3194 37.867L3 20.5476L20.3194 3.22827"
-            stroke="#DBDBDB"
-            strokeWidth="5.77312"
-            strokeLinecap="round"
-            strokeLinejoin="round"
-          />
-        </svg> */}
         <svg
           width="24"
           height="41"
@@ -114,21 +92,6 @@ export default function GalleryCarouselControllerButtons({ classApplied }) {
         className={styles.carouselRightButton}
         onClick={() => carouselNextElem()}
       >
-        {/* <svg
-          xmlns="http://www.w3.org/2000/svg"
-          width="24"
-          height="41"
-          viewBox="0 0 24 41"
-          fill="none"
-        >
-          <path
-            d="M3.48045 37.867L20.7998 20.5476L3.48045 3.22827"
-            stroke="#DBDBDB"
-            strokeWidth="5.77312"
-            strokeLinecap="round"
-            strokeLinejoin="round"
-          />
-        </svg> */}
         <svg
           width="24"
           height="41"

@@ -4,7 +4,6 @@
 }
 
 .cardContainer {
-  /* border: solid red; */
   width: 400px;
   height: 100vh;
   display: inline-flex;
@@ -13,7 +12,6 @@
 }
 
 .content {
-  /* border: solid blue; */
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -26,7 +24,6 @@
 
 .image {
   border-radius: 1rem;
-  /* border: solid #84CBFF 5px; */
 }
 
 .title,

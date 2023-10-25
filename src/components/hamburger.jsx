@@ -1,9 +1,8 @@
 // "use client";
 
-import React, { useState } from "react"
+import React from "react"
 import styles from "./hamburger.module.css"
 import { HamContext } from "@/context/HamContextProvider"
-import path from "../../public/static/images/path.svg"
 import innercircle from "../../public/static/images/innercircle.png"
 import logo from "../../public/static/images/oasis-logo-ham.png"
 import glow from "../../public/static/images/glow.png"
@@ -239,7 +238,6 @@ export default function Hamburger() {
             ></Image>
           </div>
           <div className={styles.outerpath}>
-            {/* <Image draggable={false} src={path} id="path"></Image> */}
             <svg
               id="path-svg"
               viewBox="0 0 1044 816"

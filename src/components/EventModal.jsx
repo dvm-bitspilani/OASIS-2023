@@ -25,29 +25,6 @@ const EventModal = ({ event, closeModal }) => {
       }`}
       onClick={handleClose}
     >
-      {/* <Image src={BackgroundImage}
-        alt="Background Image" 
-        draggable={false}
-        className={styles.backgroundImage}
-        onClick={(e) => e.stopPropagation()}
-        />
-        <div className={styles.modalContent} onClick={(e) => e.stopPropagation()}>
-        <div className={styles.heading}>
-            <h2>{event.name}</h2>
-        </div>
-        <div className={styles.subheadings}>
-        <span>Details</span><span>Guidelines</span><span>Contact</span>
-        </div>
-        <div className={styles.eventImage}>
-        <Image src={StreetDance} alt="" />
-        </div>
-        <div className={styles.eventDescription}>
-            {event.desc}
-        </div>
-        <div className={styles.closeBtn}>
-            <Image src={closeCross} alt="close" onClick={handleClose}/>
-        </div>
-        </div> */}
       <div
         className={styles.contentWrapper}
         onClick={(e) => e.stopPropagation()}
