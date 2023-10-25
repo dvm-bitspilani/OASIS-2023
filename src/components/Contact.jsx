@@ -109,6 +109,7 @@ const Page = () => {
                   handleMouseOver(ImageWrapper, profile, index)
                 }
                 className={`${styles.registerBtnWrapper} customHover`}
+                style={{opacity:1}}
               >
                 {profile.dept}
               </p>
