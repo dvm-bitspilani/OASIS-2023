@@ -269,7 +269,13 @@ export default function Hamburger() {
                 <span className={styles.txt}>SPONSORS</span>
               </div>
             </Link>
-            <Link className={`${styles.item} two`} href="/gallery" onMouseDown={()=>{setIsHamOpen(false)}}>
+            <Link
+              className={`${styles.item} two`}
+              href="/gallery"
+              onMouseDown={() => {
+                setIsHamOpen(false)
+              }}
+            >
               <div className={`${styles.number} ${styles.two}`}>
                 <span className={styles.numbox}>
                   <div className={styles.num}>2</div>

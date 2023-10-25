@@ -5,7 +5,7 @@ import Item from "../../public/static/images/StreetDance.png"
 import scrollAsset from "../../public/static/images/EventItem.png"
 import StreetDance from "../../public/static/images/StreetDance.png"
 
-const EventItem = ({ name, desc, image}) => {
+const EventItem = ({ name, desc, image }) => {
   return (
     <>
       <Image

@@ -136,7 +136,6 @@ export default function Home() {
   const transitionLeft = useRef(null)
   const transitionRight = useRef(null)
 
-
   useEffect(() => {
     if (typeof window !== "undefined") {
       // console.log('first')
@@ -530,11 +529,9 @@ export default function Home() {
     }
   }, [isHamOpen])
 
-
   const [currentPage, setCurrentPage] = useState("home")
 
   const handleTransition = (page) => {
-
     if (page === currentPage) {
       return
     } else {

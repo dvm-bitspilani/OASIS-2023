@@ -5,7 +5,6 @@ import mailIcon from "../../public/static/images/compressed_mail.svg"
 import Image from "next/image"
 
 const ContactProfile = (props) => {
-
   return (
     <>
       <Image
@@ -21,9 +20,11 @@ const ContactProfile = (props) => {
         <a href={props.mail}>
           <Image draggable={false} src={mailIcon} alt="" />
         </a>
-        {props.phone && <a href={props.phone}>
-          <Image draggable={false} src={callIcon} alt="" />
-        </a>}
+        {props.phone && (
+          <a href={props.phone}>
+            <Image draggable={false} src={callIcon} alt="" />
+          </a>
+        )}
       </div>
       {/* </div> */}
     </>

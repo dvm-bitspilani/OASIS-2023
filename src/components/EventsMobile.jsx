@@ -39,7 +39,7 @@ export default function EventsMobile2({ handleTransition }) {
         )
       })
       .catch((error) => {
-        console.log(error);
+        console.log(error)
       })
   }, [])
 
@@ -58,7 +58,6 @@ export default function EventsMobile2({ handleTransition }) {
       window.removeEventListener("resize", updateWidth)
     }
   }, [innerWidth])
-
 
   let translateStyle = {
     transform: `translateX(${translateX}px)`,
@@ -87,7 +86,6 @@ export default function EventsMobile2({ handleTransition }) {
     setCardNo(cardNo - 1)
     setTranslateX(translateX + width)
   }
-
 
   let CardsList = eventDetails.map((card) => {
     return (

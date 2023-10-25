@@ -111,7 +111,6 @@ const Page = () => {
     fetchData()
   }, [])
 
-
   return (
     <>
       {isLoading && (

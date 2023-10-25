@@ -33,12 +33,7 @@ export default function AboutCarousel() {
           crossFade: true,
         }}
         effect="fade"
-        modules={[
-          Navigation,
-          Autoplay,
-          EffectCreative,
-          EffectFade,
-        ]}
+        modules={[Navigation, Autoplay, EffectCreative, EffectFade]}
       >
         <SwiperSlide>
           <YoutubeEmbed embedId="Tqo4SGWzmtY?si=HTHCSbDUJU37KtQ2" />
