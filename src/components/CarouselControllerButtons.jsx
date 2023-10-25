@@ -23,7 +23,6 @@ export default function CarouselControllerButtons({ classApplied }) {
         `.${styles.carouselRightButton}`
       )[1]
 
-      console.log(carouselNextButtonMobile)
       if (swiper.current.progress === 0) {
         carouselPrevButton.style.opacity = 0.5
         carouselPrevButton.disabled = true

@@ -111,7 +111,6 @@ const Page = () => {
     fetchData()
   }, [])
 
-  console.log(cards)
 
   return (
     <>

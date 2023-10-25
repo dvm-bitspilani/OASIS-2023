@@ -534,7 +534,6 @@ export default function Home() {
   const [currentPage, setCurrentPage] = useState("home")
 
   const handleTransition = (page) => {
-    console.log(page)
 
     if (page === currentPage) {
       return
@@ -585,7 +584,6 @@ export default function Home() {
         ease: "power2.inOut",
         onComplete: () => {
           setCurrentPage(page)
-          console.log(currentPage)
         },
       })
       tl.to(
