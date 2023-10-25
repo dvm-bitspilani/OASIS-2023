@@ -50,7 +50,9 @@
   text-transform: uppercase;
   /* width: max-content; */
   height: 3rem;
-  transition: color 0.3s, font-size 0.3s;
+  transition:
+    color 0.3s,
+    font-size 0.3s;
 }
 .imgWrapper {
   display: flex;
@@ -98,7 +100,8 @@
 .department p:hover {
   color: #78bbf0;
   font-size: 1.8rem;
-  text-shadow: 0px 0px 18.91876983642578px #78bbf0,
+  text-shadow:
+    0px 0px 18.91876983642578px #78bbf0,
     0px 0px 18.91876983642578px rgba(120, 187, 240, 0.8);
 }
 .icons img {

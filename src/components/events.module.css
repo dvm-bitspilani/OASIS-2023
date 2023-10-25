@@ -22,7 +22,7 @@
   scale: 1.5;
 }
 
-.cross img{
+.cross img {
   height: 100%;
   aspect-ratio: 1/1;
 }
@@ -143,7 +143,7 @@
   font-size: 1.25rem;
   margin-top: 1rem;
 }
-.itemContent h2{
+.itemContent h2 {
   text-transform: uppercase;
 }
 .itemContent p {

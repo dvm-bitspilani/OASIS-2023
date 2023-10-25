@@ -1,17 +1,13 @@
 .pageWrapper {
-  /* background: black; */
   height: 100dvh;
   width: 100vw;
-
   display: flex;
   flex-direction: column;
-
   overflow: hidden;
 }
 
 .pageWrapper > img {
   position: absolute;
-  /* object-fit: cover; */
 }
 
 .pageWrapper > img:first-child {
@@ -23,7 +19,6 @@
   width: 100vw;
 }
 .heading {
-  /* border: 2px solid green; */
   flex: 0 0 auto;
   height: 15%;
   width: 100%;
@@ -47,35 +42,23 @@
 
 .contentContainer {
   flex: 1 1 auto;
-  /* border: 2px solid red; */
-
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
   align-items: center;
   gap: 3rem;
-
-  /* overflow: hidden; */
 }
 
 .carouselContainer {
-  /* border: 2px solid blue; */
   border: 1.4px solid #78bbf0;
   box-shadow: 0px 4px 50px 0px rgba(120, 187, 240, 0.5);
-
   max-height: 50%;
-  /* width: 60%; */
   aspect-ratio: 16/9;
   max-width: 80%;
   display: flex;
   justify-content: center;
   align-items: center;
-
-  /* margin-top: 2rem; */
-
   position: relative;
-
-  /* overflow: hidden; */
 }
 
 .carouselHand {
@@ -112,7 +95,6 @@
 
 .carouselControllerButtons button:hover,
 .carouselControllerButtonsMobile button:hover {
-  /* cursor: pointer; */
   cursor: none;
 }
 
@@ -121,20 +103,7 @@
   cursor: not-allowed;
 }
 
-.carouselLeftButton {
-  /* color: #78bbf0;
-    font-size: 2rem;
-    transform: translateX(-50%); */
-}
-
-.carouselRightButton {
-  /* color: #78bbf0;
-    font-size: 2rem;
-    transform: translateX(50%); */
-}
-
 .description {
-  /* border: 2px solid yellow; */
   width: 60%;
 }
 
@@ -145,8 +114,7 @@
   font-size: 1.5rem;
   font-style: normal;
   font-weight: 400;
-  line-height: 1; /* 24px */
-
+  line-height: 1;
   margin-bottom: 1.5rem;
 }
 
@@ -155,7 +123,6 @@
   left: 7%;
   height: 250px;
   width: auto;
-  /* transition: all 5s ease-in-out; */
   transform: translate(30%, -30%) rotate(10deg);
 }
 
@@ -164,8 +131,6 @@
   right: -3%;
   height: 250px;
   width: auto;
-  /* transition: all 0.5s ease-in-out; */
-  /* transform: rotateY(180deg) rotateZ(30deg); */
   transform: translate(-30%, -10%) rotateY(180deg) rotateZ(35deg);
 }
 .leftHandMobile {
@@ -210,7 +175,6 @@
     position: relative;
     top: 0;
     height: auto;
-    /* min-height: 100vh; */
   }
   .leftHandMobile {
     display: block;
@@ -238,14 +202,14 @@
   }
 }
 
-@media screen and (max-height : 600px){
-  .description p{
+@media screen and (max-height: 600px) {
+  .description p {
     font-size: 1.2rem;
   }
 }
 
-@media screen and (max-height : 800px) and (max-width: 820px){
-  .description p{
+@media screen and (max-height: 800px) and (max-width: 820px) {
+  .description p {
     font-size: 1.3rem;
   }
 }
@@ -255,33 +219,4 @@
     min-height: 100vh;
   }
 }
-@media screen and (max-height: 900px) and (min-width: 280px) {
-  .pageWrapper {
-    /* min-height: 125vh; */
-  }
-}
-@media screen and (max-height: 900px) and (min-width: 340px) {
-  .pageWrapper {
-    /* min-height: 110vh; */
-  }
-}
-@media screen and (max-height: 900px) and (min-width: 600px) {
-  .pageWrapper {
-    /* min-height: 100vh; */
-  }
-}
-@media screen and (max-height: 800px) and (min-width: 280px) {
-  .pageWrapper {
-    /* min-height: 135vh; */
-  }
-}
-@media screen and (max-height: 800px) and (min-width: 340px) {
-  .pageWrapper {
-    /* min-height: 120vh; */
-  }
-}
-@media screen and (max-height: 700px) and (min-width: 340px) {
-  .pageWrapper {
-    /* min-height: 140vh; */
-  }
-}
+

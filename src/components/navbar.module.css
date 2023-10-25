@@ -13,19 +13,19 @@
 .navItem:hover {
   /* cursor: pointer; */
 }
-  .navWrapper {
-    gap: 2rem;
-  }
-  .navItem {
-    font-size: 1.05rem;
-  }
+.navWrapper {
+  gap: 2rem;
+}
+.navItem {
+  font-size: 1.05rem;
+}
 
 @media (max-height: 720px) {
   .navWrapper {
     gap: 1.5rem;
   }
   .navItem {
-    font-size: .75rem;
+    font-size: 0.75rem;
   }
 }
 @media (max-width: 820px) {
@@ -35,11 +35,11 @@
 }
 
 @media (max-width: 1250px) {
-  .navWrapper{
+  .navWrapper {
     gap: 1.5rem;
   }
-  .navItem{
-    font-size: .85rem;
+  .navItem {
+    font-size: 0.85rem;
   }
 }
 @media (max-width: 1120px) {
@@ -47,7 +47,7 @@
     gap: 1.75rem;
   }
   .navItem {
-    font-size: .75rem;
+    font-size: 0.75rem;
   }
 }
 @media (max-height: 605px) {
@@ -55,6 +55,6 @@
     gap: 1rem;
   }
   .navItem {
-    font-size: .75rem;
+    font-size: 0.75rem;
   }
 }

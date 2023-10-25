@@ -1,42 +1,42 @@
-"use client";
-import React, { useState } from "react";
-import styles from "./Contact.module.css";
-import { AnimatePresence, motion } from "framer-motion";
-import ImageWrapper from "../../public/static/images/contacts.png";
-import phone from "../../public/static/images/compressed_phone.svg";
-import mail from "../../public/static/images/compressed_mail.svg";
+"use client"
+import React, { useState } from "react"
+import styles from "./Contact.module.css"
+import { AnimatePresence, motion } from "framer-motion"
+import ImageWrapper from "../../public/static/images/contacts.png"
+import phone from "../../public/static/images/compressed_phone.svg"
+import mail from "../../public/static/images/compressed_mail.svg"
 // import mobilebgImage from "../../public/static/images/mobileLibraryBgImage.png";
-import updatedbgImage from "../../public/static/images/updatedLibraryBgImage.png";
+import updatedbgImage from "../../public/static/images/updatedLibraryBgImage.png"
 // import shivang from "../../public/static/images/shivang.png";
-import shaurya from "../../public/static/images/shaurya.png";
-import sarthak from "../../public/static/images/sarthak.png";
-import supreeth from "../../public/static/images/supreeth.png";
+import shaurya from "../../public/static/images/shaurya.png"
+import sarthak from "../../public/static/images/sarthak.png"
+import supreeth from "../../public/static/images/supreeth.png"
 import sarthak_president from "../../public/static/images/prez.png"
 import vaibhav from "../../public/static/images/vaibhav.png"
 import abhinav from "../../public/static/images/abhinav.png"
 import adarsh from "../../public/static/images/adarsh.png"
 import paurana from "../../public/static/images/paurana.png"
-import contactGhost from "../../public/static/images/contactGhost.png";
-import mobileImageWrapper from "../../public/static/images/updatedMobileContactImageContainer.png";
-import ContactProfile from "@/components/ContactProfile";
-import Image from "next/image";
+import contactGhost from "../../public/static/images/contactGhost.png"
+import mobileImageWrapper from "../../public/static/images/updatedMobileContactImageContainer.png"
+import ContactProfile from "@/components/ContactProfile"
+import Image from "next/image"
 
 const Page = () => {
   // console.log(shivang)
-  const [imageSrc, setImageSrc] = useState(ImageWrapper);
-  const [isLoading, setIsLoading] = useState(false);
-  const [hoveredProfileIndex, setHoveredProfileIndex] = useState(null);
+  const [imageSrc, setImageSrc] = useState(ImageWrapper)
+  const [isLoading, setIsLoading] = useState(false)
+  const [hoveredProfileIndex, setHoveredProfileIndex] = useState(null)
   // const [hoveredProfile, setHoveredProfile] = useState(null);
   const [hoveredProfile, setHoveredProfile] = useState({
     name: "Sarthak Arora",
     dept: "Website, App & Online Payments",
     image: sarthak.src,
-  });
+  })
   const handleMouseOver = (image, profile, index) => {
-    setImageSrc(image);
-    setHoveredProfileIndex(index);
-    setHoveredProfile(profile);
-  };
+    setImageSrc(image)
+    setHoveredProfileIndex(index)
+    setHoveredProfile(profile)
+  }
   const profiles = [
     {
       name: "Sarthak Arora",
@@ -70,7 +70,7 @@ const Page = () => {
       name: "Supreeth MK",
       dept: "Reception and Accommodation",
       image: `${supreeth.src}`,
-      phone: "tel:+91-7349738884",
+      phone: "",
       mail: "mailto:recnacc@bits-oasis.org",
     },
     {
@@ -94,7 +94,7 @@ const Page = () => {
       phone: "tel:+91-7078879443",
       mail: "mailto:gensec@pilani.bits-pilani.ac.in",
     },
-  ];
+  ]
 
   return (
     <>
@@ -104,11 +104,12 @@ const Page = () => {
           <div className={styles.department}>
             {profiles.map((profile, index) => (
               <p
-              key={index}
+                key={index}
                 onMouseOver={() =>
                   handleMouseOver(ImageWrapper, profile, index)
                 }
                 className={`${styles.registerBtnWrapper} customHover`}
+                style={{opacity:1}}
               >
                 {profile.dept}
               </p>
@@ -128,7 +129,12 @@ const Page = () => {
             }}
             transition={{ ease: "easeOut", duration: 2 }}
           >
-            <Image src={imageSrc} alt="" className={styles["bookImage"]} suppressHydrationWarning />
+            <Image
+              src={imageSrc}
+              alt=""
+              className={styles["bookImage"]}
+              suppressHydrationWarning
+            />
             <AnimatePresence>
               {hoveredProfile && (
                 <motion.div
@@ -171,7 +177,12 @@ const Page = () => {
         </div>
       </div>
       <div className={styles.mobilePageWrapper}>
-        <Image src={updatedbgImage} className={styles.mobileBgImage} alt="" suppressHydrationWarning />
+        <Image
+          src={updatedbgImage}
+          className={styles.mobileBgImage}
+          alt=""
+          suppressHydrationWarning
+        />
         <div className={styles.mobileContentWrapper}>
           <div className={styles.mobileHeading}>
             <span>CONTACT US</span>
@@ -187,7 +198,15 @@ const Page = () => {
                   suppressHydrationWarning
                 />
                 <div className={styles.mobileDetailsContent}>
-                  <Image src={profile.image} width={100} height={124} alt="" placeholder="blur" blurDataURL={sarthak.blurDataURL} suppressHydrationWarning/>
+                  <Image
+                    src={profile.image}
+                    width={100}
+                    height={124}
+                    alt=""
+                    placeholder="blur"
+                    blurDataURL={sarthak.blurDataURL}
+                    suppressHydrationWarning
+                  />
                   <div className={styles.mobileTextDetails}>
                     <span className={styles.mobileDetailsName}>
                       {profile.name}
@@ -223,7 +242,7 @@ const Page = () => {
         </div>
       </div>
     </>
-  );
-};
+  )
+}
 
-export default Page;
+export default Page

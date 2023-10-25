@@ -1,40 +1,40 @@
-import React, { useEffect, useState } from "react";
-import * as events from "../components/events.module.css";
-import Image from "next/image";
-import Map from "../../public/static/images/EventsMap.png";
-import gsap from "gsap";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
-import { useSafeSetState, useWindowSize } from "rooks";
-import StreetDance from "../../public/static/images/StreetDance.png";
-import RapWars from "../../public/static/images/RapWars.png";
-import Tandav from "../../public/static/images/Tandav.png";
-import Swaranjali from "../../public/static/images/Swaranjali.png";
-import Razz from "../../public/static/images/Razz.png";
-import DesertDuel from "../../public/static/images/DesertDuel.png";
-import OasisLogo from "../../public/static/images/eventsOasisLogo.png";
-import EventItem from "./EventItem";
-import EventModal from "./EventModal";
-gsap.registerPlugin(ScrollTrigger);
+import React, { useEffect, useState } from "react"
+import * as events from "../components/events.module.css"
+import Image from "next/image"
+import Map from "../../public/static/images/EventsMap.png"
+import gsap from "gsap"
+import { ScrollTrigger } from "gsap/ScrollTrigger"
+import { useSafeSetState, useWindowSize } from "rooks"
+import StreetDance from "../../public/static/images/StreetDance.png"
+import RapWars from "../../public/static/images/RapWars.png"
+import Tandav from "../../public/static/images/Tandav.png"
+import Swaranjali from "../../public/static/images/Swaranjali.png"
+import Razz from "../../public/static/images/Razz.png"
+import DesertDuel from "../../public/static/images/DesertDuel.png"
+import OasisLogo from "../../public/static/images/eventsOasisLogo.png"
+import EventItem from "./EventItem"
+import EventModal from "./EventModal"
+gsap.registerPlugin(ScrollTrigger)
 
-import cross from "../../public/static/images/cross.svg";
+import cross from "../../public/static/images/cross.svg"
 
 const Events = ({ showBackBtn, handleTransition }) => {
-  const [selectedEvent, setSelectedEvent] = useState(null);
-  const [reduceBrightness, setReduceBrightness] = useState(false);
-  const [eventDetails, setEventDetails] = useState([]);
-  const [crossButtonOpacity, setCrossButtonOpacity] = useState(1);
+  const [selectedEvent, setSelectedEvent] = useState(null)
+  const [reduceBrightness, setReduceBrightness] = useState(false)
+  const [eventDetails, setEventDetails] = useState([])
+  const [crossButtonOpacity, setCrossButtonOpacity] = useState(1)
   useEffect(() => {
-    setCrossButtonOpacity(selectedEvent ? 0 : 1);
-  }, [selectedEvent]);
+    setCrossButtonOpacity(selectedEvent ? 0 : 1)
+  }, [selectedEvent])
 
   async function getEventDetails() {
     const res = await fetch(
       "https://bits-oasis.org/2023/main/registrations/events_details"
-    );
+    )
     if (!res.ok) {
-      throw new Error("Failed to get Events");
+      throw new Error("Failed to get Events")
     }
-    return res.json();
+    return res.json()
   }
 
   useEffect(() => {
@@ -48,16 +48,16 @@ const Events = ({ showBackBtn, handleTransition }) => {
               image: item.img_url,
               organiser: item.organiser,
               contact: item.contact,
-            };
+            }
           })
-        );
+        )
         // console.log(data);
       })
       .catch((error) => {
         // console.log(error);
-      });
-      // console.log(eventDetails)
-  }, []);
+      })
+    // console.log(eventDetails)
+  }, [])
 
   const tasks = [
     {
@@ -183,12 +183,12 @@ const Events = ({ showBackBtn, handleTransition }) => {
     //   desc: "AUCTION OF WORLD LEADERS OF THE PAST AND PRESENT. First round, i.e., quiz round, will be conducted on the spot. the second round will be the auction round. limited teams will be going to the auction round.",
     //   image: StreetDance,
     // },
-  ];
-  const { innerWidth, innerHeight } = useWindowSize();
+  ]
+  const { innerWidth, innerHeight } = useWindowSize()
 
   useEffect(() => {
     // Set initial states
-    gsap.set("#scrollDist", { width: "100%", height: "100%" });
+    gsap.set("#scrollDist", { width: "100%", height: "100%" })
 
     if (innerWidth > 820) {
       gsap.set("#container", {
@@ -198,13 +198,13 @@ const Events = ({ showBackBtn, handleTransition }) => {
         transformOrigin: "0 0",
         left: innerWidth / -25,
         top: innerHeight / -50,
-      });
+      })
       gsap.to("#container", {
         duration: 1,
         opacity: 1,
         ease: "ease",
         delay: 0.3,
-      });
+      })
     }
 
     // Tween the SVG path + circle
@@ -217,7 +217,7 @@ const Events = ({ showBackBtn, handleTransition }) => {
           scrub: 0.5,
         },
       })
-      .to("#c", { motionPath: "#p", immediateRender: true, ease: "none" }, 0);
+      .to("#c", { motionPath: "#p", immediateRender: true, ease: "none" }, 0)
     // .from("#p", { drawSVG: "0 0", ease: "none" }, 0);
 
     if (innerWidth > 820) {
@@ -228,7 +228,7 @@ const Events = ({ showBackBtn, handleTransition }) => {
           x: -gsap.getProperty("#c", "x"),
           y: -gsap.getProperty("#c", "y"),
         })
-      );
+      )
     }
 
     // Center the container's left/top position
@@ -237,40 +237,42 @@ const Events = ({ showBackBtn, handleTransition }) => {
         gsap.set("#container", {
           left: 0,
           top: 0,
-        });
+        })
       }
-    };
+    }
 
-    window.addEventListener("load", resizeHandler);
-    window.addEventListener("resize", resizeHandler);
+    window.addEventListener("load", resizeHandler)
+    window.addEventListener("resize", resizeHandler)
     return () => {
-      window.removeEventListener("load", resizeHandler);
-      window.removeEventListener("resize", resizeHandler);
-    };
-  }, []);
+      window.removeEventListener("load", resizeHandler)
+      window.removeEventListener("resize", resizeHandler)
+    }
+  }, [])
   const handleBtnClick = (page) => {
-    handleTransition(page);
-  };
+    handleTransition(page)
+  }
   const openModal = (event) => {
-    setSelectedEvent(event);
-    setReduceBrightness(true);
-  };
+    setSelectedEvent(event)
+    setReduceBrightness(true)
+  }
 
   const closeModal = () => {
     setTimeout(() => {
-      setSelectedEvent(null);
-      setReduceBrightness(false);
-    }, 300);
-  };
+      setSelectedEvent(null)
+      setReduceBrightness(false)
+    }, 300)
+  }
   const containerClassName = reduceBrightness
     ? `${events.container} ${events.reduceBrightness}`
-    : events.container;
+    : events.container
   return (
     <>
       {showBackBtn && (
-        <button onClick={() => handleBtnClick("home")}
-         className={events.cross}
-         style={{ opacity: crossButtonOpacity }}>
+        <button
+          onClick={() => handleBtnClick("home")}
+          className={events.cross}
+          style={{ opacity: crossButtonOpacity }}
+        >
           <Image src={cross} alt="Close" />
         </button>
       )}
@@ -323,7 +325,7 @@ const Events = ({ showBackBtn, handleTransition }) => {
                     // left={evt.left}
                   />
                 </div>
-              );
+              )
             })}
           </div>
         </div>
@@ -332,7 +334,7 @@ const Events = ({ showBackBtn, handleTransition }) => {
         <EventModal event={selectedEvent} closeModal={closeModal} />
       )}
     </>
-  );
-};
+  )
+}
 
-export default Events;
+export default Events

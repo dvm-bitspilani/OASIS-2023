@@ -149,8 +149,8 @@
   justify-content: space-between;
   padding: 1rem 2rem;
 }
-@media (max-width:820px) {
-  .hamBtn{
+@media (max-width: 820px) {
+  .hamBtn {
     padding: 1rem 0rem 1rem 2rem;
   }
 }
@@ -398,8 +398,8 @@
 .loaderContainer video {
   scale: 0.5;
 }
-@media (max-width:800px) {
-  .loaderContainer video{
+@media (max-width: 800px) {
+  .loaderContainer video {
     scale: 0.85;
   }
 }

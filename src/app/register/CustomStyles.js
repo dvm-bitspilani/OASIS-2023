@@ -74,7 +74,7 @@ export default function CustomStyles() {
       color: "white",
       padding: "5px",
     }),
-    placeholder: (provided , state) => ({
+    placeholder: (provided, state) => ({
       ...provided,
       fontFamily: "KoPubBatang",
       fontSize: "1.2rem",
@@ -110,40 +110,40 @@ export default function CustomStyles() {
     }),
     multiValue: (provided) => ({
       ...provided,
-      color: '#fff',
-      fontFamily: 'Montserrat',
-      fontSize: '1.2rem',
+      color: "#fff",
+      fontFamily: "Montserrat",
+      fontSize: "1.2rem",
       fontWeight: 700,
-      backgroundColor: 'transparent',
-      border: '1px solid #5db3f1',
-      paddingLeft: '.25rem',
-      alignItems: 'center',
-      paddingRight: '3px',
+      backgroundColor: "transparent",
+      border: "1px solid #5db3f1",
+      paddingLeft: ".25rem",
+      alignItems: "center",
+      paddingRight: "3px",
     }),
     multiValueLabel: (provided) => ({
       ...provided,
-      color: '#ffffff !important',
-      backgroundColor: 'transparent',
+      color: "#ffffff !important",
+      backgroundColor: "transparent",
     }),
     multiValueRemove: (provided) => ({
       ...provided,
-      color: '#fff',
-      padding: '0',
-      paddingLeft: '0',
-      marginRIght: '3px',
-      width:'14px',
-      height:'100%',
-      '&:hover': {
-        backgroundColor: '#5db3f1',
-        color: '#000',
-      },   
+      color: "#fff",
+      padding: "0",
+      paddingLeft: "0",
+      marginRIght: "3px",
+      width: "14px",
+      height: "100%",
+      "&:hover": {
+        backgroundColor: "#5db3f1",
+        color: "#000",
+      },
     }),
     clearIndicator: (provided) => ({
       ...provided,
-      color: '#fff',
-      '&:hover': {
-        color: '#5db3f1'
-      }
+      color: "#fff",
+      "&:hover": {
+        color: "#5db3f1",
+      },
     }),
-  };
+  }
 }

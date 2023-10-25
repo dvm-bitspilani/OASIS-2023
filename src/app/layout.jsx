@@ -1,11 +1,11 @@
-import "./globals.css";
-import { Inter } from "next/font/google";
-import Script from "next/script";
-import Provider from "../context/Provider";
-import CustomTrail from "../components/CustomTrail";
+import "./globals.css"
+import { Inter } from "next/font/google"
+import Script from "next/script"
+import Provider from "../context/Provider"
+import CustomTrail from "../components/CustomTrail"
 import OasisLogo from "../../public/static/images/eventsModalOasisLogo.png"
 
-const inter = Inter({ subsets: ["latin"] });
+const inter = Inter({ subsets: ["latin"] })
 
 export const metadata = {
   title: "Oasis '23",
@@ -30,7 +30,7 @@ export const metadata = {
       maximumScale: 1,
     },
   },
-};
+}
 
 export default function RootLayout({ children }) {
   return (
@@ -50,5 +50,5 @@ export default function RootLayout({ children }) {
         <Provider>{children}</Provider>
       </body>
     </html>
-  );
+  )
 }
