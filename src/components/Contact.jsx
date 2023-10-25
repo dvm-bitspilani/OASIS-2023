@@ -70,7 +70,7 @@ const Page = () => {
       name: "Supreeth MK",
       dept: "Reception and Accommodation",
       image: `${supreeth.src}`,
-      phone: "tel:+91-7349738884",
+      phone: "",
       mail: "mailto:recnacc@bits-oasis.org",
     },
     {
