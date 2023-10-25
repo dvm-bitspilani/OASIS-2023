@@ -9,9 +9,6 @@ const ContactProfile = (props) => {
 
   return (
     <>
-      {/* <div
-                  className={styles['details']}
-                > */}
       <Image
         draggable={false}
         src={props.image}

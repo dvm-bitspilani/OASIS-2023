@@ -8,7 +8,6 @@ export default function CarouselControllerButtons({ classApplied }) {
 
   React.useEffect(() => {
     swiper.current = document.querySelector(".swiper").swiper
-    // console.log(swiper.current);
 
     swiper.current.on("slideChange", () => {
       const carouselPrevButton = document.querySelector(
@@ -54,7 +53,6 @@ export default function CarouselControllerButtons({ classApplied }) {
     })
   })
 
-  // Setting the initial left button as disabled
   React.useEffect(() => {
     const carouselPrevButton = document.querySelector(
       `.${styles.carouselLeftButton}`
@@ -64,12 +62,10 @@ export default function CarouselControllerButtons({ classApplied }) {
   }, [])
 
   const carouselPrevElem = () => {
-    // console.log(swiper.current);
     swiper.current.slidePrev(2000, false)
   }
 
   const carouselNextElem = () => {
-    // console.log(swiper.current);
     swiper.current.slideNext(2000, false)
   }
 

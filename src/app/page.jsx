@@ -25,11 +25,9 @@ import { gsap } from "gsap"
 import { AnimatePresence, motion } from "framer-motion"
 import { useWindowSize } from "rooks"
 import EventsMobile2 from "@/components/EventsMobile"
-// import EventsMobile2 from "./events/page";
 import CustomCursor from "@/components/CustomCursor"
 import { useMemo } from "react"
 import { generateRandomStatesArray } from "@/helpers/generateRandomStatesArray"
-import Loader from "@/helpers/Loader"
 
 export default function Home() {
   const { isHamOpen, setIsHamOpen } = useContext(HamContext)
@@ -867,7 +865,7 @@ export default function Home() {
         </div>
       )}
       <div className={styles.contactsWrapper} ref={contactsWrapper}>
-        <Contact />
+        <Contact isLoading={isLoading} />
       </div>
     </main>
   )
