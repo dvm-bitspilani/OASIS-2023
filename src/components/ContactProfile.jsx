@@ -5,7 +5,6 @@ import mailIcon from "../../public/static/images/compressed_mail.svg"
 import Image from "next/image"
 
 const ContactProfile = (props) => {
-  console.log(props)
 
   return (
     <>

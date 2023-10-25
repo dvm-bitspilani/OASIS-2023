@@ -13,7 +13,6 @@ import { useEffect } from "react"
 import { gsap } from "gsap"
 import { MotionPathPlugin } from "gsap/all"
 import { CustomEase } from "gsap/all"
-import { delay } from "framer-motion"
 import Link from "next/link"
 
 gsap.registerPlugin(MotionPathPlugin)
@@ -223,7 +222,6 @@ export default function Hamburger() {
   return (
     <>
       <div className={styles.page}>
-        {/* <div className={styles.container}> */}
         <div className={styles.background}>
           <div className={styles.glowbox}>
             <Image draggable={false} src={glow} id="glow" alt=""></Image>
@@ -248,7 +246,6 @@ export default function Hamburger() {
               fill="none"
               xmlns="http://www.w3.org/2000/svg"
             >
-              {/* <path id="base" opacity="0.7" d="M888 417.5C888 622.398 721.898 788.5 517 788.5C312.102 788.5 146 622.398 146 417.5C146 212.602 312.102 46.5 517 46.5C738 46.5 778.5 193 857.5 141.5C936.5 90 1029.5 29 1029.5 29" stroke="#F0F0F0" strokeWidth="0.75" strokeDasharray="5 5" /> */}
               <path
                 id="path"
                 opacity="0.7"
@@ -274,14 +271,14 @@ export default function Hamburger() {
                 <span className={styles.txt}>SPONSORS</span>
               </div>
             </Link>
-            <div className={`${styles.item} two`}>
+            <Link className={`${styles.item} two`} href="/gallery" onMouseDown={()=>{setIsHamOpen(false)}}>
               <div className={`${styles.number} ${styles.two}`}>
                 <span className={styles.numbox}>
                   <div className={styles.num}>2</div>
                 </span>
                 <span className={styles.txt2}>GALLERY</span>
               </div>
-            </div>
+            </Link>
             <Link
               href="/wallmag"
               className={`${styles.item} three`}
