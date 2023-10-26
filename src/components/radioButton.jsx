@@ -1,6 +1,5 @@
 import React from "react"
 import "./radio.css"
-
 import styles from "../app/register/page.module.css"
 
 const RadioButton = ({ name, id, value, onChange, checked, text }) => {
@@ -20,7 +19,6 @@ const RadioButton = ({ name, id, value, onChange, checked, text }) => {
           e.target.parentElement.parentElement.previousSibling ||
           e.target.parentElement.previousSibling
         if (targetLabel !== null && targetLabel.innerText === "GENDER") {
-          // console.log(targetLabel)
           targetLabel.classList.add(styles.labelFocus)
         }
       }}

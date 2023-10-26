@@ -63,8 +63,6 @@
   width: 40vw;
 }
 .bookImage {
-  /* width: min(40vw,536px);
-    width: max(min(40vw, 536px), 400px); */
   height: 80vh;
 }
 .contactWrapper {
@@ -110,7 +108,6 @@
 }
 .details {
   position: absolute;
-  /* height: 50vh; */
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -123,7 +120,6 @@
 .contactDetails {
   display: flex;
   flex-direction: column;
-  /* justify-content: center; */
   align-items: center;
 }
 .iconsContainer a:hover {
@@ -169,10 +165,6 @@
   min-height: 100vh;
   width: 100vw;
   z-index: 2;
-  /* background: url('../../../public/static/images/updatedLibraryBgImage.png');
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: contain; */
   height: auto;
   position: relative;
   z-index: 10;
@@ -352,10 +344,6 @@
     font-size: 2rem;
   }
 
-  /* .newMobileImageWrapper{
-    width: 280px;
-    height: auto;
-} */
   .mobileMainSection {
     gap: unset;
   }
@@ -367,11 +355,6 @@
   .mobileHeading span {
     font-size: 2rem;
   }
-
-  /* .newMobileImageWrapper{
-    width: 280px;
-    height: auto;
-} */
   .mobileMainSection {
     gap: unset;
   }

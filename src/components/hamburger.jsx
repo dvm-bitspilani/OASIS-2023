@@ -1,9 +1,8 @@
 // "use client";
 
-import React, { useState } from "react"
+import React from "react"
 import styles from "./hamburger.module.css"
 import { HamContext } from "@/context/HamContextProvider"
-import path from "../../public/static/images/path.svg"
 import innercircle from "../../public/static/images/innercircle.png"
 import logo from "../../public/static/images/oasis-logo-ham.png"
 import glow from "../../public/static/images/glow.png"
@@ -239,7 +238,6 @@ export default function Hamburger() {
             ></Image>
           </div>
           <div className={styles.outerpath}>
-            {/* <Image draggable={false} src={path} id="path"></Image> */}
             <svg
               id="path-svg"
               viewBox="0 0 1044 816"
@@ -271,7 +269,13 @@ export default function Hamburger() {
                 <span className={styles.txt}>SPONSORS</span>
               </div>
             </Link>
-            <Link className={`${styles.item} two`} href="/gallery" onMouseDown={()=>{setIsHamOpen(false)}}>
+            <Link
+              className={`${styles.item} two`}
+              href="/gallery"
+              onMouseDown={() => {
+                setIsHamOpen(false)
+              }}
+            >
               <div className={`${styles.number} ${styles.two}`}>
                 <span className={styles.numbox}>
                   <div className={styles.num}>2</div>
@@ -293,14 +297,14 @@ export default function Hamburger() {
                 <span className={styles.txt2}>WALLMAG</span>
               </div>
             </Link>
-            <div className={`${styles.item} four`}>
+            <Link href="/media_partners" className={`${styles.item} four`}>
               <div className={`${styles.number} ${styles.four}`}>
                 <span className={styles.numbox}>
                   <div className={styles.num}>4</div>
                 </span>
                 <span className={styles.txt}>MEDIA PARTNERS</span>
               </div>
-            </div>
+            </Link>
             <div className={`${styles.item} five`}>
               <div className={`${styles.number} ${styles.five}`}>
                 <span className={styles.numbox}>

@@ -23,25 +23,12 @@
 
 .carouselControllerButtons button:hover,
 .carouselControllerButtonsMobile button:hover {
-  /* cursor: pointer; */
   cursor: none;
 }
 
 .carouselControllerButtons button:disabled,
 .carouselControllerButtonsMobile button:disabled {
   cursor: not-allowed;
-}
-
-.carouselLeftButton {
-  /* color: #78bbf0;
-      font-size: 2rem;
-      transform: translateX(-50%); */
-}
-
-.carouselRightButton {
-  /* color: #78bbf0;
-      font-size: 2rem;
-      transform: translateX(50%); */
 }
 
 @media screen and (max-width: 1110px) {

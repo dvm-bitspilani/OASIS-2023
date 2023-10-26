@@ -1,5 +1,5 @@
 "use client"
-import React , {useState} from "react"
+import React, { useState } from "react"
 import * as styles from "./gallery.module.css"
 import web from "../../../public/static/images/web1.svg"
 import Image from "next/image"
@@ -14,13 +14,12 @@ import Loader from "@/helpers/Loader"
 import CustomCursor from "@/components/CustomCursor"
 
 const Page = () => {
-
   const [isLoading, setIsLoading] = useState(false)
 
   return (
     <>
-    <CustomCursor />
-    <Loader isLoading={isLoading} setIsLoading={setIsLoading} />
+      <CustomCursor />
+      <Loader isLoading={isLoading} setIsLoading={setIsLoading} />
       <div
         className={styles.pageWrapper}
         style={{ background: `url(${bgImage.src})` }}

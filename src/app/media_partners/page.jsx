@@ -10,15 +10,12 @@ import skullImg from "../../../public/static/images/skull.svg"
 import CustomCursor from "@/components/CustomCursor"
 // import skullImg from "../../../";
 
-import web1 from "../../../public/static/images/web1.svg"
-import web2 from "../../../public/static/images/web2.png"
 import cross from "../../../public/static/images/cross.svg"
 
 const Page = () => {
-  const router = useRouter()
+  const [isLoading, setIsLoading] = useState(true)
 
-  // Chnange this to true when the data is populated from back
-  const [isLoading, setIsLoading] = useState(false)
+  const router = useRouter()
 
   const skullRef = useRef(null)
   const contentRef = useRef(null)
@@ -95,21 +92,49 @@ const Page = () => {
     // skullElem.style.top = `${percentage}%`;
   }
 
-  const [cards, setCards] = useState([])
+  const [data, setData] = useState([])
 
   useEffect(() => {
     const fetchData = async () => {
       const res = await fetch(
-        "https://bits-oasis.org/2023/main/registrations/wallmag"
+        "https://bits-oasis.org/2023/main/registrations/media_partners/"
       )
       const json = await res.json()
       setTimeout(() => {
         setIsLoading(false)
       }, 2000)
-      setCards(json)
+      setData(json)
     }
     fetchData()
   }, [])
+
+  // map the data to the influencer cards where category is "influencer"
+const influencerCards = data.map((item) => {
+  if (item.publication === false) {
+    return (
+      <PartnerCard
+        key={item.name}
+        name={item.name}
+        link={item.link}
+        icon={item.icon}
+      />
+    )
+  }
+}
+)
+
+const publicationCards = data.map((item) => {
+  if (item.publication === true) {
+    return (
+      <PartnerCard
+        key={item.name}
+        name={item.name}
+        link={item.link}
+        icon={item.icon}
+      />
+    )
+  }
+})
 
   return (
     <>
@@ -127,11 +152,10 @@ const Page = () => {
           />
         </div>
       )}
-      <div className={styles["wallmagPage"]}>
+      <div className={styles["sponsorsPage"]}>
         <CustomCursor />
-        <Image src={web1} className={styles.web1} alt="" />
-        <Image src={web2} className={styles.web2} alt="" />
         <Image
+          suppressHydrationWarning
           src={cross}
           onClick={() => {
             router.push("/")
@@ -139,12 +163,13 @@ const Page = () => {
           alt="Close"
           className={styles.cross}
         />
-        <h1 className={styles.wallmagHeading}>WALLMAG</h1>
+        <h1 className={styles.heading}>MEDIA PARTNERS</h1>
 
-        <div className={styles["wallmagContent"]}>
+        <div className={styles.sponsorsContent}>
           <div className={styles.scrollBarContainer} onClick={handleTrackSnap}>
             <div className={styles.scrollBar}></div>
             <Image
+              suppressHydrationWarning
               draggable={false}
               onMouseDown={handleSkullMouseDown}
               onTouchStart={handleSkullMouseDown}
@@ -155,34 +180,15 @@ const Page = () => {
             />
           </div>
           <div
-            className={styles.wallmagContentContainer}
+            className={styles.sponsorsContentContainer}
             ref={contentRef}
             onScroll={handleScroll}
           >
             <div className={styles.cardsContainer}>
-              {/* {cards.map((card, index) => (
-                <div className={styles.card} key={index}>
-                  <div className={styles.cardImageContainer}>
-                    <img src={card.image} alt="" className={styles.cardImage} />
-                    <div className={styles.cardHeading}>
-                      <h1>{card.name}</h1>
-                      <h2>{card.dept}</h2>
-                    </div>
-                  </div>
-                  <div className={styles.cardDesc}>
-                    <p>{card.desc}</p>
-                  </div>
-                </div>
-              ))} */}
-              <div
-                style={{
-                  display: "flex",
-                  height: "75vh",
-                  alignItems: "center",
-                }}
-              >
-                <h1 className={styles.wallmagHeading}>Coming Soon</h1>
-              </div>
+            <h1>Influencers</h1>
+            {influencerCards}
+            <h1>Publications</h1>
+            {publicationCards}
             </div>
           </div>
         </div>
@@ -192,3 +198,17 @@ const Page = () => {
 }
 
 export default Page
+
+export function PartnerCard(props) {
+
+  return (
+    <a className={styles.card} href={props.link}>
+      {props.icon && (
+        <div className={styles.imgContainer} style={{backgroundImage : `url(${props.icon})`}}>
+          {/* <img src={props.icon} alt="image not found" /> */}
+        </div>
+      )}
+        <h2>{props.name}</h2>
+    </a>
+  )
+}
