@@ -297,14 +297,14 @@ export default function Hamburger() {
                 <span className={styles.txt2}>WALLMAG</span>
               </div>
             </Link>
-            <div className={`${styles.item} four`}>
+            <Link href="/media_partners" className={`${styles.item} four`}>
               <div className={`${styles.number} ${styles.four}`}>
                 <span className={styles.numbox}>
                   <div className={styles.num}>4</div>
                 </span>
                 <span className={styles.txt}>MEDIA PARTNERS</span>
               </div>
-            </div>
+            </Link>
             <div className={`${styles.item} five`}>
               <div className={`${styles.number} ${styles.five}`}>
                 <span className={styles.numbox}>
