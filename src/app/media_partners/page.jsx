@@ -131,6 +131,7 @@ const publicationCards = data.map((item) => {
         name={item.name}
         link={item.link}
         icon={item.icon}
+        publication = {item.publication}
       />
     )
   }
@@ -204,8 +205,7 @@ export function PartnerCard(props) {
   return (
     <a className={styles.card} href={props.link}>
       {props.icon && (
-        <div className={styles.imgContainer} style={{backgroundImage : `url(${props.icon})`}}>
-          {/* <img src={props.icon} alt="image not found" /> */}
+        <div className={styles.imgContainer} style={{backgroundImage : `url(${props.icon})`, backgroundSize : props.publication ? "contain" : "cover"}}>
         </div>
       )}
         <h2>{props.name}</h2>
