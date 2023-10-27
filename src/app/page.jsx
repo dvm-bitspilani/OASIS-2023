@@ -38,7 +38,7 @@ export default function Home() {
   const [isLoading, setIsLoading] = useState(true)
   const [showLoader, setShowLoader] = useState(true)
 
-  const numberOfRandom = 10
+  const numberOfRandom = 15
 
   const randomGenerationConfig = useMemo(() => {
     return [32, -10, 30, 40, 25, 86, 0, 0]
@@ -209,17 +209,19 @@ export default function Home() {
           })
 
           const tl = gsap.timeline({
-            onComplete: () => {
-              if (key === randomLeft1.length - 1) {
-                // console.log("Animation 1 complete");
-                setrandomLeft1(
-                  generateRandomStatesArray(
-                    numberOfRandom,
-                    ...randomGenerationConfig
-                  )
-                )
-              }
-            },
+            // repeat: -1,
+
+            // onComplete: () => {
+            //   if (key === randomLeft1.length - 1) {
+            //     // console.log("Animation 1 complete");
+            //     setrandomLeft1(
+            //       generateRandomStatesArray(
+            //         numberOfRandom,
+            //         ...randomGenerationConfig
+            //       )
+            //     )
+            //   }
+            // },
           })
 
           tl.to(`#left_1_${key}`, {
@@ -279,17 +281,17 @@ export default function Home() {
           })
           const tl = gsap.timeline({
             delay: delayGiven ? 0.1 : 5,
-            // delay: 1.5,
+            // repeat: -1,
             onComplete: () => {
-              if (key === randomLeft2.length - 1) {
-                setDelayGiven(true)
-                setrandomLeft2(
-                  generateRandomStatesArray(
-                    numberOfRandom,
-                    ...randomGenerationConfig
-                  )
-                )
-              }
+              // if (key === randomLeft2.length - 1) {
+              //   setDelayGiven(true)
+              //   setrandomLeft2(
+              //     generateRandomStatesArray(
+              //       numberOfRandom,
+              //       ...randomGenerationConfig
+              //     )
+              //   )
+              // }
             },
           })
 
@@ -355,16 +357,17 @@ export default function Home() {
           })
 
           const tl = gsap.timeline({
+            // repeat: -1,
             onComplete: () => {
-              if (key === randomRight1.length - 1) {
-                // console.log("Animation 1 Right complete");
-                setRandomRight1(
-                  generateRandomStatesArray(
-                    numberOfRandom,
-                    ...randomGenerationConfig
-                  )
-                )
-              }
+              // if (key === randomRight1.length - 1) {
+              //   // console.log("Animation 1 Right complete");
+              //   setRandomRight1(
+              //     generateRandomStatesArray(
+              //       numberOfRandom,
+              //       ...randomGenerationConfig
+              //     )
+              //   )
+              // }
             },
           })
 
@@ -425,17 +428,18 @@ export default function Home() {
 
           const tl = gsap.timeline({
             delay: delayGiven ? 0.1 : 5,
+            // repeat: -1,
             onComplete: () => {
-              if (key === randomRight2.length - 1) {
-                setDelayGiven(true)
-                // console.log("Animation 2 Right complete");
-                setRandomRight2(
-                  generateRandomStatesArray(
-                    numberOfRandom,
-                    ...randomGenerationConfig
-                  )
-                )
-              }
+              // if (key === randomRight2.length - 1) {
+              //   setDelayGiven(true)
+              //   // console.log("Animation 2 Right complete");
+              //   setRandomRight2(
+              //     generateRandomStatesArray(
+              //       numberOfRandom,
+              //       ...randomGenerationConfig
+              //     )
+              //   )
+              // }
             },
           })
 
@@ -789,6 +793,7 @@ export default function Home() {
                   style={{
                     position: "absolute",
                     bottom: "50px",
+                    visibility: "hidden",
                   }}
                   suppressHydrationWarning
                 >
