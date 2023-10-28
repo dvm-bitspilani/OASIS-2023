@@ -21,10 +21,10 @@ export default function EPC() {
   return (
     <main className={styles.pageWrapper}>
         <CustomCursor />
-      <meta
+      {/* <meta
         name="viewport"
         content="width=device-width, initial-scale=1.0"
-      ></meta>
+      ></meta> */}
       <header className={styles.heading}>
         <Link href="/" className={styles.back}>
           <svg
@@ -53,7 +53,7 @@ export default function EPC() {
           // pagination={{ clickable: true }}
           // navigation={{ clickable: true }}
           //   scrollbar={{ draggable: true }}
-          spaceBetween={50}
+          spaceBetween={75}
           //   slidesPerView={1.1}
           centeredSlides={true}
           //   loop={true}
