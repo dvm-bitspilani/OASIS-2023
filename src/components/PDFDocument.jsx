@@ -49,7 +49,7 @@ export default function PDFDocument({setIsLoading}) {
     <Document
       file={pdfFile}
       onLoadSuccess={onDocumentLoadSuccess}
-      options={options}
+      // options={options}
       className={styles.pdf}
     >
       {Array.from(new Array(numPages), (el, index) => (
