@@ -67,5 +67,5 @@ module.exports = {
     return config
   },
 // Add the withvideos config
-  // ...withVideos(nextConfig),
+  ...withVideos(nextConfig),
 }
