@@ -23,33 +23,36 @@ module.exports = withVideos({
   },
   webpack: (config) => {
     config.resolve.alias.canvas = false;
-    // config.module.rules.unshift({
-    //   test: /pdf\.worker\.(min\.)?js/,
-    //   use: [
-    //     {
-    //       loader: "file-loader",
-    //       options: {
-    //         name: "[contenthash].[ext]",
-    //         publicPath: "_next/static/worker",
-    //         outputPath: "static/worker",
-    //       },
-    //     },
-    //   ],
-    // });
-    // videos config
-    config.module.rules.push({
-      test: /\.(mov|mp4)$/,
+
+    config.module.rules.unshift({
+      test: /pdf\.worker\.(min\.)?js/,
       use: [
         {
           loader: "file-loader",
           options: {
-            name: "[name].[ext]",
-            publicPath: "_next/static/videos",
-            outputPath: "static/videos",
+            name: "[contenthash].[ext]",
+            publicPath: "_next/static/worker",
+            outputPath: "static/worker",
           },
         },
       ],
     });
+
+    // videos config
+    // config.module.rules.push({
+    //   test: /\.(mov|mp4)$/,
+    //   use: [
+    //     {
+    //       loader: "file-loader",
+    //       options: {
+    //         name: "[name].[ext]",
+    //         publicPath: "_next/static/videos",
+    //         outputPath: "static/videos",
+    //       },
+    //     },
+    //   ],
+    // });
+    
     config.module.rules.push({
       test: /\.pdf$/,
       use: {

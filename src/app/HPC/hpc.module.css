@@ -1,0 +1,168 @@
+.pageWrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  width: 100%;
+  height: 100dvh;
+
+  background-image: url("../../../public/static/images/updatedLibraryBgImage.png");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.heading {
+  width: 100%;
+  height: 15vh;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  position: relative;
+}
+
+.back {
+  position: absolute;
+  right: 3rem;
+
+  scale: 0.7;
+  width: 10%;
+  /* margin-right: auto; */
+}
+
+.title {
+  color: #78BBF0;
+  text-align: center;
+  font-family: NightmarePills;
+  font-size: 1.5rem;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+  letter-spacing: 2.9px;
+  text-transform: uppercase;
+}
+
+.carouselWrapper {
+  width: 100%;
+  height: 80dvh;
+  /* flex: 1 0 auto; */
+
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
+
+  /* gap: 3rem; */
+  overflow: hidden;
+}
+
+.carousel {
+  width: 100%;
+  height: 80%;
+}
+
+.slide {
+  background-color: white;
+  overflow: scroll;
+  /* width: max-content !important; */
+  flex-shrink: 0;
+}
+
+.pdf {
+  width: 100%;
+  height: 100%;
+
+  overflow-x: hidden;
+}
+
+.pdfpage {
+  width: 100%;
+  height: fit-content;
+
+  display: grid;
+  justify-items: center;
+}
+
+.pdfpage > canvas {
+  width: 100% !important;
+  height: auto !important;
+}
+
+.carouselController {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  height: fit-content;
+  width: clamp(30%, 500px, 90%);
+
+  gap: 2.5rem;
+}
+
+.articleAuthor p {
+  color: #78bbf0;
+  text-align: center;
+  text-shadow: 0px 2.748150110244751px 25.420387268066406px
+    rgba(120, 187, 240, 0.8);
+  font-family: NightmarePills;
+  font-size: 2rem;
+  font-style: normal;
+  font-weight: 600;
+  line-height: normal;
+  letter-spacing: 2.4px;
+}
+
+.carouselController button {
+  background: transparent;
+  border: none;
+  scale: 0.7;
+  transition: all 0.2s ease-in-out;
+}
+
+.carouselController button:hover {
+  scale: 0.8;
+  cursor: pointer;
+}
+
+@media screen and (max-width: 768px) {
+  .heading {
+    height: 7vh;
+  }
+  .carouselWrapper {
+    height: 90%;
+  }
+  .heading h1 {
+    font-size: 1.3rem;
+  }
+  .carousel {
+    height: 85%;
+  }
+  .back {
+    right: 1rem;
+    scale: 0.4;
+  }
+  .articleAuthor p {
+    font-size: 1.5rem;
+  }
+}
+
+@media screen and (max-width: 500px) {
+  .heading {
+    height: 7vh;
+  }
+  .carouselWrapper {
+    /* height: 90%; */
+  }
+  .heading h1 {
+    font-size: 1.3rem;
+  }
+  .carousel {
+    /* height: 85%; */
+  }
+  .articleAuthor p {
+    font-size: 1.3rem;
+  }
+}

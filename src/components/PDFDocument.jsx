@@ -26,12 +26,15 @@ const options = {
 };
 
 // Create Document Component
-export default function PDFDocument() {
+export default function PDFDocument({setIsLoading}) {
   // const defaultLayoutPluginInstance = defaultLayoutPlugin()
 
   const [numPages, setNumPages] = React.useState(1)
   function onDocumentLoadSuccess({ numPages }) {
     setNumPages(numPages)
+    if (setIsLoading) {
+      setIsLoading(false)
+    }
   }
 
   return (
