@@ -104,9 +104,6 @@ export default function EPC() {
             <SwiperSlide className={styles.slide}>
               <PDFDocument />
             </SwiperSlide>
-            <SwiperSlide className={styles.slide}>
-              <PDFDocument />
-            </SwiperSlide>
           </Swiper>
           <div className={styles.carouselController}>
             <button
