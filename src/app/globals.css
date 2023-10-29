@@ -68,7 +68,7 @@ canvas {
 }
 
 .swiper-slide {
-  width: 100% !important;
+  /* width: 100% !important; */
 }
 
 .customHover {
@@ -143,4 +143,15 @@ a {
   display: flex !important;
   justify-content: center !important;
   align-items: center !important;
+}
+
+.swiper-wrapper{
+  box-sizing: content-box;
+  display: flex;
+  height: 100%;
+  position: relative;
+  transition-property: transform;
+  transition-timing-function: var(--swiper-wrapper-transition-timing-function,initial);
+  width: 100%;
+  z-index: 1;
 }

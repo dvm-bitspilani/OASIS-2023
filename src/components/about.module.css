@@ -54,6 +54,7 @@
   box-shadow: 0px 4px 50px 0px rgba(120, 187, 240, 0.5);
   max-height: 50%;
   aspect-ratio: 16/9;
+  width: fit-content;
   max-width: 80%;
   display: flex;
   justify-content: center;
