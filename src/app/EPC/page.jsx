@@ -20,7 +20,7 @@ import { Navigation, Mousewheel } from "swiper/modules"
 import PDFDocument from "@/components/PDFDocument"
 
 export default function EPC() {
-  const [isLoading, setIsLoading] = useState(true)
+  const [isLoading, setIsLoading] = useState(false)
 
   return (
     <>
@@ -98,12 +98,16 @@ export default function EPC() {
             allowTouchMove={false}
             modules={[Navigation, Mousewheel]}
           >
-            <SwiperSlide className={styles.slide}>
-              <PDFDocument setIsLoading={setIsLoading}/>
+            <SwiperSlide className={styles.slide} style={{background : "transparent", display:"grid", placeItems : "center"}}>
+              {/* <PDFDocument setIsLoading={setIsLoading}/> */}
+              {/* Remove this line and uncomment the next line to use the PDFDocument component */}
+              <div style={{background : "transparent", color : "#78bbf0"}}>
+                <h1 style={{textAlign : "center"}}>Coming Soon</h1>
+              </div>
             </SwiperSlide>
-            <SwiperSlide className={styles.slide}>
+            {/* <SwiperSlide className={styles.slide}>
               <PDFDocument />
-            </SwiperSlide>
+            </SwiperSlide> */}
           </Swiper>
           <div className={styles.carouselController}>
             <button
