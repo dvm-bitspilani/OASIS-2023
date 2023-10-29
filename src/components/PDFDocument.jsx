@@ -15,7 +15,6 @@ import { Document, Page, pdfjs } from "react-pdf";
 // import { defaultLayoutPlugin } from "@react-pdf-viewer/default-layout"
 
 // import pdfFile from "../app/EPC/BOSMRulebooks.pdf";
-import pdfFile from "../../public/static/pdf/BOSMRulebooks.pdf";
 import * as styles from "../app/EPC/epc.module.css"
 
 // pdfjs.GlobalWorkerOptions.workerSrc = new URL(
@@ -34,7 +33,7 @@ const options = {
 };
 
 // Create Document Component
-export default function PDFDocument({setIsLoading}) {
+export default function PDFDocument({setIsLoading, pdfFile}) {
   // const defaultLayoutPluginInstance = defaultLayoutPlugin()
 
   const [numPages, setNumPages] = React.useState(1)

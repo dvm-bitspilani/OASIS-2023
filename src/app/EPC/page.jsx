@@ -19,6 +19,9 @@ import { Navigation, Mousewheel } from "swiper/modules"
 
 import PDFDocument from "@/components/PDFDocument"
 
+// Importing PDFs
+import issue1 from "../../../public/static/pdf/OEP ISSUE 1.pdf"
+
 export default function EPC() {
   const [isLoading, setIsLoading] = useState(false)
 
@@ -99,11 +102,7 @@ export default function EPC() {
             modules={[Navigation, Mousewheel]}
           >
             <SwiperSlide className={styles.slide} style={{background : "transparent", display:"grid", placeItems : "center"}}>
-              {/* <PDFDocument setIsLoading={setIsLoading}/> */}
-              {/* Remove this line and uncomment the next line to use the PDFDocument component */}
-              <div style={{background : "transparent", color : "#78bbf0"}}>
-                <h1 style={{textAlign : "center"}}>Coming Soon</h1>
-              </div>
+              <PDFDocument setIsLoading={setIsLoading} pdfFile={issue1}/>
             </SwiperSlide>
             {/* <SwiperSlide className={styles.slide}>
               <PDFDocument />
