@@ -102,7 +102,7 @@ const Page = () => {
       const json = await res.json()
       setTimeout(() => {
         setIsLoading(false)
-      }, 2000)
+      }, 1000)
       setData(json)
     }
     fetchData()
@@ -118,6 +118,7 @@ const Page = () => {
           name: sponsor.name,
           description: sponsor.category,
           image: sponsor.url,
+          web_url: sponsor.web_url,
         }}
       />
     )
@@ -202,9 +203,9 @@ export function SponsorCard({ props }) {
     fontSize: !image ? (name === "Made In India" ? "3rem" : "4rem") : "1.5rem",
     width: "max-content",
   }
-  //   console.log(props);
+    // console.log(props);
   return (
-    <div className={styles.card} style={cardStyle}>
+    <a href={props.web_url} target="_blank" className={styles.card} style={cardStyle}>
       {/* <div
         className={styles.imgContainer}
         // style={{ backgroundImage: `url(${props.image})` }}
@@ -220,6 +221,6 @@ export function SponsorCard({ props }) {
         <h2 style={fontStyle}>{props.name}</h2>
         <p>{props.description}</p>
       </div>
-    </div>
+    </a>
   )
 }

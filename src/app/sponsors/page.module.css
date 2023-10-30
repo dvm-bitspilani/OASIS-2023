@@ -104,7 +104,15 @@ aspect-ratio: 1/1; */
   justify-content: space-evenly;
   align-items: center;
   height: auto;
+  
+  color: white;
 }
+
+/* Change text colour on click */
+.card:active, .card:focus, .card:focus-within {
+  color: mediumslateblue;
+}
+
 .cardContent {
   display: flex;
   flex-direction: column;
