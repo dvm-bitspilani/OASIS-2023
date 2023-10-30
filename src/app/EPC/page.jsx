@@ -21,6 +21,7 @@ import PDFDocument from "@/components/PDFDocument"
 
 // Importing PDFs
 import issue1 from "../../../public/static/pdf/OEP ISSUE 1.pdf"
+import issue2 from "../../../public/static/pdf/OEP ISSUE 2.pdf"
 
 export default function EPC() {
   const [isLoading, setIsLoading] = useState(false)
@@ -104,9 +105,9 @@ export default function EPC() {
             <SwiperSlide className={styles.slide} style={{background : "transparent", display:"grid", placeItems : "center"}}>
               <PDFDocument setIsLoading={setIsLoading} pdfFile={issue1}/>
             </SwiperSlide>
-            {/* <SwiperSlide className={styles.slide}>
-              <PDFDocument />
-            </SwiperSlide> */}
+            <SwiperSlide className={styles.slide}>
+              <PDFDocument pdfFile={issue2}/>
+            </SwiperSlide>
           </Swiper>
           <div className={styles.carouselController}>
             <button
