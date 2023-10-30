@@ -109,7 +109,7 @@ aspect-ratio: 1/1; */
 }
 
 /* Change text colour on click */
-.card:active, .card:focus, .card:focus-within {
+.card:active, .card:focus, .card:focus-within, .card:hover {
   color: mediumslateblue;
 }
 
