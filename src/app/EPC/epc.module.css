@@ -124,7 +124,6 @@
 
 .carouselController button:hover {
   scale: 0.8;
-  cursor: pointer;
 }
 
 @media screen and (max-width: 768px) {

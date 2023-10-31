@@ -31,6 +31,13 @@
   cursor: not-allowed;
 }
 
+.carouselLeftButton {
+  color: #78bbf0;
+}
+.carouselRightButton {
+  color: #78bbf0;
+}
+
 @media screen and (max-width: 1110px) {
   .carouselControllerButtons {
     width: 95%;

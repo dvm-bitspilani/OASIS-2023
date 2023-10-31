@@ -1,7 +1,7 @@
 "use client"
 
 import React from "react"
-import styles from "./GalleryCarousel.module.css"
+import * as styles from "./GalleryCarousel.module.css"
 
 export default function GalleryCarouselControllerButtons({ classApplied }) {
   const swiper = React.useRef(null)
