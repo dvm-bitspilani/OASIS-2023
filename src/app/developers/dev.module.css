@@ -1,20 +1,205 @@
-.heroSection{
-    width: 100%;
-    height: 50%;
-
-    background-image: url("./Dev\ Assets/bg.png");
-    background-size: cover;
+.pageWrapper{
+    width: 100vw;
+    height: 100dvh;
     background-position: center;
     background-repeat: no-repeat;
-
+    background-size: cover;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     position: relative;
-
-    display: grid;
-    place-items: center;
+    top: 0;
+    left: 0;
+    cursor: none;
+    overflow-y: hidden;
 }
-
-.heroSection h1{
+.heading{
     position: absolute;
-
+    top: 0;
+    height: 20vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: 'NightmarePills';
+  color: rgb(120, 187, 240);
+  text-decoration: underline;
+  font-size: 3rem;
+  text-transform: uppercase;
+  letter-spacing: 5px;
+}
+.booksWrapper{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0;
+    align-self: flex-end;
+}
+.designBook, .frontBook, .backBook, .videoBook{
 
 }
+.memberCard{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 50%;
+    justify-content: space-evenly;
+    height: 100%;
+}
+.memberImage{
+    height: 60%;
+    width: auto;
+}
+.teamWrapper{
+    position: relative;
+    top: 0;
+    left: 0;
+    height: 80vh;
+    width: 90vw;
+    display: flex;
+}
+.leftDiv, .rightDiv{
+    width: 50%;
+    height: 80%;
+    margin-block:auto ;
+    position: relative;
+}
+.book{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+.leftFirstRow, .leftSecondRow{
+    position: absolute;
+    z-index: 2;
+    width: 90%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    left: auto;
+  right: 0;
+  height: 50%;
+}
+.leftSecondRow{
+    bottom: 0;
+}
+.socialLinks{
+    display: flex;
+    justify-content: space-between;
+    gap: 1rem;
+}
+.rightFirstRow, .rightSecondRow{
+    position: absolute;
+    z-index: 2;
+    width: 90%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    left: auto;
+  left: 0;
+  height: 50%;
+}
+.memberCard h2{
+    text-align: center;
+    font-family: 'MetalMania';
+  color: rgb(44, 40, 38);
+}
+.rightSecondRow{
+    bottom: 0;
+}
+.blackCross{
+    position: absolute;
+  top: 8vh;
+  right: 6vw;
+  width: 25px;
+  height: auto;
+  z-index: 2;
+}
+.backBtn{
+    position: absolute;
+  top: 8vh;
+  right: 3vw;
+}
+@media screen and (max-width: 800px) {
+    .teamWrapper{
+        height: 100vh;
+        width: 100vw;
+        display: flex;
+        flex-direction: column;
+        overflow: scroll;
+        align-items: center;
+    padding-block: 4rem;
+    margin-top: 10rem;
+    }
+    .mobileMemberCard{
+        width: 400px;
+        height: 200px;
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: 400px 200px ;
+        margin-block: 1rem;
+    }
+    .mobileCardContent{
+        display: flex;
+        gap: 1rem;
+        width: 80%;
+        height: 200px;
+        justify-content: space-evenly;
+    margin-inline: auto;
+    }
+    .mobileCardContent>img{
+        height: 80%;
+        max-width: 150px;
+        align-self: center;
+    }
+    .memberInfo{
+        display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  height: 50%;
+  margin-block: auto;
+    }
+    .memberInfo h2{
+        width: max-content;
+        max-width: 200px;
+        text-align: center;
+    }
+    .socialLinks{
+        justify-content: space-evenly;
+    }
+  }
+@media screen and (max-width: 500px) {
+    .heading{
+        font-size: 2rem;
+    }
+  }
+@media screen and (max-width: 400px) {
+    .mobileMemberCard{
+        scale: 0.8;
+    }
+    .heading{
+        font-size: 2rem;
+    }
+  }
+  .loaderContainer {
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 9999;
+    height: 100vh;
+    width: 100vw;
+    background-color: black;
+    /* background-image: url("../../public/static/images/LibraryBgImage.avif"); */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* background-position: center; */
+    /* background-repeat: no-repeat; */
+    /* background-size: cover; */
+    opacity: 1;
+    /* transition: opacity 0.5s ease; */
+  }
+  .loaderContainer video {
+    scale: 0.5;
+  }
