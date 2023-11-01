@@ -305,14 +305,16 @@ export default function Hamburger() {
                 <span className={styles.txt}>MEDIA PARTNERS</span>
               </div>
             </Link>
-            <div className={`${styles.item} five`}>
+            <Link href="/developers" className={`${styles.item} five`}>
+            {/* <div className={`${styles.item} five`}> */}
               <div className={`${styles.number} ${styles.five}`}>
                 <span className={styles.numbox}>
                   <div className={styles.num}>5</div>
                 </span>
                 <span className={styles.txt}>DEVELOPERS</span>
               </div>
-            </div>
+            {/* </div> */}
+            </Link>
           </div>
         </div>
       </div>
