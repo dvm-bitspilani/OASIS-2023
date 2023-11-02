@@ -11,7 +11,7 @@
     top: 0;
     left: 0;
     cursor: none;
-    overflow-y: hidden;
+    overflow: hidden;
 }
 .heading{
     position: absolute;
@@ -120,6 +120,11 @@
     position: absolute;
   top: 8vh;
   right: 3vw;
+  transition: opacity 0.5s ease-in-out;
+}
+
+.shelf{
+    overflow: hidden;
 }
 @media screen and (max-width: 800px) {
     .teamWrapper{
