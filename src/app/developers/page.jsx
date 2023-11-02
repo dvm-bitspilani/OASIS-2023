@@ -367,7 +367,7 @@ useEffect(() => {
       ): <>
       <CustomCursor />
       <div className={styles.pageWrapper} style={{backgroundImage:`url(${backgroundImage})`}} >  
-     <Image src={backBtn} className={styles.backBtn} alt="back" onClick={handleBackButtonClick} style={{opacity: window.innerWidth > 800 ? showTeam ? "0" : "1" : "1"}}></Image>
+     <Image src={backBtn} className={styles.backBtn} alt="back" onClick={handleBackButtonClick} style={{opacity: window.innerWidth > 800 && showTeam ? "0" : "1"}}></Image>
       <div className={styles.heading}>Developers</div>
       {/* <div className={styles.booksWrapper} >
       <Image src={design} alt="Design Book" className={styles.designBook} onMouseEnter={() => handleBookHover(designBg.src)}  onMouseLeave={handleMouseLeave}/>
