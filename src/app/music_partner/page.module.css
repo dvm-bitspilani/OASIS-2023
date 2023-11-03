@@ -1,0 +1,80 @@
+.wrapper{
+    width: 100vw;
+    min-height: 100vh;
+    overflow-x: hidden;
+}
+.bg{
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    /* width: 100vw; */
+    background: url(../../../public/static/images/updatedLibraryBgImage.png);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 100vh;
+    z-index: -1;
+    overflow-x: hidden;
+}
+.h1{
+    font-family: "NightmarePills";
+  text-align: center;
+  font-size: 2.5rem;
+  padding-top: 2rem;
+  color: #78bbf0;
+  text-shadow: 0px 2.748150110244751px 25.420387268066406px rgba(120, 187, 240, 0.8);
+}
+.h2{
+    width: 100%;
+    font-size: 2rem;
+    margin-bottom: 2rem;
+    text-align: center;
+    font-family: MetalMania;
+}
+.h3{
+    width: 100%;
+    margin-bottom: 1rem;
+    font-family: MetalMania;
+    font-size: 1.5rem;
+    margin-top: 1.5rem;
+}
+.p{
+    font-family: "Mantinia";
+    font-size: 1.3rem;
+    margin-bottom: 1rem; 
+}
+.h4{
+    font-family: "Mantinia";
+    font-size: 1.5rem;
+    margin-bottom: 2rem; 
+    margin-top: 3rem;
+    text-align: center;
+}
+.h4 span{
+    font-family: "NightmarePills";
+    color: #78bbf0;
+    text-shadow: 0px 2.748150110244751px 25.420387268066406px rgba(120, 187, 240, 0.8);
+}
+
+@media (min-width:700px) {
+    .h3,.h4,.p{
+        margin-left: 5rem;
+        margin-right: 5rem;
+    }
+}
+@media (max-width:700px) {
+    .h3,.h4,.p{
+        margin-left: 2rem;
+        margin-right: 2rem;
+    }
+}
+@media (max-width:500px) {
+    .h2 , .h3 , .p{
+        font-size: 1rem;
+    }
+    .h4{
+        font-size: 1.25rem;
+    }
+}
