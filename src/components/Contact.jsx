@@ -42,28 +42,28 @@ const Page = () => {
       name: "Sarthak Arora",
       dept: "Website, App & Online Payments",
       image: `${sarthak.src}`,
-      phone: "tel:+91-7087797760",
+      phone: "",
       mail: "mailto:webmaster@bits-oasis.org",
     },
     {
       name: "Aayush Paurana",
       dept: "Logistics and Operations",
       image: `${paurana.src}`,
-      phone: "tel:+91-9930486791",
+      phone: "",
       mail: "mailto:controls@bits-oasis.org",
     },
     {
       name: "Shaurya Parikh",
       dept: "Sponsorship and Marketing",
       image: `${shaurya.src}`,
-      phone: "tel:+91-9920618766",
+      phone: "",
       mail: "mailto:Shaurya@bits-oasis.org",
     },
     {
       name: "Vaibhav Jain",
       dept: "Registration, Events & Approval Queries",
       image: `${vaibhav.src}`,
-      phone: "tel:+91-9818332330",
+      phone: "",
       mail: "mailto:pcr@bits-oasis.org",
     },
     {
@@ -77,21 +77,21 @@ const Page = () => {
       name: "Adarsh Goel",
       dept: "Online Collaborations and Publicity",
       image: `${adarsh.src}`,
-      phone: "tel:+91-8979951532",
+      phone: "",
       mail: "mailto:collaborations@bits-oasis.org",
     },
     {
       name: "Sarthak Aggarwal",
       dept: "President, Students' Union",
       image: `${sarthak_president.src}`,
-      phone: "tel:+91-8005000213",
+      phone: "",
       mail: "mailto:president@pilani.bits-pilani.ac.in",
     },
     {
       name: "Abhinav Lamba",
       dept: "General Secretary, Students' Union",
       image: `${abhinav.src}`,
-      phone: "tel:+91-7078879443",
+      phone: "",
       mail: "mailto:gensec@pilani.bits-pilani.ac.in",
     },
   ]
@@ -215,7 +215,7 @@ const Page = () => {
                       {profile.dept}
                     </span>
                     <div className={styles.mobileIcons}>
-                      <a href={profile.phone}>
+                      <a href={profile.phone} style={{display:"none"}}>
                         <Image
                           src={phone}
                           className={styles.mobileCallIcon}
