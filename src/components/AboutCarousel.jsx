@@ -47,6 +47,8 @@ export default function AboutCarousel() {
 }
 
 export function YoutubeEmbed({ embedId }) {
+  const [playing, setPlaying] = React.useState(false)
+  if (!playing) return <button type="button" onClick={() => setPlaying(true)} style={{ height: "100%", width: "100%", background: "#171313", color: "#e1c6a1", border: 0, font: "inherit", cursor: "pointer" }}>▶ Play archived Oasis video</button>
   return (
     <iframe loading="lazy"
       width="560"
