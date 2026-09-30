@@ -1,0 +1,37 @@
+
+> oasis-2023@0.1.0 build
+> next build --webpack && node scripts/finalize-export.mjs
+
+▲ Next.js 16.3.8 (webpack)
+✓ Running next.config.js took 21ms
+
+  Creating an optimized production build ...
+✓ Compiled successfully in 8.5s
+  Running TypeScript ...
+  Finished TypeScript in 14ms ...
+  Collecting page data using 9 workers ...
+  Generating static pages using 9 workers (0/13) ...
+  Generating static pages using 9 workers (3/13) 
+  Generating static pages using 9 workers (6/13) 
+  Generating static pages using 9 workers (9/13) 
+✓ Generating static pages using 9 workers (13/13) in 1899ms
+true
+  Finalizing page optimization ...
+  Collecting build traces ...
+
+Route (app)
+┌ ○ /
+├ ○ /_not-found
+├ ○ /developers
+├ ○ /EPC
+├ ○ /gallery
+├ ○ /HPC
+├ ○ /media_partners
+├ ○ /music_partner
+├ ○ /register
+├ ○ /sponsors
+└ ○ /wallmag
+
+
+○  (Static)  prerendered as static content
+

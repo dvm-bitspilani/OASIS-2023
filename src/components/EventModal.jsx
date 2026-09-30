@@ -1,9 +1,9 @@
 "use client"
 import React, { useState, useEffect } from "react"
 import styles from "./EventModal.module.css"
-import BackgroundImage from "../../public/static/images/eventsModalBgLaptop.png"
+import BackgroundImage from "../../public/static/images/eventsModalBgLaptop.webp"
 import Image from "next/image"
-import StreetDance from "../../public/static/images/desertDuelModal.png"
+import StreetDance from "../../public/static/images/desertDuelModal.webp"
 import OasisLogo from "../../public/static/images/eventsModalOasisLogo.png"
 import closeCross from "../../public/static/images/eventsModalCloseButton.png"
 const EventModal = ({ event, closeModal }) => {

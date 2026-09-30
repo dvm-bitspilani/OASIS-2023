@@ -1,17 +1,20 @@
 import "./globals.css"
-import { Inter } from "next/font/google"
-import Script from "next/script"
+
+
 import Provider from "../context/Provider"
 import CustomTrail from "../components/CustomTrail"
 import OasisLogo from "../../public/static/images/eventsModalOasisLogo.png"
 
-const inter = Inter({ subsets: ["latin"] })
+
 
 export const metadata = {
+  metadataBase: new URL("https://oasis2023.bits-oasis.org"),
+  alternates: {canonical: "/"},
+  openGraph: {title: "Oasis 2023 — Portfolio archive", url: "https://oasis2023.bits-oasis.org", images: ["/static/images/eventsModalOasisLogo.png"]},
   title: "Oasis '23",
   description: "The Official Website for OASIS 2023.",
   image: OasisLogo,
-  colorScheme: "dark",
+
   robots: {
     index: true,
     follow: true,
@@ -32,20 +35,14 @@ export const metadata = {
   },
 }
 
+export const viewport = {width:"device-width",initialScale:1,colorScheme:"dark"};
+
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
-      <body className={inter.className}>
-        <Script src="https://www.googletagmanager.com/gtag/js?id=G-YDR1E9BREE" />
-        <Script id="google-analytics">
-          {`
-          window.dataLayer = window.dataLayer || [];
-          function gtag(){dataLayer.push(arguments);}
-          gtag('js', new Date());
- 
-          gtag('config', 'G-YDR1E9BREE');
-        `}
-        </Script>
+      <body>
+
+        <div className="portfolio-archive" role="note">OASIS 2023 · Portfolio archive · Registration demo only</div>
         <CustomTrail />
         <Provider>{children}</Provider>
       </body>

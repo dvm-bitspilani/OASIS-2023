@@ -9,7 +9,7 @@ import rightHand from "../../../public/static/images/galleryRightHand.png"
 import leftHand from "../../../public/static/images/galleryLeftHand.png"
 import about from "../../components/GalleryCarousel.module.css"
 import cross from "../../../public/static/images/cross.svg"
-import bgImage from "../../../public/static/images/galleryPageBgImage.png"
+import bgImage from "../../../public/static/images/galleryPageBgImage.webp"
 import Loader from "@/helpers/Loader"
 import CustomCursor from "@/components/CustomCursor"
 

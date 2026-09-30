@@ -1,7 +1,7 @@
 .wallmagPage {
   height: 100dvh;
   width: 100vw;
-  background: url("../../../public/static/images/updatedLibraryBgImage.png")
+  background: url("../../../public/static/images/updatedLibraryBgImage.webp")
     no-repeat center center;
   background-size: cover;
 

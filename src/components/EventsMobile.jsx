@@ -1,4 +1,5 @@
 "use client"
+import { getEventDetails } from "@/helpers/archive"
 
 import React, { useState, useEffect } from "react"
 import Card from "./EventsMobileCard"
@@ -13,15 +14,7 @@ export default function EventsMobile2({ handleTransition }) {
   const { innerWidth, innerHeight } = useWindowSize()
   const [eventDetails, setEventDetails] = useState([])
 
-  async function getEventDetails() {
-    const res = await fetch(
-      "https://bits-oasis.org/2023/main/registrations/events_details"
-    )
-    if (!res.ok) {
-      throw new Error("Failed to get Events")
-    }
-    return res.json()
-  }
+
 
   useEffect(() => {
     getEventDetails()

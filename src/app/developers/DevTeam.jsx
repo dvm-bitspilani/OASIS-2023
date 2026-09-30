@@ -5,7 +5,7 @@
 // // import github from "./Dev Assets/github.png"
 // // import behance from "./Dev Assets/behance.png"
 // // import Ritik from "./Dev Assets/ritik.png"
-// // import book from "./Dev Assets/book.png"
+// // import book from "./Dev Assets/book.webp"
 // // import Image from "next/image";
 // // const DevTeam = ({ team }) => {
 // //   return (
@@ -35,8 +35,8 @@
 // import linkedIn from "./Dev Assets/linkedin.png";
 // import github from "./Dev Assets/github.png";
 // import behance from "./Dev Assets/behance.png";
-// // import shreyas from "./Dev Assets/himanshu.jpeg";
-// import book from "./Dev Assets/book.png";
+// // import shreyas from "./Dev Assets/himanshu.webp";
+// import book from "./Dev Assets/book.webp";
 // import cross from "./Dev Assets/eventsModalCloseButton.png"
 // import Image from "next/image";
 // const DevTeam = ({ team, onClose}) => {
@@ -92,7 +92,7 @@ import insta from "./Dev Assets/Instagram.png";
 import linkedIn from "./Dev Assets/linkedin.png";
 import github from "./Dev Assets/github.png";
 import behance from "./Dev Assets/behance.png";
-import book from "./Dev Assets/book.png";
+import book from "./Dev Assets/book.webp";
 import cross from "./Dev Assets/eventsModalCloseButton.png";
 import backgroundImage from "./Dev Assets/cardBgImage.png"
 import {motion} from "framer-motion";

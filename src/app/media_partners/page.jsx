@@ -1,4 +1,5 @@
 "use client"
+import { media as archiveRecords } from "@/helpers/archive"
 
 import React, { useEffect, useRef, useState } from "react"
 import styles from "./page.module.css"
@@ -96,13 +97,8 @@ const Page = () => {
 
   useEffect(() => {
     const fetchData = async () => {
-      const res = await fetch(
-        "https://bits-oasis.org/2023/main/registrations/media_partners/"
-      )
-      const json = await res.json()
-      setTimeout(() => {
-        setIsLoading(false)
-      }, 2000)
+      const json = archiveRecords
+      setIsLoading(false)
       setData(json)
     }
     fetchData()
@@ -139,11 +135,12 @@ const publicationCards = data.map((item) => {
 
   return (
     <>
+      <p className="archive-data-note">Representative portfolio demo records; original backend records are unavailable.</p>
       {isLoading && (
         <div className="loaderContainer">
           {/* <MyVideoLoader/> */}
           <video
-            src={require("../../../public/static/images/loadervideo.mp4")} // Update with the correct path
+            src={"/static/images/loadervideo.mp4"} // Update with the correct path
             autoPlay
             muted
             loop

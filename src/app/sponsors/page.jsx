@@ -1,4 +1,5 @@
 "use client"
+import { sponsors as archiveRecords } from "@/helpers/archive"
 
 import React, { useEffect, useRef, useState } from "react"
 import styles from "./page.module.css"
@@ -96,13 +97,8 @@ const Page = () => {
 
   useEffect(() => {
     const fetchData = async () => {
-      const res = await fetch(
-        "https://bits-oasis.org/2023/main/wallet/sponsors/"
-      )
-      const json = await res.json()
-      setTimeout(() => {
-        setIsLoading(false)
-      }, 1000)
+      const json = archiveRecords
+      setIsLoading(false)
       setData(json)
     }
     fetchData()
@@ -126,11 +122,12 @@ const Page = () => {
 
   return (
     <>
+      <p className="archive-data-note">Representative portfolio demo records; original backend records are unavailable.</p>
       {isLoading && (
         <div className="loaderContainer">
           {/* <MyVideoLoader/> */}
           <video
-            src={require("../../../public/static/images/loadervideo.mp4")} // Update with the correct path
+            src={"/static/images/loadervideo.mp4"} // Update with the correct path
             autoPlay
             muted
             loop
@@ -205,7 +202,7 @@ export function SponsorCard({ props }) {
   }
     // console.log(props);
   return (
-    <a href={props.web_url} target="_blank" className={styles.card} style={cardStyle}>
+    <a href={props.web_url} target="_blank" rel="noopener noreferrer" className={styles.card} style={cardStyle}>
       {/* <div
         className={styles.imgContainer}
         // style={{ backgroundImage: `url(${props.image})` }}

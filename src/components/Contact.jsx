@@ -2,11 +2,11 @@
 import React, { useState } from "react"
 import styles from "./Contact.module.css"
 import { AnimatePresence, motion } from "framer-motion"
-import ImageWrapper from "../../public/static/images/contacts.png"
+import ImageWrapper from "../../public/static/images/contacts.webp"
 import phone from "../../public/static/images/compressed_phone.svg"
 import mail from "../../public/static/images/compressed_mail.svg"
-// import mobilebgImage from "../../public/static/images/mobileLibraryBgImage.png";
-import updatedbgImage from "../../public/static/images/updatedLibraryBgImage.png"
+// import mobilebgImage from "../../public/static/images/mobileLibraryBgImage.webp";
+import updatedbgImage from "../../public/static/images/updatedLibraryBgImage.webp"
 // import shivang from "../../public/static/images/shivang.png";
 import shaurya from "../../public/static/images/shaurya.png"
 import sarthak from "../../public/static/images/sarthak.png"

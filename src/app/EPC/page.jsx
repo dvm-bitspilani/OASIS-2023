@@ -20,9 +20,9 @@ import { Navigation, Mousewheel } from "swiper/modules"
 import PDFDocument from "@/components/PDFDocument"
 
 // Importing PDFs
-import issue1 from "../../../public/static/pdf/OEP ISSUE 1.pdf"
-import issue2 from "../../../public/static/pdf/OEP ISSUE 2.pdf"
-import issue3 from "../../../public/static/pdf/OEP ISSUE 3.pdf"
+const issue1 = "/static/pdf/OEP ISSUE 1.pdf"
+const issue2 = "/static/pdf/OEP ISSUE 2.pdf"
+const issue3 = "/static/pdf/OEP ISSUE 3.pdf"
 
 export default function EPC() {
   const [isLoading, setIsLoading] = useState(false)
@@ -33,7 +33,7 @@ export default function EPC() {
         <div className="loaderContainer">
           {/* <MyVideoLoader/> */}
           <video
-            src={require("../../../public/static/images/loadervideo.mp4")} // Update with the correct path
+            src={"/static/images/loadervideo.mp4"} // Update with the correct path
             autoPlay
             muted
             loop

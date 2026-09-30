@@ -1,7 +1,8 @@
+import { getEventDetails } from "@/helpers/archive"
 import React, { useEffect, useState } from "react"
 import * as events from "../components/events.module.css"
 import Image from "next/image"
-import Map from "../../public/static/images/EventsMap.png"
+import Map from "../../public/static/images/EventsMap.webp"
 import gsap from "gsap"
 import { ScrollTrigger } from "gsap/ScrollTrigger"
 import { useWindowSize } from "rooks"
@@ -21,15 +22,7 @@ const Events = ({ showBackBtn, handleTransition }) => {
     setCrossButtonOpacity(selectedEvent ? 0 : 1)
   }, [selectedEvent])
 
-  async function getEventDetails() {
-    const res = await fetch(
-      "https://bits-oasis.org/2023/main/registrations/events_details"
-    )
-    if (!res.ok) {
-      throw new Error("Failed to get Events")
-    }
-    return res.json()
-  }
+
 
   useEffect(() => {
     getEventDetails()

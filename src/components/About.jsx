@@ -1,5 +1,5 @@
 import styles from "./about.module.css"
-import updatedBgLibraryImage from "../../public/static/images/updatedLibraryBgImage.png"
+import updatedBgLibraryImage from "../../public/static/images/updatedLibraryBgImage.webp"
 import leftHandImg from "../../public/static/images/aboutLeftHand.png"
 import topHandImg from "../../public/static/images/zombieHandsUpdated.png"
 import Image from "next/image"

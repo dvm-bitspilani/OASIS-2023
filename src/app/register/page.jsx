@@ -22,7 +22,7 @@ import styles from "./page.module.css"
 import { motion } from "framer-motion"
 import Select from "react-select"
 import Creatable from "react-select/creatable"
-import ReCAPTCHA from "react-google-recaptcha"
+
 
 // Components
 import Radio from "../../components/radioButton.jsx"
@@ -41,7 +41,7 @@ import { generateRandomStatesArray } from "@/helpers/generateRandomStatesArray"
 
 // Images
 import skull from "../../../public/static/images/skull.svg"
-import book from "../../../public/static/images/regBookOptimised.png"
+import book from "../../../public/static/images/regBookOptimised.webp"
 import register from "../../../public/static/images/regPageBtn.png"
 import cross from "../../../public/static/images/cross.svg"
 
@@ -78,46 +78,7 @@ export default function Page() {
   const [isLoading, setIsLoading] = useState(false)
 
   async function uploadData(data) {
-    if (data.choreographer === "NO") {
-      data.choreographer = 0
-    }
-    if (data.choreographer === "YES") {
-      data.choreographer = 1
-    }
-    if (data.head_of_society === "NO") {
-      data.head_of_society = 0
-    }
-    if (data.head_of_society === "YES") {
-      data.head_of_society = 1
-    }
-    if (data.visitor === "NO") {
-      data.visitor = 0
-    }
-    if (data.visitor === "YES") {
-      data.visitor = 1
-    }
-    // console.log(data);
-    const options = {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(data),
-    }
-
-    const res = await fetch(
-      "https://bits-oasis.org/2023/main/registrations/Register/",
-      options
-    )
-    if (!res.ok) {
-      res.json().then((data) => {
-        setErrorMessage(data["message"])
-        setErrorScreen(true)
-        setError(true)
-      })
-      throw new Error("Failed to register")
-    }
-    return res.json()
+    return {message: "Demo complete. Registration is closed; no information was sent or saved."};
   }
 
   const { innerWidth, innerHeight } = useWindowSize()
@@ -210,45 +171,7 @@ export default function Page() {
   )
 
   const [isDelayed, setIsDelayed] = useState(false)
-  useEffect(() => {
-    if (typeof window !== "undefined") {
-      // console.log('first')
-      setIsLoading(true)
-      // setShowLoader(true);
-      const assets = [skull, book, register, cross]
-      // console.log('second')
-      const loadAssets = () => {
-        const assetPromises = assets.map((asset) => {
-          if (asset) {
-            return new Promise((resolve, reject) => {
-              const img = new Image()
-              img.onload = resolve
-              img.onerror = reject
-              img.src = asset
-            })
-          }
-        })
-
-        Promise.all(assetPromises)
-          .then(() => {
-            setTimeout(() => {
-              setIsLoading(false)
-              // setShowLoader(false);
-            }, 10000)
-            // console.log('All assets loaded successfully');
-          })
-          .catch((error) => {
-            console.error("Error loading assets:", error)
-            setTimeout(() => {
-              setIsLoading(false)
-              // setShowLoader(false);
-            }, 2000)
-          })
-      }
-      loadAssets()
-      // }
-    }
-  }, [])
+  useEffect(() => { setIsLoading(false) }, [])
 
   useLayoutEffect(() => {
     // console.log("Animation 1");
@@ -684,9 +607,7 @@ export default function Page() {
       )
     }
 
-    if (!isCaptchaVerified) {
-      setIsCaptchaVerified(true)
-    }
+    await handleCaptchaVerify("portfolio-demo")
   }
 
   function handlePhoneChange(inp) {
@@ -914,7 +835,7 @@ export default function Page() {
         <h2>REGISTRATIONS</h2>
         <div className={styles.guideLink}>
           <a
-            href="http://drive.google.com/file/d/1L7gLFhgsR2YRqwD0DvWwEBVpvZmSc6Qg/view?usp=sharing"
+            href="https://drive.google.com/file/d/1L7gLFhgsR2YRqwD0DvWwEBVpvZmSc6Qg/view?usp=sharing"
             target="_blank"
             rel="noopener noreferrer"
           >
@@ -1205,16 +1126,13 @@ export default function Page() {
           <Image
             draggable={false}
             src={register}
+            role="button" tabIndex={0} aria-label="Complete demo registration"
+            onKeyDown={(e)=>{if(e.key === "Enter" || e.key === " "){e.preventDefault();handleRegisterations()}}}
             onClick={handleRegisterations}
             alt=""
-            width="1rem"
+            width={180} height={70}
           />
-          {isCaptchaVerified && (
-            <ReCAPTCHA
-              sitekey="6Lfkbp8oAAAAAI2Kugy_-z746PKbc2lzHKOezrw9"
-              onChange={handleCaptchaVerify}
-            />
-          )}
+<p role="note">Portfolio demo: use sample details. Nothing is sent or saved.</p>
         </div>
         {innerWidth > 1000 && (
           <motion.div

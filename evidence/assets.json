@@ -1,0 +1,242 @@
+[
+  {
+    "file": "src/app/developers/Dev Assets/Backbg.png",
+    "before": 1382300,
+    "after": 11704
+  },
+  {
+    "file": "src/app/developers/Dev Assets/Designbg.png",
+    "before": 1444453,
+    "after": 10574
+  },
+  {
+    "file": "src/app/developers/Dev Assets/Frontbg.png",
+    "before": 1560450,
+    "after": 11258
+  },
+  {
+    "file": "src/app/developers/Dev Assets/Videobg.png",
+    "before": 1564015,
+    "after": 12266
+  },
+  {
+    "file": "src/app/developers/Dev Assets/akshitDVM.jpg",
+    "before": 1946188,
+    "after": 35066
+  },
+  {
+    "file": "src/app/developers/Dev Assets/bg.png",
+    "before": 1481564,
+    "after": 11858
+  },
+  {
+    "file": "src/app/developers/Dev Assets/bharat.JPG",
+    "before": 7138909,
+    "after": 19582
+  },
+  {
+    "file": "src/app/developers/Dev Assets/book.png",
+    "before": 1548194,
+    "after": 22176
+  },
+  {
+    "file": "src/app/developers/Dev Assets/clerk.jpg",
+    "before": 387231,
+    "after": 120184
+  },
+  {
+    "file": "src/app/developers/Dev Assets/dhruv.jpg",
+    "before": 4105596,
+    "after": 145680
+  },
+  {
+    "file": "src/app/developers/Dev Assets/himanshu.jpeg",
+    "before": 1190437,
+    "after": 40504
+  },
+  {
+    "file": "src/app/developers/Dev Assets/luv.jpg",
+    "before": 1101388,
+    "after": 50132
+  },
+  {
+    "file": "src/app/developers/Dev Assets/manish.jpg",
+    "before": 3649192,
+    "after": 68558
+  },
+  {
+    "file": "src/app/developers/Dev Assets/nabisha.jpg",
+    "before": 986375,
+    "after": 89484
+  },
+  {
+    "file": "src/app/developers/Dev Assets/praneelDVM.jpg",
+    "before": 1120143,
+    "after": 99890
+  },
+  {
+    "file": "src/app/developers/Dev Assets/ritikDev.jpg",
+    "before": 3765819,
+    "after": 47722
+  },
+  {
+    "file": "src/app/developers/Dev Assets/shreyas.jpg",
+    "before": 3305024,
+    "after": 97434
+  },
+  {
+    "file": "src/app/developers/Dev Assets/srinivasa.jpeg",
+    "before": 2172016,
+    "after": 33974
+  },
+  {
+    "file": "src/app/developers/Dev Assets/tarun.jpeg",
+    "before": 577861,
+    "after": 43490
+  },
+  {
+    "file": "src/app/developers/Dev Assets/trehan.jpg",
+    "before": 668150,
+    "after": 84280
+  },
+  {
+    "file": "public/static/images/Book.png",
+    "before": 447409,
+    "after": 98510
+  },
+  {
+    "file": "public/static/images/BookContact.png",
+    "before": 769786,
+    "after": 92304
+  },
+  {
+    "file": "public/static/images/EventCardBG.png",
+    "before": 2111669,
+    "after": 306214
+  },
+  {
+    "file": "public/static/images/EventItem.png",
+    "before": 2149079,
+    "after": 332562
+  },
+  {
+    "file": "public/static/images/EventsMap.png",
+    "before": 1587263,
+    "after": 997706
+  },
+  {
+    "file": "public/static/images/EventsMapMobile.png",
+    "before": 2060437,
+    "after": 268298
+  },
+  {
+    "file": "public/static/images/LandingPageBook.png",
+    "before": 469851,
+    "after": 94488
+  },
+  {
+    "file": "public/static/images/Library.png",
+    "before": 1494463,
+    "after": 71042
+  },
+  {
+    "file": "public/static/images/LibraryBgImage.png",
+    "before": 1558829,
+    "after": 105542
+  },
+  {
+    "file": "public/static/images/RegisterBG.svg",
+    "before": 2710512,
+    "after": 67537
+  },
+  {
+    "file": "public/static/images/TransitionLeft.png",
+    "before": 1654677,
+    "after": 320854
+  },
+  {
+    "file": "public/static/images/TransitionRight.png",
+    "before": 1816060,
+    "after": 408436
+  },
+  {
+    "file": "public/static/images/contacts.png",
+    "before": 1452185,
+    "after": 214120
+  },
+  {
+    "file": "public/static/images/desertDuelModal.png",
+    "before": 416709,
+    "after": 66464
+  },
+  {
+    "file": "public/static/images/eventModalBg.png",
+    "before": 411929,
+    "after": 63484
+  },
+  {
+    "file": "public/static/images/eventsModalBgLaptop.png",
+    "before": 4389427,
+    "after": 630774
+  },
+  {
+    "file": "public/static/images/galleryPageBgImage.png",
+    "before": 1240844,
+    "after": 52494
+  },
+  {
+    "file": "public/static/images/hamBG.png",
+    "before": 454588,
+    "after": 7568
+  },
+  {
+    "file": "public/static/images/mail.svg",
+    "before": 9932742,
+    "after": 1356474
+  },
+  {
+    "file": "public/static/images/mailicon.svg",
+    "before": 9932547,
+    "after": 1356279
+  },
+  {
+    "file": "public/static/images/mobileLibraryBgImage.png",
+    "before": 404116,
+    "after": 31420
+  },
+  {
+    "file": "public/static/images/modal.png",
+    "before": 416555,
+    "after": 63348
+  },
+  {
+    "file": "public/static/images/phone.svg",
+    "before": 9931478,
+    "after": 1355210
+  },
+  {
+    "file": "public/static/images/regBook.svg",
+    "before": 20585906,
+    "after": 12699459
+  },
+  {
+    "file": "public/static/images/regBookOptimised.png",
+    "before": 2091310,
+    "after": 372314
+  },
+  {
+    "file": "public/static/images/regLoaderLogo.png",
+    "before": 1978711,
+    "after": 88042
+  },
+  {
+    "file": "public/static/images/updatedLandingPageBook.png",
+    "before": 467312,
+    "after": 97264
+  },
+  {
+    "file": "public/static/images/updatedLibraryBgImage.png",
+    "before": 1481564,
+    "after": 50990
+  }
+]

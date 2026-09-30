@@ -48,7 +48,7 @@ export default function AboutCarousel() {
 
 export function YoutubeEmbed({ embedId }) {
   return (
-    <iframe
+    <iframe loading="lazy"
       width="560"
       height="315"
       src={`https://www.youtube.com/embed/${embedId}`}

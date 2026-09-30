@@ -1,6 +1,7 @@
 @font-face {
+  font-display: swap;
   font-family: "KoPub";
-  src: url(../../public/static/fonts/KoPubBatang-Regular.ttf) format("truetype");
+  src: url(../../public/static/fonts/KoPubBatang-Regular.woff2) format("woff2");
 }
 
 .cardContainer {

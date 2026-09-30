@@ -1,0 +1,5 @@
+
+> oasis-2023@0.1.0 check
+> node scripts/check.mjs
+
+Static routes, archive labels, external bootstrap, CSP and local fonts verified.

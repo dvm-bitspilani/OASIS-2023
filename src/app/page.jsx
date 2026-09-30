@@ -11,20 +11,21 @@ import Link from "next/link"
 import textLogo from "../../public/static/images/updatedOasisLogo.png"
 import Navbar from "@/components/Navbar"
 import Hamburger from "@/components/hamburger"
-import landingPgBookImg from "../../public/static/images/Book.png"
+import landingPgBookImg from "../../public/static/images/Book.webp"
 import rightElements from "../../public/static/images/landingPgRightElements.png"
 import leftElements from "../../public/static/images/landingPgLeftElements.png"
-import updatedBgLibraryImage from "../../public/static/images/updatedLibraryBgImage.png"
+import updatedBgLibraryImage from "../../public/static/images/updatedLibraryBgImage.webp"
 
-import Events from "@/components/Events"
-import Contact from "@/components/Contact"
-import About from "@/components/About"
-import TransitionLeft from "../../public/static/images/TransitionLeft.png"
-import TransitionRight from "../../public/static/images/TransitionRight.png"
+import dynamic from "next/dynamic"
+const Events = dynamic(() => import("@/components/Events"))
+const Contact = dynamic(() => import("@/components/Contact"))
+const About = dynamic(() => import("@/components/About"))
+import TransitionLeft from "../../public/static/images/TransitionLeft.webp"
+import TransitionRight from "../../public/static/images/TransitionRight.webp"
 import { gsap } from "gsap"
 import { AnimatePresence, motion } from "framer-motion"
 import { useWindowSize } from "rooks"
-import EventsMobile2 from "@/components/EventsMobile"
+const EventsMobile2 = dynamic(() => import("@/components/EventsMobile"))
 import CustomCursor from "@/components/CustomCursor"
 import { useMemo } from "react"
 import { generateRandomStatesArray } from "@/helpers/generateRandomStatesArray"
@@ -137,62 +138,10 @@ export default function Home() {
   const transitionRight = useRef(null)
 
   useEffect(() => {
-    if (typeof window !== "undefined") {
-      // console.log('first')
-      setIsLoading(true)
-      setShowLoader(true)
-      const assets = [
-        textLogo.src,
-        landingPgBookImg.src,
-        rightElements.src,
-        leftElements.src,
-        updatedBgLibraryImage.src,
-      ]
-      // console.log('second')
-      const loadAssets = async () => {
-        const assetPromises = assets.map((asset) => {
-          if (asset) {
-            return new Promise((resolve, reject) => {
-              // const img = new img();
-              const img = document.createElement("img")
-              img.onload = resolve
-              img.onerror = reject
-              img.src = asset
-            })
-          }
-        })
-        const results = await Promise.allSettled(assetPromises)
-        const allSuccessful = results.every(
-          (result) => result.status === "fulfilled"
-        )
-        Promise.all(assetPromises)
-          .then(() => {
-            setAllAssetsLoaded(true)
-            // console.log("loaded");
-            setTimeout(() => {
-              setIsLoading(false)
-              setShowLoader(false)
-            }, 2000)
-            // console.log('All assets loaded successfully');
-          })
-          .catch((error) => {
-            console.error("Error loading assets:", error)
-            // setIsLoading(false);
-            setAllAssetsLoaded(true)
-            // console.log("loaded");
-            setShowLoader(false)
-            setTimeout(() => {
-              setIsLoading(false)
-              setShowLoader(false)
-            }, 3000)
-          })
-      }
-
-      loadAssets()
-      setRegisterBtnWidth(Math.min(200, Math.floor(innerWidth * 0.5)))
-      setRegisterBtnHeight(75)
-    }
-  }, [innerWidth])
+    setIsLoading(false); setShowLoader(false); setAllAssetsLoaded(true);
+    setRegisterBtnWidth(Math.min(200, Math.floor((innerWidth || 1000) * 0.5)));
+    setRegisterBtnHeight(75);
+  }, [innerWidth]);
 
   const [delayGiven, setDelayGiven] = useState(false)
 
@@ -596,7 +545,7 @@ export default function Home() {
         <div className={styles.loaderContainer}>
           {/* <MyVideoLoader/> */}
           <video
-            src={require("../../public/static/images/loadervideo.mp4")} // Update with the correct path
+            src={"/static/images/loadervideo.mp4"} // Update with the correct path
             autoPlay
             muted
             loop

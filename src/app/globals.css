@@ -1,29 +1,36 @@
 @font-face {
+  font-display: swap;
   font-family: "NightmarePills";
-  src: url("../../public/static/fonts/NIGHTMARE PILLS - DEMO.ttf")
-    format("truetype");
+  src: url("../../public/static/fonts/NIGHTMARE PILLS - DEMO.woff2")
+    format("woff2");
 }
 @font-face {
+  font-display: swap;
   font-family: "MetalMania";
-  src: url("../../public/static/fonts/MetalMania-Regular.ttf")
-    format("truetype");
+  src: url("../../public/static/fonts/MetalMania-Regular.woff2")
+    format("woff2");
 }
 @font-face {
+  font-display: swap;
   font-family: "Montserrat";
-  src: url(../../public/static/fonts/Montserrat.ttf) format("truetype");
+  font-weight: 100 900;
+  src: url(../../public/static/fonts/Montserrat.woff2) format("woff2");
 }
 @font-face {
+  font-display: swap;
   font-family: "Mantinia";
-  src: url(../../public/static/fonts/Mantinia\ CC\ Regular.ttf)
-    format("truetype");
+  src: url(../../public/static/fonts/Mantinia\ CC\ Regular.woff2)
+    format("woff2");
 }
 @font-face {
+  font-display: swap;
   font-family: "KoPubBatang";
-  src: url(../../public/static/fonts/KoPubBatang-Regular.ttf) format("truetype");
+  src: url(../../public/static/fonts/KoPubBatang-Regular.woff2) format("woff2");
 }
 @font-face {
+  font-display: swap;
   font-family: "OldNewspaperTypes";
-  src: url(../../public/static/fonts/OldNewspaperTypes.ttf) format("truetype");
+  src: url(../../public/static/fonts/OldNewspaperTypes.woff2) format("woff2");
 }
 * {
   margin: 0;
@@ -155,3 +162,4 @@ a {
   width: 100%;
   z-index: 1;
 }
+.portfolio-archive{position:fixed;bottom:8px;left:8px;z-index:99999;background:#201b18e8;color:#f5e3b9;padding:5px 9px;border-radius:4px;font:11px/1.4 sans-serif;pointer-events:none}.archive-data-note{position:absolute;top:75px;left:5%;z-index:10;color:#f4e5c6;font:13px sans-serif;max-width:90%}

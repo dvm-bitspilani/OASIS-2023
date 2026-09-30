@@ -30,7 +30,7 @@ export default function Page(){
                 <p className={styles.p}>The runners up for Rocktave and Scontro will receive a professionally crafted digital press one sheet, tailored specifically to the artist and their brand to enable them to pitch their music to industry experts.  Alongside this, the runners up will be offered an exclusive discount on Horus Music’s brand new ‘Unlimited Distribution PRO’ plan. Not publicly available until November, the runners up will benefit from exclusive first access which includes distribution and playlist pitching to a variety of Indian platforms such as Wynk, Gaana, Damroo and more. </p>
                 <p className={styles.p}>Horus Music is also giving students who are not taking part in the competitions but want to get their music distributed,  a special student discount for their  subscription  plan. To claim yours, make sure to visit the Horus Music standee to discuss your needs directly with the team.</p>
 
-                <h4 className={styles.h4}>To learn more about Horus Music and their services, head over to their website at <span><a href="www.horusmusic.global">www.horusmusic.global</a></span> or hit follow on <span><a href="https://www.instagram.com/horusmusic/">Instagram</a></span> to stay up to date with all the latest news.</h4>
+                <h4 className={styles.h4}>To learn more about Horus Music and their services, head over to their website at <span><a href="https://www.horusmusic.global">www.horusmusic.global</a></span> or hit follow on <span><a href="https://www.instagram.com/horusmusic/">Instagram</a></span> to stay up to date with all the latest news.</h4>
             </div>
         </>
     )

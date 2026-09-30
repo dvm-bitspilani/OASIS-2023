@@ -2,7 +2,7 @@ import React from "react"
 import Image from "next/image"
 import * as events from "./events.module.css"
 import Item from "../../public/static/images/StreetDance.png"
-import scrollAsset from "../../public/static/images/EventItem.png"
+import scrollAsset from "../../public/static/images/EventItem.webp"
 import StreetDance from "../../public/static/images/StreetDance.png"
 
 const EventItem = ({ name, desc, image }) => {

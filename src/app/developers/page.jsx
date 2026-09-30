@@ -5,35 +5,35 @@ import * as styles from "./dev.module.css"
 import CustomCursor from "@/components/CustomCursor"
 import Image from "next/image"
 // Importing assets for bg and people
-import bg from "./Dev Assets/bg.png"
+import bg from "./Dev Assets/bg.webp"
 import front from "./Dev Assets/Front.png"
-import frontBg from "./Dev Assets/Frontbg.png"
+import frontBg from "./Dev Assets/Frontbg.webp"
 import design from "./Dev Assets/Design.png"
-import designBg from "./Dev Assets/Designbg.png"
+import designBg from "./Dev Assets/Designbg.webp"
 import back from "./Dev Assets/Back.png"
-import backBg from "./Dev Assets/Backbg.png"
+import backBg from "./Dev Assets/Backbg.webp"
 import video from "./Dev Assets/Video.png"
-import videoBg from "./Dev Assets/Videobg.png"
+import videoBg from "./Dev Assets/Videobg.webp"
 import shelf from "./Dev Assets/shelf.png"
 import DevTeam from "./DevTeam"
-import akshit from "./Dev Assets/akshitDVM.jpg"
-import bharat from "./Dev Assets/bharat.JPG"
-import luv from "./Dev Assets/luv.jpg"
-import ritik from "./Dev Assets/ritikDev.jpg"
-import shreyas from "./Dev Assets/shreyas.jpg"
+import akshit from "./Dev Assets/akshitDVM.webp"
+import bharat from "./Dev Assets/bharat.webp"
+import luv from "./Dev Assets/luv.webp"
+import ritik from "./Dev Assets/ritikDev.webp"
+import shreyas from "./Dev Assets/shreyas.webp"
 import sunpreet from "./Dev Assets/sunpreet.jpeg"
-import trehan from "./Dev Assets/trehan.jpg"
-import praneel from "./Dev Assets/praneelDVM.jpg"
-import nabisha from "./Dev Assets/nabisha.jpg"
+import trehan from "./Dev Assets/trehan.webp"
+import praneel from "./Dev Assets/praneelDVM.webp"
+import nabisha from "./Dev Assets/nabisha.webp"
 import rakshit from "./Dev Assets/sakhuja.jpg"
-import himanshu from "./Dev Assets/himanshu.jpeg"
-import raj from "./Dev Assets/clerk.jpg"
-import manish from "./Dev Assets/manish.jpg"
-import dhruv from "./Dev Assets/dhruv.jpg"
-import srinivasa from "./Dev Assets/srinivasa.jpeg"
+import himanshu from "./Dev Assets/himanshu.webp"
+import raj from "./Dev Assets/clerk.webp"
+import manish from "./Dev Assets/manish.webp"
+import dhruv from "./Dev Assets/dhruv.webp"
+import srinivasa from "./Dev Assets/srinivasa.webp"
 import rahul from "./Dev Assets/rahul.jpg"
 import gurekas from "./Dev Assets/gurekas.jpg"
-import tarun from "./Dev Assets/tarun.jpeg"
+import tarun from "./Dev Assets/tarun.webp"
 import { useRouter } from 'next/navigation';
 import backBtn from "./Dev Assets/cross.svg"
 import {motion} from "framer-motion"
@@ -307,46 +307,7 @@ useEffect(() => {
       bg.src, front.src, frontBg.src, design.src, designBg.src, back.src, backBg.src, video.src, videoBg.src, shelf.src, akshit.src, bharat.src, luv.src, ritik.src, shreyas.src, sunpreet.src, trehan.src, praneel.src, nabisha.src, rakshit.src, himanshu.src, raj.src, manish.src, dhruv.src, srinivasa.src, rahul.src, gurekas.src, tarun.src,luv.src,
     ]
     // console.log('second')
-    const loadAssets = async () => {
-      const assetPromises = assets.map((asset) => {
-        if (asset) {
-          return new Promise((resolve, reject) => {
-            // const img = new img();
-            const img = document.createElement("img")
-            img.onload = resolve
-            img.onerror = reject
-            img.src = asset
-          })
-        }
-      })
-      const results = await Promise.allSettled(assetPromises)
-      const allSuccessful = results.every(
-        (result) => result.status === "fulfilled"
-      )
-      Promise.all(assetPromises)
-        .then(() => {
-          setAllAssetsLoaded(true)
-          // console.log("loaded");
-          setTimeout(() => {
-            setIsLoading(false)
-            setShowLoader(false)
-          }, 2000)
-          // console.log('All assets loaded successfully');
-        })
-        .catch((error) => {
-          console.error("Error loading assets:", error)
-          // setIsLoading(false);
-          setAllAssetsLoaded(true)
-          // console.log("loaded");
-          setShowLoader(false)
-          setTimeout(() => {
-            setIsLoading(false)
-            setShowLoader(false)
-          }, 3000)
-        })
-    }
-
-    loadAssets()
+    setAllAssetsLoaded(true); setIsLoading(false); setShowLoader(false)
   }
 }, [])
   return (
@@ -355,7 +316,7 @@ useEffect(() => {
         <div className={styles.loaderContainer}>
           {/* <MyVideoLoader/> */}
           <video
-            src={require("../../../public/static/images/loadervideo.mp4")} // Update with the correct path
+            src={"/static/images/loadervideo.mp4"} // Update with the correct path
             autoPlay
             muted
             loop
