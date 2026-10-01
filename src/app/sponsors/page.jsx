@@ -14,7 +14,7 @@ import CustomCursor from "@/components/CustomCursor"
 import cross from "../../../public/static/images/cross.svg"
 
 const Page = () => {
-  const [isLoading, setIsLoading] = useState(true)
+  const [isLoading, setIsLoading] = useState(false)
 
   const router = useRouter()
 
@@ -83,7 +83,7 @@ const Page = () => {
     const maxScrollTopValue =
       contentRef.current.scrollHeight - contentRef.current.clientHeight
     // const percentage = (contentRef.current.scrollTop / maxScrollTopValue )*100;
-    const percentage = (contentRef.current.scrollTop / maxScrollTopValue) * 100
+    const percentage = (contentRef.current.scrollTop / (maxScrollTopValue || 1)) * 100
     percentage > 100
       ? (skullRef.current.style.top = "100%")
       : (skullRef.current.style.top = `${percentage}%`)
@@ -122,7 +122,6 @@ const Page = () => {
 
   return (
     <>
-      <p className="archive-data-note">Representative portfolio demo records; original backend records are unavailable.</p>
       {isLoading && (
         <div className="loaderContainer">
           {/* <MyVideoLoader/> */}
@@ -145,6 +144,8 @@ const Page = () => {
           onClick={() => {
             router.push("/")
           }}
+          role="button" tabIndex={0} aria-label="Back to home" onKeyDown={(event) => { if (event.key === "Enter" || event.key === " ") { event.preventDefault(); router.push("/") } }}
+          onMouseEnter={() => router.prefetch("/")} onFocus={() => router.prefetch("/")}
           alt="Close"
           className={styles.cross}
         />

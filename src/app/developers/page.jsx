@@ -39,8 +39,8 @@ import backBtn from "./Dev Assets/cross.svg"
 import {motion} from "framer-motion"
 export default function DevelopersPage() {
   const router = useRouter();
-  const [isLoading, setIsLoading] = useState(true)
-  const [showLoader, setShowLoader] = useState(true)
+  const [isLoading, setIsLoading] = useState(false)
+  const [showLoader, setShowLoader] = useState(false)
   const [allAssetsLoaded, setAllAssetsLoaded] = useState(false)
   const [backgroundImage, setBackgroundImage] = useState(bg.src);
   const [showTeam, setShowTeam] = useState(false);
@@ -301,8 +301,6 @@ const teams = {
 useEffect(() => {
   if (typeof window !== "undefined") {
     // console.log('first')
-    setIsLoading(true)
-    setShowLoader(true)
     const assets = [
       bg.src, front.src, frontBg.src, design.src, designBg.src, back.src, backBg.src, video.src, videoBg.src, shelf.src, akshit.src, bharat.src, luv.src, ritik.src, shreyas.src, sunpreet.src, trehan.src, praneel.src, nabisha.src, rakshit.src, himanshu.src, raj.src, manish.src, dhruv.src, srinivasa.src, rahul.src, gurekas.src, tarun.src,luv.src,
     ]
@@ -328,7 +326,7 @@ useEffect(() => {
       ): <>
       <CustomCursor />
       <div className={styles.pageWrapper} style={{backgroundImage:`url(${backgroundImage})`}} >  
-     <Image src={backBtn} className={styles.backBtn} alt="back" onClick={handleBackButtonClick} style={{opacity: window.innerWidth > 800 && showTeam ? "0" : "1"}}></Image>
+     <Image src={backBtn} className={styles.backBtn} alt="back" onClick={handleBackButtonClick} style={{opacity: showTeam ? "0" : "1"}}></Image>
       <div className={styles.heading}>Developers</div>
       {/* <div className={styles.booksWrapper} >
       <Image src={design} alt="Design Book" className={styles.designBook} onMouseEnter={() => handleBookHover(designBg.src)}  onMouseLeave={handleMouseLeave}/>

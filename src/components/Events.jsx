@@ -6,6 +6,7 @@ import Map from "../../public/static/images/EventsMap.webp"
 import gsap from "gsap"
 import { ScrollTrigger } from "gsap/ScrollTrigger"
 import { useWindowSize } from "rooks"
+import { useReducedMotion } from "framer-motion"
 import EventItem from "./EventItem"
 import EventModal from "./EventModal"
 
@@ -13,7 +14,8 @@ gsap.registerPlugin(ScrollTrigger)
 
 import cross from "../../public/static/images/cross.svg"
 
-const Events = ({ showBackBtn, handleTransition }) => {
+const Events = ({ active, showBackBtn, handleTransition }) => {
+  const reducedMotion = useReducedMotion()
   const [selectedEvent, setSelectedEvent] = useState(null)
   const [reduceBrightness, setReduceBrightness] = useState(false)
   const [eventDetails, setEventDetails] = useState([])
@@ -49,67 +51,25 @@ const Events = ({ showBackBtn, handleTransition }) => {
   const { innerWidth, innerHeight } = useWindowSize()
 
   useEffect(() => {
-    // Set initial states
-    gsap.set("#scrollDist", { width: "100%", height: "100%" })
-
-    if (innerWidth > 820) {
-      gsap.set("#container", {
-        position: "fixed",
-        width: 4096,
-        height: 2305,
-        transformOrigin: "0 0",
-        left: innerWidth / -25,
-        top: innerHeight / -50,
-      })
-      gsap.to("#container", {
-        duration: 1,
-        opacity: 1,
-        ease: "ease",
-        delay: 0.3,
-      })
-    }
-
-    // Tween the SVG path + circle
-    gsap
-      .timeline({
-        scrollTrigger: {
-          trigger: "#scrollDist",
-          start: "top top",
-          end: "bottom bottom",
-          scrub: 0.5,
-        },
-      })
-      .to("#c", { motionPath: "#p", immediateRender: true, ease: "none" }, 0)
-    // .from("#p", { drawSVG: "0 0", ease: "none" }, 0);
-
-    if (innerWidth > 820) {
-      // Move container's x/y to follow the red circle
-      gsap.ticker.add(() =>
-        gsap.to("#container", {
-          duration: 2.5,
-          x: -gsap.getProperty("#c", "x"),
-          y: -gsap.getProperty("#c", "y"),
-        })
-      )
-    }
-
-    // Center the container's left/top position
-    const resizeHandler = () => {
-      if (innerWidth > 820) {
-        gsap.set("#container", {
-          left: 0,
-          top: 0,
-        })
-      }
-    }
-
-    window.addEventListener("load", resizeHandler)
-    window.addEventListener("resize", resizeHandler)
-    return () => {
-      window.removeEventListener("load", resizeHandler)
-      window.removeEventListener("resize", resizeHandler)
-    }
-  }, [])
+    if (!active || !innerWidth || innerWidth <= 820) return
+    let follow
+    const context = gsap.context(() => {
+      gsap.set("#scrollDist", {width: "100%", height: "100%"})
+      gsap.set("#container", {position: "fixed", width: 4096, height: 2305, transformOrigin: "0 0", left: innerWidth / -25, top: innerHeight / -50, opacity: 1})
+      gsap.timeline({scrollTrigger: {
+        trigger: "#scrollDist",
+        scroller: document.querySelector("main"),
+        start: "top top",
+        end: "bottom bottom",
+        scrub: reducedMotion ? true : 0.5,
+      }}).to("#c", {motionPath: "#p", immediateRender: true, ease: "none"}, 0)
+      const xTo = gsap.quickTo("#container", "x", {duration: reducedMotion ? 0 : 0.7, ease: "power2.out"})
+      const yTo = gsap.quickTo("#container", "y", {duration: reducedMotion ? 0 : 0.7, ease: "power2.out"})
+      follow = () => { xTo(-gsap.getProperty("#c", "x")); yTo(-gsap.getProperty("#c", "y")) }
+      gsap.ticker.add(follow)
+    })
+    return () => { gsap.ticker.remove(follow); context.revert() }
+  }, [active, innerWidth, innerHeight, reducedMotion])
   const handleBtnClick = (page) => {
     handleTransition(page)
   }

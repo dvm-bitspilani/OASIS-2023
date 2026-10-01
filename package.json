@@ -16,8 +16,6 @@
     "next": "16.3.8",
     "react": "19.3.0",
     "react-dom": "19.3.0",
-    "react-multi-carousel": "^2.8.4",
-    "react-select": "^5.7.4",
     "rooks": "^7.14.1",
     "swiper": "12.1.2"
   },

@@ -9,6 +9,7 @@ import glow from "../../public/static/images/glow.png"
 import { useContext } from "react"
 import Image from "next/image"
 import { useEffect } from "react"
+import { useReducedMotion } from "framer-motion"
 import { gsap } from "gsap"
 import { MotionPathPlugin } from "gsap/all"
 import { CustomEase } from "gsap/all"
@@ -19,6 +20,7 @@ gsap.registerPlugin(CustomEase)
 
 export default function Hamburger() {
   const { isHamOpen, setIsHamOpen } = useContext(HamContext)
+  const reducedMotion = useReducedMotion()
 
   const handleLogoClick = () => {
     setIsHamOpen(!isHamOpen)
@@ -35,6 +37,12 @@ export default function Hamburger() {
     const five = document.querySelectorAll(".five")
     const insideCircle = document.querySelectorAll(".ham-inside-circle")
     const logo = document.querySelectorAll(".ham-logo")
+
+    if (reducedMotion) {
+      gsap.set([element, ...insideCircle, ...logo, ...one, ...two, ...three, ...four, ...five], {opacity: isHamOpen ? 1 : 0, scale: 1})
+      gsap.set(svg, {strokeDashoffset: 0})
+      return
+    }
 
     var duration = 1.2
     var delay = 1.7
@@ -216,7 +224,7 @@ export default function Hamburger() {
         delay: delayEnd + 0.7,
       })
     }
-  }, [isHamOpen])
+  }, [isHamOpen, reducedMotion])
 
   return (
     <>
@@ -255,10 +263,10 @@ export default function Hamburger() {
             </svg>
           </div>
           <div className={styles.circle}>
-            <Link
+            <Link prefetch={false}
               href="/sponsors"
               className={`${styles.item} one`}
-              onMouseDown={() => {
+              onClick={() => {
                 setIsHamOpen(false)
               }}
             >
@@ -269,10 +277,10 @@ export default function Hamburger() {
                 <span className={styles.txt}>SPONSORS</span>
               </div>
             </Link>
-            <Link
+            <Link prefetch={false}
               className={`${styles.item} two`}
               href="/gallery"
-              onMouseDown={() => {
+              onClick={() => {
                 setIsHamOpen(false)
               }}
             >
@@ -283,10 +291,10 @@ export default function Hamburger() {
                 <span className={styles.txt2}>GALLERY</span>
               </div>
             </Link>
-            <Link
+            <Link prefetch={false}
               href="/wallmag"
               className={`${styles.item} three`}
-              onMouseDown={() => {
+              onClick={() => {
                 setIsHamOpen(false)
               }}
             >
@@ -297,7 +305,7 @@ export default function Hamburger() {
                 <span className={styles.txt2}>WALLMAG</span>
               </div>
             </Link>
-            <Link href="/media_partners" className={`${styles.item} four`}>
+            <Link prefetch={false} href="/media_partners" className={`${styles.item} four`}>
               <div className={`${styles.number} ${styles.four}`}>
                 <span className={styles.numbox}>
                   <div className={styles.num}>4</div>
@@ -305,7 +313,7 @@ export default function Hamburger() {
                 <span className={styles.txt}>MEDIA PARTNERS</span>
               </div>
             </Link>
-            <Link href="/developers" className={`${styles.item} five`}>
+            <Link prefetch={false} href="/developers" className={`${styles.item} five`}>
             {/* <div className={`${styles.item} five`}> */}
               <div className={`${styles.number} ${styles.five}`}>
                 <span className={styles.numbox}>

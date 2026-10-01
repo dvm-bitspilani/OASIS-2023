@@ -1,0 +1,29 @@
+{
+  "capturedAt": "2026-10-01T00:44:44.958Z",
+  "before": {
+    "exportBytes": 54951825,
+    "javascriptBytes": 1977722,
+    "javascriptGzipBytes": 617896,
+    "publicBytes": 42886247
+  },
+  "after": {
+    "exportBytes": 25646194,
+    "javascriptBytes": 1523011,
+    "javascriptGzipBytes": 499366,
+    "publicBytes": 42886247
+  },
+  "checks": {
+    "lockedInstall": "npm ci --ignore-scripts (legacy-peer-deps in .npmrc)",
+    "build": "npm run build",
+    "export": "npm run check",
+    "audit": {
+      "info": 0,
+      "low": 0,
+      "moderate": 0,
+      "high": 0,
+      "critical": 0,
+      "total": 0
+    }
+  },
+  "browser": "Coordinated by the parent agent; no browser automation run by this agent."
+}

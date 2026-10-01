@@ -22,6 +22,7 @@ export default function EventsMobile2({ handleTransition }) {
         setEventDetails(
           data.map((item) => {
             return {
+              key: item.key,
               name: item.name,
               desc: item.about,
               image: item.img_mobile_url,
@@ -43,14 +44,15 @@ export default function EventsMobile2({ handleTransition }) {
 
   useEffect(() => {
     const updateWidth = () => {
-      setWidth(innerWidth)
+      setWidth(innerWidth || 400)
+      setTranslateX(-(cardNo - 1) * (innerWidth || 400))
     }
     window.addEventListener("resize", updateWidth)
     updateWidth()
     return () => {
       window.removeEventListener("resize", updateWidth)
     }
-  }, [innerWidth])
+  }, [innerWidth, cardNo])
 
   let translateStyle = {
     transform: `translateX(${translateX}px)`,
@@ -108,7 +110,7 @@ export default function EventsMobile2({ handleTransition }) {
               Adventures lie ahead...
             </p>
             <div className={styles.navigation} style={{ width: width }}>
-              <Image src={Forward} onClick={handleFirstForward} alt="" />
+              <button type="button" aria-label="Browse events" onClick={handleFirstForward}><Image src={Forward} alt="" /></button>
             </div>
           </div>
           {CardsList}
@@ -120,20 +122,22 @@ export default function EventsMobile2({ handleTransition }) {
               cardNo == 1 ? `translateX(${width}px)` : `translateX(${0}px)`,
           }}
         >
+          <button type="button" aria-label="Previous event" onClick={cardNo === 2 ? handleFirstBackward : handleBackward} disabled={cardNo === 1}>
           <Image
             src={Backward}
-            onClick={cardNo == 2 ? handleFirstBackward : handleBackward}
             alt=""
           />
+          </button>
+          <button type="button" aria-label="Next event" onClick={handleForward} disabled={cardNo === totalCards}>
           <Image
             src={Forward}
-            onClick={cardNo == totalCards ? "" : handleForward}
             style={{
               opacity: cardNo == totalCards ? "0.4" : "1",
               cursor: cardNo == totalCards ? "auto" : "pointer",
             }}
             alt=""
           />
+          </button>
         </div>
       </div>
     </>

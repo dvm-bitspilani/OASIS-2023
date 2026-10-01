@@ -2,7 +2,7 @@ import React from "react"
 import * as nav from "../components/navbar.module.css"
 import Link from "next/link"
 
-const Navbar = ({ handleTransition }) => {
+const Navbar = ({ handleTransition, preloadSection }) => {
   const handleNavClick = (page) => {
     handleTransition(page)
   }
@@ -12,25 +12,29 @@ const Navbar = ({ handleTransition }) => {
       <div className={nav.navWrapper}>
         <a
           className={`${nav.navItem} customHover`}
-          onClick={() => handleNavClick("contact")}
+          href="#contact" onMouseEnter={() => preloadSection("contact") } onFocus={() => preloadSection("contact") }
+          onClick={(event) => { event.preventDefault(); handleNavClick("contact") }}
         >
           CONTACT
         </a>
         <a
           className={`${nav.navItem} customHover`}
-          onClick={() => handleNavClick("events")}
+          href="#events" onMouseEnter={() => preloadSection("events") } onFocus={() => preloadSection("events") }
+          onClick={(event) => { event.preventDefault(); handleNavClick("events") }}
         >
           EVENTS
         </a>
         <a
           className={`${nav.navItem} customHover`}
-          onClick={() => handleNavClick("about")}
+          href="#about" onMouseEnter={() => preloadSection("about") } onFocus={() => preloadSection("about") }
+          onClick={(event) => { event.preventDefault(); handleNavClick("about") }}
         >
           ABOUT US
         </a>
         <a
           className={`${nav.navItem} customHover`}
-          onClick={() => handleNavClick("home")}
+          href="#home" onMouseEnter={() => preloadSection("home") } onFocus={() => preloadSection("home") }
+          onClick={(event) => { event.preventDefault(); handleNavClick("home") }}
         >
           HOME
         </a>

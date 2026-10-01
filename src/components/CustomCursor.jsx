@@ -4,12 +4,14 @@ import penImage from "../../public/static/images/cursor.png"
 import Image from "next/image"
 
 import { useWindowSize } from "rooks"
+import { useReducedMotion } from "framer-motion"
 
 const CustomCursor = () => {
   const [position, setPosition] = useState({ x: 0, y: 0 })
   const [isHovered, setIsHovered] = useState(false)
 
   const { innerHeight, innerWidth } = useWindowSize()
+  const reducedMotion = useReducedMotion()
 
   useEffect(() => {
     const updateCursorPosition = (e) => {
@@ -25,7 +27,9 @@ const CustomCursor = () => {
 
     window.addEventListener("mousemove", updateCursorPosition)
 
-    return () => {
+    if (reducedMotion) return null
+
+  return () => {
       window.removeEventListener("mousemove", updateCursorPosition)
     }
   }, [])

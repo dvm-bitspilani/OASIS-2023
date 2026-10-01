@@ -128,3 +128,6 @@
   text-align: center;
   font-family: "KoPub";
 }
+
+.navigation button { border: 0; padding: 0; background: transparent; }
+.navigation button:disabled { opacity: 0.4; }

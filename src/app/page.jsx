@@ -15,29 +15,63 @@ import landingPgBookImg from "../../public/static/images/Book.webp"
 import rightElements from "../../public/static/images/landingPgRightElements.png"
 import leftElements from "../../public/static/images/landingPgLeftElements.png"
 import updatedBgLibraryImage from "../../public/static/images/updatedLibraryBgImage.webp"
+import eventMap from "../../public/static/images/EventsMap.webp"
+import contactBook from "../../public/static/images/contacts.webp"
 
 import dynamic from "next/dynamic"
-const Events = dynamic(() => import("@/components/Events"))
-const Contact = dynamic(() => import("@/components/Contact"))
-const About = dynamic(() => import("@/components/About"))
+const sectionImports = {
+  events: () => import("@/components/Events"),
+  contact: () => import("@/components/Contact"),
+  about: () => import("@/components/About"),
+}
+const sectionPromises = new Map()
+function importSection(page) {
+  if (!sectionImports[page]) return Promise.resolve()
+  if (!sectionPromises.has(page)) sectionPromises.set(page, sectionImports[page]())
+  return sectionPromises.get(page)
+}
+const artworkPromises = new Map()
+function preloadSection(page) {
+  const artwork = page === "events" ? eventMap.src : page === "contact" ? contactBook.src : updatedBgLibraryImage.src
+  if (!artworkPromises.has(artwork)) {
+    artworkPromises.set(artwork, new Promise(resolve => {
+      const image = new window.Image()
+      image.onload = () => image.decode().catch(() => {}).then(resolve)
+      image.onerror = resolve
+      image.src = artwork
+    }))
+  }
+  return Promise.all([importSection(page), artworkPromises.get(artwork)])
+}
+const sectionLoading = () => <div className={styles.sectionLoading} aria-busy="true" />
+const Events = dynamic(() => importSection("events"), {loading: sectionLoading})
+const Contact = dynamic(() => importSection("contact"), {loading: sectionLoading})
+const About = dynamic(() => importSection("about"), {loading: sectionLoading})
 import TransitionLeft from "../../public/static/images/TransitionLeft.webp"
 import TransitionRight from "../../public/static/images/TransitionRight.webp"
 import { gsap } from "gsap"
-import { AnimatePresence, motion } from "framer-motion"
+import { AnimatePresence, motion, useReducedMotion } from "framer-motion"
 import { useWindowSize } from "rooks"
 const EventsMobile2 = dynamic(() => import("@/components/EventsMobile"))
 import CustomCursor from "@/components/CustomCursor"
 import { useMemo } from "react"
+import { useRegistrationClosed } from "@/context/Provider"
 import { generateRandomStatesArray } from "@/helpers/generateRandomStatesArray"
 
-export default function Home() {
+export default function Home({ registrationClosedOnLoad = false }) {
+  const openRegistration = useRegistrationClosed()
+  const reducedMotion = useReducedMotion()
+  const transitioning = useRef(false)
+  useEffect(() => {
+    if (registrationClosedOnLoad) openRegistration()
+  }, [registrationClosedOnLoad, openRegistration])
   const { isHamOpen, setIsHamOpen } = useContext(HamContext)
   const { innerWidth, innerHeight } = useWindowSize()
 
   const [RegisterBtnWidth, setRegisterBtnWidth] = useState(200)
   const [RegisterBtnHeight, setRegisterBtnHeight] = useState(75)
-  const [isLoading, setIsLoading] = useState(true)
-  const [showLoader, setShowLoader] = useState(true)
+  const [isLoading, setIsLoading] = useState(false)
+  const [showLoader, setShowLoader] = useState(false)
 
   const numberOfRandom = 10
 
@@ -133,6 +167,7 @@ export default function Home() {
   const navSection = useRef(null)
   const contactsWrapper = useRef(null)
   const eventsWrapper = useRef(null)
+  const eventsMobileWrapper = useRef(null)
   const aboutWrapper = useRef(null)
   const transitionLeft = useRef(null)
   const transitionRight = useRef(null)
@@ -147,7 +182,7 @@ export default function Home() {
 
   useLayoutEffect(() => {
     // create our context. This function is invoked immediately and all GSAP animations and ScrollTriggers created during the execution of this function get recorded so we can revert() them later (cleanup)\
-    if (!isLoading) {
+    if (!isLoading && !reducedMotion) {
       let ctx = gsap.context(() => {
         randomLeft1.forEach((item, key) => {
           gsap.set(`#left_1_${key}`, {
@@ -213,11 +248,11 @@ export default function Home() {
         ctx.revert()
       } // cleanup
     }
-  }, [isLoading, randomLeft1, numberOfRandom, randomGenerationConfig])
+  }, [isLoading, reducedMotion, randomLeft1, numberOfRandom, randomGenerationConfig])
 
   useLayoutEffect(() => {
     // create our context. This function is invoked immediately and all GSAP animations and ScrollTriggers created during the execution of this function get recorded so we can revert() them later (cleanup)
-    if (!isLoading) {
+    if (!isLoading && !reducedMotion) {
       let ctx = gsap.context(() => {
         randomLeft2.forEach((item, key) => {
           gsap.set(`#left_2_${key}`, {
@@ -286,6 +321,7 @@ export default function Home() {
     }
   }, [
     isLoading,
+    reducedMotion,
     randomLeft2,
     delayGiven,
     numberOfRandom,
@@ -293,7 +329,7 @@ export default function Home() {
   ])
 
   useLayoutEffect(() => {
-    if (!isLoading) {
+    if (!isLoading && !reducedMotion) {
       let ctx = gsap.context(() => {
         randomRight1.forEach((item, key) => {
           gsap.set(`#right_1_${key}`, {
@@ -359,10 +395,10 @@ export default function Home() {
         ctx.revert()
       } // cleanup
     }
-  }, [isLoading, randomRight1, numberOfRandom, randomGenerationConfig])
+  }, [isLoading, reducedMotion, randomRight1, numberOfRandom, randomGenerationConfig])
 
   useLayoutEffect(() => {
-    if (!isLoading) {
+    if (!isLoading && !reducedMotion) {
       let ctx = gsap.context(() => {
         randomRight2.forEach((item, key) => {
           gsap.set(`#right_2_${key}`, {
@@ -432,6 +468,7 @@ export default function Home() {
     }
   }, [
     isLoading,
+    reducedMotion,
     randomRight2,
     delayGiven,
     numberOfRandom,
@@ -480,63 +517,41 @@ export default function Home() {
 
   const [currentPage, setCurrentPage] = useState("home")
 
-  const handleTransition = (page) => {
-    if (page === currentPage) {
-      return
-    } else {
-      var tl = gsap.timeline()
-      tl.to([transitionLeft.current, transitionRight.current], {
-        x: 0,
-        scale: 1.5,
-        duration: 1,
-        ease: "power2.inOut",
-      })
+  const handleTransition = async (page) => {
+    if (page === currentPage || transitioning.current) return
+    transitioning.current = true
+    try {
+      // Keep the current artwork visible until the destination's code is ready.
+      await preloadSection(page)
+      await new Promise(resolve => requestAnimationFrame(() => requestAnimationFrame(resolve)))
       const elements = {
         contact: contactsWrapper,
-        events: eventsWrapper,
+        events: innerWidth > 820 ? eventsWrapper : eventsMobileWrapper,
         home: pageWrapper,
         about: aboutWrapper,
       }
-
-      for (const key in elements) {
-        const element = elements[key].current
-        const opacity = key === page ? 1 : 0
-        const visibility = key === page ? "visible" : "hidden"
-        const duration = key === page ? 0.15 : 0.5
-
-        tl.to(element, { opacity, visibility, ease: "ease", duration })
-      }
-
-      tl.to(navSection.current, {
-        opacity: page !== "events" ? 1 : 0,
-        visibility: page !== "events" ? "visible" : "hidden",
-        ease: "ease",
-        duration: 0.5,
-      })
-
-      setTimeout(() => {
+      const reveal = () => {
+        for (const [key, ref] of Object.entries(elements)) {
+          if (ref.current) gsap.set(ref.current, {opacity: key === page ? 1 : 0, visibility: key === page ? "visible" : "hidden"})
+        }
+        gsap.set(navSection.current, {opacity: page === "events" ? 0 : 1, visibility: page === "events" ? "hidden" : "visible"})
+        gsap.set(scope.current, {height: "100dvh", width: "100vw"})
+        scope.current.scrollTop = 0
         setShowBackBtn(page !== "home")
-      }, 1000)
-
-      tl.to(scope.current, {
-        height: page !== "events" ? "100vh" : "fit-content",
-        width: page !== "events" ? "100vw" : "fit-content",
-      })
-
-      tl.to(transitionLeft.current, {
-        x: "-100%",
-        scale: 1,
-        duration: 1,
-        ease: "power2.inOut",
-        onComplete: () => {
-          setCurrentPage(page)
-        },
-      })
-      tl.to(
-        transitionRight.current,
-        { x: "100%", scale: 1, duration: 1, ease: "power2.inOut" },
-        "-=1"
-      )
+        setCurrentPage(page)
+      }
+      if (reducedMotion) {
+        reveal()
+        transitioning.current = false
+        return
+      }
+      gsap.timeline({onComplete: () => { transitioning.current = false }})
+        .to([transitionLeft.current, transitionRight.current], {x: 0, scale: 1.5, duration: 0.75, ease: "power2.inOut"})
+        .call(reveal)
+        .to(transitionLeft.current, {x: "-100%", scale: 1, duration: 0.75, ease: "power2.inOut"})
+        .to(transitionRight.current, {x: "100%", scale: 1, duration: 0.75, ease: "power2.inOut"}, "<")
+    } catch {
+      transitioning.current = false
     }
   }
   return (
@@ -588,6 +603,8 @@ export default function Home() {
           suppressHydrationWarning
           draggable={false}
           src={updatedBgLibraryImage}
+          priority
+          sizes="100vw"
           className={styles.pageBgImage}
           alt=""
         />
@@ -610,6 +627,8 @@ export default function Home() {
               <div
                 key="hamAsset"
                 className={`${styles.hamAsset} customHover`}
+                role="button" tabIndex={0} aria-label={isHamOpen ? "Close menu" : "Open menu"} aria-expanded={isHamOpen}
+                onKeyDown={(event) => { if (event.key === "Enter" || event.key === " ") { event.preventDefault(); openHam() } }}
                 onClick={openHam}
               >
                 <Image
@@ -620,7 +639,7 @@ export default function Home() {
                   alt="Menu"
                   suppressHydrationWarning
                 />
-                <div id="ham-menu" className={styles.hamIcon} onClick={openHam}>
+                <div id="ham-menu" className={styles.hamIcon}>
                   <span id="hamIcon1" className={styles.hamIcon1}></span>
                   <span id="hamIcon2" className={styles.hamIcon2}></span>
                   <span id="hamIcon3" className={styles.hamIcon3}></span>
@@ -677,7 +696,7 @@ export default function Home() {
         <AnimatePresence mode="wait">
           <motion.div
             key="midSection"
-            initial={{ opacity: 0 }}
+            initial={false}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             transition={{ duration: 2 }}
@@ -690,6 +709,7 @@ export default function Home() {
               <Image
                 draggable={false}
                 src={textLogo}
+                priority
                 // layout="fill"
                 className={styles.textLogoImg}
                 alt="OASIS"
@@ -708,6 +728,8 @@ export default function Home() {
               <Image
                 draggable={false}
                 src={landingPgBookImg}
+                priority
+                sizes="(max-width: 550px) 100vw, 80vw"
                 className={styles.LandingBookImg}
                 alt="Book"
               />
@@ -741,8 +763,7 @@ export default function Home() {
                   }}
                   suppressHydrationWarning
                 >
-                  <Link href="/register" legacyBehavior>
-                    <a className={`${styles.registerBtnWrapper} customHover`}>
+                  <button type="button" onClick={openRegistration} className={`${styles.registerBtnWrapper} customHover`}>
                       <Image
                         draggable={false}
                         src="/static/images/updatedLandingRegBtn.png"
@@ -752,8 +773,7 @@ export default function Home() {
                         alt="Register"
                         priority
                       />
-                    </a>
-                  </Link>
+                  </button>
                   <div className={styles.landingPageDate}>
                     <span>27TH - 31ST OCTOBER</span>
                   </div>
@@ -779,7 +799,7 @@ export default function Home() {
               exit={{ opacity: 0 }}
               transition={{ delay: 0.5 }}
             >
-              <Navbar handleTransition={handleTransition} />
+              <Navbar handleTransition={handleTransition} preloadSection={preloadSection} />
             </motion.div>
           )}
         </AnimatePresence>
@@ -787,16 +807,17 @@ export default function Home() {
       <div className={styles.aboutWrapper} ref={aboutWrapper}>
         <About />
       </div>
-      <div className={styles.aboutWrapper}>
+      <div className={styles.eventsMobileWrapper} ref={eventsMobileWrapper}>
         <EventsMobile2 handleTransition={handleTransition} />
       </div>
-      {innerWidth >= 820 && (
+      {innerWidth > 820 && (
         <div className={styles.eventsWrapper} ref={eventsWrapper}>
           {/* <Events
               showBackBtn={showBackBtn}
               handleTransition={handleTransition}
             /> */}
           <Events
+            active={currentPage === "events"}
             showBackBtn={showBackBtn}
             handleTransition={handleTransition}
           />

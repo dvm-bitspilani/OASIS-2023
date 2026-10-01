@@ -162,4 +162,34 @@ a {
   width: 100%;
   z-index: 1;
 }
-.portfolio-archive{position:fixed;bottom:8px;left:8px;z-index:99999;background:#201b18e8;color:#f5e3b9;padding:5px 9px;border-radius:4px;font:11px/1.4 sans-serif;pointer-events:none}.archive-data-note{position:absolute;top:75px;left:5%;z-index:10;color:#f4e5c6;font:13px sans-serif;max-width:90%}
+
+.registration-closed {
+  margin: auto;
+  width: min(28rem, calc(100vw - 2rem));
+  padding: 1.75rem;
+  border: 1px solid #7bbef0;
+  border-radius: 0.4rem;
+  background: #141b28;
+  color: #9ed4fb;
+  box-shadow: 0 0 35px #0c101dcc;
+  text-align: center;
+  cursor: auto;
+}
+.registration-closed::backdrop { background: #050910b8; }
+.registration-closed h2 { font: 1.5rem/1.4 "MetalMania", serif; }
+.registration-closed button {
+  margin-top: 1.25rem;
+  padding: 0.6rem 1.2rem;
+  border: 1px solid #7bbef0;
+  background: transparent;
+  color: inherit;
+  font: 0.9rem "Montserrat", sans-serif;
+  cursor: pointer;
+}
+:focus-visible { outline: 2px solid #9ed4fb; outline-offset: 4px; }
+@media (hover: none), (pointer: coarse) { *, .customHover { cursor: auto; } }
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation: none !important; transition-duration: 0.01ms !important; scroll-behavior: auto !important; }
+  canvas { display: none; }
+  *, .customHover { cursor: auto; }
+}

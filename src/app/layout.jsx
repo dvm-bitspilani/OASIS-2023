@@ -10,7 +10,7 @@ import OasisLogo from "../../public/static/images/eventsModalOasisLogo.png"
 export const metadata = {
   metadataBase: new URL("https://oasis2023.bits-oasis.org"),
   alternates: {canonical: "/"},
-  openGraph: {title: "Oasis 2023 — Portfolio archive", url: "https://oasis2023.bits-oasis.org", images: ["/static/images/eventsModalOasisLogo.png"]},
+  openGraph: {title: "Oasis '23", url: "https://oasis2023.bits-oasis.org", images: ["/static/images/eventsModalOasisLogo.png"]},
   title: "Oasis '23",
   description: "The Official Website for OASIS 2023.",
   image: OasisLogo,
@@ -42,7 +42,6 @@ export default function RootLayout({ children }) {
     <html lang="en">
       <body>
 
-        <div className="portfolio-archive" role="note">OASIS 2023 · Portfolio archive · Registration demo only</div>
         <CustomTrail />
         <Provider>{children}</Provider>
       </body>

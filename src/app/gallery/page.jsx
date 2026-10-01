@@ -12,6 +12,7 @@ import cross from "../../../public/static/images/cross.svg"
 import bgImage from "../../../public/static/images/galleryPageBgImage.webp"
 import Loader from "@/helpers/Loader"
 import CustomCursor from "@/components/CustomCursor"
+import Link from "next/link"
 
 const Page = () => {
   const [isLoading, setIsLoading] = useState(false)
@@ -24,14 +25,15 @@ const Page = () => {
         className={styles.pageWrapper}
         style={{ background: `url(${bgImage.src})` }}
       >
+        <Link href="/" aria-label="Back to home" prefetch={false}>
         <Image
           suppressHydrationWarning
-          onClick={() => router.back()}
           src={cross}
           alt="close"
           className={styles.close}
           draggable={false}
         />
+        </Link>
         <Image
           suppressHydrationWarning
           src={web}
