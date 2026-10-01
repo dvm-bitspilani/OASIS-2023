@@ -10,7 +10,7 @@ import { Navigation, Mousewheel } from "swiper/modules"
 
 import PDFDocument from "./PDFDocument"
 
-import * as styles from "../app/EPC/epc.module.css"
+import styles from "../app/EPC/epc.module.css"
 
 export default function PressClubCarousel() {
     return (

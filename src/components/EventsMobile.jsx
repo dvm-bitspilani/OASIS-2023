@@ -3,11 +3,11 @@ import { getEventDetails } from "@/helpers/archive"
 
 import React, { useState, useEffect } from "react"
 import Card from "./EventsMobileCard"
-import * as styles from "./eventsMobile2.module.css"
+import styles from "./eventsMobile2.module.css"
 import Image from "next/image"
 import Forward from "../../public/static/images/forwardArrow.svg"
 import Backward from "../../public/static/images/backArrow.svg"
-import { useWindowSize } from "rooks"
+import { useWindowSize } from "@/helpers/useWindowSize"
 import tasks from "@/helpers/Events"
 
 export default function EventsMobile2({ handleTransition }) {

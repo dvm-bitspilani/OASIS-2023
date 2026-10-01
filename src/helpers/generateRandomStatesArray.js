@@ -6,17 +6,18 @@ function getRandomStats(
   startingXPoint,
   endingXPoint,
   startingXRange,
-  endingXRange
+  endingXRange,
+  rng
 ) {
   const random = {}
-  random.int = Math.floor(Math.random() * 10 + 1)
+  random.int = Math.floor(rng() * 10 + 1)
   random.file = `/static/images/Group${random.int}.png`
 
-  random.startingY = Math.floor(Math.random() * startingYRange + startingYPoint)
-  random.startingX = Math.floor(Math.random() * startingXRange + startingXPoint)
+  random.startingY = Math.floor(rng() * startingYRange + startingYPoint)
+  random.startingX = Math.floor(rng() * startingXRange + startingXPoint)
 
-  random.endingY = Math.floor(Math.random() * endingYRange + endingYPoint)
-  random.endingX = Math.floor(Math.random() * endingXRange + endingXPoint)
+  random.endingY = Math.floor(rng() * endingYRange + endingYPoint)
+  random.endingX = Math.floor(rng() * endingXRange + endingXPoint)
 
   return random
 }
@@ -30,8 +31,14 @@ export function generateRandomStatesArray(
   startingXPoint,
   endingXPoint,
   startingXRange,
-  endingXRange
+  endingXRange,
+  seed
 ) {
+  let value = seed
+  const rng = seed === undefined ? Math.random : () => {
+    value = (Math.imul(value, 1664525) + 1013904223) >>> 0
+    return value / 4294967296
+  }
   const randomArray = []
   for (let i = 0; i < number; i++) {
     randomArray.push(
@@ -43,7 +50,8 @@ export function generateRandomStatesArray(
         startingXPoint,
         endingXPoint,
         startingXRange,
-        endingXRange
+        endingXRange,
+        rng
       )
     )
   }

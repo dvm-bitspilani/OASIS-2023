@@ -2,7 +2,7 @@
 
 import React from "react"
 import Image from "next/image"
-import * as styles from "./eventsMobile2.module.css"
+import styles from "./eventsMobile2.module.css"
 
 export default function EventsMobile2({ width, image, name, desc, key }) {
   return (

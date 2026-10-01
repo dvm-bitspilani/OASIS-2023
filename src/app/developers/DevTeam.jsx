@@ -1,5 +1,5 @@
 // // import React from "react";
-// // import * as styles from "./dev.module.css";
+// // import styles from "./dev.module.css";
 // // import insta from "./Dev Assets/Instagram.png"
 // // import linkedIn from "./Dev Assets/linkedin.png"
 // // import github from "./Dev Assets/github.png"
@@ -30,7 +30,7 @@
 
 // // export default DevTeam;
 // import React from "react";
-// import * as styles from "./dev.module.css";
+// import styles from "./dev.module.css";
 // import insta from "./Dev Assets/Instagram.png";
 // import linkedIn from "./Dev Assets/linkedin.png";
 // import github from "./Dev Assets/github.png";
@@ -87,7 +87,7 @@
 // export default DevTeam;
 
 import React from "react";
-import * as styles from "./dev.module.css";
+import styles from "./dev.module.css";
 import insta from "./Dev Assets/Instagram.png";
 import linkedIn from "./Dev Assets/linkedin.png";
 import github from "./Dev Assets/github.png";

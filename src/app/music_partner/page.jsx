@@ -1,7 +1,7 @@
 "use client"
 
 import React , {useState} from "react"
-import * as styles from "./page.module.css"
+import styles from "./page.module.css"
 import Loader from "@/helpers/Loader"
 import CustomCursor from "@/components/CustomCursor"
 

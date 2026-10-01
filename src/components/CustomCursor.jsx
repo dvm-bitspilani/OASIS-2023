@@ -3,7 +3,7 @@ import styles from "./CustomCursor.module.css" // You can use CSS modules or any
 import penImage from "../../public/static/images/cursor.png"
 import Image from "next/image"
 
-import { useWindowSize } from "rooks"
+import { useWindowSize } from "@/helpers/useWindowSize"
 import { useReducedMotion } from "framer-motion"
 
 const CustomCursor = () => {

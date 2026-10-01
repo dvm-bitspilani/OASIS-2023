@@ -51,7 +51,7 @@ import TransitionLeft from "../../public/static/images/TransitionLeft.webp"
 import TransitionRight from "../../public/static/images/TransitionRight.webp"
 import { gsap } from "gsap"
 import { AnimatePresence, motion, useReducedMotion } from "framer-motion"
-import { useWindowSize } from "rooks"
+import { useWindowSize } from "@/helpers/useWindowSize"
 const EventsMobile2 = dynamic(() => import("@/components/EventsMobile"))
 import CustomCursor from "@/components/CustomCursor"
 import { useMemo } from "react"
@@ -79,20 +79,20 @@ export default function Home({ registrationClosedOnLoad = false }) {
     return [32, -10, 30, 40, 25, 86, 0, 0]
   }, [])
 
-  const [randomLeft1, setrandomLeft1] = useState(
-    generateRandomStatesArray(numberOfRandom, ...randomGenerationConfig)
+  const [randomLeft1, setrandomLeft1] = useState(() =>
+    generateRandomStatesArray(numberOfRandom, ...randomGenerationConfig, 1)
   )
 
-  const [randomLeft2, setrandomLeft2] = useState(
-    generateRandomStatesArray(numberOfRandom, ...randomGenerationConfig)
+  const [randomLeft2, setrandomLeft2] = useState(() =>
+    generateRandomStatesArray(numberOfRandom, ...randomGenerationConfig, 2)
   )
 
-  const [randomRight1, setRandomRight1] = useState(
-    generateRandomStatesArray(numberOfRandom, ...randomGenerationConfig)
+  const [randomRight1, setRandomRight1] = useState(() =>
+    generateRandomStatesArray(numberOfRandom, ...randomGenerationConfig, 3)
   )
 
-  const [randomRight2, setRandomRight2] = useState(
-    generateRandomStatesArray(numberOfRandom, ...randomGenerationConfig)
+  const [randomRight2, setRandomRight2] = useState(() =>
+    generateRandomStatesArray(numberOfRandom, ...randomGenerationConfig, 4)
   )
 
   const scope = useRef(null)
@@ -487,6 +487,7 @@ export default function Home({ registrationClosedOnLoad = false }) {
     const topBar1 = document.querySelector("#hamIcon1")
     const topBar2 = document.querySelector("#hamIcon2")
     const topBar3 = document.querySelector("#hamIcon3")
+    if (!topBar1 || !topBar2 || !topBar3) return
     if (isHamOpen && !isLoading) {
       topBar1.style.transform = "rotatez(45deg) translate(3px,2px)"
       topBar2.style.transform = "rotatez(-45deg) translate(-1px,-2px)"

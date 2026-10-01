@@ -1,7 +1,7 @@
 "use client"
 
 import { MouseTrail } from "@stichiboi/react-elegant-mouse-trail"
-import { useWindowSize } from "rooks"
+import { useWindowSize } from "@/helpers/useWindowSize"
 import { useReducedMotion } from "framer-motion"
 
 export default function CustomTrail({ children }) {

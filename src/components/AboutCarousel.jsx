@@ -28,7 +28,7 @@ export default function AboutCarousel() {
     <>
       <Swiper
         speed={2000}
-        className={styles.carousel}
+        className={`${styles.carousel} aboutSwiper`}
         fadeEffect={{
           crossFade: true,
         }}

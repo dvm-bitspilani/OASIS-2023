@@ -1,6 +1,6 @@
 "use client"
 import React, {useState,useEffect} from "react"
-import * as styles from "./dev.module.css"
+import styles from "./dev.module.css"
 
 import CustomCursor from "@/components/CustomCursor"
 import Image from "next/image"

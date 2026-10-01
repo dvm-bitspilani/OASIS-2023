@@ -1,6 +1,6 @@
 "use client"
 
-import * as styles from "./hpc.module.css"
+import styles from "./hpc.module.css"
 
 import { useState } from "react"
 

@@ -1,6 +1,6 @@
 "use client"
 
-import * as styles from "./epc.module.css"
+import styles from "./epc.module.css"
 
 import { useState } from "react"
 

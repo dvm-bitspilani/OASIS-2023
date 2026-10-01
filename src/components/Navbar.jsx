@@ -1,5 +1,5 @@
 import React from "react"
-import * as nav from "../components/navbar.module.css"
+import nav from "../components/navbar.module.css"
 import Link from "next/link"
 
 const Navbar = ({ handleTransition, preloadSection }) => {

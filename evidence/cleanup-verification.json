@@ -1,5 +1,5 @@
 {
-  "capturedAt": "2026-10-01T00:44:44.958Z",
+  "capturedAt": "2026-10-01T00:49:34.337Z",
   "before": {
     "exportBytes": 54951825,
     "javascriptBytes": 1977722,
@@ -7,9 +7,9 @@
     "publicBytes": 42886247
   },
   "after": {
-    "exportBytes": 25646194,
-    "javascriptBytes": 1523011,
-    "javascriptGzipBytes": 499366,
+    "exportBytes": 25649131,
+    "javascriptBytes": 1525141,
+    "javascriptGzipBytes": 500141,
     "publicBytes": 42886247
   },
   "checks": {
@@ -23,7 +23,8 @@
       "high": 0,
       "critical": 0,
       "total": 0
-    }
+    },
+    "initialParticles": "Same seed yields identical server/browser initial data; different seeds vary the artwork and preserve original bounds."
   },
   "browser": "Coordinated by the parent agent; no browser automation run by this agent."
 }
